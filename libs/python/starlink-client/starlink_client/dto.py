@@ -77,7 +77,7 @@ class UserTerminal(BaseModel):
     active: bool
     configId: Optional[str] = None
     nickname: Optional[str] = None
-    lastConnected: datetime
+    lastConnected: Optional[datetime] = None
     lastDisconnected: Optional[datetime] = None
     routers: List[Router]
     isOffline: Optional[bool] = None
