@@ -9,14 +9,14 @@ from starlink_client.wifi_config import NewWifiConfig
 
 
 class GrpcWebClient(GrpcWebBaseClient):
-    def get_service_lines(self) -> ServiceLinesResponse:
+    def get_service_lines(self, limit: int = 100) -> ServiceLinesResponse:
         """
         Get the service lines for the account.
 
         Returns:
             dict: The service lines for the account.
         """
-        resp = self._client.get("https://api.starlink.com/webagg/v2/accounts/service-lines?limit=10&page=0&isConverting=false&serviceAddressId=&onlyActive=false&searchString=&onlyNoUts=false")
+        resp = self._client.get(f"https://api.starlink.com/webagg/v2/accounts/service-lines?limit={limit}&page=0&isConverting=false&onlyActive=false&onlyNoUts=false")
         try:
             return ServiceLinesResponse.model_validate_json(resp.text)
         except Exception as e:
