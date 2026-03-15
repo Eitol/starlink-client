@@ -51,7 +51,7 @@ class Subscription(BaseModel):
 
 class Router(BaseModel):
     routerId: str
-    accountNumber: str
+    accountNumber: Optional[str] = None
     userTerminalId: str
     nickname: Optional[str] = None
     lastConnected: datetime
@@ -60,7 +60,7 @@ class Router(BaseModel):
     isBypassed: bool
     configId: Optional[str] = None
     directLinkToDish: bool
-    hardwareVersion: str
+    hardwareVersion: Optional[str] = None
 
     def get_id(self) -> str:
         return f"Router-{self.routerId}"
