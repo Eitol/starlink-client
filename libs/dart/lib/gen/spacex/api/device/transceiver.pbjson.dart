@@ -1,13 +1,15 @@
+// This is a generated file - do not edit.
 //
-//  Generated code. Do not modify.
-//  source: spacex/api/device/transceiver.proto
-//
-// @dart = 2.12
+// Generated from spacex/api/device/transceiver.proto.
+
+// @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
-// ignore_for_file: constant_identifier_names, library_prefixes
-// ignore_for_file: non_constant_identifier_names, prefer_final_fields
-// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: curly_braces_in_flow_control_structures
+// ignore_for_file: deprecated_member_use_from_same_package, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_relative_imports
+// ignore_for_file: unused_import
 
 import 'dart:convert' as $convert;
 import 'dart:core' as $core;
@@ -24,9 +26,10 @@ const TransceiverModulatorState$json = {
 };
 
 /// Descriptor for `TransceiverModulatorState`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List transceiverModulatorStateDescriptor = $convert.base64Decode(
-    'ChlUcmFuc2NlaXZlck1vZHVsYXRvclN0YXRlEhQKEE1PRFNUQVRFX1VOS05PV04QABIUChBNT0'
-    'RTVEFURV9FTkFCTEVEEAESFQoRTU9EU1RBVEVfRElTQUJMRUQQAg==');
+final $typed_data.Uint8List transceiverModulatorStateDescriptor =
+    $convert.base64Decode(
+        'ChlUcmFuc2NlaXZlck1vZHVsYXRvclN0YXRlEhQKEE1PRFNUQVRFX1VOS05PV04QABIUChBNT0'
+        'RTVEFURV9FTkFCTEVEEAESFQoRTU9EU1RBVEVfRElTQUJMRUQQAg==');
 
 @$core.Deprecated('Use transceiverTxRxStateDescriptor instead')
 const TransceiverTxRxState$json = {
@@ -54,22 +57,30 @@ const TransceiverTransmitBlankingState$json = {
 };
 
 /// Descriptor for `TransceiverTransmitBlankingState`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List transceiverTransmitBlankingStateDescriptor = $convert.base64Decode(
-    'CiBUcmFuc2NlaXZlclRyYW5zbWl0QmxhbmtpbmdTdGF0ZRIOCgpUQl9VTktOT1dOEAASDgoKVE'
-    'JfRU5BQkxFRBABEg8KC1RCX0RJU0FCTEVEEAI=');
+final $typed_data.Uint8List transceiverTransmitBlankingStateDescriptor =
+    $convert.base64Decode(
+        'CiBUcmFuc2NlaXZlclRyYW5zbWl0QmxhbmtpbmdTdGF0ZRIOCgpUQl9VTktOT1dOEAASDgoKVE'
+        'JfRU5BQkxFRBABEg8KC1RCX0RJU0FCTEVEEAI=');
 
 @$core.Deprecated('Use transceiverIFLoopbackTestRequestDescriptor instead')
 const TransceiverIFLoopbackTestRequest$json = {
   '1': 'TransceiverIFLoopbackTestRequest',
   '2': [
-    {'1': 'enable_if_loopback', '3': 1, '4': 1, '5': 8, '10': 'enableIfLoopback'},
+    {
+      '1': 'enable_if_loopback',
+      '3': 1,
+      '4': 1,
+      '5': 8,
+      '10': 'enableIfLoopback'
+    },
   ],
 };
 
 /// Descriptor for `TransceiverIFLoopbackTestRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List transceiverIFLoopbackTestRequestDescriptor = $convert.base64Decode(
-    'CiBUcmFuc2NlaXZlcklGTG9vcGJhY2tUZXN0UmVxdWVzdBIsChJlbmFibGVfaWZfbG9vcGJhY2'
-    'sYASABKAhSEGVuYWJsZUlmTG9vcGJhY2s=');
+final $typed_data.Uint8List transceiverIFLoopbackTestRequestDescriptor =
+    $convert.base64Decode(
+        'CiBUcmFuc2NlaXZlcklGTG9vcGJhY2tUZXN0UmVxdWVzdBIsChJlbmFibGVfaWZfbG9vcGJhY2'
+        'sYASABKAhSEGVuYWJsZUlmTG9vcGJhY2s=');
 
 @$core.Deprecated('Use transceiverIFLoopbackTestResponseDescriptor instead')
 const TransceiverIFLoopbackTestResponse$json = {
@@ -77,17 +88,24 @@ const TransceiverIFLoopbackTestResponse$json = {
   '2': [
     {'1': 'ber_loopback_test', '3': 1, '4': 1, '5': 2, '10': 'berLoopbackTest'},
     {'1': 'snr_loopback_test', '3': 2, '4': 1, '5': 2, '10': 'snrLoopbackTest'},
-    {'1': 'rssi_loopback_test', '3': 3, '4': 1, '5': 2, '10': 'rssiLoopbackTest'},
+    {
+      '1': 'rssi_loopback_test',
+      '3': 3,
+      '4': 1,
+      '5': 2,
+      '10': 'rssiLoopbackTest'
+    },
     {'1': 'pll_lock', '3': 4, '4': 1, '5': 8, '10': 'pllLock'},
   ],
 };
 
 /// Descriptor for `TransceiverIFLoopbackTestResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List transceiverIFLoopbackTestResponseDescriptor = $convert.base64Decode(
-    'CiFUcmFuc2NlaXZlcklGTG9vcGJhY2tUZXN0UmVzcG9uc2USKgoRYmVyX2xvb3BiYWNrX3Rlc3'
-    'QYASABKAJSD2Jlckxvb3BiYWNrVGVzdBIqChFzbnJfbG9vcGJhY2tfdGVzdBgCIAEoAlIPc25y'
-    'TG9vcGJhY2tUZXN0EiwKEnJzc2lfbG9vcGJhY2tfdGVzdBgDIAEoAlIQcnNzaUxvb3BiYWNrVG'
-    'VzdBIZCghwbGxfbG9jaxgEIAEoCFIHcGxsTG9jaw==');
+final $typed_data.Uint8List transceiverIFLoopbackTestResponseDescriptor =
+    $convert.base64Decode(
+        'CiFUcmFuc2NlaXZlcklGTG9vcGJhY2tUZXN0UmVzcG9uc2USKgoRYmVyX2xvb3BiYWNrX3Rlc3'
+        'QYASABKAJSD2Jlckxvb3BiYWNrVGVzdBIqChFzbnJfbG9vcGJhY2tfdGVzdBgCIAEoAlIPc25y'
+        'TG9vcGJhY2tUZXN0EiwKEnJzc2lfbG9vcGJhY2tfdGVzdBgDIAEoAlIQcnNzaUxvb3BiYWNrVG'
+        'VzdBIZCghwbGxfbG9jaxgEIAEoCFIHcGxsTG9jaw==');
 
 @$core.Deprecated('Use transceiverGetStatusRequestDescriptor instead')
 const TransceiverGetStatusRequest$json = {
@@ -95,20 +113,69 @@ const TransceiverGetStatusRequest$json = {
 };
 
 /// Descriptor for `TransceiverGetStatusRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List transceiverGetStatusRequestDescriptor = $convert.base64Decode(
-    'ChtUcmFuc2NlaXZlckdldFN0YXR1c1JlcXVlc3Q=');
+final $typed_data.Uint8List transceiverGetStatusRequestDescriptor =
+    $convert.base64Decode('ChtUcmFuc2NlaXZlckdldFN0YXR1c1JlcXVlc3Q=');
 
 @$core.Deprecated('Use transceiverGetStatusResponseDescriptor instead')
 const TransceiverGetStatusResponse$json = {
   '1': 'TransceiverGetStatusResponse',
   '2': [
-    {'1': 'mod_state', '3': 1, '4': 1, '5': 14, '6': '.SpaceX.API.Device.TransceiverModulatorState', '10': 'modState'},
-    {'1': 'demod_state', '3': 2, '4': 1, '5': 14, '6': '.SpaceX.API.Device.TransceiverModulatorState', '10': 'demodState'},
-    {'1': 'tx_state', '3': 3, '4': 1, '5': 14, '6': '.SpaceX.API.Device.TransceiverTxRxState', '10': 'txState'},
-    {'1': 'rx_state', '3': 4, '4': 1, '5': 14, '6': '.SpaceX.API.Device.TransceiverTxRxState', '10': 'rxState'},
-    {'1': 'state', '3': 1006, '4': 1, '5': 14, '6': '.SpaceX.API.Device.DishState', '10': 'state'},
-    {'1': 'faults', '3': 1007, '4': 1, '5': 11, '6': '.SpaceX.API.Device.TransceiverFaults', '10': 'faults'},
-    {'1': 'transmit_blanking_state', '3': 1008, '4': 1, '5': 14, '6': '.SpaceX.API.Device.TransceiverTransmitBlankingState', '10': 'transmitBlankingState'},
+    {
+      '1': 'mod_state',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.TransceiverModulatorState',
+      '10': 'modState'
+    },
+    {
+      '1': 'demod_state',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.TransceiverModulatorState',
+      '10': 'demodState'
+    },
+    {
+      '1': 'tx_state',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.TransceiverTxRxState',
+      '10': 'txState'
+    },
+    {
+      '1': 'rx_state',
+      '3': 4,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.TransceiverTxRxState',
+      '10': 'rxState'
+    },
+    {
+      '1': 'state',
+      '3': 1006,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.DishState',
+      '10': 'state'
+    },
+    {
+      '1': 'faults',
+      '3': 1007,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.TransceiverFaults',
+      '10': 'faults'
+    },
+    {
+      '1': 'transmit_blanking_state',
+      '3': 1008,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.TransceiverTransmitBlankingState',
+      '10': 'transmitBlankingState'
+    },
     {'1': 'modem_asic_temp', '3': 1009, '4': 1, '5': 2, '10': 'modemAsicTemp'},
     {'1': 'tx_if_temp', '3': 1010, '4': 1, '5': 2, '10': 'txIfTemp'},
   ],
@@ -133,8 +200,20 @@ final $typed_data.Uint8List transceiverGetStatusResponseDescriptor = $convert.ba
 const TransceiverFaults$json = {
   '1': 'TransceiverFaults',
   '2': [
-    {'1': 'over_temp_modem_asic_fault', '3': 1, '4': 1, '5': 8, '10': 'overTempModemAsicFault'},
-    {'1': 'over_temp_pcba_fault', '3': 2, '4': 1, '5': 8, '10': 'overTempPcbaFault'},
+    {
+      '1': 'over_temp_modem_asic_fault',
+      '3': 1,
+      '4': 1,
+      '5': 8,
+      '10': 'overTempModemAsicFault'
+    },
+    {
+      '1': 'over_temp_pcba_fault',
+      '3': 2,
+      '4': 1,
+      '5': 8,
+      '10': 'overTempPcbaFault'
+    },
     {'1': 'dc_voltage_fault', '3': 3, '4': 1, '5': 8, '10': 'dcVoltageFault'},
   ],
 };
@@ -152,39 +231,123 @@ const TransceiverGetTelemetryRequest$json = {
 };
 
 /// Descriptor for `TransceiverGetTelemetryRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List transceiverGetTelemetryRequestDescriptor = $convert.base64Decode(
-    'Ch5UcmFuc2NlaXZlckdldFRlbGVtZXRyeVJlcXVlc3Q=');
+final $typed_data.Uint8List transceiverGetTelemetryRequestDescriptor =
+    $convert.base64Decode('Ch5UcmFuc2NlaXZlckdldFRlbGVtZXRyeVJlcXVlc3Q=');
 
 @$core.Deprecated('Use transceiverGetTelemetryResponseDescriptor instead')
 const TransceiverGetTelemetryResponse$json = {
   '1': 'TransceiverGetTelemetryResponse',
   '2': [
-    {'1': 'antenna_pointing_mode', '3': 1001, '4': 1, '5': 13, '10': 'antennaPointingMode'},
+    {
+      '1': 'antenna_pointing_mode',
+      '3': 1001,
+      '4': 1,
+      '5': 13,
+      '10': 'antennaPointingMode'
+    },
     {'1': 'antenna_pitch', '3': 1002, '4': 1, '5': 2, '10': 'antennaPitch'},
     {'1': 'antenna_roll', '3': 1003, '4': 1, '5': 2, '10': 'antennaRoll'},
-    {'1': 'antenna_rx_theta', '3': 1004, '4': 1, '5': 2, '10': 'antennaRxTheta'},
-    {'1': 'antenna_true_heading', '3': 1005, '4': 1, '5': 2, '10': 'antennaTrueHeading'},
+    {
+      '1': 'antenna_rx_theta',
+      '3': 1004,
+      '4': 1,
+      '5': 2,
+      '10': 'antennaRxTheta'
+    },
+    {
+      '1': 'antenna_true_heading',
+      '3': 1005,
+      '4': 1,
+      '5': 2,
+      '10': 'antennaTrueHeading'
+    },
     {'1': 'rx_channel', '3': 1006, '4': 1, '5': 13, '10': 'rxChannel'},
     {'1': 'current_cell_id', '3': 1007, '4': 1, '5': 13, '10': 'currentCellId'},
-    {'1': 'seconds_until_slot_end', '3': 1008, '4': 1, '5': 2, '10': 'secondsUntilSlotEnd'},
-    {'1': 'wb_rssi_peak_mag_db', '3': 1009, '4': 1, '5': 2, '10': 'wbRssiPeakMagDb'},
-    {'1': 'pop_ping_drop_rate', '3': 1010, '4': 1, '5': 2, '10': 'popPingDropRate'},
+    {
+      '1': 'seconds_until_slot_end',
+      '3': 1008,
+      '4': 1,
+      '5': 2,
+      '10': 'secondsUntilSlotEnd'
+    },
+    {
+      '1': 'wb_rssi_peak_mag_db',
+      '3': 1009,
+      '4': 1,
+      '5': 2,
+      '10': 'wbRssiPeakMagDb'
+    },
+    {
+      '1': 'pop_ping_drop_rate',
+      '3': 1010,
+      '4': 1,
+      '5': 2,
+      '10': 'popPingDropRate'
+    },
     {'1': 'snr_db', '3': 1011, '4': 1, '5': 2, '10': 'snrDb'},
     {'1': 'l1_snr_avg_db', '3': 1012, '4': 1, '5': 2, '10': 'l1SnrAvgDb'},
     {'1': 'l1_snr_min_db', '3': 1013, '4': 1, '5': 2, '10': 'l1SnrMinDb'},
     {'1': 'l1_snr_max_db', '3': 1014, '4': 1, '5': 2, '10': 'l1SnrMaxDb'},
-    {'1': 'lmac_satellite_id', '3': 1015, '4': 1, '5': 13, '10': 'lmacSatelliteId'},
-    {'1': 'target_satellite_id', '3': 1016, '4': 1, '5': 13, '10': 'targetSatelliteId'},
+    {
+      '1': 'lmac_satellite_id',
+      '3': 1015,
+      '4': 1,
+      '5': 13,
+      '10': 'lmacSatelliteId'
+    },
+    {
+      '1': 'target_satellite_id',
+      '3': 1016,
+      '4': 1,
+      '5': 13,
+      '10': 'targetSatelliteId'
+    },
     {'1': 'grant_mcs', '3': 1017, '4': 1, '5': 13, '10': 'grantMcs'},
-    {'1': 'grant_symbols_avg', '3': 1018, '4': 1, '5': 2, '10': 'grantSymbolsAvg'},
+    {
+      '1': 'grant_symbols_avg',
+      '3': 1018,
+      '4': 1,
+      '5': 2,
+      '10': 'grantSymbolsAvg'
+    },
     {'1': 'ded_grant', '3': 1019, '4': 1, '5': 13, '10': 'dedGrant'},
-    {'1': 'mobility_proactive_slot_change', '3': 1020, '4': 1, '5': 13, '10': 'mobilityProactiveSlotChange'},
-    {'1': 'mobility_reactive_slot_change', '3': 1021, '4': 1, '5': 13, '10': 'mobilityReactiveSlotChange'},
-    {'1': 'rfp_total_syn_failed', '3': 1022, '4': 1, '5': 13, '10': 'rfpTotalSynFailed'},
+    {
+      '1': 'mobility_proactive_slot_change',
+      '3': 1020,
+      '4': 1,
+      '5': 13,
+      '10': 'mobilityProactiveSlotChange'
+    },
+    {
+      '1': 'mobility_reactive_slot_change',
+      '3': 1021,
+      '4': 1,
+      '5': 13,
+      '10': 'mobilityReactiveSlotChange'
+    },
+    {
+      '1': 'rfp_total_syn_failed',
+      '3': 1022,
+      '4': 1,
+      '5': 13,
+      '10': 'rfpTotalSynFailed'
+    },
     {'1': 'num_out_of_seq', '3': 1023, '4': 1, '5': 13, '10': 'numOutOfSeq'},
     {'1': 'num_ulmap_drop', '3': 1024, '4': 1, '5': 13, '10': 'numUlmapDrop'},
-    {'1': 'current_seconds_of_schedule', '3': 1025, '4': 1, '5': 2, '10': 'currentSecondsOfSchedule'},
-    {'1': 'send_label_switch_to_ground_failed_calls', '3': 1026, '4': 1, '5': 13, '10': 'sendLabelSwitchToGroundFailedCalls'},
+    {
+      '1': 'current_seconds_of_schedule',
+      '3': 1025,
+      '4': 1,
+      '5': 2,
+      '10': 'currentSecondsOfSchedule'
+    },
+    {
+      '1': 'send_label_switch_to_ground_failed_calls',
+      '3': 1026,
+      '4': 1,
+      '5': 13,
+      '10': 'sendLabelSwitchToGroundFailedCalls'
+    },
     {'1': 'ema_velocity_x', '3': 1027, '4': 1, '5': 1, '10': 'emaVelocityX'},
     {'1': 'ema_velocity_y', '3': 1028, '4': 1, '5': 1, '10': 'emaVelocityY'},
     {'1': 'ema_velocity_z', '3': 1029, '4': 1, '5': 1, '10': 'emaVelocityZ'},
@@ -219,4 +382,3 @@ final $typed_data.Uint8List transceiverGetTelemetryResponseDescriptor = $convert
     'EiUKDmVtYV92ZWxvY2l0eV94GIMIIAEoAVIMZW1hVmVsb2NpdHlYEiUKDmVtYV92ZWxvY2l0eV'
     '95GIQIIAEoAVIMZW1hVmVsb2NpdHlZEiUKDmVtYV92ZWxvY2l0eV96GIUIIAEoAVIMZW1hVmVs'
     'b2NpdHlaEh0KCmNlX3Jzc2lfZGIYhgggASgCUghjZVJzc2lEYg==');
-

@@ -1,13 +1,15 @@
+// This is a generated file - do not edit.
 //
-//  Generated code. Do not modify.
-//  source: spacex/api/device/wifi_util.proto
-//
-// @dart = 2.12
+// Generated from spacex/api/device/wifi_util.proto.
+
+// @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
-// ignore_for_file: constant_identifier_names, library_prefixes
-// ignore_for_file: non_constant_identifier_names, prefer_final_fields
-// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: curly_braces_in_flow_control_structures
+// ignore_for_file: deprecated_member_use_from_same_package, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_relative_imports
+// ignore_for_file: unused_import
 
 import 'dart:convert' as $convert;
 import 'dart:core' as $core;
@@ -188,7 +190,14 @@ const InflatedBasicServiceSet$json = {
     {'1': 'ssid', '3': 2, '4': 1, '5': 9, '10': 'ssid'},
     {'1': 'mac_lan', '3': 3, '4': 1, '5': 9, '10': 'macLan'},
     {'1': 'iface_name', '3': 4, '4': 1, '5': 9, '10': 'ifaceName'},
-    {'1': 'iface_type', '3': 5, '4': 1, '5': 14, '6': '.SpaceX.API.Device.IfaceType', '10': 'ifaceType'},
+    {
+      '1': 'iface_type',
+      '3': 5,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.IfaceType',
+      '10': 'ifaceType'
+    },
     {'1': 'channel', '3': 6, '4': 1, '5': 13, '10': 'channel'},
     {'1': 'preference', '3': 7, '4': 1, '5': 13, '10': 'preference'},
   ],
@@ -228,7 +237,14 @@ const DhcpServer$json = {
   '2': [
     {'1': 'domain', '3': 1, '4': 1, '5': 9, '10': 'domain'},
     {'1': 'subnet', '3': 2, '4': 1, '5': 9, '10': 'subnet'},
-    {'1': 'leases', '3': 3, '4': 3, '5': 11, '6': '.SpaceX.API.Device.DhcpLease', '10': 'leases'},
+    {
+      '1': 'leases',
+      '3': 3,
+      '4': 3,
+      '5': 11,
+      '6': '.SpaceX.API.Device.DhcpLease',
+      '10': 'leases'
+    },
   ],
 };
 
@@ -242,7 +258,14 @@ final $typed_data.Uint8List dhcpServerDescriptor = $convert.base64Decode(
 const RadiusStatsMap$json = {
   '1': 'RadiusStatsMap',
   '2': [
-    {'1': 'radius_stats', '3': 1, '4': 3, '5': 11, '6': '.SpaceX.API.Device.RadiusStatsMap.RadiusStatsEntry', '10': 'radiusStats'},
+    {
+      '1': 'radius_stats',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.SpaceX.API.Device.RadiusStatsMap.RadiusStatsEntry',
+      '10': 'radiusStats'
+    },
   ],
   '3': [RadiusStatsMap_RadiusStatsEntry$json, RadiusStatsMap_RadiusStats$json],
 };
@@ -252,7 +275,14 @@ const RadiusStatsMap_RadiusStatsEntry$json = {
   '1': 'RadiusStatsEntry',
   '2': [
     {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
-    {'1': 'value', '3': 2, '4': 1, '5': 11, '6': '.SpaceX.API.Device.RadiusStatsMap.RadiusStats', '10': 'value'},
+    {
+      '1': 'value',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.RadiusStatsMap.RadiusStats',
+      '10': 'value'
+    },
   ],
   '7': {'7': true},
 };
@@ -263,12 +293,48 @@ const RadiusStatsMap_RadiusStats$json = {
   '2': [
     {'1': 'iface_name', '3': 1, '4': 1, '5': 9, '10': 'ifaceName'},
     {'1': 'timeout_count', '3': 2, '4': 1, '5': 13, '10': 'timeoutCount'},
-    {'1': 'access_request_count', '3': 3, '4': 1, '5': 13, '10': 'accessRequestCount'},
-    {'1': 'access_accept_count', '3': 4, '4': 1, '5': 13, '10': 'accessAcceptCount'},
-    {'1': 'access_reject_count', '3': 5, '4': 1, '5': 13, '10': 'accessRejectCount'},
-    {'1': 'access_challenge_count', '3': 6, '4': 1, '5': 13, '10': 'accessChallengeCount'},
-    {'1': 'accounting_request_count', '3': 7, '4': 1, '5': 13, '10': 'accountingRequestCount'},
-    {'1': 'accounting_response_count', '3': 8, '4': 1, '5': 13, '10': 'accountingResponseCount'},
+    {
+      '1': 'access_request_count',
+      '3': 3,
+      '4': 1,
+      '5': 13,
+      '10': 'accessRequestCount'
+    },
+    {
+      '1': 'access_accept_count',
+      '3': 4,
+      '4': 1,
+      '5': 13,
+      '10': 'accessAcceptCount'
+    },
+    {
+      '1': 'access_reject_count',
+      '3': 5,
+      '4': 1,
+      '5': 13,
+      '10': 'accessRejectCount'
+    },
+    {
+      '1': 'access_challenge_count',
+      '3': 6,
+      '4': 1,
+      '5': 13,
+      '10': 'accessChallengeCount'
+    },
+    {
+      '1': 'accounting_request_count',
+      '3': 7,
+      '4': 1,
+      '5': 13,
+      '10': 'accountingRequestCount'
+    },
+    {
+      '1': 'accounting_response_count',
+      '3': 8,
+      '4': 1,
+      '5': 13,
+      '10': 'accountingResponseCount'
+    },
   ],
 };
 
@@ -291,12 +357,43 @@ final $typed_data.Uint8List radiusStatsMapDescriptor = $convert.base64Decode(
 const PoeStats$json = {
   '1': 'PoeStats',
   '2': [
-    {'1': 'poe_state', '3': 1, '4': 1, '5': 14, '6': '.SpaceX.API.Device.PoeState', '10': 'poeState'},
+    {
+      '1': 'poe_state',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.PoeState',
+      '10': 'poeState'
+    },
     {'1': 'poe_power', '3': 2, '4': 1, '5': 2, '10': 'poePower'},
-    {'1': 'poe_faults_fast_overcurrent', '3': 3, '4': 1, '5': 13, '10': 'poeFaultsFastOvercurrent'},
-    {'1': 'poe_faults_slow_overcurrent', '3': 4, '4': 1, '5': 13, '10': 'poeFaultsSlowOvercurrent'},
-    {'1': 'poe_faults_overvoltage', '3': 5, '4': 1, '5': 13, '10': 'poeFaultsOvervoltage'},
-    {'1': 'poe_faults_undervoltage', '3': 6, '4': 1, '5': 13, '10': 'poeFaultsUndervoltage'},
+    {
+      '1': 'poe_faults_fast_overcurrent',
+      '3': 3,
+      '4': 1,
+      '5': 13,
+      '10': 'poeFaultsFastOvercurrent'
+    },
+    {
+      '1': 'poe_faults_slow_overcurrent',
+      '3': 4,
+      '4': 1,
+      '5': 13,
+      '10': 'poeFaultsSlowOvercurrent'
+    },
+    {
+      '1': 'poe_faults_overvoltage',
+      '3': 5,
+      '4': 1,
+      '5': 13,
+      '10': 'poeFaultsOvervoltage'
+    },
+    {
+      '1': 'poe_faults_undervoltage',
+      '3': 6,
+      '4': 1,
+      '5': 13,
+      '10': 'poeFaultsUndervoltage'
+    },
   ],
 };
 
@@ -313,9 +410,28 @@ final $typed_data.Uint8List poeStatsDescriptor = $convert.base64Decode(
 const WifiSoftwareUpdateStats$json = {
   '1': 'WifiSoftwareUpdateStats',
   '2': [
-    {'1': 'state', '3': 1, '4': 1, '5': 14, '6': '.SpaceX.API.Device.WifiSoftwareUpdateState', '10': 'state'},
-    {'1': 'software_download_progress', '3': 2, '4': 1, '5': 2, '10': 'softwareDownloadProgress'},
-    {'1': 'seconds_since_get_target_versions', '3': 3, '4': 1, '5': 2, '10': 'secondsSinceGetTargetVersions'},
+    {
+      '1': 'state',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.WifiSoftwareUpdateState',
+      '10': 'state'
+    },
+    {
+      '1': 'software_download_progress',
+      '3': 2,
+      '4': 1,
+      '5': 2,
+      '10': 'softwareDownloadProgress'
+    },
+    {
+      '1': 'seconds_since_get_target_versions',
+      '3': 3,
+      '4': 1,
+      '5': 2,
+      '10': 'secondsSinceGetTargetVersions'
+    },
   ],
 };
 
@@ -326,4 +442,3 @@ final $typed_data.Uint8List wifiSoftwareUpdateStatsDescriptor = $convert.base64D
     'ZF9wcm9ncmVzcxgCIAEoAlIYc29mdHdhcmVEb3dubG9hZFByb2dyZXNzEkgKIXNlY29uZHNfc2'
     'luY2VfZ2V0X3RhcmdldF92ZXJzaW9ucxgDIAEoAlIdc2Vjb25kc1NpbmNlR2V0VGFyZ2V0VmVy'
     'c2lvbnM=');
-

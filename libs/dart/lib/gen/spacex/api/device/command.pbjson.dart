@@ -1,13 +1,15 @@
+// This is a generated file - do not edit.
 //
-//  Generated code. Do not modify.
-//  source: spacex/api/device/command.proto
-//
-// @dart = 2.12
+// Generated from spacex/api/device/command.proto.
+
+// @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
-// ignore_for_file: constant_identifier_names, library_prefixes
-// ignore_for_file: non_constant_identifier_names, prefer_final_fields
-// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: curly_braces_in_flow_control_structures
+// ignore_for_file: deprecated_member_use_from_same_package, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_relative_imports
+// ignore_for_file: unused_import
 
 import 'dart:convert' as $convert;
 import 'dart:core' as $core;
@@ -78,7 +80,14 @@ const PublicKey$json = {
       '8': {'3': true},
       '10': 'capabilities',
     },
-    {'1': 'user', '3': 3, '4': 1, '5': 14, '6': '.SpaceX.API.Device.User', '10': 'user'},
+    {
+      '1': 'user',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.User',
+      '10': 'user'
+    },
   ],
 };
 
@@ -87,4 +96,3 @@ final $typed_data.Uint8List publicKeyDescriptor = $convert.base64Decode(
     'CglQdWJsaWNLZXkSEAoDa2V5GAEgASgJUgNrZXkSRQoMY2FwYWJpbGl0aWVzGAIgAygOMh0uU3'
     'BhY2VYLkFQSS5EZXZpY2UuQ2FwYWJpbGl0eUICGAFSDGNhcGFiaWxpdGllcxIrCgR1c2VyGAMg'
     'ASgOMhcuU3BhY2VYLkFQSS5EZXZpY2UuVXNlclIEdXNlcg==');
-
