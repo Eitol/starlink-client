@@ -1,13 +1,15 @@
+// This is a generated file - do not edit.
 //
-//  Generated code. Do not modify.
-//  source: spacex/api/device/wifi.proto
-//
-// @dart = 2.12
+// Generated from spacex/api/device/wifi.proto.
+
+// @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
-// ignore_for_file: constant_identifier_names, library_prefixes
-// ignore_for_file: non_constant_identifier_names, prefer_final_fields
-// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: curly_braces_in_flow_control_structures
+// ignore_for_file: deprecated_member_use_from_same_package, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_relative_imports
+// ignore_for_file: unused_import
 
 import 'dart:convert' as $convert;
 import 'dart:core' as $core;
@@ -17,7 +19,14 @@ import 'dart:typed_data' as $typed_data;
 const WifiClients$json = {
   '1': 'WifiClients',
   '2': [
-    {'1': 'clients', '3': 1, '4': 3, '5': 11, '6': '.SpaceX.API.Device.WifiClient', '10': 'clients'},
+    {
+      '1': 'clients',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiClient',
+      '10': 'clients'
+    },
   ],
 };
 
@@ -31,10 +40,42 @@ const ToController$json = {
   '1': 'ToController',
   '2': [
     {'1': 'api_version', '3': 4, '4': 1, '5': 5, '10': 'apiVersion'},
-    {'1': 'clients', '3': 1, '4': 1, '5': 11, '6': '.SpaceX.API.Device.WifiClients', '9': 0, '10': 'clients'},
-    {'1': 'mesh_join', '3': 2, '4': 1, '5': 11, '6': '.SpaceX.API.Device.WifiMeshJoin', '9': 0, '10': 'meshJoin'},
-    {'1': 'status', '3': 3, '4': 1, '5': 11, '6': '.SpaceX.API.Device.WifiMeshStatus', '9': 0, '10': 'status'},
-    {'1': 'speedtest', '3': 5, '4': 1, '5': 11, '6': '.SpaceX.API.Device.MeshSpeedtest', '9': 0, '10': 'speedtest'},
+    {
+      '1': 'clients',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiClients',
+      '9': 0,
+      '10': 'clients'
+    },
+    {
+      '1': 'mesh_join',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiMeshJoin',
+      '9': 0,
+      '10': 'meshJoin'
+    },
+    {
+      '1': 'status',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiMeshStatus',
+      '9': 0,
+      '10': 'status'
+    },
+    {
+      '1': 'speedtest',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.MeshSpeedtest',
+      '9': 0,
+      '10': 'speedtest'
+    },
   ],
   '8': [
     {'1': 'message'},
@@ -56,8 +97,21 @@ const WifiMeshJoin$json = {
   '2': [
     {'1': 'incarnation', '3': 1, '4': 1, '5': 4, '10': 'incarnation'},
     {'1': 'hardware_version', '3': 2, '4': 1, '5': 9, '10': 'hardwareVersion'},
-    {'1': 'supports_5ghz_high', '3': 3, '4': 1, '5': 8, '10': 'supports5ghzHigh'},
-    {'1': 'siteSurveyScan', '3': 4, '4': 3, '5': 11, '6': '.SpaceX.API.Device.WifiSiteSurveyResult', '10': 'siteSurveyScan'},
+    {
+      '1': 'supports_5ghz_high',
+      '3': 3,
+      '4': 1,
+      '5': 8,
+      '10': 'supports5ghzHigh'
+    },
+    {
+      '1': 'siteSurveyScan',
+      '3': 4,
+      '4': 3,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiSiteSurveyResult',
+      '10': 'siteSurveyScan'
+    },
   ],
 };
 
@@ -74,12 +128,38 @@ const WifiMeshStatus$json = {
   '2': [
     {'1': 'software_version', '3': 5, '4': 1, '5': 9, '10': 'softwareVersion'},
     {'1': 'mac_lan', '3': 6, '4': 1, '5': 9, '10': 'macLan'},
-    {'1': 'source_mac_addresses', '3': 7, '4': 3, '5': 9, '10': 'sourceMacAddresses'},
-    {'1': 'clients', '3': 2, '4': 3, '5': 11, '6': '.SpaceX.API.Device.WifiClient', '10': 'clients'},
-    {'1': 'bss_list', '3': 3, '4': 3, '5': 11, '6': '.SpaceX.API.Device.InflatedBasicServiceSet', '10': 'bssList'},
+    {
+      '1': 'source_mac_addresses',
+      '3': 7,
+      '4': 3,
+      '5': 9,
+      '10': 'sourceMacAddresses'
+    },
+    {
+      '1': 'clients',
+      '3': 2,
+      '4': 3,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiClient',
+      '10': 'clients'
+    },
+    {
+      '1': 'bss_list',
+      '3': 3,
+      '4': 3,
+      '5': 11,
+      '6': '.SpaceX.API.Device.InflatedBasicServiceSet',
+      '10': 'bssList'
+    },
     {'1': 'hardware_version', '3': 4, '4': 1, '5': 9, '10': 'hardwareVersion'},
     {'1': 'backhaul_bssid', '3': 8, '4': 1, '5': 9, '10': 'backhaulBssid'},
-    {'1': 'backhaul_est_preference', '3': 9, '4': 1, '5': 13, '10': 'backhaulEstPreference'},
+    {
+      '1': 'backhaul_est_preference',
+      '3': 9,
+      '4': 1,
+      '5': 13,
+      '10': 'backhaulEstPreference'
+    },
   ],
 };
 
@@ -100,15 +180,21 @@ const MeshSpeedtestRequest$json = {
 };
 
 /// Descriptor for `MeshSpeedtestRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List meshSpeedtestRequestDescriptor = $convert.base64Decode(
-    'ChRNZXNoU3BlZWR0ZXN0UmVxdWVzdA==');
+final $typed_data.Uint8List meshSpeedtestRequestDescriptor =
+    $convert.base64Decode('ChRNZXNoU3BlZWR0ZXN0UmVxdWVzdA==');
 
 @$core.Deprecated('Use meshSpeedtestDescriptor instead')
 const MeshSpeedtest$json = {
   '1': 'MeshSpeedtest',
   '2': [
     {'1': 'upload_start_time', '3': 1, '4': 1, '5': 3, '10': 'uploadStartTime'},
-    {'1': 'download_start_time', '3': 2, '4': 1, '5': 3, '10': 'downloadStartTime'},
+    {
+      '1': 'download_start_time',
+      '3': 2,
+      '4': 1,
+      '5': 3,
+      '10': 'downloadStartTime'
+    },
     {'1': 'upload_mbps', '3': 3, '4': 1, '5': 2, '10': 'uploadMbps'},
     {'1': 'download_mbps', '3': 4, '4': 1, '5': 2, '10': 'downloadMbps'},
   ],
@@ -128,9 +214,30 @@ const WifiSiteSurveyResult$json = {
     {'1': 'rssi', '3': 1, '4': 1, '5': 2, '10': 'rssi'},
     {'1': 'channel', '3': 2, '4': 1, '5': 13, '10': 'channel'},
     {'1': 'ssid', '3': 3, '4': 1, '5': 9, '10': 'ssid'},
-    {'1': 'security', '3': 4, '4': 1, '5': 14, '6': '.SpaceX.API.Device.WifiSecurity', '10': 'security'},
-    {'1': 'wireless_mode', '3': 5, '4': 1, '5': 14, '6': '.SpaceX.API.Device.WifiMode', '10': 'wirelessMode'},
-    {'1': 'iface', '3': 6, '4': 1, '5': 14, '6': '.SpaceX.API.Device.IfaceType', '10': 'iface'},
+    {
+      '1': 'security',
+      '3': 4,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.WifiSecurity',
+      '10': 'security'
+    },
+    {
+      '1': 'wireless_mode',
+      '3': 5,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.WifiMode',
+      '10': 'wirelessMode'
+    },
+    {
+      '1': 'iface',
+      '3': 6,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.IfaceType',
+      '10': 'iface'
+    },
     {'1': 'mac_address', '3': 7, '4': 1, '5': 9, '10': 'macAddress'},
     {'1': 'est_rx_rate', '3': 8, '4': 1, '5': 2, '10': 'estRxRate'},
   ],
@@ -151,7 +258,14 @@ const WifiGlobalMeshStatus$json = {
   '2': [
     {'1': 'hardware_version', '3': 1, '4': 1, '5': 9, '10': 'hardwareVersion'},
     {'1': 'software_version', '3': 2, '4': 1, '5': 9, '10': 'softwareVersion'},
-    {'1': 'bss_list', '3': 3, '4': 3, '5': 11, '6': '.SpaceX.API.Device.InflatedBasicServiceSet', '10': 'bssList'},
+    {
+      '1': 'bss_list',
+      '3': 3,
+      '4': 3,
+      '5': 11,
+      '6': '.SpaceX.API.Device.InflatedBasicServiceSet',
+      '10': 'bssList'
+    },
   ],
 };
 
@@ -167,7 +281,14 @@ const BackhaulRequest$json = {
   '1': 'BackhaulRequest',
   '2': [
     {'1': 'retry_backhaul', '3': 1, '4': 1, '5': 8, '10': 'retryBackhaul'},
-    {'1': 'golden_bss', '3': 2, '4': 1, '5': 11, '6': '.SpaceX.API.Device.WifiConfig', '10': 'goldenBss'},
+    {
+      '1': 'golden_bss',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiConfig',
+      '10': 'goldenBss'
+    },
   ],
 };
 
@@ -182,7 +303,15 @@ const FromController$json = {
   '1': 'FromController',
   '2': [
     {'1': 'api_version', '3': 3, '4': 1, '5': 5, '10': 'apiVersion'},
-    {'1': 'wifi_config', '3': 1, '4': 1, '5': 11, '6': '.SpaceX.API.Device.WifiConfig', '9': 0, '10': 'wifiConfig'},
+    {
+      '1': 'wifi_config',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiConfig',
+      '9': 0,
+      '10': 'wifiConfig'
+    },
     {
       '1': 'steer_client_request',
       '3': 2,
@@ -193,10 +322,42 @@ const FromController$json = {
       '9': 0,
       '10': 'steerClientRequest',
     },
-    {'1': 'status', '3': 4, '4': 1, '5': 11, '6': '.SpaceX.API.Device.WifiGlobalMeshStatus', '9': 0, '10': 'status'},
-    {'1': 'backhaul_request', '3': 5, '4': 1, '5': 11, '6': '.SpaceX.API.Device.BackhaulRequest', '9': 0, '10': 'backhaulRequest'},
-    {'1': 'start_speedtest', '3': 6, '4': 1, '5': 11, '6': '.SpaceX.API.Device.MeshSpeedtestRequest', '9': 0, '10': 'startSpeedtest'},
-    {'1': 'wifi_btm_request', '3': 7, '4': 1, '5': 11, '6': '.SpaceX.API.Device.WifiBtmRequest', '9': 0, '10': 'wifiBtmRequest'},
+    {
+      '1': 'status',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiGlobalMeshStatus',
+      '9': 0,
+      '10': 'status'
+    },
+    {
+      '1': 'backhaul_request',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.BackhaulRequest',
+      '9': 0,
+      '10': 'backhaulRequest'
+    },
+    {
+      '1': 'start_speedtest',
+      '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.MeshSpeedtestRequest',
+      '9': 0,
+      '10': 'startSpeedtest'
+    },
+    {
+      '1': 'wifi_btm_request',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiBtmRequest',
+      '9': 0,
+      '10': 'wifiBtmRequest'
+    },
   ],
   '8': [
     {'1': 'message'},
@@ -276,9 +437,22 @@ final $typed_data.Uint8List steerClientRequestDescriptor = $convert.base64Decode
 const WifiBtmRequest$json = {
   '1': 'WifiBtmRequest',
   '2': [
-    {'1': 'bss_termination_duration_m', '3': 5, '4': 1, '5': 13, '10': 'bssTerminationDurationM'},
+    {
+      '1': 'bss_termination_duration_m',
+      '3': 5,
+      '4': 1,
+      '5': 13,
+      '10': 'bssTerminationDurationM'
+    },
     {'1': 'peer_bssid', '3': 1, '4': 1, '5': 9, '10': 'peerBssid'},
-    {'1': 'neighbor_report', '3': 4, '4': 3, '5': 11, '6': '.SpaceX.API.Device.WifiBtmRequest.NeighborReport', '10': 'neighborReport'},
+    {
+      '1': 'neighbor_report',
+      '3': 4,
+      '4': 3,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiBtmRequest.NeighborReport',
+      '10': 'neighborReport'
+    },
   ],
   '3': [WifiBtmRequest_NeighborReport$json],
   '9': [
@@ -311,10 +485,38 @@ const WifiSelfTest$json = {
   '1': 'WifiSelfTest',
   '2': [
     {'1': 'total_success', '3': 1, '4': 1, '5': 8, '10': 'totalSuccess'},
-    {'1': 'fused', '3': 2, '4': 1, '5': 11, '6': '.SpaceX.API.Device.WifiSelfTest.TestResult', '10': 'fused'},
-    {'1': 'eth_phys', '3': 3, '4': 3, '5': 11, '6': '.SpaceX.API.Device.WifiSelfTest.TestResult', '10': 'ethPhys'},
-    {'1': 'pcis', '3': 4, '4': 3, '5': 11, '6': '.SpaceX.API.Device.WifiSelfTest.TestResult', '10': 'pcis'},
-    {'1': 'bl2_prod', '3': 5, '4': 1, '5': 11, '6': '.SpaceX.API.Device.WifiSelfTest.TestResult', '10': 'bl2Prod'},
+    {
+      '1': 'fused',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiSelfTest.TestResult',
+      '10': 'fused'
+    },
+    {
+      '1': 'eth_phys',
+      '3': 3,
+      '4': 3,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiSelfTest.TestResult',
+      '10': 'ethPhys'
+    },
+    {
+      '1': 'pcis',
+      '3': 4,
+      '4': 3,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiSelfTest.TestResult',
+      '10': 'pcis'
+    },
+    {
+      '1': 'bl2_prod',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiSelfTest.TestResult',
+      '10': 'bl2Prod'
+    },
   ],
   '3': [WifiSelfTest_TestResult$json],
 };
@@ -344,7 +546,14 @@ final $typed_data.Uint8List wifiSelfTestDescriptor = $convert.base64Decode(
 const WifiSetConfigRequest$json = {
   '1': 'WifiSetConfigRequest',
   '2': [
-    {'1': 'wifi_config', '3': 1, '4': 1, '5': 11, '6': '.SpaceX.API.Device.WifiConfig', '10': 'wifiConfig'},
+    {
+      '1': 'wifi_config',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiConfig',
+      '10': 'wifiConfig'
+    },
   ],
 };
 
@@ -357,7 +566,14 @@ final $typed_data.Uint8List wifiSetConfigRequestDescriptor = $convert.base64Deco
 const WifiSetConfigResponse$json = {
   '1': 'WifiSetConfigResponse',
   '2': [
-    {'1': 'updated_wifi_config', '3': 1, '4': 1, '5': 11, '6': '.SpaceX.API.Device.WifiConfig', '10': 'updatedWifiConfig'},
+    {
+      '1': 'updated_wifi_config',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiConfig',
+      '10': 'updatedWifiConfig'
+    },
   ],
 };
 
@@ -372,14 +588,21 @@ const WifiGetConfigRequest$json = {
 };
 
 /// Descriptor for `WifiGetConfigRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List wifiGetConfigRequestDescriptor = $convert.base64Decode(
-    'ChRXaWZpR2V0Q29uZmlnUmVxdWVzdA==');
+final $typed_data.Uint8List wifiGetConfigRequestDescriptor =
+    $convert.base64Decode('ChRXaWZpR2V0Q29uZmlnUmVxdWVzdA==');
 
 @$core.Deprecated('Use wifiGetConfigResponseDescriptor instead')
 const WifiGetConfigResponse$json = {
   '1': 'WifiGetConfigResponse',
   '2': [
-    {'1': 'wifi_config', '3': 1, '4': 1, '5': 11, '6': '.SpaceX.API.Device.WifiConfig', '10': 'wifiConfig'},
+    {
+      '1': 'wifi_config',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiConfig',
+      '10': 'wifiConfig'
+    },
   ],
 };
 
@@ -393,14 +616,22 @@ const WifiSetMeshDeviceTrustRequest$json = {
   '1': 'WifiSetMeshDeviceTrustRequest',
   '2': [
     {'1': 'device_id', '3': 1, '4': 1, '5': 9, '10': 'deviceId'},
-    {'1': 'auth', '3': 2, '4': 1, '5': 14, '6': '.SpaceX.API.Device.MeshAuth', '10': 'auth'},
+    {
+      '1': 'auth',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.MeshAuth',
+      '10': 'auth'
+    },
   ],
 };
 
 /// Descriptor for `WifiSetMeshDeviceTrustRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List wifiSetMeshDeviceTrustRequestDescriptor = $convert.base64Decode(
-    'Ch1XaWZpU2V0TWVzaERldmljZVRydXN0UmVxdWVzdBIbCglkZXZpY2VfaWQYASABKAlSCGRldm'
-    'ljZUlkEi8KBGF1dGgYAiABKA4yGy5TcGFjZVguQVBJLkRldmljZS5NZXNoQXV0aFIEYXV0aA==');
+final $typed_data.Uint8List wifiSetMeshDeviceTrustRequestDescriptor =
+    $convert.base64Decode(
+        'Ch1XaWZpU2V0TWVzaERldmljZVRydXN0UmVxdWVzdBIbCglkZXZpY2VfaWQYASABKAlSCGRldm'
+        'ljZUlkEi8KBGF1dGgYAiABKA4yGy5TcGFjZVguQVBJLkRldmljZS5NZXNoQXV0aFIEYXV0aA==');
 
 @$core.Deprecated('Use wifiSetMeshDeviceTrustResponseDescriptor instead')
 const WifiSetMeshDeviceTrustResponse$json = {
@@ -408,14 +639,21 @@ const WifiSetMeshDeviceTrustResponse$json = {
 };
 
 /// Descriptor for `WifiSetMeshDeviceTrustResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List wifiSetMeshDeviceTrustResponseDescriptor = $convert.base64Decode(
-    'Ch5XaWZpU2V0TWVzaERldmljZVRydXN0UmVzcG9uc2U=');
+final $typed_data.Uint8List wifiSetMeshDeviceTrustResponseDescriptor =
+    $convert.base64Decode('Ch5XaWZpU2V0TWVzaERldmljZVRydXN0UmVzcG9uc2U=');
 
 @$core.Deprecated('Use wifiSetMeshConfigRequestDescriptor instead')
 const WifiSetMeshConfigRequest$json = {
   '1': 'WifiSetMeshConfigRequest',
   '2': [
-    {'1': 'mesh_config', '3': 1, '4': 1, '5': 11, '6': '.SpaceX.API.Device.MeshConfig', '10': 'meshConfig'},
+    {
+      '1': 'mesh_config',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.MeshConfig',
+      '10': 'meshConfig'
+    },
     {'1': 'device_id', '3': 2, '4': 1, '5': 9, '10': 'deviceId'},
   ],
 };
@@ -432,8 +670,8 @@ const WifiSetMeshConfigResponse$json = {
 };
 
 /// Descriptor for `WifiSetMeshConfigResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List wifiSetMeshConfigResponseDescriptor = $convert.base64Decode(
-    'ChlXaWZpU2V0TWVzaENvbmZpZ1Jlc3BvbnNl');
+final $typed_data.Uint8List wifiSetMeshConfigResponseDescriptor =
+    $convert.base64Decode('ChlXaWZpU2V0TWVzaENvbmZpZ1Jlc3BvbnNl');
 
 @$core.Deprecated('Use wifiGetClientsRequestDescriptor instead')
 const WifiGetClientsRequest$json = {
@@ -441,14 +679,21 @@ const WifiGetClientsRequest$json = {
 };
 
 /// Descriptor for `WifiGetClientsRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List wifiGetClientsRequestDescriptor = $convert.base64Decode(
-    'ChVXaWZpR2V0Q2xpZW50c1JlcXVlc3Q=');
+final $typed_data.Uint8List wifiGetClientsRequestDescriptor =
+    $convert.base64Decode('ChVXaWZpR2V0Q2xpZW50c1JlcXVlc3Q=');
 
 @$core.Deprecated('Use wifiGetClientsResponseDescriptor instead')
 const WifiGetClientsResponse$json = {
   '1': 'WifiGetClientsResponse',
   '2': [
-    {'1': 'clients', '3': 1, '4': 3, '5': 11, '6': '.SpaceX.API.Device.WifiClient', '10': 'clients'},
+    {
+      '1': 'clients',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiClient',
+      '10': 'clients'
+    },
     {'1': 'has_client_index', '3': 2, '4': 1, '5': 8, '10': 'hasClientIndex'},
     {'1': 'client_index', '3': 3, '4': 1, '5': 5, '10': 'clientIndex'},
   ],
@@ -477,18 +722,38 @@ const WifiGetClientHistoryRequest$json = {
 };
 
 /// Descriptor for `WifiGetClientHistoryRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List wifiGetClientHistoryRequestDescriptor = $convert.base64Decode(
-    'ChtXaWZpR2V0Q2xpZW50SGlzdG9yeVJlcXVlc3QSIwoLbWFjX2FkZHJlc3MYASABKAlCAhgBUg'
-    'ptYWNBZGRyZXNzEhsKCWNsaWVudF9pZBgCIAEoDVIIY2xpZW50SWQ=');
+final $typed_data.Uint8List wifiGetClientHistoryRequestDescriptor =
+    $convert.base64Decode(
+        'ChtXaWZpR2V0Q2xpZW50SGlzdG9yeVJlcXVlc3QSIwoLbWFjX2FkZHJlc3MYASABKAlCAhgBUg'
+        'ptYWNBZGRyZXNzEhsKCWNsaWVudF9pZBgCIAEoDVIIY2xpZW50SWQ=');
 
 @$core.Deprecated('Use wifiGetClientHistoryResponseDescriptor instead')
 const WifiGetClientHistoryResponse$json = {
   '1': 'WifiGetClientHistoryResponse',
   '2': [
     {'1': 'current', '3': 1, '4': 1, '5': 4, '10': 'current'},
-    {'1': 'tx_throughput_mbps', '3': 2, '4': 3, '5': 2, '10': 'txThroughputMbps'},
-    {'1': 'rx_throughput_mbps', '3': 3, '4': 3, '5': 2, '10': 'rxThroughputMbps'},
-    {'1': 'throughput_limited', '3': 4, '4': 3, '5': 14, '6': '.SpaceX.API.Device.WifiGetClientHistoryResponse.WifiLimitedReason', '10': 'throughputLimited'},
+    {
+      '1': 'tx_throughput_mbps',
+      '3': 2,
+      '4': 3,
+      '5': 2,
+      '10': 'txThroughputMbps'
+    },
+    {
+      '1': 'rx_throughput_mbps',
+      '3': 3,
+      '4': 3,
+      '5': 2,
+      '10': 'rxThroughputMbps'
+    },
+    {
+      '1': 'throughput_limited',
+      '3': 4,
+      '4': 3,
+      '5': 14,
+      '6': '.SpaceX.API.Device.WifiGetClientHistoryResponse.WifiLimitedReason',
+      '10': 'throughputLimited'
+    },
     {'1': 'rx_rate_mbps', '3': 5, '4': 3, '5': 2, '10': 'rxRateMbps'},
     {'1': 'rssi', '3': 6, '4': 1, '5': 12, '10': 'rssi'},
   ],
@@ -523,8 +788,8 @@ const WifiSetAviationConformedRequest$json = {
 };
 
 /// Descriptor for `WifiSetAviationConformedRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List wifiSetAviationConformedRequestDescriptor = $convert.base64Decode(
-    'Ch9XaWZpU2V0QXZpYXRpb25Db25mb3JtZWRSZXF1ZXN0');
+final $typed_data.Uint8List wifiSetAviationConformedRequestDescriptor =
+    $convert.base64Decode('Ch9XaWZpU2V0QXZpYXRpb25Db25mb3JtZWRSZXF1ZXN0');
 
 @$core.Deprecated('Use wifiGetHistoryResponseDescriptor instead')
 const WifiGetHistoryResponse$json = {
@@ -546,14 +811,22 @@ final $typed_data.Uint8List wifiGetHistoryResponseDescriptor = $convert.base64De
 const WifiNewClientConnectedEvent$json = {
   '1': 'WifiNewClientConnectedEvent',
   '2': [
-    {'1': 'client', '3': 1, '4': 1, '5': 11, '6': '.SpaceX.API.Device.WifiClient', '10': 'client'},
+    {
+      '1': 'client',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiClient',
+      '10': 'client'
+    },
   ],
 };
 
 /// Descriptor for `WifiNewClientConnectedEvent`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List wifiNewClientConnectedEventDescriptor = $convert.base64Decode(
-    'ChtXaWZpTmV3Q2xpZW50Q29ubmVjdGVkRXZlbnQSNQoGY2xpZW50GAEgASgLMh0uU3BhY2VYLk'
-    'FQSS5EZXZpY2UuV2lmaUNsaWVudFIGY2xpZW50');
+final $typed_data.Uint8List wifiNewClientConnectedEventDescriptor =
+    $convert.base64Decode(
+        'ChtXaWZpTmV3Q2xpZW50Q29ubmVjdGVkRXZlbnQSNQoGY2xpZW50GAEgASgLMh0uU3BhY2VYLk'
+        'FQSS5EZXZpY2UuV2lmaUNsaWVudFIGY2xpZW50');
 
 @$core.Deprecated('Use wifiClientDescriptor instead')
 const WifiClient$json = {
@@ -564,46 +837,165 @@ const WifiClient$json = {
     {'1': 'domain', '3': 22, '4': 1, '5': 9, '10': 'domain'},
     {'1': 'mac_address', '3': 2, '4': 1, '5': 9, '10': 'macAddress'},
     {'1': 'ip_address', '3': 3, '4': 1, '5': 9, '10': 'ipAddress'},
-    {'1': 'dhcp_lease_active', '3': 46, '4': 1, '5': 8, '10': 'dhcpLeaseActive'},
-    {'1': 'dhcp_lease_renewed', '3': 47, '4': 1, '5': 8, '10': 'dhcpLeaseRenewed'},
+    {
+      '1': 'dhcp_lease_active',
+      '3': 46,
+      '4': 1,
+      '5': 8,
+      '10': 'dhcpLeaseActive'
+    },
+    {
+      '1': 'dhcp_lease_renewed',
+      '3': 47,
+      '4': 1,
+      '5': 8,
+      '10': 'dhcpLeaseRenewed'
+    },
     {'1': 'ipv6_addresses', '3': 41, '4': 3, '5': 9, '10': 'ipv6Addresses'},
     {'1': 'signal_strength', '3': 4, '4': 1, '5': 2, '10': 'signalStrength'},
     {'1': 'channel_width', '3': 12, '4': 1, '5': 13, '10': 'channelWidth'},
-    {'1': 'rx_stats', '3': 5, '4': 1, '5': 11, '6': '.SpaceX.API.Device.WifiClient.RxStats', '10': 'rxStats'},
-    {'1': 'tx_stats', '3': 6, '4': 1, '5': 11, '6': '.SpaceX.API.Device.WifiClient.TxStats', '10': 'txStats'},
-    {'1': 'associated_time_s', '3': 7, '4': 1, '5': 13, '10': 'associatedTimeS'},
+    {
+      '1': 'rx_stats',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiClient.RxStats',
+      '10': 'rxStats'
+    },
+    {
+      '1': 'tx_stats',
+      '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiClient.TxStats',
+      '10': 'txStats'
+    },
+    {
+      '1': 'associated_time_s',
+      '3': 7,
+      '4': 1,
+      '5': 13,
+      '10': 'associatedTimeS'
+    },
     {'1': 'no_data_idle_s', '3': 45, '4': 1, '5': 13, '10': 'noDataIdleS'},
     {'1': 'mode_str', '3': 8, '4': 1, '5': 9, '10': 'modeStr'},
-    {'1': 'iface', '3': 9, '4': 1, '5': 14, '6': '.SpaceX.API.Device.WifiClient.Interface', '10': 'iface'},
+    {
+      '1': 'iface',
+      '3': 9,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.WifiClient.Interface',
+      '10': 'iface'
+    },
     {'1': 'iface_name', '3': 26, '4': 1, '5': 9, '10': 'ifaceName'},
     {'1': 'snr', '3': 10, '4': 1, '5': 2, '10': 'snr'},
     {'1': 'psmode', '3': 11, '4': 1, '5': 5, '10': 'psmode'},
-    {'1': 'upstream_mac_address', '3': 13, '4': 1, '5': 9, '10': 'upstreamMacAddress'},
-    {'1': 'role', '3': 14, '4': 1, '5': 14, '6': '.SpaceX.API.Device.WifiClient.Role', '10': 'role'},
+    {
+      '1': 'upstream_mac_address',
+      '3': 13,
+      '4': 1,
+      '5': 9,
+      '10': 'upstreamMacAddress'
+    },
+    {
+      '1': 'role',
+      '3': 14,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.WifiClient.Role',
+      '10': 'role'
+    },
     {'1': 'device_id', '3': 15, '4': 1, '5': 9, '10': 'deviceId'},
     {'1': 'swq_checks', '3': 16, '4': 1, '5': 13, '10': 'swqChecks'},
-    {'1': 'swq_checks_non_empty', '3': 17, '4': 1, '5': 13, '10': 'swqChecksNonEmpty'},
+    {
+      '1': 'swq_checks_non_empty',
+      '3': 17,
+      '4': 1,
+      '5': 13,
+      '10': 'swqChecksNonEmpty'
+    },
     {'1': 'mib_steer_state', '3': 18, '4': 1, '5': 13, '10': 'mibSteerState'},
     {'1': 'mib_steer_method', '3': 19, '4': 1, '5': 13, '10': 'mibSteerMethod'},
     {'1': 'btm_requests', '3': 20, '4': 1, '5': 13, '10': 'btmRequests'},
-    {'1': 'btm_requests_success', '3': 21, '4': 1, '5': 13, '10': 'btmRequestsSuccess'},
+    {
+      '1': 'btm_requests_success',
+      '3': 21,
+      '4': 1,
+      '5': 13,
+      '10': 'btmRequestsSuccess'
+    },
     {'1': 'steer_state', '3': 30, '4': 1, '5': 13, '10': 'steerState'},
-    {'1': 'steer_req_success_last_1h', '3': 27, '4': 1, '5': 13, '10': 'steerReqSuccessLast1h'},
-    {'1': 'steer_req_fail_last_1h', '3': 28, '4': 1, '5': 13, '10': 'steerReqFailLast1h'},
-    {'1': 'steer_req_fail_and_dissoc_last_1h', '3': 29, '4': 1, '5': 13, '10': 'steerReqFailAndDissocLast1h'},
+    {
+      '1': 'steer_req_success_last_1h',
+      '3': 27,
+      '4': 1,
+      '5': 13,
+      '10': 'steerReqSuccessLast1h'
+    },
+    {
+      '1': 'steer_req_fail_last_1h',
+      '3': 28,
+      '4': 1,
+      '5': 13,
+      '10': 'steerReqFailLast1h'
+    },
+    {
+      '1': 'steer_req_fail_and_dissoc_last_1h',
+      '3': 29,
+      '4': 1,
+      '5': 13,
+      '10': 'steerReqFailAndDissocLast1h'
+    },
     {'1': 'dot11v_support', '3': 23, '4': 1, '5': 8, '10': 'dot11vSupport'},
-    {'1': 'hops_from_controller', '3': 32, '4': 1, '5': 13, '10': 'hopsFromController'},
-    {'1': 'est_tx_rate_mbps_from_controller', '3': 33, '4': 1, '5': 2, '10': 'estTxRateMbpsFromController'},
-    {'1': 'est_rx_rate_mbps_from_controller', '3': 34, '4': 1, '5': 2, '10': 'estRxRateMbpsFromController'},
+    {
+      '1': 'hops_from_controller',
+      '3': 32,
+      '4': 1,
+      '5': 13,
+      '10': 'hopsFromController'
+    },
+    {
+      '1': 'est_tx_rate_mbps_from_controller',
+      '3': 33,
+      '4': 1,
+      '5': 2,
+      '10': 'estTxRateMbpsFromController'
+    },
+    {
+      '1': 'est_rx_rate_mbps_from_controller',
+      '3': 34,
+      '4': 1,
+      '5': 2,
+      '10': 'estRxRateMbpsFromController'
+    },
     {'1': 'hardware_version', '3': 37, '4': 1, '5': 9, '10': 'hardwareVersion'},
     {'1': 'software_version', '3': 38, '4': 1, '5': 9, '10': 'softwareVersion'},
     {'1': 'api_version', '3': 39, '4': 1, '5': 13, '10': 'apiVersion'},
-    {'1': 'ping_metrics', '3': 40, '4': 1, '5': 11, '6': '.SpaceX.API.Device.WifiClient.PingMetrics', '10': 'pingMetrics'},
+    {
+      '1': 'ping_metrics',
+      '3': 40,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiClient.PingMetrics',
+      '10': 'pingMetrics'
+    },
     {'1': 'blocked', '3': 42, '4': 1, '5': 8, '10': 'blocked'},
     {'1': 'client_id', '3': 43, '4': 1, '5': 13, '10': 'clientId'},
-    {'1': 'fqcodel_info', '3': 44, '4': 1, '5': 11, '6': '.SpaceX.API.Device.WifiClient.FqcodelInfo', '10': 'fqcodelInfo'},
+    {
+      '1': 'fqcodel_info',
+      '3': 44,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiClient.FqcodelInfo',
+      '10': 'fqcodelInfo'
+    },
   ],
-  '3': [WifiClient_RxStats$json, WifiClient_TxStats$json, WifiClient_PingMetrics$json, WifiClient_FqcodelInfo$json],
+  '3': [
+    WifiClient_RxStats$json,
+    WifiClient_TxStats$json,
+    WifiClient_PingMetrics$json,
+    WifiClient_FqcodelInfo$json
+  ],
   '4': [WifiClient_Interface$json, WifiClient_Role$json],
 };
 
@@ -616,15 +1008,45 @@ const WifiClient_RxStats$json = {
     {'1': 'phy_mode', '3': 13, '4': 1, '5': 13, '10': 'phyMode'},
     {'1': 'nss', '3': 3, '4': 1, '5': 5, '10': 'nss'},
     {'1': 'rate_mbps', '3': 8, '4': 1, '5': 13, '10': 'rateMbps'},
-    {'1': 'rate_mbps_last_30s', '3': 14, '4': 1, '5': 2, '10': 'rateMbpsLast30s'},
-    {'1': 'rate_mbps_last_15s', '3': 15, '4': 1, '5': 2, '10': 'rateMbpsLast15s'},
+    {
+      '1': 'rate_mbps_last_30s',
+      '3': 14,
+      '4': 1,
+      '5': 2,
+      '10': 'rateMbpsLast30s'
+    },
+    {
+      '1': 'rate_mbps_last_15s',
+      '3': 15,
+      '4': 1,
+      '5': 2,
+      '10': 'rateMbpsLast15s'
+    },
     {'1': 'mcs', '3': 5, '4': 1, '5': 13, '10': 'mcs'},
     {'1': 'bandwidth', '3': 6, '4': 1, '5': 13, '10': 'bandwidth'},
     {'1': 'guard_ns', '3': 7, '4': 1, '5': 13, '10': 'guardNs'},
-    {'1': 'airtime_fraction_last_1s', '3': 9, '4': 1, '5': 2, '10': 'airtimeFractionLast1s'},
+    {
+      '1': 'airtime_fraction_last_1s',
+      '3': 9,
+      '4': 1,
+      '5': 2,
+      '10': 'airtimeFractionLast1s'
+    },
     {'1': 'sampled_packets', '3': 10, '4': 1, '5': 13, '10': 'sampledPackets'},
-    {'1': 'sampled_packets_retried', '3': 11, '4': 1, '5': 13, '10': 'sampledPacketsRetried'},
-    {'1': 'sampled_packets_dropped', '3': 12, '4': 1, '5': 13, '10': 'sampledPacketsDropped'},
+    {
+      '1': 'sampled_packets_retried',
+      '3': 11,
+      '4': 1,
+      '5': 13,
+      '10': 'sampledPacketsRetried'
+    },
+    {
+      '1': 'sampled_packets_dropped',
+      '3': 12,
+      '4': 1,
+      '5': 13,
+      '10': 'sampledPacketsDropped'
+    },
   ],
   '9': [
     {'1': 4, '2': 5},
@@ -640,12 +1062,30 @@ const WifiClient_TxStats$json = {
     {'1': 'phy_mode', '3': 10, '4': 1, '5': 13, '10': 'phyMode'},
     {'1': 'nss', '3': 3, '4': 1, '5': 5, '10': 'nss'},
     {'1': 'rate_mbps', '3': 8, '4': 1, '5': 13, '10': 'rateMbps'},
-    {'1': 'rate_mbps_last_30s', '3': 11, '4': 1, '5': 2, '10': 'rateMbpsLast30s'},
-    {'1': 'rate_mbps_last_15s', '3': 12, '4': 1, '5': 2, '10': 'rateMbpsLast15s'},
+    {
+      '1': 'rate_mbps_last_30s',
+      '3': 11,
+      '4': 1,
+      '5': 2,
+      '10': 'rateMbpsLast30s'
+    },
+    {
+      '1': 'rate_mbps_last_15s',
+      '3': 12,
+      '4': 1,
+      '5': 2,
+      '10': 'rateMbpsLast15s'
+    },
     {'1': 'mcs', '3': 5, '4': 1, '5': 13, '10': 'mcs'},
     {'1': 'bandwidth', '3': 6, '4': 1, '5': 13, '10': 'bandwidth'},
     {'1': 'guard_ns', '3': 7, '4': 1, '5': 13, '10': 'guardNs'},
-    {'1': 'airtime_fraction_last_1s', '3': 9, '4': 1, '5': 2, '10': 'airtimeFractionLast1s'},
+    {
+      '1': 'airtime_fraction_last_1s',
+      '3': 9,
+      '4': 1,
+      '5': 2,
+      '10': 'airtimeFractionLast1s'
+    },
   ],
   '9': [
     {'1': 4, '2': 5},
@@ -656,8 +1096,20 @@ const WifiClient_TxStats$json = {
 const WifiClient_PingMetrics$json = {
   '1': 'PingMetrics',
   '2': [
-    {'1': 'in_unhappy_hour_2s', '3': 1, '4': 1, '5': 8, '10': 'inUnhappyHour2s'},
-    {'1': 'in_unhappy_hour_5s', '3': 2, '4': 1, '5': 8, '10': 'inUnhappyHour5s'},
+    {
+      '1': 'in_unhappy_hour_2s',
+      '3': 1,
+      '4': 1,
+      '5': 8,
+      '10': 'inUnhappyHour2s'
+    },
+    {
+      '1': 'in_unhappy_hour_5s',
+      '3': 2,
+      '4': 1,
+      '5': 8,
+      '10': 'inUnhappyHour5s'
+    },
     {'1': 'drop_rate_5m', '3': 3, '4': 1, '5': 2, '10': 'dropRate5m'},
     {'1': 'latency_5m', '3': 4, '4': 1, '5': 2, '10': 'latency5m'},
   ],
@@ -675,8 +1127,20 @@ const WifiClient_FqcodelInfo$json = {
     {'1': 'deqs_new', '3': 6, '4': 1, '5': 4, '10': 'deqsNew'},
     {'1': 'deqs_old', '3': 7, '4': 1, '5': 4, '10': 'deqsOld'},
     {'1': 'deqs_flow_new', '3': 8, '4': 1, '5': 4, '10': 'deqsFlowNew'},
-    {'1': 'deqs_flow_old_deficit', '3': 9, '4': 1, '5': 4, '10': 'deqsFlowOldDeficit'},
-    {'1': 'deqs_flow_old_starvation', '3': 10, '4': 1, '5': 4, '10': 'deqsFlowOldStarvation'},
+    {
+      '1': 'deqs_flow_old_deficit',
+      '3': 9,
+      '4': 1,
+      '5': 4,
+      '10': 'deqsFlowOldDeficit'
+    },
+    {
+      '1': 'deqs_flow_old_starvation',
+      '3': 10,
+      '4': 1,
+      '5': 4,
+      '10': 'deqsFlowOldStarvation'
+    },
     {'1': 'deqs_dropped', '3': 11, '4': 1, '5': 4, '10': 'deqsDropped'},
   ],
 };
@@ -794,18 +1258,48 @@ const WifiSetupResponse$json = {
 };
 
 /// Descriptor for `WifiSetupResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List wifiSetupResponseDescriptor = $convert.base64Decode(
-    'ChFXaWZpU2V0dXBSZXNwb25zZQ==');
+final $typed_data.Uint8List wifiSetupResponseDescriptor =
+    $convert.base64Decode('ChFXaWZpU2V0dXBSZXNwb25zZQ==');
 
 @$core.Deprecated('Use wifiBandStatusDescriptor instead')
 const WifiBandStatus$json = {
   '1': 'WifiBandStatus',
   '2': [
-    {'1': 'chan_busy_time_fraction', '3': 1, '4': 1, '5': 2, '10': 'chanBusyTimeFraction'},
-    {'1': 'tx_air_time_fraction', '3': 2, '4': 1, '5': 2, '10': 'txAirTimeFraction'},
-    {'1': 'rx_air_time_fraction', '3': 3, '4': 1, '5': 2, '10': 'rxAirTimeFraction'},
-    {'1': 'obss_air_time_fraction', '3': 4, '4': 1, '5': 2, '10': 'obssAirTimeFraction'},
-    {'1': 'edcca_air_time_fraction', '3': 5, '4': 1, '5': 2, '10': 'edccaAirTimeFraction'},
+    {
+      '1': 'chan_busy_time_fraction',
+      '3': 1,
+      '4': 1,
+      '5': 2,
+      '10': 'chanBusyTimeFraction'
+    },
+    {
+      '1': 'tx_air_time_fraction',
+      '3': 2,
+      '4': 1,
+      '5': 2,
+      '10': 'txAirTimeFraction'
+    },
+    {
+      '1': 'rx_air_time_fraction',
+      '3': 3,
+      '4': 1,
+      '5': 2,
+      '10': 'rxAirTimeFraction'
+    },
+    {
+      '1': 'obss_air_time_fraction',
+      '3': 4,
+      '4': 1,
+      '5': 2,
+      '10': 'obssAirTimeFraction'
+    },
+    {
+      '1': 'edcca_air_time_fraction',
+      '3': 5,
+      '4': 1,
+      '5': 2,
+      '10': 'edccaAirTimeFraction'
+    },
   ],
 };
 
@@ -825,19 +1319,85 @@ const WifiAlerts$json = {
     {'1': 'thermal_throttle', '3': 1, '4': 1, '5': 8, '10': 'thermalThrottle'},
     {'1': 'install_pending', '3': 2, '4': 1, '5': 8, '10': 'installPending'},
     {'1': 'freshly_fused', '3': 3, '4': 1, '5': 8, '10': 'freshlyFused'},
-    {'1': 'lan_eth_slow_link_10', '3': 4, '4': 1, '5': 8, '10': 'lanEthSlowLink10'},
-    {'1': 'lan_eth_slow_link_100', '3': 5, '4': 1, '5': 8, '10': 'lanEthSlowLink100'},
-    {'1': 'wan_eth_poor_connection', '3': 10, '4': 1, '5': 8, '10': 'wanEthPoorConnection'},
-    {'1': 'mesh_topology_changing_often', '3': 11, '4': 1, '5': 8, '10': 'meshTopologyChangingOften'},
-    {'1': 'mesh_unreliable_backhaul', '3': 12, '4': 1, '5': 8, '10': 'meshUnreliableBackhaul'},
-    {'1': 'radius_missing_process', '3': 13, '4': 1, '5': 8, '10': 'radiusMissingProcess'},
+    {
+      '1': 'lan_eth_slow_link_10',
+      '3': 4,
+      '4': 1,
+      '5': 8,
+      '10': 'lanEthSlowLink10'
+    },
+    {
+      '1': 'lan_eth_slow_link_100',
+      '3': 5,
+      '4': 1,
+      '5': 8,
+      '10': 'lanEthSlowLink100'
+    },
+    {
+      '1': 'wan_eth_poor_connection',
+      '3': 10,
+      '4': 1,
+      '5': 8,
+      '10': 'wanEthPoorConnection'
+    },
+    {
+      '1': 'mesh_topology_changing_often',
+      '3': 11,
+      '4': 1,
+      '5': 8,
+      '10': 'meshTopologyChangingOften'
+    },
+    {
+      '1': 'mesh_unreliable_backhaul',
+      '3': 12,
+      '4': 1,
+      '5': 8,
+      '10': 'meshUnreliableBackhaul'
+    },
+    {
+      '1': 'radius_missing_process',
+      '3': 13,
+      '4': 1,
+      '5': 8,
+      '10': 'radiusMissingProcess'
+    },
     {'1': 'eth_switch_error', '3': 14, '4': 1, '5': 8, '10': 'ethSwitchError'},
-    {'1': 'poe_on_dish_unreachable', '3': 15, '4': 1, '5': 8, '10': 'poeOnDishUnreachable'},
+    {
+      '1': 'poe_on_dish_unreachable',
+      '3': 15,
+      '4': 1,
+      '5': 8,
+      '10': 'poeOnDishUnreachable'
+    },
     {'1': 'poe_fuse_blown', '3': 16, '4': 1, '5': 8, '10': 'poeFuseBlown'},
-    {'1': 'poe_router_overcurrent', '3': 17, '4': 1, '5': 8, '10': 'poeRouterOvercurrent'},
-    {'1': 'poe_off_current_nominal', '3': 18, '4': 1, '5': 8, '10': 'poeOffCurrentNominal'},
-    {'1': 'poe_vin_overvoltage', '3': 19, '4': 1, '5': 8, '10': 'poeVinOvervoltage'},
-    {'1': 'poe_vin_undervoltage', '3': 20, '4': 1, '5': 8, '10': 'poeVinUndervoltage'},
+    {
+      '1': 'poe_router_overcurrent',
+      '3': 17,
+      '4': 1,
+      '5': 8,
+      '10': 'poeRouterOvercurrent'
+    },
+    {
+      '1': 'poe_off_current_nominal',
+      '3': 18,
+      '4': 1,
+      '5': 8,
+      '10': 'poeOffCurrentNominal'
+    },
+    {
+      '1': 'poe_vin_overvoltage',
+      '3': 19,
+      '4': 1,
+      '5': 8,
+      '10': 'poeVinOvervoltage'
+    },
+    {
+      '1': 'poe_vin_undervoltage',
+      '3': 20,
+      '4': 1,
+      '5': 8,
+      '10': 'poeVinUndervoltage'
+    },
   ],
   '9': [
     {'1': 6, '2': 7},
@@ -845,7 +1405,12 @@ const WifiAlerts$json = {
     {'1': 8, '2': 9},
     {'1': 9, '2': 10},
   ],
-  '10': ['inconsistent_2ghz_antennae_performance_15db', 'inconsistent_5ghz_antennae_performance_15db', 'poor_2ghz_antennae_performance_80db', 'poor_5ghz_antennae_performance_80db'],
+  '10': [
+    'inconsistent_2ghz_antennae_performance_15db',
+    'inconsistent_5ghz_antennae_performance_15db',
+    'poor_2ghz_antennae_performance_80db',
+    'poor_5ghz_antennae_performance_80db'
+  ],
 };
 
 /// Descriptor for `WifiAlerts`. Decode as a `google.protobuf.DescriptorProto`.
@@ -873,20 +1438,94 @@ final $typed_data.Uint8List wifiAlertsDescriptor = $convert.base64Decode(
 const WifiGetStatusResponse$json = {
   '1': 'WifiGetStatusResponse',
   '2': [
-    {'1': 'device_info', '3': 3, '4': 1, '5': 11, '6': '.SpaceX.API.Device.DeviceInfo', '10': 'deviceInfo'},
-    {'1': 'device_state', '3': 4, '4': 1, '5': 11, '6': '.SpaceX.API.Device.DeviceState', '10': 'deviceState'},
-    {'1': 'captive_portal_enabled', '3': 1, '4': 1, '5': 8, '10': 'captivePortalEnabled'},
-    {'1': 'ipv4_wan_address', '3': 1003, '4': 1, '5': 9, '10': 'ipv4WanAddress'},
-    {'1': 'ipv6_wan_addresses', '3': 1017, '4': 3, '5': 9, '10': 'ipv6WanAddresses'},
+    {
+      '1': 'device_info',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.DeviceInfo',
+      '10': 'deviceInfo'
+    },
+    {
+      '1': 'device_state',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.DeviceState',
+      '10': 'deviceState'
+    },
+    {
+      '1': 'captive_portal_enabled',
+      '3': 1,
+      '4': 1,
+      '5': 8,
+      '10': 'captivePortalEnabled'
+    },
+    {
+      '1': 'ipv4_wan_address',
+      '3': 1003,
+      '4': 1,
+      '5': 9,
+      '10': 'ipv4WanAddress'
+    },
+    {
+      '1': 'ipv6_wan_addresses',
+      '3': 1017,
+      '4': 3,
+      '5': 9,
+      '10': 'ipv6WanAddresses'
+    },
     {'1': 'ping_drop_rate', '3': 1004, '4': 1, '5': 2, '10': 'pingDropRate'},
-    {'1': 'ping_drop_rate_5m', '3': 1021, '4': 1, '5': 2, '10': 'pingDropRate5m'},
+    {
+      '1': 'ping_drop_rate_5m',
+      '3': 1021,
+      '4': 1,
+      '5': 2,
+      '10': 'pingDropRate5m'
+    },
     {'1': 'ping_latency_ms', '3': 1005, '4': 1, '5': 2, '10': 'pingLatencyMs'},
-    {'1': 'dish_ping_drop_rate', '3': 1012, '4': 1, '5': 2, '10': 'dishPingDropRate'},
-    {'1': 'dish_ping_drop_rate_5m', '3': 1018, '4': 1, '5': 2, '10': 'dishPingDropRate5m'},
-    {'1': 'dish_ping_latency_ms', '3': 1013, '4': 1, '5': 2, '10': 'dishPingLatencyMs'},
-    {'1': 'pop_ping_drop_rate', '3': 1014, '4': 1, '5': 2, '10': 'popPingDropRate'},
-    {'1': 'pop_ping_drop_rate_5m', '3': 1020, '4': 1, '5': 2, '10': 'popPingDropRate5m'},
-    {'1': 'pop_ping_latency_ms', '3': 1015, '4': 1, '5': 2, '10': 'popPingLatencyMs'},
+    {
+      '1': 'dish_ping_drop_rate',
+      '3': 1012,
+      '4': 1,
+      '5': 2,
+      '10': 'dishPingDropRate'
+    },
+    {
+      '1': 'dish_ping_drop_rate_5m',
+      '3': 1018,
+      '4': 1,
+      '5': 2,
+      '10': 'dishPingDropRate5m'
+    },
+    {
+      '1': 'dish_ping_latency_ms',
+      '3': 1013,
+      '4': 1,
+      '5': 2,
+      '10': 'dishPingLatencyMs'
+    },
+    {
+      '1': 'pop_ping_drop_rate',
+      '3': 1014,
+      '4': 1,
+      '5': 2,
+      '10': 'popPingDropRate'
+    },
+    {
+      '1': 'pop_ping_drop_rate_5m',
+      '3': 1020,
+      '4': 1,
+      '5': 2,
+      '10': 'popPingDropRate5m'
+    },
+    {
+      '1': 'pop_ping_latency_ms',
+      '3': 1015,
+      '4': 1,
+      '5': 2,
+      '10': 'popPingLatencyMs'
+    },
     {
       '1': 'rf_2ghz_status',
       '3': 1008,
@@ -905,19 +1544,80 @@ const WifiGetStatusResponse$json = {
       '8': {'3': true},
       '10': 'rf5ghzStatus',
     },
-    {'1': 'alerts', '3': 1010, '4': 1, '5': 11, '6': '.SpaceX.API.Device.WifiAlerts', '10': 'alerts'},
+    {
+      '1': 'alerts',
+      '3': 1010,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiAlerts',
+      '10': 'alerts'
+    },
     {'1': 'is_aviation', '3': 1011, '4': 1, '5': 8, '10': 'isAviation'},
-    {'1': 'config', '3': 2000, '4': 1, '5': 11, '6': '.SpaceX.API.Device.WifiConfig', '10': 'config'},
-    {'1': 'clients', '3': 3000, '4': 3, '5': 11, '6': '.SpaceX.API.Device.WifiClient', '10': 'clients'},
-    {'1': 'has_client_index', '3': 3001, '4': 1, '5': 8, '10': 'hasClientIndex'},
+    {
+      '1': 'config',
+      '3': 2000,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiConfig',
+      '10': 'config'
+    },
+    {
+      '1': 'clients',
+      '3': 3000,
+      '4': 3,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiClient',
+      '10': 'clients'
+    },
+    {
+      '1': 'has_client_index',
+      '3': 3001,
+      '4': 1,
+      '5': 8,
+      '10': 'hasClientIndex'
+    },
     {'1': 'client_index', '3': 3002, '4': 1, '5': 5, '10': 'clientIndex'},
-    {'1': 'is_aviation_conformed', '3': 1016, '4': 1, '5': 8, '10': 'isAviationConformed'},
-    {'1': 'radius_stats', '3': 3003, '4': 1, '5': 11, '6': '.SpaceX.API.Device.RadiusStatsMap', '10': 'radiusStats'},
-    {'1': 'dhcp_servers', '3': 1019, '4': 3, '5': 11, '6': '.SpaceX.API.Device.DhcpServer', '10': 'dhcpServers'},
-    {'1': 'poe_stats', '3': 1022, '4': 1, '5': 11, '6': '.SpaceX.API.Device.PoeStats', '10': 'poeStats'},
+    {
+      '1': 'is_aviation_conformed',
+      '3': 1016,
+      '4': 1,
+      '5': 8,
+      '10': 'isAviationConformed'
+    },
+    {
+      '1': 'radius_stats',
+      '3': 3003,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.RadiusStatsMap',
+      '10': 'radiusStats'
+    },
+    {
+      '1': 'dhcp_servers',
+      '3': 1019,
+      '4': 3,
+      '5': 11,
+      '6': '.SpaceX.API.Device.DhcpServer',
+      '10': 'dhcpServers'
+    },
+    {
+      '1': 'poe_stats',
+      '3': 1022,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.PoeStats',
+      '10': 'poeStats'
+    },
     {'1': 'dish_id', '3': 1023, '4': 1, '5': 9, '10': 'dishId'},
     {'1': 'utc_ns', '3': 1024, '4': 1, '5': 3, '10': 'utcNs'},
-    {'1': 'software_update_stats', '3': 1025, '4': 1, '5': 11, '6': '.SpaceX.API.Device.WifiSoftwareUpdateStats', '10': 'softwareUpdateStats'},
+    {
+      '1': 'software_update_stats',
+      '3': 1025,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiSoftwareUpdateStats',
+      '10': 'softwareUpdateStats'
+    },
   ],
   '9': [
     {'1': 2, '2': 3},
@@ -968,21 +1668,43 @@ final $typed_data.Uint8List wifiGetStatusResponseDescriptor = $convert.base64Dec
 const WifiAuthenticateRequest$json = {
   '1': 'WifiAuthenticateRequest',
   '2': [
-    {'1': 'challenge', '3': 1, '4': 1, '5': 11, '6': '.SpaceX.API.Device.SignedData', '10': 'challenge'},
+    {
+      '1': 'challenge',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.SignedData',
+      '10': 'challenge'
+    },
   ],
 };
 
 /// Descriptor for `WifiAuthenticateRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List wifiAuthenticateRequestDescriptor = $convert.base64Decode(
-    'ChdXaWZpQXV0aGVudGljYXRlUmVxdWVzdBI7CgljaGFsbGVuZ2UYASABKAsyHS5TcGFjZVguQV'
-    'BJLkRldmljZS5TaWduZWREYXRhUgljaGFsbGVuZ2U=');
+final $typed_data.Uint8List wifiAuthenticateRequestDescriptor =
+    $convert.base64Decode(
+        'ChdXaWZpQXV0aGVudGljYXRlUmVxdWVzdBI7CgljaGFsbGVuZ2UYASABKAsyHS5TcGFjZVguQV'
+        'BJLkRldmljZS5TaWduZWREYXRhUgljaGFsbGVuZ2U=');
 
 @$core.Deprecated('Use wifiAuthenticateResponseDescriptor instead')
 const WifiAuthenticateResponse$json = {
   '1': 'WifiAuthenticateResponse',
   '2': [
-    {'1': 'wifi', '3': 1, '4': 1, '5': 11, '6': '.SpaceX.API.Device.ChallengeResponse', '10': 'wifi'},
-    {'1': 'dish', '3': 2, '4': 1, '5': 11, '6': '.SpaceX.API.Device.ChallengeResponse', '10': 'dish'},
+    {
+      '1': 'wifi',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.ChallengeResponse',
+      '10': 'wifi'
+    },
+    {
+      '1': 'dish',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.ChallengeResponse',
+      '10': 'dish'
+    },
   ],
 };
 
@@ -1026,8 +1748,20 @@ const PingMetrics$json = {
   '2': [
     {'1': 'latency_mean_ms', '3': 1, '4': 1, '5': 2, '10': 'latencyMeanMs'},
     {'1': 'latency_stddev_ms', '3': 2, '4': 1, '5': 2, '10': 'latencyStddevMs'},
-    {'1': 'latency_mean_ms_5m', '3': 3, '4': 1, '5': 2, '10': 'latencyMeanMs5m'},
-    {'1': 'latency_mean_ms_1h', '3': 4, '4': 1, '5': 2, '10': 'latencyMeanMs1h'},
+    {
+      '1': 'latency_mean_ms_5m',
+      '3': 3,
+      '4': 1,
+      '5': 2,
+      '10': 'latencyMeanMs5m'
+    },
+    {
+      '1': 'latency_mean_ms_1h',
+      '3': 4,
+      '4': 1,
+      '5': 2,
+      '10': 'latencyMeanMs1h'
+    },
     {
       '1': 'latency_mean_ms_1d',
       '3': 5,
@@ -1040,13 +1774,55 @@ const PingMetrics$json = {
     {'1': 'drop_rate_5m', '3': 7, '4': 1, '5': 2, '10': 'dropRate5m'},
     {'1': 'drop_rate_1h', '3': 8, '4': 1, '5': 2, '10': 'dropRate1h'},
     {'1': 'drop_rate_1d', '3': 9, '4': 1, '5': 2, '10': 'dropRate1d'},
-    {'1': 'seconds_since_last_success', '3': 10, '4': 1, '5': 2, '10': 'secondsSinceLastSuccess'},
-    {'1': 'seconds_since_last_1s_outage', '3': 11, '4': 1, '5': 2, '10': 'secondsSinceLast1sOutage'},
-    {'1': 'seconds_since_last_2s_outage', '3': 15, '4': 1, '5': 2, '10': 'secondsSinceLast2sOutage'},
-    {'1': 'seconds_since_last_5s_outage', '3': 12, '4': 1, '5': 2, '10': 'secondsSinceLast5sOutage'},
-    {'1': 'seconds_since_last_15s_outage', '3': 18, '4': 1, '5': 2, '10': 'secondsSinceLast15sOutage'},
-    {'1': 'seconds_since_last_60s_outage', '3': 19, '4': 1, '5': 2, '10': 'secondsSinceLast60sOutage'},
-    {'1': 'seconds_since_last_300s_outage', '3': 20, '4': 1, '5': 2, '10': 'secondsSinceLast300sOutage'},
+    {
+      '1': 'seconds_since_last_success',
+      '3': 10,
+      '4': 1,
+      '5': 2,
+      '10': 'secondsSinceLastSuccess'
+    },
+    {
+      '1': 'seconds_since_last_1s_outage',
+      '3': 11,
+      '4': 1,
+      '5': 2,
+      '10': 'secondsSinceLast1sOutage'
+    },
+    {
+      '1': 'seconds_since_last_2s_outage',
+      '3': 15,
+      '4': 1,
+      '5': 2,
+      '10': 'secondsSinceLast2sOutage'
+    },
+    {
+      '1': 'seconds_since_last_5s_outage',
+      '3': 12,
+      '4': 1,
+      '5': 2,
+      '10': 'secondsSinceLast5sOutage'
+    },
+    {
+      '1': 'seconds_since_last_15s_outage',
+      '3': 18,
+      '4': 1,
+      '5': 2,
+      '10': 'secondsSinceLast15sOutage'
+    },
+    {
+      '1': 'seconds_since_last_60s_outage',
+      '3': 19,
+      '4': 1,
+      '5': 2,
+      '10': 'secondsSinceLast60sOutage'
+    },
+    {
+      '1': 'seconds_since_last_300s_outage',
+      '3': 20,
+      '4': 1,
+      '5': 2,
+      '10': 'secondsSinceLast300sOutage'
+    },
     {'1': 'happy_hours_1s_1d', '3': 13, '4': 1, '5': 2, '10': 'happyHours1s1d'},
     {'1': 'happy_hours_2s_1d', '3': 16, '4': 1, '5': 2, '10': 'happyHours2s1d'},
     {'1': 'happy_hours_5s_1d', '3': 14, '4': 1, '5': 2, '10': 'happyHours5s1d'},
@@ -1080,30 +1856,51 @@ const WifiGetPingMetricsRequest$json = {
 };
 
 /// Descriptor for `WifiGetPingMetricsRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List wifiGetPingMetricsRequestDescriptor = $convert.base64Decode(
-    'ChlXaWZpR2V0UGluZ01ldHJpY3NSZXF1ZXN0');
+final $typed_data.Uint8List wifiGetPingMetricsRequestDescriptor =
+    $convert.base64Decode('ChlXaWZpR2V0UGluZ01ldHJpY3NSZXF1ZXN0');
 
 @$core.Deprecated('Use wifiGetPingMetricsResponseDescriptor instead')
 const WifiGetPingMetricsResponse$json = {
   '1': 'WifiGetPingMetricsResponse',
   '2': [
-    {'1': 'internet', '3': 1, '4': 1, '5': 11, '6': '.SpaceX.API.Device.PingMetrics', '10': 'internet'},
+    {
+      '1': 'internet',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.PingMetrics',
+      '10': 'internet'
+    },
   ],
 };
 
 /// Descriptor for `WifiGetPingMetricsResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List wifiGetPingMetricsResponseDescriptor = $convert.base64Decode(
-    'ChpXaWZpR2V0UGluZ01ldHJpY3NSZXNwb25zZRI6CghpbnRlcm5ldBgBIAEoCzIeLlNwYWNlWC'
-    '5BUEkuRGV2aWNlLlBpbmdNZXRyaWNzUghpbnRlcm5ldA==');
+final $typed_data.Uint8List wifiGetPingMetricsResponseDescriptor =
+    $convert.base64Decode(
+        'ChpXaWZpR2V0UGluZ01ldHJpY3NSZXNwb25zZRI6CghpbnRlcm5ldBgBIAEoCzIeLlNwYWNlWC'
+        '5BUEkuRGV2aWNlLlBpbmdNZXRyaWNzUghpbnRlcm5ldA==');
 
 @$core.Deprecated('Use wifiNetworkDescriptor instead')
 const WifiNetwork$json = {
   '1': 'WifiNetwork',
   '2': [
-    {'1': 'band', '3': 1, '4': 1, '5': 14, '6': '.SpaceX.API.Device.WifiNetwork.Band', '10': 'band'},
+    {
+      '1': 'band',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.WifiNetwork.Band',
+      '10': 'band'
+    },
     {'1': 'ssid', '3': 2, '4': 1, '5': 9, '10': 'ssid'},
     {'1': 'channel', '3': 3, '4': 1, '5': 13, '10': 'channel'},
-    {'1': 'encryption_type_str', '3': 4, '4': 1, '5': 9, '10': 'encryptionTypeStr'},
+    {
+      '1': 'encryption_type_str',
+      '3': 4,
+      '4': 1,
+      '5': 9,
+      '10': 'encryptionTypeStr'
+    },
   ],
   '4': [WifiNetwork_Band$json],
 };
@@ -1129,11 +1926,46 @@ final $typed_data.Uint8List wifiNetworkDescriptor = $convert.base64Decode(
 const WifiPersistentStats$json = {
   '1': 'WifiPersistentStats',
   '2': [
-    {'1': 'factory_reset_button', '3': 1, '4': 1, '5': 11, '6': '.SpaceX.API.Device.WifiPersistentStats.Event', '10': 'factoryResetButton'},
-    {'1': 'factory_reset_plug_unplug', '3': 2, '4': 1, '5': 11, '6': '.SpaceX.API.Device.WifiPersistentStats.Event', '10': 'factoryResetPlugUnplug'},
-    {'1': 'factory_reset_command', '3': 3, '4': 1, '5': 11, '6': '.SpaceX.API.Device.WifiPersistentStats.Event', '10': 'factoryResetCommand'},
-    {'1': 'factory_reset_failed_load_wifi_config', '3': 4, '4': 1, '5': 11, '6': '.SpaceX.API.Device.WifiPersistentStats.Event', '10': 'factoryResetFailedLoadWifiConfig'},
-    {'1': 'reboot_from_software_update', '3': 5, '4': 1, '5': 11, '6': '.SpaceX.API.Device.WifiPersistentStats.Event', '10': 'rebootFromSoftwareUpdate'},
+    {
+      '1': 'factory_reset_button',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiPersistentStats.Event',
+      '10': 'factoryResetButton'
+    },
+    {
+      '1': 'factory_reset_plug_unplug',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiPersistentStats.Event',
+      '10': 'factoryResetPlugUnplug'
+    },
+    {
+      '1': 'factory_reset_command',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiPersistentStats.Event',
+      '10': 'factoryResetCommand'
+    },
+    {
+      '1': 'factory_reset_failed_load_wifi_config',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiPersistentStats.Event',
+      '10': 'factoryResetFailedLoadWifiConfig'
+    },
+    {
+      '1': 'reboot_from_software_update',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiPersistentStats.Event',
+      '10': 'rebootFromSoftwareUpdate'
+    },
   ],
   '3': [WifiPersistentStats_Event$json],
 };
@@ -1143,7 +1975,13 @@ const WifiPersistentStats_Event$json = {
   '1': 'Event',
   '2': [
     {'1': 'count', '3': 1, '4': 1, '5': 13, '10': 'count'},
-    {'1': 'last_occurred_timestamp', '3': 2, '4': 1, '5': 3, '10': 'lastOccurredTimestamp'},
+    {
+      '1': 'last_occurred_timestamp',
+      '3': 2,
+      '4': 1,
+      '5': 3,
+      '10': 'lastOccurredTimestamp'
+    },
   ],
 };
 
@@ -1166,24 +2004,67 @@ final $typed_data.Uint8List wifiPersistentStatsDescriptor = $convert.base64Decod
 const WifiGetPersistentStatsResponse$json = {
   '1': 'WifiGetPersistentStatsResponse',
   '2': [
-    {'1': 'stats', '3': 1, '4': 1, '5': 11, '6': '.SpaceX.API.Device.WifiPersistentStats', '10': 'stats'},
+    {
+      '1': 'stats',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiPersistentStats',
+      '10': 'stats'
+    },
   ],
 };
 
 /// Descriptor for `WifiGetPersistentStatsResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List wifiGetPersistentStatsResponseDescriptor = $convert.base64Decode(
-    'Ch5XaWZpR2V0UGVyc2lzdGVudFN0YXRzUmVzcG9uc2USPAoFc3RhdHMYASABKAsyJi5TcGFjZV'
-    'guQVBJLkRldmljZS5XaWZpUGVyc2lzdGVudFN0YXRzUgVzdGF0cw==');
+final $typed_data.Uint8List wifiGetPersistentStatsResponseDescriptor =
+    $convert.base64Decode(
+        'Ch5XaWZpR2V0UGVyc2lzdGVudFN0YXRzUmVzcG9uc2USPAoFc3RhdHMYASABKAsyJi5TcGFjZV'
+        'guQVBJLkRldmljZS5XaWZpUGVyc2lzdGVudFN0YXRzUgVzdGF0cw==');
 
 @$core.Deprecated('Use radioStatsDescriptor instead')
 const RadioStats$json = {
   '1': 'RadioStats',
   '2': [
-    {'1': 'band', '3': 1, '4': 1, '5': 14, '6': '.SpaceX.API.Device.WifiConfig.Band', '10': 'band'},
-    {'1': 'rx_stats', '3': 2, '4': 1, '5': 11, '6': '.SpaceX.API.Device.NetworkInterface.RxStats', '10': 'rxStats'},
-    {'1': 'tx_stats', '3': 3, '4': 1, '5': 11, '6': '.SpaceX.API.Device.NetworkInterface.TxStats', '10': 'txStats'},
-    {'1': 'thermal_status', '3': 4, '4': 1, '5': 11, '6': '.SpaceX.API.Device.RadioStats.ThermalStatus', '10': 'thermalStatus'},
-    {'1': 'antenna_status', '3': 5, '4': 1, '5': 11, '6': '.SpaceX.API.Device.RadioStats.AntennaStatus', '10': 'antennaStatus'},
+    {
+      '1': 'band',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.WifiConfig.Band',
+      '10': 'band'
+    },
+    {
+      '1': 'rx_stats',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.NetworkInterface.RxStats',
+      '10': 'rxStats'
+    },
+    {
+      '1': 'tx_stats',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.NetworkInterface.TxStats',
+      '10': 'txStats'
+    },
+    {
+      '1': 'thermal_status',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.RadioStats.ThermalStatus',
+      '10': 'thermalStatus'
+    },
+    {
+      '1': 'antenna_status',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.RadioStats.AntennaStatus',
+      '10': 'antennaStatus'
+    },
   ],
   '3': [RadioStats_ThermalStatus$json, RadioStats_AntennaStatus$json],
 };
@@ -1237,240 +2118,1878 @@ final $typed_data.Uint8List radioStatsDescriptor = $convert.base64Decode(
 const starlink_routers_hourly_metrics_v2$json = {
   '1': 'starlink_routers_hourly_metrics_v2',
   '2': [
-    {'1': 'id', '3': 1, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'id'},
-    {'1': 'timestamp_date', '3': 2, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'timestampDate'},
-    {'1': 'timestamp_hour', '3': 3, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'timestampHour'},
-    {'1': 'timestamp', '3': 10000, '4': 1, '5': 11, '6': '.SpaceX.API.Telemetron.Public.Common.TimestampInfo', '10': 'timestamp'},
-    {'1': 'sys_hw_gen', '3': 4, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'sysHwGen'},
-    {'1': 'sys_sw', '3': 5, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'sysSw'},
-    {'1': 'sys_country', '3': 6, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'sysCountry'},
-    {'1': 'sys_is_dev', '3': 7, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'sysIsDev'},
-    {'1': 'sys_alloc_fds', '3': 8, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'sysAllocFds'},
-    {'1': 'sys_cpu_usage', '3': 9, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'sysCpuUsage'},
-    {'1': 'sys_mem_free_kb', '3': 10, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'sysMemFreeKb'},
-    {'1': 'sys_bootcount', '3': 11, '4': 1, '5': 11, '6': '.google.protobuf.Int32Value', '10': 'sysBootcount'},
-    {'1': 'sys_partitions_equal', '3': 12, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'sysPartitionsEqual'},
-    {'1': 'sys_uptime_seconds', '3': 13, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'sysUptimeSeconds'},
-    {'1': 'sys_anti_rollback_version', '3': 14, '4': 1, '5': 11, '6': '.google.protobuf.Int32Value', '10': 'sysAntiRollbackVersion'},
-    {'1': 'sys_is_witl', '3': 15, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'sysIsWitl'},
-    {'1': 'sys_is_aviation_conformed', '3': 16, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'sysIsAviationConformed'},
-    {'1': 'sys_ubi_max_ec', '3': 17, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'sysUbiMaxEc'},
-    {'1': 'sys_ubi_bad_peb', '3': 18, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'sysUbiBadPeb'},
-    {'1': 'sys_board_rev', '3': 19, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'sysBoardRev'},
-    {'1': 'radios_2ghz_channel', '3': 100, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radios2ghzChannel'},
-    {'1': 'radios_2ghz_antenna1_rssi', '3': 101, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios2ghzAntenna1Rssi'},
-    {'1': 'radios_2ghz_antenna2_rssi', '3': 102, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios2ghzAntenna2Rssi'},
-    {'1': 'radios_2ghz_antenna3_rssi', '3': 103, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios2ghzAntenna3Rssi'},
-    {'1': 'radios_2ghz_antenna4_rssi', '3': 197, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios2ghzAntenna4Rssi'},
-    {'1': 'radios_2ghz_antenna1_tssi', '3': 157, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios2ghzAntenna1Tssi'},
-    {'1': 'radios_2ghz_antenna2_tssi', '3': 158, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios2ghzAntenna2Tssi'},
-    {'1': 'radios_2ghz_antenna3_tssi', '3': 159, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios2ghzAntenna3Tssi'},
-    {'1': 'radios_2ghz_antenna4_tssi', '3': 160, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios2ghzAntenna4Tssi'},
-    {'1': 'radios_2ghz_iface_count', '3': 104, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radios2ghzIfaceCount'},
-    {'1': 'radios_2ghz_chan_busy_fraction', '3': 105, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios2ghzChanBusyFraction'},
-    {'1': 'radios_2ghz_edcca_fraction', '3': 106, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios2ghzEdccaFraction'},
-    {'1': 'radios_2ghz_overlapping_bss_fraction', '3': 107, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios2ghzOverlappingBssFraction'},
-    {'1': 'radios_2ghz_rx_bytes', '3': 108, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'radios2ghzRxBytes'},
-    {'1': 'radios_2ghz_rx_packets', '3': 109, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'radios2ghzRxPackets'},
-    {'1': 'radios_2ghz_rx_errors', '3': 110, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'radios2ghzRxErrors'},
-    {'1': 'radios_2ghz_rx_frame_errors', '3': 111, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'radios2ghzRxFrameErrors'},
-    {'1': 'radios_2ghz_rx_packet_error_rate', '3': 112, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios2ghzRxPacketErrorRate'},
-    {'1': 'radios_2ghz_rx_airtime_fraction', '3': 113, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios2ghzRxAirtimeFraction'},
-    {'1': 'radios_2ghz_tx_bytes', '3': 114, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'radios2ghzTxBytes'},
-    {'1': 'radios_2ghz_tx_packets', '3': 115, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'radios2ghzTxPackets'},
-    {'1': 'radios_2ghz_tx_errors', '3': 116, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'radios2ghzTxErrors'},
-    {'1': 'radios_2ghz_tx_packet_error_rate', '3': 117, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios2ghzTxPacketErrorRate'},
-    {'1': 'radios_2ghz_tx_airtime_fraction', '3': 118, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios2ghzTxAirtimeFraction'},
-    {'1': 'radios_5ghz_channel', '3': 119, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radios5ghzChannel'},
-    {'1': 'radios_5ghz_antenna1_rssi', '3': 120, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzAntenna1Rssi'},
-    {'1': 'radios_5ghz_antenna2_rssi', '3': 121, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzAntenna2Rssi'},
-    {'1': 'radios_5ghz_antenna3_rssi', '3': 122, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzAntenna3Rssi'},
-    {'1': 'radios_5ghz_antenna4_rssi', '3': 198, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzAntenna4Rssi'},
-    {'1': 'radios_5ghz_antenna1_tssi', '3': 161, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzAntenna1Tssi'},
-    {'1': 'radios_5ghz_antenna2_tssi', '3': 162, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzAntenna2Tssi'},
-    {'1': 'radios_5ghz_antenna3_tssi', '3': 163, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzAntenna3Tssi'},
-    {'1': 'radios_5ghz_antenna4_tssi', '3': 164, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzAntenna4Tssi'},
-    {'1': 'radios_5ghz_iface_count', '3': 123, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radios5ghzIfaceCount'},
-    {'1': 'radios_5ghz_chan_busy_fraction', '3': 124, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzChanBusyFraction'},
-    {'1': 'radios_5ghz_edcca_fraction', '3': 125, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzEdccaFraction'},
-    {'1': 'radios_5ghz_overlapping_bss_fraction', '3': 126, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzOverlappingBssFraction'},
-    {'1': 'radios_5ghz_rx_bytes', '3': 127, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'radios5ghzRxBytes'},
-    {'1': 'radios_5ghz_rx_packets', '3': 128, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'radios5ghzRxPackets'},
-    {'1': 'radios_5ghz_rx_errors', '3': 129, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'radios5ghzRxErrors'},
-    {'1': 'radios_5ghz_rx_frame_errors', '3': 130, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'radios5ghzRxFrameErrors'},
-    {'1': 'radios_5ghz_rx_packet_error_rate', '3': 131, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzRxPacketErrorRate'},
-    {'1': 'radios_5ghz_rx_airtime_fraction', '3': 132, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzRxAirtimeFraction'},
-    {'1': 'radios_5ghz_tx_bytes', '3': 133, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'radios5ghzTxBytes'},
-    {'1': 'radios_5ghz_tx_packets', '3': 134, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'radios5ghzTxPackets'},
-    {'1': 'radios_5ghz_tx_errors', '3': 135, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'radios5ghzTxErrors'},
-    {'1': 'radios_5ghz_tx_packet_error_rate', '3': 136, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzTxPacketErrorRate'},
-    {'1': 'radios_5ghz_tx_airtime_fraction', '3': 137, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzTxAirtimeFraction'},
-    {'1': 'radios_5ghz_high_channel', '3': 138, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radios5ghzHighChannel'},
-    {'1': 'radios_5ghz_high_antenna1_rssi', '3': 139, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzHighAntenna1Rssi'},
-    {'1': 'radios_5ghz_high_antenna2_rssi', '3': 140, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzHighAntenna2Rssi'},
-    {'1': 'radios_5ghz_high_antenna3_rssi', '3': 141, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzHighAntenna3Rssi'},
-    {'1': 'radios_5ghz_high_antenna4_rssi', '3': 199, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzHighAntenna4Rssi'},
-    {'1': 'radios_5ghz_high_antenna1_tssi', '3': 165, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzHighAntenna1Tssi'},
-    {'1': 'radios_5ghz_high_antenna2_tssi', '3': 166, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzHighAntenna2Tssi'},
-    {'1': 'radios_5ghz_high_antenna3_tssi', '3': 167, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzHighAntenna3Tssi'},
-    {'1': 'radios_5ghz_high_antenna4_tssi', '3': 168, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzHighAntenna4Tssi'},
-    {'1': 'radios_5ghz_high_iface_count', '3': 142, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radios5ghzHighIfaceCount'},
-    {'1': 'radios_5ghz_high_chan_busy_fraction', '3': 143, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzHighChanBusyFraction'},
-    {'1': 'radios_5ghz_high_edcca_fraction', '3': 144, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzHighEdccaFraction'},
-    {'1': 'radios_5ghz_high_overlapping_bss_fraction', '3': 145, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzHighOverlappingBssFraction'},
-    {'1': 'radios_5ghz_high_rx_bytes', '3': 146, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'radios5ghzHighRxBytes'},
-    {'1': 'radios_5ghz_high_rx_packets', '3': 147, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'radios5ghzHighRxPackets'},
-    {'1': 'radios_5ghz_high_rx_errors', '3': 148, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'radios5ghzHighRxErrors'},
-    {'1': 'radios_5ghz_high_rx_frame_errors', '3': 149, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'radios5ghzHighRxFrameErrors'},
-    {'1': 'radios_5ghz_high_rx_packet_error_rate', '3': 150, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzHighRxPacketErrorRate'},
-    {'1': 'radios_5ghz_high_rx_airtime_fraction', '3': 151, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzHighRxAirtimeFraction'},
-    {'1': 'radios_5ghz_high_tx_bytes', '3': 152, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'radios5ghzHighTxBytes'},
-    {'1': 'radios_5ghz_high_tx_packets', '3': 153, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'radios5ghzHighTxPackets'},
-    {'1': 'radios_5ghz_high_tx_errors', '3': 154, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'radios5ghzHighTxErrors'},
-    {'1': 'radios_5ghz_high_tx_packet_error_rate', '3': 155, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzHighTxPacketErrorRate'},
-    {'1': 'radios_5ghz_high_tx_airtime_fraction', '3': 156, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzHighTxAirtimeFraction'},
-    {'1': 'radios_2ghz_thermal_temp', '3': 200, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios2ghzThermalTemp'},
-    {'1': 'radios_5ghz_thermal_temp', '3': 201, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzThermalTemp'},
-    {'1': 'radios_5ghz_high_thermal_temp', '3': 206, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzHighThermalTemp'},
-    {'1': 'radios_2ghz_thermal_duty_cycle', '3': 202, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios2ghzThermalDutyCycle'},
-    {'1': 'radios_5ghz_thermal_duty_cycle', '3': 203, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzThermalDutyCycle'},
-    {'1': 'radios_5ghz_high_thermal_duty_cycle', '3': 207, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzHighThermalDutyCycle'},
-    {'1': 'radios_2ghz_thermal_throttled_seconds', '3': 204, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radios2ghzThermalThrottledSeconds'},
-    {'1': 'radios_5ghz_thermal_throttled_seconds', '3': 205, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radios5ghzThermalThrottledSeconds'},
-    {'1': 'radios_5ghz_high_thermal_throttled_seconds', '3': 208, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radios5ghzHighThermalThrottledSeconds'},
-    {'1': 'board_temp', '3': 210, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'boardTemp'},
-    {'1': 'poe_mcu_die_temp', '3': 211, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'poeMcuDieTemp'},
-    {'1': 'ifaces_lan_eth_rx_bytes', '3': 300, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'ifacesLanEthRxBytes'},
-    {'1': 'ifaces_lan_eth_rx_packets', '3': 301, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'ifacesLanEthRxPackets'},
-    {'1': 'ifaces_lan_eth_rx_errors', '3': 302, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'ifacesLanEthRxErrors'},
-    {'1': 'ifaces_lan_eth_rx_frame_errors', '3': 303, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'ifacesLanEthRxFrameErrors'},
-    {'1': 'ifaces_lan_eth_tx_bytes', '3': 304, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'ifacesLanEthTxBytes'},
-    {'1': 'ifaces_lan_eth_tx_packets', '3': 305, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'ifacesLanEthTxPackets'},
-    {'1': 'ifaces_lan_eth_tx_errors', '3': 306, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'ifacesLanEthTxErrors'},
-    {'1': 'ifaces_lan1_eth_rx_bytes', '3': 314, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'ifacesLan1EthRxBytes'},
-    {'1': 'ifaces_lan1_eth_rx_packets', '3': 315, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'ifacesLan1EthRxPackets'},
-    {'1': 'ifaces_lan1_eth_rx_errors', '3': 316, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'ifacesLan1EthRxErrors'},
-    {'1': 'ifaces_lan1_eth_rx_frame_errors', '3': 317, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'ifacesLan1EthRxFrameErrors'},
-    {'1': 'ifaces_lan1_eth_tx_bytes', '3': 318, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'ifacesLan1EthTxBytes'},
-    {'1': 'ifaces_lan1_eth_tx_packets', '3': 319, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'ifacesLan1EthTxPackets'},
-    {'1': 'ifaces_lan1_eth_tx_errors', '3': 320, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'ifacesLan1EthTxErrors'},
-    {'1': 'ifaces_wan_eth_rx_bytes', '3': 307, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'ifacesWanEthRxBytes'},
-    {'1': 'ifaces_wan_eth_rx_packets', '3': 308, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'ifacesWanEthRxPackets'},
-    {'1': 'ifaces_wan_eth_rx_errors', '3': 309, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'ifacesWanEthRxErrors'},
-    {'1': 'ifaces_wan_eth_rx_frame_errors', '3': 310, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'ifacesWanEthRxFrameErrors'},
-    {'1': 'ifaces_wan_eth_tx_bytes', '3': 311, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'ifacesWanEthTxBytes'},
-    {'1': 'ifaces_wan_eth_tx_packets', '3': 312, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'ifacesWanEthTxPackets'},
-    {'1': 'ifaces_wan_eth_tx_errors', '3': 313, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'ifacesWanEthTxErrors'},
-    {'1': 'clients', '3': 400, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clients'},
-    {'1': 'clients_2ghz', '3': 401, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clients2ghz'},
-    {'1': 'clients_5ghz', '3': 402, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clients5ghz'},
-    {'1': 'clients_5ghz_high', '3': 413, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clients5ghzHigh'},
-    {'1': 'clients_eth', '3': 403, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clientsEth'},
-    {'1': 'clients_5ghz_rx_bandwidth_20mhz', '3': 429, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clients5ghzRxBandwidth20mhz'},
-    {'1': 'clients_5ghz_rx_bandwidth_40mhz', '3': 430, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clients5ghzRxBandwidth40mhz'},
-    {'1': 'clients_5ghz_rx_bandwidth_80mhz', '3': 431, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clients5ghzRxBandwidth80mhz'},
-    {'1': 'clients_repeater', '3': 404, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clientsRepeater'},
-    {'1': 'clients_repeater_2ghz', '3': 405, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clientsRepeater2ghz'},
-    {'1': 'clients_repeater_5ghz', '3': 406, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clientsRepeater5ghz'},
-    {'1': 'clients_repeater_5ghz_high', '3': 416, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clientsRepeater5ghzHigh'},
-    {'1': 'clients_repeater_eth', '3': 407, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clientsRepeaterEth'},
-    {'1': 'mesh_hops', '3': 408, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'meshHops'},
-    {'1': 'mesh_one_hop_rssi_avg_2ghz', '3': 409, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'meshOneHopRssiAvg2ghz'},
-    {'1': 'mesh_one_hop_rssi_avg_5ghz', '3': 410, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'meshOneHopRssiAvg5ghz'},
-    {'1': 'mesh_one_hop_rssi_avg_5ghz_high', '3': 414, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'meshOneHopRssiAvg5ghzHigh'},
-    {'1': 'mesh_two_hop_rssi_avg_2ghz', '3': 411, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'meshTwoHopRssiAvg2ghz'},
-    {'1': 'mesh_two_hop_rssi_avg_5ghz', '3': 412, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'meshTwoHopRssiAvg5ghz'},
-    {'1': 'mesh_two_hop_rssi_avg_5ghz_high', '3': 415, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'meshTwoHopRssiAvg5ghzHigh'},
-    {'1': 'repeater_tx_rate_mbps_min', '3': 418, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'repeaterTxRateMbpsMin'},
-    {'1': 'repeater_rx_rate_mbps_min', '3': 419, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'repeaterRxRateMbpsMin'},
-    {'1': 'repeater_tx_rate_mbps_avg', '3': 420, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'repeaterTxRateMbpsAvg'},
-    {'1': 'repeater_rx_rate_mbps_avg', '3': 421, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'repeaterRxRateMbpsAvg'},
-    {'1': 'repeater_seconds_since_2s_outage_min', '3': 422, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'repeaterSecondsSince2sOutageMin'},
-    {'1': 'repeater_seconds_since_5s_outage_min', '3': 424, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'repeaterSecondsSince5sOutageMin'},
-    {'1': 'repeater_seconds_since_2s_outage_avg', '3': 423, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'repeaterSecondsSince2sOutageAvg'},
-    {'1': 'repeater_seconds_since_5s_outage_avg', '3': 425, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'repeaterSecondsSince5sOutageAvg'},
-    {'1': 'repeater_latency_ms_1h_max', '3': 426, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'repeaterLatencyMs1hMax'},
-    {'1': 'repeater_latency_ms_1h_avg', '3': 427, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'repeaterLatencyMs1hAvg'},
-    {'1': 'mesh_topology_change_count_1d', '3': 428, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'meshTopologyChangeCount1d'},
-    {'1': 'ping_seconds_since_last_1s_outage', '3': 600, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingSecondsSinceLast1sOutage'},
-    {'1': 'ping_seconds_since_last_2s_outage', '3': 601, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingSecondsSinceLast2sOutage'},
-    {'1': 'ping_seconds_since_last_5s_outage', '3': 602, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingSecondsSinceLast5sOutage'},
-    {'1': 'ping_seconds_since_last_60s_outage', '3': 603, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingSecondsSinceLast60sOutage'},
-    {'1': 'ping_seconds_since_last_300s_outage', '3': 604, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingSecondsSinceLast300sOutage'},
-    {'1': 'ping_drop_rate', '3': 605, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingDropRate'},
-    {'1': 'ping_drop_rate_last_1h', '3': 606, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingDropRateLast1h'},
-    {'1': 'ping_latency', '3': 607, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingLatency'},
-    {'1': 'ping_latency_last_1h', '3': 618, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingLatencyLast1h'},
-    {'1': 'ping_dish_seconds_since_last_1s_outage', '3': 610, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingDishSecondsSinceLast1sOutage'},
-    {'1': 'ping_dish_seconds_since_last_2s_outage', '3': 611, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingDishSecondsSinceLast2sOutage'},
-    {'1': 'ping_dish_seconds_since_last_5s_outage', '3': 612, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingDishSecondsSinceLast5sOutage'},
-    {'1': 'ping_dish_seconds_since_last_60s_outage', '3': 613, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingDishSecondsSinceLast60sOutage'},
-    {'1': 'ping_dish_seconds_since_last_300s_outage', '3': 614, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingDishSecondsSinceLast300sOutage'},
-    {'1': 'ping_dish_drop_rate', '3': 615, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingDishDropRate'},
-    {'1': 'ping_dish_drop_rate_last_1h', '3': 616, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingDishDropRateLast1h'},
-    {'1': 'ping_dish_latency', '3': 617, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingDishLatency'},
-    {'1': 'ping_dish_latency_last_1h', '3': 619, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingDishLatencyLast1h'},
-    {'1': 'client_speedtest_router_download_mbps', '3': 700, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'clientSpeedtestRouterDownloadMbps'},
-    {'1': 'client_speedtest_router_upload_mbps', '3': 701, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'clientSpeedtestRouterUploadMbps'},
-    {'1': 'client_speedtest_router_rssi', '3': 702, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'clientSpeedtestRouterRssi'},
-    {'1': 'client_speedtest_wifi_download_mbps', '3': 703, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'clientSpeedtestWifiDownloadMbps'},
-    {'1': 'client_speedtest_wifi_upload_mbps', '3': 704, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'clientSpeedtestWifiUploadMbps'},
-    {'1': 'client_speedtest_client_download_mbps', '3': 705, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'clientSpeedtestClientDownloadMbps'},
-    {'1': 'client_speedtest_client_upload_mbps', '3': 706, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'clientSpeedtestClientUploadMbps'},
-    {'1': 'client_speedtest_client_rssi', '3': 707, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'clientSpeedtestClientRssi'},
-    {'1': 'client_speedtest_client_iface', '3': 708, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clientSpeedtestClientIface'},
-    {'1': 'client_speedtest_client_oui', '3': 709, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'clientSpeedtestClientOui'},
-    {'1': 'client_speedtest_client_tx_rate', '3': 710, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clientSpeedtestClientTxRate'},
-    {'1': 'client_speedtest_client_rx_rate', '3': 711, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clientSpeedtestClientRxRate'},
-    {'1': 'client_speedtest_client_platform_type', '3': 712, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clientSpeedtestClientPlatformType'},
-    {'1': 'speedtest_tcp_8_download_mbps_avg', '3': 800, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'speedtestTcp8DownloadMbpsAvg'},
-    {'1': 'speedtest_tcp_8_download_mbps_max', '3': 801, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'speedtestTcp8DownloadMbpsMax'},
-    {'1': 'speedtest_tcp_8_upload_mbps_avg', '3': 802, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'speedtestTcp8UploadMbpsAvg'},
-    {'1': 'speedtest_tcp_8_upload_mbps_max', '3': 803, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'speedtestTcp8UploadMbpsMax'},
-    {'1': 'speedtest_tcp_64_download_mbps_avg', '3': 804, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'speedtestTcp64DownloadMbpsAvg'},
-    {'1': 'speedtest_tcp_64_download_mbps_max', '3': 805, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'speedtestTcp64DownloadMbpsMax'},
-    {'1': 'speedtest_tcp_64_upload_mbps_avg', '3': 806, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'speedtestTcp64UploadMbpsAvg'},
-    {'1': 'speedtest_tcp_64_upload_mbps_max', '3': 807, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'speedtestTcp64UploadMbpsMax'},
-    {'1': 'dish_cell_id', '3': 900, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'dishCellId'},
-    {'1': 'config_setup_complete', '3': 1000, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configSetupComplete'},
-    {'1': 'config_bands_split', '3': 1001, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configBandsSplit'},
-    {'1': 'config_is_repeater', '3': 1002, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configIsRepeater'},
-    {'1': 'config_open_network', '3': 1003, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configOpenNetwork'},
-    {'1': 'config_is_aviation', '3': 1004, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configIsAviation'},
-    {'1': 'config_secure_dns', '3': 1005, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configSecureDns'},
-    {'1': 'config_legacy', '3': 1006, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configLegacy'},
-    {'1': 'config_ap_mode', '3': 1007, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configApMode'},
-    {'1': 'config_dfs_enabled', '3': 1008, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configDfsEnabled'},
-    {'1': 'config_network_name_is_default', '3': 1009, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configNetworkNameIsDefault'},
-    {'1': 'config_remote_ssh_enabled', '3': 1010, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configRemoteSshEnabled'},
-    {'1': 'config_is_repeater_wired', '3': 1011, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configIsRepeaterWired'},
-    {'1': 'config_is_repeater_wireless', '3': 1012, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configIsRepeaterWireless'},
-    {'1': 'config_block_schedules_set', '3': 1013, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'configBlockSchedulesSet'},
-    {'1': 'config_custom_nameservers', '3': 1014, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configCustomNameservers'},
-    {'1': 'config_disable_mesh_onboarding', '3': 1015, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configDisableMeshOnboarding'},
-    {'1': 'config_pin_country_code', '3': 1016, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configPinCountryCode'},
-    {'1': 'config_disable_update_reboot', '3': 1017, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configDisableUpdateReboot'},
-    {'1': 'config_disable_2ghz', '3': 1018, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configDisable2ghz'},
-    {'1': 'config_disable_5ghz', '3': 1019, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configDisable5ghz'},
-    {'1': 'config_disable_5ghz_high', '3': 1029, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configDisable5ghzHigh'},
-    {'1': 'config_channel_2ghz', '3': 1020, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'configChannel2ghz'},
-    {'1': 'config_channel_5ghz', '3': 1021, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'configChannel5ghz'},
-    {'1': 'config_channel_5ghz_high', '3': 1022, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'configChannel5ghzHigh'},
-    {'1': 'config_networks', '3': 1023, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'configNetworks'},
-    {'1': 'config_networks_guest', '3': 1024, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'configNetworksGuest'},
-    {'1': 'config_networks_hidden', '3': 1025, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'configNetworksHidden'},
-    {'1': 'config_networks_client_isolation', '3': 1026, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'configNetworksClientIsolation'},
-    {'1': 'config_networks_bands_split', '3': 1027, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'configNetworksBandsSplit'},
-    {'1': 'wan_traffic_control_cake_bytes', '3': 1101, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'wanTrafficControlCakeBytes'},
-    {'1': 'wan_traffic_control_cake_packets', '3': 1102, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'wanTrafficControlCakePackets'},
-    {'1': 'wan_traffic_control_cake_drops', '3': 1103, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'wanTrafficControlCakeDrops'},
-    {'1': 'wan_traffic_control_cake_ack_drops', '3': 1104, '4': 1, '5': 11, '6': '.google.protobuf.Int64Value', '10': 'wanTrafficControlCakeAckDrops'},
-    {'1': 'conntrack_entries', '3': 1100, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'conntrackEntries'},
-    {'1': 'dhcp_secs_eq_0', '3': 1105, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'dhcpSecsEq0'},
-    {'1': 'dhcp_secs_gt_0', '3': 1106, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'dhcpSecsGt0'},
-    {'1': 'dhcp_secs_gt_10', '3': 1107, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'dhcpSecsGt10'},
-    {'1': 'dhcp_secs_gt_30', '3': 1108, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'dhcpSecsGt30'},
-    {'1': 'dhcp_secs_gt_60', '3': 1109, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'dhcpSecsGt60'},
+    {
+      '1': 'id',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'id'
+    },
+    {
+      '1': 'timestamp_date',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'timestampDate'
+    },
+    {
+      '1': 'timestamp_hour',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'timestampHour'
+    },
+    {
+      '1': 'timestamp',
+      '3': 10000,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Telemetron.Public.Common.TimestampInfo',
+      '10': 'timestamp'
+    },
+    {
+      '1': 'sys_hw_gen',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'sysHwGen'
+    },
+    {
+      '1': 'sys_sw',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'sysSw'
+    },
+    {
+      '1': 'sys_country',
+      '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'sysCountry'
+    },
+    {
+      '1': 'sys_is_dev',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'sysIsDev'
+    },
+    {
+      '1': 'sys_alloc_fds',
+      '3': 8,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'sysAllocFds'
+    },
+    {
+      '1': 'sys_cpu_usage',
+      '3': 9,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'sysCpuUsage'
+    },
+    {
+      '1': 'sys_mem_free_kb',
+      '3': 10,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'sysMemFreeKb'
+    },
+    {
+      '1': 'sys_bootcount',
+      '3': 11,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int32Value',
+      '10': 'sysBootcount'
+    },
+    {
+      '1': 'sys_partitions_equal',
+      '3': 12,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'sysPartitionsEqual'
+    },
+    {
+      '1': 'sys_uptime_seconds',
+      '3': 13,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'sysUptimeSeconds'
+    },
+    {
+      '1': 'sys_anti_rollback_version',
+      '3': 14,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int32Value',
+      '10': 'sysAntiRollbackVersion'
+    },
+    {
+      '1': 'sys_is_witl',
+      '3': 15,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'sysIsWitl'
+    },
+    {
+      '1': 'sys_is_aviation_conformed',
+      '3': 16,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'sysIsAviationConformed'
+    },
+    {
+      '1': 'sys_ubi_max_ec',
+      '3': 17,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'sysUbiMaxEc'
+    },
+    {
+      '1': 'sys_ubi_bad_peb',
+      '3': 18,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'sysUbiBadPeb'
+    },
+    {
+      '1': 'sys_board_rev',
+      '3': 19,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'sysBoardRev'
+    },
+    {
+      '1': 'radios_2ghz_channel',
+      '3': 100,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radios2ghzChannel'
+    },
+    {
+      '1': 'radios_2ghz_antenna1_rssi',
+      '3': 101,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios2ghzAntenna1Rssi'
+    },
+    {
+      '1': 'radios_2ghz_antenna2_rssi',
+      '3': 102,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios2ghzAntenna2Rssi'
+    },
+    {
+      '1': 'radios_2ghz_antenna3_rssi',
+      '3': 103,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios2ghzAntenna3Rssi'
+    },
+    {
+      '1': 'radios_2ghz_antenna4_rssi',
+      '3': 197,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios2ghzAntenna4Rssi'
+    },
+    {
+      '1': 'radios_2ghz_antenna1_tssi',
+      '3': 157,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios2ghzAntenna1Tssi'
+    },
+    {
+      '1': 'radios_2ghz_antenna2_tssi',
+      '3': 158,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios2ghzAntenna2Tssi'
+    },
+    {
+      '1': 'radios_2ghz_antenna3_tssi',
+      '3': 159,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios2ghzAntenna3Tssi'
+    },
+    {
+      '1': 'radios_2ghz_antenna4_tssi',
+      '3': 160,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios2ghzAntenna4Tssi'
+    },
+    {
+      '1': 'radios_2ghz_iface_count',
+      '3': 104,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radios2ghzIfaceCount'
+    },
+    {
+      '1': 'radios_2ghz_chan_busy_fraction',
+      '3': 105,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios2ghzChanBusyFraction'
+    },
+    {
+      '1': 'radios_2ghz_edcca_fraction',
+      '3': 106,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios2ghzEdccaFraction'
+    },
+    {
+      '1': 'radios_2ghz_overlapping_bss_fraction',
+      '3': 107,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios2ghzOverlappingBssFraction'
+    },
+    {
+      '1': 'radios_2ghz_rx_bytes',
+      '3': 108,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'radios2ghzRxBytes'
+    },
+    {
+      '1': 'radios_2ghz_rx_packets',
+      '3': 109,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'radios2ghzRxPackets'
+    },
+    {
+      '1': 'radios_2ghz_rx_errors',
+      '3': 110,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'radios2ghzRxErrors'
+    },
+    {
+      '1': 'radios_2ghz_rx_frame_errors',
+      '3': 111,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'radios2ghzRxFrameErrors'
+    },
+    {
+      '1': 'radios_2ghz_rx_packet_error_rate',
+      '3': 112,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios2ghzRxPacketErrorRate'
+    },
+    {
+      '1': 'radios_2ghz_rx_airtime_fraction',
+      '3': 113,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios2ghzRxAirtimeFraction'
+    },
+    {
+      '1': 'radios_2ghz_tx_bytes',
+      '3': 114,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'radios2ghzTxBytes'
+    },
+    {
+      '1': 'radios_2ghz_tx_packets',
+      '3': 115,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'radios2ghzTxPackets'
+    },
+    {
+      '1': 'radios_2ghz_tx_errors',
+      '3': 116,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'radios2ghzTxErrors'
+    },
+    {
+      '1': 'radios_2ghz_tx_packet_error_rate',
+      '3': 117,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios2ghzTxPacketErrorRate'
+    },
+    {
+      '1': 'radios_2ghz_tx_airtime_fraction',
+      '3': 118,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios2ghzTxAirtimeFraction'
+    },
+    {
+      '1': 'radios_5ghz_channel',
+      '3': 119,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radios5ghzChannel'
+    },
+    {
+      '1': 'radios_5ghz_antenna1_rssi',
+      '3': 120,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzAntenna1Rssi'
+    },
+    {
+      '1': 'radios_5ghz_antenna2_rssi',
+      '3': 121,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzAntenna2Rssi'
+    },
+    {
+      '1': 'radios_5ghz_antenna3_rssi',
+      '3': 122,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzAntenna3Rssi'
+    },
+    {
+      '1': 'radios_5ghz_antenna4_rssi',
+      '3': 198,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzAntenna4Rssi'
+    },
+    {
+      '1': 'radios_5ghz_antenna1_tssi',
+      '3': 161,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzAntenna1Tssi'
+    },
+    {
+      '1': 'radios_5ghz_antenna2_tssi',
+      '3': 162,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzAntenna2Tssi'
+    },
+    {
+      '1': 'radios_5ghz_antenna3_tssi',
+      '3': 163,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzAntenna3Tssi'
+    },
+    {
+      '1': 'radios_5ghz_antenna4_tssi',
+      '3': 164,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzAntenna4Tssi'
+    },
+    {
+      '1': 'radios_5ghz_iface_count',
+      '3': 123,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radios5ghzIfaceCount'
+    },
+    {
+      '1': 'radios_5ghz_chan_busy_fraction',
+      '3': 124,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzChanBusyFraction'
+    },
+    {
+      '1': 'radios_5ghz_edcca_fraction',
+      '3': 125,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzEdccaFraction'
+    },
+    {
+      '1': 'radios_5ghz_overlapping_bss_fraction',
+      '3': 126,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzOverlappingBssFraction'
+    },
+    {
+      '1': 'radios_5ghz_rx_bytes',
+      '3': 127,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'radios5ghzRxBytes'
+    },
+    {
+      '1': 'radios_5ghz_rx_packets',
+      '3': 128,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'radios5ghzRxPackets'
+    },
+    {
+      '1': 'radios_5ghz_rx_errors',
+      '3': 129,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'radios5ghzRxErrors'
+    },
+    {
+      '1': 'radios_5ghz_rx_frame_errors',
+      '3': 130,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'radios5ghzRxFrameErrors'
+    },
+    {
+      '1': 'radios_5ghz_rx_packet_error_rate',
+      '3': 131,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzRxPacketErrorRate'
+    },
+    {
+      '1': 'radios_5ghz_rx_airtime_fraction',
+      '3': 132,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzRxAirtimeFraction'
+    },
+    {
+      '1': 'radios_5ghz_tx_bytes',
+      '3': 133,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'radios5ghzTxBytes'
+    },
+    {
+      '1': 'radios_5ghz_tx_packets',
+      '3': 134,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'radios5ghzTxPackets'
+    },
+    {
+      '1': 'radios_5ghz_tx_errors',
+      '3': 135,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'radios5ghzTxErrors'
+    },
+    {
+      '1': 'radios_5ghz_tx_packet_error_rate',
+      '3': 136,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzTxPacketErrorRate'
+    },
+    {
+      '1': 'radios_5ghz_tx_airtime_fraction',
+      '3': 137,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzTxAirtimeFraction'
+    },
+    {
+      '1': 'radios_5ghz_high_channel',
+      '3': 138,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radios5ghzHighChannel'
+    },
+    {
+      '1': 'radios_5ghz_high_antenna1_rssi',
+      '3': 139,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzHighAntenna1Rssi'
+    },
+    {
+      '1': 'radios_5ghz_high_antenna2_rssi',
+      '3': 140,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzHighAntenna2Rssi'
+    },
+    {
+      '1': 'radios_5ghz_high_antenna3_rssi',
+      '3': 141,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzHighAntenna3Rssi'
+    },
+    {
+      '1': 'radios_5ghz_high_antenna4_rssi',
+      '3': 199,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzHighAntenna4Rssi'
+    },
+    {
+      '1': 'radios_5ghz_high_antenna1_tssi',
+      '3': 165,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzHighAntenna1Tssi'
+    },
+    {
+      '1': 'radios_5ghz_high_antenna2_tssi',
+      '3': 166,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzHighAntenna2Tssi'
+    },
+    {
+      '1': 'radios_5ghz_high_antenna3_tssi',
+      '3': 167,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzHighAntenna3Tssi'
+    },
+    {
+      '1': 'radios_5ghz_high_antenna4_tssi',
+      '3': 168,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzHighAntenna4Tssi'
+    },
+    {
+      '1': 'radios_5ghz_high_iface_count',
+      '3': 142,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radios5ghzHighIfaceCount'
+    },
+    {
+      '1': 'radios_5ghz_high_chan_busy_fraction',
+      '3': 143,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzHighChanBusyFraction'
+    },
+    {
+      '1': 'radios_5ghz_high_edcca_fraction',
+      '3': 144,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzHighEdccaFraction'
+    },
+    {
+      '1': 'radios_5ghz_high_overlapping_bss_fraction',
+      '3': 145,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzHighOverlappingBssFraction'
+    },
+    {
+      '1': 'radios_5ghz_high_rx_bytes',
+      '3': 146,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'radios5ghzHighRxBytes'
+    },
+    {
+      '1': 'radios_5ghz_high_rx_packets',
+      '3': 147,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'radios5ghzHighRxPackets'
+    },
+    {
+      '1': 'radios_5ghz_high_rx_errors',
+      '3': 148,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'radios5ghzHighRxErrors'
+    },
+    {
+      '1': 'radios_5ghz_high_rx_frame_errors',
+      '3': 149,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'radios5ghzHighRxFrameErrors'
+    },
+    {
+      '1': 'radios_5ghz_high_rx_packet_error_rate',
+      '3': 150,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzHighRxPacketErrorRate'
+    },
+    {
+      '1': 'radios_5ghz_high_rx_airtime_fraction',
+      '3': 151,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzHighRxAirtimeFraction'
+    },
+    {
+      '1': 'radios_5ghz_high_tx_bytes',
+      '3': 152,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'radios5ghzHighTxBytes'
+    },
+    {
+      '1': 'radios_5ghz_high_tx_packets',
+      '3': 153,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'radios5ghzHighTxPackets'
+    },
+    {
+      '1': 'radios_5ghz_high_tx_errors',
+      '3': 154,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'radios5ghzHighTxErrors'
+    },
+    {
+      '1': 'radios_5ghz_high_tx_packet_error_rate',
+      '3': 155,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzHighTxPacketErrorRate'
+    },
+    {
+      '1': 'radios_5ghz_high_tx_airtime_fraction',
+      '3': 156,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzHighTxAirtimeFraction'
+    },
+    {
+      '1': 'radios_2ghz_thermal_temp',
+      '3': 200,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios2ghzThermalTemp'
+    },
+    {
+      '1': 'radios_5ghz_thermal_temp',
+      '3': 201,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzThermalTemp'
+    },
+    {
+      '1': 'radios_5ghz_high_thermal_temp',
+      '3': 206,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzHighThermalTemp'
+    },
+    {
+      '1': 'radios_2ghz_thermal_duty_cycle',
+      '3': 202,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios2ghzThermalDutyCycle'
+    },
+    {
+      '1': 'radios_5ghz_thermal_duty_cycle',
+      '3': 203,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzThermalDutyCycle'
+    },
+    {
+      '1': 'radios_5ghz_high_thermal_duty_cycle',
+      '3': 207,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzHighThermalDutyCycle'
+    },
+    {
+      '1': 'radios_2ghz_thermal_throttled_seconds',
+      '3': 204,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radios2ghzThermalThrottledSeconds'
+    },
+    {
+      '1': 'radios_5ghz_thermal_throttled_seconds',
+      '3': 205,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radios5ghzThermalThrottledSeconds'
+    },
+    {
+      '1': 'radios_5ghz_high_thermal_throttled_seconds',
+      '3': 208,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radios5ghzHighThermalThrottledSeconds'
+    },
+    {
+      '1': 'board_temp',
+      '3': 210,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'boardTemp'
+    },
+    {
+      '1': 'poe_mcu_die_temp',
+      '3': 211,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'poeMcuDieTemp'
+    },
+    {
+      '1': 'ifaces_lan_eth_rx_bytes',
+      '3': 300,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'ifacesLanEthRxBytes'
+    },
+    {
+      '1': 'ifaces_lan_eth_rx_packets',
+      '3': 301,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'ifacesLanEthRxPackets'
+    },
+    {
+      '1': 'ifaces_lan_eth_rx_errors',
+      '3': 302,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'ifacesLanEthRxErrors'
+    },
+    {
+      '1': 'ifaces_lan_eth_rx_frame_errors',
+      '3': 303,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'ifacesLanEthRxFrameErrors'
+    },
+    {
+      '1': 'ifaces_lan_eth_tx_bytes',
+      '3': 304,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'ifacesLanEthTxBytes'
+    },
+    {
+      '1': 'ifaces_lan_eth_tx_packets',
+      '3': 305,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'ifacesLanEthTxPackets'
+    },
+    {
+      '1': 'ifaces_lan_eth_tx_errors',
+      '3': 306,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'ifacesLanEthTxErrors'
+    },
+    {
+      '1': 'ifaces_lan1_eth_rx_bytes',
+      '3': 314,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'ifacesLan1EthRxBytes'
+    },
+    {
+      '1': 'ifaces_lan1_eth_rx_packets',
+      '3': 315,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'ifacesLan1EthRxPackets'
+    },
+    {
+      '1': 'ifaces_lan1_eth_rx_errors',
+      '3': 316,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'ifacesLan1EthRxErrors'
+    },
+    {
+      '1': 'ifaces_lan1_eth_rx_frame_errors',
+      '3': 317,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'ifacesLan1EthRxFrameErrors'
+    },
+    {
+      '1': 'ifaces_lan1_eth_tx_bytes',
+      '3': 318,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'ifacesLan1EthTxBytes'
+    },
+    {
+      '1': 'ifaces_lan1_eth_tx_packets',
+      '3': 319,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'ifacesLan1EthTxPackets'
+    },
+    {
+      '1': 'ifaces_lan1_eth_tx_errors',
+      '3': 320,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'ifacesLan1EthTxErrors'
+    },
+    {
+      '1': 'ifaces_wan_eth_rx_bytes',
+      '3': 307,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'ifacesWanEthRxBytes'
+    },
+    {
+      '1': 'ifaces_wan_eth_rx_packets',
+      '3': 308,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'ifacesWanEthRxPackets'
+    },
+    {
+      '1': 'ifaces_wan_eth_rx_errors',
+      '3': 309,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'ifacesWanEthRxErrors'
+    },
+    {
+      '1': 'ifaces_wan_eth_rx_frame_errors',
+      '3': 310,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'ifacesWanEthRxFrameErrors'
+    },
+    {
+      '1': 'ifaces_wan_eth_tx_bytes',
+      '3': 311,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'ifacesWanEthTxBytes'
+    },
+    {
+      '1': 'ifaces_wan_eth_tx_packets',
+      '3': 312,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'ifacesWanEthTxPackets'
+    },
+    {
+      '1': 'ifaces_wan_eth_tx_errors',
+      '3': 313,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'ifacesWanEthTxErrors'
+    },
+    {
+      '1': 'clients',
+      '3': 400,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clients'
+    },
+    {
+      '1': 'clients_2ghz',
+      '3': 401,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clients2ghz'
+    },
+    {
+      '1': 'clients_5ghz',
+      '3': 402,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clients5ghz'
+    },
+    {
+      '1': 'clients_5ghz_high',
+      '3': 413,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clients5ghzHigh'
+    },
+    {
+      '1': 'clients_eth',
+      '3': 403,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientsEth'
+    },
+    {
+      '1': 'clients_5ghz_rx_bandwidth_20mhz',
+      '3': 429,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clients5ghzRxBandwidth20mhz'
+    },
+    {
+      '1': 'clients_5ghz_rx_bandwidth_40mhz',
+      '3': 430,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clients5ghzRxBandwidth40mhz'
+    },
+    {
+      '1': 'clients_5ghz_rx_bandwidth_80mhz',
+      '3': 431,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clients5ghzRxBandwidth80mhz'
+    },
+    {
+      '1': 'clients_repeater',
+      '3': 404,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientsRepeater'
+    },
+    {
+      '1': 'clients_repeater_2ghz',
+      '3': 405,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientsRepeater2ghz'
+    },
+    {
+      '1': 'clients_repeater_5ghz',
+      '3': 406,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientsRepeater5ghz'
+    },
+    {
+      '1': 'clients_repeater_5ghz_high',
+      '3': 416,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientsRepeater5ghzHigh'
+    },
+    {
+      '1': 'clients_repeater_eth',
+      '3': 407,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientsRepeaterEth'
+    },
+    {
+      '1': 'mesh_hops',
+      '3': 408,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'meshHops'
+    },
+    {
+      '1': 'mesh_one_hop_rssi_avg_2ghz',
+      '3': 409,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'meshOneHopRssiAvg2ghz'
+    },
+    {
+      '1': 'mesh_one_hop_rssi_avg_5ghz',
+      '3': 410,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'meshOneHopRssiAvg5ghz'
+    },
+    {
+      '1': 'mesh_one_hop_rssi_avg_5ghz_high',
+      '3': 414,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'meshOneHopRssiAvg5ghzHigh'
+    },
+    {
+      '1': 'mesh_two_hop_rssi_avg_2ghz',
+      '3': 411,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'meshTwoHopRssiAvg2ghz'
+    },
+    {
+      '1': 'mesh_two_hop_rssi_avg_5ghz',
+      '3': 412,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'meshTwoHopRssiAvg5ghz'
+    },
+    {
+      '1': 'mesh_two_hop_rssi_avg_5ghz_high',
+      '3': 415,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'meshTwoHopRssiAvg5ghzHigh'
+    },
+    {
+      '1': 'repeater_tx_rate_mbps_min',
+      '3': 418,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'repeaterTxRateMbpsMin'
+    },
+    {
+      '1': 'repeater_rx_rate_mbps_min',
+      '3': 419,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'repeaterRxRateMbpsMin'
+    },
+    {
+      '1': 'repeater_tx_rate_mbps_avg',
+      '3': 420,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'repeaterTxRateMbpsAvg'
+    },
+    {
+      '1': 'repeater_rx_rate_mbps_avg',
+      '3': 421,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'repeaterRxRateMbpsAvg'
+    },
+    {
+      '1': 'repeater_seconds_since_2s_outage_min',
+      '3': 422,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'repeaterSecondsSince2sOutageMin'
+    },
+    {
+      '1': 'repeater_seconds_since_5s_outage_min',
+      '3': 424,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'repeaterSecondsSince5sOutageMin'
+    },
+    {
+      '1': 'repeater_seconds_since_2s_outage_avg',
+      '3': 423,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'repeaterSecondsSince2sOutageAvg'
+    },
+    {
+      '1': 'repeater_seconds_since_5s_outage_avg',
+      '3': 425,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'repeaterSecondsSince5sOutageAvg'
+    },
+    {
+      '1': 'repeater_latency_ms_1h_max',
+      '3': 426,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'repeaterLatencyMs1hMax'
+    },
+    {
+      '1': 'repeater_latency_ms_1h_avg',
+      '3': 427,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'repeaterLatencyMs1hAvg'
+    },
+    {
+      '1': 'mesh_topology_change_count_1d',
+      '3': 428,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'meshTopologyChangeCount1d'
+    },
+    {
+      '1': 'ping_seconds_since_last_1s_outage',
+      '3': 600,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingSecondsSinceLast1sOutage'
+    },
+    {
+      '1': 'ping_seconds_since_last_2s_outage',
+      '3': 601,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingSecondsSinceLast2sOutage'
+    },
+    {
+      '1': 'ping_seconds_since_last_5s_outage',
+      '3': 602,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingSecondsSinceLast5sOutage'
+    },
+    {
+      '1': 'ping_seconds_since_last_60s_outage',
+      '3': 603,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingSecondsSinceLast60sOutage'
+    },
+    {
+      '1': 'ping_seconds_since_last_300s_outage',
+      '3': 604,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingSecondsSinceLast300sOutage'
+    },
+    {
+      '1': 'ping_drop_rate',
+      '3': 605,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingDropRate'
+    },
+    {
+      '1': 'ping_drop_rate_last_1h',
+      '3': 606,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingDropRateLast1h'
+    },
+    {
+      '1': 'ping_latency',
+      '3': 607,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingLatency'
+    },
+    {
+      '1': 'ping_latency_last_1h',
+      '3': 618,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingLatencyLast1h'
+    },
+    {
+      '1': 'ping_dish_seconds_since_last_1s_outage',
+      '3': 610,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingDishSecondsSinceLast1sOutage'
+    },
+    {
+      '1': 'ping_dish_seconds_since_last_2s_outage',
+      '3': 611,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingDishSecondsSinceLast2sOutage'
+    },
+    {
+      '1': 'ping_dish_seconds_since_last_5s_outage',
+      '3': 612,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingDishSecondsSinceLast5sOutage'
+    },
+    {
+      '1': 'ping_dish_seconds_since_last_60s_outage',
+      '3': 613,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingDishSecondsSinceLast60sOutage'
+    },
+    {
+      '1': 'ping_dish_seconds_since_last_300s_outage',
+      '3': 614,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingDishSecondsSinceLast300sOutage'
+    },
+    {
+      '1': 'ping_dish_drop_rate',
+      '3': 615,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingDishDropRate'
+    },
+    {
+      '1': 'ping_dish_drop_rate_last_1h',
+      '3': 616,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingDishDropRateLast1h'
+    },
+    {
+      '1': 'ping_dish_latency',
+      '3': 617,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingDishLatency'
+    },
+    {
+      '1': 'ping_dish_latency_last_1h',
+      '3': 619,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingDishLatencyLast1h'
+    },
+    {
+      '1': 'client_speedtest_router_download_mbps',
+      '3': 700,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'clientSpeedtestRouterDownloadMbps'
+    },
+    {
+      '1': 'client_speedtest_router_upload_mbps',
+      '3': 701,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'clientSpeedtestRouterUploadMbps'
+    },
+    {
+      '1': 'client_speedtest_router_rssi',
+      '3': 702,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'clientSpeedtestRouterRssi'
+    },
+    {
+      '1': 'client_speedtest_wifi_download_mbps',
+      '3': 703,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'clientSpeedtestWifiDownloadMbps'
+    },
+    {
+      '1': 'client_speedtest_wifi_upload_mbps',
+      '3': 704,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'clientSpeedtestWifiUploadMbps'
+    },
+    {
+      '1': 'client_speedtest_client_download_mbps',
+      '3': 705,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'clientSpeedtestClientDownloadMbps'
+    },
+    {
+      '1': 'client_speedtest_client_upload_mbps',
+      '3': 706,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'clientSpeedtestClientUploadMbps'
+    },
+    {
+      '1': 'client_speedtest_client_rssi',
+      '3': 707,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'clientSpeedtestClientRssi'
+    },
+    {
+      '1': 'client_speedtest_client_iface',
+      '3': 708,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientSpeedtestClientIface'
+    },
+    {
+      '1': 'client_speedtest_client_oui',
+      '3': 709,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'clientSpeedtestClientOui'
+    },
+    {
+      '1': 'client_speedtest_client_tx_rate',
+      '3': 710,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientSpeedtestClientTxRate'
+    },
+    {
+      '1': 'client_speedtest_client_rx_rate',
+      '3': 711,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientSpeedtestClientRxRate'
+    },
+    {
+      '1': 'client_speedtest_client_platform_type',
+      '3': 712,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientSpeedtestClientPlatformType'
+    },
+    {
+      '1': 'speedtest_tcp_8_download_mbps_avg',
+      '3': 800,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'speedtestTcp8DownloadMbpsAvg'
+    },
+    {
+      '1': 'speedtest_tcp_8_download_mbps_max',
+      '3': 801,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'speedtestTcp8DownloadMbpsMax'
+    },
+    {
+      '1': 'speedtest_tcp_8_upload_mbps_avg',
+      '3': 802,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'speedtestTcp8UploadMbpsAvg'
+    },
+    {
+      '1': 'speedtest_tcp_8_upload_mbps_max',
+      '3': 803,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'speedtestTcp8UploadMbpsMax'
+    },
+    {
+      '1': 'speedtest_tcp_64_download_mbps_avg',
+      '3': 804,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'speedtestTcp64DownloadMbpsAvg'
+    },
+    {
+      '1': 'speedtest_tcp_64_download_mbps_max',
+      '3': 805,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'speedtestTcp64DownloadMbpsMax'
+    },
+    {
+      '1': 'speedtest_tcp_64_upload_mbps_avg',
+      '3': 806,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'speedtestTcp64UploadMbpsAvg'
+    },
+    {
+      '1': 'speedtest_tcp_64_upload_mbps_max',
+      '3': 807,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'speedtestTcp64UploadMbpsMax'
+    },
+    {
+      '1': 'dish_cell_id',
+      '3': 900,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'dishCellId'
+    },
+    {
+      '1': 'config_setup_complete',
+      '3': 1000,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configSetupComplete'
+    },
+    {
+      '1': 'config_bands_split',
+      '3': 1001,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configBandsSplit'
+    },
+    {
+      '1': 'config_is_repeater',
+      '3': 1002,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configIsRepeater'
+    },
+    {
+      '1': 'config_open_network',
+      '3': 1003,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configOpenNetwork'
+    },
+    {
+      '1': 'config_is_aviation',
+      '3': 1004,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configIsAviation'
+    },
+    {
+      '1': 'config_secure_dns',
+      '3': 1005,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configSecureDns'
+    },
+    {
+      '1': 'config_legacy',
+      '3': 1006,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configLegacy'
+    },
+    {
+      '1': 'config_ap_mode',
+      '3': 1007,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configApMode'
+    },
+    {
+      '1': 'config_dfs_enabled',
+      '3': 1008,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configDfsEnabled'
+    },
+    {
+      '1': 'config_network_name_is_default',
+      '3': 1009,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configNetworkNameIsDefault'
+    },
+    {
+      '1': 'config_remote_ssh_enabled',
+      '3': 1010,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configRemoteSshEnabled'
+    },
+    {
+      '1': 'config_is_repeater_wired',
+      '3': 1011,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configIsRepeaterWired'
+    },
+    {
+      '1': 'config_is_repeater_wireless',
+      '3': 1012,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configIsRepeaterWireless'
+    },
+    {
+      '1': 'config_block_schedules_set',
+      '3': 1013,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'configBlockSchedulesSet'
+    },
+    {
+      '1': 'config_custom_nameservers',
+      '3': 1014,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configCustomNameservers'
+    },
+    {
+      '1': 'config_disable_mesh_onboarding',
+      '3': 1015,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configDisableMeshOnboarding'
+    },
+    {
+      '1': 'config_pin_country_code',
+      '3': 1016,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configPinCountryCode'
+    },
+    {
+      '1': 'config_disable_update_reboot',
+      '3': 1017,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configDisableUpdateReboot'
+    },
+    {
+      '1': 'config_disable_2ghz',
+      '3': 1018,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configDisable2ghz'
+    },
+    {
+      '1': 'config_disable_5ghz',
+      '3': 1019,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configDisable5ghz'
+    },
+    {
+      '1': 'config_disable_5ghz_high',
+      '3': 1029,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configDisable5ghzHigh'
+    },
+    {
+      '1': 'config_channel_2ghz',
+      '3': 1020,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'configChannel2ghz'
+    },
+    {
+      '1': 'config_channel_5ghz',
+      '3': 1021,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'configChannel5ghz'
+    },
+    {
+      '1': 'config_channel_5ghz_high',
+      '3': 1022,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'configChannel5ghzHigh'
+    },
+    {
+      '1': 'config_networks',
+      '3': 1023,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'configNetworks'
+    },
+    {
+      '1': 'config_networks_guest',
+      '3': 1024,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'configNetworksGuest'
+    },
+    {
+      '1': 'config_networks_hidden',
+      '3': 1025,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'configNetworksHidden'
+    },
+    {
+      '1': 'config_networks_client_isolation',
+      '3': 1026,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'configNetworksClientIsolation'
+    },
+    {
+      '1': 'config_networks_bands_split',
+      '3': 1027,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'configNetworksBandsSplit'
+    },
+    {
+      '1': 'wan_traffic_control_cake_bytes',
+      '3': 1101,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'wanTrafficControlCakeBytes'
+    },
+    {
+      '1': 'wan_traffic_control_cake_packets',
+      '3': 1102,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'wanTrafficControlCakePackets'
+    },
+    {
+      '1': 'wan_traffic_control_cake_drops',
+      '3': 1103,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'wanTrafficControlCakeDrops'
+    },
+    {
+      '1': 'wan_traffic_control_cake_ack_drops',
+      '3': 1104,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int64Value',
+      '10': 'wanTrafficControlCakeAckDrops'
+    },
+    {
+      '1': 'conntrack_entries',
+      '3': 1100,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'conntrackEntries'
+    },
+    {
+      '1': 'dhcp_secs_eq_0',
+      '3': 1105,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'dhcpSecsEq0'
+    },
+    {
+      '1': 'dhcp_secs_gt_0',
+      '3': 1106,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'dhcpSecsGt0'
+    },
+    {
+      '1': 'dhcp_secs_gt_10',
+      '3': 1107,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'dhcpSecsGt10'
+    },
+    {
+      '1': 'dhcp_secs_gt_30',
+      '3': 1108,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'dhcpSecsGt30'
+    },
+    {
+      '1': 'dhcp_secs_gt_60',
+      '3': 1109,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'dhcpSecsGt60'
+    },
   ],
 };
 
@@ -1860,8 +4379,22 @@ const starlink_router_alerts$json = {
     {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
     {'1': 'source', '3': 2, '4': 1, '5': 9, '10': 'source'},
     {'1': 'active', '3': 3, '4': 1, '5': 8, '10': 'active'},
-    {'1': 'start', '3': 4, '4': 1, '5': 11, '6': '.SpaceX.API.Telemetron.Public.Common.TimestampInfo', '10': 'start'},
-    {'1': 'end', '3': 5, '4': 1, '5': 11, '6': '.SpaceX.API.Telemetron.Public.Common.TimestampInfo', '10': 'end'},
+    {
+      '1': 'start',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Telemetron.Public.Common.TimestampInfo',
+      '10': 'start'
+    },
+    {
+      '1': 'end',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Telemetron.Public.Common.TimestampInfo',
+      '10': 'end'
+    },
   ],
 };
 
@@ -1878,37 +4411,247 @@ const starlink_router_client_speedtests$json = {
   '1': 'starlink_router_client_speedtests',
   '2': [
     {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
-    {'1': 'data_record', '3': 2, '4': 1, '5': 11, '6': '.SpaceX.API.Telemetron.Public.Common.TimestampInfo', '10': 'dataRecord'},
+    {
+      '1': 'data_record',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Telemetron.Public.Common.TimestampInfo',
+      '10': 'dataRecord'
+    },
     {'1': 'country', '3': 3, '4': 1, '5': 9, '10': 'country'},
-    {'1': 'speedtest_id', '3': 30, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'speedtestId'},
-    {'1': 'client_rssi', '3': 8, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'clientRssi'},
-    {'1': 'router_rssi', '3': 9, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'routerRssi'},
-    {'1': 'client_iface', '3': 10, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clientIface'},
-    {'1': 'client_oui', '3': 11, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'clientOui'},
-    {'1': 'client_tx_rate', '3': 12, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clientTxRate'},
-    {'1': 'client_rx_rate', '3': 13, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clientRxRate'},
-    {'1': 'client_platform_type', '3': 27, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'clientPlatformType'},
-    {'1': 'client_app_version', '3': 34, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'clientAppVersion'},
-    {'1': 'client_app_build', '3': 35, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clientAppBuild'},
-    {'1': 'client_rx_phy_mode', '3': 31, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clientRxPhyMode'},
-    {'1': 'client_rx_spatial_streams', '3': 32, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clientRxSpatialStreams'},
-    {'1': 'client_rx_mcs', '3': 33, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clientRxMcs'},
-    {'1': 'client_download_start_time', '3': 4, '4': 1, '5': 11, '6': '.SpaceX.API.Telemetron.Public.Common.TimestampInfo', '10': 'clientDownloadStartTime'},
-    {'1': 'client_upload_start_time', '3': 5, '4': 1, '5': 11, '6': '.SpaceX.API.Telemetron.Public.Common.TimestampInfo', '10': 'clientUploadStartTime'},
-    {'1': 'client_download_mbps_avg', '3': 6, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'clientDownloadMbpsAvg'},
-    {'1': 'client_upload_mbps_avg', '3': 7, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'clientUploadMbpsAvg'},
-    {'1': 'client_target', '3': 28, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'clientTarget'},
-    {'1': 'client_tcp_streams', '3': 16, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clientTcpStreams'},
-    {'1': 'router_download_start_time', '3': 17, '4': 1, '5': 11, '6': '.SpaceX.API.Telemetron.Public.Common.TimestampInfo', '10': 'routerDownloadStartTime'},
-    {'1': 'router_upload_start_time', '3': 18, '4': 1, '5': 11, '6': '.SpaceX.API.Telemetron.Public.Common.TimestampInfo', '10': 'routerUploadStartTime'},
-    {'1': 'router_download_mbps_avg', '3': 19, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'routerDownloadMbpsAvg'},
-    {'1': 'router_upload_mbps_avg', '3': 20, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'routerUploadMbpsAvg'},
-    {'1': 'router_target', '3': 29, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'routerTarget'},
-    {'1': 'router_tcp_streams', '3': 22, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'routerTcpStreams'},
-    {'1': 'wifi_download_start_time', '3': 23, '4': 1, '5': 11, '6': '.SpaceX.API.Telemetron.Public.Common.TimestampInfo', '10': 'wifiDownloadStartTime'},
-    {'1': 'wifi_upload_start_time', '3': 24, '4': 1, '5': 11, '6': '.SpaceX.API.Telemetron.Public.Common.TimestampInfo', '10': 'wifiUploadStartTime'},
-    {'1': 'wifi_download_mbps_avg', '3': 25, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'wifiDownloadMbpsAvg'},
-    {'1': 'wifi_upload_mbps_avg', '3': 26, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'wifiUploadMbpsAvg'},
+    {
+      '1': 'speedtest_id',
+      '3': 30,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'speedtestId'
+    },
+    {
+      '1': 'client_rssi',
+      '3': 8,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'clientRssi'
+    },
+    {
+      '1': 'router_rssi',
+      '3': 9,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'routerRssi'
+    },
+    {
+      '1': 'client_iface',
+      '3': 10,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientIface'
+    },
+    {
+      '1': 'client_oui',
+      '3': 11,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'clientOui'
+    },
+    {
+      '1': 'client_tx_rate',
+      '3': 12,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientTxRate'
+    },
+    {
+      '1': 'client_rx_rate',
+      '3': 13,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientRxRate'
+    },
+    {
+      '1': 'client_platform_type',
+      '3': 27,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'clientPlatformType'
+    },
+    {
+      '1': 'client_app_version',
+      '3': 34,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'clientAppVersion'
+    },
+    {
+      '1': 'client_app_build',
+      '3': 35,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientAppBuild'
+    },
+    {
+      '1': 'client_rx_phy_mode',
+      '3': 31,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientRxPhyMode'
+    },
+    {
+      '1': 'client_rx_spatial_streams',
+      '3': 32,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientRxSpatialStreams'
+    },
+    {
+      '1': 'client_rx_mcs',
+      '3': 33,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientRxMcs'
+    },
+    {
+      '1': 'client_download_start_time',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Telemetron.Public.Common.TimestampInfo',
+      '10': 'clientDownloadStartTime'
+    },
+    {
+      '1': 'client_upload_start_time',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Telemetron.Public.Common.TimestampInfo',
+      '10': 'clientUploadStartTime'
+    },
+    {
+      '1': 'client_download_mbps_avg',
+      '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'clientDownloadMbpsAvg'
+    },
+    {
+      '1': 'client_upload_mbps_avg',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'clientUploadMbpsAvg'
+    },
+    {
+      '1': 'client_target',
+      '3': 28,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'clientTarget'
+    },
+    {
+      '1': 'client_tcp_streams',
+      '3': 16,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientTcpStreams'
+    },
+    {
+      '1': 'router_download_start_time',
+      '3': 17,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Telemetron.Public.Common.TimestampInfo',
+      '10': 'routerDownloadStartTime'
+    },
+    {
+      '1': 'router_upload_start_time',
+      '3': 18,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Telemetron.Public.Common.TimestampInfo',
+      '10': 'routerUploadStartTime'
+    },
+    {
+      '1': 'router_download_mbps_avg',
+      '3': 19,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'routerDownloadMbpsAvg'
+    },
+    {
+      '1': 'router_upload_mbps_avg',
+      '3': 20,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'routerUploadMbpsAvg'
+    },
+    {
+      '1': 'router_target',
+      '3': 29,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'routerTarget'
+    },
+    {
+      '1': 'router_tcp_streams',
+      '3': 22,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'routerTcpStreams'
+    },
+    {
+      '1': 'wifi_download_start_time',
+      '3': 23,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Telemetron.Public.Common.TimestampInfo',
+      '10': 'wifiDownloadStartTime'
+    },
+    {
+      '1': 'wifi_upload_start_time',
+      '3': 24,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Telemetron.Public.Common.TimestampInfo',
+      '10': 'wifiUploadStartTime'
+    },
+    {
+      '1': 'wifi_download_mbps_avg',
+      '3': 25,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'wifiDownloadMbpsAvg'
+    },
+    {
+      '1': 'wifi_upload_mbps_avg',
+      '3': 26,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'wifiUploadMbpsAvg'
+    },
   ],
   '9': [
     {'1': 14, '2': 15},
@@ -1971,38 +4714,254 @@ const StarlinkRouterClients$json = {
   '1': 'StarlinkRouterClients',
   '2': [
     {'1': 'router_id', '3': 1, '4': 1, '5': 9, '10': 'routerId'},
-    {'1': 'timestamp', '3': 2, '4': 1, '5': 11, '6': '.SpaceX.API.Telemetron.Public.Common.TimestampInfo', '10': 'timestamp'},
+    {
+      '1': 'timestamp',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Telemetron.Public.Common.TimestampInfo',
+      '10': 'timestamp'
+    },
     {'1': 'client_id', '3': 3, '4': 1, '5': 13, '10': 'clientId'},
-    {'1': 'client_telem_index', '3': 4, '4': 1, '5': 9, '10': 'clientTelemIndex'},
-    {'1': 'router_hw', '3': 119, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'routerHw'},
-    {'1': 'router_sw', '3': 120, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'routerSw'},
-    {'1': 'client_router_id', '3': 121, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'clientRouterId'},
-    {'1': 'client_hw', '3': 122, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'clientHw'},
-    {'1': 'client_sw', '3': 123, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'clientSw'},
-    {'1': 'oui', '3': 101, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'oui'},
-    {'1': 'upstream_id', '3': 102, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'upstreamId'},
-    {'1': 'is_repeater', '3': 103, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'isRepeater'},
-    {'1': 'connected_s', '3': 104, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'connectedS'},
-    {'1': 'interface', '3': 105, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'interface'},
-    {'1': 'radio_channel', '3': 106, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radioChannel'},
-    {'1': 'rssi', '3': 107, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'rssi'},
-    {'1': 'rx_mcs', '3': 108, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'rxMcs'},
-    {'1': 'tx_mcs', '3': 109, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'txMcs'},
-    {'1': 'rx_rate', '3': 110, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'rxRate'},
-    {'1': 'tx_rate', '3': 111, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'txRate'},
-    {'1': 'rx_bandwidth', '3': 112, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'rxBandwidth'},
-    {'1': 'rx_spatial_streams', '3': 113, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'rxSpatialStreams'},
-    {'1': 'rx_phy_mode', '3': 114, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'rxPhyMode'},
-    {'1': 'mesh_hops', '3': 118, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'meshHops'},
-    {'1': 'speedtest_upload_mbps', '3': 124, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'speedtestUploadMbps'},
-    {'1': 'speedtest_download_mbps', '3': 125, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'speedtestDownloadMbps'},
-    {'1': 'site_survey_rssi', '3': 127, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'siteSurveyRssi'},
-    {'1': 'site_survey_est_rx_rate', '3': 128, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'siteSurveyEstRxRate'},
-    {'1': 'est_controller_throughput_mbps', '3': 129, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'estControllerThroughputMbps'},
-    {'1': 'ping_drop_rate_last_1h', '3': 115, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingDropRateLast1h'},
-    {'1': 'ping_latency_last_1h', '3': 116, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingLatencyLast1h'},
-    {'1': 'steer_state', '3': 117, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'steerState'},
-    {'1': 'blocked', '3': 126, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'blocked'},
+    {
+      '1': 'client_telem_index',
+      '3': 4,
+      '4': 1,
+      '5': 9,
+      '10': 'clientTelemIndex'
+    },
+    {
+      '1': 'router_hw',
+      '3': 119,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'routerHw'
+    },
+    {
+      '1': 'router_sw',
+      '3': 120,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'routerSw'
+    },
+    {
+      '1': 'client_router_id',
+      '3': 121,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'clientRouterId'
+    },
+    {
+      '1': 'client_hw',
+      '3': 122,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'clientHw'
+    },
+    {
+      '1': 'client_sw',
+      '3': 123,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'clientSw'
+    },
+    {
+      '1': 'oui',
+      '3': 101,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'oui'
+    },
+    {
+      '1': 'upstream_id',
+      '3': 102,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'upstreamId'
+    },
+    {
+      '1': 'is_repeater',
+      '3': 103,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'isRepeater'
+    },
+    {
+      '1': 'connected_s',
+      '3': 104,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'connectedS'
+    },
+    {
+      '1': 'interface',
+      '3': 105,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'interface'
+    },
+    {
+      '1': 'radio_channel',
+      '3': 106,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radioChannel'
+    },
+    {
+      '1': 'rssi',
+      '3': 107,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'rssi'
+    },
+    {
+      '1': 'rx_mcs',
+      '3': 108,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'rxMcs'
+    },
+    {
+      '1': 'tx_mcs',
+      '3': 109,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'txMcs'
+    },
+    {
+      '1': 'rx_rate',
+      '3': 110,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'rxRate'
+    },
+    {
+      '1': 'tx_rate',
+      '3': 111,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'txRate'
+    },
+    {
+      '1': 'rx_bandwidth',
+      '3': 112,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'rxBandwidth'
+    },
+    {
+      '1': 'rx_spatial_streams',
+      '3': 113,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'rxSpatialStreams'
+    },
+    {
+      '1': 'rx_phy_mode',
+      '3': 114,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'rxPhyMode'
+    },
+    {
+      '1': 'mesh_hops',
+      '3': 118,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'meshHops'
+    },
+    {
+      '1': 'speedtest_upload_mbps',
+      '3': 124,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'speedtestUploadMbps'
+    },
+    {
+      '1': 'speedtest_download_mbps',
+      '3': 125,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'speedtestDownloadMbps'
+    },
+    {
+      '1': 'site_survey_rssi',
+      '3': 127,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'siteSurveyRssi'
+    },
+    {
+      '1': 'site_survey_est_rx_rate',
+      '3': 128,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'siteSurveyEstRxRate'
+    },
+    {
+      '1': 'est_controller_throughput_mbps',
+      '3': 129,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'estControllerThroughputMbps'
+    },
+    {
+      '1': 'ping_drop_rate_last_1h',
+      '3': 115,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingDropRateLast1h'
+    },
+    {
+      '1': 'ping_latency_last_1h',
+      '3': 116,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingLatencyLast1h'
+    },
+    {
+      '1': 'steer_state',
+      '3': 117,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'steerState'
+    },
+    {
+      '1': 'blocked',
+      '3': 126,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'blocked'
+    },
   ],
 };
 
@@ -2060,7 +5019,14 @@ const WifiSetClientGivenNameRequest$json = {
       '8': {'3': true},
       '10': 'clientName',
     },
-    {'1': 'client_config', '3': 2, '4': 1, '5': 11, '6': '.SpaceX.API.Device.ClientConfig', '10': 'clientConfig'},
+    {
+      '1': 'client_config',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.ClientConfig',
+      '10': 'clientConfig'
+    },
   ],
 };
 
@@ -2077,14 +5043,21 @@ const WifiSelfTestRequest$json = {
 };
 
 /// Descriptor for `WifiSelfTestRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List wifiSelfTestRequestDescriptor = $convert.base64Decode(
-    'ChNXaWZpU2VsZlRlc3RSZXF1ZXN0');
+final $typed_data.Uint8List wifiSelfTestRequestDescriptor =
+    $convert.base64Decode('ChNXaWZpU2VsZlRlc3RSZXF1ZXN0');
 
 @$core.Deprecated('Use wifiSelfTestResponseDescriptor instead')
 const WifiSelfTestResponse$json = {
   '1': 'WifiSelfTestResponse',
   '2': [
-    {'1': 'self_test', '3': 1, '4': 1, '5': 11, '6': '.SpaceX.API.Device.WifiSelfTest', '10': 'selfTest'},
+    {
+      '1': 'self_test',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiSelfTest',
+      '10': 'selfTest'
+    },
     {'1': 'json', '3': 2, '4': 1, '5': 9, '10': 'json'},
   ],
 };
@@ -2100,8 +5073,8 @@ const WifiRunSelfTestRequest$json = {
 };
 
 /// Descriptor for `WifiRunSelfTestRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List wifiRunSelfTestRequestDescriptor = $convert.base64Decode(
-    'ChZXaWZpUnVuU2VsZlRlc3RSZXF1ZXN0');
+final $typed_data.Uint8List wifiRunSelfTestRequestDescriptor =
+    $convert.base64Decode('ChZXaWZpUnVuU2VsZlRlc3RSZXF1ZXN0');
 
 @$core.Deprecated('Use wifiRfTestRequestDescriptor instead')
 const WifiRfTestRequest$json = {
@@ -2110,13 +5083,25 @@ const WifiRfTestRequest$json = {
     {'1': 'num_measurements', '3': 1, '4': 1, '5': 13, '10': 'numMeasurements'},
     {'1': 'channel_2ghz', '3': 2, '4': 1, '5': 13, '10': 'channel2ghz'},
     {'1': 'channel_5ghz', '3': 3, '4': 1, '5': 13, '10': 'channel5ghz'},
-    {'1': 'channel_5ghz_high', '3': 4, '4': 1, '5': 13, '10': 'channel5ghzHigh'},
+    {
+      '1': 'channel_5ghz_high',
+      '3': 4,
+      '4': 1,
+      '5': 13,
+      '10': 'channel5ghzHigh'
+    },
     {'1': 'mcs_2ghz', '3': 5, '4': 1, '5': 13, '10': 'mcs2ghz'},
     {'1': 'mcs_5ghz', '3': 6, '4': 1, '5': 13, '10': 'mcs5ghz'},
     {'1': 'mcs_5ghz_high', '3': 7, '4': 1, '5': 13, '10': 'mcs5ghzHigh'},
     {'1': 'phy_mode_2ghz', '3': 8, '4': 1, '5': 13, '10': 'phyMode2ghz'},
     {'1': 'phy_mode_5ghz', '3': 9, '4': 1, '5': 13, '10': 'phyMode5ghz'},
-    {'1': 'phy_mode_5ghz_high', '3': 10, '4': 1, '5': 13, '10': 'phyMode5ghzHigh'},
+    {
+      '1': 'phy_mode_5ghz_high',
+      '3': 10,
+      '4': 1,
+      '5': 13,
+      '10': 'phyMode5ghzHigh'
+    },
   ],
 };
 
@@ -2139,8 +5124,9 @@ const WifiRfTestResponse$json = {
 };
 
 /// Descriptor for `WifiRfTestResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List wifiRfTestResponseDescriptor = $convert.base64Decode(
-    'ChJXaWZpUmZUZXN0UmVzcG9uc2USFgoGcmVwb3J0GAEgASgJUgZyZXBvcnQ=');
+final $typed_data.Uint8List wifiRfTestResponseDescriptor =
+    $convert.base64Decode(
+        'ChJXaWZpUmZUZXN0UmVzcG9uc2USFgoGcmVwb3J0GAEgASgJUgZyZXBvcnQ=');
 
 @$core.Deprecated('Use wifiGetFirewallRequestDescriptor instead')
 const WifiGetFirewallRequest$json = {
@@ -2148,8 +5134,8 @@ const WifiGetFirewallRequest$json = {
 };
 
 /// Descriptor for `WifiGetFirewallRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List wifiGetFirewallRequestDescriptor = $convert.base64Decode(
-    'ChZXaWZpR2V0RmlyZXdhbGxSZXF1ZXN0');
+final $typed_data.Uint8List wifiGetFirewallRequestDescriptor =
+    $convert.base64Decode('ChZXaWZpR2V0RmlyZXdhbGxSZXF1ZXN0');
 
 @$core.Deprecated('Use wifiGetFirewallResponseDescriptor instead')
 const WifiGetFirewallResponse$json = {
@@ -2161,9 +5147,10 @@ const WifiGetFirewallResponse$json = {
 };
 
 /// Descriptor for `WifiGetFirewallResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List wifiGetFirewallResponseDescriptor = $convert.base64Decode(
-    'ChdXaWZpR2V0RmlyZXdhbGxSZXNwb25zZRIaCghpcHRhYmxlcxgBIAEoCVIIaXB0YWJsZXMSHQ'
-    'oKaXB0YWJsZXNfNhgCIAEoCVIJaXB0YWJsZXM2');
+final $typed_data.Uint8List wifiGetFirewallResponseDescriptor =
+    $convert.base64Decode(
+        'ChdXaWZpR2V0RmlyZXdhbGxSZXNwb25zZRIaCghpcHRhYmxlcxgBIAEoCVIIaXB0YWJsZXMSHQ'
+        'oKaXB0YWJsZXNfNhgCIAEoCVIJaXB0YWJsZXM2');
 
 @$core.Deprecated('Use wifiTogglePoeNegotiationRequestDescriptor instead')
 const WifiTogglePoeNegotiationRequest$json = {
@@ -2174,9 +5161,10 @@ const WifiTogglePoeNegotiationRequest$json = {
 };
 
 /// Descriptor for `WifiTogglePoeNegotiationRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List wifiTogglePoeNegotiationRequestDescriptor = $convert.base64Decode(
-    'Ch9XaWZpVG9nZ2xlUG9lTmVnb3RpYXRpb25SZXF1ZXN0EhYKBmVuYWJsZRgBIAEoCFIGZW5hYm'
-    'xl');
+final $typed_data.Uint8List wifiTogglePoeNegotiationRequestDescriptor =
+    $convert.base64Decode(
+        'Ch9XaWZpVG9nZ2xlUG9lTmVnb3RpYXRpb25SZXF1ZXN0EhYKBmVuYWJsZRgBIAEoCFIGZW5hYm'
+        'xl');
 
 @$core.Deprecated('Use wifiCalibrationModeRequestDescriptor instead')
 const WifiCalibrationModeRequest$json = {
@@ -2184,146 +5172,1077 @@ const WifiCalibrationModeRequest$json = {
 };
 
 /// Descriptor for `WifiCalibrationModeRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List wifiCalibrationModeRequestDescriptor = $convert.base64Decode(
-    'ChpXaWZpQ2FsaWJyYXRpb25Nb2RlUmVxdWVzdA==');
+final $typed_data.Uint8List wifiCalibrationModeRequestDescriptor =
+    $convert.base64Decode('ChpXaWZpQ2FsaWJyYXRpb25Nb2RlUmVxdWVzdA==');
 
 @$core.Deprecated('Use starlink_router_hourly_metrics_v2Descriptor instead')
 const starlink_router_hourly_metrics_v2$json = {
   '1': 'starlink_router_hourly_metrics_v2',
   '2': [
-    {'1': 'id', '3': 1, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'id'},
-    {'1': 'timestamp_date', '3': 2, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'timestampDate'},
-    {'1': 'timestamp_hour', '3': 3, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'timestampHour'},
-    {'1': 'sys_hw_gen', '3': 4, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'sysHwGen'},
-    {'1': 'sys_sw', '3': 5, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'sysSw'},
-    {'1': 'sys_country', '3': 6, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'sysCountry'},
-    {'1': 'sys_is_dev', '3': 7, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'sysIsDev'},
-    {'1': 'sys_alloc_fds', '3': 8, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'sysAllocFds'},
-    {'1': 'sys_cpu_usage', '3': 9, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'sysCpuUsage'},
-    {'1': 'sys_mem_free_kb', '3': 10, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'sysMemFreeKb'},
-    {'1': 'sys_bootcount', '3': 11, '4': 1, '5': 11, '6': '.google.protobuf.Int32Value', '10': 'sysBootcount'},
-    {'1': 'sys_partitions_equal', '3': 12, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'sysPartitionsEqual'},
-    {'1': 'sys_uptime_seconds', '3': 13, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'sysUptimeSeconds'},
-    {'1': 'sys_anti_rollback_version', '3': 14, '4': 1, '5': 11, '6': '.google.protobuf.Int32Value', '10': 'sysAntiRollbackVersion'},
-    {'1': 'radios_2ghz_channel', '3': 100, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radios2ghzChannel'},
-    {'1': 'radios_2ghz_antenna1_rssi', '3': 101, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios2ghzAntenna1Rssi'},
-    {'1': 'radios_2ghz_antenna2_rssi', '3': 102, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios2ghzAntenna2Rssi'},
-    {'1': 'radios_2ghz_antenna3_rssi', '3': 103, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios2ghzAntenna3Rssi'},
-    {'1': 'radios_2ghz_iface_count', '3': 104, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radios2ghzIfaceCount'},
-    {'1': 'radios_2ghz_chan_busy_fraction', '3': 105, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios2ghzChanBusyFraction'},
-    {'1': 'radios_2ghz_edcca_fraction', '3': 106, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios2ghzEdccaFraction'},
-    {'1': 'radios_2ghz_overlapping_bss_fraction', '3': 107, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios2ghzOverlappingBssFraction'},
-    {'1': 'radios_2ghz_rx_bytes', '3': 108, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radios2ghzRxBytes'},
-    {'1': 'radios_2ghz_rx_packets', '3': 109, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radios2ghzRxPackets'},
-    {'1': 'radios_2ghz_rx_errors', '3': 110, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radios2ghzRxErrors'},
-    {'1': 'radios_2ghz_rx_frame_errors', '3': 111, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radios2ghzRxFrameErrors'},
-    {'1': 'radios_2ghz_rx_packet_error_rate', '3': 112, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios2ghzRxPacketErrorRate'},
-    {'1': 'radios_2ghz_rx_airtime_fraction', '3': 113, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios2ghzRxAirtimeFraction'},
-    {'1': 'radios_2ghz_tx_bytes', '3': 114, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radios2ghzTxBytes'},
-    {'1': 'radios_2ghz_tx_packets', '3': 115, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radios2ghzTxPackets'},
-    {'1': 'radios_2ghz_tx_errors', '3': 116, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radios2ghzTxErrors'},
-    {'1': 'radios_2ghz_tx_packet_error_rate', '3': 117, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios2ghzTxPacketErrorRate'},
-    {'1': 'radios_2ghz_tx_airtime_fraction', '3': 118, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios2ghzTxAirtimeFraction'},
-    {'1': 'radios_5ghz_channel', '3': 119, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radios5ghzChannel'},
-    {'1': 'radios_5ghz_antenna1_rssi', '3': 120, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzAntenna1Rssi'},
-    {'1': 'radios_5ghz_antenna2_rssi', '3': 121, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzAntenna2Rssi'},
-    {'1': 'radios_5ghz_antenna3_rssi', '3': 122, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzAntenna3Rssi'},
-    {'1': 'radios_5ghz_iface_count', '3': 123, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radios5ghzIfaceCount'},
-    {'1': 'radios_5ghz_chan_busy_fraction', '3': 124, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzChanBusyFraction'},
-    {'1': 'radios_5ghz_edcca_fraction', '3': 125, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzEdccaFraction'},
-    {'1': 'radios_5ghz_overlapping_bss_fraction', '3': 126, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzOverlappingBssFraction'},
-    {'1': 'radios_5ghz_rx_bytes', '3': 127, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radios5ghzRxBytes'},
-    {'1': 'radios_5ghz_rx_packets', '3': 128, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radios5ghzRxPackets'},
-    {'1': 'radios_5ghz_rx_errors', '3': 129, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radios5ghzRxErrors'},
-    {'1': 'radios_5ghz_rx_frame_errors', '3': 130, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radios5ghzRxFrameErrors'},
-    {'1': 'radios_5ghz_rx_packet_error_rate', '3': 131, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzRxPacketErrorRate'},
-    {'1': 'radios_5ghz_rx_airtime_fraction', '3': 132, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzRxAirtimeFraction'},
-    {'1': 'radios_5ghz_tx_bytes', '3': 133, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radios5ghzTxBytes'},
-    {'1': 'radios_5ghz_tx_packets', '3': 134, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radios5ghzTxPackets'},
-    {'1': 'radios_5ghz_tx_errors', '3': 135, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radios5ghzTxErrors'},
-    {'1': 'radios_5ghz_tx_packet_error_rate', '3': 136, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzTxPacketErrorRate'},
-    {'1': 'radios_5ghz_tx_airtime_fraction', '3': 137, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzTxAirtimeFraction'},
-    {'1': 'radios_2ghz_thermal_temp', '3': 200, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios2ghzThermalTemp'},
-    {'1': 'radios_5ghz_thermal_temp', '3': 201, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzThermalTemp'},
-    {'1': 'radios_2ghz_thermal_duty_cycle', '3': 202, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios2ghzThermalDutyCycle'},
-    {'1': 'radios_5ghz_thermal_duty_cycle', '3': 203, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'radios5ghzThermalDutyCycle'},
-    {'1': 'radios_2ghz_thermal_throttled_seconds', '3': 204, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radios2ghzThermalThrottledSeconds'},
-    {'1': 'radios_5ghz_thermal_throttled_seconds', '3': 205, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'radios5ghzThermalThrottledSeconds'},
-    {'1': 'ifaces_lan_eth_rx_bytes', '3': 300, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'ifacesLanEthRxBytes'},
-    {'1': 'ifaces_lan_eth_rx_packets', '3': 301, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'ifacesLanEthRxPackets'},
-    {'1': 'ifaces_lan_eth_rx_errors', '3': 302, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'ifacesLanEthRxErrors'},
-    {'1': 'ifaces_lan_eth_rx_frame_errors', '3': 303, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'ifacesLanEthRxFrameErrors'},
-    {'1': 'ifaces_lan_eth_tx_bytes', '3': 304, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'ifacesLanEthTxBytes'},
-    {'1': 'ifaces_lan_eth_tx_packets', '3': 305, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'ifacesLanEthTxPackets'},
-    {'1': 'ifaces_lan_eth_tx_errors', '3': 306, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'ifacesLanEthTxErrors'},
-    {'1': 'ifaces_wan_eth_rx_bytes', '3': 307, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'ifacesWanEthRxBytes'},
-    {'1': 'ifaces_wan_eth_rx_packets', '3': 308, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'ifacesWanEthRxPackets'},
-    {'1': 'ifaces_wan_eth_rx_errors', '3': 309, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'ifacesWanEthRxErrors'},
-    {'1': 'ifaces_wan_eth_rx_frame_errors', '3': 310, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'ifacesWanEthRxFrameErrors'},
-    {'1': 'ifaces_wan_eth_tx_bytes', '3': 311, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'ifacesWanEthTxBytes'},
-    {'1': 'ifaces_wan_eth_tx_packets', '3': 312, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'ifacesWanEthTxPackets'},
-    {'1': 'ifaces_wan_eth_tx_errors', '3': 313, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'ifacesWanEthTxErrors'},
-    {'1': 'clients', '3': 400, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clients'},
-    {'1': 'clients_2ghz', '3': 401, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clients2ghz'},
-    {'1': 'clients_5ghz', '3': 402, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clients5ghz'},
-    {'1': 'clients_eth', '3': 403, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clientsEth'},
-    {'1': 'clients_repeater', '3': 404, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clientsRepeater'},
-    {'1': 'clients_repeater_2ghz', '3': 405, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clientsRepeater2ghz'},
-    {'1': 'clients_repeater_5ghz', '3': 406, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clientsRepeater5ghz'},
-    {'1': 'clients_repeater_eth', '3': 407, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clientsRepeaterEth'},
-    {'1': 'mesh_hops', '3': 408, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'meshHops'},
-    {'1': 'mesh_one_hop_rssi_avg_2ghz', '3': 409, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'meshOneHopRssiAvg2ghz'},
-    {'1': 'mesh_one_hop_rssi_avg_5ghz', '3': 410, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'meshOneHopRssiAvg5ghz'},
-    {'1': 'mesh_two_hop_rssi_avg_2ghz', '3': 411, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'meshTwoHopRssiAvg2ghz'},
-    {'1': 'mesh_two_hop_rssi_avg_5ghz', '3': 412, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'meshTwoHopRssiAvg5ghz'},
-    {'1': 'ping_seconds_since_last_1s_outage', '3': 600, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingSecondsSinceLast1sOutage'},
-    {'1': 'ping_seconds_since_last_2s_outage', '3': 601, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingSecondsSinceLast2sOutage'},
-    {'1': 'ping_seconds_since_last_5s_outage', '3': 602, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingSecondsSinceLast5sOutage'},
-    {'1': 'ping_seconds_since_last_60s_outage', '3': 603, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingSecondsSinceLast60sOutage'},
-    {'1': 'ping_seconds_since_last_300s_outage', '3': 604, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingSecondsSinceLast300sOutage'},
-    {'1': 'ping_drop_rate', '3': 605, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingDropRate'},
-    {'1': 'ping_drop_rate_last_1h', '3': 606, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingDropRateLast1h'},
-    {'1': 'ping_latency', '3': 607, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingLatency'},
-    {'1': 'ping_dish_seconds_since_last_1s_outage', '3': 610, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingDishSecondsSinceLast1sOutage'},
-    {'1': 'ping_dish_seconds_since_last_2s_outage', '3': 611, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingDishSecondsSinceLast2sOutage'},
-    {'1': 'ping_dish_seconds_since_last_5s_outage', '3': 612, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingDishSecondsSinceLast5sOutage'},
-    {'1': 'ping_dish_seconds_since_last_60s_outage', '3': 613, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingDishSecondsSinceLast60sOutage'},
-    {'1': 'ping_dish_seconds_since_last_300s_outage', '3': 614, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingDishSecondsSinceLast300sOutage'},
-    {'1': 'ping_dish_drop_rate', '3': 615, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingDishDropRate'},
-    {'1': 'ping_dish_drop_rate_last_1h', '3': 616, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingDishDropRateLast1h'},
-    {'1': 'ping_dish_latency', '3': 617, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'pingDishLatency'},
-    {'1': 'client_speedtest_router_download_mbps', '3': 700, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'clientSpeedtestRouterDownloadMbps'},
-    {'1': 'client_speedtest_router_upload_mbps', '3': 701, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'clientSpeedtestRouterUploadMbps'},
-    {'1': 'client_speedtest_router_rssi', '3': 702, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'clientSpeedtestRouterRssi'},
-    {'1': 'client_speedtest_wifi_download_mbps', '3': 703, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'clientSpeedtestWifiDownloadMbps'},
-    {'1': 'client_speedtest_wifi_upload_mbps', '3': 704, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'clientSpeedtestWifiUploadMbps'},
-    {'1': 'client_speedtest_client_download_mbps', '3': 705, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'clientSpeedtestClientDownloadMbps'},
-    {'1': 'client_speedtest_client_upload_mbps', '3': 706, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'clientSpeedtestClientUploadMbps'},
-    {'1': 'client_speedtest_client_rssi', '3': 707, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'clientSpeedtestClientRssi'},
-    {'1': 'client_speedtest_client_iface', '3': 708, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clientSpeedtestClientIface'},
-    {'1': 'client_speedtest_client_oui', '3': 709, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'clientSpeedtestClientOui'},
-    {'1': 'client_speedtest_client_tx_rate', '3': 710, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clientSpeedtestClientTxRate'},
-    {'1': 'client_speedtest_client_rx_rate', '3': 711, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clientSpeedtestClientRxRate'},
-    {'1': 'client_speedtest_client_platform_type', '3': 712, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'clientSpeedtestClientPlatformType'},
-    {'1': 'speedtest_tcp_8_download_mbps_avg', '3': 800, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'speedtestTcp8DownloadMbpsAvg'},
-    {'1': 'speedtest_tcp_8_download_mbps_max', '3': 801, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'speedtestTcp8DownloadMbpsMax'},
-    {'1': 'speedtest_tcp_8_upload_mbps_avg', '3': 802, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'speedtestTcp8UploadMbpsAvg'},
-    {'1': 'speedtest_tcp_8_upload_mbps_max', '3': 803, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'speedtestTcp8UploadMbpsMax'},
-    {'1': 'speedtest_tcp_64_download_mbps_avg', '3': 804, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'speedtestTcp64DownloadMbpsAvg'},
-    {'1': 'speedtest_tcp_64_download_mbps_max', '3': 805, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'speedtestTcp64DownloadMbpsMax'},
-    {'1': 'speedtest_tcp_64_upload_mbps_avg', '3': 806, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'speedtestTcp64UploadMbpsAvg'},
-    {'1': 'speedtest_tcp_64_upload_mbps_max', '3': 807, '4': 1, '5': 11, '6': '.google.protobuf.FloatValue', '10': 'speedtestTcp64UploadMbpsMax'},
-    {'1': 'dish_cell_id', '3': 900, '4': 1, '5': 11, '6': '.google.protobuf.UInt32Value', '10': 'dishCellId'},
-    {'1': 'config_setup_complete', '3': 1000, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configSetupComplete'},
-    {'1': 'config_bands_split', '3': 1001, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configBandsSplit'},
-    {'1': 'config_is_repeater', '3': 1002, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configIsRepeater'},
-    {'1': 'config_open_network', '3': 1003, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configOpenNetwork'},
-    {'1': 'config_is_aviation', '3': 1004, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configIsAviation'},
-    {'1': 'config_secure_dns', '3': 1005, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configSecureDns'},
-    {'1': 'config_legacy', '3': 1006, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configLegacy'},
-    {'1': 'config_ap_mode', '3': 1007, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configApMode'},
-    {'1': 'config_dfs_enabled', '3': 1008, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configDfsEnabled'},
-    {'1': 'config_network_name_is_default', '3': 1009, '4': 1, '5': 11, '6': '.google.protobuf.BoolValue', '10': 'configNetworkNameIsDefault'},
+    {
+      '1': 'id',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'id'
+    },
+    {
+      '1': 'timestamp_date',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'timestampDate'
+    },
+    {
+      '1': 'timestamp_hour',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'timestampHour'
+    },
+    {
+      '1': 'sys_hw_gen',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'sysHwGen'
+    },
+    {
+      '1': 'sys_sw',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'sysSw'
+    },
+    {
+      '1': 'sys_country',
+      '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'sysCountry'
+    },
+    {
+      '1': 'sys_is_dev',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'sysIsDev'
+    },
+    {
+      '1': 'sys_alloc_fds',
+      '3': 8,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'sysAllocFds'
+    },
+    {
+      '1': 'sys_cpu_usage',
+      '3': 9,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'sysCpuUsage'
+    },
+    {
+      '1': 'sys_mem_free_kb',
+      '3': 10,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'sysMemFreeKb'
+    },
+    {
+      '1': 'sys_bootcount',
+      '3': 11,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int32Value',
+      '10': 'sysBootcount'
+    },
+    {
+      '1': 'sys_partitions_equal',
+      '3': 12,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'sysPartitionsEqual'
+    },
+    {
+      '1': 'sys_uptime_seconds',
+      '3': 13,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'sysUptimeSeconds'
+    },
+    {
+      '1': 'sys_anti_rollback_version',
+      '3': 14,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Int32Value',
+      '10': 'sysAntiRollbackVersion'
+    },
+    {
+      '1': 'radios_2ghz_channel',
+      '3': 100,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radios2ghzChannel'
+    },
+    {
+      '1': 'radios_2ghz_antenna1_rssi',
+      '3': 101,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios2ghzAntenna1Rssi'
+    },
+    {
+      '1': 'radios_2ghz_antenna2_rssi',
+      '3': 102,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios2ghzAntenna2Rssi'
+    },
+    {
+      '1': 'radios_2ghz_antenna3_rssi',
+      '3': 103,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios2ghzAntenna3Rssi'
+    },
+    {
+      '1': 'radios_2ghz_iface_count',
+      '3': 104,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radios2ghzIfaceCount'
+    },
+    {
+      '1': 'radios_2ghz_chan_busy_fraction',
+      '3': 105,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios2ghzChanBusyFraction'
+    },
+    {
+      '1': 'radios_2ghz_edcca_fraction',
+      '3': 106,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios2ghzEdccaFraction'
+    },
+    {
+      '1': 'radios_2ghz_overlapping_bss_fraction',
+      '3': 107,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios2ghzOverlappingBssFraction'
+    },
+    {
+      '1': 'radios_2ghz_rx_bytes',
+      '3': 108,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radios2ghzRxBytes'
+    },
+    {
+      '1': 'radios_2ghz_rx_packets',
+      '3': 109,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radios2ghzRxPackets'
+    },
+    {
+      '1': 'radios_2ghz_rx_errors',
+      '3': 110,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radios2ghzRxErrors'
+    },
+    {
+      '1': 'radios_2ghz_rx_frame_errors',
+      '3': 111,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radios2ghzRxFrameErrors'
+    },
+    {
+      '1': 'radios_2ghz_rx_packet_error_rate',
+      '3': 112,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios2ghzRxPacketErrorRate'
+    },
+    {
+      '1': 'radios_2ghz_rx_airtime_fraction',
+      '3': 113,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios2ghzRxAirtimeFraction'
+    },
+    {
+      '1': 'radios_2ghz_tx_bytes',
+      '3': 114,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radios2ghzTxBytes'
+    },
+    {
+      '1': 'radios_2ghz_tx_packets',
+      '3': 115,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radios2ghzTxPackets'
+    },
+    {
+      '1': 'radios_2ghz_tx_errors',
+      '3': 116,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radios2ghzTxErrors'
+    },
+    {
+      '1': 'radios_2ghz_tx_packet_error_rate',
+      '3': 117,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios2ghzTxPacketErrorRate'
+    },
+    {
+      '1': 'radios_2ghz_tx_airtime_fraction',
+      '3': 118,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios2ghzTxAirtimeFraction'
+    },
+    {
+      '1': 'radios_5ghz_channel',
+      '3': 119,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radios5ghzChannel'
+    },
+    {
+      '1': 'radios_5ghz_antenna1_rssi',
+      '3': 120,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzAntenna1Rssi'
+    },
+    {
+      '1': 'radios_5ghz_antenna2_rssi',
+      '3': 121,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzAntenna2Rssi'
+    },
+    {
+      '1': 'radios_5ghz_antenna3_rssi',
+      '3': 122,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzAntenna3Rssi'
+    },
+    {
+      '1': 'radios_5ghz_iface_count',
+      '3': 123,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radios5ghzIfaceCount'
+    },
+    {
+      '1': 'radios_5ghz_chan_busy_fraction',
+      '3': 124,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzChanBusyFraction'
+    },
+    {
+      '1': 'radios_5ghz_edcca_fraction',
+      '3': 125,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzEdccaFraction'
+    },
+    {
+      '1': 'radios_5ghz_overlapping_bss_fraction',
+      '3': 126,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzOverlappingBssFraction'
+    },
+    {
+      '1': 'radios_5ghz_rx_bytes',
+      '3': 127,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radios5ghzRxBytes'
+    },
+    {
+      '1': 'radios_5ghz_rx_packets',
+      '3': 128,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radios5ghzRxPackets'
+    },
+    {
+      '1': 'radios_5ghz_rx_errors',
+      '3': 129,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radios5ghzRxErrors'
+    },
+    {
+      '1': 'radios_5ghz_rx_frame_errors',
+      '3': 130,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radios5ghzRxFrameErrors'
+    },
+    {
+      '1': 'radios_5ghz_rx_packet_error_rate',
+      '3': 131,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzRxPacketErrorRate'
+    },
+    {
+      '1': 'radios_5ghz_rx_airtime_fraction',
+      '3': 132,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzRxAirtimeFraction'
+    },
+    {
+      '1': 'radios_5ghz_tx_bytes',
+      '3': 133,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radios5ghzTxBytes'
+    },
+    {
+      '1': 'radios_5ghz_tx_packets',
+      '3': 134,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radios5ghzTxPackets'
+    },
+    {
+      '1': 'radios_5ghz_tx_errors',
+      '3': 135,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radios5ghzTxErrors'
+    },
+    {
+      '1': 'radios_5ghz_tx_packet_error_rate',
+      '3': 136,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzTxPacketErrorRate'
+    },
+    {
+      '1': 'radios_5ghz_tx_airtime_fraction',
+      '3': 137,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzTxAirtimeFraction'
+    },
+    {
+      '1': 'radios_2ghz_thermal_temp',
+      '3': 200,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios2ghzThermalTemp'
+    },
+    {
+      '1': 'radios_5ghz_thermal_temp',
+      '3': 201,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzThermalTemp'
+    },
+    {
+      '1': 'radios_2ghz_thermal_duty_cycle',
+      '3': 202,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios2ghzThermalDutyCycle'
+    },
+    {
+      '1': 'radios_5ghz_thermal_duty_cycle',
+      '3': 203,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'radios5ghzThermalDutyCycle'
+    },
+    {
+      '1': 'radios_2ghz_thermal_throttled_seconds',
+      '3': 204,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radios2ghzThermalThrottledSeconds'
+    },
+    {
+      '1': 'radios_5ghz_thermal_throttled_seconds',
+      '3': 205,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radios5ghzThermalThrottledSeconds'
+    },
+    {
+      '1': 'ifaces_lan_eth_rx_bytes',
+      '3': 300,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'ifacesLanEthRxBytes'
+    },
+    {
+      '1': 'ifaces_lan_eth_rx_packets',
+      '3': 301,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'ifacesLanEthRxPackets'
+    },
+    {
+      '1': 'ifaces_lan_eth_rx_errors',
+      '3': 302,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'ifacesLanEthRxErrors'
+    },
+    {
+      '1': 'ifaces_lan_eth_rx_frame_errors',
+      '3': 303,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'ifacesLanEthRxFrameErrors'
+    },
+    {
+      '1': 'ifaces_lan_eth_tx_bytes',
+      '3': 304,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'ifacesLanEthTxBytes'
+    },
+    {
+      '1': 'ifaces_lan_eth_tx_packets',
+      '3': 305,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'ifacesLanEthTxPackets'
+    },
+    {
+      '1': 'ifaces_lan_eth_tx_errors',
+      '3': 306,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'ifacesLanEthTxErrors'
+    },
+    {
+      '1': 'ifaces_wan_eth_rx_bytes',
+      '3': 307,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'ifacesWanEthRxBytes'
+    },
+    {
+      '1': 'ifaces_wan_eth_rx_packets',
+      '3': 308,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'ifacesWanEthRxPackets'
+    },
+    {
+      '1': 'ifaces_wan_eth_rx_errors',
+      '3': 309,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'ifacesWanEthRxErrors'
+    },
+    {
+      '1': 'ifaces_wan_eth_rx_frame_errors',
+      '3': 310,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'ifacesWanEthRxFrameErrors'
+    },
+    {
+      '1': 'ifaces_wan_eth_tx_bytes',
+      '3': 311,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'ifacesWanEthTxBytes'
+    },
+    {
+      '1': 'ifaces_wan_eth_tx_packets',
+      '3': 312,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'ifacesWanEthTxPackets'
+    },
+    {
+      '1': 'ifaces_wan_eth_tx_errors',
+      '3': 313,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'ifacesWanEthTxErrors'
+    },
+    {
+      '1': 'clients',
+      '3': 400,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clients'
+    },
+    {
+      '1': 'clients_2ghz',
+      '3': 401,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clients2ghz'
+    },
+    {
+      '1': 'clients_5ghz',
+      '3': 402,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clients5ghz'
+    },
+    {
+      '1': 'clients_eth',
+      '3': 403,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientsEth'
+    },
+    {
+      '1': 'clients_repeater',
+      '3': 404,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientsRepeater'
+    },
+    {
+      '1': 'clients_repeater_2ghz',
+      '3': 405,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientsRepeater2ghz'
+    },
+    {
+      '1': 'clients_repeater_5ghz',
+      '3': 406,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientsRepeater5ghz'
+    },
+    {
+      '1': 'clients_repeater_eth',
+      '3': 407,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientsRepeaterEth'
+    },
+    {
+      '1': 'mesh_hops',
+      '3': 408,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'meshHops'
+    },
+    {
+      '1': 'mesh_one_hop_rssi_avg_2ghz',
+      '3': 409,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'meshOneHopRssiAvg2ghz'
+    },
+    {
+      '1': 'mesh_one_hop_rssi_avg_5ghz',
+      '3': 410,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'meshOneHopRssiAvg5ghz'
+    },
+    {
+      '1': 'mesh_two_hop_rssi_avg_2ghz',
+      '3': 411,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'meshTwoHopRssiAvg2ghz'
+    },
+    {
+      '1': 'mesh_two_hop_rssi_avg_5ghz',
+      '3': 412,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'meshTwoHopRssiAvg5ghz'
+    },
+    {
+      '1': 'ping_seconds_since_last_1s_outage',
+      '3': 600,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingSecondsSinceLast1sOutage'
+    },
+    {
+      '1': 'ping_seconds_since_last_2s_outage',
+      '3': 601,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingSecondsSinceLast2sOutage'
+    },
+    {
+      '1': 'ping_seconds_since_last_5s_outage',
+      '3': 602,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingSecondsSinceLast5sOutage'
+    },
+    {
+      '1': 'ping_seconds_since_last_60s_outage',
+      '3': 603,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingSecondsSinceLast60sOutage'
+    },
+    {
+      '1': 'ping_seconds_since_last_300s_outage',
+      '3': 604,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingSecondsSinceLast300sOutage'
+    },
+    {
+      '1': 'ping_drop_rate',
+      '3': 605,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingDropRate'
+    },
+    {
+      '1': 'ping_drop_rate_last_1h',
+      '3': 606,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingDropRateLast1h'
+    },
+    {
+      '1': 'ping_latency',
+      '3': 607,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingLatency'
+    },
+    {
+      '1': 'ping_dish_seconds_since_last_1s_outage',
+      '3': 610,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingDishSecondsSinceLast1sOutage'
+    },
+    {
+      '1': 'ping_dish_seconds_since_last_2s_outage',
+      '3': 611,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingDishSecondsSinceLast2sOutage'
+    },
+    {
+      '1': 'ping_dish_seconds_since_last_5s_outage',
+      '3': 612,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingDishSecondsSinceLast5sOutage'
+    },
+    {
+      '1': 'ping_dish_seconds_since_last_60s_outage',
+      '3': 613,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingDishSecondsSinceLast60sOutage'
+    },
+    {
+      '1': 'ping_dish_seconds_since_last_300s_outage',
+      '3': 614,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingDishSecondsSinceLast300sOutage'
+    },
+    {
+      '1': 'ping_dish_drop_rate',
+      '3': 615,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingDishDropRate'
+    },
+    {
+      '1': 'ping_dish_drop_rate_last_1h',
+      '3': 616,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingDishDropRateLast1h'
+    },
+    {
+      '1': 'ping_dish_latency',
+      '3': 617,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingDishLatency'
+    },
+    {
+      '1': 'client_speedtest_router_download_mbps',
+      '3': 700,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'clientSpeedtestRouterDownloadMbps'
+    },
+    {
+      '1': 'client_speedtest_router_upload_mbps',
+      '3': 701,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'clientSpeedtestRouterUploadMbps'
+    },
+    {
+      '1': 'client_speedtest_router_rssi',
+      '3': 702,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'clientSpeedtestRouterRssi'
+    },
+    {
+      '1': 'client_speedtest_wifi_download_mbps',
+      '3': 703,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'clientSpeedtestWifiDownloadMbps'
+    },
+    {
+      '1': 'client_speedtest_wifi_upload_mbps',
+      '3': 704,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'clientSpeedtestWifiUploadMbps'
+    },
+    {
+      '1': 'client_speedtest_client_download_mbps',
+      '3': 705,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'clientSpeedtestClientDownloadMbps'
+    },
+    {
+      '1': 'client_speedtest_client_upload_mbps',
+      '3': 706,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'clientSpeedtestClientUploadMbps'
+    },
+    {
+      '1': 'client_speedtest_client_rssi',
+      '3': 707,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'clientSpeedtestClientRssi'
+    },
+    {
+      '1': 'client_speedtest_client_iface',
+      '3': 708,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientSpeedtestClientIface'
+    },
+    {
+      '1': 'client_speedtest_client_oui',
+      '3': 709,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'clientSpeedtestClientOui'
+    },
+    {
+      '1': 'client_speedtest_client_tx_rate',
+      '3': 710,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientSpeedtestClientTxRate'
+    },
+    {
+      '1': 'client_speedtest_client_rx_rate',
+      '3': 711,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientSpeedtestClientRxRate'
+    },
+    {
+      '1': 'client_speedtest_client_platform_type',
+      '3': 712,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientSpeedtestClientPlatformType'
+    },
+    {
+      '1': 'speedtest_tcp_8_download_mbps_avg',
+      '3': 800,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'speedtestTcp8DownloadMbpsAvg'
+    },
+    {
+      '1': 'speedtest_tcp_8_download_mbps_max',
+      '3': 801,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'speedtestTcp8DownloadMbpsMax'
+    },
+    {
+      '1': 'speedtest_tcp_8_upload_mbps_avg',
+      '3': 802,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'speedtestTcp8UploadMbpsAvg'
+    },
+    {
+      '1': 'speedtest_tcp_8_upload_mbps_max',
+      '3': 803,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'speedtestTcp8UploadMbpsMax'
+    },
+    {
+      '1': 'speedtest_tcp_64_download_mbps_avg',
+      '3': 804,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'speedtestTcp64DownloadMbpsAvg'
+    },
+    {
+      '1': 'speedtest_tcp_64_download_mbps_max',
+      '3': 805,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'speedtestTcp64DownloadMbpsMax'
+    },
+    {
+      '1': 'speedtest_tcp_64_upload_mbps_avg',
+      '3': 806,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'speedtestTcp64UploadMbpsAvg'
+    },
+    {
+      '1': 'speedtest_tcp_64_upload_mbps_max',
+      '3': 807,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'speedtestTcp64UploadMbpsMax'
+    },
+    {
+      '1': 'dish_cell_id',
+      '3': 900,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'dishCellId'
+    },
+    {
+      '1': 'config_setup_complete',
+      '3': 1000,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configSetupComplete'
+    },
+    {
+      '1': 'config_bands_split',
+      '3': 1001,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configBandsSplit'
+    },
+    {
+      '1': 'config_is_repeater',
+      '3': 1002,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configIsRepeater'
+    },
+    {
+      '1': 'config_open_network',
+      '3': 1003,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configOpenNetwork'
+    },
+    {
+      '1': 'config_is_aviation',
+      '3': 1004,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configIsAviation'
+    },
+    {
+      '1': 'config_secure_dns',
+      '3': 1005,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configSecureDns'
+    },
+    {
+      '1': 'config_legacy',
+      '3': 1006,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configLegacy'
+    },
+    {
+      '1': 'config_ap_mode',
+      '3': 1007,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configApMode'
+    },
+    {
+      '1': 'config_dfs_enabled',
+      '3': 1008,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configDfsEnabled'
+    },
+    {
+      '1': 'config_network_name_is_default',
+      '3': 1009,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configNetworkNameIsDefault'
+    },
     {
       '1': 'config_remote_ssh_enabled',
       '3': 1010,
@@ -2559,8 +6478,8 @@ const WifiGuestInfoRequest$json = {
 };
 
 /// Descriptor for `WifiGuestInfoRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List wifiGuestInfoRequestDescriptor = $convert.base64Decode(
-    'ChRXaWZpR3Vlc3RJbmZvUmVxdWVzdA==');
+final $typed_data.Uint8List wifiGuestInfoRequestDescriptor =
+    $convert.base64Decode('ChRXaWZpR3Vlc3RJbmZvUmVxdWVzdA==');
 
 @$core.Deprecated('Use wifiGuestInfoResponseDescriptor instead')
 const WifiGuestInfoResponse$json = {
@@ -2568,9 +6487,27 @@ const WifiGuestInfoResponse$json = {
   '2': [
     {'1': 'is_guest', '3': 1, '4': 1, '5': 8, '10': 'isGuest'},
     {'1': 'is_online', '3': 2, '4': 1, '5': 8, '10': 'isOnline'},
-    {'1': 'router_hardware_version', '3': 3, '4': 1, '5': 9, '10': 'routerHardwareVersion'},
-    {'1': 'dish_hardware_version', '3': 4, '4': 1, '5': 9, '10': 'dishHardwareVersion'},
-    {'1': 'is_router_aviation_conformed', '3': 5, '4': 1, '5': 8, '10': 'isRouterAviationConformed'},
+    {
+      '1': 'router_hardware_version',
+      '3': 3,
+      '4': 1,
+      '5': 9,
+      '10': 'routerHardwareVersion'
+    },
+    {
+      '1': 'dish_hardware_version',
+      '3': 4,
+      '4': 1,
+      '5': 9,
+      '10': 'dishHardwareVersion'
+    },
+    {
+      '1': 'is_router_aviation_conformed',
+      '3': 5,
+      '4': 1,
+      '5': 8,
+      '10': 'isRouterAviationConformed'
+    },
   ],
 };
 
@@ -2586,9 +6523,33 @@ final $typed_data.Uint8List wifiGuestInfoResponseDescriptor = $convert.base64Dec
 const WifiFactoryTestCommandRequest$json = {
   '1': 'WifiFactoryTestCommandRequest',
   '2': [
-    {'1': 'iwpriv_command', '3': 1, '4': 1, '5': 11, '6': '.SpaceX.API.Device.IwprivCommand', '9': 0, '10': 'iwprivCommand'},
-    {'1': 'ip_link_set_command', '3': 2, '4': 1, '5': 11, '6': '.SpaceX.API.Device.IpLinkSetCommand', '9': 0, '10': 'ipLinkSetCommand'},
-    {'1': 'ip_addr_set_command', '3': 3, '4': 1, '5': 11, '6': '.SpaceX.API.Device.IpAddrSetCommand', '9': 0, '10': 'ipAddrSetCommand'},
+    {
+      '1': 'iwpriv_command',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.IwprivCommand',
+      '9': 0,
+      '10': 'iwprivCommand'
+    },
+    {
+      '1': 'ip_link_set_command',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.IpLinkSetCommand',
+      '9': 0,
+      '10': 'ipLinkSetCommand'
+    },
+    {
+      '1': 'ip_addr_set_command',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.IpAddrSetCommand',
+      '9': 0,
+      '10': 'ipAddrSetCommand'
+    },
   ],
   '8': [
     {'1': 'command'},
@@ -2613,9 +6574,10 @@ const WifiFactoryTestCommandResponse$json = {
 };
 
 /// Descriptor for `WifiFactoryTestCommandResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List wifiFactoryTestCommandResponseDescriptor = $convert.base64Decode(
-    'Ch5XaWZpRmFjdG9yeVRlc3RDb21tYW5kUmVzcG9uc2USGgoIcmVzcG9uc2UYASABKAlSCHJlc3'
-    'BvbnNl');
+final $typed_data.Uint8List wifiFactoryTestCommandResponseDescriptor =
+    $convert.base64Decode(
+        'Ch5XaWZpRmFjdG9yeVRlc3RDb21tYW5kUmVzcG9uc2USGgoIcmVzcG9uc2UYASABKAlSCHJlc3'
+        'BvbnNl');
 
 @$core.Deprecated('Use iwprivCommandDescriptor instead')
 const IwprivCommand$json = {
@@ -2623,7 +6585,14 @@ const IwprivCommand$json = {
   '2': [
     {'1': 'iface', '3': 1, '4': 1, '5': 9, '10': 'iface'},
     {'1': 'arg', '3': 2, '4': 1, '5': 9, '10': 'arg'},
-    {'1': 'ioctl', '3': 3, '4': 1, '5': 14, '6': '.SpaceX.API.Device.IwprivCommand.Ioctl', '10': 'ioctl'},
+    {
+      '1': 'ioctl',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.IwprivCommand.Ioctl',
+      '10': 'ioctl'
+    },
   ],
   '4': [IwprivCommand_Ioctl$json],
 };
@@ -2684,8 +6653,9 @@ const WifiStartLocalTelemProxyRequest$json = {
 };
 
 /// Descriptor for `WifiStartLocalTelemProxyRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List wifiStartLocalTelemProxyRequestDescriptor = $convert.base64Decode(
-    'Ch9XaWZpU3RhcnRMb2NhbFRlbGVtUHJveHlSZXF1ZXN0EhIKBHBvcnQYASABKAVSBHBvcnQ=');
+final $typed_data.Uint8List wifiStartLocalTelemProxyRequestDescriptor =
+    $convert.base64Decode(
+        'Ch9XaWZpU3RhcnRMb2NhbFRlbGVtUHJveHlSZXF1ZXN0EhIKBHBvcnQYASABKAVSBHBvcnQ=');
 
 @$core.Deprecated('Use wifiBackhaulStatsRequestDescriptor instead')
 const WifiBackhaulStatsRequest$json = {
@@ -2693,8 +6663,8 @@ const WifiBackhaulStatsRequest$json = {
 };
 
 /// Descriptor for `WifiBackhaulStatsRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List wifiBackhaulStatsRequestDescriptor = $convert.base64Decode(
-    'ChhXaWZpQmFja2hhdWxTdGF0c1JlcXVlc3Q=');
+final $typed_data.Uint8List wifiBackhaulStatsRequestDescriptor =
+    $convert.base64Decode('ChhXaWZpQmFja2hhdWxTdGF0c1JlcXVlc3Q=');
 
 @$core.Deprecated('Use wifiBackhaulStatsResponseDescriptor instead')
 const WifiBackhaulStatsResponse$json = {
@@ -2702,9 +6672,23 @@ const WifiBackhaulStatsResponse$json = {
   '2': [
     {'1': 'success', '3': 1, '4': 1, '5': 8, '10': 'success'},
     {'1': 'bssid', '3': 2, '4': 1, '5': 9, '10': 'bssid'},
-    {'1': 'iface', '3': 3, '4': 1, '5': 14, '6': '.SpaceX.API.Device.IfaceType', '10': 'iface'},
+    {
+      '1': 'iface',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.IfaceType',
+      '10': 'iface'
+    },
     {'1': 'preference', '3': 4, '4': 1, '5': 13, '10': 'preference'},
-    {'1': 'siteSurveyScan', '3': 5, '4': 3, '5': 11, '6': '.SpaceX.API.Device.WifiSiteSurveyResult', '10': 'siteSurveyScan'},
+    {
+      '1': 'siteSurveyScan',
+      '3': 5,
+      '4': 3,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiSiteSurveyResult',
+      '10': 'siteSurveyScan'
+    },
   ],
 };
 
@@ -2725,7 +6709,7 @@ const WifiToggleUmbilicalModeRequest$json = {
 };
 
 /// Descriptor for `WifiToggleUmbilicalModeRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List wifiToggleUmbilicalModeRequestDescriptor = $convert.base64Decode(
-    'Ch5XaWZpVG9nZ2xlVW1iaWxpY2FsTW9kZVJlcXVlc3QSFgoGZW5hYmxlGAEgASgIUgZlbmFibG'
-    'U=');
-
+final $typed_data.Uint8List wifiToggleUmbilicalModeRequestDescriptor =
+    $convert.base64Decode(
+        'Ch5XaWZpVG9nZ2xlVW1iaWxpY2FsTW9kZVJlcXVlc3QSFgoGZW5hYmxlGAEgASgIUgZlbmFibG'
+        'U=');

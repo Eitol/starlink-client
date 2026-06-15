@@ -1,13 +1,15 @@
+// This is a generated file - do not edit.
 //
-//  Generated code. Do not modify.
-//  source: spacex/api/device/wifi_config.proto
-//
-// @dart = 2.12
+// Generated from spacex/api/device/wifi_config.proto.
+
+// @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
-// ignore_for_file: constant_identifier_names, library_prefixes
-// ignore_for_file: non_constant_identifier_names, prefer_final_fields
-// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: curly_braces_in_flow_control_structures
+// ignore_for_file: deprecated_member_use_from_same_package, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_relative_imports
+// ignore_for_file: unused_import
 
 import 'dart:convert' as $convert;
 import 'dart:core' as $core;
@@ -56,22 +58,42 @@ const CakePriorityQueueParameter$json = {
 };
 
 /// Descriptor for `CakePriorityQueueParameter`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List cakePriorityQueueParameterDescriptor = $convert.base64Decode(
-    'ChpDYWtlUHJpb3JpdHlRdWV1ZVBhcmFtZXRlchINCglESUZGU0VSVjMQABINCglESUZGU0VSVj'
-    'QQARIOCgpQUkVDRURFTkNFEAISDwoLQkVTVF9FRkZPUlQQAw==');
+final $typed_data.Uint8List cakePriorityQueueParameterDescriptor =
+    $convert.base64Decode(
+        'ChpDYWtlUHJpb3JpdHlRdWV1ZVBhcmFtZXRlchINCglESUZGU0VSVjMQABINCglESUZGU0VSVj'
+        'QQARIOCgpQUkVDRURFTkNFEAISDwoLQkVTVF9FRkZPUlQQAw==');
 
 @$core.Deprecated('Use meshConfigDescriptor instead')
 const MeshConfig$json = {
   '1': 'MeshConfig',
   '2': [
     {'1': 'display_name', '3': 1, '4': 1, '5': 9, '10': 'displayName'},
-    {'1': 'apply_display_name', '3': 2, '4': 1, '5': 8, '10': 'applyDisplayName'},
-    {'1': 'auth', '3': 3, '4': 1, '5': 14, '6': '.SpaceX.API.Device.MeshAuth', '10': 'auth'},
+    {
+      '1': 'apply_display_name',
+      '3': 2,
+      '4': 1,
+      '5': 8,
+      '10': 'applyDisplayName'
+    },
+    {
+      '1': 'auth',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.MeshAuth',
+      '10': 'auth'
+    },
     {'1': 'apply_auth', '3': 4, '4': 1, '5': 8, '10': 'applyAuth'},
     {'1': 'last_connected', '3': 5, '4': 1, '5': 3, '10': 'lastConnected'},
     {'1': 'incarnation', '3': 7, '4': 1, '5': 4, '10': 'incarnation'},
     {'1': 'hardware_version', '3': 9, '4': 1, '5': 9, '10': 'hardwareVersion'},
-    {'1': 'supports_5ghz_high', '3': 10, '4': 1, '5': 8, '10': 'supports5ghzHigh'},
+    {
+      '1': 'supports_5ghz_high',
+      '3': 10,
+      '4': 1,
+      '5': 8,
+      '10': 'supports5ghzHigh'
+    },
   ],
   '9': [
     {'1': 6, '2': 7},
@@ -94,70 +116,359 @@ const WifiConfig$json = {
   '1': 'WifiConfig',
   '2': [
     {'1': 'country_code', '3': 3, '4': 1, '5': 9, '10': 'countryCode'},
-    {'1': 'apply_country_code', '3': 1085, '4': 1, '5': 8, '10': 'applyCountryCode'},
+    {
+      '1': 'apply_country_code',
+      '3': 1085,
+      '4': 1,
+      '5': 8,
+      '10': 'applyCountryCode'
+    },
     {'1': 'pin_country_code', '3': 53, '4': 1, '5': 8, '10': 'pinCountryCode'},
-    {'1': 'apply_pin_country_code', '3': 1086, '4': 1, '5': 8, '10': 'applyPinCountryCode'},
-    {'1': 'custom_power_table', '3': 54, '4': 1, '5': 8, '10': 'customPowerTable'},
-    {'1': 'apply_custom_power_table', '3': 1087, '4': 1, '5': 8, '10': 'applyCustomPowerTable'},
+    {
+      '1': 'apply_pin_country_code',
+      '3': 1086,
+      '4': 1,
+      '5': 8,
+      '10': 'applyPinCountryCode'
+    },
+    {
+      '1': 'custom_power_table',
+      '3': 54,
+      '4': 1,
+      '5': 8,
+      '10': 'customPowerTable'
+    },
+    {
+      '1': 'apply_custom_power_table',
+      '3': 1087,
+      '4': 1,
+      '5': 8,
+      '10': 'applyCustomPowerTable'
+    },
     {'1': 'setup_complete', '3': 7, '4': 1, '5': 8, '10': 'setupComplete'},
-    {'1': 'apply_setup_complete', '3': 1010, '4': 1, '5': 8, '10': 'applySetupComplete'},
+    {
+      '1': 'apply_setup_complete',
+      '3': 1010,
+      '4': 1,
+      '5': 8,
+      '10': 'applySetupComplete'
+    },
     {'1': 'version', '3': 9, '4': 1, '5': 13, '10': 'version'},
     {'1': 'mac_wan', '3': 12, '4': 1, '5': 9, '10': 'macWan'},
     {'1': 'mac_lan', '3': 13, '4': 1, '5': 9, '10': 'macLan'},
     {'1': 'channel_2ghz', '3': 19, '4': 1, '5': 13, '10': 'channel2ghz'},
-    {'1': 'apply_channel_2ghz', '3': 1013, '4': 1, '5': 8, '10': 'applyChannel2ghz'},
+    {
+      '1': 'apply_channel_2ghz',
+      '3': 1013,
+      '4': 1,
+      '5': 8,
+      '10': 'applyChannel2ghz'
+    },
     {'1': 'channel_5ghz', '3': 20, '4': 1, '5': 13, '10': 'channel5ghz'},
-    {'1': 'apply_channel_5ghz', '3': 1014, '4': 1, '5': 8, '10': 'applyChannel5ghz'},
-    {'1': 'channel_5ghz_high', '3': 57, '4': 1, '5': 13, '10': 'channel5ghzHigh'},
-    {'1': 'apply_channel_5ghz_high', '3': 1016, '4': 1, '5': 8, '10': 'applyChannel5ghzHigh'},
-    {'1': 'mesh_configs', '3': 33, '4': 3, '5': 11, '6': '.SpaceX.API.Device.WifiConfig.MeshConfigsEntry', '10': 'meshConfigs'},
-    {'1': 'mesh_configs_updates', '3': 3033, '4': 3, '5': 11, '6': '.SpaceX.API.Device.WifiConfig.MeshConfigsUpdatesEntry', '10': 'meshConfigsUpdates'},
-    {'1': 'apply_mesh_configs', '3': 1033, '4': 1, '5': 8, '10': 'applyMeshConfigs'},
-    {'1': 'dynamic_keys', '3': 22, '4': 3, '5': 11, '6': '.SpaceX.API.Device.PublicKey', '10': 'dynamicKeys'},
-    {'1': 'apply_dynamic_keys', '3': 39, '4': 1, '5': 8, '10': 'applyDynamicKeys'},
+    {
+      '1': 'apply_channel_5ghz',
+      '3': 1014,
+      '4': 1,
+      '5': 8,
+      '10': 'applyChannel5ghz'
+    },
+    {
+      '1': 'channel_5ghz_high',
+      '3': 57,
+      '4': 1,
+      '5': 13,
+      '10': 'channel5ghzHigh'
+    },
+    {
+      '1': 'apply_channel_5ghz_high',
+      '3': 1016,
+      '4': 1,
+      '5': 8,
+      '10': 'applyChannel5ghzHigh'
+    },
+    {
+      '1': 'mesh_configs',
+      '3': 33,
+      '4': 3,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiConfig.MeshConfigsEntry',
+      '10': 'meshConfigs'
+    },
+    {
+      '1': 'mesh_configs_updates',
+      '3': 3033,
+      '4': 3,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiConfig.MeshConfigsUpdatesEntry',
+      '10': 'meshConfigsUpdates'
+    },
+    {
+      '1': 'apply_mesh_configs',
+      '3': 1033,
+      '4': 1,
+      '5': 8,
+      '10': 'applyMeshConfigs'
+    },
+    {
+      '1': 'dynamic_keys',
+      '3': 22,
+      '4': 3,
+      '5': 11,
+      '6': '.SpaceX.API.Device.PublicKey',
+      '10': 'dynamicKeys'
+    },
+    {
+      '1': 'apply_dynamic_keys',
+      '3': 39,
+      '4': 1,
+      '5': 8,
+      '10': 'applyDynamicKeys'
+    },
     {'1': 'is_repeater', '3': 23, '4': 1, '5': 8, '10': 'isRepeater'},
-    {'1': 'apply_is_repeater', '3': 1031, '4': 1, '5': 8, '10': 'applyIsRepeater'},
+    {
+      '1': 'apply_is_repeater',
+      '3': 1031,
+      '4': 1,
+      '5': 8,
+      '10': 'applyIsRepeater'
+    },
     {'1': 'ap_mode', '3': 51, '4': 1, '5': 8, '10': 'apMode'},
     {'1': 'apply_ap_mode', '3': 1066, '4': 1, '5': 8, '10': 'applyApMode'},
     {'1': 'is_aviation', '3': 49, '4': 1, '5': 8, '10': 'isAviation'},
-    {'1': 'apply_is_aviation', '3': 1064, '4': 1, '5': 8, '10': 'applyIsAviation'},
+    {
+      '1': 'apply_is_aviation',
+      '3': 1064,
+      '4': 1,
+      '5': 8,
+      '10': 'applyIsAviation'
+    },
     {'1': 'boot_count', '3': 26, '4': 1, '5': 5, '10': 'bootCount'},
-    {'1': 'boot', '3': 3001, '4': 1, '5': 11, '6': '.SpaceX.API.Device.BootInfo', '10': 'boot'},
+    {
+      '1': 'boot',
+      '3': 3001,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.BootInfo',
+      '10': 'boot'
+    },
     {'1': 'nameservers', '3': 30, '4': 3, '5': 9, '10': 'nameservers'},
-    {'1': 'apply_nameservers', '3': 1054, '4': 1, '5': 8, '10': 'applyNameservers'},
+    {
+      '1': 'apply_nameservers',
+      '3': 1054,
+      '4': 1,
+      '5': 8,
+      '10': 'applyNameservers'
+    },
     {'1': 'secure_dns', '3': 50, '4': 1, '5': 8, '10': 'secureDns'},
-    {'1': 'apply_secure_dns', '3': 1065, '4': 1, '5': 8, '10': 'applySecureDns'},
+    {
+      '1': 'apply_secure_dns',
+      '3': 1065,
+      '4': 1,
+      '5': 8,
+      '10': 'applySecureDns'
+    },
     {'1': 'bypass_mode', '3': 31, '4': 1, '5': 8, '10': 'bypassMode'},
-    {'1': 'apply_bypass_mode', '3': 1055, '4': 1, '5': 8, '10': 'applyBypassMode'},
+    {
+      '1': 'apply_bypass_mode',
+      '3': 1055,
+      '4': 1,
+      '5': 8,
+      '10': 'applyBypassMode'
+    },
     {'1': 'dfs_enabled', '3': 42, '4': 1, '5': 8, '10': 'dfsEnabled'},
-    {'1': 'apply_dfs_enabled', '3': 1058, '4': 1, '5': 8, '10': 'applyDfsEnabled'},
-    {'1': 'disable_mesh_onboarding', '3': 52, '4': 1, '5': 8, '10': 'disableMeshOnboarding'},
-    {'1': 'apply_disable_mesh_onboarding', '3': 1067, '4': 1, '5': 8, '10': 'applyDisableMeshOnboarding'},
-    {'1': 'networks', '3': 1100, '4': 3, '5': 11, '6': '.SpaceX.API.Device.WifiConfig.Network', '10': 'networks'},
+    {
+      '1': 'apply_dfs_enabled',
+      '3': 1058,
+      '4': 1,
+      '5': 8,
+      '10': 'applyDfsEnabled'
+    },
+    {
+      '1': 'disable_mesh_onboarding',
+      '3': 52,
+      '4': 1,
+      '5': 8,
+      '10': 'disableMeshOnboarding'
+    },
+    {
+      '1': 'apply_disable_mesh_onboarding',
+      '3': 1067,
+      '4': 1,
+      '5': 8,
+      '10': 'applyDisableMeshOnboarding'
+    },
+    {
+      '1': 'networks',
+      '3': 1100,
+      '4': 3,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiConfig.Network',
+      '10': 'networks'
+    },
     {'1': 'apply_networks', '3': 1101, '4': 1, '5': 8, '10': 'applyNetworks'},
     {'1': 'incarnation', '3': 43, '4': 1, '5': 4, '10': 'incarnation'},
-    {'1': 'wireless_mode_2ghz', '3': 44, '4': 1, '5': 14, '6': '.SpaceX.API.Device.WifiConfig.WirelessMode', '10': 'wirelessMode2ghz'},
-    {'1': 'apply_wireless_mode_2ghz', '3': 1059, '4': 1, '5': 8, '10': 'applyWirelessMode2ghz'},
-    {'1': 'wireless_mode_5ghz', '3': 45, '4': 1, '5': 14, '6': '.SpaceX.API.Device.WifiConfig.WirelessMode', '10': 'wirelessMode5ghz'},
-    {'1': 'apply_wireless_mode_5ghz', '3': 1060, '4': 1, '5': 8, '10': 'applyWirelessMode5ghz'},
-    {'1': 'wireless_mode_5ghz_high', '3': 58, '4': 1, '5': 14, '6': '.SpaceX.API.Device.WifiConfig.WirelessMode', '10': 'wirelessMode5ghzHigh'},
-    {'1': 'apply_wireless_mode_5ghz_high', '3': 1070, '4': 1, '5': 8, '10': 'applyWirelessMode5ghzHigh'},
-    {'1': 'ht_bandwidth_2ghz', '3': 46, '4': 1, '5': 14, '6': '.SpaceX.API.Device.WifiConfig.HTBandwidth', '10': 'htBandwidth2ghz'},
-    {'1': 'apply_ht_bandwidth_2ghz', '3': 1061, '4': 1, '5': 8, '10': 'applyHtBandwidth2ghz'},
-    {'1': 'ht_bandwidth_5ghz', '3': 47, '4': 1, '5': 14, '6': '.SpaceX.API.Device.WifiConfig.HTBandwidth', '10': 'htBandwidth5ghz'},
-    {'1': 'apply_ht_bandwidth_5ghz', '3': 1062, '4': 1, '5': 8, '10': 'applyHtBandwidth5ghz'},
-    {'1': 'ht_bandwidth_5ghz_high', '3': 59, '4': 1, '5': 14, '6': '.SpaceX.API.Device.WifiConfig.HTBandwidth', '10': 'htBandwidth5ghzHigh'},
-    {'1': 'apply_ht_bandwidth_5ghz_high', '3': 1071, '4': 1, '5': 8, '10': 'applyHtBandwidth5ghzHigh'},
-    {'1': 'vht_bandwidth', '3': 48, '4': 1, '5': 14, '6': '.SpaceX.API.Device.WifiConfig.VHTBandwidth', '10': 'vhtBandwidth'},
-    {'1': 'apply_vht_bandwidth', '3': 1063, '4': 1, '5': 8, '10': 'applyVhtBandwidth'},
-    {'1': 'vht_bandwidth_5ghz_high', '3': 60, '4': 1, '5': 14, '6': '.SpaceX.API.Device.WifiConfig.VHTBandwidth', '10': 'vhtBandwidth5ghzHigh'},
-    {'1': 'apply_vht_bandwidth_5ghz_high', '3': 1072, '4': 1, '5': 8, '10': 'applyVhtBandwidth5ghzHigh'},
-    {'1': 'use_public_services', '3': 55, '4': 1, '5': 8, '10': 'usePublicServices'},
-    {'1': 'apply_use_public_services', '3': 1068, '4': 1, '5': 8, '10': 'applyUsePublicServices'},
-    {'1': 'disable_automated_speedtests', '3': 56, '4': 1, '5': 8, '10': 'disableAutomatedSpeedtests'},
-    {'1': 'apply_disable_automated_speedtests', '3': 1069, '4': 1, '5': 8, '10': 'applyDisableAutomatedSpeedtests'},
-    {'1': 'enable_umbilical_vlan', '3': 61, '4': 1, '5': 8, '10': 'enableUmbilicalVlan'},
-    {'1': 'apply_enable_umbilical_vlan', '3': 1073, '4': 1, '5': 8, '10': 'applyEnableUmbilicalVlan'},
+    {
+      '1': 'wireless_mode_2ghz',
+      '3': 44,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.WifiConfig.WirelessMode',
+      '10': 'wirelessMode2ghz'
+    },
+    {
+      '1': 'apply_wireless_mode_2ghz',
+      '3': 1059,
+      '4': 1,
+      '5': 8,
+      '10': 'applyWirelessMode2ghz'
+    },
+    {
+      '1': 'wireless_mode_5ghz',
+      '3': 45,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.WifiConfig.WirelessMode',
+      '10': 'wirelessMode5ghz'
+    },
+    {
+      '1': 'apply_wireless_mode_5ghz',
+      '3': 1060,
+      '4': 1,
+      '5': 8,
+      '10': 'applyWirelessMode5ghz'
+    },
+    {
+      '1': 'wireless_mode_5ghz_high',
+      '3': 58,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.WifiConfig.WirelessMode',
+      '10': 'wirelessMode5ghzHigh'
+    },
+    {
+      '1': 'apply_wireless_mode_5ghz_high',
+      '3': 1070,
+      '4': 1,
+      '5': 8,
+      '10': 'applyWirelessMode5ghzHigh'
+    },
+    {
+      '1': 'ht_bandwidth_2ghz',
+      '3': 46,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.WifiConfig.HTBandwidth',
+      '10': 'htBandwidth2ghz'
+    },
+    {
+      '1': 'apply_ht_bandwidth_2ghz',
+      '3': 1061,
+      '4': 1,
+      '5': 8,
+      '10': 'applyHtBandwidth2ghz'
+    },
+    {
+      '1': 'ht_bandwidth_5ghz',
+      '3': 47,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.WifiConfig.HTBandwidth',
+      '10': 'htBandwidth5ghz'
+    },
+    {
+      '1': 'apply_ht_bandwidth_5ghz',
+      '3': 1062,
+      '4': 1,
+      '5': 8,
+      '10': 'applyHtBandwidth5ghz'
+    },
+    {
+      '1': 'ht_bandwidth_5ghz_high',
+      '3': 59,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.WifiConfig.HTBandwidth',
+      '10': 'htBandwidth5ghzHigh'
+    },
+    {
+      '1': 'apply_ht_bandwidth_5ghz_high',
+      '3': 1071,
+      '4': 1,
+      '5': 8,
+      '10': 'applyHtBandwidth5ghzHigh'
+    },
+    {
+      '1': 'vht_bandwidth',
+      '3': 48,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.WifiConfig.VHTBandwidth',
+      '10': 'vhtBandwidth'
+    },
+    {
+      '1': 'apply_vht_bandwidth',
+      '3': 1063,
+      '4': 1,
+      '5': 8,
+      '10': 'applyVhtBandwidth'
+    },
+    {
+      '1': 'vht_bandwidth_5ghz_high',
+      '3': 60,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.WifiConfig.VHTBandwidth',
+      '10': 'vhtBandwidth5ghzHigh'
+    },
+    {
+      '1': 'apply_vht_bandwidth_5ghz_high',
+      '3': 1072,
+      '4': 1,
+      '5': 8,
+      '10': 'applyVhtBandwidth5ghzHigh'
+    },
+    {
+      '1': 'use_public_services',
+      '3': 55,
+      '4': 1,
+      '5': 8,
+      '10': 'usePublicServices'
+    },
+    {
+      '1': 'apply_use_public_services',
+      '3': 1068,
+      '4': 1,
+      '5': 8,
+      '10': 'applyUsePublicServices'
+    },
+    {
+      '1': 'disable_automated_speedtests',
+      '3': 56,
+      '4': 1,
+      '5': 8,
+      '10': 'disableAutomatedSpeedtests'
+    },
+    {
+      '1': 'apply_disable_automated_speedtests',
+      '3': 1069,
+      '4': 1,
+      '5': 8,
+      '10': 'applyDisableAutomatedSpeedtests'
+    },
+    {
+      '1': 'enable_umbilical_vlan',
+      '3': 61,
+      '4': 1,
+      '5': 8,
+      '10': 'enableUmbilicalVlan'
+    },
+    {
+      '1': 'apply_enable_umbilical_vlan',
+      '3': 1073,
+      '4': 1,
+      '5': 8,
+      '10': 'applyEnableUmbilicalVlan'
+    },
     {
       '1': 'client_names',
       '3': 62,
@@ -176,15 +487,57 @@ const WifiConfig$json = {
       '10': 'applyClientNames',
     },
     {'1': 'outdoor_mode', '3': 63, '4': 1, '5': 8, '10': 'outdoorMode'},
-    {'1': 'apply_outdoor_mode', '3': 1075, '4': 1, '5': 8, '10': 'applyOutdoorMode'},
+    {
+      '1': 'apply_outdoor_mode',
+      '3': 1075,
+      '4': 1,
+      '5': 8,
+      '10': 'applyOutdoorMode'
+    },
     {'1': 'disable_2ghz', '3': 64, '4': 1, '5': 8, '10': 'disable2ghz'},
-    {'1': 'apply_disable_2ghz', '3': 1076, '4': 1, '5': 8, '10': 'applyDisable2ghz'},
+    {
+      '1': 'apply_disable_2ghz',
+      '3': 1076,
+      '4': 1,
+      '5': 8,
+      '10': 'applyDisable2ghz'
+    },
     {'1': 'disable_5ghz', '3': 65, '4': 1, '5': 8, '10': 'disable5ghz'},
-    {'1': 'apply_disable_5ghz', '3': 1077, '4': 1, '5': 8, '10': 'applyDisable5ghz'},
-    {'1': 'disable_5ghz_high', '3': 66, '4': 1, '5': 8, '10': 'disable5ghzHigh'},
-    {'1': 'apply_disable_5ghz_high', '3': 1078, '4': 1, '5': 8, '10': 'applyDisable5ghzHigh'},
-    {'1': 'disable_x_mesh_backhaul', '3': 67, '4': 1, '5': 8, '10': 'disableXMeshBackhaul'},
-    {'1': 'apply_disable_x_mesh_backhaul', '3': 1079, '4': 1, '5': 8, '10': 'applyDisableXMeshBackhaul'},
+    {
+      '1': 'apply_disable_5ghz',
+      '3': 1077,
+      '4': 1,
+      '5': 8,
+      '10': 'applyDisable5ghz'
+    },
+    {
+      '1': 'disable_5ghz_high',
+      '3': 66,
+      '4': 1,
+      '5': 8,
+      '10': 'disable5ghzHigh'
+    },
+    {
+      '1': 'apply_disable_5ghz_high',
+      '3': 1078,
+      '4': 1,
+      '5': 8,
+      '10': 'applyDisable5ghzHigh'
+    },
+    {
+      '1': 'disable_x_mesh_backhaul',
+      '3': 67,
+      '4': 1,
+      '5': 8,
+      '10': 'disableXMeshBackhaul'
+    },
+    {
+      '1': 'apply_disable_x_mesh_backhaul',
+      '3': 1079,
+      '4': 1,
+      '5': 8,
+      '10': 'applyDisableXMeshBackhaul'
+    },
     {
       '1': 'golden_bssid',
       '3': 68,
@@ -218,34 +571,181 @@ const WifiConfig$json = {
       '8': {'3': true},
       '10': 'applyGoldenIfaceType',
     },
-    {'1': 'tx_power_level_2ghz', '3': 70, '4': 1, '5': 14, '6': '.SpaceX.API.Device.TxPowerLevel', '10': 'txPowerLevel2ghz'},
-    {'1': 'apply_tx_power_level_2ghz', '3': 1082, '4': 1, '5': 8, '10': 'applyTxPowerLevel2ghz'},
-    {'1': 'tx_power_level_5ghz', '3': 71, '4': 1, '5': 14, '6': '.SpaceX.API.Device.TxPowerLevel', '10': 'txPowerLevel5ghz'},
-    {'1': 'apply_tx_power_level_5ghz', '3': 1083, '4': 1, '5': 8, '10': 'applyTxPowerLevel5ghz'},
-    {'1': 'tx_power_level_5ghz_high', '3': 72, '4': 1, '5': 14, '6': '.SpaceX.API.Device.TxPowerLevel', '10': 'txPowerLevel5ghzHigh'},
-    {'1': 'apply_tx_power_level_5ghz_high', '3': 1084, '4': 1, '5': 8, '10': 'applyTxPowerLevel5ghzHigh'},
-    {'1': 'disable_pending_update_reboot', '3': 73, '4': 1, '5': 8, '10': 'disablePendingUpdateReboot'},
-    {'1': 'apply_disable_pending_update_reboot', '3': 1088, '4': 1, '5': 8, '10': 'applyDisablePendingUpdateReboot'},
-    {'1': 'client_configs', '3': 74, '4': 3, '5': 11, '6': '.SpaceX.API.Device.ClientConfig', '10': 'clientConfigs'},
-    {'1': 'apply_client_configs', '3': 1089, '4': 1, '5': 8, '10': 'applyClientConfigs'},
-    {'1': 'disable_set_wifi_config_from_controller', '3': 75, '4': 1, '5': 8, '10': 'disableSetWifiConfigFromController'},
-    {'1': 'apply_disable_set_wifi_config_from_controller', '3': 1090, '4': 1, '5': 8, '10': 'applyDisableSetWifiConfigFromController'},
+    {
+      '1': 'tx_power_level_2ghz',
+      '3': 70,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.TxPowerLevel',
+      '10': 'txPowerLevel2ghz'
+    },
+    {
+      '1': 'apply_tx_power_level_2ghz',
+      '3': 1082,
+      '4': 1,
+      '5': 8,
+      '10': 'applyTxPowerLevel2ghz'
+    },
+    {
+      '1': 'tx_power_level_5ghz',
+      '3': 71,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.TxPowerLevel',
+      '10': 'txPowerLevel5ghz'
+    },
+    {
+      '1': 'apply_tx_power_level_5ghz',
+      '3': 1083,
+      '4': 1,
+      '5': 8,
+      '10': 'applyTxPowerLevel5ghz'
+    },
+    {
+      '1': 'tx_power_level_5ghz_high',
+      '3': 72,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.TxPowerLevel',
+      '10': 'txPowerLevel5ghzHigh'
+    },
+    {
+      '1': 'apply_tx_power_level_5ghz_high',
+      '3': 1084,
+      '4': 1,
+      '5': 8,
+      '10': 'applyTxPowerLevel5ghzHigh'
+    },
+    {
+      '1': 'disable_pending_update_reboot',
+      '3': 73,
+      '4': 1,
+      '5': 8,
+      '10': 'disablePendingUpdateReboot'
+    },
+    {
+      '1': 'apply_disable_pending_update_reboot',
+      '3': 1088,
+      '4': 1,
+      '5': 8,
+      '10': 'applyDisablePendingUpdateReboot'
+    },
+    {
+      '1': 'client_configs',
+      '3': 74,
+      '4': 3,
+      '5': 11,
+      '6': '.SpaceX.API.Device.ClientConfig',
+      '10': 'clientConfigs'
+    },
+    {
+      '1': 'apply_client_configs',
+      '3': 1089,
+      '4': 1,
+      '5': 8,
+      '10': 'applyClientConfigs'
+    },
+    {
+      '1': 'disable_set_wifi_config_from_controller',
+      '3': 75,
+      '4': 1,
+      '5': 8,
+      '10': 'disableSetWifiConfigFromController'
+    },
+    {
+      '1': 'apply_disable_set_wifi_config_from_controller',
+      '3': 1090,
+      '4': 1,
+      '5': 8,
+      '10': 'applyDisableSetWifiConfigFromController'
+    },
     {'1': 'client_key', '3': 76, '4': 1, '5': 12, '10': 'clientKey'},
-    {'1': 'apply_client_key', '3': 1091, '4': 1, '5': 8, '10': 'applyClientKey'},
-    {'1': 'wan_no_traffic_control', '3': 4001, '4': 1, '5': 11, '6': '.SpaceX.API.Device.NoTrafficControl', '9': 0, '10': 'wanNoTrafficControl'},
-    {'1': 'wan_ack_suppression', '3': 4002, '4': 1, '5': 11, '6': '.SpaceX.API.Device.AckSuppression', '9': 0, '10': 'wanAckSuppression'},
-    {'1': 'wan_cake_rate_limit', '3': 4003, '4': 1, '5': 11, '6': '.SpaceX.API.Device.CakeRateLimit', '9': 0, '10': 'wanCakeRateLimit'},
-    {'1': 'apply_wan_traffic_control', '3': 1092, '4': 1, '5': 8, '10': 'applyWanTrafficControl'},
-    {'1': 'wan_host_dscp_mark', '3': 77, '4': 1, '5': 5, '10': 'wanHostDscpMark'},
-    {'1': 'apply_wan_host_dscp_mark', '3': 1093, '4': 1, '5': 8, '10': 'applyWanHostDscpMark'},
+    {
+      '1': 'apply_client_key',
+      '3': 1091,
+      '4': 1,
+      '5': 8,
+      '10': 'applyClientKey'
+    },
+    {
+      '1': 'wan_no_traffic_control',
+      '3': 4001,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.NoTrafficControl',
+      '9': 0,
+      '10': 'wanNoTrafficControl'
+    },
+    {
+      '1': 'wan_ack_suppression',
+      '3': 4002,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.AckSuppression',
+      '9': 0,
+      '10': 'wanAckSuppression'
+    },
+    {
+      '1': 'wan_cake_rate_limit',
+      '3': 4003,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.CakeRateLimit',
+      '9': 0,
+      '10': 'wanCakeRateLimit'
+    },
+    {
+      '1': 'apply_wan_traffic_control',
+      '3': 1092,
+      '4': 1,
+      '5': 8,
+      '10': 'applyWanTrafficControl'
+    },
+    {
+      '1': 'wan_host_dscp_mark',
+      '3': 77,
+      '4': 1,
+      '5': 5,
+      '10': 'wanHostDscpMark'
+    },
+    {
+      '1': 'apply_wan_host_dscp_mark',
+      '3': 1093,
+      '4': 1,
+      '5': 8,
+      '10': 'applyWanHostDscpMark'
+    },
     {'1': 'debug_pop_pings', '3': 79, '4': 1, '5': 8, '10': 'debugPopPings'},
-    {'1': 'apply_debug_pop_pings', '3': 1095, '4': 1, '5': 8, '10': 'applyDebugPopPings'},
+    {
+      '1': 'apply_debug_pop_pings',
+      '3': 1095,
+      '4': 1,
+      '5': 8,
+      '10': 'applyDebugPopPings'
+    },
     {'1': 'client_tester', '3': 80, '4': 1, '5': 8, '10': 'clientTester'},
-    {'1': 'apply_client_tester', '3': 1096, '4': 1, '5': 8, '10': 'applyClientTester'},
+    {
+      '1': 'apply_client_tester',
+      '3': 1096,
+      '4': 1,
+      '5': 8,
+      '10': 'applyClientTester'
+    },
     {'1': 'tag', '3': 78, '4': 1, '5': 13, '10': 'tag'},
   ],
-  '3': [WifiConfig_MeshConfigsEntry$json, WifiConfig_MeshConfigsUpdatesEntry$json, WifiConfig_BasicServiceSet$json, WifiConfig_Network$json],
-  '4': [WifiConfig_Security$json, WifiConfig_Band$json, WifiConfig_WirelessMode$json, WifiConfig_HTBandwidth$json, WifiConfig_VHTBandwidth$json],
+  '3': [
+    WifiConfig_MeshConfigsEntry$json,
+    WifiConfig_MeshConfigsUpdatesEntry$json,
+    WifiConfig_BasicServiceSet$json,
+    WifiConfig_Network$json
+  ],
+  '4': [
+    WifiConfig_Security$json,
+    WifiConfig_Band$json,
+    WifiConfig_WirelessMode$json,
+    WifiConfig_HTBandwidth$json,
+    WifiConfig_VHTBandwidth$json
+  ],
   '8': [
     {'1': 'wan_traffic_control'},
   ],
@@ -305,7 +805,21 @@ const WifiConfig$json = {
     {'1': 2007, '2': 2008},
     {'1': 2008, '2': 2009},
   ],
-  '10': ['apply_enable_remote_ssh', 'apply_lan_ipv4', 'apply_network_name', 'apply_network_name_5ghz', 'apply_network_password', 'apply_wifi_security', 'enable_remote_ssh', 'lan_ipv4', 'last_remote_ssh_access', 'network_name', 'network_name_5ghz', 'network_password', 'wifi_security'],
+  '10': [
+    'apply_enable_remote_ssh',
+    'apply_lan_ipv4',
+    'apply_network_name',
+    'apply_network_name_5ghz',
+    'apply_network_password',
+    'apply_wifi_security',
+    'enable_remote_ssh',
+    'lan_ipv4',
+    'last_remote_ssh_access',
+    'network_name',
+    'network_name_5ghz',
+    'network_password',
+    'wifi_security'
+  ],
 };
 
 @$core.Deprecated('Use wifiConfigDescriptor instead')
@@ -313,7 +827,14 @@ const WifiConfig_MeshConfigsEntry$json = {
   '1': 'MeshConfigsEntry',
   '2': [
     {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
-    {'1': 'value', '3': 2, '4': 1, '5': 11, '6': '.SpaceX.API.Device.MeshConfig', '10': 'value'},
+    {
+      '1': 'value',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.MeshConfig',
+      '10': 'value'
+    },
   ],
   '7': {'7': true},
 };
@@ -323,7 +844,14 @@ const WifiConfig_MeshConfigsUpdatesEntry$json = {
   '1': 'MeshConfigsUpdatesEntry',
   '2': [
     {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
-    {'1': 'value', '3': 2, '4': 1, '5': 11, '6': '.SpaceX.API.Device.MeshConfig', '10': 'value'},
+    {
+      '1': 'value',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.MeshConfig',
+      '10': 'value'
+    },
   ],
   '7': {'7': true},
 };
@@ -334,12 +862,59 @@ const WifiConfig_BasicServiceSet$json = {
   '2': [
     {'1': 'bssid', '3': 1003, '4': 1, '5': 9, '10': 'bssid'},
     {'1': 'ssid', '3': 1005, '4': 1, '5': 9, '10': 'ssid'},
-    {'1': 'auth_open', '3': 2001, '4': 1, '5': 11, '6': '.SpaceX.API.Device.AuthOpen', '9': 0, '10': 'authOpen'},
-    {'1': 'auth_wpa2', '3': 2002, '4': 1, '5': 11, '6': '.SpaceX.API.Device.AuthWpa2', '9': 0, '10': 'authWpa2'},
-    {'1': 'auth_wpa3', '3': 2003, '4': 1, '5': 11, '6': '.SpaceX.API.Device.AuthWpa3', '9': 0, '10': 'authWpa3'},
-    {'1': 'auth_wpa2_wpa3', '3': 2004, '4': 1, '5': 11, '6': '.SpaceX.API.Device.AuthWpa2Wpa3', '9': 0, '10': 'authWpa2Wpa3'},
-    {'1': 'auth_radius', '3': 2005, '4': 1, '5': 11, '6': '.SpaceX.API.Device.AuthRadius', '9': 0, '10': 'authRadius'},
-    {'1': 'band', '3': 1011, '4': 1, '5': 14, '6': '.SpaceX.API.Device.WifiConfig.Band', '10': 'band'},
+    {
+      '1': 'auth_open',
+      '3': 2001,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.AuthOpen',
+      '9': 0,
+      '10': 'authOpen'
+    },
+    {
+      '1': 'auth_wpa2',
+      '3': 2002,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.AuthWpa2',
+      '9': 0,
+      '10': 'authWpa2'
+    },
+    {
+      '1': 'auth_wpa3',
+      '3': 2003,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.AuthWpa3',
+      '9': 0,
+      '10': 'authWpa3'
+    },
+    {
+      '1': 'auth_wpa2_wpa3',
+      '3': 2004,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.AuthWpa2Wpa3',
+      '9': 0,
+      '10': 'authWpa2Wpa3'
+    },
+    {
+      '1': 'auth_radius',
+      '3': 2005,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.AuthRadius',
+      '9': 0,
+      '10': 'authRadius'
+    },
+    {
+      '1': 'band',
+      '3': 1011,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.WifiConfig.Band',
+      '10': 'band'
+    },
     {'1': 'iface_name', '3': 1017, '4': 1, '5': 9, '10': 'ifaceName'},
     {'1': 'disable', '3': 1013, '4': 1, '5': 8, '10': 'disable'},
     {'1': 'hidden', '3': 1015, '4': 1, '5': 8, '10': 'hidden'},
@@ -367,10 +942,29 @@ const WifiConfig_Network$json = {
     {'1': 'ipv4', '3': 1003, '4': 1, '5': 9, '10': 'ipv4'},
     {'1': 'dhcpv4_start', '3': 1012, '4': 1, '5': 13, '10': 'dhcpv4Start'},
     {'1': 'dhcp_disabled', '3': 1015, '4': 1, '5': 8, '10': 'dhcpDisabled'},
-    {'1': 'dhcpv4_lease_duration_s', '3': 1016, '4': 1, '5': 13, '10': 'dhcpv4LeaseDurationS'},
+    {
+      '1': 'dhcpv4_lease_duration_s',
+      '3': 1016,
+      '4': 1,
+      '5': 13,
+      '10': 'dhcpv4LeaseDurationS'
+    },
     {'1': 'domain', '3': 1011, '4': 1, '5': 9, '10': 'domain'},
-    {'1': 'basic_service_sets', '3': 1007, '4': 3, '5': 11, '6': '.SpaceX.API.Device.WifiConfig.BasicServiceSet', '10': 'basicServiceSets'},
-    {'1': 'client_isolation', '3': 1008, '4': 1, '5': 8, '10': 'clientIsolation'},
+    {
+      '1': 'basic_service_sets',
+      '3': 1007,
+      '4': 3,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiConfig.BasicServiceSet',
+      '10': 'basicServiceSets'
+    },
+    {
+      '1': 'client_isolation',
+      '3': 1008,
+      '4': 1,
+      '5': 8,
+      '10': 'clientIsolation'
+    },
     {'1': 'guest', '3': 1009, '4': 1, '5': 8, '10': 'guest'},
     {'1': 'landing', '3': 1010, '4': 1, '5': 9, '10': 'landing'},
     {'1': 'landing_page_v2', '3': 1017, '4': 1, '5': 8, '10': 'landingPageV2'},
@@ -612,7 +1206,14 @@ final $typed_data.Uint8List wifiConfigDescriptor = $convert.base64Decode(
 const WeeklyBlockSchedule$json = {
   '1': 'WeeklyBlockSchedule',
   '2': [
-    {'1': 'block_ranges', '3': 1, '4': 3, '5': 11, '6': '.SpaceX.API.Device.WeeklyBlockSchedule.BlockRange', '10': 'blockRanges'},
+    {
+      '1': 'block_ranges',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WeeklyBlockSchedule.BlockRange',
+      '10': 'blockRanges'
+    },
     {'1': 'group_id', '3': 2, '4': 1, '5': 9, '10': 'groupId'},
   ],
   '3': [WeeklyBlockSchedule_BlockRange$json],
@@ -641,7 +1242,14 @@ const ClientConfig$json = {
     {'1': 'client_id', '3': 1, '4': 1, '5': 13, '10': 'clientId'},
     {'1': 'mac_address', '3': 2, '4': 1, '5': 9, '10': 'macAddress'},
     {'1': 'given_name', '3': 3, '4': 1, '5': 9, '10': 'givenName'},
-    {'1': 'weekly_block_schedules', '3': 5, '4': 3, '5': 11, '6': '.SpaceX.API.Device.WeeklyBlockSchedule', '10': 'weeklyBlockSchedules'},
+    {
+      '1': 'weekly_block_schedules',
+      '3': 5,
+      '4': 3,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WeeklyBlockSchedule',
+      '10': 'weeklyBlockSchedules'
+    },
     {'1': 'group_id', '3': 6, '4': 1, '5': 9, '10': 'groupId'},
   ],
   '9': [
@@ -678,8 +1286,8 @@ const AuthOpen$json = {
 };
 
 /// Descriptor for `AuthOpen`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List authOpenDescriptor = $convert.base64Decode(
-    'CghBdXRoT3Blbg==');
+final $typed_data.Uint8List authOpenDescriptor =
+    $convert.base64Decode('CghBdXRoT3Blbg==');
 
 @$core.Deprecated('Use authWpa2Descriptor instead')
 const AuthWpa2$json = {
@@ -690,8 +1298,8 @@ const AuthWpa2$json = {
 };
 
 /// Descriptor for `AuthWpa2`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List authWpa2Descriptor = $convert.base64Decode(
-    'CghBdXRoV3BhMhIaCghwYXNzd29yZBgBIAEoCVIIcGFzc3dvcmQ=');
+final $typed_data.Uint8List authWpa2Descriptor = $convert
+    .base64Decode('CghBdXRoV3BhMhIaCghwYXNzd29yZBgBIAEoCVIIcGFzc3dvcmQ=');
 
 @$core.Deprecated('Use authWpa3Descriptor instead')
 const AuthWpa3$json = {
@@ -702,8 +1310,8 @@ const AuthWpa3$json = {
 };
 
 /// Descriptor for `AuthWpa3`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List authWpa3Descriptor = $convert.base64Decode(
-    'CghBdXRoV3BhMxIaCghwYXNzd29yZBgBIAEoCVIIcGFzc3dvcmQ=');
+final $typed_data.Uint8List authWpa3Descriptor = $convert
+    .base64Decode('CghBdXRoV3BhMxIaCghwYXNzd29yZBgBIAEoCVIIcGFzc3dvcmQ=');
 
 @$core.Deprecated('Use authWpa2Wpa3Descriptor instead')
 const AuthWpa2Wpa3$json = {
@@ -714,8 +1322,8 @@ const AuthWpa2Wpa3$json = {
 };
 
 /// Descriptor for `AuthWpa2Wpa3`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List authWpa2Wpa3Descriptor = $convert.base64Decode(
-    'CgxBdXRoV3BhMldwYTMSGgoIcGFzc3dvcmQYASABKAlSCHBhc3N3b3Jk');
+final $typed_data.Uint8List authWpa2Wpa3Descriptor = $convert
+    .base64Decode('CgxBdXRoV3BhMldwYTMSGgoIcGFzc3dvcmQYASABKAlSCHBhc3N3b3Jk');
 
 @$core.Deprecated('Use authRadiusDescriptor instead')
 const AuthRadius$json = {
@@ -732,7 +1340,14 @@ const AuthRadius$json = {
     },
     {'1': 'server_ca_base_64', '3': 4, '4': 1, '5': 9, '10': 'serverCaBase64'},
     {'1': 'password', '3': 2, '4': 1, '5': 9, '10': 'password'},
-    {'1': 'transport', '3': 5, '4': 1, '5': 14, '6': '.SpaceX.API.Device.Protocol', '10': 'transport'},
+    {
+      '1': 'transport',
+      '3': 5,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.Protocol',
+      '10': 'transport'
+    },
   ],
 };
 
@@ -749,18 +1364,42 @@ const NoTrafficControl$json = {
 };
 
 /// Descriptor for `NoTrafficControl`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List noTrafficControlDescriptor = $convert.base64Decode(
-    'ChBOb1RyYWZmaWNDb250cm9s');
+final $typed_data.Uint8List noTrafficControlDescriptor =
+    $convert.base64Decode('ChBOb1RyYWZmaWNDb250cm9s');
 
 @$core.Deprecated('Use ackSuppressionDescriptor instead')
 const AckSuppression$json = {
   '1': 'AckSuppression',
   '2': [
     {'1': 'ack_mark', '3': 1, '4': 1, '5': 13, '10': 'ackMark'},
-    {'1': 'htb_ack_queue_rate', '3': 2, '4': 1, '5': 2, '10': 'htbAckQueueRate'},
-    {'1': 'htb_ack_queue_ceil', '3': 3, '4': 1, '5': 2, '10': 'htbAckQueueCeil'},
-    {'1': 'cake_queue_bandwidth', '3': 4, '4': 1, '5': 2, '10': 'cakeQueueBandwidth'},
-    {'1': 'cake_ack_filter_aggressive', '3': 5, '4': 1, '5': 8, '10': 'cakeAckFilterAggressive'},
+    {
+      '1': 'htb_ack_queue_rate',
+      '3': 2,
+      '4': 1,
+      '5': 2,
+      '10': 'htbAckQueueRate'
+    },
+    {
+      '1': 'htb_ack_queue_ceil',
+      '3': 3,
+      '4': 1,
+      '5': 2,
+      '10': 'htbAckQueueCeil'
+    },
+    {
+      '1': 'cake_queue_bandwidth',
+      '3': 4,
+      '4': 1,
+      '5': 2,
+      '10': 'cakeQueueBandwidth'
+    },
+    {
+      '1': 'cake_ack_filter_aggressive',
+      '3': 5,
+      '4': 1,
+      '5': 8,
+      '10': 'cakeAckFilterAggressive'
+    },
     {'1': 'cake_manual_rtt', '3': 6, '4': 1, '5': 2, '10': 'cakeManualRtt'},
   ],
 };
@@ -780,8 +1419,22 @@ const CakeRateLimit$json = {
   '2': [
     {'1': 'host_mark', '3': 1, '4': 1, '5': 13, '10': 'hostMark'},
     {'1': 'bandwidth', '3': 2, '4': 1, '5': 2, '10': 'bandwidth'},
-    {'1': 'priority_queue_parameter', '3': 3, '4': 1, '5': 14, '6': '.SpaceX.API.Device.CakePriorityQueueParameter', '10': 'priorityQueueParameter'},
-    {'1': 'ack_filter', '3': 4, '4': 1, '5': 14, '6': '.SpaceX.API.Device.CakeAckFilter', '10': 'ackFilter'},
+    {
+      '1': 'priority_queue_parameter',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.CakePriorityQueueParameter',
+      '10': 'priorityQueueParameter'
+    },
+    {
+      '1': 'ack_filter',
+      '3': 4,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.CakeAckFilter',
+      '10': 'ackFilter'
+    },
     {'1': 'manual_rtt', '3': 6, '4': 1, '5': 2, '10': 'manualRtt'},
   ],
 };
@@ -793,4 +1446,3 @@ final $typed_data.Uint8List cakeRateLimitDescriptor = $convert.base64Decode(
     'U3BhY2VYLkFQSS5EZXZpY2UuQ2FrZVByaW9yaXR5UXVldWVQYXJhbWV0ZXJSFnByaW9yaXR5UX'
     'VldWVQYXJhbWV0ZXISPwoKYWNrX2ZpbHRlchgEIAEoDjIgLlNwYWNlWC5BUEkuRGV2aWNlLkNh'
     'a2VBY2tGaWx0ZXJSCWFja0ZpbHRlchIdCgptYW51YWxfcnR0GAYgASgCUgltYW51YWxSdHQ=');
-
