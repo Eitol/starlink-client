@@ -306,9 +306,6 @@ class GrpcWebBaseClient:
                 )
 
             self._xsrf_token = self._cookie_jar.get("XSRF-TOKEN", "")
-
-            if not self._xsrf_token:
-                raise AuthenticationError("Failed to retrieve XSRF token")
         # Actualizar la cadena de cookies a partir del cookie jar
         self._update_cookie_header()
         return True
