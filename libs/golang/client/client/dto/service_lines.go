@@ -8,12 +8,12 @@ package dto
 
 import (
 	"fmt"
+
 	"github.com/Eitol/starlink-client/libs/golang/client/client/telemetry"
 
+	"encoding/json"
 	"time"
 )
-
-import "encoding/json"
 
 func UnmarshalGetServiceLinesResponse(data []byte) ([]ServiceLine, error) {
 	var r GetServiceLinesResponse

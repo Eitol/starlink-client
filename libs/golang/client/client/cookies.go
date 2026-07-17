@@ -66,10 +66,6 @@ func (c *Client) refreshAuth() error {
 }
 
 func (c *Client) updateCookies(newCookies []*http.Cookie) error {
-	if c.xsrfToken == "" {
-		return fmt.Errorf("XSRF-TOKEN cookie not found")
-	}
-
 	oldCookies, err := ParseCookies(c.cookies)
 	if err != nil {
 		return err
