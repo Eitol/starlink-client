@@ -1,8 +1,16 @@
 package telemetry
 
 import (
+	"math"
 	"testing"
 )
+
+// closeEnough compares coordinates derived from h3cell.ToLatLon, whose last bits
+// shift between Go releases because the underlying trigonometry lives in the
+// standard library. Exact equality makes the test fail on a toolchain bump.
+func closeEnough(got, want float64) bool {
+	return math.Abs(got-want) <= 1e-9
+}
 
 func TestTelemetryJsonParse(t *testing.T) {
 	jsonInput := `{
@@ -415,11 +423,11 @@ func TestTelemetryJsonParse(t *testing.T) {
 		t.Errorf("Expected DishId 'ut01000000-00000000-001d3311', got %v", router.DishId)
 	}
 
-	if dish0.CellLocation.Latitude != 8.113436874788787 {
+	if !closeEnough(dish0.CellLocation.Latitude, 8.113436874788787) {
 		t.Errorf("Expected Latitude 8.113436874788787, got %v", dish0.CellLocation.Latitude)
 	}
 
-	if dish0.CellLocation.Longitude != -62.45655554751595 {
+	if !closeEnough(dish0.CellLocation.Longitude, -62.45655554751595) {
 		t.Errorf("Expected Longitude -62.45655554751595, got %v", dish0.CellLocation.Longitude)
 	}
 

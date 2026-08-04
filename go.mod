@@ -1,6 +1,6 @@
 module github.com/Eitol/starlink-client
 
-go 1.22
+go 1.23
 
 require (
 	connectrpc.com/connect v1.16.2

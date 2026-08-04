@@ -1,8 +1,16 @@
 package h3cell
 
 import (
+	"math"
 	"testing"
 )
+
+// ToLatLon leans on the standard library's trigonometry, whose last bits shift
+// between Go releases, so comparing coordinates exactly makes the test fail on a
+// toolchain bump. 1e-9 degrees is well under a millimetre on the ground.
+func closeEnough(got, want float64) bool {
+	return math.Abs(got-want) <= 1e-9
+}
 
 func TestH3CellToLatLon(t *testing.T) {
 	type args struct {
@@ -39,10 +47,10 @@ func TestH3CellToLatLon(t *testing.T) {
 			if err != nil {
 				return
 			}
-			if lat != tt.WantLatitude {
+			if !closeEnough(lat, tt.WantLatitude) {
 				t.Errorf("ToLatLon() Latitude = %v, WantLatitude %v", lat, tt.WantLatitude)
 			}
-			if lng != tt.WantLongitude {
+			if !closeEnough(lng, tt.WantLongitude) {
 				t.Errorf("ToLatLon() Longitude = %v, WantLongitude %v", lng, tt.WantLongitude)
 			}
 		})
