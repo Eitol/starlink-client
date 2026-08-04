@@ -48,7 +48,7 @@ func (c *GRPCClient) GetCurrentStarlinkLocation(ctx context.Context) (*Location,
 			},
 		},
 	}
-	resp, err := sendGRPCRequest[device.Response_GetLocation](ctx, c.client, grpcReq)
+	resp, err := sendGRPCRequest[*device.Response_GetLocation](ctx, c.client, grpcReq)
 	if err != nil {
 		if errors.Is(err, ErrTimeout) {
 			return nil, fmt.Errorf("could not get location, you need to be in the same network as the Starlink router")
@@ -70,7 +70,7 @@ func (c *GRPCClient) GetNetworkStats(ctx context.Context) (*NetworkStats, error)
 			},
 		},
 	}
-	resp, err := sendGRPCRequest[device.Response_DishGetHistory](ctx, c.client, grpcReq)
+	resp, err := sendGRPCRequest[*device.Response_DishGetHistory](ctx, c.client, grpcReq)
 	if err != nil {
 		return nil, err
 	}
@@ -104,9 +104,20 @@ func bpsToMbpsArray(bps []float32) []float32 {
 	return mbps
 }
 
-func sendGRPCRequest[R any](ctx context.Context, client deviceconnect.DeviceClient, grpcReq *connect.Request[device.Request]) (*R, error) {
-	ctx, cancel := context.WithTimeout(ctx, 1*time.Second)
-	defer cancel()
+// sendGRPCRequest must be instantiated with the pointer form of the oneof
+// wrapper (*device.Response_Foo). The wrappers implement isResponse_Response()
+// on a pointer receiver, so the interface never carries the value type.
+func sendGRPCRequest[R any](ctx context.Context, client deviceconnect.DeviceClient, grpcReq *connect.Request[device.Request]) (R, error) {
+	var zero R
+
+	// Honour a deadline the caller already set, and fall back to the historical
+	// one second only when there is none, so existing callers keep behaving as
+	// they did while slower requests can be given room.
+	if _, ok := ctx.Deadline(); !ok {
+		var cancel context.CancelFunc
+		ctx, cancel = context.WithTimeout(ctx, 1*time.Second)
+		defer cancel()
+	}
 
 	type handleResult struct {
 		resp *connect.Response[device.Response]
@@ -120,20 +131,20 @@ func sendGRPCRequest[R any](ctx context.Context, client deviceconnect.DeviceClie
 
 	select {
 	case <-ctx.Done():
-		return nil, ErrTimeout
+		return zero, ErrTimeout
 	case result := <-resultCh:
 		if result.err != nil {
-			return nil, fmt.Errorf("error sending request: %w", result.err)
+			return zero, fmt.Errorf("error sending request: %w", result.err)
 		}
 		if result.resp.Msg.Response == nil {
-			return nil, nil
+			return zero, errors.New("the dish returned an empty response")
 		}
 
 		r, ok := result.resp.Msg.Response.(R)
 		if !ok {
-			return nil, fmt.Errorf("unexpected response type: %T", result.resp.Msg.Response)
+			return zero, fmt.Errorf("unexpected response type: %T", result.resp.Msg.Response)
 		}
 
-		return &r, nil
+		return r, nil
 	}
 }
