@@ -1,13 +1,17 @@
 package client
 
 import (
+	"context"
+	"crypto/tls"
 	"fmt"
 	"github.com/Eitol/starlink-client/libs/golang/client/client/cookie"
 	"github.com/Eitol/starlink-client/libs/golang/client/pkg/grpcweb"
+	"time"
 
 	_ "github.com/browserutils/kooky/browser/all" // register cookie store finders!
 	"golang.org/x/net/http2"
 	"google.golang.org/protobuf/proto"
+	"net"
 	"net/http"
 	"strings"
 	"sync"
@@ -15,6 +19,13 @@ import (
 
 const (
 	webApiBaseURL = "https://api.starlink.com"
+
+	// The web API spans two hosts and api2.starlink.com is not reachable from
+	// every network. Without these bounds an unreachable host parks the caller
+	// forever: http2's connection pool waits on the dial with no deadline of
+	// its own, so the deadline has to come from here.
+	webAPITimeout  = 30 * time.Second
+	webDialTimeout = 10 * time.Second
 )
 
 // ErrDeviceNotConnected is returned when the device is not connected or cannot be reached.
@@ -36,8 +47,16 @@ type Client struct {
 func NewClient(accountCookie string, cookieStore cookie.Store) *Client {
 	return &Client{
 		httpClient: &http.Client{
+			Timeout: webAPITimeout,
 			Transport: &http2.Transport{
 				AllowHTTP: true,
+				DialTLSContext: func(ctx context.Context, network, addr string, cfg *tls.Config) (net.Conn, error) {
+					d := &tls.Dialer{
+						NetDialer: &net.Dialer{Timeout: webDialTimeout},
+						Config:    cfg,
+					}
+					return d.DialContext(ctx, network, addr)
+				},
 			},
 		},
 		grpcLanClient:   NewStarlinkGRPCClient(StarlinkLanGrpcServerAddress),
@@ -66,10 +85,11 @@ func (c *Client) call(req proto.Message, resp proto.Message, attempt int) error 
 	if attempt > 2 {
 		return fmt.Errorf("max attempts reached")
 	}
-	// Check if xsrfToken is empty
-	if c.xsrfToken == "" {
+	// The access cookie, not the XSRF token, is what marks the session as
+	// authenticated: the API stopped issuing the latter.
+	if c.accessV1 == "" {
 		if err := c.refreshAuth(); err != nil {
-			return fmt.Errorf("unable to get XSRF token: %v", err)
+			return fmt.Errorf("unable to authenticate: %v", err)
 		}
 	}
 
@@ -78,9 +98,9 @@ func (c *Client) call(req proto.Message, resp proto.Message, attempt int) error 
 		return fmt.Errorf("unable to doGrpcWebCall: %v", err)
 	}
 
-	// If the response status code is 401, get new xsrfToken and retry
+	// If the response status code is 401, re-authenticate and retry
 	if status == http.StatusUnauthorized {
-		c.xsrfToken = ""
+		c.accessV1 = ""
 		return c.call(req, resp, attempt+1)
 	}
 

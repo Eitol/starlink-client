@@ -9,7 +9,15 @@ import (
 	"net/http"
 )
 
-const GrpcWebApiURL = "https://api2.starlink.com/SpaceX.API.Device.Device/Handle"
+// The account site moved this endpoint onto its own origin. api2.starlink.com
+// still resolves, but it answers neither TCP nor ICMP from a general network,
+// so the old value simply parked every call until it timed out.
+const GrpcWebApiURL = "https://starlink.com/api/SpaceX.API.Device.Device/Handle"
+
+// webOrigin is sent along with the gRPC-web calls because the endpoint is now
+// served from the same origin as the account site and treats the requests as
+// same-origin CORS traffic.
+const webOrigin = "https://starlink.com"
 
 func (c *Client) doGrpcWebCall(req proto.Message) ([]byte, int, error) {
 	bodyReader, err := grpcweb.MarshalGrpcWebRequestBody(req)
@@ -67,12 +75,16 @@ func (c *Client) buildGrpcWebRequestFromBody(body io.Reader) (*http.Request, err
 	}
 
 	httpReq.Header = map[string][]string{
-		"Cookie":          {c.cookies},
-		"X-Grpc-Web":      {"1"},
-		"X-User-Agent":    {"okhttp/4.9.2"},
-		"Content-Type":    {"application/grpc-web+proto"},
-		"Accept-Encoding": {"gzip, deflate, br"},
-		"X-Xsrf-Token":    {c.xsrfToken},
+		"Cookie":       {c.cookies},
+		"X-Grpc-Web":   {"1"},
+		"X-User-Agent": {"okhttp/4.9.2"},
+		"Content-Type": {"application/grpc-web+proto"},
+		"Origin":       {webOrigin},
+	}
+	// The API stopped issuing XSRF tokens, and the account site no longer sends
+	// one either, so it only goes out when a caller supplied one in its cookies.
+	if c.xsrfToken != "" {
+		httpReq.Header.Set("X-Xsrf-Token", c.xsrfToken)
 	}
 
 	return httpReq, nil

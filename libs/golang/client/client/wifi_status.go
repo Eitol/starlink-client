@@ -27,7 +27,9 @@ func (c *Client) GetWifiStatus(routerID string) (*device.WifiGetStatusResponse, 
 	// Send the request to the device
 	err := c.Call(req, resp)
 	if err != nil {
-		return nil, fmt.Errorf("error getting wifi status: %v", err)
+		// %w, not %v: callers match this against ErrDeviceNotConnected, and %v
+		// flattens the error into a string that errors.Is can no longer see.
+		return nil, fmt.Errorf("error getting wifi status: %w", err)
 	}
 
 	// Assert the response type to ensure it's of the expected type

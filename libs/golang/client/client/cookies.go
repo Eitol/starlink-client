@@ -16,7 +16,10 @@ func (c *Client) refreshAuth() error {
 		c.mutex.Unlock()
 	}()
 	c.tryLoadSavedCookies()
-	if c.xsrfToken != "" && c.accessV1 != "" {
+	// api.starlink.com/auth-rp/auth/user stopped returning an XSRF-TOKEN
+	// cookie, so a live session is recognised by the access cookie alone.
+	// Requiring the token here re-authenticated on every single call.
+	if c.accessV1 != "" {
 		return nil
 	}
 	c.xsrfToken = ""
@@ -72,11 +75,12 @@ func (c *Client) updateCookies(newCookies []*http.Cookie) error {
 	}
 
 	// If the cookie is very recent, the starlink api does not return the Starlink.Com.Access.V1 cookie
-	// In this case, we need to use the old cookie
+	// In this case, we need to use the old cookie.
+	// The XSRF ones are only picked up if the caller happened to supply them;
+	// the API no longer issues them and the call works without them.
 	for _, cookie := range oldCookies {
 		if c.accessV1 == "" && cookie.Name == "Starlink.Com.Access.V1" {
 			c.accessV1 = cookie.Value
-			break
 		}
 		if c.xsrfTokenCheck == "" && cookie.Name == "XSRF-TOKEN-CHECK" {
 			c.xsrfTokenCheck = cookie.Value

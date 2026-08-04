@@ -22,7 +22,7 @@ func (c *Client) SetDishConfig(terminalID string, dc *device.DishConfig) (*devic
 	}
 	err := c.Call(req, resp)
 	if err != nil {
-		return nil, fmt.Errorf("error getting wifi status: %v", err)
+		return nil, fmt.Errorf("error getting wifi status: %w", err)
 	}
 	respAssert, ok := resp.Response.(*device.Response_DishSetConfig)
 	if !ok {

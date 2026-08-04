@@ -14,8 +14,14 @@ from http.cookiejar import Cookie
 from starlink_client.account import Account
 
 # API URLs
-STARLINK_GRPC_WEB_API_URL = "https://api2.starlink.com/SpaceX.API.Device.Device/Handle"
+# The account site moved this endpoint onto its own origin. api2.starlink.com
+# still resolves, but answers neither TCP nor ICMP from a general network, so
+# the old value simply parked every call until it timed out.
+STARLINK_GRPC_WEB_API_URL = "https://starlink.com/api/SpaceX.API.Device.Device/Handle"
 STARLINK_AUTH_URL = "https://api.starlink.com/auth-rp/auth/user"
+# The endpoint is served from the same origin as the account site and treats
+# these calls as same-origin CORS traffic.
+STARLINK_WEB_ORIGIN = "https://starlink.com"
 
 # Constants
 ERR_TIMEOUT = "request timed out"
@@ -189,10 +195,13 @@ class GrpcWebBaseClient:
             "X-Grpc-Web": "1",
             "X-User-Agent": "okhttp/4.9.2",
             "Content-Type": "application/grpc-web+proto",
-            "Accept-Encoding": "gzip, deflate, br",
-            "x-xsrf-token": self._xsrf_token,
+            "Origin": STARLINK_WEB_ORIGIN,
             "cookie": self._cookie,
         }
+        # The API stopped issuing XSRF tokens, and the account site no longer
+        # sends one either, so it only goes out when the caller supplied one.
+        if self._xsrf_token:
+            headers["x-xsrf-token"] = self._xsrf_token
 
         response = self._client.post(self._url, content=body, headers=headers,
                                      timeout=DEFAULT_TIMEOUT)
