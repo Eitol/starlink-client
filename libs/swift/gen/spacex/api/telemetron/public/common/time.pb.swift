@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-enum SpaceX_API_Telemetron_Public_Common_Epoch: SwiftProtobuf.Enum, Swift.CaseIterable {
+nonisolated enum SpaceX_API_Telemetron_Public_Common_Epoch: SwiftProtobuf.Enum, Swift.CaseIterable {
   typealias RawValue = Int
   case unix // = 0
   case gps // = 1
@@ -54,7 +54,7 @@ enum SpaceX_API_Telemetron_Public_Common_Epoch: SwiftProtobuf.Enum, Swift.CaseIt
 
 }
 
-struct SpaceX_API_Telemetron_Public_Common_TimestampInfo: Sendable {
+nonisolated struct SpaceX_API_Telemetron_Public_Common_TimestampInfo: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -70,21 +70,15 @@ struct SpaceX_API_Telemetron_Public_Common_TimestampInfo: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "SpaceX.API.Telemetron.Public.Common"
+fileprivate nonisolated let _protobuf_package = "SpaceX.API.Telemetron.Public.Common"
 
-extension SpaceX_API_Telemetron_Public_Common_Epoch: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "UNIX"),
-    1: .same(proto: "GPS"),
-  ]
+nonisolated extension SpaceX_API_Telemetron_Public_Common_Epoch: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0UNIX\0\u{1}GPS\0")
 }
 
-extension SpaceX_API_Telemetron_Public_Common_TimestampInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Telemetron_Public_Common_TimestampInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".TimestampInfo"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "epoch"),
-    2: .same(proto: "nanoseconds"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}epoch\0\u{1}nanoseconds\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {

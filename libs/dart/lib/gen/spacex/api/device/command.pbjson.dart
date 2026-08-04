@@ -57,6 +57,12 @@ const User$json = {
     {'1': 'ROUTER', '2': 5},
     {'1': 'GUEST_LAN', '2': 6},
     {'1': 'SENSITIVE_COMMANDING', '2': 7},
+    {'1': 'LAN_TLS', '2': 8},
+    {
+      '1': 'CLOUD_INDIA',
+      '2': 9,
+      '3': {'1': true},
+    },
   ],
 };
 
@@ -64,7 +70,7 @@ const User$json = {
 final $typed_data.Uint8List userDescriptor = $convert.base64Decode(
     'CgRVc2VyEgsKB05PX1VTRVIQABIHCgNHT0QQARIHCgNMQU4QAhIJCgVDTE9VRBADEgsKB0ZBQ1'
     'RPUlkQBBIKCgZST1VURVIQBRINCglHVUVTVF9MQU4QBhIYChRTRU5TSVRJVkVfQ09NTUFORElO'
-    'RxAH');
+    'RxAHEgsKB0xBTl9UTFMQCBITCgtDTE9VRF9JTkRJQRAJGgIIAQ==');
 
 @$core.Deprecated('Use publicKeyDescriptor instead')
 const PublicKey$json = {

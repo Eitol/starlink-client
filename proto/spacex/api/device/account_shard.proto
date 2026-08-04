@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package SpaceX.API.Device;
+
+option go_package = "spacex.com/api/device/account_shard";
+
+enum AccountShard {
+  ACCOUNT_SHARD_UNKNOWN = 0;
+
+  ACCOUNT_SHARD_DEFAULT = 1;
+
+  ACCOUNT_SHARD_INDIA = 2;
+
+  ACCOUNT_SHARD_STARSHIELD = 3;
+}

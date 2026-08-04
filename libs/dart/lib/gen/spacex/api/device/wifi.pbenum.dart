@@ -99,6 +99,74 @@ class WifiClient_Role extends $pb.ProtobufEnum {
   const WifiClient_Role._(super.value, super.name);
 }
 
+class WifiClient_CaptiveState extends $pb.ProtobufEnum {
+  static const WifiClient_CaptiveState CAPTIVE_STATE_NOT_CONFIGURED =
+      WifiClient_CaptiveState._(
+          0, _omitEnumNames ? '' : 'CAPTIVE_STATE_NOT_CONFIGURED');
+  static const WifiClient_CaptiveState CAPTIVE_STATE_UNKNOWN =
+      WifiClient_CaptiveState._(
+          1, _omitEnumNames ? '' : 'CAPTIVE_STATE_UNKNOWN');
+  static const WifiClient_CaptiveState CAPTIVE_STATE_CAPTIVE =
+      WifiClient_CaptiveState._(
+          2, _omitEnumNames ? '' : 'CAPTIVE_STATE_CAPTIVE');
+  static const WifiClient_CaptiveState CAPTIVE_STATE_NOT_CAPTIVE =
+      WifiClient_CaptiveState._(
+          3, _omitEnumNames ? '' : 'CAPTIVE_STATE_NOT_CAPTIVE');
+  static const WifiClient_CaptiveState CAPTIVE_STATE_PARTIALLY_CAPTIVE =
+      WifiClient_CaptiveState._(
+          4, _omitEnumNames ? '' : 'CAPTIVE_STATE_PARTIALLY_CAPTIVE');
+
+  static const $core.List<WifiClient_CaptiveState> values =
+      <WifiClient_CaptiveState>[
+    CAPTIVE_STATE_NOT_CONFIGURED,
+    CAPTIVE_STATE_UNKNOWN,
+    CAPTIVE_STATE_CAPTIVE,
+    CAPTIVE_STATE_NOT_CAPTIVE,
+    CAPTIVE_STATE_PARTIALLY_CAPTIVE,
+  ];
+
+  static final $core.List<WifiClient_CaptiveState?> _byValue =
+      $pb.ProtobufEnum.$_initByValueList(values, 4);
+  static WifiClient_CaptiveState? valueOf($core.int value) =>
+      value < 0 || value >= _byValue.length ? null : _byValue[value];
+
+  const WifiClient_CaptiveState._(super.value, super.name);
+}
+
+class WifiClient_SandboxState extends $pb.ProtobufEnum {
+  static const WifiClient_SandboxState SANDBOX_STATE_NOT_CONFIGURED =
+      WifiClient_SandboxState._(
+          0, _omitEnumNames ? '' : 'SANDBOX_STATE_NOT_CONFIGURED');
+  static const WifiClient_SandboxState SANDBOX_STATE_UNKNOWN =
+      WifiClient_SandboxState._(
+          1, _omitEnumNames ? '' : 'SANDBOX_STATE_UNKNOWN');
+  static const WifiClient_SandboxState SANDBOX_STATE_SANDBOXED =
+      WifiClient_SandboxState._(
+          2, _omitEnumNames ? '' : 'SANDBOX_STATE_SANDBOXED');
+  static const WifiClient_SandboxState SANDBOX_STATE_UNSANDBOXED =
+      WifiClient_SandboxState._(
+          3, _omitEnumNames ? '' : 'SANDBOX_STATE_UNSANDBOXED');
+  static const WifiClient_SandboxState SANDBOX_STATE_PARTIALLY_SANDBOXED =
+      WifiClient_SandboxState._(
+          4, _omitEnumNames ? '' : 'SANDBOX_STATE_PARTIALLY_SANDBOXED');
+
+  static const $core.List<WifiClient_SandboxState> values =
+      <WifiClient_SandboxState>[
+    SANDBOX_STATE_NOT_CONFIGURED,
+    SANDBOX_STATE_UNKNOWN,
+    SANDBOX_STATE_SANDBOXED,
+    SANDBOX_STATE_UNSANDBOXED,
+    SANDBOX_STATE_PARTIALLY_SANDBOXED,
+  ];
+
+  static final $core.List<WifiClient_SandboxState?> _byValue =
+      $pb.ProtobufEnum.$_initByValueList(values, 4);
+  static WifiClient_SandboxState? valueOf($core.int value) =>
+      value < 0 || value >= _byValue.length ? null : _byValue[value];
+
+  const WifiClient_SandboxState._(super.value, super.name);
+}
+
 class WifiNetwork_Band extends $pb.ProtobufEnum {
   static const WifiNetwork_Band WIFI_UNKNOWN =
       WifiNetwork_Band._(0, _omitEnumNames ? '' : 'WIFI_UNKNOWN');

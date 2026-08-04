@@ -1,6 +1,6 @@
 // This is a generated file - do not edit.
 //
-// Generated from google/protobuf/wrappers.proto.
+// Generated from spacex/api/telemetron/public/integrations/rate_limit_reason.proto.
 
 // @dart = 3.3
 
@@ -9,3 +9,9 @@
 // ignore_for_file: curly_braces_in_flow_control_structures
 // ignore_for_file: deprecated_member_use_from_same_package, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_relative_imports
+
+import 'dart:core' as $core;
+
+export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
+
+export 'rate_limit_reason.pbenum.dart';

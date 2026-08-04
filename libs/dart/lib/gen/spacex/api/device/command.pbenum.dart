@@ -81,6 +81,10 @@ class User extends $pb.ProtobufEnum {
   static const User GUEST_LAN = User._(6, _omitEnumNames ? '' : 'GUEST_LAN');
   static const User SENSITIVE_COMMANDING =
       User._(7, _omitEnumNames ? '' : 'SENSITIVE_COMMANDING');
+  static const User LAN_TLS = User._(8, _omitEnumNames ? '' : 'LAN_TLS');
+  @$core.Deprecated('This enum value is deprecated')
+  static const User CLOUD_INDIA =
+      User._(9, _omitEnumNames ? '' : 'CLOUD_INDIA');
 
   static const $core.List<User> values = <User>[
     NO_USER,
@@ -91,10 +95,12 @@ class User extends $pb.ProtobufEnum {
     ROUTER,
     GUEST_LAN,
     SENSITIVE_COMMANDING,
+    LAN_TLS,
+    CLOUD_INDIA,
   ];
 
   static final $core.List<User?> _byValue =
-      $pb.ProtobufEnum.$_initByValueList(values, 7);
+      $pb.ProtobufEnum.$_initByValueList(values, 9);
   static User? valueOf($core.int value) =>
       value < 0 || value >= _byValue.length ? null : _byValue[value];
 

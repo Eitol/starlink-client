@@ -14,6 +14,35 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+class WifiClientSandboxAlert extends $pb.ProtobufEnum {
+  static const WifiClientSandboxAlert SANDBOX_ALERT_UNKNOWN =
+      WifiClientSandboxAlert._(
+          0, _omitEnumNames ? '' : 'SANDBOX_ALERT_UNKNOWN');
+  static const WifiClientSandboxAlert SANDBOX_ALERT_PORTAL =
+      WifiClientSandboxAlert._(1, _omitEnumNames ? '' : 'SANDBOX_ALERT_PORTAL');
+  static const WifiClientSandboxAlert SANDBOX_ALERT_GROUND_API =
+      WifiClientSandboxAlert._(
+          2, _omitEnumNames ? '' : 'SANDBOX_ALERT_GROUND_API');
+  static const WifiClientSandboxAlert SANDBOX_ALERT_STARLINK_API =
+      WifiClientSandboxAlert._(
+          3, _omitEnumNames ? '' : 'SANDBOX_ALERT_STARLINK_API');
+
+  static const $core.List<WifiClientSandboxAlert> values =
+      <WifiClientSandboxAlert>[
+    SANDBOX_ALERT_UNKNOWN,
+    SANDBOX_ALERT_PORTAL,
+    SANDBOX_ALERT_GROUND_API,
+    SANDBOX_ALERT_STARLINK_API,
+  ];
+
+  static final $core.List<WifiClientSandboxAlert?> _byValue =
+      $pb.ProtobufEnum.$_initByValueList(values, 3);
+  static WifiClientSandboxAlert? valueOf($core.int value) =>
+      value < 0 || value >= _byValue.length ? null : _byValue[value];
+
+  const WifiClientSandboxAlert._(super.value, super.name);
+}
+
 class PositionSource extends $pb.ProtobufEnum {
   static const PositionSource AUTO =
       PositionSource._(0, _omitEnumNames ? '' : 'AUTO');
@@ -27,14 +56,16 @@ class PositionSource extends $pb.ProtobufEnum {
       PositionSource._(4, _omitEnumNames ? '' : 'GPS');
   static const PositionSource STARLINK =
       PositionSource._(5, _omitEnumNames ? '' : 'STARLINK');
-  static const PositionSource GNC_GPS =
-      PositionSource._(6, _omitEnumNames ? '' : 'GNC_GPS');
-  static const PositionSource GNC_PNT =
-      PositionSource._(7, _omitEnumNames ? '' : 'GNC_PNT');
   static const PositionSource GNC_FUSED =
-      PositionSource._(8, _omitEnumNames ? '' : 'GNC_FUSED');
-  static const PositionSource GNC_RAW =
-      PositionSource._(9, _omitEnumNames ? '' : 'GNC_RAW');
+      PositionSource._(6, _omitEnumNames ? '' : 'GNC_FUSED');
+  static const PositionSource GNC_BAD_SAT =
+      PositionSource._(7, _omitEnumNames ? '' : 'GNC_BAD_SAT');
+  static const PositionSource GNC_GPS =
+      PositionSource._(8, _omitEnumNames ? '' : 'GNC_GPS');
+  static const PositionSource GNC_PNT =
+      PositionSource._(9, _omitEnumNames ? '' : 'GNC_PNT');
+  static const PositionSource GNC_STATIC =
+      PositionSource._(10, _omitEnumNames ? '' : 'GNC_STATIC');
 
   static const $core.List<PositionSource> values = <PositionSource>[
     AUTO,
@@ -43,14 +74,15 @@ class PositionSource extends $pb.ProtobufEnum {
     EXTERNAL,
     GPS,
     STARLINK,
+    GNC_FUSED,
+    GNC_BAD_SAT,
     GNC_GPS,
     GNC_PNT,
-    GNC_FUSED,
-    GNC_RAW,
+    GNC_STATIC,
   ];
 
   static final $core.List<PositionSource?> _byValue =
-      $pb.ProtobufEnum.$_initByValueList(values, 9);
+      $pb.ProtobufEnum.$_initByValueList(values, 10);
   static PositionSource? valueOf($core.int value) =>
       value < 0 || value >= _byValue.length ? null : _byValue[value];
 
@@ -163,6 +195,100 @@ class DishGetDiagnosticsResponse_TestResult extends $pb.ProtobufEnum {
   const DishGetDiagnosticsResponse_TestResult._(super.value, super.name);
 }
 
+class DishGetDiagnosticsResponse_TestResultCode extends $pb.ProtobufEnum {
+  static const DishGetDiagnosticsResponse_TestResultCode GENERAL =
+      DishGetDiagnosticsResponse_TestResultCode._(
+          0, _omitEnumNames ? '' : 'GENERAL');
+  static const DishGetDiagnosticsResponse_TestResultCode BOOT_UP =
+      DishGetDiagnosticsResponse_TestResultCode._(
+          1, _omitEnumNames ? '' : 'BOOT_UP');
+  static const DishGetDiagnosticsResponse_TestResultCode CPU_VOLTAGE =
+      DishGetDiagnosticsResponse_TestResultCode._(
+          2, _omitEnumNames ? '' : 'CPU_VOLTAGE');
+  static const DishGetDiagnosticsResponse_TestResultCode DBF_AAP_CS =
+      DishGetDiagnosticsResponse_TestResultCode._(
+          3, _omitEnumNames ? '' : 'DBF_AAP_CS');
+  static const DishGetDiagnosticsResponse_TestResultCode DBF_NUM_FEMS =
+      DishGetDiagnosticsResponse_TestResultCode._(
+          4, _omitEnumNames ? '' : 'DBF_NUM_FEMS');
+  static const DishGetDiagnosticsResponse_TestResultCode DBF_READ_ERRORS =
+      DishGetDiagnosticsResponse_TestResultCode._(
+          5, _omitEnumNames ? '' : 'DBF_READ_ERRORS');
+  static const DishGetDiagnosticsResponse_TestResultCode DBF_T_DIE_0 =
+      DishGetDiagnosticsResponse_TestResultCode._(
+          6, _omitEnumNames ? '' : 'DBF_T_DIE_0');
+  static const DishGetDiagnosticsResponse_TestResultCode DBF_T_DIE_1 =
+      DishGetDiagnosticsResponse_TestResultCode._(
+          7, _omitEnumNames ? '' : 'DBF_T_DIE_1');
+  static const DishGetDiagnosticsResponse_TestResultCode DBF_T_DIE_0_VALID =
+      DishGetDiagnosticsResponse_TestResultCode._(
+          8, _omitEnumNames ? '' : 'DBF_T_DIE_0_VALID');
+  static const DishGetDiagnosticsResponse_TestResultCode DBF_T_DIE_1_VALID =
+      DishGetDiagnosticsResponse_TestResultCode._(
+          9, _omitEnumNames ? '' : 'DBF_T_DIE_1_VALID');
+  static const DishGetDiagnosticsResponse_TestResultCode ETH_PRIME =
+      DishGetDiagnosticsResponse_TestResultCode._(
+          10, _omitEnumNames ? '' : 'ETH_PRIME');
+  static const DishGetDiagnosticsResponse_TestResultCode EIRP =
+      DishGetDiagnosticsResponse_TestResultCode._(
+          11, _omitEnumNames ? '' : 'EIRP');
+  static const DishGetDiagnosticsResponse_TestResultCode FEM_CUT =
+      DishGetDiagnosticsResponse_TestResultCode._(
+          12, _omitEnumNames ? '' : 'FEM_CUT');
+  static const DishGetDiagnosticsResponse_TestResultCode FUSE_AVS =
+      DishGetDiagnosticsResponse_TestResultCode._(
+          13, _omitEnumNames ? '' : 'FUSE_AVS');
+  static const DishGetDiagnosticsResponse_TestResultCode GPS =
+      DishGetDiagnosticsResponse_TestResultCode._(
+          14, _omitEnumNames ? '' : 'GPS');
+  static const DishGetDiagnosticsResponse_TestResultCode IMU =
+      DishGetDiagnosticsResponse_TestResultCode._(
+          15, _omitEnumNames ? '' : 'IMU');
+  static const DishGetDiagnosticsResponse_TestResultCode PHY =
+      DishGetDiagnosticsResponse_TestResultCode._(
+          16, _omitEnumNames ? '' : 'PHY');
+  static const DishGetDiagnosticsResponse_TestResultCode SCP_ERROR =
+      DishGetDiagnosticsResponse_TestResultCode._(
+          17, _omitEnumNames ? '' : 'SCP_ERROR');
+  static const DishGetDiagnosticsResponse_TestResultCode TEMPERATURE =
+      DishGetDiagnosticsResponse_TestResultCode._(
+          18, _omitEnumNames ? '' : 'TEMPERATURE');
+  static const DishGetDiagnosticsResponse_TestResultCode VTSENS =
+      DishGetDiagnosticsResponse_TestResultCode._(
+          19, _omitEnumNames ? '' : 'VTSENS');
+
+  static const $core.List<DishGetDiagnosticsResponse_TestResultCode> values =
+      <DishGetDiagnosticsResponse_TestResultCode>[
+    GENERAL,
+    BOOT_UP,
+    CPU_VOLTAGE,
+    DBF_AAP_CS,
+    DBF_NUM_FEMS,
+    DBF_READ_ERRORS,
+    DBF_T_DIE_0,
+    DBF_T_DIE_1,
+    DBF_T_DIE_0_VALID,
+    DBF_T_DIE_1_VALID,
+    ETH_PRIME,
+    EIRP,
+    FEM_CUT,
+    FUSE_AVS,
+    GPS,
+    IMU,
+    PHY,
+    SCP_ERROR,
+    TEMPERATURE,
+    VTSENS,
+  ];
+
+  static final $core.List<DishGetDiagnosticsResponse_TestResultCode?> _byValue =
+      $pb.ProtobufEnum.$_initByValueList(values, 19);
+  static DishGetDiagnosticsResponse_TestResultCode? valueOf($core.int value) =>
+      value < 0 || value >= _byValue.length ? null : _byValue[value];
+
+  const DishGetDiagnosticsResponse_TestResultCode._(super.value, super.name);
+}
+
 class DishGetDiagnosticsResponse_DisablementCode extends $pb.ProtobufEnum {
   static const DishGetDiagnosticsResponse_DisablementCode UNKNOWN =
       DishGetDiagnosticsResponse_DisablementCode._(
@@ -180,9 +306,6 @@ class DishGetDiagnosticsResponse_DisablementCode extends $pb.ProtobufEnum {
   static const DishGetDiagnosticsResponse_DisablementCode IN_OCEAN =
       DishGetDiagnosticsResponse_DisablementCode._(
           4, _omitEnumNames ? '' : 'IN_OCEAN');
-  static const DishGetDiagnosticsResponse_DisablementCode INVALID_COUNTRY =
-      DishGetDiagnosticsResponse_DisablementCode._(
-          5, _omitEnumNames ? '' : 'INVALID_COUNTRY');
   static const DishGetDiagnosticsResponse_DisablementCode BLOCKED_COUNTRY =
       DishGetDiagnosticsResponse_DisablementCode._(
           6, _omitEnumNames ? '' : 'BLOCKED_COUNTRY');
@@ -193,9 +316,28 @@ class DishGetDiagnosticsResponse_DisablementCode extends $pb.ProtobufEnum {
   static const DishGetDiagnosticsResponse_DisablementCode CELL_IS_DISABLED =
       DishGetDiagnosticsResponse_DisablementCode._(
           8, _omitEnumNames ? '' : 'CELL_IS_DISABLED');
-  static const DishGetDiagnosticsResponse_DisablementCode UNLICENSED_COUNTRY =
+  static const DishGetDiagnosticsResponse_DisablementCode ROAM_RESTRICTED =
       DishGetDiagnosticsResponse_DisablementCode._(
-          9, _omitEnumNames ? '' : 'UNLICENSED_COUNTRY');
+          10, _omitEnumNames ? '' : 'ROAM_RESTRICTED');
+  static const DishGetDiagnosticsResponse_DisablementCode UNKNOWN_LOCATION =
+      DishGetDiagnosticsResponse_DisablementCode._(
+          11, _omitEnumNames ? '' : 'UNKNOWN_LOCATION');
+  static const DishGetDiagnosticsResponse_DisablementCode ACCOUNT_DISABLED =
+      DishGetDiagnosticsResponse_DisablementCode._(
+          12, _omitEnumNames ? '' : 'ACCOUNT_DISABLED');
+  static const DishGetDiagnosticsResponse_DisablementCode UNSUPPORTED_VERSION =
+      DishGetDiagnosticsResponse_DisablementCode._(
+          13, _omitEnumNames ? '' : 'UNSUPPORTED_VERSION');
+  static const DishGetDiagnosticsResponse_DisablementCode
+      MOVING_TOO_FAST_FOR_POLICY = DishGetDiagnosticsResponse_DisablementCode._(
+          14, _omitEnumNames ? '' : 'MOVING_TOO_FAST_FOR_POLICY');
+  static const DishGetDiagnosticsResponse_DisablementCode
+      UNDER_AVIATION_FLYOVER_LIMITS =
+      DishGetDiagnosticsResponse_DisablementCode._(
+          15, _omitEnumNames ? '' : 'UNDER_AVIATION_FLYOVER_LIMITS');
+  static const DishGetDiagnosticsResponse_DisablementCode BLOCKED_AREA =
+      DishGetDiagnosticsResponse_DisablementCode._(
+          16, _omitEnumNames ? '' : 'BLOCKED_AREA');
 
   static const $core.List<DishGetDiagnosticsResponse_DisablementCode> values =
       <DishGetDiagnosticsResponse_DisablementCode>[
@@ -204,15 +346,20 @@ class DishGetDiagnosticsResponse_DisablementCode extends $pb.ProtobufEnum {
     NO_ACTIVE_ACCOUNT,
     TOO_FAR_FROM_SERVICE_ADDRESS,
     IN_OCEAN,
-    INVALID_COUNTRY,
     BLOCKED_COUNTRY,
     DATA_OVERAGE_SANDBOX_POLICY,
     CELL_IS_DISABLED,
-    UNLICENSED_COUNTRY,
+    ROAM_RESTRICTED,
+    UNKNOWN_LOCATION,
+    ACCOUNT_DISABLED,
+    UNSUPPORTED_VERSION,
+    MOVING_TOO_FAST_FOR_POLICY,
+    UNDER_AVIATION_FLYOVER_LIMITS,
+    BLOCKED_AREA,
   ];
 
   static final $core.List<DishGetDiagnosticsResponse_DisablementCode?>
-      _byValue = $pb.ProtobufEnum.$_initByValueList(values, 9);
+      _byValue = $pb.ProtobufEnum.$_initByValueList(values, 16);
   static DishGetDiagnosticsResponse_DisablementCode? valueOf($core.int value) =>
       value < 0 || value >= _byValue.length ? null : _byValue[value];
 

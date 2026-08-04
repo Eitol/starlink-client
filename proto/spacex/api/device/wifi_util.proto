@@ -18,6 +18,8 @@ message InflatedBasicServiceSet {
   uint32 channel = 6;
 
   uint32 preference = 7;
+
+  string domain = 8;
 }
 
 message DhcpLease {
@@ -40,6 +42,8 @@ message DhcpServer {
   string subnet = 2;
 
   repeated DhcpLease leases = 3;
+
+  bool ip_exhausted = 4;
 }
 
 message RadiusStatsMap {
@@ -76,6 +80,8 @@ message PoeStats {
   uint32 poe_faults_overvoltage = 5;
 
   uint32 poe_faults_undervoltage = 6;
+
+  float vsns_vin = 7;
 }
 
 message WifiSoftwareUpdateStats {
@@ -84,6 +90,16 @@ message WifiSoftwareUpdateStats {
   float software_download_progress = 2;
 
   float seconds_since_get_target_versions = 3;
+
+  string running_version = 4;
+
+  string version_in_progress = 5;
+}
+
+message WifiSetupRequirement {
+  WifiSetupRequirementState state = 1;
+
+  uint64 pause_countdown_seconds = 2;
 }
 
 enum IfaceType {
@@ -218,4 +234,26 @@ enum WifiSoftwareUpdateState {
   DOWNLOADING_UPDATE_IMAGE_EXHAUSTED = 11;
 
   FLASHING_FAILED = 12;
+}
+
+enum WifiSetupRequirementState {
+  NOT_REQUIRED = 0;
+
+  REQUIRED_COUNTDOWN = 1;
+
+  REQUIRED_PAUSED = 2;
+
+  REQUIRED_COMPLETE = 3;
+}
+
+enum CalibrationPartitionsState {
+  CALIBRATION_PARTITIONS_STATE_UNSPECIFIED = 0;
+
+  CALIBRATION_PARTITIONS_STATE_ABSENT_BOTH_SIDES = 1;
+
+  CALIBRATION_PARTITIONS_STATE_CONTENTS_EQUAL = 2;
+
+  CALIBRATION_PARTITIONS_STATE_CONTENTS_NOT_EQUAL = 3;
+
+  CALIBRATION_PARTITIONS_STATE_COMPARISON_FAILED = 4;
 }

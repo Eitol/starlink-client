@@ -3,6 +3,7 @@ from spacex.api.device import common_pb2 as _common_pb2
 from spacex.api.device import wifi_config_pb2 as _wifi_config_pb2
 from spacex.api.device import wifi_util_pb2 as _wifi_util_pb2
 from spacex.api.telemetron.public.common import time_pb2 as _time_pb2
+from spacex.api.satellites.network import ut_disablement_codes_pb2 as _ut_disablement_codes_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
@@ -18,18 +19,22 @@ class WifiClients(_message.Message):
     def __init__(self, clients: _Optional[_Iterable[_Union[WifiClient, _Mapping]]] = ...) -> None: ...
 
 class ToController(_message.Message):
-    __slots__ = ("api_version", "clients", "mesh_join", "status", "speedtest")
+    __slots__ = ("api_version", "api_version_other_side", "ready_for_multiple_networks", "clients", "mesh_join", "status", "speedtest")
     API_VERSION_FIELD_NUMBER: _ClassVar[int]
+    API_VERSION_OTHER_SIDE_FIELD_NUMBER: _ClassVar[int]
+    READY_FOR_MULTIPLE_NETWORKS_FIELD_NUMBER: _ClassVar[int]
     CLIENTS_FIELD_NUMBER: _ClassVar[int]
     MESH_JOIN_FIELD_NUMBER: _ClassVar[int]
     STATUS_FIELD_NUMBER: _ClassVar[int]
     SPEEDTEST_FIELD_NUMBER: _ClassVar[int]
     api_version: int
+    api_version_other_side: int
+    ready_for_multiple_networks: bool
     clients: WifiClients
     mesh_join: WifiMeshJoin
     status: WifiMeshStatus
     speedtest: MeshSpeedtest
-    def __init__(self, api_version: _Optional[int] = ..., clients: _Optional[_Union[WifiClients, _Mapping]] = ..., mesh_join: _Optional[_Union[WifiMeshJoin, _Mapping]] = ..., status: _Optional[_Union[WifiMeshStatus, _Mapping]] = ..., speedtest: _Optional[_Union[MeshSpeedtest, _Mapping]] = ...) -> None: ...
+    def __init__(self, api_version: _Optional[int] = ..., api_version_other_side: _Optional[int] = ..., ready_for_multiple_networks: bool = ..., clients: _Optional[_Union[WifiClients, _Mapping]] = ..., mesh_join: _Optional[_Union[WifiMeshJoin, _Mapping]] = ..., status: _Optional[_Union[WifiMeshStatus, _Mapping]] = ..., speedtest: _Optional[_Union[MeshSpeedtest, _Mapping]] = ...) -> None: ...
 
 class WifiMeshJoin(_message.Message):
     __slots__ = ("incarnation", "hardware_version", "supports_5ghz_high", "siteSurveyScan")
@@ -44,7 +49,7 @@ class WifiMeshJoin(_message.Message):
     def __init__(self, incarnation: _Optional[int] = ..., hardware_version: _Optional[str] = ..., supports_5ghz_high: bool = ..., siteSurveyScan: _Optional[_Iterable[_Union[WifiSiteSurveyResult, _Mapping]]] = ...) -> None: ...
 
 class WifiMeshStatus(_message.Message):
-    __slots__ = ("software_version", "mac_lan", "source_mac_addresses", "clients", "bss_list", "hardware_version", "backhaul_bssid", "backhaul_est_preference")
+    __slots__ = ("software_version", "mac_lan", "source_mac_addresses", "clients", "bss_list", "hardware_version", "backhaul_bssid", "backhaul_est_preference", "events")
     SOFTWARE_VERSION_FIELD_NUMBER: _ClassVar[int]
     MAC_LAN_FIELD_NUMBER: _ClassVar[int]
     SOURCE_MAC_ADDRESSES_FIELD_NUMBER: _ClassVar[int]
@@ -53,6 +58,7 @@ class WifiMeshStatus(_message.Message):
     HARDWARE_VERSION_FIELD_NUMBER: _ClassVar[int]
     BACKHAUL_BSSID_FIELD_NUMBER: _ClassVar[int]
     BACKHAUL_EST_PREFERENCE_FIELD_NUMBER: _ClassVar[int]
+    EVENTS_FIELD_NUMBER: _ClassVar[int]
     software_version: str
     mac_lan: str
     source_mac_addresses: _containers.RepeatedScalarFieldContainer[str]
@@ -61,7 +67,8 @@ class WifiMeshStatus(_message.Message):
     hardware_version: str
     backhaul_bssid: str
     backhaul_est_preference: int
-    def __init__(self, software_version: _Optional[str] = ..., mac_lan: _Optional[str] = ..., source_mac_addresses: _Optional[_Iterable[str]] = ..., clients: _Optional[_Iterable[_Union[WifiClient, _Mapping]]] = ..., bss_list: _Optional[_Iterable[_Union[_wifi_util_pb2.InflatedBasicServiceSet, _Mapping]]] = ..., hardware_version: _Optional[str] = ..., backhaul_bssid: _Optional[str] = ..., backhaul_est_preference: _Optional[int] = ...) -> None: ...
+    events: _containers.RepeatedCompositeFieldContainer[_common_pb2.UXEvent]
+    def __init__(self, software_version: _Optional[str] = ..., mac_lan: _Optional[str] = ..., source_mac_addresses: _Optional[_Iterable[str]] = ..., clients: _Optional[_Iterable[_Union[WifiClient, _Mapping]]] = ..., bss_list: _Optional[_Iterable[_Union[_wifi_util_pb2.InflatedBasicServiceSet, _Mapping]]] = ..., hardware_version: _Optional[str] = ..., backhaul_bssid: _Optional[str] = ..., backhaul_est_preference: _Optional[int] = ..., events: _Optional[_Iterable[_Union[_common_pb2.UXEvent, _Mapping]]] = ...) -> None: ...
 
 class MeshSpeedtestRequest(_message.Message):
     __slots__ = ()
@@ -100,14 +107,16 @@ class WifiSiteSurveyResult(_message.Message):
     def __init__(self, rssi: _Optional[float] = ..., channel: _Optional[int] = ..., ssid: _Optional[str] = ..., security: _Optional[_Union[_wifi_util_pb2.WifiSecurity, str]] = ..., wireless_mode: _Optional[_Union[_wifi_util_pb2.WifiMode, str]] = ..., iface: _Optional[_Union[_wifi_util_pb2.IfaceType, str]] = ..., mac_address: _Optional[str] = ..., est_rx_rate: _Optional[float] = ...) -> None: ...
 
 class WifiGlobalMeshStatus(_message.Message):
-    __slots__ = ("hardware_version", "software_version", "bss_list")
+    __slots__ = ("hardware_version", "software_version", "bss_list", "hops_from_controller")
     HARDWARE_VERSION_FIELD_NUMBER: _ClassVar[int]
     SOFTWARE_VERSION_FIELD_NUMBER: _ClassVar[int]
     BSS_LIST_FIELD_NUMBER: _ClassVar[int]
+    HOPS_FROM_CONTROLLER_FIELD_NUMBER: _ClassVar[int]
     hardware_version: str
     software_version: str
     bss_list: _containers.RepeatedCompositeFieldContainer[_wifi_util_pb2.InflatedBasicServiceSet]
-    def __init__(self, hardware_version: _Optional[str] = ..., software_version: _Optional[str] = ..., bss_list: _Optional[_Iterable[_Union[_wifi_util_pb2.InflatedBasicServiceSet, _Mapping]]] = ...) -> None: ...
+    hops_from_controller: int
+    def __init__(self, hardware_version: _Optional[str] = ..., software_version: _Optional[str] = ..., bss_list: _Optional[_Iterable[_Union[_wifi_util_pb2.InflatedBasicServiceSet, _Mapping]]] = ..., hops_from_controller: _Optional[int] = ...) -> None: ...
 
 class BackhaulRequest(_message.Message):
     __slots__ = ("retry_backhaul", "golden_bss")
@@ -289,14 +298,44 @@ class WifiSetAviationConformedRequest(_message.Message):
     def __init__(self) -> None: ...
 
 class WifiGetHistoryResponse(_message.Message):
-    __slots__ = ("current", "ping_drop_rate", "ping_latency_ms")
+    __slots__ = ("current", "ping_drop_rate", "ping_latency_ms", "current_index_15s", "pop_ipv4_ping_drop_rate_last_15s", "pop_ipv6_ping_drop_rate_last_15s", "google_ipv4_ping_drop_rate_last_15s", "google_ipv6_ping_drop_rate_last_15s", "cloudflare_ipv4_ping_drop_rate_last_15s", "cloudflare_ipv6_ping_drop_rate_last_15s", "dns_resolver_drop_rate", "event_log")
+    class DnsResolverDropRateEntry(_message.Message):
+        __slots__ = ("key", "value")
+        KEY_FIELD_NUMBER: _ClassVar[int]
+        VALUE_FIELD_NUMBER: _ClassVar[int]
+        key: str
+        value: WifiGetHistoryResponse.DnsResolverHistory
+        def __init__(self, key: _Optional[str] = ..., value: _Optional[_Union[WifiGetHistoryResponse.DnsResolverHistory, _Mapping]] = ...) -> None: ...
+    class DnsResolverHistory(_message.Message):
+        __slots__ = ("drop_rate_last_15s",)
+        DROP_RATE_LAST_15S_FIELD_NUMBER: _ClassVar[int]
+        drop_rate_last_15s: _containers.RepeatedScalarFieldContainer[float]
+        def __init__(self, drop_rate_last_15s: _Optional[_Iterable[float]] = ...) -> None: ...
     CURRENT_FIELD_NUMBER: _ClassVar[int]
     PING_DROP_RATE_FIELD_NUMBER: _ClassVar[int]
     PING_LATENCY_MS_FIELD_NUMBER: _ClassVar[int]
+    CURRENT_INDEX_15S_FIELD_NUMBER: _ClassVar[int]
+    POP_IPV4_PING_DROP_RATE_LAST_15S_FIELD_NUMBER: _ClassVar[int]
+    POP_IPV6_PING_DROP_RATE_LAST_15S_FIELD_NUMBER: _ClassVar[int]
+    GOOGLE_IPV4_PING_DROP_RATE_LAST_15S_FIELD_NUMBER: _ClassVar[int]
+    GOOGLE_IPV6_PING_DROP_RATE_LAST_15S_FIELD_NUMBER: _ClassVar[int]
+    CLOUDFLARE_IPV4_PING_DROP_RATE_LAST_15S_FIELD_NUMBER: _ClassVar[int]
+    CLOUDFLARE_IPV6_PING_DROP_RATE_LAST_15S_FIELD_NUMBER: _ClassVar[int]
+    DNS_RESOLVER_DROP_RATE_FIELD_NUMBER: _ClassVar[int]
+    EVENT_LOG_FIELD_NUMBER: _ClassVar[int]
     current: int
     ping_drop_rate: _containers.RepeatedScalarFieldContainer[float]
     ping_latency_ms: _containers.RepeatedScalarFieldContainer[float]
-    def __init__(self, current: _Optional[int] = ..., ping_drop_rate: _Optional[_Iterable[float]] = ..., ping_latency_ms: _Optional[_Iterable[float]] = ...) -> None: ...
+    current_index_15s: int
+    pop_ipv4_ping_drop_rate_last_15s: _containers.RepeatedScalarFieldContainer[float]
+    pop_ipv6_ping_drop_rate_last_15s: _containers.RepeatedScalarFieldContainer[float]
+    google_ipv4_ping_drop_rate_last_15s: _containers.RepeatedScalarFieldContainer[float]
+    google_ipv6_ping_drop_rate_last_15s: _containers.RepeatedScalarFieldContainer[float]
+    cloudflare_ipv4_ping_drop_rate_last_15s: _containers.RepeatedScalarFieldContainer[float]
+    cloudflare_ipv6_ping_drop_rate_last_15s: _containers.RepeatedScalarFieldContainer[float]
+    dns_resolver_drop_rate: _containers.MessageMap[str, WifiGetHistoryResponse.DnsResolverHistory]
+    event_log: _common_pb2.EventLog
+    def __init__(self, current: _Optional[int] = ..., ping_drop_rate: _Optional[_Iterable[float]] = ..., ping_latency_ms: _Optional[_Iterable[float]] = ..., current_index_15s: _Optional[int] = ..., pop_ipv4_ping_drop_rate_last_15s: _Optional[_Iterable[float]] = ..., pop_ipv6_ping_drop_rate_last_15s: _Optional[_Iterable[float]] = ..., google_ipv4_ping_drop_rate_last_15s: _Optional[_Iterable[float]] = ..., google_ipv6_ping_drop_rate_last_15s: _Optional[_Iterable[float]] = ..., cloudflare_ipv4_ping_drop_rate_last_15s: _Optional[_Iterable[float]] = ..., cloudflare_ipv6_ping_drop_rate_last_15s: _Optional[_Iterable[float]] = ..., dns_resolver_drop_rate: _Optional[_Mapping[str, WifiGetHistoryResponse.DnsResolverHistory]] = ..., event_log: _Optional[_Union[_common_pb2.EventLog, _Mapping]] = ...) -> None: ...
 
 class WifiNewClientConnectedEvent(_message.Message):
     __slots__ = ("client",)
@@ -305,7 +344,7 @@ class WifiNewClientConnectedEvent(_message.Message):
     def __init__(self, client: _Optional[_Union[WifiClient, _Mapping]] = ...) -> None: ...
 
 class WifiClient(_message.Message):
-    __slots__ = ("name", "given_name", "domain", "mac_address", "ip_address", "dhcp_lease_active", "dhcp_lease_renewed", "ipv6_addresses", "signal_strength", "channel_width", "rx_stats", "tx_stats", "associated_time_s", "no_data_idle_s", "mode_str", "iface", "iface_name", "snr", "psmode", "upstream_mac_address", "role", "device_id", "swq_checks", "swq_checks_non_empty", "mib_steer_state", "mib_steer_method", "btm_requests", "btm_requests_success", "steer_state", "steer_req_success_last_1h", "steer_req_fail_last_1h", "steer_req_fail_and_dissoc_last_1h", "dot11v_support", "hops_from_controller", "est_tx_rate_mbps_from_controller", "est_rx_rate_mbps_from_controller", "hardware_version", "software_version", "api_version", "ping_metrics", "blocked", "client_id", "fqcodel_info")
+    __slots__ = ("links", "using_mlo", "name", "given_name", "domain", "mac_address", "ip_address", "dhcp_lease_found", "dhcp_lease_active", "dhcp_lease_renewed", "seconds_until_dhcp_lease_expires", "ipv6_addresses", "signal_strength", "channel_width", "rx_stats", "rx_stats_valid", "tx_stats", "tx_stats_valid", "associated_time_s", "no_data_idle_s", "mode_str", "iface", "iface_name", "snr", "psmode", "upstream_mac_address", "role", "device_id", "swq_checks", "swq_checks_non_empty", "mib_steer_state", "mib_steer_method", "btm_requests", "btm_requests_success", "steer_state", "steer_req_success_last_1h", "steer_req_fail_last_1h", "steer_req_fail_and_dissoc_last_1h", "dot11v_support", "hops_from_controller", "est_tx_rate_mbps_from_controller", "est_rx_rate_mbps_from_controller", "hardware_version", "software_version", "api_version", "ping_metrics", "blocked", "client_id", "captive_client_id", "captive_state", "sandbox_state", "fqcodel_info", "alerts", "upload_mb", "download_mb", "active")
     class Interface(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
         __slots__ = ()
         UNKNOWN: _ClassVar[WifiClient.Interface]
@@ -328,8 +367,32 @@ class WifiClient(_message.Message):
     CLIENT: WifiClient.Role
     REPEATER: WifiClient.Role
     CONTROLLER: WifiClient.Role
+    class CaptiveState(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+        __slots__ = ()
+        CAPTIVE_STATE_NOT_CONFIGURED: _ClassVar[WifiClient.CaptiveState]
+        CAPTIVE_STATE_UNKNOWN: _ClassVar[WifiClient.CaptiveState]
+        CAPTIVE_STATE_CAPTIVE: _ClassVar[WifiClient.CaptiveState]
+        CAPTIVE_STATE_NOT_CAPTIVE: _ClassVar[WifiClient.CaptiveState]
+        CAPTIVE_STATE_PARTIALLY_CAPTIVE: _ClassVar[WifiClient.CaptiveState]
+    CAPTIVE_STATE_NOT_CONFIGURED: WifiClient.CaptiveState
+    CAPTIVE_STATE_UNKNOWN: WifiClient.CaptiveState
+    CAPTIVE_STATE_CAPTIVE: WifiClient.CaptiveState
+    CAPTIVE_STATE_NOT_CAPTIVE: WifiClient.CaptiveState
+    CAPTIVE_STATE_PARTIALLY_CAPTIVE: WifiClient.CaptiveState
+    class SandboxState(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+        __slots__ = ()
+        SANDBOX_STATE_NOT_CONFIGURED: _ClassVar[WifiClient.SandboxState]
+        SANDBOX_STATE_UNKNOWN: _ClassVar[WifiClient.SandboxState]
+        SANDBOX_STATE_SANDBOXED: _ClassVar[WifiClient.SandboxState]
+        SANDBOX_STATE_UNSANDBOXED: _ClassVar[WifiClient.SandboxState]
+        SANDBOX_STATE_PARTIALLY_SANDBOXED: _ClassVar[WifiClient.SandboxState]
+    SANDBOX_STATE_NOT_CONFIGURED: WifiClient.SandboxState
+    SANDBOX_STATE_UNKNOWN: WifiClient.SandboxState
+    SANDBOX_STATE_SANDBOXED: WifiClient.SandboxState
+    SANDBOX_STATE_UNSANDBOXED: WifiClient.SandboxState
+    SANDBOX_STATE_PARTIALLY_SANDBOXED: WifiClient.SandboxState
     class RxStats(_message.Message):
-        __slots__ = ("bytes", "count_errors", "phy_mode", "nss", "rate_mbps", "rate_mbps_last_30s", "rate_mbps_last_15s", "mcs", "bandwidth", "guard_ns", "airtime_fraction_last_1s", "sampled_packets", "sampled_packets_retried", "sampled_packets_dropped")
+        __slots__ = ("bytes", "count_errors", "phy_mode", "nss", "rate_mbps", "rate_mbps_last_30s", "rate_mbps_last_15s", "rate_mbps_last_1m_avg", "throughput_mbps_last_1m_avg", "throughput_mbps_last_15s_avg", "mcs", "bandwidth", "guard_ns", "airtime_fraction_last_1s", "sampled_packets", "sampled_packets_retried", "sampled_packets_dropped")
         BYTES_FIELD_NUMBER: _ClassVar[int]
         COUNT_ERRORS_FIELD_NUMBER: _ClassVar[int]
         PHY_MODE_FIELD_NUMBER: _ClassVar[int]
@@ -337,6 +400,9 @@ class WifiClient(_message.Message):
         RATE_MBPS_FIELD_NUMBER: _ClassVar[int]
         RATE_MBPS_LAST_30S_FIELD_NUMBER: _ClassVar[int]
         RATE_MBPS_LAST_15S_FIELD_NUMBER: _ClassVar[int]
+        RATE_MBPS_LAST_1M_AVG_FIELD_NUMBER: _ClassVar[int]
+        THROUGHPUT_MBPS_LAST_1M_AVG_FIELD_NUMBER: _ClassVar[int]
+        THROUGHPUT_MBPS_LAST_15S_AVG_FIELD_NUMBER: _ClassVar[int]
         MCS_FIELD_NUMBER: _ClassVar[int]
         BANDWIDTH_FIELD_NUMBER: _ClassVar[int]
         GUARD_NS_FIELD_NUMBER: _ClassVar[int]
@@ -351,6 +417,9 @@ class WifiClient(_message.Message):
         rate_mbps: int
         rate_mbps_last_30s: float
         rate_mbps_last_15s: float
+        rate_mbps_last_1m_avg: float
+        throughput_mbps_last_1m_avg: float
+        throughput_mbps_last_15s_avg: float
         mcs: int
         bandwidth: int
         guard_ns: int
@@ -358,9 +427,9 @@ class WifiClient(_message.Message):
         sampled_packets: int
         sampled_packets_retried: int
         sampled_packets_dropped: int
-        def __init__(self, bytes: _Optional[int] = ..., count_errors: _Optional[int] = ..., phy_mode: _Optional[int] = ..., nss: _Optional[int] = ..., rate_mbps: _Optional[int] = ..., rate_mbps_last_30s: _Optional[float] = ..., rate_mbps_last_15s: _Optional[float] = ..., mcs: _Optional[int] = ..., bandwidth: _Optional[int] = ..., guard_ns: _Optional[int] = ..., airtime_fraction_last_1s: _Optional[float] = ..., sampled_packets: _Optional[int] = ..., sampled_packets_retried: _Optional[int] = ..., sampled_packets_dropped: _Optional[int] = ...) -> None: ...
+        def __init__(self, bytes: _Optional[int] = ..., count_errors: _Optional[int] = ..., phy_mode: _Optional[int] = ..., nss: _Optional[int] = ..., rate_mbps: _Optional[int] = ..., rate_mbps_last_30s: _Optional[float] = ..., rate_mbps_last_15s: _Optional[float] = ..., rate_mbps_last_1m_avg: _Optional[float] = ..., throughput_mbps_last_1m_avg: _Optional[float] = ..., throughput_mbps_last_15s_avg: _Optional[float] = ..., mcs: _Optional[int] = ..., bandwidth: _Optional[int] = ..., guard_ns: _Optional[int] = ..., airtime_fraction_last_1s: _Optional[float] = ..., sampled_packets: _Optional[int] = ..., sampled_packets_retried: _Optional[int] = ..., sampled_packets_dropped: _Optional[int] = ...) -> None: ...
     class TxStats(_message.Message):
-        __slots__ = ("bytes", "success_bytes", "phy_mode", "nss", "rate_mbps", "rate_mbps_last_30s", "rate_mbps_last_15s", "mcs", "bandwidth", "guard_ns", "airtime_fraction_last_1s")
+        __slots__ = ("bytes", "success_bytes", "phy_mode", "nss", "rate_mbps", "rate_mbps_last_30s", "rate_mbps_last_15s", "mcs", "bandwidth", "guard_ns", "airtime_fraction_last_1s", "throughput_mbps_last_15s_avg")
         BYTES_FIELD_NUMBER: _ClassVar[int]
         SUCCESS_BYTES_FIELD_NUMBER: _ClassVar[int]
         PHY_MODE_FIELD_NUMBER: _ClassVar[int]
@@ -372,6 +441,7 @@ class WifiClient(_message.Message):
         BANDWIDTH_FIELD_NUMBER: _ClassVar[int]
         GUARD_NS_FIELD_NUMBER: _ClassVar[int]
         AIRTIME_FRACTION_LAST_1S_FIELD_NUMBER: _ClassVar[int]
+        THROUGHPUT_MBPS_LAST_15S_AVG_FIELD_NUMBER: _ClassVar[int]
         bytes: int
         success_bytes: int
         phy_mode: int
@@ -383,7 +453,21 @@ class WifiClient(_message.Message):
         bandwidth: int
         guard_ns: int
         airtime_fraction_last_1s: float
-        def __init__(self, bytes: _Optional[int] = ..., success_bytes: _Optional[int] = ..., phy_mode: _Optional[int] = ..., nss: _Optional[int] = ..., rate_mbps: _Optional[int] = ..., rate_mbps_last_30s: _Optional[float] = ..., rate_mbps_last_15s: _Optional[float] = ..., mcs: _Optional[int] = ..., bandwidth: _Optional[int] = ..., guard_ns: _Optional[int] = ..., airtime_fraction_last_1s: _Optional[float] = ...) -> None: ...
+        throughput_mbps_last_15s_avg: float
+        def __init__(self, bytes: _Optional[int] = ..., success_bytes: _Optional[int] = ..., phy_mode: _Optional[int] = ..., nss: _Optional[int] = ..., rate_mbps: _Optional[int] = ..., rate_mbps_last_30s: _Optional[float] = ..., rate_mbps_last_15s: _Optional[float] = ..., mcs: _Optional[int] = ..., bandwidth: _Optional[int] = ..., guard_ns: _Optional[int] = ..., airtime_fraction_last_1s: _Optional[float] = ..., throughput_mbps_last_15s_avg: _Optional[float] = ...) -> None: ...
+    class Link(_message.Message):
+        __slots__ = ("link_address", "band", "signal_strength", "rx_stats", "tx_stats")
+        LINK_ADDRESS_FIELD_NUMBER: _ClassVar[int]
+        BAND_FIELD_NUMBER: _ClassVar[int]
+        SIGNAL_STRENGTH_FIELD_NUMBER: _ClassVar[int]
+        RX_STATS_FIELD_NUMBER: _ClassVar[int]
+        TX_STATS_FIELD_NUMBER: _ClassVar[int]
+        link_address: str
+        band: WifiClient.Interface
+        signal_strength: float
+        rx_stats: WifiClient.RxStats
+        tx_stats: WifiClient.TxStats
+        def __init__(self, link_address: _Optional[str] = ..., band: _Optional[_Union[WifiClient.Interface, str]] = ..., signal_strength: _Optional[float] = ..., rx_stats: _Optional[_Union[WifiClient.RxStats, _Mapping]] = ..., tx_stats: _Optional[_Union[WifiClient.TxStats, _Mapping]] = ...) -> None: ...
     class PingMetrics(_message.Message):
         __slots__ = ("in_unhappy_hour_2s", "in_unhappy_hour_5s", "drop_rate_5m", "latency_5m")
         IN_UNHAPPY_HOUR_2S_FIELD_NUMBER: _ClassVar[int]
@@ -420,18 +504,29 @@ class WifiClient(_message.Message):
         deqs_flow_old_starvation: int
         deqs_dropped: int
         def __init__(self, enqs_hi_prio: _Optional[int] = ..., enqs_fqcodel: _Optional[int] = ..., enqs_new: _Optional[int] = ..., enqs_old: _Optional[int] = ..., enqs_dropped: _Optional[int] = ..., deqs_new: _Optional[int] = ..., deqs_old: _Optional[int] = ..., deqs_flow_new: _Optional[int] = ..., deqs_flow_old_deficit: _Optional[int] = ..., deqs_flow_old_starvation: _Optional[int] = ..., deqs_dropped: _Optional[int] = ...) -> None: ...
+    class Alerts(_message.Message):
+        __slots__ = ("throughput_limited",)
+        THROUGHPUT_LIMITED_FIELD_NUMBER: _ClassVar[int]
+        throughput_limited: bool
+        def __init__(self, throughput_limited: bool = ...) -> None: ...
+    LINKS_FIELD_NUMBER: _ClassVar[int]
+    USING_MLO_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     GIVEN_NAME_FIELD_NUMBER: _ClassVar[int]
     DOMAIN_FIELD_NUMBER: _ClassVar[int]
     MAC_ADDRESS_FIELD_NUMBER: _ClassVar[int]
     IP_ADDRESS_FIELD_NUMBER: _ClassVar[int]
+    DHCP_LEASE_FOUND_FIELD_NUMBER: _ClassVar[int]
     DHCP_LEASE_ACTIVE_FIELD_NUMBER: _ClassVar[int]
     DHCP_LEASE_RENEWED_FIELD_NUMBER: _ClassVar[int]
+    SECONDS_UNTIL_DHCP_LEASE_EXPIRES_FIELD_NUMBER: _ClassVar[int]
     IPV6_ADDRESSES_FIELD_NUMBER: _ClassVar[int]
     SIGNAL_STRENGTH_FIELD_NUMBER: _ClassVar[int]
     CHANNEL_WIDTH_FIELD_NUMBER: _ClassVar[int]
     RX_STATS_FIELD_NUMBER: _ClassVar[int]
+    RX_STATS_VALID_FIELD_NUMBER: _ClassVar[int]
     TX_STATS_FIELD_NUMBER: _ClassVar[int]
+    TX_STATS_VALID_FIELD_NUMBER: _ClassVar[int]
     ASSOCIATED_TIME_S_FIELD_NUMBER: _ClassVar[int]
     NO_DATA_IDLE_S_FIELD_NUMBER: _ClassVar[int]
     MODE_STR_FIELD_NUMBER: _ClassVar[int]
@@ -462,19 +557,32 @@ class WifiClient(_message.Message):
     PING_METRICS_FIELD_NUMBER: _ClassVar[int]
     BLOCKED_FIELD_NUMBER: _ClassVar[int]
     CLIENT_ID_FIELD_NUMBER: _ClassVar[int]
+    CAPTIVE_CLIENT_ID_FIELD_NUMBER: _ClassVar[int]
+    CAPTIVE_STATE_FIELD_NUMBER: _ClassVar[int]
+    SANDBOX_STATE_FIELD_NUMBER: _ClassVar[int]
     FQCODEL_INFO_FIELD_NUMBER: _ClassVar[int]
+    ALERTS_FIELD_NUMBER: _ClassVar[int]
+    UPLOAD_MB_FIELD_NUMBER: _ClassVar[int]
+    DOWNLOAD_MB_FIELD_NUMBER: _ClassVar[int]
+    ACTIVE_FIELD_NUMBER: _ClassVar[int]
+    links: _containers.RepeatedCompositeFieldContainer[WifiClient.Link]
+    using_mlo: bool
     name: str
     given_name: str
     domain: str
     mac_address: str
     ip_address: str
+    dhcp_lease_found: bool
     dhcp_lease_active: bool
     dhcp_lease_renewed: bool
+    seconds_until_dhcp_lease_expires: float
     ipv6_addresses: _containers.RepeatedScalarFieldContainer[str]
     signal_strength: float
     channel_width: int
     rx_stats: WifiClient.RxStats
+    rx_stats_valid: bool
     tx_stats: WifiClient.TxStats
+    tx_stats_valid: bool
     associated_time_s: int
     no_data_idle_s: int
     mode_str: str
@@ -505,8 +613,15 @@ class WifiClient(_message.Message):
     ping_metrics: WifiClient.PingMetrics
     blocked: bool
     client_id: int
+    captive_client_id: str
+    captive_state: WifiClient.CaptiveState
+    sandbox_state: WifiClient.SandboxState
     fqcodel_info: WifiClient.FqcodelInfo
-    def __init__(self, name: _Optional[str] = ..., given_name: _Optional[str] = ..., domain: _Optional[str] = ..., mac_address: _Optional[str] = ..., ip_address: _Optional[str] = ..., dhcp_lease_active: bool = ..., dhcp_lease_renewed: bool = ..., ipv6_addresses: _Optional[_Iterable[str]] = ..., signal_strength: _Optional[float] = ..., channel_width: _Optional[int] = ..., rx_stats: _Optional[_Union[WifiClient.RxStats, _Mapping]] = ..., tx_stats: _Optional[_Union[WifiClient.TxStats, _Mapping]] = ..., associated_time_s: _Optional[int] = ..., no_data_idle_s: _Optional[int] = ..., mode_str: _Optional[str] = ..., iface: _Optional[_Union[WifiClient.Interface, str]] = ..., iface_name: _Optional[str] = ..., snr: _Optional[float] = ..., psmode: _Optional[int] = ..., upstream_mac_address: _Optional[str] = ..., role: _Optional[_Union[WifiClient.Role, str]] = ..., device_id: _Optional[str] = ..., swq_checks: _Optional[int] = ..., swq_checks_non_empty: _Optional[int] = ..., mib_steer_state: _Optional[int] = ..., mib_steer_method: _Optional[int] = ..., btm_requests: _Optional[int] = ..., btm_requests_success: _Optional[int] = ..., steer_state: _Optional[int] = ..., steer_req_success_last_1h: _Optional[int] = ..., steer_req_fail_last_1h: _Optional[int] = ..., steer_req_fail_and_dissoc_last_1h: _Optional[int] = ..., dot11v_support: bool = ..., hops_from_controller: _Optional[int] = ..., est_tx_rate_mbps_from_controller: _Optional[float] = ..., est_rx_rate_mbps_from_controller: _Optional[float] = ..., hardware_version: _Optional[str] = ..., software_version: _Optional[str] = ..., api_version: _Optional[int] = ..., ping_metrics: _Optional[_Union[WifiClient.PingMetrics, _Mapping]] = ..., blocked: bool = ..., client_id: _Optional[int] = ..., fqcodel_info: _Optional[_Union[WifiClient.FqcodelInfo, _Mapping]] = ...) -> None: ...
+    alerts: WifiClient.Alerts
+    upload_mb: int
+    download_mb: int
+    active: bool
+    def __init__(self, links: _Optional[_Iterable[_Union[WifiClient.Link, _Mapping]]] = ..., using_mlo: bool = ..., name: _Optional[str] = ..., given_name: _Optional[str] = ..., domain: _Optional[str] = ..., mac_address: _Optional[str] = ..., ip_address: _Optional[str] = ..., dhcp_lease_found: bool = ..., dhcp_lease_active: bool = ..., dhcp_lease_renewed: bool = ..., seconds_until_dhcp_lease_expires: _Optional[float] = ..., ipv6_addresses: _Optional[_Iterable[str]] = ..., signal_strength: _Optional[float] = ..., channel_width: _Optional[int] = ..., rx_stats: _Optional[_Union[WifiClient.RxStats, _Mapping]] = ..., rx_stats_valid: bool = ..., tx_stats: _Optional[_Union[WifiClient.TxStats, _Mapping]] = ..., tx_stats_valid: bool = ..., associated_time_s: _Optional[int] = ..., no_data_idle_s: _Optional[int] = ..., mode_str: _Optional[str] = ..., iface: _Optional[_Union[WifiClient.Interface, str]] = ..., iface_name: _Optional[str] = ..., snr: _Optional[float] = ..., psmode: _Optional[int] = ..., upstream_mac_address: _Optional[str] = ..., role: _Optional[_Union[WifiClient.Role, str]] = ..., device_id: _Optional[str] = ..., swq_checks: _Optional[int] = ..., swq_checks_non_empty: _Optional[int] = ..., mib_steer_state: _Optional[int] = ..., mib_steer_method: _Optional[int] = ..., btm_requests: _Optional[int] = ..., btm_requests_success: _Optional[int] = ..., steer_state: _Optional[int] = ..., steer_req_success_last_1h: _Optional[int] = ..., steer_req_fail_last_1h: _Optional[int] = ..., steer_req_fail_and_dissoc_last_1h: _Optional[int] = ..., dot11v_support: bool = ..., hops_from_controller: _Optional[int] = ..., est_tx_rate_mbps_from_controller: _Optional[float] = ..., est_rx_rate_mbps_from_controller: _Optional[float] = ..., hardware_version: _Optional[str] = ..., software_version: _Optional[str] = ..., api_version: _Optional[int] = ..., ping_metrics: _Optional[_Union[WifiClient.PingMetrics, _Mapping]] = ..., blocked: bool = ..., client_id: _Optional[int] = ..., captive_client_id: _Optional[str] = ..., captive_state: _Optional[_Union[WifiClient.CaptiveState, str]] = ..., sandbox_state: _Optional[_Union[WifiClient.SandboxState, str]] = ..., fqcodel_info: _Optional[_Union[WifiClient.FqcodelInfo, _Mapping]] = ..., alerts: _Optional[_Union[WifiClient.Alerts, _Mapping]] = ..., upload_mb: _Optional[int] = ..., download_mb: _Optional[int] = ..., active: bool = ...) -> None: ...
 
 class WifiSetupRequest(_message.Message):
     __slots__ = ("skip", "network_name", "network_password", "bypass")
@@ -539,12 +654,13 @@ class WifiBandStatus(_message.Message):
     def __init__(self, chan_busy_time_fraction: _Optional[float] = ..., tx_air_time_fraction: _Optional[float] = ..., rx_air_time_fraction: _Optional[float] = ..., obss_air_time_fraction: _Optional[float] = ..., edcca_air_time_fraction: _Optional[float] = ...) -> None: ...
 
 class WifiAlerts(_message.Message):
-    __slots__ = ("thermal_throttle", "install_pending", "freshly_fused", "lan_eth_slow_link_10", "lan_eth_slow_link_100", "wan_eth_poor_connection", "mesh_topology_changing_often", "mesh_unreliable_backhaul", "radius_missing_process", "eth_switch_error", "poe_on_dish_unreachable", "poe_fuse_blown", "poe_router_overcurrent", "poe_off_current_nominal", "poe_vin_overvoltage", "poe_vin_undervoltage")
+    __slots__ = ("thermal_throttle", "install_pending", "freshly_fused", "lan_eth_slow_link_10", "lan_eth_slow_link_100", "high_cable_ping_drop_rate", "wan_eth_poor_connection", "mesh_topology_changing_often", "mesh_unreliable_backhaul", "radius_missing_process", "eth_switch_error", "poe_on_dish_unreachable", "poe_fuse_blown", "poe_router_overcurrent", "poe_off_current_nominal", "poe_vin_overvoltage", "poe_vin_undervoltage", "sandbox_disabled", "only_overflight_blocked", "offline_networks_disabled", "wired_mesh_not_using_wan_iface")
     THERMAL_THROTTLE_FIELD_NUMBER: _ClassVar[int]
     INSTALL_PENDING_FIELD_NUMBER: _ClassVar[int]
     FRESHLY_FUSED_FIELD_NUMBER: _ClassVar[int]
     LAN_ETH_SLOW_LINK_10_FIELD_NUMBER: _ClassVar[int]
     LAN_ETH_SLOW_LINK_100_FIELD_NUMBER: _ClassVar[int]
+    HIGH_CABLE_PING_DROP_RATE_FIELD_NUMBER: _ClassVar[int]
     WAN_ETH_POOR_CONNECTION_FIELD_NUMBER: _ClassVar[int]
     MESH_TOPOLOGY_CHANGING_OFTEN_FIELD_NUMBER: _ClassVar[int]
     MESH_UNRELIABLE_BACKHAUL_FIELD_NUMBER: _ClassVar[int]
@@ -556,11 +672,16 @@ class WifiAlerts(_message.Message):
     POE_OFF_CURRENT_NOMINAL_FIELD_NUMBER: _ClassVar[int]
     POE_VIN_OVERVOLTAGE_FIELD_NUMBER: _ClassVar[int]
     POE_VIN_UNDERVOLTAGE_FIELD_NUMBER: _ClassVar[int]
+    SANDBOX_DISABLED_FIELD_NUMBER: _ClassVar[int]
+    ONLY_OVERFLIGHT_BLOCKED_FIELD_NUMBER: _ClassVar[int]
+    OFFLINE_NETWORKS_DISABLED_FIELD_NUMBER: _ClassVar[int]
+    WIRED_MESH_NOT_USING_WAN_IFACE_FIELD_NUMBER: _ClassVar[int]
     thermal_throttle: bool
     install_pending: bool
     freshly_fused: bool
     lan_eth_slow_link_10: bool
     lan_eth_slow_link_100: bool
+    high_cable_ping_drop_rate: bool
     wan_eth_poor_connection: bool
     mesh_topology_changing_often: bool
     mesh_unreliable_backhaul: bool
@@ -572,15 +693,20 @@ class WifiAlerts(_message.Message):
     poe_off_current_nominal: bool
     poe_vin_overvoltage: bool
     poe_vin_undervoltage: bool
-    def __init__(self, thermal_throttle: bool = ..., install_pending: bool = ..., freshly_fused: bool = ..., lan_eth_slow_link_10: bool = ..., lan_eth_slow_link_100: bool = ..., wan_eth_poor_connection: bool = ..., mesh_topology_changing_often: bool = ..., mesh_unreliable_backhaul: bool = ..., radius_missing_process: bool = ..., eth_switch_error: bool = ..., poe_on_dish_unreachable: bool = ..., poe_fuse_blown: bool = ..., poe_router_overcurrent: bool = ..., poe_off_current_nominal: bool = ..., poe_vin_overvoltage: bool = ..., poe_vin_undervoltage: bool = ...) -> None: ...
+    sandbox_disabled: bool
+    only_overflight_blocked: bool
+    offline_networks_disabled: bool
+    wired_mesh_not_using_wan_iface: bool
+    def __init__(self, thermal_throttle: bool = ..., install_pending: bool = ..., freshly_fused: bool = ..., lan_eth_slow_link_10: bool = ..., lan_eth_slow_link_100: bool = ..., high_cable_ping_drop_rate: bool = ..., wan_eth_poor_connection: bool = ..., mesh_topology_changing_often: bool = ..., mesh_unreliable_backhaul: bool = ..., radius_missing_process: bool = ..., eth_switch_error: bool = ..., poe_on_dish_unreachable: bool = ..., poe_fuse_blown: bool = ..., poe_router_overcurrent: bool = ..., poe_off_current_nominal: bool = ..., poe_vin_overvoltage: bool = ..., poe_vin_undervoltage: bool = ..., sandbox_disabled: bool = ..., only_overflight_blocked: bool = ..., offline_networks_disabled: bool = ..., wired_mesh_not_using_wan_iface: bool = ...) -> None: ...
 
 class WifiGetStatusResponse(_message.Message):
-    __slots__ = ("device_info", "device_state", "captive_portal_enabled", "ipv4_wan_address", "ipv6_wan_addresses", "ping_drop_rate", "ping_drop_rate_5m", "ping_latency_ms", "dish_ping_drop_rate", "dish_ping_drop_rate_5m", "dish_ping_latency_ms", "pop_ping_drop_rate", "pop_ping_drop_rate_5m", "pop_ping_latency_ms", "rf_2ghz_status", "rf_5ghz_status", "alerts", "is_aviation", "config", "clients", "has_client_index", "client_index", "is_aviation_conformed", "radius_stats", "dhcp_servers", "poe_stats", "dish_id", "utc_ns", "software_update_stats")
+    __slots__ = ("device_info", "device_state", "captive_portal_enabled", "ipv4_wan_address", "ipv6_wan_addresses", "hops_from_controller", "ping_drop_rate", "ping_drop_rate_5m", "ping_latency_ms", "dish_ping_drop_rate", "dish_ping_drop_rate_5m", "dish_ping_latency_ms", "pop_ping_drop_rate", "pop_ping_drop_rate_5m", "pop_ping_latency_ms", "pop_ipv6_ping_drop_rate", "pop_ipv6_ping_drop_rate_5m", "pop_ipv6_ping_latency_ms", "rf_2ghz_status", "rf_5ghz_status", "alerts", "is_aviation", "config", "clients", "has_client_index", "client_index", "is_aviation_conformed", "radius_stats", "dhcp_servers", "poe_stats", "dish_id", "dish_disablement_code", "utc_ns", "software_update_stats", "setup_requirement", "secs_since_last_public_ipv4_change", "using_individualized_calibration", "calibration_partitions_state", "no_wan_link")
     DEVICE_INFO_FIELD_NUMBER: _ClassVar[int]
     DEVICE_STATE_FIELD_NUMBER: _ClassVar[int]
     CAPTIVE_PORTAL_ENABLED_FIELD_NUMBER: _ClassVar[int]
     IPV4_WAN_ADDRESS_FIELD_NUMBER: _ClassVar[int]
     IPV6_WAN_ADDRESSES_FIELD_NUMBER: _ClassVar[int]
+    HOPS_FROM_CONTROLLER_FIELD_NUMBER: _ClassVar[int]
     PING_DROP_RATE_FIELD_NUMBER: _ClassVar[int]
     PING_DROP_RATE_5M_FIELD_NUMBER: _ClassVar[int]
     PING_LATENCY_MS_FIELD_NUMBER: _ClassVar[int]
@@ -590,6 +716,9 @@ class WifiGetStatusResponse(_message.Message):
     POP_PING_DROP_RATE_FIELD_NUMBER: _ClassVar[int]
     POP_PING_DROP_RATE_5M_FIELD_NUMBER: _ClassVar[int]
     POP_PING_LATENCY_MS_FIELD_NUMBER: _ClassVar[int]
+    POP_IPV6_PING_DROP_RATE_FIELD_NUMBER: _ClassVar[int]
+    POP_IPV6_PING_DROP_RATE_5M_FIELD_NUMBER: _ClassVar[int]
+    POP_IPV6_PING_LATENCY_MS_FIELD_NUMBER: _ClassVar[int]
     RF_2GHZ_STATUS_FIELD_NUMBER: _ClassVar[int]
     RF_5GHZ_STATUS_FIELD_NUMBER: _ClassVar[int]
     ALERTS_FIELD_NUMBER: _ClassVar[int]
@@ -603,13 +732,20 @@ class WifiGetStatusResponse(_message.Message):
     DHCP_SERVERS_FIELD_NUMBER: _ClassVar[int]
     POE_STATS_FIELD_NUMBER: _ClassVar[int]
     DISH_ID_FIELD_NUMBER: _ClassVar[int]
+    DISH_DISABLEMENT_CODE_FIELD_NUMBER: _ClassVar[int]
     UTC_NS_FIELD_NUMBER: _ClassVar[int]
     SOFTWARE_UPDATE_STATS_FIELD_NUMBER: _ClassVar[int]
+    SETUP_REQUIREMENT_FIELD_NUMBER: _ClassVar[int]
+    SECS_SINCE_LAST_PUBLIC_IPV4_CHANGE_FIELD_NUMBER: _ClassVar[int]
+    USING_INDIVIDUALIZED_CALIBRATION_FIELD_NUMBER: _ClassVar[int]
+    CALIBRATION_PARTITIONS_STATE_FIELD_NUMBER: _ClassVar[int]
+    NO_WAN_LINK_FIELD_NUMBER: _ClassVar[int]
     device_info: _common_pb2.DeviceInfo
     device_state: _common_pb2.DeviceState
     captive_portal_enabled: bool
     ipv4_wan_address: str
     ipv6_wan_addresses: _containers.RepeatedScalarFieldContainer[str]
+    hops_from_controller: int
     ping_drop_rate: float
     ping_drop_rate_5m: float
     ping_latency_ms: float
@@ -619,6 +755,9 @@ class WifiGetStatusResponse(_message.Message):
     pop_ping_drop_rate: float
     pop_ping_drop_rate_5m: float
     pop_ping_latency_ms: float
+    pop_ipv6_ping_drop_rate: float
+    pop_ipv6_ping_drop_rate_5m: float
+    pop_ipv6_ping_latency_ms: float
     rf_2ghz_status: WifiBandStatus
     rf_5ghz_status: WifiBandStatus
     alerts: WifiAlerts
@@ -632,9 +771,15 @@ class WifiGetStatusResponse(_message.Message):
     dhcp_servers: _containers.RepeatedCompositeFieldContainer[_wifi_util_pb2.DhcpServer]
     poe_stats: _wifi_util_pb2.PoeStats
     dish_id: str
+    dish_disablement_code: _ut_disablement_codes_pb2.UtDisablementCode
     utc_ns: int
     software_update_stats: _wifi_util_pb2.WifiSoftwareUpdateStats
-    def __init__(self, device_info: _Optional[_Union[_common_pb2.DeviceInfo, _Mapping]] = ..., device_state: _Optional[_Union[_common_pb2.DeviceState, _Mapping]] = ..., captive_portal_enabled: bool = ..., ipv4_wan_address: _Optional[str] = ..., ipv6_wan_addresses: _Optional[_Iterable[str]] = ..., ping_drop_rate: _Optional[float] = ..., ping_drop_rate_5m: _Optional[float] = ..., ping_latency_ms: _Optional[float] = ..., dish_ping_drop_rate: _Optional[float] = ..., dish_ping_drop_rate_5m: _Optional[float] = ..., dish_ping_latency_ms: _Optional[float] = ..., pop_ping_drop_rate: _Optional[float] = ..., pop_ping_drop_rate_5m: _Optional[float] = ..., pop_ping_latency_ms: _Optional[float] = ..., rf_2ghz_status: _Optional[_Union[WifiBandStatus, _Mapping]] = ..., rf_5ghz_status: _Optional[_Union[WifiBandStatus, _Mapping]] = ..., alerts: _Optional[_Union[WifiAlerts, _Mapping]] = ..., is_aviation: bool = ..., config: _Optional[_Union[_wifi_config_pb2.WifiConfig, _Mapping]] = ..., clients: _Optional[_Iterable[_Union[WifiClient, _Mapping]]] = ..., has_client_index: bool = ..., client_index: _Optional[int] = ..., is_aviation_conformed: bool = ..., radius_stats: _Optional[_Union[_wifi_util_pb2.RadiusStatsMap, _Mapping]] = ..., dhcp_servers: _Optional[_Iterable[_Union[_wifi_util_pb2.DhcpServer, _Mapping]]] = ..., poe_stats: _Optional[_Union[_wifi_util_pb2.PoeStats, _Mapping]] = ..., dish_id: _Optional[str] = ..., utc_ns: _Optional[int] = ..., software_update_stats: _Optional[_Union[_wifi_util_pb2.WifiSoftwareUpdateStats, _Mapping]] = ...) -> None: ...
+    setup_requirement: _wifi_util_pb2.WifiSetupRequirement
+    secs_since_last_public_ipv4_change: float
+    using_individualized_calibration: bool
+    calibration_partitions_state: _wifi_util_pb2.CalibrationPartitionsState
+    no_wan_link: bool
+    def __init__(self, device_info: _Optional[_Union[_common_pb2.DeviceInfo, _Mapping]] = ..., device_state: _Optional[_Union[_common_pb2.DeviceState, _Mapping]] = ..., captive_portal_enabled: bool = ..., ipv4_wan_address: _Optional[str] = ..., ipv6_wan_addresses: _Optional[_Iterable[str]] = ..., hops_from_controller: _Optional[int] = ..., ping_drop_rate: _Optional[float] = ..., ping_drop_rate_5m: _Optional[float] = ..., ping_latency_ms: _Optional[float] = ..., dish_ping_drop_rate: _Optional[float] = ..., dish_ping_drop_rate_5m: _Optional[float] = ..., dish_ping_latency_ms: _Optional[float] = ..., pop_ping_drop_rate: _Optional[float] = ..., pop_ping_drop_rate_5m: _Optional[float] = ..., pop_ping_latency_ms: _Optional[float] = ..., pop_ipv6_ping_drop_rate: _Optional[float] = ..., pop_ipv6_ping_drop_rate_5m: _Optional[float] = ..., pop_ipv6_ping_latency_ms: _Optional[float] = ..., rf_2ghz_status: _Optional[_Union[WifiBandStatus, _Mapping]] = ..., rf_5ghz_status: _Optional[_Union[WifiBandStatus, _Mapping]] = ..., alerts: _Optional[_Union[WifiAlerts, _Mapping]] = ..., is_aviation: bool = ..., config: _Optional[_Union[_wifi_config_pb2.WifiConfig, _Mapping]] = ..., clients: _Optional[_Iterable[_Union[WifiClient, _Mapping]]] = ..., has_client_index: bool = ..., client_index: _Optional[int] = ..., is_aviation_conformed: bool = ..., radius_stats: _Optional[_Union[_wifi_util_pb2.RadiusStatsMap, _Mapping]] = ..., dhcp_servers: _Optional[_Iterable[_Union[_wifi_util_pb2.DhcpServer, _Mapping]]] = ..., poe_stats: _Optional[_Union[_wifi_util_pb2.PoeStats, _Mapping]] = ..., dish_id: _Optional[str] = ..., dish_disablement_code: _Optional[_Union[_ut_disablement_codes_pb2.UtDisablementCode, str]] = ..., utc_ns: _Optional[int] = ..., software_update_stats: _Optional[_Union[_wifi_util_pb2.WifiSoftwareUpdateStats, _Mapping]] = ..., setup_requirement: _Optional[_Union[_wifi_util_pb2.WifiSetupRequirement, _Mapping]] = ..., secs_since_last_public_ipv4_change: _Optional[float] = ..., using_individualized_calibration: bool = ..., calibration_partitions_state: _Optional[_Union[_wifi_util_pb2.CalibrationPartitionsState, str]] = ..., no_wan_link: bool = ...) -> None: ...
 
 class WifiAuthenticateRequest(_message.Message):
     __slots__ = ("challenge",)
@@ -804,12 +949,13 @@ class RadioStats(_message.Message):
     def __init__(self, band: _Optional[_Union[_wifi_config_pb2.WifiConfig.Band, str]] = ..., rx_stats: _Optional[_Union[_common_pb2.NetworkInterface.RxStats, _Mapping]] = ..., tx_stats: _Optional[_Union[_common_pb2.NetworkInterface.TxStats, _Mapping]] = ..., thermal_status: _Optional[_Union[RadioStats.ThermalStatus, _Mapping]] = ..., antenna_status: _Optional[_Union[RadioStats.AntennaStatus, _Mapping]] = ...) -> None: ...
 
 class starlink_routers_hourly_metrics_v2(_message.Message):
-    __slots__ = ("id", "timestamp_date", "timestamp_hour", "timestamp", "sys_hw_gen", "sys_sw", "sys_country", "sys_is_dev", "sys_alloc_fds", "sys_cpu_usage", "sys_mem_free_kb", "sys_bootcount", "sys_partitions_equal", "sys_uptime_seconds", "sys_anti_rollback_version", "sys_is_witl", "sys_is_aviation_conformed", "sys_ubi_max_ec", "sys_ubi_bad_peb", "sys_board_rev", "radios_2ghz_channel", "radios_2ghz_antenna1_rssi", "radios_2ghz_antenna2_rssi", "radios_2ghz_antenna3_rssi", "radios_2ghz_antenna4_rssi", "radios_2ghz_antenna1_tssi", "radios_2ghz_antenna2_tssi", "radios_2ghz_antenna3_tssi", "radios_2ghz_antenna4_tssi", "radios_2ghz_iface_count", "radios_2ghz_chan_busy_fraction", "radios_2ghz_edcca_fraction", "radios_2ghz_overlapping_bss_fraction", "radios_2ghz_rx_bytes", "radios_2ghz_rx_packets", "radios_2ghz_rx_errors", "radios_2ghz_rx_frame_errors", "radios_2ghz_rx_packet_error_rate", "radios_2ghz_rx_airtime_fraction", "radios_2ghz_tx_bytes", "radios_2ghz_tx_packets", "radios_2ghz_tx_errors", "radios_2ghz_tx_packet_error_rate", "radios_2ghz_tx_airtime_fraction", "radios_5ghz_channel", "radios_5ghz_antenna1_rssi", "radios_5ghz_antenna2_rssi", "radios_5ghz_antenna3_rssi", "radios_5ghz_antenna4_rssi", "radios_5ghz_antenna1_tssi", "radios_5ghz_antenna2_tssi", "radios_5ghz_antenna3_tssi", "radios_5ghz_antenna4_tssi", "radios_5ghz_iface_count", "radios_5ghz_chan_busy_fraction", "radios_5ghz_edcca_fraction", "radios_5ghz_overlapping_bss_fraction", "radios_5ghz_rx_bytes", "radios_5ghz_rx_packets", "radios_5ghz_rx_errors", "radios_5ghz_rx_frame_errors", "radios_5ghz_rx_packet_error_rate", "radios_5ghz_rx_airtime_fraction", "radios_5ghz_tx_bytes", "radios_5ghz_tx_packets", "radios_5ghz_tx_errors", "radios_5ghz_tx_packet_error_rate", "radios_5ghz_tx_airtime_fraction", "radios_5ghz_high_channel", "radios_5ghz_high_antenna1_rssi", "radios_5ghz_high_antenna2_rssi", "radios_5ghz_high_antenna3_rssi", "radios_5ghz_high_antenna4_rssi", "radios_5ghz_high_antenna1_tssi", "radios_5ghz_high_antenna2_tssi", "radios_5ghz_high_antenna3_tssi", "radios_5ghz_high_antenna4_tssi", "radios_5ghz_high_iface_count", "radios_5ghz_high_chan_busy_fraction", "radios_5ghz_high_edcca_fraction", "radios_5ghz_high_overlapping_bss_fraction", "radios_5ghz_high_rx_bytes", "radios_5ghz_high_rx_packets", "radios_5ghz_high_rx_errors", "radios_5ghz_high_rx_frame_errors", "radios_5ghz_high_rx_packet_error_rate", "radios_5ghz_high_rx_airtime_fraction", "radios_5ghz_high_tx_bytes", "radios_5ghz_high_tx_packets", "radios_5ghz_high_tx_errors", "radios_5ghz_high_tx_packet_error_rate", "radios_5ghz_high_tx_airtime_fraction", "radios_2ghz_thermal_temp", "radios_5ghz_thermal_temp", "radios_5ghz_high_thermal_temp", "radios_2ghz_thermal_duty_cycle", "radios_5ghz_thermal_duty_cycle", "radios_5ghz_high_thermal_duty_cycle", "radios_2ghz_thermal_throttled_seconds", "radios_5ghz_thermal_throttled_seconds", "radios_5ghz_high_thermal_throttled_seconds", "board_temp", "poe_mcu_die_temp", "ifaces_lan_eth_rx_bytes", "ifaces_lan_eth_rx_packets", "ifaces_lan_eth_rx_errors", "ifaces_lan_eth_rx_frame_errors", "ifaces_lan_eth_tx_bytes", "ifaces_lan_eth_tx_packets", "ifaces_lan_eth_tx_errors", "ifaces_lan1_eth_rx_bytes", "ifaces_lan1_eth_rx_packets", "ifaces_lan1_eth_rx_errors", "ifaces_lan1_eth_rx_frame_errors", "ifaces_lan1_eth_tx_bytes", "ifaces_lan1_eth_tx_packets", "ifaces_lan1_eth_tx_errors", "ifaces_wan_eth_rx_bytes", "ifaces_wan_eth_rx_packets", "ifaces_wan_eth_rx_errors", "ifaces_wan_eth_rx_frame_errors", "ifaces_wan_eth_tx_bytes", "ifaces_wan_eth_tx_packets", "ifaces_wan_eth_tx_errors", "clients", "clients_2ghz", "clients_5ghz", "clients_5ghz_high", "clients_eth", "clients_5ghz_rx_bandwidth_20mhz", "clients_5ghz_rx_bandwidth_40mhz", "clients_5ghz_rx_bandwidth_80mhz", "clients_repeater", "clients_repeater_2ghz", "clients_repeater_5ghz", "clients_repeater_5ghz_high", "clients_repeater_eth", "mesh_hops", "mesh_one_hop_rssi_avg_2ghz", "mesh_one_hop_rssi_avg_5ghz", "mesh_one_hop_rssi_avg_5ghz_high", "mesh_two_hop_rssi_avg_2ghz", "mesh_two_hop_rssi_avg_5ghz", "mesh_two_hop_rssi_avg_5ghz_high", "repeater_tx_rate_mbps_min", "repeater_rx_rate_mbps_min", "repeater_tx_rate_mbps_avg", "repeater_rx_rate_mbps_avg", "repeater_seconds_since_2s_outage_min", "repeater_seconds_since_5s_outage_min", "repeater_seconds_since_2s_outage_avg", "repeater_seconds_since_5s_outage_avg", "repeater_latency_ms_1h_max", "repeater_latency_ms_1h_avg", "mesh_topology_change_count_1d", "ping_seconds_since_last_1s_outage", "ping_seconds_since_last_2s_outage", "ping_seconds_since_last_5s_outage", "ping_seconds_since_last_60s_outage", "ping_seconds_since_last_300s_outage", "ping_drop_rate", "ping_drop_rate_last_1h", "ping_latency", "ping_latency_last_1h", "ping_dish_seconds_since_last_1s_outage", "ping_dish_seconds_since_last_2s_outage", "ping_dish_seconds_since_last_5s_outage", "ping_dish_seconds_since_last_60s_outage", "ping_dish_seconds_since_last_300s_outage", "ping_dish_drop_rate", "ping_dish_drop_rate_last_1h", "ping_dish_latency", "ping_dish_latency_last_1h", "client_speedtest_router_download_mbps", "client_speedtest_router_upload_mbps", "client_speedtest_router_rssi", "client_speedtest_wifi_download_mbps", "client_speedtest_wifi_upload_mbps", "client_speedtest_client_download_mbps", "client_speedtest_client_upload_mbps", "client_speedtest_client_rssi", "client_speedtest_client_iface", "client_speedtest_client_oui", "client_speedtest_client_tx_rate", "client_speedtest_client_rx_rate", "client_speedtest_client_platform_type", "speedtest_tcp_8_download_mbps_avg", "speedtest_tcp_8_download_mbps_max", "speedtest_tcp_8_upload_mbps_avg", "speedtest_tcp_8_upload_mbps_max", "speedtest_tcp_64_download_mbps_avg", "speedtest_tcp_64_download_mbps_max", "speedtest_tcp_64_upload_mbps_avg", "speedtest_tcp_64_upload_mbps_max", "dish_cell_id", "config_setup_complete", "config_bands_split", "config_is_repeater", "config_open_network", "config_is_aviation", "config_secure_dns", "config_legacy", "config_ap_mode", "config_dfs_enabled", "config_network_name_is_default", "config_remote_ssh_enabled", "config_is_repeater_wired", "config_is_repeater_wireless", "config_block_schedules_set", "config_custom_nameservers", "config_disable_mesh_onboarding", "config_pin_country_code", "config_disable_update_reboot", "config_disable_2ghz", "config_disable_5ghz", "config_disable_5ghz_high", "config_channel_2ghz", "config_channel_5ghz", "config_channel_5ghz_high", "config_networks", "config_networks_guest", "config_networks_hidden", "config_networks_client_isolation", "config_networks_bands_split", "wan_traffic_control_cake_bytes", "wan_traffic_control_cake_packets", "wan_traffic_control_cake_drops", "wan_traffic_control_cake_ack_drops", "conntrack_entries", "dhcp_secs_eq_0", "dhcp_secs_gt_0", "dhcp_secs_gt_10", "dhcp_secs_gt_30", "dhcp_secs_gt_60")
+    __slots__ = ("id", "timestamp_date", "timestamp_hour", "timestamp", "sys_hw_gen", "sys_hw_index", "sys_sw", "sys_country", "sys_is_dev", "sys_alloc_fds", "sys_cpu_usage", "sys_mem_free_kb", "sys_bootcount", "sys_partitions_equal", "sys_uptime_seconds", "sys_anti_rollback_version", "sys_is_witl", "sys_is_aviation_conformed", "sys_ubi_max_ec", "sys_ubi_bad_peb", "sys_board_rev", "sys_calibration_state", "sys_calibration_partitions_state", "radios_2ghz_channel", "radios_2ghz_antenna1_rssi", "radios_2ghz_antenna2_rssi", "radios_2ghz_antenna3_rssi", "radios_2ghz_antenna4_rssi", "radios_2ghz_antenna1_tssi", "radios_2ghz_antenna2_tssi", "radios_2ghz_antenna3_tssi", "radios_2ghz_antenna4_tssi", "radios_2ghz_iface_count", "radios_2ghz_chan_busy_fraction", "radios_2ghz_edcca_fraction", "radios_2ghz_overlapping_bss_fraction", "radios_2ghz_rx_bytes", "radios_2ghz_rx_packets", "radios_2ghz_rx_errors", "radios_2ghz_rx_frame_errors", "radios_2ghz_rx_packet_error_rate", "radios_2ghz_rx_airtime_fraction", "radios_2ghz_tx_bytes", "radios_2ghz_tx_packets", "radios_2ghz_tx_errors", "radios_2ghz_tx_packet_error_rate", "radios_2ghz_tx_airtime_fraction", "radios_5ghz_channel", "radios_5ghz_antenna1_rssi", "radios_5ghz_antenna2_rssi", "radios_5ghz_antenna3_rssi", "radios_5ghz_antenna4_rssi", "radios_5ghz_antenna1_tssi", "radios_5ghz_antenna2_tssi", "radios_5ghz_antenna3_tssi", "radios_5ghz_antenna4_tssi", "radios_5ghz_iface_count", "radios_5ghz_chan_busy_fraction", "radios_5ghz_edcca_fraction", "radios_5ghz_overlapping_bss_fraction", "radios_5ghz_rx_bytes", "radios_5ghz_rx_packets", "radios_5ghz_rx_errors", "radios_5ghz_rx_frame_errors", "radios_5ghz_rx_packet_error_rate", "radios_5ghz_rx_airtime_fraction", "radios_5ghz_tx_bytes", "radios_5ghz_tx_packets", "radios_5ghz_tx_errors", "radios_5ghz_tx_packet_error_rate", "radios_5ghz_tx_airtime_fraction", "radios_5ghz_high_channel", "radios_5ghz_high_antenna1_rssi", "radios_5ghz_high_antenna2_rssi", "radios_5ghz_high_antenna3_rssi", "radios_5ghz_high_antenna4_rssi", "radios_5ghz_high_antenna1_tssi", "radios_5ghz_high_antenna2_tssi", "radios_5ghz_high_antenna3_tssi", "radios_5ghz_high_antenna4_tssi", "radios_5ghz_high_iface_count", "radios_5ghz_high_chan_busy_fraction", "radios_5ghz_high_edcca_fraction", "radios_5ghz_high_overlapping_bss_fraction", "radios_5ghz_high_rx_bytes", "radios_5ghz_high_rx_packets", "radios_5ghz_high_rx_errors", "radios_5ghz_high_rx_frame_errors", "radios_5ghz_high_rx_packet_error_rate", "radios_5ghz_high_rx_airtime_fraction", "radios_5ghz_high_tx_bytes", "radios_5ghz_high_tx_packets", "radios_5ghz_high_tx_errors", "radios_5ghz_high_tx_packet_error_rate", "radios_5ghz_high_tx_airtime_fraction", "radios_2ghz_thermal_temp", "radios_5ghz_thermal_temp", "radios_5ghz_high_thermal_temp", "radios_2ghz_thermal_duty_cycle", "radios_5ghz_thermal_duty_cycle", "radios_5ghz_high_thermal_duty_cycle", "radios_2ghz_thermal_throttled_seconds", "radios_5ghz_thermal_throttled_seconds", "radios_5ghz_high_thermal_throttled_seconds", "board_temp", "ambient_temp", "cpu_temp", "poe_mcu_die_temp", "poe_percent_water_detect_avg", "ifaces_lan_eth_rx_bytes", "ifaces_lan_eth_rx_packets", "ifaces_lan_eth_rx_errors", "ifaces_lan_eth_rx_frame_errors", "ifaces_lan_eth_tx_bytes", "ifaces_lan_eth_tx_packets", "ifaces_lan_eth_tx_errors", "ifaces_lan1_eth_rx_bytes", "ifaces_lan1_eth_rx_packets", "ifaces_lan1_eth_rx_errors", "ifaces_lan1_eth_rx_frame_errors", "ifaces_lan1_eth_tx_bytes", "ifaces_lan1_eth_tx_packets", "ifaces_lan1_eth_tx_errors", "ifaces_wan_eth_rx_bytes", "ifaces_wan_eth_rx_packets", "ifaces_wan_eth_rx_errors", "ifaces_wan_eth_rx_frame_errors", "ifaces_wan_eth_tx_bytes", "ifaces_wan_eth_tx_packets", "ifaces_wan_eth_tx_errors", "ifaces_wan_port", "clients", "clients_2ghz", "clients_5ghz", "clients_5ghz_high", "clients_wireless", "clients_mlo", "clients_eth", "clients_5ghz_rx_bandwidth_20mhz", "clients_5ghz_rx_bandwidth_40mhz", "clients_5ghz_rx_bandwidth_80mhz", "clients_5ghz_rx_bandwidth_160mhz", "clients_repeater", "clients_repeater_2ghz", "clients_repeater_5ghz", "clients_repeater_5ghz_high", "clients_repeater_eth", "mesh_hops", "mesh_one_hop_rssi_avg_2ghz", "mesh_one_hop_rssi_avg_5ghz", "mesh_one_hop_rssi_avg_5ghz_high", "mesh_two_hop_rssi_avg_2ghz", "mesh_two_hop_rssi_avg_5ghz", "mesh_two_hop_rssi_avg_5ghz_high", "repeater_tx_rate_mbps_min", "repeater_rx_rate_mbps_min", "repeater_tx_rate_mbps_avg", "repeater_rx_rate_mbps_avg", "repeater_seconds_since_2s_outage_min", "repeater_seconds_since_5s_outage_min", "repeater_seconds_since_2s_outage_avg", "repeater_seconds_since_5s_outage_avg", "repeater_latency_ms_1h_max", "repeater_latency_ms_1h_avg", "mesh_topology_change_count_1d", "mac_exports_successful", "mac_exports_server_connect_errors", "mac_exports_server_send_errors", "ping_seconds_since_last_1s_outage", "ping_seconds_since_last_2s_outage", "ping_seconds_since_last_5s_outage", "ping_seconds_since_last_60s_outage", "ping_seconds_since_last_300s_outage", "ping_drop_rate", "ping_drop_rate_last_1h", "ping_latency", "ping_latency_last_1h", "ping_dish_seconds_since_last_1s_outage", "ping_dish_seconds_since_last_2s_outage", "ping_dish_seconds_since_last_5s_outage", "ping_dish_seconds_since_last_60s_outage", "ping_dish_seconds_since_last_300s_outage", "ping_dish_drop_rate", "ping_dish_drop_rate_last_1h", "ping_dish_latency", "ping_dish_latency_last_1h", "ping_pop_ipv6_drop_rate_last_1h", "ping_pop_ipv6_latency_last_1h", "client_speedtest_router_download_mbps", "client_speedtest_router_download_total_bytes_transferred", "client_speedtest_router_download_bytes_transferred_duration_s", "client_speedtest_router_download_target_ipv6_low", "client_speedtest_router_download_target_ipv6_high", "client_speedtest_router_upload_mbps", "client_speedtest_router_upload_total_bytes_transferred", "client_speedtest_router_upload_bytes_transferred_duration_s", "client_speedtest_router_upload_target_ipv6_low", "client_speedtest_router_upload_target_ipv6_high", "client_speedtest_router_rssi", "client_speedtest_wifi_download_mbps", "client_speedtest_wifi_upload_mbps", "client_speedtest_client_download_mbps", "client_speedtest_client_upload_mbps", "client_speedtest_client_rssi", "client_speedtest_client_iface", "client_speedtest_client_oui", "client_speedtest_client_tx_rate", "client_speedtest_client_rx_rate", "client_speedtest_client_platform_type", "speedtest_tcp_8_download_mbps_avg", "speedtest_tcp_8_download_mbps_max", "speedtest_tcp_8_upload_mbps_avg", "speedtest_tcp_8_upload_mbps_max", "speedtest_tcp_64_download_mbps_avg", "speedtest_tcp_64_download_mbps_max", "speedtest_tcp_64_upload_mbps_avg", "speedtest_tcp_64_upload_mbps_max", "speedtest_tcp_1_download_mbps_avg", "speedtest_tcp_1_download_mbps_max", "speedtest_tcp_1_upload_mbps_avg", "speedtest_tcp_1_upload_mbps_max", "speedtest_tcp_8_download_mean_tcp_connect_time", "speedtest_tcp_8_upload_mean_tcp_connect_time", "speedtest_tcp_8_download_cf_ray_headers", "speedtest_tcp_8_upload_cf_ray_headers", "speedtest_tcp_1_download_mean_tcp_connect_time", "speedtest_tcp_1_upload_mean_tcp_connect_time", "speedtest_tcp_1_download_cf_ray_headers", "speedtest_tcp_1_upload_cf_ray_headers", "dish_cell_id", "config_setup_complete", "config_bands_split", "config_is_repeater", "config_open_network", "config_is_aviation", "config_secure_dns", "config_legacy", "config_ap_mode", "config_dfs_enabled", "config_network_name_is_default", "config_remote_ssh_enabled", "config_is_repeater_wired", "config_is_repeater_wireless", "config_block_schedules_set", "config_custom_nameservers", "config_disable_mesh_onboarding", "config_pin_country_code", "config_disable_update_reboot", "config_https_content_hosting_enabled", "config_only_overflight_blocking_enabled", "config_offline_networks_disablement_enabled", "config_custom_dns_disabled", "config_foreflight_enabled", "config_outdoor_mode", "config_disable_2ghz", "config_disable_5ghz", "config_disable_5ghz_high", "config_channel_2ghz", "config_channel_5ghz", "config_channel_5ghz_high", "config_networks", "config_networks_guest", "config_networks_hidden", "config_networks_client_isolation", "config_networks_bands_split", "config_networks_user", "wifi_reload_count", "radius_reload_count", "openssh_reload_count", "iptables_reload_count", "ebtables_reload_count", "traffic_control_reload_count", "dhcp_reload_count", "dhcpv6_reload_count", "system_reload_count", "dns_reload_count", "https_reload_count", "band_steering_reload_count", "commit_count", "network_reload_count", "foreflight_reload_count", "wan_traffic_control_cake_bytes", "wan_traffic_control_cake_packets", "wan_traffic_control_cake_drops", "wan_traffic_control_cake_ack_drops", "conntrack_entries", "dhcp_secs_eq_0", "dhcp_secs_gt_0", "dhcp_secs_gt_10", "dhcp_secs_gt_30", "dhcp_secs_gt_60", "dns_forwards", "dns_forwards_success", "dns_forwards_server_failure", "dns_forwards_no_server_response", "dns_forwards_success_on_default_backup", "dns_forwards_dropped", "dns_forwards_with_backup")
     ID_FIELD_NUMBER: _ClassVar[int]
     TIMESTAMP_DATE_FIELD_NUMBER: _ClassVar[int]
     TIMESTAMP_HOUR_FIELD_NUMBER: _ClassVar[int]
     TIMESTAMP_FIELD_NUMBER: _ClassVar[int]
     SYS_HW_GEN_FIELD_NUMBER: _ClassVar[int]
+    SYS_HW_INDEX_FIELD_NUMBER: _ClassVar[int]
     SYS_SW_FIELD_NUMBER: _ClassVar[int]
     SYS_COUNTRY_FIELD_NUMBER: _ClassVar[int]
     SYS_IS_DEV_FIELD_NUMBER: _ClassVar[int]
@@ -825,6 +971,8 @@ class starlink_routers_hourly_metrics_v2(_message.Message):
     SYS_UBI_MAX_EC_FIELD_NUMBER: _ClassVar[int]
     SYS_UBI_BAD_PEB_FIELD_NUMBER: _ClassVar[int]
     SYS_BOARD_REV_FIELD_NUMBER: _ClassVar[int]
+    SYS_CALIBRATION_STATE_FIELD_NUMBER: _ClassVar[int]
+    SYS_CALIBRATION_PARTITIONS_STATE_FIELD_NUMBER: _ClassVar[int]
     RADIOS_2GHZ_CHANNEL_FIELD_NUMBER: _ClassVar[int]
     RADIOS_2GHZ_ANTENNA1_RSSI_FIELD_NUMBER: _ClassVar[int]
     RADIOS_2GHZ_ANTENNA2_RSSI_FIELD_NUMBER: _ClassVar[int]
@@ -907,7 +1055,10 @@ class starlink_routers_hourly_metrics_v2(_message.Message):
     RADIOS_5GHZ_THERMAL_THROTTLED_SECONDS_FIELD_NUMBER: _ClassVar[int]
     RADIOS_5GHZ_HIGH_THERMAL_THROTTLED_SECONDS_FIELD_NUMBER: _ClassVar[int]
     BOARD_TEMP_FIELD_NUMBER: _ClassVar[int]
+    AMBIENT_TEMP_FIELD_NUMBER: _ClassVar[int]
+    CPU_TEMP_FIELD_NUMBER: _ClassVar[int]
     POE_MCU_DIE_TEMP_FIELD_NUMBER: _ClassVar[int]
+    POE_PERCENT_WATER_DETECT_AVG_FIELD_NUMBER: _ClassVar[int]
     IFACES_LAN_ETH_RX_BYTES_FIELD_NUMBER: _ClassVar[int]
     IFACES_LAN_ETH_RX_PACKETS_FIELD_NUMBER: _ClassVar[int]
     IFACES_LAN_ETH_RX_ERRORS_FIELD_NUMBER: _ClassVar[int]
@@ -929,14 +1080,18 @@ class starlink_routers_hourly_metrics_v2(_message.Message):
     IFACES_WAN_ETH_TX_BYTES_FIELD_NUMBER: _ClassVar[int]
     IFACES_WAN_ETH_TX_PACKETS_FIELD_NUMBER: _ClassVar[int]
     IFACES_WAN_ETH_TX_ERRORS_FIELD_NUMBER: _ClassVar[int]
+    IFACES_WAN_PORT_FIELD_NUMBER: _ClassVar[int]
     CLIENTS_FIELD_NUMBER: _ClassVar[int]
     CLIENTS_2GHZ_FIELD_NUMBER: _ClassVar[int]
     CLIENTS_5GHZ_FIELD_NUMBER: _ClassVar[int]
     CLIENTS_5GHZ_HIGH_FIELD_NUMBER: _ClassVar[int]
+    CLIENTS_WIRELESS_FIELD_NUMBER: _ClassVar[int]
+    CLIENTS_MLO_FIELD_NUMBER: _ClassVar[int]
     CLIENTS_ETH_FIELD_NUMBER: _ClassVar[int]
     CLIENTS_5GHZ_RX_BANDWIDTH_20MHZ_FIELD_NUMBER: _ClassVar[int]
     CLIENTS_5GHZ_RX_BANDWIDTH_40MHZ_FIELD_NUMBER: _ClassVar[int]
     CLIENTS_5GHZ_RX_BANDWIDTH_80MHZ_FIELD_NUMBER: _ClassVar[int]
+    CLIENTS_5GHZ_RX_BANDWIDTH_160MHZ_FIELD_NUMBER: _ClassVar[int]
     CLIENTS_REPEATER_FIELD_NUMBER: _ClassVar[int]
     CLIENTS_REPEATER_2GHZ_FIELD_NUMBER: _ClassVar[int]
     CLIENTS_REPEATER_5GHZ_FIELD_NUMBER: _ClassVar[int]
@@ -960,6 +1115,9 @@ class starlink_routers_hourly_metrics_v2(_message.Message):
     REPEATER_LATENCY_MS_1H_MAX_FIELD_NUMBER: _ClassVar[int]
     REPEATER_LATENCY_MS_1H_AVG_FIELD_NUMBER: _ClassVar[int]
     MESH_TOPOLOGY_CHANGE_COUNT_1D_FIELD_NUMBER: _ClassVar[int]
+    MAC_EXPORTS_SUCCESSFUL_FIELD_NUMBER: _ClassVar[int]
+    MAC_EXPORTS_SERVER_CONNECT_ERRORS_FIELD_NUMBER: _ClassVar[int]
+    MAC_EXPORTS_SERVER_SEND_ERRORS_FIELD_NUMBER: _ClassVar[int]
     PING_SECONDS_SINCE_LAST_1S_OUTAGE_FIELD_NUMBER: _ClassVar[int]
     PING_SECONDS_SINCE_LAST_2S_OUTAGE_FIELD_NUMBER: _ClassVar[int]
     PING_SECONDS_SINCE_LAST_5S_OUTAGE_FIELD_NUMBER: _ClassVar[int]
@@ -978,8 +1136,18 @@ class starlink_routers_hourly_metrics_v2(_message.Message):
     PING_DISH_DROP_RATE_LAST_1H_FIELD_NUMBER: _ClassVar[int]
     PING_DISH_LATENCY_FIELD_NUMBER: _ClassVar[int]
     PING_DISH_LATENCY_LAST_1H_FIELD_NUMBER: _ClassVar[int]
+    PING_POP_IPV6_DROP_RATE_LAST_1H_FIELD_NUMBER: _ClassVar[int]
+    PING_POP_IPV6_LATENCY_LAST_1H_FIELD_NUMBER: _ClassVar[int]
     CLIENT_SPEEDTEST_ROUTER_DOWNLOAD_MBPS_FIELD_NUMBER: _ClassVar[int]
+    CLIENT_SPEEDTEST_ROUTER_DOWNLOAD_TOTAL_BYTES_TRANSFERRED_FIELD_NUMBER: _ClassVar[int]
+    CLIENT_SPEEDTEST_ROUTER_DOWNLOAD_BYTES_TRANSFERRED_DURATION_S_FIELD_NUMBER: _ClassVar[int]
+    CLIENT_SPEEDTEST_ROUTER_DOWNLOAD_TARGET_IPV6_LOW_FIELD_NUMBER: _ClassVar[int]
+    CLIENT_SPEEDTEST_ROUTER_DOWNLOAD_TARGET_IPV6_HIGH_FIELD_NUMBER: _ClassVar[int]
     CLIENT_SPEEDTEST_ROUTER_UPLOAD_MBPS_FIELD_NUMBER: _ClassVar[int]
+    CLIENT_SPEEDTEST_ROUTER_UPLOAD_TOTAL_BYTES_TRANSFERRED_FIELD_NUMBER: _ClassVar[int]
+    CLIENT_SPEEDTEST_ROUTER_UPLOAD_BYTES_TRANSFERRED_DURATION_S_FIELD_NUMBER: _ClassVar[int]
+    CLIENT_SPEEDTEST_ROUTER_UPLOAD_TARGET_IPV6_LOW_FIELD_NUMBER: _ClassVar[int]
+    CLIENT_SPEEDTEST_ROUTER_UPLOAD_TARGET_IPV6_HIGH_FIELD_NUMBER: _ClassVar[int]
     CLIENT_SPEEDTEST_ROUTER_RSSI_FIELD_NUMBER: _ClassVar[int]
     CLIENT_SPEEDTEST_WIFI_DOWNLOAD_MBPS_FIELD_NUMBER: _ClassVar[int]
     CLIENT_SPEEDTEST_WIFI_UPLOAD_MBPS_FIELD_NUMBER: _ClassVar[int]
@@ -999,6 +1167,18 @@ class starlink_routers_hourly_metrics_v2(_message.Message):
     SPEEDTEST_TCP_64_DOWNLOAD_MBPS_MAX_FIELD_NUMBER: _ClassVar[int]
     SPEEDTEST_TCP_64_UPLOAD_MBPS_AVG_FIELD_NUMBER: _ClassVar[int]
     SPEEDTEST_TCP_64_UPLOAD_MBPS_MAX_FIELD_NUMBER: _ClassVar[int]
+    SPEEDTEST_TCP_1_DOWNLOAD_MBPS_AVG_FIELD_NUMBER: _ClassVar[int]
+    SPEEDTEST_TCP_1_DOWNLOAD_MBPS_MAX_FIELD_NUMBER: _ClassVar[int]
+    SPEEDTEST_TCP_1_UPLOAD_MBPS_AVG_FIELD_NUMBER: _ClassVar[int]
+    SPEEDTEST_TCP_1_UPLOAD_MBPS_MAX_FIELD_NUMBER: _ClassVar[int]
+    SPEEDTEST_TCP_8_DOWNLOAD_MEAN_TCP_CONNECT_TIME_FIELD_NUMBER: _ClassVar[int]
+    SPEEDTEST_TCP_8_UPLOAD_MEAN_TCP_CONNECT_TIME_FIELD_NUMBER: _ClassVar[int]
+    SPEEDTEST_TCP_8_DOWNLOAD_CF_RAY_HEADERS_FIELD_NUMBER: _ClassVar[int]
+    SPEEDTEST_TCP_8_UPLOAD_CF_RAY_HEADERS_FIELD_NUMBER: _ClassVar[int]
+    SPEEDTEST_TCP_1_DOWNLOAD_MEAN_TCP_CONNECT_TIME_FIELD_NUMBER: _ClassVar[int]
+    SPEEDTEST_TCP_1_UPLOAD_MEAN_TCP_CONNECT_TIME_FIELD_NUMBER: _ClassVar[int]
+    SPEEDTEST_TCP_1_DOWNLOAD_CF_RAY_HEADERS_FIELD_NUMBER: _ClassVar[int]
+    SPEEDTEST_TCP_1_UPLOAD_CF_RAY_HEADERS_FIELD_NUMBER: _ClassVar[int]
     DISH_CELL_ID_FIELD_NUMBER: _ClassVar[int]
     CONFIG_SETUP_COMPLETE_FIELD_NUMBER: _ClassVar[int]
     CONFIG_BANDS_SPLIT_FIELD_NUMBER: _ClassVar[int]
@@ -1018,6 +1198,12 @@ class starlink_routers_hourly_metrics_v2(_message.Message):
     CONFIG_DISABLE_MESH_ONBOARDING_FIELD_NUMBER: _ClassVar[int]
     CONFIG_PIN_COUNTRY_CODE_FIELD_NUMBER: _ClassVar[int]
     CONFIG_DISABLE_UPDATE_REBOOT_FIELD_NUMBER: _ClassVar[int]
+    CONFIG_HTTPS_CONTENT_HOSTING_ENABLED_FIELD_NUMBER: _ClassVar[int]
+    CONFIG_ONLY_OVERFLIGHT_BLOCKING_ENABLED_FIELD_NUMBER: _ClassVar[int]
+    CONFIG_OFFLINE_NETWORKS_DISABLEMENT_ENABLED_FIELD_NUMBER: _ClassVar[int]
+    CONFIG_CUSTOM_DNS_DISABLED_FIELD_NUMBER: _ClassVar[int]
+    CONFIG_FOREFLIGHT_ENABLED_FIELD_NUMBER: _ClassVar[int]
+    CONFIG_OUTDOOR_MODE_FIELD_NUMBER: _ClassVar[int]
     CONFIG_DISABLE_2GHZ_FIELD_NUMBER: _ClassVar[int]
     CONFIG_DISABLE_5GHZ_FIELD_NUMBER: _ClassVar[int]
     CONFIG_DISABLE_5GHZ_HIGH_FIELD_NUMBER: _ClassVar[int]
@@ -1029,6 +1215,22 @@ class starlink_routers_hourly_metrics_v2(_message.Message):
     CONFIG_NETWORKS_HIDDEN_FIELD_NUMBER: _ClassVar[int]
     CONFIG_NETWORKS_CLIENT_ISOLATION_FIELD_NUMBER: _ClassVar[int]
     CONFIG_NETWORKS_BANDS_SPLIT_FIELD_NUMBER: _ClassVar[int]
+    CONFIG_NETWORKS_USER_FIELD_NUMBER: _ClassVar[int]
+    WIFI_RELOAD_COUNT_FIELD_NUMBER: _ClassVar[int]
+    RADIUS_RELOAD_COUNT_FIELD_NUMBER: _ClassVar[int]
+    OPENSSH_RELOAD_COUNT_FIELD_NUMBER: _ClassVar[int]
+    IPTABLES_RELOAD_COUNT_FIELD_NUMBER: _ClassVar[int]
+    EBTABLES_RELOAD_COUNT_FIELD_NUMBER: _ClassVar[int]
+    TRAFFIC_CONTROL_RELOAD_COUNT_FIELD_NUMBER: _ClassVar[int]
+    DHCP_RELOAD_COUNT_FIELD_NUMBER: _ClassVar[int]
+    DHCPV6_RELOAD_COUNT_FIELD_NUMBER: _ClassVar[int]
+    SYSTEM_RELOAD_COUNT_FIELD_NUMBER: _ClassVar[int]
+    DNS_RELOAD_COUNT_FIELD_NUMBER: _ClassVar[int]
+    HTTPS_RELOAD_COUNT_FIELD_NUMBER: _ClassVar[int]
+    BAND_STEERING_RELOAD_COUNT_FIELD_NUMBER: _ClassVar[int]
+    COMMIT_COUNT_FIELD_NUMBER: _ClassVar[int]
+    NETWORK_RELOAD_COUNT_FIELD_NUMBER: _ClassVar[int]
+    FOREFLIGHT_RELOAD_COUNT_FIELD_NUMBER: _ClassVar[int]
     WAN_TRAFFIC_CONTROL_CAKE_BYTES_FIELD_NUMBER: _ClassVar[int]
     WAN_TRAFFIC_CONTROL_CAKE_PACKETS_FIELD_NUMBER: _ClassVar[int]
     WAN_TRAFFIC_CONTROL_CAKE_DROPS_FIELD_NUMBER: _ClassVar[int]
@@ -1039,11 +1241,19 @@ class starlink_routers_hourly_metrics_v2(_message.Message):
     DHCP_SECS_GT_10_FIELD_NUMBER: _ClassVar[int]
     DHCP_SECS_GT_30_FIELD_NUMBER: _ClassVar[int]
     DHCP_SECS_GT_60_FIELD_NUMBER: _ClassVar[int]
+    DNS_FORWARDS_FIELD_NUMBER: _ClassVar[int]
+    DNS_FORWARDS_SUCCESS_FIELD_NUMBER: _ClassVar[int]
+    DNS_FORWARDS_SERVER_FAILURE_FIELD_NUMBER: _ClassVar[int]
+    DNS_FORWARDS_NO_SERVER_RESPONSE_FIELD_NUMBER: _ClassVar[int]
+    DNS_FORWARDS_SUCCESS_ON_DEFAULT_BACKUP_FIELD_NUMBER: _ClassVar[int]
+    DNS_FORWARDS_DROPPED_FIELD_NUMBER: _ClassVar[int]
+    DNS_FORWARDS_WITH_BACKUP_FIELD_NUMBER: _ClassVar[int]
     id: _wrappers_pb2.StringValue
     timestamp_date: _wrappers_pb2.StringValue
     timestamp_hour: _wrappers_pb2.UInt32Value
     timestamp: _time_pb2.TimestampInfo
     sys_hw_gen: _wrappers_pb2.UInt32Value
+    sys_hw_index: _wrappers_pb2.UInt32Value
     sys_sw: _wrappers_pb2.StringValue
     sys_country: _wrappers_pb2.StringValue
     sys_is_dev: _wrappers_pb2.BoolValue
@@ -1059,6 +1269,8 @@ class starlink_routers_hourly_metrics_v2(_message.Message):
     sys_ubi_max_ec: _wrappers_pb2.UInt32Value
     sys_ubi_bad_peb: _wrappers_pb2.UInt32Value
     sys_board_rev: _wrappers_pb2.UInt32Value
+    sys_calibration_state: _wrappers_pb2.UInt32Value
+    sys_calibration_partitions_state: _wrappers_pb2.UInt32Value
     radios_2ghz_channel: _wrappers_pb2.UInt32Value
     radios_2ghz_antenna1_rssi: _wrappers_pb2.FloatValue
     radios_2ghz_antenna2_rssi: _wrappers_pb2.FloatValue
@@ -1141,7 +1353,10 @@ class starlink_routers_hourly_metrics_v2(_message.Message):
     radios_5ghz_thermal_throttled_seconds: _wrappers_pb2.UInt32Value
     radios_5ghz_high_thermal_throttled_seconds: _wrappers_pb2.UInt32Value
     board_temp: _wrappers_pb2.FloatValue
+    ambient_temp: _wrappers_pb2.FloatValue
+    cpu_temp: _wrappers_pb2.FloatValue
     poe_mcu_die_temp: _wrappers_pb2.FloatValue
+    poe_percent_water_detect_avg: _wrappers_pb2.FloatValue
     ifaces_lan_eth_rx_bytes: _wrappers_pb2.Int64Value
     ifaces_lan_eth_rx_packets: _wrappers_pb2.Int64Value
     ifaces_lan_eth_rx_errors: _wrappers_pb2.Int64Value
@@ -1163,14 +1378,18 @@ class starlink_routers_hourly_metrics_v2(_message.Message):
     ifaces_wan_eth_tx_bytes: _wrappers_pb2.Int64Value
     ifaces_wan_eth_tx_packets: _wrappers_pb2.Int64Value
     ifaces_wan_eth_tx_errors: _wrappers_pb2.Int64Value
+    ifaces_wan_port: _wrappers_pb2.StringValue
     clients: _wrappers_pb2.UInt32Value
     clients_2ghz: _wrappers_pb2.UInt32Value
     clients_5ghz: _wrappers_pb2.UInt32Value
     clients_5ghz_high: _wrappers_pb2.UInt32Value
+    clients_wireless: _wrappers_pb2.UInt32Value
+    clients_mlo: _wrappers_pb2.UInt32Value
     clients_eth: _wrappers_pb2.UInt32Value
     clients_5ghz_rx_bandwidth_20mhz: _wrappers_pb2.UInt32Value
     clients_5ghz_rx_bandwidth_40mhz: _wrappers_pb2.UInt32Value
     clients_5ghz_rx_bandwidth_80mhz: _wrappers_pb2.UInt32Value
+    clients_5ghz_rx_bandwidth_160mhz: _wrappers_pb2.UInt32Value
     clients_repeater: _wrappers_pb2.UInt32Value
     clients_repeater_2ghz: _wrappers_pb2.UInt32Value
     clients_repeater_5ghz: _wrappers_pb2.UInt32Value
@@ -1194,6 +1413,9 @@ class starlink_routers_hourly_metrics_v2(_message.Message):
     repeater_latency_ms_1h_max: _wrappers_pb2.FloatValue
     repeater_latency_ms_1h_avg: _wrappers_pb2.FloatValue
     mesh_topology_change_count_1d: _wrappers_pb2.UInt32Value
+    mac_exports_successful: _wrappers_pb2.UInt32Value
+    mac_exports_server_connect_errors: _wrappers_pb2.UInt32Value
+    mac_exports_server_send_errors: _wrappers_pb2.UInt32Value
     ping_seconds_since_last_1s_outage: _wrappers_pb2.FloatValue
     ping_seconds_since_last_2s_outage: _wrappers_pb2.FloatValue
     ping_seconds_since_last_5s_outage: _wrappers_pb2.FloatValue
@@ -1212,8 +1434,18 @@ class starlink_routers_hourly_metrics_v2(_message.Message):
     ping_dish_drop_rate_last_1h: _wrappers_pb2.FloatValue
     ping_dish_latency: _wrappers_pb2.FloatValue
     ping_dish_latency_last_1h: _wrappers_pb2.FloatValue
+    ping_pop_ipv6_drop_rate_last_1h: _wrappers_pb2.FloatValue
+    ping_pop_ipv6_latency_last_1h: _wrappers_pb2.FloatValue
     client_speedtest_router_download_mbps: _wrappers_pb2.FloatValue
+    client_speedtest_router_download_total_bytes_transferred: _wrappers_pb2.UInt64Value
+    client_speedtest_router_download_bytes_transferred_duration_s: _wrappers_pb2.UInt32Value
+    client_speedtest_router_download_target_ipv6_low: _wrappers_pb2.UInt64Value
+    client_speedtest_router_download_target_ipv6_high: _wrappers_pb2.UInt64Value
     client_speedtest_router_upload_mbps: _wrappers_pb2.FloatValue
+    client_speedtest_router_upload_total_bytes_transferred: _wrappers_pb2.UInt64Value
+    client_speedtest_router_upload_bytes_transferred_duration_s: _wrappers_pb2.UInt32Value
+    client_speedtest_router_upload_target_ipv6_low: _wrappers_pb2.UInt64Value
+    client_speedtest_router_upload_target_ipv6_high: _wrappers_pb2.UInt64Value
     client_speedtest_router_rssi: _wrappers_pb2.FloatValue
     client_speedtest_wifi_download_mbps: _wrappers_pb2.FloatValue
     client_speedtest_wifi_upload_mbps: _wrappers_pb2.FloatValue
@@ -1233,6 +1465,18 @@ class starlink_routers_hourly_metrics_v2(_message.Message):
     speedtest_tcp_64_download_mbps_max: _wrappers_pb2.FloatValue
     speedtest_tcp_64_upload_mbps_avg: _wrappers_pb2.FloatValue
     speedtest_tcp_64_upload_mbps_max: _wrappers_pb2.FloatValue
+    speedtest_tcp_1_download_mbps_avg: _wrappers_pb2.FloatValue
+    speedtest_tcp_1_download_mbps_max: _wrappers_pb2.FloatValue
+    speedtest_tcp_1_upload_mbps_avg: _wrappers_pb2.FloatValue
+    speedtest_tcp_1_upload_mbps_max: _wrappers_pb2.FloatValue
+    speedtest_tcp_8_download_mean_tcp_connect_time: _wrappers_pb2.FloatValue
+    speedtest_tcp_8_upload_mean_tcp_connect_time: _wrappers_pb2.FloatValue
+    speedtest_tcp_8_download_cf_ray_headers: _containers.RepeatedScalarFieldContainer[str]
+    speedtest_tcp_8_upload_cf_ray_headers: _containers.RepeatedScalarFieldContainer[str]
+    speedtest_tcp_1_download_mean_tcp_connect_time: _wrappers_pb2.FloatValue
+    speedtest_tcp_1_upload_mean_tcp_connect_time: _wrappers_pb2.FloatValue
+    speedtest_tcp_1_download_cf_ray_headers: _containers.RepeatedScalarFieldContainer[str]
+    speedtest_tcp_1_upload_cf_ray_headers: _containers.RepeatedScalarFieldContainer[str]
     dish_cell_id: _wrappers_pb2.UInt32Value
     config_setup_complete: _wrappers_pb2.BoolValue
     config_bands_split: _wrappers_pb2.BoolValue
@@ -1252,6 +1496,12 @@ class starlink_routers_hourly_metrics_v2(_message.Message):
     config_disable_mesh_onboarding: _wrappers_pb2.BoolValue
     config_pin_country_code: _wrappers_pb2.BoolValue
     config_disable_update_reboot: _wrappers_pb2.BoolValue
+    config_https_content_hosting_enabled: _wrappers_pb2.BoolValue
+    config_only_overflight_blocking_enabled: _wrappers_pb2.BoolValue
+    config_offline_networks_disablement_enabled: _wrappers_pb2.BoolValue
+    config_custom_dns_disabled: _wrappers_pb2.BoolValue
+    config_foreflight_enabled: _wrappers_pb2.BoolValue
+    config_outdoor_mode: _wrappers_pb2.BoolValue
     config_disable_2ghz: _wrappers_pb2.BoolValue
     config_disable_5ghz: _wrappers_pb2.BoolValue
     config_disable_5ghz_high: _wrappers_pb2.BoolValue
@@ -1263,6 +1513,22 @@ class starlink_routers_hourly_metrics_v2(_message.Message):
     config_networks_hidden: _wrappers_pb2.UInt32Value
     config_networks_client_isolation: _wrappers_pb2.UInt32Value
     config_networks_bands_split: _wrappers_pb2.UInt32Value
+    config_networks_user: _wrappers_pb2.UInt32Value
+    wifi_reload_count: _wrappers_pb2.UInt32Value
+    radius_reload_count: _wrappers_pb2.UInt32Value
+    openssh_reload_count: _wrappers_pb2.UInt32Value
+    iptables_reload_count: _wrappers_pb2.UInt32Value
+    ebtables_reload_count: _wrappers_pb2.UInt32Value
+    traffic_control_reload_count: _wrappers_pb2.UInt32Value
+    dhcp_reload_count: _wrappers_pb2.UInt32Value
+    dhcpv6_reload_count: _wrappers_pb2.UInt32Value
+    system_reload_count: _wrappers_pb2.UInt32Value
+    dns_reload_count: _wrappers_pb2.UInt32Value
+    https_reload_count: _wrappers_pb2.UInt32Value
+    band_steering_reload_count: _wrappers_pb2.UInt32Value
+    commit_count: _wrappers_pb2.UInt32Value
+    network_reload_count: _wrappers_pb2.UInt32Value
+    foreflight_reload_count: _wrappers_pb2.UInt32Value
     wan_traffic_control_cake_bytes: _wrappers_pb2.Int64Value
     wan_traffic_control_cake_packets: _wrappers_pb2.Int64Value
     wan_traffic_control_cake_drops: _wrappers_pb2.Int64Value
@@ -1273,24 +1539,37 @@ class starlink_routers_hourly_metrics_v2(_message.Message):
     dhcp_secs_gt_10: _wrappers_pb2.UInt32Value
     dhcp_secs_gt_30: _wrappers_pb2.UInt32Value
     dhcp_secs_gt_60: _wrappers_pb2.UInt32Value
-    def __init__(self, id: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., timestamp_date: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., timestamp_hour: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., timestamp: _Optional[_Union[_time_pb2.TimestampInfo, _Mapping]] = ..., sys_hw_gen: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., sys_sw: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., sys_country: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., sys_is_dev: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., sys_alloc_fds: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., sys_cpu_usage: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., sys_mem_free_kb: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., sys_bootcount: _Optional[_Union[_wrappers_pb2.Int32Value, _Mapping]] = ..., sys_partitions_equal: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., sys_uptime_seconds: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., sys_anti_rollback_version: _Optional[_Union[_wrappers_pb2.Int32Value, _Mapping]] = ..., sys_is_witl: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., sys_is_aviation_conformed: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., sys_ubi_max_ec: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., sys_ubi_bad_peb: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., sys_board_rev: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., radios_2ghz_channel: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., radios_2ghz_antenna1_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_antenna2_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_antenna3_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_antenna4_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_antenna1_tssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_antenna2_tssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_antenna3_tssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_antenna4_tssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_iface_count: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., radios_2ghz_chan_busy_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_edcca_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_overlapping_bss_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_rx_bytes: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_2ghz_rx_packets: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_2ghz_rx_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_2ghz_rx_frame_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_2ghz_rx_packet_error_rate: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_rx_airtime_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_tx_bytes: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_2ghz_tx_packets: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_2ghz_tx_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_2ghz_tx_packet_error_rate: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_tx_airtime_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_channel: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., radios_5ghz_antenna1_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_antenna2_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_antenna3_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_antenna4_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_antenna1_tssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_antenna2_tssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_antenna3_tssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_antenna4_tssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_iface_count: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., radios_5ghz_chan_busy_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_edcca_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_overlapping_bss_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_rx_bytes: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_5ghz_rx_packets: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_5ghz_rx_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_5ghz_rx_frame_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_5ghz_rx_packet_error_rate: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_rx_airtime_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_tx_bytes: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_5ghz_tx_packets: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_5ghz_tx_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_5ghz_tx_packet_error_rate: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_tx_airtime_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_channel: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., radios_5ghz_high_antenna1_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_antenna2_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_antenna3_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_antenna4_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_antenna1_tssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_antenna2_tssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_antenna3_tssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_antenna4_tssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_iface_count: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., radios_5ghz_high_chan_busy_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_edcca_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_overlapping_bss_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_rx_bytes: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_5ghz_high_rx_packets: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_5ghz_high_rx_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_5ghz_high_rx_frame_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_5ghz_high_rx_packet_error_rate: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_rx_airtime_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_tx_bytes: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_5ghz_high_tx_packets: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_5ghz_high_tx_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_5ghz_high_tx_packet_error_rate: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_tx_airtime_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_thermal_temp: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_thermal_temp: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_thermal_temp: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_thermal_duty_cycle: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_thermal_duty_cycle: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_thermal_duty_cycle: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_thermal_throttled_seconds: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., radios_5ghz_thermal_throttled_seconds: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., radios_5ghz_high_thermal_throttled_seconds: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., board_temp: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., poe_mcu_die_temp: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ifaces_lan_eth_rx_bytes: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_lan_eth_rx_packets: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_lan_eth_rx_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_lan_eth_rx_frame_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_lan_eth_tx_bytes: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_lan_eth_tx_packets: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_lan_eth_tx_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_lan1_eth_rx_bytes: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_lan1_eth_rx_packets: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_lan1_eth_rx_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_lan1_eth_rx_frame_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_lan1_eth_tx_bytes: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_lan1_eth_tx_packets: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_lan1_eth_tx_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_wan_eth_rx_bytes: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_wan_eth_rx_packets: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_wan_eth_rx_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_wan_eth_rx_frame_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_wan_eth_tx_bytes: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_wan_eth_tx_packets: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_wan_eth_tx_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., clients: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., clients_2ghz: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., clients_5ghz: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., clients_5ghz_high: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., clients_eth: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., clients_5ghz_rx_bandwidth_20mhz: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., clients_5ghz_rx_bandwidth_40mhz: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., clients_5ghz_rx_bandwidth_80mhz: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., clients_repeater: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., clients_repeater_2ghz: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., clients_repeater_5ghz: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., clients_repeater_5ghz_high: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., clients_repeater_eth: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., mesh_hops: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., mesh_one_hop_rssi_avg_2ghz: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., mesh_one_hop_rssi_avg_5ghz: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., mesh_one_hop_rssi_avg_5ghz_high: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., mesh_two_hop_rssi_avg_2ghz: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., mesh_two_hop_rssi_avg_5ghz: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., mesh_two_hop_rssi_avg_5ghz_high: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., repeater_tx_rate_mbps_min: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., repeater_rx_rate_mbps_min: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., repeater_tx_rate_mbps_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., repeater_rx_rate_mbps_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., repeater_seconds_since_2s_outage_min: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., repeater_seconds_since_5s_outage_min: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., repeater_seconds_since_2s_outage_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., repeater_seconds_since_5s_outage_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., repeater_latency_ms_1h_max: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., repeater_latency_ms_1h_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., mesh_topology_change_count_1d: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., ping_seconds_since_last_1s_outage: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_seconds_since_last_2s_outage: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_seconds_since_last_5s_outage: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_seconds_since_last_60s_outage: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_seconds_since_last_300s_outage: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_drop_rate: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_drop_rate_last_1h: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_latency: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_latency_last_1h: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_dish_seconds_since_last_1s_outage: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_dish_seconds_since_last_2s_outage: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_dish_seconds_since_last_5s_outage: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_dish_seconds_since_last_60s_outage: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_dish_seconds_since_last_300s_outage: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_dish_drop_rate: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_dish_drop_rate_last_1h: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_dish_latency: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_dish_latency_last_1h: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., client_speedtest_router_download_mbps: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., client_speedtest_router_upload_mbps: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., client_speedtest_router_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., client_speedtest_wifi_download_mbps: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., client_speedtest_wifi_upload_mbps: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., client_speedtest_client_download_mbps: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., client_speedtest_client_upload_mbps: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., client_speedtest_client_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., client_speedtest_client_iface: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., client_speedtest_client_oui: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., client_speedtest_client_tx_rate: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., client_speedtest_client_rx_rate: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., client_speedtest_client_platform_type: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., speedtest_tcp_8_download_mbps_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., speedtest_tcp_8_download_mbps_max: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., speedtest_tcp_8_upload_mbps_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., speedtest_tcp_8_upload_mbps_max: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., speedtest_tcp_64_download_mbps_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., speedtest_tcp_64_download_mbps_max: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., speedtest_tcp_64_upload_mbps_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., speedtest_tcp_64_upload_mbps_max: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., dish_cell_id: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., config_setup_complete: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_bands_split: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_is_repeater: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_open_network: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_is_aviation: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_secure_dns: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_legacy: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_ap_mode: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_dfs_enabled: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_network_name_is_default: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_remote_ssh_enabled: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_is_repeater_wired: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_is_repeater_wireless: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_block_schedules_set: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., config_custom_nameservers: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_disable_mesh_onboarding: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_pin_country_code: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_disable_update_reboot: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_disable_2ghz: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_disable_5ghz: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_disable_5ghz_high: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_channel_2ghz: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., config_channel_5ghz: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., config_channel_5ghz_high: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., config_networks: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., config_networks_guest: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., config_networks_hidden: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., config_networks_client_isolation: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., config_networks_bands_split: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., wan_traffic_control_cake_bytes: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., wan_traffic_control_cake_packets: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., wan_traffic_control_cake_drops: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., wan_traffic_control_cake_ack_drops: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., conntrack_entries: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., dhcp_secs_eq_0: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., dhcp_secs_gt_0: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., dhcp_secs_gt_10: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., dhcp_secs_gt_30: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., dhcp_secs_gt_60: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ...) -> None: ...
+    dns_forwards: _wrappers_pb2.UInt32Value
+    dns_forwards_success: _wrappers_pb2.UInt32Value
+    dns_forwards_server_failure: _wrappers_pb2.UInt32Value
+    dns_forwards_no_server_response: _wrappers_pb2.UInt32Value
+    dns_forwards_success_on_default_backup: _wrappers_pb2.UInt32Value
+    dns_forwards_dropped: _wrappers_pb2.UInt32Value
+    dns_forwards_with_backup: _wrappers_pb2.UInt32Value
+    def __init__(self, id: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., timestamp_date: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., timestamp_hour: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., timestamp: _Optional[_Union[_time_pb2.TimestampInfo, _Mapping]] = ..., sys_hw_gen: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., sys_hw_index: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., sys_sw: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., sys_country: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., sys_is_dev: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., sys_alloc_fds: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., sys_cpu_usage: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., sys_mem_free_kb: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., sys_bootcount: _Optional[_Union[_wrappers_pb2.Int32Value, _Mapping]] = ..., sys_partitions_equal: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., sys_uptime_seconds: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., sys_anti_rollback_version: _Optional[_Union[_wrappers_pb2.Int32Value, _Mapping]] = ..., sys_is_witl: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., sys_is_aviation_conformed: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., sys_ubi_max_ec: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., sys_ubi_bad_peb: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., sys_board_rev: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., sys_calibration_state: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., sys_calibration_partitions_state: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., radios_2ghz_channel: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., radios_2ghz_antenna1_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_antenna2_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_antenna3_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_antenna4_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_antenna1_tssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_antenna2_tssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_antenna3_tssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_antenna4_tssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_iface_count: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., radios_2ghz_chan_busy_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_edcca_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_overlapping_bss_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_rx_bytes: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_2ghz_rx_packets: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_2ghz_rx_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_2ghz_rx_frame_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_2ghz_rx_packet_error_rate: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_rx_airtime_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_tx_bytes: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_2ghz_tx_packets: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_2ghz_tx_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_2ghz_tx_packet_error_rate: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_tx_airtime_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_channel: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., radios_5ghz_antenna1_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_antenna2_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_antenna3_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_antenna4_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_antenna1_tssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_antenna2_tssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_antenna3_tssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_antenna4_tssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_iface_count: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., radios_5ghz_chan_busy_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_edcca_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_overlapping_bss_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_rx_bytes: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_5ghz_rx_packets: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_5ghz_rx_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_5ghz_rx_frame_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_5ghz_rx_packet_error_rate: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_rx_airtime_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_tx_bytes: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_5ghz_tx_packets: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_5ghz_tx_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_5ghz_tx_packet_error_rate: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_tx_airtime_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_channel: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., radios_5ghz_high_antenna1_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_antenna2_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_antenna3_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_antenna4_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_antenna1_tssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_antenna2_tssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_antenna3_tssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_antenna4_tssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_iface_count: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., radios_5ghz_high_chan_busy_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_edcca_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_overlapping_bss_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_rx_bytes: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_5ghz_high_rx_packets: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_5ghz_high_rx_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_5ghz_high_rx_frame_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_5ghz_high_rx_packet_error_rate: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_rx_airtime_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_tx_bytes: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_5ghz_high_tx_packets: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_5ghz_high_tx_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., radios_5ghz_high_tx_packet_error_rate: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_tx_airtime_fraction: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_thermal_temp: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_thermal_temp: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_thermal_temp: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_thermal_duty_cycle: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_thermal_duty_cycle: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_5ghz_high_thermal_duty_cycle: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., radios_2ghz_thermal_throttled_seconds: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., radios_5ghz_thermal_throttled_seconds: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., radios_5ghz_high_thermal_throttled_seconds: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., board_temp: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ambient_temp: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., cpu_temp: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., poe_mcu_die_temp: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., poe_percent_water_detect_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ifaces_lan_eth_rx_bytes: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_lan_eth_rx_packets: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_lan_eth_rx_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_lan_eth_rx_frame_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_lan_eth_tx_bytes: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_lan_eth_tx_packets: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_lan_eth_tx_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_lan1_eth_rx_bytes: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_lan1_eth_rx_packets: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_lan1_eth_rx_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_lan1_eth_rx_frame_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_lan1_eth_tx_bytes: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_lan1_eth_tx_packets: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_lan1_eth_tx_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_wan_eth_rx_bytes: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_wan_eth_rx_packets: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_wan_eth_rx_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_wan_eth_rx_frame_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_wan_eth_tx_bytes: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_wan_eth_tx_packets: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_wan_eth_tx_errors: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., ifaces_wan_port: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., clients: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., clients_2ghz: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., clients_5ghz: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., clients_5ghz_high: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., clients_wireless: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., clients_mlo: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., clients_eth: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., clients_5ghz_rx_bandwidth_20mhz: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., clients_5ghz_rx_bandwidth_40mhz: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., clients_5ghz_rx_bandwidth_80mhz: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., clients_5ghz_rx_bandwidth_160mhz: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., clients_repeater: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., clients_repeater_2ghz: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., clients_repeater_5ghz: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., clients_repeater_5ghz_high: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., clients_repeater_eth: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., mesh_hops: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., mesh_one_hop_rssi_avg_2ghz: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., mesh_one_hop_rssi_avg_5ghz: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., mesh_one_hop_rssi_avg_5ghz_high: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., mesh_two_hop_rssi_avg_2ghz: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., mesh_two_hop_rssi_avg_5ghz: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., mesh_two_hop_rssi_avg_5ghz_high: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., repeater_tx_rate_mbps_min: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., repeater_rx_rate_mbps_min: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., repeater_tx_rate_mbps_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., repeater_rx_rate_mbps_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., repeater_seconds_since_2s_outage_min: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., repeater_seconds_since_5s_outage_min: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., repeater_seconds_since_2s_outage_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., repeater_seconds_since_5s_outage_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., repeater_latency_ms_1h_max: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., repeater_latency_ms_1h_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., mesh_topology_change_count_1d: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., mac_exports_successful: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., mac_exports_server_connect_errors: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., mac_exports_server_send_errors: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., ping_seconds_since_last_1s_outage: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_seconds_since_last_2s_outage: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_seconds_since_last_5s_outage: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_seconds_since_last_60s_outage: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_seconds_since_last_300s_outage: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_drop_rate: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_drop_rate_last_1h: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_latency: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_latency_last_1h: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_dish_seconds_since_last_1s_outage: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_dish_seconds_since_last_2s_outage: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_dish_seconds_since_last_5s_outage: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_dish_seconds_since_last_60s_outage: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_dish_seconds_since_last_300s_outage: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_dish_drop_rate: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_dish_drop_rate_last_1h: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_dish_latency: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_dish_latency_last_1h: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_pop_ipv6_drop_rate_last_1h: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_pop_ipv6_latency_last_1h: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., client_speedtest_router_download_mbps: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., client_speedtest_router_download_total_bytes_transferred: _Optional[_Union[_wrappers_pb2.UInt64Value, _Mapping]] = ..., client_speedtest_router_download_bytes_transferred_duration_s: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., client_speedtest_router_download_target_ipv6_low: _Optional[_Union[_wrappers_pb2.UInt64Value, _Mapping]] = ..., client_speedtest_router_download_target_ipv6_high: _Optional[_Union[_wrappers_pb2.UInt64Value, _Mapping]] = ..., client_speedtest_router_upload_mbps: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., client_speedtest_router_upload_total_bytes_transferred: _Optional[_Union[_wrappers_pb2.UInt64Value, _Mapping]] = ..., client_speedtest_router_upload_bytes_transferred_duration_s: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., client_speedtest_router_upload_target_ipv6_low: _Optional[_Union[_wrappers_pb2.UInt64Value, _Mapping]] = ..., client_speedtest_router_upload_target_ipv6_high: _Optional[_Union[_wrappers_pb2.UInt64Value, _Mapping]] = ..., client_speedtest_router_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., client_speedtest_wifi_download_mbps: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., client_speedtest_wifi_upload_mbps: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., client_speedtest_client_download_mbps: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., client_speedtest_client_upload_mbps: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., client_speedtest_client_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., client_speedtest_client_iface: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., client_speedtest_client_oui: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., client_speedtest_client_tx_rate: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., client_speedtest_client_rx_rate: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., client_speedtest_client_platform_type: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., speedtest_tcp_8_download_mbps_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., speedtest_tcp_8_download_mbps_max: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., speedtest_tcp_8_upload_mbps_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., speedtest_tcp_8_upload_mbps_max: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., speedtest_tcp_64_download_mbps_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., speedtest_tcp_64_download_mbps_max: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., speedtest_tcp_64_upload_mbps_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., speedtest_tcp_64_upload_mbps_max: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., speedtest_tcp_1_download_mbps_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., speedtest_tcp_1_download_mbps_max: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., speedtest_tcp_1_upload_mbps_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., speedtest_tcp_1_upload_mbps_max: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., speedtest_tcp_8_download_mean_tcp_connect_time: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., speedtest_tcp_8_upload_mean_tcp_connect_time: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., speedtest_tcp_8_download_cf_ray_headers: _Optional[_Iterable[str]] = ..., speedtest_tcp_8_upload_cf_ray_headers: _Optional[_Iterable[str]] = ..., speedtest_tcp_1_download_mean_tcp_connect_time: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., speedtest_tcp_1_upload_mean_tcp_connect_time: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., speedtest_tcp_1_download_cf_ray_headers: _Optional[_Iterable[str]] = ..., speedtest_tcp_1_upload_cf_ray_headers: _Optional[_Iterable[str]] = ..., dish_cell_id: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., config_setup_complete: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_bands_split: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_is_repeater: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_open_network: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_is_aviation: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_secure_dns: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_legacy: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_ap_mode: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_dfs_enabled: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_network_name_is_default: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_remote_ssh_enabled: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_is_repeater_wired: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_is_repeater_wireless: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_block_schedules_set: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., config_custom_nameservers: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_disable_mesh_onboarding: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_pin_country_code: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_disable_update_reboot: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_https_content_hosting_enabled: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_only_overflight_blocking_enabled: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_offline_networks_disablement_enabled: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_custom_dns_disabled: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_foreflight_enabled: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_outdoor_mode: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_disable_2ghz: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_disable_5ghz: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_disable_5ghz_high: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., config_channel_2ghz: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., config_channel_5ghz: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., config_channel_5ghz_high: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., config_networks: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., config_networks_guest: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., config_networks_hidden: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., config_networks_client_isolation: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., config_networks_bands_split: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., config_networks_user: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., wifi_reload_count: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., radius_reload_count: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., openssh_reload_count: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., iptables_reload_count: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., ebtables_reload_count: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., traffic_control_reload_count: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., dhcp_reload_count: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., dhcpv6_reload_count: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., system_reload_count: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., dns_reload_count: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., https_reload_count: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., band_steering_reload_count: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., commit_count: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., network_reload_count: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., foreflight_reload_count: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., wan_traffic_control_cake_bytes: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., wan_traffic_control_cake_packets: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., wan_traffic_control_cake_drops: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., wan_traffic_control_cake_ack_drops: _Optional[_Union[_wrappers_pb2.Int64Value, _Mapping]] = ..., conntrack_entries: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., dhcp_secs_eq_0: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., dhcp_secs_gt_0: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., dhcp_secs_gt_10: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., dhcp_secs_gt_30: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., dhcp_secs_gt_60: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., dns_forwards: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., dns_forwards_success: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., dns_forwards_server_failure: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., dns_forwards_no_server_response: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., dns_forwards_success_on_default_backup: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., dns_forwards_dropped: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., dns_forwards_with_backup: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ...) -> None: ...
 
 class starlink_router_alerts(_message.Message):
-    __slots__ = ("name", "source", "active", "start", "end")
+    __slots__ = ("name", "source", "active", "start", "end", "hardware", "software", "details")
     NAME_FIELD_NUMBER: _ClassVar[int]
     SOURCE_FIELD_NUMBER: _ClassVar[int]
     ACTIVE_FIELD_NUMBER: _ClassVar[int]
     START_FIELD_NUMBER: _ClassVar[int]
     END_FIELD_NUMBER: _ClassVar[int]
+    HARDWARE_FIELD_NUMBER: _ClassVar[int]
+    SOFTWARE_FIELD_NUMBER: _ClassVar[int]
+    DETAILS_FIELD_NUMBER: _ClassVar[int]
     name: str
     source: str
     active: bool
     start: _time_pb2.TimestampInfo
     end: _time_pb2.TimestampInfo
-    def __init__(self, name: _Optional[str] = ..., source: _Optional[str] = ..., active: bool = ..., start: _Optional[_Union[_time_pb2.TimestampInfo, _Mapping]] = ..., end: _Optional[_Union[_time_pb2.TimestampInfo, _Mapping]] = ...) -> None: ...
+    hardware: str
+    software: str
+    details: str
+    def __init__(self, name: _Optional[str] = ..., source: _Optional[str] = ..., active: bool = ..., start: _Optional[_Union[_time_pb2.TimestampInfo, _Mapping]] = ..., end: _Optional[_Union[_time_pb2.TimestampInfo, _Mapping]] = ..., hardware: _Optional[str] = ..., software: _Optional[str] = ..., details: _Optional[str] = ...) -> None: ...
 
 class starlink_router_client_speedtests(_message.Message):
-    __slots__ = ("id", "data_record", "country", "speedtest_id", "client_rssi", "router_rssi", "client_iface", "client_oui", "client_tx_rate", "client_rx_rate", "client_platform_type", "client_app_version", "client_app_build", "client_rx_phy_mode", "client_rx_spatial_streams", "client_rx_mcs", "client_download_start_time", "client_upload_start_time", "client_download_mbps_avg", "client_upload_mbps_avg", "client_target", "client_tcp_streams", "router_download_start_time", "router_upload_start_time", "router_download_mbps_avg", "router_upload_mbps_avg", "router_target", "router_tcp_streams", "wifi_download_start_time", "wifi_upload_start_time", "wifi_download_mbps_avg", "wifi_upload_mbps_avg")
+    __slots__ = ("id", "data_record", "country", "speedtest_id", "client_rssi", "router_rssi", "client_iface", "client_oui", "client_tx_rate", "client_rx_rate", "client_platform_type", "client_app_version", "client_app_build", "client_rx_phy_mode", "client_rx_spatial_streams", "client_rx_mcs", "client_download_start_time", "client_upload_start_time", "client_download_mbps_avg", "client_upload_mbps_avg", "client_target", "client_tcp_streams", "router_download_start_time", "router_upload_start_time", "router_download_mbps_avg", "router_upload_mbps_avg", "router_target", "router_tcp_streams", "router_download_total_bytes_transferred", "router_download_bytes_transferred_duration_s", "router_download_target_ipv6_low", "router_download_target_ipv6_high", "router_upload_total_bytes_transferred", "router_upload_bytes_transferred_duration_s", "router_upload_target_ipv6_low", "router_upload_target_ipv6_high", "wifi_download_start_time", "wifi_upload_start_time", "wifi_download_mbps_avg", "wifi_upload_mbps_avg")
     ID_FIELD_NUMBER: _ClassVar[int]
     DATA_RECORD_FIELD_NUMBER: _ClassVar[int]
     COUNTRY_FIELD_NUMBER: _ClassVar[int]
@@ -1319,6 +1598,14 @@ class starlink_router_client_speedtests(_message.Message):
     ROUTER_UPLOAD_MBPS_AVG_FIELD_NUMBER: _ClassVar[int]
     ROUTER_TARGET_FIELD_NUMBER: _ClassVar[int]
     ROUTER_TCP_STREAMS_FIELD_NUMBER: _ClassVar[int]
+    ROUTER_DOWNLOAD_TOTAL_BYTES_TRANSFERRED_FIELD_NUMBER: _ClassVar[int]
+    ROUTER_DOWNLOAD_BYTES_TRANSFERRED_DURATION_S_FIELD_NUMBER: _ClassVar[int]
+    ROUTER_DOWNLOAD_TARGET_IPV6_LOW_FIELD_NUMBER: _ClassVar[int]
+    ROUTER_DOWNLOAD_TARGET_IPV6_HIGH_FIELD_NUMBER: _ClassVar[int]
+    ROUTER_UPLOAD_TOTAL_BYTES_TRANSFERRED_FIELD_NUMBER: _ClassVar[int]
+    ROUTER_UPLOAD_BYTES_TRANSFERRED_DURATION_S_FIELD_NUMBER: _ClassVar[int]
+    ROUTER_UPLOAD_TARGET_IPV6_LOW_FIELD_NUMBER: _ClassVar[int]
+    ROUTER_UPLOAD_TARGET_IPV6_HIGH_FIELD_NUMBER: _ClassVar[int]
     WIFI_DOWNLOAD_START_TIME_FIELD_NUMBER: _ClassVar[int]
     WIFI_UPLOAD_START_TIME_FIELD_NUMBER: _ClassVar[int]
     WIFI_DOWNLOAD_MBPS_AVG_FIELD_NUMBER: _ClassVar[int]
@@ -1351,20 +1638,30 @@ class starlink_router_client_speedtests(_message.Message):
     router_upload_mbps_avg: _wrappers_pb2.FloatValue
     router_target: _wrappers_pb2.StringValue
     router_tcp_streams: _wrappers_pb2.UInt32Value
+    router_download_total_bytes_transferred: _wrappers_pb2.UInt64Value
+    router_download_bytes_transferred_duration_s: _wrappers_pb2.UInt32Value
+    router_download_target_ipv6_low: _wrappers_pb2.UInt64Value
+    router_download_target_ipv6_high: _wrappers_pb2.UInt64Value
+    router_upload_total_bytes_transferred: _wrappers_pb2.UInt64Value
+    router_upload_bytes_transferred_duration_s: _wrappers_pb2.UInt32Value
+    router_upload_target_ipv6_low: _wrappers_pb2.UInt64Value
+    router_upload_target_ipv6_high: _wrappers_pb2.UInt64Value
     wifi_download_start_time: _time_pb2.TimestampInfo
     wifi_upload_start_time: _time_pb2.TimestampInfo
     wifi_download_mbps_avg: _wrappers_pb2.FloatValue
     wifi_upload_mbps_avg: _wrappers_pb2.FloatValue
-    def __init__(self, id: _Optional[str] = ..., data_record: _Optional[_Union[_time_pb2.TimestampInfo, _Mapping]] = ..., country: _Optional[str] = ..., speedtest_id: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., client_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., router_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., client_iface: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., client_oui: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., client_tx_rate: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., client_rx_rate: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., client_platform_type: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., client_app_version: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., client_app_build: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., client_rx_phy_mode: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., client_rx_spatial_streams: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., client_rx_mcs: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., client_download_start_time: _Optional[_Union[_time_pb2.TimestampInfo, _Mapping]] = ..., client_upload_start_time: _Optional[_Union[_time_pb2.TimestampInfo, _Mapping]] = ..., client_download_mbps_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., client_upload_mbps_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., client_target: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., client_tcp_streams: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., router_download_start_time: _Optional[_Union[_time_pb2.TimestampInfo, _Mapping]] = ..., router_upload_start_time: _Optional[_Union[_time_pb2.TimestampInfo, _Mapping]] = ..., router_download_mbps_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., router_upload_mbps_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., router_target: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., router_tcp_streams: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., wifi_download_start_time: _Optional[_Union[_time_pb2.TimestampInfo, _Mapping]] = ..., wifi_upload_start_time: _Optional[_Union[_time_pb2.TimestampInfo, _Mapping]] = ..., wifi_download_mbps_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., wifi_upload_mbps_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ...) -> None: ...
+    def __init__(self, id: _Optional[str] = ..., data_record: _Optional[_Union[_time_pb2.TimestampInfo, _Mapping]] = ..., country: _Optional[str] = ..., speedtest_id: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., client_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., router_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., client_iface: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., client_oui: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., client_tx_rate: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., client_rx_rate: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., client_platform_type: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., client_app_version: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., client_app_build: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., client_rx_phy_mode: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., client_rx_spatial_streams: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., client_rx_mcs: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., client_download_start_time: _Optional[_Union[_time_pb2.TimestampInfo, _Mapping]] = ..., client_upload_start_time: _Optional[_Union[_time_pb2.TimestampInfo, _Mapping]] = ..., client_download_mbps_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., client_upload_mbps_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., client_target: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., client_tcp_streams: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., router_download_start_time: _Optional[_Union[_time_pb2.TimestampInfo, _Mapping]] = ..., router_upload_start_time: _Optional[_Union[_time_pb2.TimestampInfo, _Mapping]] = ..., router_download_mbps_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., router_upload_mbps_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., router_target: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., router_tcp_streams: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., router_download_total_bytes_transferred: _Optional[_Union[_wrappers_pb2.UInt64Value, _Mapping]] = ..., router_download_bytes_transferred_duration_s: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., router_download_target_ipv6_low: _Optional[_Union[_wrappers_pb2.UInt64Value, _Mapping]] = ..., router_download_target_ipv6_high: _Optional[_Union[_wrappers_pb2.UInt64Value, _Mapping]] = ..., router_upload_total_bytes_transferred: _Optional[_Union[_wrappers_pb2.UInt64Value, _Mapping]] = ..., router_upload_bytes_transferred_duration_s: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., router_upload_target_ipv6_low: _Optional[_Union[_wrappers_pb2.UInt64Value, _Mapping]] = ..., router_upload_target_ipv6_high: _Optional[_Union[_wrappers_pb2.UInt64Value, _Mapping]] = ..., wifi_download_start_time: _Optional[_Union[_time_pb2.TimestampInfo, _Mapping]] = ..., wifi_upload_start_time: _Optional[_Union[_time_pb2.TimestampInfo, _Mapping]] = ..., wifi_download_mbps_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., wifi_upload_mbps_avg: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ...) -> None: ...
 
 class StarlinkRouterClients(_message.Message):
-    __slots__ = ("router_id", "timestamp", "client_id", "client_telem_index", "router_hw", "router_sw", "client_router_id", "client_hw", "client_sw", "oui", "upstream_id", "is_repeater", "connected_s", "interface", "radio_channel", "rssi", "rx_mcs", "tx_mcs", "rx_rate", "tx_rate", "rx_bandwidth", "rx_spatial_streams", "rx_phy_mode", "mesh_hops", "speedtest_upload_mbps", "speedtest_download_mbps", "site_survey_rssi", "site_survey_est_rx_rate", "est_controller_throughput_mbps", "ping_drop_rate_last_1h", "ping_latency_last_1h", "steer_state", "blocked")
+    __slots__ = ("router_id", "timestamp", "client_id", "client_telem_index", "using_mlo", "router_hw", "router_sw", "router_uptime_s", "client_router_id", "client_hw", "client_sw", "oui", "upstream_id", "is_repeater", "connected_s", "interface", "radio_channel", "rssi", "rx_mcs", "tx_mcs", "rx_rate", "tx_rate", "rx_bandwidth", "rx_spatial_streams", "rx_phy_mode", "link_2ghz_radio_channel", "link_2ghz_rssi", "link_2ghz_rx_mcs", "link_2ghz_tx_mcs", "link_2ghz_rx_rate", "link_2ghz_tx_rate", "link_2ghz_rx_bandwidth", "link_2ghz_rx_spatial_streams", "link_2ghz_rx_phy_mode", "link_5ghz_radio_channel", "link_5ghz_rssi", "link_5ghz_rx_mcs", "link_5ghz_tx_mcs", "link_5ghz_rx_rate", "link_5ghz_tx_rate", "link_5ghz_rx_bandwidth", "link_5ghz_rx_spatial_streams", "link_5ghz_rx_phy_mode", "mesh_hops", "speedtest_upload_mbps", "speedtest_download_mbps", "site_survey_rssi", "site_survey_est_rx_rate", "est_controller_throughput_mbps", "ping_drop_rate_last_1h", "ping_latency_last_1h", "steer_state", "blocked", "throughput_limited_last_fired", "has_dhcp_v4_lease", "ipv4_address", "has_hostname", "dhcp_v4_lease_is_active", "dhcp_v4_lease_was_renewed", "seconds_until_dhcp_v4_lease_expires", "dissociations_under_10s", "dissociations_under_30s", "dissociations_under_60s", "dissociations_under_120s", "seconds_to_conn_tcp_ipv4", "seconds_to_conn_tcp_ipv6", "seconds_to_conn_udp_ipv4", "seconds_to_conn_udp_ipv6", "flows_tcp_ipv4", "flows_tcp_ipv6", "flows_udp_ipv4", "flows_udp_ipv6")
     ROUTER_ID_FIELD_NUMBER: _ClassVar[int]
     TIMESTAMP_FIELD_NUMBER: _ClassVar[int]
     CLIENT_ID_FIELD_NUMBER: _ClassVar[int]
     CLIENT_TELEM_INDEX_FIELD_NUMBER: _ClassVar[int]
+    USING_MLO_FIELD_NUMBER: _ClassVar[int]
     ROUTER_HW_FIELD_NUMBER: _ClassVar[int]
     ROUTER_SW_FIELD_NUMBER: _ClassVar[int]
+    ROUTER_UPTIME_S_FIELD_NUMBER: _ClassVar[int]
     CLIENT_ROUTER_ID_FIELD_NUMBER: _ClassVar[int]
     CLIENT_HW_FIELD_NUMBER: _ClassVar[int]
     CLIENT_SW_FIELD_NUMBER: _ClassVar[int]
@@ -1382,6 +1679,24 @@ class StarlinkRouterClients(_message.Message):
     RX_BANDWIDTH_FIELD_NUMBER: _ClassVar[int]
     RX_SPATIAL_STREAMS_FIELD_NUMBER: _ClassVar[int]
     RX_PHY_MODE_FIELD_NUMBER: _ClassVar[int]
+    LINK_2GHZ_RADIO_CHANNEL_FIELD_NUMBER: _ClassVar[int]
+    LINK_2GHZ_RSSI_FIELD_NUMBER: _ClassVar[int]
+    LINK_2GHZ_RX_MCS_FIELD_NUMBER: _ClassVar[int]
+    LINK_2GHZ_TX_MCS_FIELD_NUMBER: _ClassVar[int]
+    LINK_2GHZ_RX_RATE_FIELD_NUMBER: _ClassVar[int]
+    LINK_2GHZ_TX_RATE_FIELD_NUMBER: _ClassVar[int]
+    LINK_2GHZ_RX_BANDWIDTH_FIELD_NUMBER: _ClassVar[int]
+    LINK_2GHZ_RX_SPATIAL_STREAMS_FIELD_NUMBER: _ClassVar[int]
+    LINK_2GHZ_RX_PHY_MODE_FIELD_NUMBER: _ClassVar[int]
+    LINK_5GHZ_RADIO_CHANNEL_FIELD_NUMBER: _ClassVar[int]
+    LINK_5GHZ_RSSI_FIELD_NUMBER: _ClassVar[int]
+    LINK_5GHZ_RX_MCS_FIELD_NUMBER: _ClassVar[int]
+    LINK_5GHZ_TX_MCS_FIELD_NUMBER: _ClassVar[int]
+    LINK_5GHZ_RX_RATE_FIELD_NUMBER: _ClassVar[int]
+    LINK_5GHZ_TX_RATE_FIELD_NUMBER: _ClassVar[int]
+    LINK_5GHZ_RX_BANDWIDTH_FIELD_NUMBER: _ClassVar[int]
+    LINK_5GHZ_RX_SPATIAL_STREAMS_FIELD_NUMBER: _ClassVar[int]
+    LINK_5GHZ_RX_PHY_MODE_FIELD_NUMBER: _ClassVar[int]
     MESH_HOPS_FIELD_NUMBER: _ClassVar[int]
     SPEEDTEST_UPLOAD_MBPS_FIELD_NUMBER: _ClassVar[int]
     SPEEDTEST_DOWNLOAD_MBPS_FIELD_NUMBER: _ClassVar[int]
@@ -1392,12 +1707,33 @@ class StarlinkRouterClients(_message.Message):
     PING_LATENCY_LAST_1H_FIELD_NUMBER: _ClassVar[int]
     STEER_STATE_FIELD_NUMBER: _ClassVar[int]
     BLOCKED_FIELD_NUMBER: _ClassVar[int]
+    THROUGHPUT_LIMITED_LAST_FIRED_FIELD_NUMBER: _ClassVar[int]
+    HAS_DHCP_V4_LEASE_FIELD_NUMBER: _ClassVar[int]
+    IPV4_ADDRESS_FIELD_NUMBER: _ClassVar[int]
+    HAS_HOSTNAME_FIELD_NUMBER: _ClassVar[int]
+    DHCP_V4_LEASE_IS_ACTIVE_FIELD_NUMBER: _ClassVar[int]
+    DHCP_V4_LEASE_WAS_RENEWED_FIELD_NUMBER: _ClassVar[int]
+    SECONDS_UNTIL_DHCP_V4_LEASE_EXPIRES_FIELD_NUMBER: _ClassVar[int]
+    DISSOCIATIONS_UNDER_10S_FIELD_NUMBER: _ClassVar[int]
+    DISSOCIATIONS_UNDER_30S_FIELD_NUMBER: _ClassVar[int]
+    DISSOCIATIONS_UNDER_60S_FIELD_NUMBER: _ClassVar[int]
+    DISSOCIATIONS_UNDER_120S_FIELD_NUMBER: _ClassVar[int]
+    SECONDS_TO_CONN_TCP_IPV4_FIELD_NUMBER: _ClassVar[int]
+    SECONDS_TO_CONN_TCP_IPV6_FIELD_NUMBER: _ClassVar[int]
+    SECONDS_TO_CONN_UDP_IPV4_FIELD_NUMBER: _ClassVar[int]
+    SECONDS_TO_CONN_UDP_IPV6_FIELD_NUMBER: _ClassVar[int]
+    FLOWS_TCP_IPV4_FIELD_NUMBER: _ClassVar[int]
+    FLOWS_TCP_IPV6_FIELD_NUMBER: _ClassVar[int]
+    FLOWS_UDP_IPV4_FIELD_NUMBER: _ClassVar[int]
+    FLOWS_UDP_IPV6_FIELD_NUMBER: _ClassVar[int]
     router_id: str
     timestamp: _time_pb2.TimestampInfo
     client_id: int
     client_telem_index: str
+    using_mlo: _wrappers_pb2.BoolValue
     router_hw: _wrappers_pb2.StringValue
     router_sw: _wrappers_pb2.StringValue
+    router_uptime_s: _wrappers_pb2.UInt32Value
     client_router_id: _wrappers_pb2.StringValue
     client_hw: _wrappers_pb2.StringValue
     client_sw: _wrappers_pb2.StringValue
@@ -1415,6 +1751,24 @@ class StarlinkRouterClients(_message.Message):
     rx_bandwidth: _wrappers_pb2.UInt32Value
     rx_spatial_streams: _wrappers_pb2.UInt32Value
     rx_phy_mode: _wrappers_pb2.UInt32Value
+    link_2ghz_radio_channel: _wrappers_pb2.UInt32Value
+    link_2ghz_rssi: _wrappers_pb2.FloatValue
+    link_2ghz_rx_mcs: _wrappers_pb2.UInt32Value
+    link_2ghz_tx_mcs: _wrappers_pb2.UInt32Value
+    link_2ghz_rx_rate: _wrappers_pb2.UInt32Value
+    link_2ghz_tx_rate: _wrappers_pb2.UInt32Value
+    link_2ghz_rx_bandwidth: _wrappers_pb2.UInt32Value
+    link_2ghz_rx_spatial_streams: _wrappers_pb2.UInt32Value
+    link_2ghz_rx_phy_mode: _wrappers_pb2.UInt32Value
+    link_5ghz_radio_channel: _wrappers_pb2.UInt32Value
+    link_5ghz_rssi: _wrappers_pb2.FloatValue
+    link_5ghz_rx_mcs: _wrappers_pb2.UInt32Value
+    link_5ghz_tx_mcs: _wrappers_pb2.UInt32Value
+    link_5ghz_rx_rate: _wrappers_pb2.UInt32Value
+    link_5ghz_tx_rate: _wrappers_pb2.UInt32Value
+    link_5ghz_rx_bandwidth: _wrappers_pb2.UInt32Value
+    link_5ghz_rx_spatial_streams: _wrappers_pb2.UInt32Value
+    link_5ghz_rx_phy_mode: _wrappers_pb2.UInt32Value
     mesh_hops: _wrappers_pb2.UInt32Value
     speedtest_upload_mbps: _wrappers_pb2.FloatValue
     speedtest_download_mbps: _wrappers_pb2.FloatValue
@@ -1425,7 +1779,80 @@ class StarlinkRouterClients(_message.Message):
     ping_latency_last_1h: _wrappers_pb2.FloatValue
     steer_state: _wrappers_pb2.StringValue
     blocked: _wrappers_pb2.BoolValue
-    def __init__(self, router_id: _Optional[str] = ..., timestamp: _Optional[_Union[_time_pb2.TimestampInfo, _Mapping]] = ..., client_id: _Optional[int] = ..., client_telem_index: _Optional[str] = ..., router_hw: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., router_sw: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., client_router_id: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., client_hw: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., client_sw: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., oui: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., upstream_id: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., is_repeater: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., connected_s: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., interface: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., radio_channel: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., rx_mcs: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., tx_mcs: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., rx_rate: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., tx_rate: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., rx_bandwidth: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., rx_spatial_streams: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., rx_phy_mode: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., mesh_hops: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., speedtest_upload_mbps: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., speedtest_download_mbps: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., site_survey_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., site_survey_est_rx_rate: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., est_controller_throughput_mbps: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., ping_drop_rate_last_1h: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_latency_last_1h: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., steer_state: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., blocked: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ...) -> None: ...
+    throughput_limited_last_fired: _time_pb2.TimestampInfo
+    has_dhcp_v4_lease: _wrappers_pb2.BoolValue
+    ipv4_address: _wrappers_pb2.StringValue
+    has_hostname: _wrappers_pb2.BoolValue
+    dhcp_v4_lease_is_active: _wrappers_pb2.BoolValue
+    dhcp_v4_lease_was_renewed: _wrappers_pb2.BoolValue
+    seconds_until_dhcp_v4_lease_expires: _wrappers_pb2.FloatValue
+    dissociations_under_10s: _wrappers_pb2.UInt32Value
+    dissociations_under_30s: _wrappers_pb2.UInt32Value
+    dissociations_under_60s: _wrappers_pb2.UInt32Value
+    dissociations_under_120s: _wrappers_pb2.UInt32Value
+    seconds_to_conn_tcp_ipv4: _wrappers_pb2.FloatValue
+    seconds_to_conn_tcp_ipv6: _wrappers_pb2.FloatValue
+    seconds_to_conn_udp_ipv4: _wrappers_pb2.FloatValue
+    seconds_to_conn_udp_ipv6: _wrappers_pb2.FloatValue
+    flows_tcp_ipv4: _wrappers_pb2.UInt32Value
+    flows_tcp_ipv6: _wrappers_pb2.UInt32Value
+    flows_udp_ipv4: _wrappers_pb2.UInt32Value
+    flows_udp_ipv6: _wrappers_pb2.UInt32Value
+    def __init__(self, router_id: _Optional[str] = ..., timestamp: _Optional[_Union[_time_pb2.TimestampInfo, _Mapping]] = ..., client_id: _Optional[int] = ..., client_telem_index: _Optional[str] = ..., using_mlo: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., router_hw: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., router_sw: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., router_uptime_s: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., client_router_id: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., client_hw: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., client_sw: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., oui: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., upstream_id: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., is_repeater: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., connected_s: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., interface: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., radio_channel: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., rx_mcs: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., tx_mcs: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., rx_rate: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., tx_rate: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., rx_bandwidth: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., rx_spatial_streams: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., rx_phy_mode: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., link_2ghz_radio_channel: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., link_2ghz_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., link_2ghz_rx_mcs: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., link_2ghz_tx_mcs: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., link_2ghz_rx_rate: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., link_2ghz_tx_rate: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., link_2ghz_rx_bandwidth: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., link_2ghz_rx_spatial_streams: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., link_2ghz_rx_phy_mode: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., link_5ghz_radio_channel: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., link_5ghz_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., link_5ghz_rx_mcs: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., link_5ghz_tx_mcs: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., link_5ghz_rx_rate: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., link_5ghz_tx_rate: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., link_5ghz_rx_bandwidth: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., link_5ghz_rx_spatial_streams: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., link_5ghz_rx_phy_mode: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., mesh_hops: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., speedtest_upload_mbps: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., speedtest_download_mbps: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., site_survey_rssi: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., site_survey_est_rx_rate: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., est_controller_throughput_mbps: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., ping_drop_rate_last_1h: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., ping_latency_last_1h: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., steer_state: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., blocked: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., throughput_limited_last_fired: _Optional[_Union[_time_pb2.TimestampInfo, _Mapping]] = ..., has_dhcp_v4_lease: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., ipv4_address: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., has_hostname: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., dhcp_v4_lease_is_active: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., dhcp_v4_lease_was_renewed: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., seconds_until_dhcp_v4_lease_expires: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., dissociations_under_10s: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., dissociations_under_30s: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., dissociations_under_60s: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., dissociations_under_120s: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., seconds_to_conn_tcp_ipv4: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., seconds_to_conn_tcp_ipv6: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., seconds_to_conn_udp_ipv4: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., seconds_to_conn_udp_ipv6: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., flows_tcp_ipv4: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., flows_tcp_ipv6: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., flows_udp_ipv4: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., flows_udp_ipv6: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ...) -> None: ...
+
+class StarlinkRouterClientTesterRun(_message.Message):
+    __slots__ = ("client_tester_router_id", "timestamp", "client_iface_name", "target_ssid", "target_has_password", "target_auth", "target_encryption", "target_bssid", "target_irtt_server", "iteration", "error_code", "seconds_to_associate", "seconds_to_lease", "seconds_to_resolve_router", "seconds_to_resolve_internet", "seconds_to_ping_dish", "v4_irtt_test_duration_s", "v4_irtt_rtt_latency_min_ms", "v4_irtt_rtt_latency_mean_ms", "v4_irtt_rtt_latency_median_ms", "v4_irtt_rtt_latency_max_ms", "v4_irtt_rtt_latency_std_dev_ms", "v4_irtt_pkts_sent", "v4_irtt_pkts_recv", "v4_irtt_loss_percent")
+    CLIENT_TESTER_ROUTER_ID_FIELD_NUMBER: _ClassVar[int]
+    TIMESTAMP_FIELD_NUMBER: _ClassVar[int]
+    CLIENT_IFACE_NAME_FIELD_NUMBER: _ClassVar[int]
+    TARGET_SSID_FIELD_NUMBER: _ClassVar[int]
+    TARGET_HAS_PASSWORD_FIELD_NUMBER: _ClassVar[int]
+    TARGET_AUTH_FIELD_NUMBER: _ClassVar[int]
+    TARGET_ENCRYPTION_FIELD_NUMBER: _ClassVar[int]
+    TARGET_BSSID_FIELD_NUMBER: _ClassVar[int]
+    TARGET_IRTT_SERVER_FIELD_NUMBER: _ClassVar[int]
+    ITERATION_FIELD_NUMBER: _ClassVar[int]
+    ERROR_CODE_FIELD_NUMBER: _ClassVar[int]
+    SECONDS_TO_ASSOCIATE_FIELD_NUMBER: _ClassVar[int]
+    SECONDS_TO_LEASE_FIELD_NUMBER: _ClassVar[int]
+    SECONDS_TO_RESOLVE_ROUTER_FIELD_NUMBER: _ClassVar[int]
+    SECONDS_TO_RESOLVE_INTERNET_FIELD_NUMBER: _ClassVar[int]
+    SECONDS_TO_PING_DISH_FIELD_NUMBER: _ClassVar[int]
+    V4_IRTT_TEST_DURATION_S_FIELD_NUMBER: _ClassVar[int]
+    V4_IRTT_RTT_LATENCY_MIN_MS_FIELD_NUMBER: _ClassVar[int]
+    V4_IRTT_RTT_LATENCY_MEAN_MS_FIELD_NUMBER: _ClassVar[int]
+    V4_IRTT_RTT_LATENCY_MEDIAN_MS_FIELD_NUMBER: _ClassVar[int]
+    V4_IRTT_RTT_LATENCY_MAX_MS_FIELD_NUMBER: _ClassVar[int]
+    V4_IRTT_RTT_LATENCY_STD_DEV_MS_FIELD_NUMBER: _ClassVar[int]
+    V4_IRTT_PKTS_SENT_FIELD_NUMBER: _ClassVar[int]
+    V4_IRTT_PKTS_RECV_FIELD_NUMBER: _ClassVar[int]
+    V4_IRTT_LOSS_PERCENT_FIELD_NUMBER: _ClassVar[int]
+    client_tester_router_id: str
+    timestamp: _time_pb2.TimestampInfo
+    client_iface_name: _wrappers_pb2.StringValue
+    target_ssid: _wrappers_pb2.StringValue
+    target_has_password: _wrappers_pb2.BoolValue
+    target_auth: _wrappers_pb2.StringValue
+    target_encryption: _wrappers_pb2.StringValue
+    target_bssid: _wrappers_pb2.StringValue
+    target_irtt_server: _wrappers_pb2.StringValue
+    iteration: _wrappers_pb2.UInt32Value
+    error_code: _wrappers_pb2.StringValue
+    seconds_to_associate: _wrappers_pb2.FloatValue
+    seconds_to_lease: _wrappers_pb2.FloatValue
+    seconds_to_resolve_router: _wrappers_pb2.FloatValue
+    seconds_to_resolve_internet: _wrappers_pb2.FloatValue
+    seconds_to_ping_dish: _wrappers_pb2.FloatValue
+    v4_irtt_test_duration_s: _wrappers_pb2.FloatValue
+    v4_irtt_rtt_latency_min_ms: _wrappers_pb2.FloatValue
+    v4_irtt_rtt_latency_mean_ms: _wrappers_pb2.FloatValue
+    v4_irtt_rtt_latency_median_ms: _wrappers_pb2.FloatValue
+    v4_irtt_rtt_latency_max_ms: _wrappers_pb2.FloatValue
+    v4_irtt_rtt_latency_std_dev_ms: _wrappers_pb2.FloatValue
+    v4_irtt_pkts_sent: _wrappers_pb2.UInt32Value
+    v4_irtt_pkts_recv: _wrappers_pb2.UInt32Value
+    v4_irtt_loss_percent: _wrappers_pb2.FloatValue
+    def __init__(self, client_tester_router_id: _Optional[str] = ..., timestamp: _Optional[_Union[_time_pb2.TimestampInfo, _Mapping]] = ..., client_iface_name: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., target_ssid: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., target_has_password: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ..., target_auth: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., target_encryption: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., target_bssid: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., target_irtt_server: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., iteration: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., error_code: _Optional[_Union[_wrappers_pb2.StringValue, _Mapping]] = ..., seconds_to_associate: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., seconds_to_lease: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., seconds_to_resolve_router: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., seconds_to_resolve_internet: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., seconds_to_ping_dish: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., v4_irtt_test_duration_s: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., v4_irtt_rtt_latency_min_ms: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., v4_irtt_rtt_latency_mean_ms: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., v4_irtt_rtt_latency_median_ms: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., v4_irtt_rtt_latency_max_ms: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., v4_irtt_rtt_latency_std_dev_ms: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ..., v4_irtt_pkts_sent: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., v4_irtt_pkts_recv: _Optional[_Union[_wrappers_pb2.UInt32Value, _Mapping]] = ..., v4_irtt_loss_percent: _Optional[_Union[_wrappers_pb2.FloatValue, _Mapping]] = ...) -> None: ...
 
 class WifiSetClientGivenNameRequest(_message.Message):
     __slots__ = ("client_name", "client_config")
@@ -1486,12 +1913,14 @@ class WifiGetFirewallRequest(_message.Message):
     def __init__(self) -> None: ...
 
 class WifiGetFirewallResponse(_message.Message):
-    __slots__ = ("iptables", "iptables_6")
+    __slots__ = ("iptables", "iptables_6", "ipset")
     IPTABLES_FIELD_NUMBER: _ClassVar[int]
     IPTABLES_6_FIELD_NUMBER: _ClassVar[int]
+    IPSET_FIELD_NUMBER: _ClassVar[int]
     iptables: str
     iptables_6: str
-    def __init__(self, iptables: _Optional[str] = ..., iptables_6: _Optional[str] = ...) -> None: ...
+    ipset: str
+    def __init__(self, iptables: _Optional[str] = ..., iptables_6: _Optional[str] = ..., ipset: _Optional[str] = ...) -> None: ...
 
 class WifiTogglePoeNegotiationRequest(_message.Message):
     __slots__ = ("enable",)
@@ -1876,3 +2305,33 @@ class WifiToggleUmbilicalModeRequest(_message.Message):
     ENABLE_FIELD_NUMBER: _ClassVar[int]
     enable: bool
     def __init__(self, enable: bool = ...) -> None: ...
+
+class WifiUpdateResponse(_message.Message):
+    __slots__ = ("stats",)
+    STATS_FIELD_NUMBER: _ClassVar[int]
+    stats: _wifi_util_pb2.WifiSoftwareUpdateStats
+    def __init__(self, stats: _Optional[_Union[_wifi_util_pb2.WifiSoftwareUpdateStats, _Mapping]] = ...) -> None: ...
+
+class WifiRunDebugNetsysRequest(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...
+
+class WifiRunDebugNetsysResponse(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...
+
+class WifiResetEthPhyRequest(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...
+
+class WifiResetEthPhyResponse(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...
+
+class WifiFlushHardwareNatRequest(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...
+
+class WifiFlushHardwareNatResponse(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...

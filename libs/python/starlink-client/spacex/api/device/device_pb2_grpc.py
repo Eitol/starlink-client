@@ -5,7 +5,7 @@ import grpc
 from spacex.api.device import device_pb2 as spacex_dot_api_dot_device_dot_device__pb2
 
 
-class DeviceStub(object):
+class DeviceStub:
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
@@ -26,7 +26,7 @@ class DeviceStub(object):
                 _registered_method=True)
 
 
-class DeviceServicer(object):
+class DeviceServicer:
     """Missing associated documentation comment in .proto file."""
 
     def Stream(self, request_iterator, context):
@@ -62,7 +62,7 @@ def add_DeviceServicer_to_server(servicer, server):
 
 
  # This class is part of an EXPERIMENTAL API.
-class Device(object):
+class Device:
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod

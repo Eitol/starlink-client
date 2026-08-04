@@ -37,6 +37,8 @@ class DeviceInfo extends $pb.GeneratedMessage {
     $fixnum.Int64? generationNumber,
     $core.bool? dishCohoused,
     $core.int? boardRev,
+    $core.String? buildId,
+    HardwareIndex? hardwareIndex,
     BootInfo? boot,
   }) {
     final result = create();
@@ -57,6 +59,8 @@ class DeviceInfo extends $pb.GeneratedMessage {
     if (generationNumber != null) result.generationNumber = generationNumber;
     if (dishCohoused != null) result.dishCohoused = dishCohoused;
     if (boardRev != null) result.boardRev = boardRev;
+    if (buildId != null) result.buildId = buildId;
+    if (hardwareIndex != null) result.hardwareIndex = hardwareIndex;
     if (boot != null) result.boot = boot;
     return result;
   }
@@ -89,6 +93,9 @@ class DeviceInfo extends $pb.GeneratedMessage {
     ..aInt64(12, _omitFieldNames ? '' : 'generationNumber')
     ..aOB(13, _omitFieldNames ? '' : 'dishCohoused')
     ..aI(14, _omitFieldNames ? '' : 'boardRev')
+    ..aOS(15, _omitFieldNames ? '' : 'buildId')
+    ..aE<HardwareIndex>(16, _omitFieldNames ? '' : 'hardwareIndex',
+        enumValues: HardwareIndex.values)
     ..aOM<BootInfo>(1001, _omitFieldNames ? '' : 'boot',
         subBuilder: BootInfo.create)
     ..hasRequiredFields = false;
@@ -237,16 +244,34 @@ class DeviceInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(14)
   void clearBoardRev() => $_clearField(14);
 
+  @$pb.TagNumber(15)
+  $core.String get buildId => $_getSZ(14);
+  @$pb.TagNumber(15)
+  set buildId($core.String value) => $_setString(14, value);
+  @$pb.TagNumber(15)
+  $core.bool hasBuildId() => $_has(14);
+  @$pb.TagNumber(15)
+  void clearBuildId() => $_clearField(15);
+
+  @$pb.TagNumber(16)
+  HardwareIndex get hardwareIndex => $_getN(15);
+  @$pb.TagNumber(16)
+  set hardwareIndex(HardwareIndex value) => $_setField(16, value);
+  @$pb.TagNumber(16)
+  $core.bool hasHardwareIndex() => $_has(15);
+  @$pb.TagNumber(16)
+  void clearHardwareIndex() => $_clearField(16);
+
   @$pb.TagNumber(1001)
-  BootInfo get boot => $_getN(14);
+  BootInfo get boot => $_getN(16);
   @$pb.TagNumber(1001)
   set boot(BootInfo value) => $_setField(1001, value);
   @$pb.TagNumber(1001)
-  $core.bool hasBoot() => $_has(14);
+  $core.bool hasBoot() => $_has(16);
   @$pb.TagNumber(1001)
   void clearBoot() => $_clearField(1001);
   @$pb.TagNumber(1001)
-  BootInfo ensureBoot() => $_ensure(14);
+  BootInfo ensureBoot() => $_ensure(16);
 }
 
 class DeviceState extends $pb.GeneratedMessage {
@@ -489,6 +514,10 @@ class BootInfo extends $pb.GeneratedMessage {
     $core.Iterable<$core.MapEntry<$core.int, $core.int>>? countByReasonDelta,
     $core.bool? crashBoot,
     $core.int? crashBootCount,
+    $core.String? evenSideSoftwareVersion,
+    $core.String? oddSideSoftwareVersion,
+    $core.int? apiVersionOddSide,
+    $core.int? apiVersionEvenSide,
   }) {
     final result = create();
     if (countByReason != null) result.countByReason.addEntries(countByReason);
@@ -498,6 +527,13 @@ class BootInfo extends $pb.GeneratedMessage {
       result.countByReasonDelta.addEntries(countByReasonDelta);
     if (crashBoot != null) result.crashBoot = crashBoot;
     if (crashBootCount != null) result.crashBootCount = crashBootCount;
+    if (evenSideSoftwareVersion != null)
+      result.evenSideSoftwareVersion = evenSideSoftwareVersion;
+    if (oddSideSoftwareVersion != null)
+      result.oddSideSoftwareVersion = oddSideSoftwareVersion;
+    if (apiVersionOddSide != null) result.apiVersionOddSide = apiVersionOddSide;
+    if (apiVersionEvenSide != null)
+      result.apiVersionEvenSide = apiVersionEvenSide;
     return result;
   }
 
@@ -530,6 +566,10 @@ class BootInfo extends $pb.GeneratedMessage {
         packageName: const $pb.PackageName('SpaceX.API.Device'))
     ..aOB(5, _omitFieldNames ? '' : 'crashBoot')
     ..aI(6, _omitFieldNames ? '' : 'crashBootCount')
+    ..aOS(7, _omitFieldNames ? '' : 'evenSideSoftwareVersion')
+    ..aOS(8, _omitFieldNames ? '' : 'oddSideSoftwareVersion')
+    ..aI(9, _omitFieldNames ? '' : 'apiVersionOddSide')
+    ..aI(10, _omitFieldNames ? '' : 'apiVersionEvenSide')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -591,6 +631,42 @@ class BootInfo extends $pb.GeneratedMessage {
   $core.bool hasCrashBootCount() => $_has(5);
   @$pb.TagNumber(6)
   void clearCrashBootCount() => $_clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.String get evenSideSoftwareVersion => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set evenSideSoftwareVersion($core.String value) => $_setString(6, value);
+  @$pb.TagNumber(7)
+  $core.bool hasEvenSideSoftwareVersion() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearEvenSideSoftwareVersion() => $_clearField(7);
+
+  @$pb.TagNumber(8)
+  $core.String get oddSideSoftwareVersion => $_getSZ(7);
+  @$pb.TagNumber(8)
+  set oddSideSoftwareVersion($core.String value) => $_setString(7, value);
+  @$pb.TagNumber(8)
+  $core.bool hasOddSideSoftwareVersion() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearOddSideSoftwareVersion() => $_clearField(8);
+
+  @$pb.TagNumber(9)
+  $core.int get apiVersionOddSide => $_getIZ(8);
+  @$pb.TagNumber(9)
+  set apiVersionOddSide($core.int value) => $_setSignedInt32(8, value);
+  @$pb.TagNumber(9)
+  $core.bool hasApiVersionOddSide() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearApiVersionOddSide() => $_clearField(9);
+
+  @$pb.TagNumber(10)
+  $core.int get apiVersionEvenSide => $_getIZ(9);
+  @$pb.TagNumber(10)
+  set apiVersionEvenSide($core.int value) => $_setSignedInt32(9, value);
+  @$pb.TagNumber(10)
+  $core.bool hasApiVersionEvenSide() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearApiVersionEvenSide() => $_clearField(10);
 }
 
 class PingTarget extends $pb.GeneratedMessage {
@@ -1839,6 +1915,96 @@ class ECEFPosition extends $pb.GeneratedMessage {
   void clearZ() => $_clearField(3);
 }
 
+class Quaternion extends $pb.GeneratedMessage {
+  factory Quaternion({
+    $core.double? qScalar,
+    $core.double? qX,
+    $core.double? qY,
+    $core.double? qZ,
+  }) {
+    final result = create();
+    if (qScalar != null) result.qScalar = qScalar;
+    if (qX != null) result.qX = qX;
+    if (qY != null) result.qY = qY;
+    if (qZ != null) result.qZ = qZ;
+    return result;
+  }
+
+  Quaternion._();
+
+  factory Quaternion.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory Quaternion.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'Quaternion',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
+      createEmptyInstance: create)
+    ..aD(1, _omitFieldNames ? '' : 'qScalar', fieldType: $pb.PbFieldType.OF)
+    ..aD(2, _omitFieldNames ? '' : 'qX', fieldType: $pb.PbFieldType.OF)
+    ..aD(3, _omitFieldNames ? '' : 'qY', fieldType: $pb.PbFieldType.OF)
+    ..aD(4, _omitFieldNames ? '' : 'qZ', fieldType: $pb.PbFieldType.OF)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  Quaternion clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  Quaternion copyWith(void Function(Quaternion) updates) =>
+      super.copyWith((message) => updates(message as Quaternion)) as Quaternion;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Quaternion create() => Quaternion._();
+  @$core.override
+  Quaternion createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static Quaternion getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<Quaternion>(create);
+  static Quaternion? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.double get qScalar => $_getN(0);
+  @$pb.TagNumber(1)
+  set qScalar($core.double value) => $_setFloat(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasQScalar() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearQScalar() => $_clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.double get qX => $_getN(1);
+  @$pb.TagNumber(2)
+  set qX($core.double value) => $_setFloat(1, value);
+  @$pb.TagNumber(2)
+  $core.bool hasQX() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearQX() => $_clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.double get qY => $_getN(2);
+  @$pb.TagNumber(3)
+  set qY($core.double value) => $_setFloat(2, value);
+  @$pb.TagNumber(3)
+  $core.bool hasQY() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearQY() => $_clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.double get qZ => $_getN(3);
+  @$pb.TagNumber(4)
+  set qZ($core.double value) => $_setFloat(3, value);
+  @$pb.TagNumber(4)
+  $core.bool hasQZ() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearQZ() => $_clearField(4);
+}
+
 class InitiateRemoteSshRequest extends $pb.GeneratedMessage {
   factory InitiateRemoteSshRequest() => create();
 
@@ -2093,6 +2259,892 @@ class SoftwareUpdateResponse extends $pb.GeneratedMessage {
   static SoftwareUpdateResponse getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<SoftwareUpdateResponse>(create);
   static SoftwareUpdateResponse? _defaultInstance;
+}
+
+class EventLog extends $pb.GeneratedMessage {
+  factory EventLog({
+    $core.Iterable<UXEvent>? events,
+    $fixnum.Int64? startTimestampNs,
+    $fixnum.Int64? currentTimestampNs,
+  }) {
+    final result = create();
+    if (events != null) result.events.addAll(events);
+    if (startTimestampNs != null) result.startTimestampNs = startTimestampNs;
+    if (currentTimestampNs != null)
+      result.currentTimestampNs = currentTimestampNs;
+    return result;
+  }
+
+  EventLog._();
+
+  factory EventLog.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory EventLog.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'EventLog',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
+      createEmptyInstance: create)
+    ..pPM<UXEvent>(1, _omitFieldNames ? '' : 'events',
+        subBuilder: UXEvent.create)
+    ..aInt64(2, _omitFieldNames ? '' : 'startTimestampNs')
+    ..aInt64(3, _omitFieldNames ? '' : 'currentTimestampNs')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  EventLog clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  EventLog copyWith(void Function(EventLog) updates) =>
+      super.copyWith((message) => updates(message as EventLog)) as EventLog;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static EventLog create() => EventLog._();
+  @$core.override
+  EventLog createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static EventLog getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<EventLog>(create);
+  static EventLog? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $pb.PbList<UXEvent> get events => $_getList(0);
+
+  @$pb.TagNumber(2)
+  $fixnum.Int64 get startTimestampNs => $_getI64(1);
+  @$pb.TagNumber(2)
+  set startTimestampNs($fixnum.Int64 value) => $_setInt64(1, value);
+  @$pb.TagNumber(2)
+  $core.bool hasStartTimestampNs() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearStartTimestampNs() => $_clearField(2);
+
+  @$pb.TagNumber(3)
+  $fixnum.Int64 get currentTimestampNs => $_getI64(2);
+  @$pb.TagNumber(3)
+  set currentTimestampNs($fixnum.Int64 value) => $_setInt64(2, value);
+  @$pb.TagNumber(3)
+  $core.bool hasCurrentTimestampNs() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearCurrentTimestampNs() => $_clearField(3);
+}
+
+enum UXEvent_Metadata {
+  clientReconnectingOftenMetadata,
+  clientSwitchingBandMetadata,
+  clientSwitchingUpstreamMacMetadata,
+  meshConnectionChangingMetadata,
+  meshBackhaulLowPhyMetadata,
+  highOverlappingBssMetadata,
+  clientExcessiveNetworkConnectionsMetadata,
+  notSet
+}
+
+class UXEvent extends $pb.GeneratedMessage {
+  factory UXEvent({
+    EventSeverity? severity,
+    EventReason? reason,
+    $fixnum.Int64? startTimestampNs,
+    $fixnum.Int64? durationNs,
+    ClientReconnectingOftenMetadata? clientReconnectingOftenMetadata,
+    ClientSwitchingBandMetadata? clientSwitchingBandMetadata,
+    ClientSwitchingUpstreamMacMetadata? clientSwitchingUpstreamMacMetadata,
+    @$core.Deprecated('This field is deprecated.')
+    MeshConnectionChangingMetadata? meshConnectionChangingMetadata,
+    MeshBackhaulLowPhyMetadata? meshBackhaulLowPhyMetadata,
+    HighOverlappingBssMetadata? highOverlappingBssMetadata,
+    ClientExcessiveNetworkConnectionsMetadata?
+        clientExcessiveNetworkConnectionsMetadata,
+    $core.String? deviceId,
+  }) {
+    final result = create();
+    if (severity != null) result.severity = severity;
+    if (reason != null) result.reason = reason;
+    if (startTimestampNs != null) result.startTimestampNs = startTimestampNs;
+    if (durationNs != null) result.durationNs = durationNs;
+    if (clientReconnectingOftenMetadata != null)
+      result.clientReconnectingOftenMetadata = clientReconnectingOftenMetadata;
+    if (clientSwitchingBandMetadata != null)
+      result.clientSwitchingBandMetadata = clientSwitchingBandMetadata;
+    if (clientSwitchingUpstreamMacMetadata != null)
+      result.clientSwitchingUpstreamMacMetadata =
+          clientSwitchingUpstreamMacMetadata;
+    if (meshConnectionChangingMetadata != null)
+      result.meshConnectionChangingMetadata = meshConnectionChangingMetadata;
+    if (meshBackhaulLowPhyMetadata != null)
+      result.meshBackhaulLowPhyMetadata = meshBackhaulLowPhyMetadata;
+    if (highOverlappingBssMetadata != null)
+      result.highOverlappingBssMetadata = highOverlappingBssMetadata;
+    if (clientExcessiveNetworkConnectionsMetadata != null)
+      result.clientExcessiveNetworkConnectionsMetadata =
+          clientExcessiveNetworkConnectionsMetadata;
+    if (deviceId != null) result.deviceId = deviceId;
+    return result;
+  }
+
+  UXEvent._();
+
+  factory UXEvent.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory UXEvent.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static const $core.Map<$core.int, UXEvent_Metadata> _UXEvent_MetadataByTag = {
+    5: UXEvent_Metadata.clientReconnectingOftenMetadata,
+    6: UXEvent_Metadata.clientSwitchingBandMetadata,
+    7: UXEvent_Metadata.clientSwitchingUpstreamMacMetadata,
+    8: UXEvent_Metadata.meshConnectionChangingMetadata,
+    9: UXEvent_Metadata.meshBackhaulLowPhyMetadata,
+    10: UXEvent_Metadata.highOverlappingBssMetadata,
+    11: UXEvent_Metadata.clientExcessiveNetworkConnectionsMetadata,
+    0: UXEvent_Metadata.notSet
+  };
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'UXEvent',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
+      createEmptyInstance: create)
+    ..oo(0, [5, 6, 7, 8, 9, 10, 11])
+    ..aE<EventSeverity>(1, _omitFieldNames ? '' : 'severity',
+        enumValues: EventSeverity.values)
+    ..aE<EventReason>(2, _omitFieldNames ? '' : 'reason',
+        enumValues: EventReason.values)
+    ..aInt64(3, _omitFieldNames ? '' : 'startTimestampNs')
+    ..a<$fixnum.Int64>(
+        4, _omitFieldNames ? '' : 'durationNs', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..aOM<ClientReconnectingOftenMetadata>(
+        5, _omitFieldNames ? '' : 'clientReconnectingOftenMetadata',
+        subBuilder: ClientReconnectingOftenMetadata.create)
+    ..aOM<ClientSwitchingBandMetadata>(
+        6, _omitFieldNames ? '' : 'clientSwitchingBandMetadata',
+        subBuilder: ClientSwitchingBandMetadata.create)
+    ..aOM<ClientSwitchingUpstreamMacMetadata>(
+        7, _omitFieldNames ? '' : 'clientSwitchingUpstreamMacMetadata',
+        subBuilder: ClientSwitchingUpstreamMacMetadata.create)
+    ..aOM<MeshConnectionChangingMetadata>(
+        8, _omitFieldNames ? '' : 'meshConnectionChangingMetadata',
+        subBuilder: MeshConnectionChangingMetadata.create)
+    ..aOM<MeshBackhaulLowPhyMetadata>(
+        9, _omitFieldNames ? '' : 'meshBackhaulLowPhyMetadata',
+        subBuilder: MeshBackhaulLowPhyMetadata.create)
+    ..aOM<HighOverlappingBssMetadata>(
+        10, _omitFieldNames ? '' : 'highOverlappingBssMetadata',
+        subBuilder: HighOverlappingBssMetadata.create)
+    ..aOM<ClientExcessiveNetworkConnectionsMetadata>(
+        11, _omitFieldNames ? '' : 'clientExcessiveNetworkConnectionsMetadata',
+        subBuilder: ClientExcessiveNetworkConnectionsMetadata.create)
+    ..aOS(12, _omitFieldNames ? '' : 'deviceId')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  UXEvent clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  UXEvent copyWith(void Function(UXEvent) updates) =>
+      super.copyWith((message) => updates(message as UXEvent)) as UXEvent;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static UXEvent create() => UXEvent._();
+  @$core.override
+  UXEvent createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static UXEvent getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UXEvent>(create);
+  static UXEvent? _defaultInstance;
+
+  @$pb.TagNumber(5)
+  @$pb.TagNumber(6)
+  @$pb.TagNumber(7)
+  @$pb.TagNumber(8)
+  @$pb.TagNumber(9)
+  @$pb.TagNumber(10)
+  @$pb.TagNumber(11)
+  UXEvent_Metadata whichMetadata() => _UXEvent_MetadataByTag[$_whichOneof(0)]!;
+  @$pb.TagNumber(5)
+  @$pb.TagNumber(6)
+  @$pb.TagNumber(7)
+  @$pb.TagNumber(8)
+  @$pb.TagNumber(9)
+  @$pb.TagNumber(10)
+  @$pb.TagNumber(11)
+  void clearMetadata() => $_clearField($_whichOneof(0));
+
+  @$pb.TagNumber(1)
+  EventSeverity get severity => $_getN(0);
+  @$pb.TagNumber(1)
+  set severity(EventSeverity value) => $_setField(1, value);
+  @$pb.TagNumber(1)
+  $core.bool hasSeverity() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearSeverity() => $_clearField(1);
+
+  @$pb.TagNumber(2)
+  EventReason get reason => $_getN(1);
+  @$pb.TagNumber(2)
+  set reason(EventReason value) => $_setField(2, value);
+  @$pb.TagNumber(2)
+  $core.bool hasReason() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearReason() => $_clearField(2);
+
+  @$pb.TagNumber(3)
+  $fixnum.Int64 get startTimestampNs => $_getI64(2);
+  @$pb.TagNumber(3)
+  set startTimestampNs($fixnum.Int64 value) => $_setInt64(2, value);
+  @$pb.TagNumber(3)
+  $core.bool hasStartTimestampNs() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearStartTimestampNs() => $_clearField(3);
+
+  @$pb.TagNumber(4)
+  $fixnum.Int64 get durationNs => $_getI64(3);
+  @$pb.TagNumber(4)
+  set durationNs($fixnum.Int64 value) => $_setInt64(3, value);
+  @$pb.TagNumber(4)
+  $core.bool hasDurationNs() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearDurationNs() => $_clearField(4);
+
+  @$pb.TagNumber(5)
+  ClientReconnectingOftenMetadata get clientReconnectingOftenMetadata =>
+      $_getN(4);
+  @$pb.TagNumber(5)
+  set clientReconnectingOftenMetadata(ClientReconnectingOftenMetadata value) =>
+      $_setField(5, value);
+  @$pb.TagNumber(5)
+  $core.bool hasClientReconnectingOftenMetadata() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearClientReconnectingOftenMetadata() => $_clearField(5);
+  @$pb.TagNumber(5)
+  ClientReconnectingOftenMetadata ensureClientReconnectingOftenMetadata() =>
+      $_ensure(4);
+
+  @$pb.TagNumber(6)
+  ClientSwitchingBandMetadata get clientSwitchingBandMetadata => $_getN(5);
+  @$pb.TagNumber(6)
+  set clientSwitchingBandMetadata(ClientSwitchingBandMetadata value) =>
+      $_setField(6, value);
+  @$pb.TagNumber(6)
+  $core.bool hasClientSwitchingBandMetadata() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearClientSwitchingBandMetadata() => $_clearField(6);
+  @$pb.TagNumber(6)
+  ClientSwitchingBandMetadata ensureClientSwitchingBandMetadata() =>
+      $_ensure(5);
+
+  @$pb.TagNumber(7)
+  ClientSwitchingUpstreamMacMetadata get clientSwitchingUpstreamMacMetadata =>
+      $_getN(6);
+  @$pb.TagNumber(7)
+  set clientSwitchingUpstreamMacMetadata(
+          ClientSwitchingUpstreamMacMetadata value) =>
+      $_setField(7, value);
+  @$pb.TagNumber(7)
+  $core.bool hasClientSwitchingUpstreamMacMetadata() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearClientSwitchingUpstreamMacMetadata() => $_clearField(7);
+  @$pb.TagNumber(7)
+  ClientSwitchingUpstreamMacMetadata
+      ensureClientSwitchingUpstreamMacMetadata() => $_ensure(6);
+
+  @$core.Deprecated('This field is deprecated.')
+  @$pb.TagNumber(8)
+  MeshConnectionChangingMetadata get meshConnectionChangingMetadata =>
+      $_getN(7);
+  @$core.Deprecated('This field is deprecated.')
+  @$pb.TagNumber(8)
+  set meshConnectionChangingMetadata(MeshConnectionChangingMetadata value) =>
+      $_setField(8, value);
+  @$core.Deprecated('This field is deprecated.')
+  @$pb.TagNumber(8)
+  $core.bool hasMeshConnectionChangingMetadata() => $_has(7);
+  @$core.Deprecated('This field is deprecated.')
+  @$pb.TagNumber(8)
+  void clearMeshConnectionChangingMetadata() => $_clearField(8);
+  @$core.Deprecated('This field is deprecated.')
+  @$pb.TagNumber(8)
+  MeshConnectionChangingMetadata ensureMeshConnectionChangingMetadata() =>
+      $_ensure(7);
+
+  @$pb.TagNumber(9)
+  MeshBackhaulLowPhyMetadata get meshBackhaulLowPhyMetadata => $_getN(8);
+  @$pb.TagNumber(9)
+  set meshBackhaulLowPhyMetadata(MeshBackhaulLowPhyMetadata value) =>
+      $_setField(9, value);
+  @$pb.TagNumber(9)
+  $core.bool hasMeshBackhaulLowPhyMetadata() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearMeshBackhaulLowPhyMetadata() => $_clearField(9);
+  @$pb.TagNumber(9)
+  MeshBackhaulLowPhyMetadata ensureMeshBackhaulLowPhyMetadata() => $_ensure(8);
+
+  @$pb.TagNumber(10)
+  HighOverlappingBssMetadata get highOverlappingBssMetadata => $_getN(9);
+  @$pb.TagNumber(10)
+  set highOverlappingBssMetadata(HighOverlappingBssMetadata value) =>
+      $_setField(10, value);
+  @$pb.TagNumber(10)
+  $core.bool hasHighOverlappingBssMetadata() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearHighOverlappingBssMetadata() => $_clearField(10);
+  @$pb.TagNumber(10)
+  HighOverlappingBssMetadata ensureHighOverlappingBssMetadata() => $_ensure(9);
+
+  @$pb.TagNumber(11)
+  ClientExcessiveNetworkConnectionsMetadata
+      get clientExcessiveNetworkConnectionsMetadata => $_getN(10);
+  @$pb.TagNumber(11)
+  set clientExcessiveNetworkConnectionsMetadata(
+          ClientExcessiveNetworkConnectionsMetadata value) =>
+      $_setField(11, value);
+  @$pb.TagNumber(11)
+  $core.bool hasClientExcessiveNetworkConnectionsMetadata() => $_has(10);
+  @$pb.TagNumber(11)
+  void clearClientExcessiveNetworkConnectionsMetadata() => $_clearField(11);
+  @$pb.TagNumber(11)
+  ClientExcessiveNetworkConnectionsMetadata
+      ensureClientExcessiveNetworkConnectionsMetadata() => $_ensure(10);
+
+  @$pb.TagNumber(12)
+  $core.String get deviceId => $_getSZ(11);
+  @$pb.TagNumber(12)
+  set deviceId($core.String value) => $_setString(11, value);
+  @$pb.TagNumber(12)
+  $core.bool hasDeviceId() => $_has(11);
+  @$pb.TagNumber(12)
+  void clearDeviceId() => $_clearField(12);
+}
+
+class ClientReconnectingOftenMetadata extends $pb.GeneratedMessage {
+  factory ClientReconnectingOftenMetadata({
+    $core.int? clientId,
+  }) {
+    final result = create();
+    if (clientId != null) result.clientId = clientId;
+    return result;
+  }
+
+  ClientReconnectingOftenMetadata._();
+
+  factory ClientReconnectingOftenMetadata.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory ClientReconnectingOftenMetadata.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ClientReconnectingOftenMetadata',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
+      createEmptyInstance: create)
+    ..aI(1, _omitFieldNames ? '' : 'clientId',
+        protoName: 'clientId', fieldType: $pb.PbFieldType.OU3)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ClientReconnectingOftenMetadata clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ClientReconnectingOftenMetadata copyWith(
+          void Function(ClientReconnectingOftenMetadata) updates) =>
+      super.copyWith(
+              (message) => updates(message as ClientReconnectingOftenMetadata))
+          as ClientReconnectingOftenMetadata;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ClientReconnectingOftenMetadata create() =>
+      ClientReconnectingOftenMetadata._();
+  @$core.override
+  ClientReconnectingOftenMetadata createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static ClientReconnectingOftenMetadata getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ClientReconnectingOftenMetadata>(
+          create);
+  static ClientReconnectingOftenMetadata? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get clientId => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set clientId($core.int value) => $_setUnsignedInt32(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasClientId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearClientId() => $_clearField(1);
+}
+
+class ClientExcessiveNetworkConnectionsMetadata extends $pb.GeneratedMessage {
+  factory ClientExcessiveNetworkConnectionsMetadata({
+    $core.int? clientId,
+  }) {
+    final result = create();
+    if (clientId != null) result.clientId = clientId;
+    return result;
+  }
+
+  ClientExcessiveNetworkConnectionsMetadata._();
+
+  factory ClientExcessiveNetworkConnectionsMetadata.fromBuffer(
+          $core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory ClientExcessiveNetworkConnectionsMetadata.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ClientExcessiveNetworkConnectionsMetadata',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
+      createEmptyInstance: create)
+    ..aI(1, _omitFieldNames ? '' : 'clientId',
+        protoName: 'clientId', fieldType: $pb.PbFieldType.OU3)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ClientExcessiveNetworkConnectionsMetadata clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ClientExcessiveNetworkConnectionsMetadata copyWith(
+          void Function(ClientExcessiveNetworkConnectionsMetadata) updates) =>
+      super.copyWith((message) =>
+              updates(message as ClientExcessiveNetworkConnectionsMetadata))
+          as ClientExcessiveNetworkConnectionsMetadata;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ClientExcessiveNetworkConnectionsMetadata create() =>
+      ClientExcessiveNetworkConnectionsMetadata._();
+  @$core.override
+  ClientExcessiveNetworkConnectionsMetadata createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static ClientExcessiveNetworkConnectionsMetadata getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<
+          ClientExcessiveNetworkConnectionsMetadata>(create);
+  static ClientExcessiveNetworkConnectionsMetadata? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get clientId => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set clientId($core.int value) => $_setUnsignedInt32(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasClientId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearClientId() => $_clearField(1);
+}
+
+class ClientSwitchingBandMetadata extends $pb.GeneratedMessage {
+  factory ClientSwitchingBandMetadata({
+    $core.int? clientId,
+    $core.String? fromBand,
+    $core.String? toBand,
+  }) {
+    final result = create();
+    if (clientId != null) result.clientId = clientId;
+    if (fromBand != null) result.fromBand = fromBand;
+    if (toBand != null) result.toBand = toBand;
+    return result;
+  }
+
+  ClientSwitchingBandMetadata._();
+
+  factory ClientSwitchingBandMetadata.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory ClientSwitchingBandMetadata.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ClientSwitchingBandMetadata',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
+      createEmptyInstance: create)
+    ..aI(1, _omitFieldNames ? '' : 'clientId',
+        protoName: 'clientId', fieldType: $pb.PbFieldType.OU3)
+    ..aOS(2, _omitFieldNames ? '' : 'fromBand', protoName: 'fromBand')
+    ..aOS(3, _omitFieldNames ? '' : 'toBand', protoName: 'toBand')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ClientSwitchingBandMetadata clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ClientSwitchingBandMetadata copyWith(
+          void Function(ClientSwitchingBandMetadata) updates) =>
+      super.copyWith(
+              (message) => updates(message as ClientSwitchingBandMetadata))
+          as ClientSwitchingBandMetadata;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ClientSwitchingBandMetadata create() =>
+      ClientSwitchingBandMetadata._();
+  @$core.override
+  ClientSwitchingBandMetadata createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static ClientSwitchingBandMetadata getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ClientSwitchingBandMetadata>(create);
+  static ClientSwitchingBandMetadata? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get clientId => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set clientId($core.int value) => $_setUnsignedInt32(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasClientId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearClientId() => $_clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get fromBand => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set fromBand($core.String value) => $_setString(1, value);
+  @$pb.TagNumber(2)
+  $core.bool hasFromBand() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearFromBand() => $_clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get toBand => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set toBand($core.String value) => $_setString(2, value);
+  @$pb.TagNumber(3)
+  $core.bool hasToBand() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearToBand() => $_clearField(3);
+}
+
+class ClientSwitchingUpstreamMacMetadata extends $pb.GeneratedMessage {
+  factory ClientSwitchingUpstreamMacMetadata({
+    $core.int? clientId,
+  }) {
+    final result = create();
+    if (clientId != null) result.clientId = clientId;
+    return result;
+  }
+
+  ClientSwitchingUpstreamMacMetadata._();
+
+  factory ClientSwitchingUpstreamMacMetadata.fromBuffer(
+          $core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory ClientSwitchingUpstreamMacMetadata.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ClientSwitchingUpstreamMacMetadata',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
+      createEmptyInstance: create)
+    ..aI(1, _omitFieldNames ? '' : 'clientId',
+        protoName: 'clientId', fieldType: $pb.PbFieldType.OU3)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ClientSwitchingUpstreamMacMetadata clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ClientSwitchingUpstreamMacMetadata copyWith(
+          void Function(ClientSwitchingUpstreamMacMetadata) updates) =>
+      super.copyWith((message) =>
+              updates(message as ClientSwitchingUpstreamMacMetadata))
+          as ClientSwitchingUpstreamMacMetadata;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ClientSwitchingUpstreamMacMetadata create() =>
+      ClientSwitchingUpstreamMacMetadata._();
+  @$core.override
+  ClientSwitchingUpstreamMacMetadata createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static ClientSwitchingUpstreamMacMetadata getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ClientSwitchingUpstreamMacMetadata>(
+          create);
+  static ClientSwitchingUpstreamMacMetadata? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get clientId => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set clientId($core.int value) => $_setUnsignedInt32(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasClientId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearClientId() => $_clearField(1);
+}
+
+class MeshConnectionChangingMetadata extends $pb.GeneratedMessage {
+  factory MeshConnectionChangingMetadata({
+    @$core.Deprecated('This field is deprecated.') $core.String? repeaterId,
+    @$core.Deprecated('This field is deprecated.') MeshConnectionChange? change,
+  }) {
+    final result = create();
+    if (repeaterId != null) result.repeaterId = repeaterId;
+    if (change != null) result.change = change;
+    return result;
+  }
+
+  MeshConnectionChangingMetadata._();
+
+  factory MeshConnectionChangingMetadata.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory MeshConnectionChangingMetadata.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'MeshConnectionChangingMetadata',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'repeaterId', protoName: 'repeaterId')
+    ..aE<MeshConnectionChange>(2, _omitFieldNames ? '' : 'change',
+        enumValues: MeshConnectionChange.values)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  MeshConnectionChangingMetadata clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  MeshConnectionChangingMetadata copyWith(
+          void Function(MeshConnectionChangingMetadata) updates) =>
+      super.copyWith(
+              (message) => updates(message as MeshConnectionChangingMetadata))
+          as MeshConnectionChangingMetadata;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static MeshConnectionChangingMetadata create() =>
+      MeshConnectionChangingMetadata._();
+  @$core.override
+  MeshConnectionChangingMetadata createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static MeshConnectionChangingMetadata getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MeshConnectionChangingMetadata>(create);
+  static MeshConnectionChangingMetadata? _defaultInstance;
+
+  @$core.Deprecated('This field is deprecated.')
+  @$pb.TagNumber(1)
+  $core.String get repeaterId => $_getSZ(0);
+  @$core.Deprecated('This field is deprecated.')
+  @$pb.TagNumber(1)
+  set repeaterId($core.String value) => $_setString(0, value);
+  @$core.Deprecated('This field is deprecated.')
+  @$pb.TagNumber(1)
+  $core.bool hasRepeaterId() => $_has(0);
+  @$core.Deprecated('This field is deprecated.')
+  @$pb.TagNumber(1)
+  void clearRepeaterId() => $_clearField(1);
+
+  @$core.Deprecated('This field is deprecated.')
+  @$pb.TagNumber(2)
+  MeshConnectionChange get change => $_getN(1);
+  @$core.Deprecated('This field is deprecated.')
+  @$pb.TagNumber(2)
+  set change(MeshConnectionChange value) => $_setField(2, value);
+  @$core.Deprecated('This field is deprecated.')
+  @$pb.TagNumber(2)
+  $core.bool hasChange() => $_has(1);
+  @$core.Deprecated('This field is deprecated.')
+  @$pb.TagNumber(2)
+  void clearChange() => $_clearField(2);
+}
+
+class MeshBackhaulLowPhyMetadata extends $pb.GeneratedMessage {
+  factory MeshBackhaulLowPhyMetadata({
+    $core.Iterable<$core.String>? repeaterIds,
+  }) {
+    final result = create();
+    if (repeaterIds != null) result.repeaterIds.addAll(repeaterIds);
+    return result;
+  }
+
+  MeshBackhaulLowPhyMetadata._();
+
+  factory MeshBackhaulLowPhyMetadata.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory MeshBackhaulLowPhyMetadata.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'MeshBackhaulLowPhyMetadata',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
+      createEmptyInstance: create)
+    ..pPS(1, _omitFieldNames ? '' : 'repeaterIds', protoName: 'repeaterIds')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  MeshBackhaulLowPhyMetadata clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  MeshBackhaulLowPhyMetadata copyWith(
+          void Function(MeshBackhaulLowPhyMetadata) updates) =>
+      super.copyWith(
+              (message) => updates(message as MeshBackhaulLowPhyMetadata))
+          as MeshBackhaulLowPhyMetadata;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static MeshBackhaulLowPhyMetadata create() => MeshBackhaulLowPhyMetadata._();
+  @$core.override
+  MeshBackhaulLowPhyMetadata createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static MeshBackhaulLowPhyMetadata getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MeshBackhaulLowPhyMetadata>(create);
+  static MeshBackhaulLowPhyMetadata? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $pb.PbList<$core.String> get repeaterIds => $_getList(0);
+}
+
+class HighOverlappingBssStats extends $pb.GeneratedMessage {
+  factory HighOverlappingBssStats({
+    $core.String? iface,
+    $core.int? averageOverlappingBssPercentage,
+  }) {
+    final result = create();
+    if (iface != null) result.iface = iface;
+    if (averageOverlappingBssPercentage != null)
+      result.averageOverlappingBssPercentage = averageOverlappingBssPercentage;
+    return result;
+  }
+
+  HighOverlappingBssStats._();
+
+  factory HighOverlappingBssStats.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory HighOverlappingBssStats.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'HighOverlappingBssStats',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'iface')
+    ..aI(2, _omitFieldNames ? '' : 'averageOverlappingBssPercentage',
+        fieldType: $pb.PbFieldType.OU3)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  HighOverlappingBssStats clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  HighOverlappingBssStats copyWith(
+          void Function(HighOverlappingBssStats) updates) =>
+      super.copyWith((message) => updates(message as HighOverlappingBssStats))
+          as HighOverlappingBssStats;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static HighOverlappingBssStats create() => HighOverlappingBssStats._();
+  @$core.override
+  HighOverlappingBssStats createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static HighOverlappingBssStats getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<HighOverlappingBssStats>(create);
+  static HighOverlappingBssStats? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get iface => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set iface($core.String value) => $_setString(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasIface() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearIface() => $_clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.int get averageOverlappingBssPercentage => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set averageOverlappingBssPercentage($core.int value) =>
+      $_setUnsignedInt32(1, value);
+  @$pb.TagNumber(2)
+  $core.bool hasAverageOverlappingBssPercentage() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearAverageOverlappingBssPercentage() => $_clearField(2);
+}
+
+class HighOverlappingBssMetadata extends $pb.GeneratedMessage {
+  factory HighOverlappingBssMetadata({
+    $core.Iterable<HighOverlappingBssStats>? highOverlappingBssStats,
+  }) {
+    final result = create();
+    if (highOverlappingBssStats != null)
+      result.highOverlappingBssStats.addAll(highOverlappingBssStats);
+    return result;
+  }
+
+  HighOverlappingBssMetadata._();
+
+  factory HighOverlappingBssMetadata.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory HighOverlappingBssMetadata.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'HighOverlappingBssMetadata',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
+      createEmptyInstance: create)
+    ..pPM<HighOverlappingBssStats>(
+        1, _omitFieldNames ? '' : 'highOverlappingBssStats',
+        subBuilder: HighOverlappingBssStats.create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  HighOverlappingBssMetadata clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  HighOverlappingBssMetadata copyWith(
+          void Function(HighOverlappingBssMetadata) updates) =>
+      super.copyWith(
+              (message) => updates(message as HighOverlappingBssMetadata))
+          as HighOverlappingBssMetadata;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static HighOverlappingBssMetadata create() => HighOverlappingBssMetadata._();
+  @$core.override
+  HighOverlappingBssMetadata createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static HighOverlappingBssMetadata getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<HighOverlappingBssMetadata>(create);
+  static HighOverlappingBssMetadata? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $pb.PbList<HighOverlappingBssStats> get highOverlappingBssStats =>
+      $_getList(0);
 }
 
 const $core.bool _omitFieldNames =

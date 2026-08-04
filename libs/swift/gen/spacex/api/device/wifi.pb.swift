@@ -8,7 +8,11 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -16,12 +20,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-struct SpaceX_API_Device_WifiClients: Sendable {
+nonisolated struct SpaceX_API_Device_WifiClients: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -33,12 +37,16 @@ struct SpaceX_API_Device_WifiClients: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_ToController: Sendable {
+nonisolated struct SpaceX_API_Device_ToController: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   var apiVersion: Int32 = 0
+
+  var apiVersionOtherSide: Int32 = 0
+
+  var readyForMultipleNetworks: Bool = false
 
   var message: SpaceX_API_Device_ToController.OneOf_Message? = nil
 
@@ -76,7 +84,7 @@ struct SpaceX_API_Device_ToController: Sendable {
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  enum OneOf_Message: Equatable, Sendable {
+  nonisolated enum OneOf_Message: Equatable, Sendable {
     case clients(SpaceX_API_Device_WifiClients)
     case meshJoin(SpaceX_API_Device_WifiMeshJoin)
     case status(SpaceX_API_Device_WifiMeshStatus)
@@ -87,7 +95,7 @@ struct SpaceX_API_Device_ToController: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiMeshJoin: Sendable {
+nonisolated struct SpaceX_API_Device_WifiMeshJoin: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -105,7 +113,7 @@ struct SpaceX_API_Device_WifiMeshJoin: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiMeshStatus: Sendable {
+nonisolated struct SpaceX_API_Device_WifiMeshStatus: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -126,12 +134,14 @@ struct SpaceX_API_Device_WifiMeshStatus: Sendable {
 
   var backhaulEstPreference: UInt32 = 0
 
+  var events: [SpaceX_API_Device_UXEvent] = []
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 }
 
-struct SpaceX_API_Device_MeshSpeedtestRequest: Sendable {
+nonisolated struct SpaceX_API_Device_MeshSpeedtestRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -141,7 +151,7 @@ struct SpaceX_API_Device_MeshSpeedtestRequest: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_MeshSpeedtest: Sendable {
+nonisolated struct SpaceX_API_Device_MeshSpeedtest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -159,7 +169,7 @@ struct SpaceX_API_Device_MeshSpeedtest: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiSiteSurveyResult: Sendable {
+nonisolated struct SpaceX_API_Device_WifiSiteSurveyResult: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -185,7 +195,7 @@ struct SpaceX_API_Device_WifiSiteSurveyResult: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiGlobalMeshStatus: Sendable {
+nonisolated struct SpaceX_API_Device_WifiGlobalMeshStatus: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -196,12 +206,14 @@ struct SpaceX_API_Device_WifiGlobalMeshStatus: Sendable {
 
   var bssList: [SpaceX_API_Device_InflatedBasicServiceSet] = []
 
+  var hopsFromController: UInt32 = 0
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 }
 
-struct SpaceX_API_Device_BackhaulRequest: Sendable {
+nonisolated struct SpaceX_API_Device_BackhaulRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -209,11 +221,11 @@ struct SpaceX_API_Device_BackhaulRequest: Sendable {
   var retryBackhaul: Bool = false
 
   var goldenBss: SpaceX_API_Device_WifiConfig {
-    get {return _goldenBss ?? SpaceX_API_Device_WifiConfig()}
+    get {_goldenBss ?? SpaceX_API_Device_WifiConfig()}
     set {_goldenBss = newValue}
   }
   /// Returns true if `goldenBss` has been explicitly set.
-  var hasGoldenBss: Bool {return self._goldenBss != nil}
+  var hasGoldenBss: Bool {self._goldenBss != nil}
   /// Clears the value of `goldenBss`. Subsequent reads from it will return its default value.
   mutating func clearGoldenBss() {self._goldenBss = nil}
 
@@ -224,7 +236,7 @@ struct SpaceX_API_Device_BackhaulRequest: Sendable {
   fileprivate var _goldenBss: SpaceX_API_Device_WifiConfig? = nil
 }
 
-struct SpaceX_API_Device_FromController: Sendable {
+nonisolated struct SpaceX_API_Device_FromController: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -284,7 +296,7 @@ struct SpaceX_API_Device_FromController: Sendable {
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  enum OneOf_Message: Equatable, Sendable {
+  nonisolated enum OneOf_Message: Equatable, Sendable {
     case wifiConfig(SpaceX_API_Device_WifiConfig)
     /// NOTE: This field was marked as deprecated in the .proto file.
     case steerClientRequest(SpaceX_API_Device_SteerClientRequest)
@@ -299,7 +311,7 @@ struct SpaceX_API_Device_FromController: Sendable {
 }
 
 /// NOTE: This message was marked as deprecated in the .proto file.
-struct SpaceX_API_Device_SteerClientRequest: Sendable {
+nonisolated struct SpaceX_API_Device_SteerClientRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -312,7 +324,7 @@ struct SpaceX_API_Device_SteerClientRequest: Sendable {
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  struct SteerTarget: Sendable {
+  nonisolated struct SteerTarget: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -331,7 +343,7 @@ struct SpaceX_API_Device_SteerClientRequest: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiBtmRequest: Sendable {
+nonisolated struct SpaceX_API_Device_WifiBtmRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -344,7 +356,7 @@ struct SpaceX_API_Device_WifiBtmRequest: Sendable {
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  struct NeighborReport: Sendable {
+  nonisolated struct NeighborReport: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -361,7 +373,7 @@ struct SpaceX_API_Device_WifiBtmRequest: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiSelfTest: Sendable {
+nonisolated struct SpaceX_API_Device_WifiSelfTest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -369,11 +381,11 @@ struct SpaceX_API_Device_WifiSelfTest: Sendable {
   var totalSuccess: Bool = false
 
   var fused: SpaceX_API_Device_WifiSelfTest.TestResult {
-    get {return _fused ?? SpaceX_API_Device_WifiSelfTest.TestResult()}
+    get {_fused ?? SpaceX_API_Device_WifiSelfTest.TestResult()}
     set {_fused = newValue}
   }
   /// Returns true if `fused` has been explicitly set.
-  var hasFused: Bool {return self._fused != nil}
+  var hasFused: Bool {self._fused != nil}
   /// Clears the value of `fused`. Subsequent reads from it will return its default value.
   mutating func clearFused() {self._fused = nil}
 
@@ -382,17 +394,17 @@ struct SpaceX_API_Device_WifiSelfTest: Sendable {
   var pcis: [SpaceX_API_Device_WifiSelfTest.TestResult] = []
 
   var bl2Prod: SpaceX_API_Device_WifiSelfTest.TestResult {
-    get {return _bl2Prod ?? SpaceX_API_Device_WifiSelfTest.TestResult()}
+    get {_bl2Prod ?? SpaceX_API_Device_WifiSelfTest.TestResult()}
     set {_bl2Prod = newValue}
   }
   /// Returns true if `bl2Prod` has been explicitly set.
-  var hasBl2Prod: Bool {return self._bl2Prod != nil}
+  var hasBl2Prod: Bool {self._bl2Prod != nil}
   /// Clears the value of `bl2Prod`. Subsequent reads from it will return its default value.
   mutating func clearBl2Prod() {self._bl2Prod = nil}
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  struct TestResult: Sendable {
+  nonisolated struct TestResult: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -414,17 +426,17 @@ struct SpaceX_API_Device_WifiSelfTest: Sendable {
   fileprivate var _bl2Prod: SpaceX_API_Device_WifiSelfTest.TestResult? = nil
 }
 
-struct SpaceX_API_Device_WifiSetConfigRequest: Sendable {
+nonisolated struct SpaceX_API_Device_WifiSetConfigRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   var wifiConfig: SpaceX_API_Device_WifiConfig {
-    get {return _wifiConfig ?? SpaceX_API_Device_WifiConfig()}
+    get {_wifiConfig ?? SpaceX_API_Device_WifiConfig()}
     set {_wifiConfig = newValue}
   }
   /// Returns true if `wifiConfig` has been explicitly set.
-  var hasWifiConfig: Bool {return self._wifiConfig != nil}
+  var hasWifiConfig: Bool {self._wifiConfig != nil}
   /// Clears the value of `wifiConfig`. Subsequent reads from it will return its default value.
   mutating func clearWifiConfig() {self._wifiConfig = nil}
 
@@ -435,17 +447,17 @@ struct SpaceX_API_Device_WifiSetConfigRequest: Sendable {
   fileprivate var _wifiConfig: SpaceX_API_Device_WifiConfig? = nil
 }
 
-struct SpaceX_API_Device_WifiSetConfigResponse: Sendable {
+nonisolated struct SpaceX_API_Device_WifiSetConfigResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   var updatedWifiConfig: SpaceX_API_Device_WifiConfig {
-    get {return _updatedWifiConfig ?? SpaceX_API_Device_WifiConfig()}
+    get {_updatedWifiConfig ?? SpaceX_API_Device_WifiConfig()}
     set {_updatedWifiConfig = newValue}
   }
   /// Returns true if `updatedWifiConfig` has been explicitly set.
-  var hasUpdatedWifiConfig: Bool {return self._updatedWifiConfig != nil}
+  var hasUpdatedWifiConfig: Bool {self._updatedWifiConfig != nil}
   /// Clears the value of `updatedWifiConfig`. Subsequent reads from it will return its default value.
   mutating func clearUpdatedWifiConfig() {self._updatedWifiConfig = nil}
 
@@ -456,7 +468,7 @@ struct SpaceX_API_Device_WifiSetConfigResponse: Sendable {
   fileprivate var _updatedWifiConfig: SpaceX_API_Device_WifiConfig? = nil
 }
 
-struct SpaceX_API_Device_WifiGetConfigRequest: Sendable {
+nonisolated struct SpaceX_API_Device_WifiGetConfigRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -466,17 +478,17 @@ struct SpaceX_API_Device_WifiGetConfigRequest: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiGetConfigResponse: Sendable {
+nonisolated struct SpaceX_API_Device_WifiGetConfigResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   var wifiConfig: SpaceX_API_Device_WifiConfig {
-    get {return _wifiConfig ?? SpaceX_API_Device_WifiConfig()}
+    get {_wifiConfig ?? SpaceX_API_Device_WifiConfig()}
     set {_wifiConfig = newValue}
   }
   /// Returns true if `wifiConfig` has been explicitly set.
-  var hasWifiConfig: Bool {return self._wifiConfig != nil}
+  var hasWifiConfig: Bool {self._wifiConfig != nil}
   /// Clears the value of `wifiConfig`. Subsequent reads from it will return its default value.
   mutating func clearWifiConfig() {self._wifiConfig = nil}
 
@@ -487,7 +499,7 @@ struct SpaceX_API_Device_WifiGetConfigResponse: Sendable {
   fileprivate var _wifiConfig: SpaceX_API_Device_WifiConfig? = nil
 }
 
-struct SpaceX_API_Device_WifiSetMeshDeviceTrustRequest: Sendable {
+nonisolated struct SpaceX_API_Device_WifiSetMeshDeviceTrustRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -501,7 +513,7 @@ struct SpaceX_API_Device_WifiSetMeshDeviceTrustRequest: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiSetMeshDeviceTrustResponse: Sendable {
+nonisolated struct SpaceX_API_Device_WifiSetMeshDeviceTrustResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -511,17 +523,17 @@ struct SpaceX_API_Device_WifiSetMeshDeviceTrustResponse: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiSetMeshConfigRequest: Sendable {
+nonisolated struct SpaceX_API_Device_WifiSetMeshConfigRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   var meshConfig: SpaceX_API_Device_MeshConfig {
-    get {return _meshConfig ?? SpaceX_API_Device_MeshConfig()}
+    get {_meshConfig ?? SpaceX_API_Device_MeshConfig()}
     set {_meshConfig = newValue}
   }
   /// Returns true if `meshConfig` has been explicitly set.
-  var hasMeshConfig: Bool {return self._meshConfig != nil}
+  var hasMeshConfig: Bool {self._meshConfig != nil}
   /// Clears the value of `meshConfig`. Subsequent reads from it will return its default value.
   mutating func clearMeshConfig() {self._meshConfig = nil}
 
@@ -534,7 +546,7 @@ struct SpaceX_API_Device_WifiSetMeshConfigRequest: Sendable {
   fileprivate var _meshConfig: SpaceX_API_Device_MeshConfig? = nil
 }
 
-struct SpaceX_API_Device_WifiSetMeshConfigResponse: Sendable {
+nonisolated struct SpaceX_API_Device_WifiSetMeshConfigResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -544,7 +556,7 @@ struct SpaceX_API_Device_WifiSetMeshConfigResponse: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiGetClientsRequest: Sendable {
+nonisolated struct SpaceX_API_Device_WifiGetClientsRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -554,7 +566,7 @@ struct SpaceX_API_Device_WifiGetClientsRequest: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiGetClientsResponse: Sendable {
+nonisolated struct SpaceX_API_Device_WifiGetClientsResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -570,7 +582,7 @@ struct SpaceX_API_Device_WifiGetClientsResponse: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiGetClientHistoryRequest: Sendable {
+nonisolated struct SpaceX_API_Device_WifiGetClientHistoryRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -585,7 +597,7 @@ struct SpaceX_API_Device_WifiGetClientHistoryRequest: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiGetClientHistoryResponse: @unchecked Sendable {
+nonisolated struct SpaceX_API_Device_WifiGetClientHistoryResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -604,7 +616,7 @@ struct SpaceX_API_Device_WifiGetClientHistoryResponse: @unchecked Sendable {
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  enum WifiLimitedReason: SwiftProtobuf.Enum, Swift.CaseIterable {
+  nonisolated enum WifiLimitedReason: SwiftProtobuf.Enum, Swift.CaseIterable {
     typealias RawValue = Int
     case limitUnknown // = 0
     case limitNone // = 1
@@ -649,7 +661,7 @@ struct SpaceX_API_Device_WifiGetClientHistoryResponse: @unchecked Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiSetAviationConformedRequest: Sendable {
+nonisolated struct SpaceX_API_Device_WifiSetAviationConformedRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -659,7 +671,7 @@ struct SpaceX_API_Device_WifiSetAviationConformedRequest: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiGetHistoryResponse: Sendable {
+nonisolated struct SpaceX_API_Device_WifiGetHistoryResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -670,22 +682,61 @@ struct SpaceX_API_Device_WifiGetHistoryResponse: Sendable {
 
   var pingLatencyMs: [Float] = []
 
+  var currentIndex15S: UInt64 = 0
+
+  var popIpv4PingDropRateLast15S: [Float] = []
+
+  var popIpv6PingDropRateLast15S: [Float] = []
+
+  var googleIpv4PingDropRateLast15S: [Float] = []
+
+  var googleIpv6PingDropRateLast15S: [Float] = []
+
+  var cloudflareIpv4PingDropRateLast15S: [Float] = []
+
+  var cloudflareIpv6PingDropRateLast15S: [Float] = []
+
+  var dnsResolverDropRate: Dictionary<String,SpaceX_API_Device_WifiGetHistoryResponse.DnsResolverHistory> = [:]
+
+  var eventLog: SpaceX_API_Device_EventLog {
+    get {_eventLog ?? SpaceX_API_Device_EventLog()}
+    set {_eventLog = newValue}
+  }
+  /// Returns true if `eventLog` has been explicitly set.
+  var hasEventLog: Bool {self._eventLog != nil}
+  /// Clears the value of `eventLog`. Subsequent reads from it will return its default value.
+  mutating func clearEventLog() {self._eventLog = nil}
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
+  nonisolated struct DnsResolverHistory: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    var dropRateLast15S: [Float] = []
+
+    var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    init() {}
+  }
+
   init() {}
+
+  fileprivate var _eventLog: SpaceX_API_Device_EventLog? = nil
 }
 
-struct SpaceX_API_Device_WifiNewClientConnectedEvent: Sendable {
+nonisolated struct SpaceX_API_Device_WifiNewClientConnectedEvent: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   var client: SpaceX_API_Device_WifiClient {
-    get {return _client ?? SpaceX_API_Device_WifiClient()}
+    get {_client ?? SpaceX_API_Device_WifiClient()}
     set {_client = newValue}
   }
   /// Returns true if `client` has been explicitly set.
-  var hasClient: Bool {return self._client != nil}
+  var hasClient: Bool {self._client != nil}
   /// Clears the value of `client`. Subsequent reads from it will return its default value.
   mutating func clearClient() {self._client = nil}
 
@@ -696,245 +747,314 @@ struct SpaceX_API_Device_WifiNewClientConnectedEvent: Sendable {
   fileprivate var _client: SpaceX_API_Device_WifiClient? = nil
 }
 
-struct SpaceX_API_Device_WifiClient: @unchecked Sendable {
+nonisolated struct SpaceX_API_Device_WifiClient: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
+  var links: [SpaceX_API_Device_WifiClient.Link] {
+    get {_storage._links}
+    set {_uniqueStorage()._links = newValue}
+  }
+
+  var usingMlo: Bool {
+    get {_storage._usingMlo}
+    set {_uniqueStorage()._usingMlo = newValue}
+  }
+
   var name: String {
-    get {return _storage._name}
+    get {_storage._name}
     set {_uniqueStorage()._name = newValue}
   }
 
   var givenName: String {
-    get {return _storage._givenName}
+    get {_storage._givenName}
     set {_uniqueStorage()._givenName = newValue}
   }
 
   var domain: String {
-    get {return _storage._domain}
+    get {_storage._domain}
     set {_uniqueStorage()._domain = newValue}
   }
 
   var macAddress: String {
-    get {return _storage._macAddress}
+    get {_storage._macAddress}
     set {_uniqueStorage()._macAddress = newValue}
   }
 
   var ipAddress: String {
-    get {return _storage._ipAddress}
+    get {_storage._ipAddress}
     set {_uniqueStorage()._ipAddress = newValue}
   }
 
+  var dhcpLeaseFound: Bool {
+    get {_storage._dhcpLeaseFound}
+    set {_uniqueStorage()._dhcpLeaseFound = newValue}
+  }
+
   var dhcpLeaseActive: Bool {
-    get {return _storage._dhcpLeaseActive}
+    get {_storage._dhcpLeaseActive}
     set {_uniqueStorage()._dhcpLeaseActive = newValue}
   }
 
   var dhcpLeaseRenewed: Bool {
-    get {return _storage._dhcpLeaseRenewed}
+    get {_storage._dhcpLeaseRenewed}
     set {_uniqueStorage()._dhcpLeaseRenewed = newValue}
   }
 
+  var secondsUntilDhcpLeaseExpires: Float {
+    get {_storage._secondsUntilDhcpLeaseExpires}
+    set {_uniqueStorage()._secondsUntilDhcpLeaseExpires = newValue}
+  }
+
   var ipv6Addresses: [String] {
-    get {return _storage._ipv6Addresses}
+    get {_storage._ipv6Addresses}
     set {_uniqueStorage()._ipv6Addresses = newValue}
   }
 
   var signalStrength: Float {
-    get {return _storage._signalStrength}
+    get {_storage._signalStrength}
     set {_uniqueStorage()._signalStrength = newValue}
   }
 
   var channelWidth: UInt32 {
-    get {return _storage._channelWidth}
+    get {_storage._channelWidth}
     set {_uniqueStorage()._channelWidth = newValue}
   }
 
   var rxStats: SpaceX_API_Device_WifiClient.RxStats {
-    get {return _storage._rxStats ?? SpaceX_API_Device_WifiClient.RxStats()}
+    get {_storage._rxStats ?? SpaceX_API_Device_WifiClient.RxStats()}
     set {_uniqueStorage()._rxStats = newValue}
   }
   /// Returns true if `rxStats` has been explicitly set.
-  var hasRxStats: Bool {return _storage._rxStats != nil}
+  var hasRxStats: Bool {_storage._rxStats != nil}
   /// Clears the value of `rxStats`. Subsequent reads from it will return its default value.
   mutating func clearRxStats() {_uniqueStorage()._rxStats = nil}
 
+  var rxStatsValid: Bool {
+    get {_storage._rxStatsValid}
+    set {_uniqueStorage()._rxStatsValid = newValue}
+  }
+
   var txStats: SpaceX_API_Device_WifiClient.TxStats {
-    get {return _storage._txStats ?? SpaceX_API_Device_WifiClient.TxStats()}
+    get {_storage._txStats ?? SpaceX_API_Device_WifiClient.TxStats()}
     set {_uniqueStorage()._txStats = newValue}
   }
   /// Returns true if `txStats` has been explicitly set.
-  var hasTxStats: Bool {return _storage._txStats != nil}
+  var hasTxStats: Bool {_storage._txStats != nil}
   /// Clears the value of `txStats`. Subsequent reads from it will return its default value.
   mutating func clearTxStats() {_uniqueStorage()._txStats = nil}
 
+  var txStatsValid: Bool {
+    get {_storage._txStatsValid}
+    set {_uniqueStorage()._txStatsValid = newValue}
+  }
+
   var associatedTimeS: UInt32 {
-    get {return _storage._associatedTimeS}
+    get {_storage._associatedTimeS}
     set {_uniqueStorage()._associatedTimeS = newValue}
   }
 
   var noDataIdleS: UInt32 {
-    get {return _storage._noDataIdleS}
+    get {_storage._noDataIdleS}
     set {_uniqueStorage()._noDataIdleS = newValue}
   }
 
   var modeStr: String {
-    get {return _storage._modeStr}
+    get {_storage._modeStr}
     set {_uniqueStorage()._modeStr = newValue}
   }
 
   var iface: SpaceX_API_Device_WifiClient.Interface {
-    get {return _storage._iface}
+    get {_storage._iface}
     set {_uniqueStorage()._iface = newValue}
   }
 
   var ifaceName: String {
-    get {return _storage._ifaceName}
+    get {_storage._ifaceName}
     set {_uniqueStorage()._ifaceName = newValue}
   }
 
   var snr: Float {
-    get {return _storage._snr}
+    get {_storage._snr}
     set {_uniqueStorage()._snr = newValue}
   }
 
   var psmode: Int32 {
-    get {return _storage._psmode}
+    get {_storage._psmode}
     set {_uniqueStorage()._psmode = newValue}
   }
 
   var upstreamMacAddress: String {
-    get {return _storage._upstreamMacAddress}
+    get {_storage._upstreamMacAddress}
     set {_uniqueStorage()._upstreamMacAddress = newValue}
   }
 
   var role: SpaceX_API_Device_WifiClient.Role {
-    get {return _storage._role}
+    get {_storage._role}
     set {_uniqueStorage()._role = newValue}
   }
 
   var deviceID: String {
-    get {return _storage._deviceID}
+    get {_storage._deviceID}
     set {_uniqueStorage()._deviceID = newValue}
   }
 
   var swqChecks: UInt32 {
-    get {return _storage._swqChecks}
+    get {_storage._swqChecks}
     set {_uniqueStorage()._swqChecks = newValue}
   }
 
   var swqChecksNonEmpty: UInt32 {
-    get {return _storage._swqChecksNonEmpty}
+    get {_storage._swqChecksNonEmpty}
     set {_uniqueStorage()._swqChecksNonEmpty = newValue}
   }
 
   var mibSteerState: UInt32 {
-    get {return _storage._mibSteerState}
+    get {_storage._mibSteerState}
     set {_uniqueStorage()._mibSteerState = newValue}
   }
 
   var mibSteerMethod: UInt32 {
-    get {return _storage._mibSteerMethod}
+    get {_storage._mibSteerMethod}
     set {_uniqueStorage()._mibSteerMethod = newValue}
   }
 
   var btmRequests: UInt32 {
-    get {return _storage._btmRequests}
+    get {_storage._btmRequests}
     set {_uniqueStorage()._btmRequests = newValue}
   }
 
   var btmRequestsSuccess: UInt32 {
-    get {return _storage._btmRequestsSuccess}
+    get {_storage._btmRequestsSuccess}
     set {_uniqueStorage()._btmRequestsSuccess = newValue}
   }
 
   var steerState: UInt32 {
-    get {return _storage._steerState}
+    get {_storage._steerState}
     set {_uniqueStorage()._steerState = newValue}
   }
 
   var steerReqSuccessLast1H: UInt32 {
-    get {return _storage._steerReqSuccessLast1H}
+    get {_storage._steerReqSuccessLast1H}
     set {_uniqueStorage()._steerReqSuccessLast1H = newValue}
   }
 
   var steerReqFailLast1H: UInt32 {
-    get {return _storage._steerReqFailLast1H}
+    get {_storage._steerReqFailLast1H}
     set {_uniqueStorage()._steerReqFailLast1H = newValue}
   }
 
   var steerReqFailAndDissocLast1H: UInt32 {
-    get {return _storage._steerReqFailAndDissocLast1H}
+    get {_storage._steerReqFailAndDissocLast1H}
     set {_uniqueStorage()._steerReqFailAndDissocLast1H = newValue}
   }
 
   var dot11VSupport: Bool {
-    get {return _storage._dot11VSupport}
+    get {_storage._dot11VSupport}
     set {_uniqueStorage()._dot11VSupport = newValue}
   }
 
   var hopsFromController: UInt32 {
-    get {return _storage._hopsFromController}
+    get {_storage._hopsFromController}
     set {_uniqueStorage()._hopsFromController = newValue}
   }
 
   var estTxRateMbpsFromController: Float {
-    get {return _storage._estTxRateMbpsFromController}
+    get {_storage._estTxRateMbpsFromController}
     set {_uniqueStorage()._estTxRateMbpsFromController = newValue}
   }
 
   var estRxRateMbpsFromController: Float {
-    get {return _storage._estRxRateMbpsFromController}
+    get {_storage._estRxRateMbpsFromController}
     set {_uniqueStorage()._estRxRateMbpsFromController = newValue}
   }
 
   var hardwareVersion: String {
-    get {return _storage._hardwareVersion}
+    get {_storage._hardwareVersion}
     set {_uniqueStorage()._hardwareVersion = newValue}
   }
 
   var softwareVersion: String {
-    get {return _storage._softwareVersion}
+    get {_storage._softwareVersion}
     set {_uniqueStorage()._softwareVersion = newValue}
   }
 
   var apiVersion: UInt32 {
-    get {return _storage._apiVersion}
+    get {_storage._apiVersion}
     set {_uniqueStorage()._apiVersion = newValue}
   }
 
   var pingMetrics: SpaceX_API_Device_WifiClient.PingMetrics {
-    get {return _storage._pingMetrics ?? SpaceX_API_Device_WifiClient.PingMetrics()}
+    get {_storage._pingMetrics ?? SpaceX_API_Device_WifiClient.PingMetrics()}
     set {_uniqueStorage()._pingMetrics = newValue}
   }
   /// Returns true if `pingMetrics` has been explicitly set.
-  var hasPingMetrics: Bool {return _storage._pingMetrics != nil}
+  var hasPingMetrics: Bool {_storage._pingMetrics != nil}
   /// Clears the value of `pingMetrics`. Subsequent reads from it will return its default value.
   mutating func clearPingMetrics() {_uniqueStorage()._pingMetrics = nil}
 
   var blocked: Bool {
-    get {return _storage._blocked}
+    get {_storage._blocked}
     set {_uniqueStorage()._blocked = newValue}
   }
 
   var clientID: UInt32 {
-    get {return _storage._clientID}
+    get {_storage._clientID}
     set {_uniqueStorage()._clientID = newValue}
   }
 
+  var captiveClientID: String {
+    get {_storage._captiveClientID}
+    set {_uniqueStorage()._captiveClientID = newValue}
+  }
+
+  var captiveState: SpaceX_API_Device_WifiClient.CaptiveState {
+    get {_storage._captiveState}
+    set {_uniqueStorage()._captiveState = newValue}
+  }
+
+  var sandboxState: SpaceX_API_Device_WifiClient.SandboxState {
+    get {_storage._sandboxState}
+    set {_uniqueStorage()._sandboxState = newValue}
+  }
+
   var fqcodelInfo: SpaceX_API_Device_WifiClient.FqcodelInfo {
-    get {return _storage._fqcodelInfo ?? SpaceX_API_Device_WifiClient.FqcodelInfo()}
+    get {_storage._fqcodelInfo ?? SpaceX_API_Device_WifiClient.FqcodelInfo()}
     set {_uniqueStorage()._fqcodelInfo = newValue}
   }
   /// Returns true if `fqcodelInfo` has been explicitly set.
-  var hasFqcodelInfo: Bool {return _storage._fqcodelInfo != nil}
+  var hasFqcodelInfo: Bool {_storage._fqcodelInfo != nil}
   /// Clears the value of `fqcodelInfo`. Subsequent reads from it will return its default value.
   mutating func clearFqcodelInfo() {_uniqueStorage()._fqcodelInfo = nil}
 
+  var alerts: SpaceX_API_Device_WifiClient.Alerts {
+    get {_storage._alerts ?? SpaceX_API_Device_WifiClient.Alerts()}
+    set {_uniqueStorage()._alerts = newValue}
+  }
+  /// Returns true if `alerts` has been explicitly set.
+  var hasAlerts: Bool {_storage._alerts != nil}
+  /// Clears the value of `alerts`. Subsequent reads from it will return its default value.
+  mutating func clearAlerts() {_uniqueStorage()._alerts = nil}
+
+  var uploadMb: UInt32 {
+    get {_storage._uploadMb}
+    set {_uniqueStorage()._uploadMb = newValue}
+  }
+
+  var downloadMb: UInt32 {
+    get {_storage._downloadMb}
+    set {_uniqueStorage()._downloadMb = newValue}
+  }
+
+  var active: Bool {
+    get {_storage._active}
+    set {_uniqueStorage()._active = newValue}
+  }
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  enum Interface: SwiftProtobuf.Enum, Swift.CaseIterable {
+  nonisolated enum Interface: SwiftProtobuf.Enum, Swift.CaseIterable {
     typealias RawValue = Int
     case unknown // = 0
     case eth // = 1
@@ -980,7 +1100,7 @@ struct SpaceX_API_Device_WifiClient: @unchecked Sendable {
 
   }
 
-  enum Role: SwiftProtobuf.Enum, Swift.CaseIterable {
+  nonisolated enum Role: SwiftProtobuf.Enum, Swift.CaseIterable {
     typealias RawValue = Int
     case unknown // = 0
     case client // = 1
@@ -1022,45 +1142,196 @@ struct SpaceX_API_Device_WifiClient: @unchecked Sendable {
 
   }
 
-  struct RxStats: Sendable {
+  nonisolated enum CaptiveState: SwiftProtobuf.Enum, Swift.CaseIterable {
+    typealias RawValue = Int
+    case notConfigured // = 0
+    case unknown // = 1
+    case captive // = 2
+    case notCaptive // = 3
+    case partiallyCaptive // = 4
+    case UNRECOGNIZED(Int)
+
+    init() {
+      self = .notConfigured
+    }
+
+    init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .notConfigured
+      case 1: self = .unknown
+      case 2: self = .captive
+      case 3: self = .notCaptive
+      case 4: self = .partiallyCaptive
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    var rawValue: Int {
+      switch self {
+      case .notConfigured: return 0
+      case .unknown: return 1
+      case .captive: return 2
+      case .notCaptive: return 3
+      case .partiallyCaptive: return 4
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    static let allCases: [SpaceX_API_Device_WifiClient.CaptiveState] = [
+      .notConfigured,
+      .unknown,
+      .captive,
+      .notCaptive,
+      .partiallyCaptive,
+    ]
+
+  }
+
+  nonisolated enum SandboxState: SwiftProtobuf.Enum, Swift.CaseIterable {
+    typealias RawValue = Int
+    case notConfigured // = 0
+    case unknown // = 1
+    case sandboxed // = 2
+    case unsandboxed // = 3
+    case partiallySandboxed // = 4
+    case UNRECOGNIZED(Int)
+
+    init() {
+      self = .notConfigured
+    }
+
+    init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .notConfigured
+      case 1: self = .unknown
+      case 2: self = .sandboxed
+      case 3: self = .unsandboxed
+      case 4: self = .partiallySandboxed
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    var rawValue: Int {
+      switch self {
+      case .notConfigured: return 0
+      case .unknown: return 1
+      case .sandboxed: return 2
+      case .unsandboxed: return 3
+      case .partiallySandboxed: return 4
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    static let allCases: [SpaceX_API_Device_WifiClient.SandboxState] = [
+      .notConfigured,
+      .unknown,
+      .sandboxed,
+      .unsandboxed,
+      .partiallySandboxed,
+    ]
+
+  }
+
+  nonisolated struct RxStats: @unchecked Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
 
-    var bytes: UInt64 = 0
+    var bytes: UInt64 {
+      get {_storage._bytes}
+      set {_uniqueStorage()._bytes = newValue}
+    }
 
-    var countErrors: UInt64 = 0
+    var countErrors: UInt64 {
+      get {_storage._countErrors}
+      set {_uniqueStorage()._countErrors = newValue}
+    }
 
-    var phyMode: UInt32 = 0
+    var phyMode: UInt32 {
+      get {_storage._phyMode}
+      set {_uniqueStorage()._phyMode = newValue}
+    }
 
-    var nss: Int32 = 0
+    var nss: Int32 {
+      get {_storage._nss}
+      set {_uniqueStorage()._nss = newValue}
+    }
 
-    var rateMbps: UInt32 = 0
+    var rateMbps: UInt32 {
+      get {_storage._rateMbps}
+      set {_uniqueStorage()._rateMbps = newValue}
+    }
 
-    var rateMbpsLast30S: Float = 0
+    var rateMbpsLast30S: Float {
+      get {_storage._rateMbpsLast30S}
+      set {_uniqueStorage()._rateMbpsLast30S = newValue}
+    }
 
-    var rateMbpsLast15S: Float = 0
+    var rateMbpsLast15S: Float {
+      get {_storage._rateMbpsLast15S}
+      set {_uniqueStorage()._rateMbpsLast15S = newValue}
+    }
 
-    var mcs: UInt32 = 0
+    var rateMbpsLast1MAvg: Float {
+      get {_storage._rateMbpsLast1MAvg}
+      set {_uniqueStorage()._rateMbpsLast1MAvg = newValue}
+    }
 
-    var bandwidth: UInt32 = 0
+    var throughputMbpsLast1MAvg: Float {
+      get {_storage._throughputMbpsLast1MAvg}
+      set {_uniqueStorage()._throughputMbpsLast1MAvg = newValue}
+    }
 
-    var guardNs: UInt32 = 0
+    var throughputMbpsLast15SAvg: Float {
+      get {_storage._throughputMbpsLast15SAvg}
+      set {_uniqueStorage()._throughputMbpsLast15SAvg = newValue}
+    }
 
-    var airtimeFractionLast1S: Float = 0
+    var mcs: UInt32 {
+      get {_storage._mcs}
+      set {_uniqueStorage()._mcs = newValue}
+    }
 
-    var sampledPackets: UInt32 = 0
+    var bandwidth: UInt32 {
+      get {_storage._bandwidth}
+      set {_uniqueStorage()._bandwidth = newValue}
+    }
 
-    var sampledPacketsRetried: UInt32 = 0
+    var guardNs: UInt32 {
+      get {_storage._guardNs}
+      set {_uniqueStorage()._guardNs = newValue}
+    }
 
-    var sampledPacketsDropped: UInt32 = 0
+    var airtimeFractionLast1S: Float {
+      get {_storage._airtimeFractionLast1S}
+      set {_uniqueStorage()._airtimeFractionLast1S = newValue}
+    }
+
+    var sampledPackets: UInt32 {
+      get {_storage._sampledPackets}
+      set {_uniqueStorage()._sampledPackets = newValue}
+    }
+
+    var sampledPacketsRetried: UInt32 {
+      get {_storage._sampledPacketsRetried}
+      set {_uniqueStorage()._sampledPacketsRetried = newValue}
+    }
+
+    var sampledPacketsDropped: UInt32 {
+      get {_storage._sampledPacketsDropped}
+      set {_uniqueStorage()._sampledPacketsDropped = newValue}
+    }
 
     var unknownFields = SwiftProtobuf.UnknownStorage()
 
     init() {}
+
+    fileprivate var _storage = _StorageClass.defaultInstance
   }
 
-  struct TxStats: Sendable {
+  nonisolated struct TxStats: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -1087,12 +1358,51 @@ struct SpaceX_API_Device_WifiClient: @unchecked Sendable {
 
     var airtimeFractionLast1S: Float = 0
 
+    var throughputMbpsLast15SAvg: Float = 0
+
     var unknownFields = SwiftProtobuf.UnknownStorage()
 
     init() {}
   }
 
-  struct PingMetrics: Sendable {
+  nonisolated struct Link: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    var linkAddress: String = String()
+
+    var band: SpaceX_API_Device_WifiClient.Interface = .unknown
+
+    var signalStrength: Float = 0
+
+    var rxStats: SpaceX_API_Device_WifiClient.RxStats {
+      get {_rxStats ?? SpaceX_API_Device_WifiClient.RxStats()}
+      set {_rxStats = newValue}
+    }
+    /// Returns true if `rxStats` has been explicitly set.
+    var hasRxStats: Bool {self._rxStats != nil}
+    /// Clears the value of `rxStats`. Subsequent reads from it will return its default value.
+    mutating func clearRxStats() {self._rxStats = nil}
+
+    var txStats: SpaceX_API_Device_WifiClient.TxStats {
+      get {_txStats ?? SpaceX_API_Device_WifiClient.TxStats()}
+      set {_txStats = newValue}
+    }
+    /// Returns true if `txStats` has been explicitly set.
+    var hasTxStats: Bool {self._txStats != nil}
+    /// Clears the value of `txStats`. Subsequent reads from it will return its default value.
+    mutating func clearTxStats() {self._txStats = nil}
+
+    var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    init() {}
+
+    fileprivate var _rxStats: SpaceX_API_Device_WifiClient.RxStats? = nil
+    fileprivate var _txStats: SpaceX_API_Device_WifiClient.TxStats? = nil
+  }
+
+  nonisolated struct PingMetrics: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -1110,7 +1420,7 @@ struct SpaceX_API_Device_WifiClient: @unchecked Sendable {
     init() {}
   }
 
-  struct FqcodelInfo: Sendable {
+  nonisolated struct FqcodelInfo: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -1142,12 +1452,24 @@ struct SpaceX_API_Device_WifiClient: @unchecked Sendable {
     init() {}
   }
 
+  nonisolated struct Alerts: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    var throughputLimited: Bool = false
+
+    var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    init() {}
+  }
+
   init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-struct SpaceX_API_Device_WifiSetupRequest: Sendable {
+nonisolated struct SpaceX_API_Device_WifiSetupRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1165,7 +1487,7 @@ struct SpaceX_API_Device_WifiSetupRequest: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiSetupResponse: Sendable {
+nonisolated struct SpaceX_API_Device_WifiSetupResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1175,7 +1497,7 @@ struct SpaceX_API_Device_WifiSetupResponse: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiBandStatus: Sendable {
+nonisolated struct SpaceX_API_Device_WifiBandStatus: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1195,235 +1517,115 @@ struct SpaceX_API_Device_WifiBandStatus: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiAlerts: Sendable {
+nonisolated struct SpaceX_API_Device_WifiAlerts: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var thermalThrottle: Bool = false
-
-  var installPending: Bool = false
-
-  var freshlyFused: Bool = false
-
-  var lanEthSlowLink10: Bool = false
-
-  var lanEthSlowLink100: Bool = false
-
-  var wanEthPoorConnection: Bool = false
-
-  var meshTopologyChangingOften: Bool = false
-
-  var meshUnreliableBackhaul: Bool = false
-
-  var radiusMissingProcess: Bool = false
-
-  var ethSwitchError: Bool = false
-
-  var poeOnDishUnreachable: Bool = false
-
-  var poeFuseBlown: Bool = false
-
-  var poeRouterOvercurrent: Bool = false
-
-  var poeOffCurrentNominal: Bool = false
-
-  var poeVinOvervoltage: Bool = false
-
-  var poeVinUndervoltage: Bool = false
-
-  var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  init() {}
-}
-
-struct SpaceX_API_Device_WifiGetStatusResponse: @unchecked Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  var deviceInfo: SpaceX_API_Device_DeviceInfo {
-    get {return _storage._deviceInfo ?? SpaceX_API_Device_DeviceInfo()}
-    set {_uniqueStorage()._deviceInfo = newValue}
-  }
-  /// Returns true if `deviceInfo` has been explicitly set.
-  var hasDeviceInfo: Bool {return _storage._deviceInfo != nil}
-  /// Clears the value of `deviceInfo`. Subsequent reads from it will return its default value.
-  mutating func clearDeviceInfo() {_uniqueStorage()._deviceInfo = nil}
-
-  var deviceState: SpaceX_API_Device_DeviceState {
-    get {return _storage._deviceState ?? SpaceX_API_Device_DeviceState()}
-    set {_uniqueStorage()._deviceState = newValue}
-  }
-  /// Returns true if `deviceState` has been explicitly set.
-  var hasDeviceState: Bool {return _storage._deviceState != nil}
-  /// Clears the value of `deviceState`. Subsequent reads from it will return its default value.
-  mutating func clearDeviceState() {_uniqueStorage()._deviceState = nil}
-
-  var captivePortalEnabled: Bool {
-    get {return _storage._captivePortalEnabled}
-    set {_uniqueStorage()._captivePortalEnabled = newValue}
+  var thermalThrottle: Bool {
+    get {_storage._thermalThrottle}
+    set {_uniqueStorage()._thermalThrottle = newValue}
   }
 
-  var ipv4WanAddress: String {
-    get {return _storage._ipv4WanAddress}
-    set {_uniqueStorage()._ipv4WanAddress = newValue}
+  var installPending: Bool {
+    get {_storage._installPending}
+    set {_uniqueStorage()._installPending = newValue}
   }
 
-  var ipv6WanAddresses: [String] {
-    get {return _storage._ipv6WanAddresses}
-    set {_uniqueStorage()._ipv6WanAddresses = newValue}
+  var freshlyFused: Bool {
+    get {_storage._freshlyFused}
+    set {_uniqueStorage()._freshlyFused = newValue}
   }
 
-  var pingDropRate: Float {
-    get {return _storage._pingDropRate}
-    set {_uniqueStorage()._pingDropRate = newValue}
+  var lanEthSlowLink10: Bool {
+    get {_storage._lanEthSlowLink10}
+    set {_uniqueStorage()._lanEthSlowLink10 = newValue}
   }
 
-  var pingDropRate5M: Float {
-    get {return _storage._pingDropRate5M}
-    set {_uniqueStorage()._pingDropRate5M = newValue}
+  var lanEthSlowLink100: Bool {
+    get {_storage._lanEthSlowLink100}
+    set {_uniqueStorage()._lanEthSlowLink100 = newValue}
   }
 
-  var pingLatencyMs: Float {
-    get {return _storage._pingLatencyMs}
-    set {_uniqueStorage()._pingLatencyMs = newValue}
+  var highCablePingDropRate: Bool {
+    get {_storage._highCablePingDropRate}
+    set {_uniqueStorage()._highCablePingDropRate = newValue}
   }
 
-  var dishPingDropRate: Float {
-    get {return _storage._dishPingDropRate}
-    set {_uniqueStorage()._dishPingDropRate = newValue}
+  var wanEthPoorConnection: Bool {
+    get {_storage._wanEthPoorConnection}
+    set {_uniqueStorage()._wanEthPoorConnection = newValue}
   }
 
-  var dishPingDropRate5M: Float {
-    get {return _storage._dishPingDropRate5M}
-    set {_uniqueStorage()._dishPingDropRate5M = newValue}
+  var meshTopologyChangingOften: Bool {
+    get {_storage._meshTopologyChangingOften}
+    set {_uniqueStorage()._meshTopologyChangingOften = newValue}
   }
 
-  var dishPingLatencyMs: Float {
-    get {return _storage._dishPingLatencyMs}
-    set {_uniqueStorage()._dishPingLatencyMs = newValue}
+  var meshUnreliableBackhaul: Bool {
+    get {_storage._meshUnreliableBackhaul}
+    set {_uniqueStorage()._meshUnreliableBackhaul = newValue}
   }
 
-  var popPingDropRate: Float {
-    get {return _storage._popPingDropRate}
-    set {_uniqueStorage()._popPingDropRate = newValue}
+  var radiusMissingProcess: Bool {
+    get {_storage._radiusMissingProcess}
+    set {_uniqueStorage()._radiusMissingProcess = newValue}
   }
 
-  var popPingDropRate5M: Float {
-    get {return _storage._popPingDropRate5M}
-    set {_uniqueStorage()._popPingDropRate5M = newValue}
+  var ethSwitchError: Bool {
+    get {_storage._ethSwitchError}
+    set {_uniqueStorage()._ethSwitchError = newValue}
   }
 
-  var popPingLatencyMs: Float {
-    get {return _storage._popPingLatencyMs}
-    set {_uniqueStorage()._popPingLatencyMs = newValue}
+  var poeOnDishUnreachable: Bool {
+    get {_storage._poeOnDishUnreachable}
+    set {_uniqueStorage()._poeOnDishUnreachable = newValue}
   }
 
-  /// NOTE: This field was marked as deprecated in the .proto file.
-  var rf2GhzStatus: SpaceX_API_Device_WifiBandStatus {
-    get {return _storage._rf2GhzStatus ?? SpaceX_API_Device_WifiBandStatus()}
-    set {_uniqueStorage()._rf2GhzStatus = newValue}
-  }
-  /// Returns true if `rf2GhzStatus` has been explicitly set.
-  var hasRf2GhzStatus: Bool {return _storage._rf2GhzStatus != nil}
-  /// Clears the value of `rf2GhzStatus`. Subsequent reads from it will return its default value.
-  mutating func clearRf2GhzStatus() {_uniqueStorage()._rf2GhzStatus = nil}
-
-  /// NOTE: This field was marked as deprecated in the .proto file.
-  var rf5GhzStatus: SpaceX_API_Device_WifiBandStatus {
-    get {return _storage._rf5GhzStatus ?? SpaceX_API_Device_WifiBandStatus()}
-    set {_uniqueStorage()._rf5GhzStatus = newValue}
-  }
-  /// Returns true if `rf5GhzStatus` has been explicitly set.
-  var hasRf5GhzStatus: Bool {return _storage._rf5GhzStatus != nil}
-  /// Clears the value of `rf5GhzStatus`. Subsequent reads from it will return its default value.
-  mutating func clearRf5GhzStatus() {_uniqueStorage()._rf5GhzStatus = nil}
-
-  var alerts: SpaceX_API_Device_WifiAlerts {
-    get {return _storage._alerts ?? SpaceX_API_Device_WifiAlerts()}
-    set {_uniqueStorage()._alerts = newValue}
-  }
-  /// Returns true if `alerts` has been explicitly set.
-  var hasAlerts: Bool {return _storage._alerts != nil}
-  /// Clears the value of `alerts`. Subsequent reads from it will return its default value.
-  mutating func clearAlerts() {_uniqueStorage()._alerts = nil}
-
-  var isAviation: Bool {
-    get {return _storage._isAviation}
-    set {_uniqueStorage()._isAviation = newValue}
+  var poeFuseBlown: Bool {
+    get {_storage._poeFuseBlown}
+    set {_uniqueStorage()._poeFuseBlown = newValue}
   }
 
-  var config: SpaceX_API_Device_WifiConfig {
-    get {return _storage._config ?? SpaceX_API_Device_WifiConfig()}
-    set {_uniqueStorage()._config = newValue}
-  }
-  /// Returns true if `config` has been explicitly set.
-  var hasConfig: Bool {return _storage._config != nil}
-  /// Clears the value of `config`. Subsequent reads from it will return its default value.
-  mutating func clearConfig() {_uniqueStorage()._config = nil}
-
-  var clients: [SpaceX_API_Device_WifiClient] {
-    get {return _storage._clients}
-    set {_uniqueStorage()._clients = newValue}
+  var poeRouterOvercurrent: Bool {
+    get {_storage._poeRouterOvercurrent}
+    set {_uniqueStorage()._poeRouterOvercurrent = newValue}
   }
 
-  var hasClientIndex_p: Bool {
-    get {return _storage._hasClientIndex_p}
-    set {_uniqueStorage()._hasClientIndex_p = newValue}
+  var poeOffCurrentNominal: Bool {
+    get {_storage._poeOffCurrentNominal}
+    set {_uniqueStorage()._poeOffCurrentNominal = newValue}
   }
 
-  var clientIndex: Int32 {
-    get {return _storage._clientIndex}
-    set {_uniqueStorage()._clientIndex = newValue}
+  var poeVinOvervoltage: Bool {
+    get {_storage._poeVinOvervoltage}
+    set {_uniqueStorage()._poeVinOvervoltage = newValue}
   }
 
-  var isAviationConformed: Bool {
-    get {return _storage._isAviationConformed}
-    set {_uniqueStorage()._isAviationConformed = newValue}
+  var poeVinUndervoltage: Bool {
+    get {_storage._poeVinUndervoltage}
+    set {_uniqueStorage()._poeVinUndervoltage = newValue}
   }
 
-  var radiusStats: SpaceX_API_Device_RadiusStatsMap {
-    get {return _storage._radiusStats ?? SpaceX_API_Device_RadiusStatsMap()}
-    set {_uniqueStorage()._radiusStats = newValue}
-  }
-  /// Returns true if `radiusStats` has been explicitly set.
-  var hasRadiusStats: Bool {return _storage._radiusStats != nil}
-  /// Clears the value of `radiusStats`. Subsequent reads from it will return its default value.
-  mutating func clearRadiusStats() {_uniqueStorage()._radiusStats = nil}
-
-  var dhcpServers: [SpaceX_API_Device_DhcpServer] {
-    get {return _storage._dhcpServers}
-    set {_uniqueStorage()._dhcpServers = newValue}
+  var sandboxDisabled: Bool {
+    get {_storage._sandboxDisabled}
+    set {_uniqueStorage()._sandboxDisabled = newValue}
   }
 
-  var poeStats: SpaceX_API_Device_PoeStats {
-    get {return _storage._poeStats ?? SpaceX_API_Device_PoeStats()}
-    set {_uniqueStorage()._poeStats = newValue}
-  }
-  /// Returns true if `poeStats` has been explicitly set.
-  var hasPoeStats: Bool {return _storage._poeStats != nil}
-  /// Clears the value of `poeStats`. Subsequent reads from it will return its default value.
-  mutating func clearPoeStats() {_uniqueStorage()._poeStats = nil}
-
-  var dishID: String {
-    get {return _storage._dishID}
-    set {_uniqueStorage()._dishID = newValue}
+  var onlyOverflightBlocked: Bool {
+    get {_storage._onlyOverflightBlocked}
+    set {_uniqueStorage()._onlyOverflightBlocked = newValue}
   }
 
-  var utcNs: Int64 {
-    get {return _storage._utcNs}
-    set {_uniqueStorage()._utcNs = newValue}
+  var offlineNetworksDisabled: Bool {
+    get {_storage._offlineNetworksDisabled}
+    set {_uniqueStorage()._offlineNetworksDisabled = newValue}
   }
 
-  var softwareUpdateStats: SpaceX_API_Device_WifiSoftwareUpdateStats {
-    get {return _storage._softwareUpdateStats ?? SpaceX_API_Device_WifiSoftwareUpdateStats()}
-    set {_uniqueStorage()._softwareUpdateStats = newValue}
+  var wiredMeshNotUsingWanIface: Bool {
+    get {_storage._wiredMeshNotUsingWanIface}
+    set {_uniqueStorage()._wiredMeshNotUsingWanIface = newValue}
   }
-  /// Returns true if `softwareUpdateStats` has been explicitly set.
-  var hasSoftwareUpdateStats: Bool {return _storage._softwareUpdateStats != nil}
-  /// Clears the value of `softwareUpdateStats`. Subsequent reads from it will return its default value.
-  mutating func clearSoftwareUpdateStats() {_uniqueStorage()._softwareUpdateStats = nil}
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -1432,17 +1634,267 @@ struct SpaceX_API_Device_WifiGetStatusResponse: @unchecked Sendable {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-struct SpaceX_API_Device_WifiAuthenticateRequest: Sendable {
+nonisolated struct SpaceX_API_Device_WifiGetStatusResponse: @unchecked Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var deviceInfo: SpaceX_API_Device_DeviceInfo {
+    get {_storage._deviceInfo ?? SpaceX_API_Device_DeviceInfo()}
+    set {_uniqueStorage()._deviceInfo = newValue}
+  }
+  /// Returns true if `deviceInfo` has been explicitly set.
+  var hasDeviceInfo: Bool {_storage._deviceInfo != nil}
+  /// Clears the value of `deviceInfo`. Subsequent reads from it will return its default value.
+  mutating func clearDeviceInfo() {_uniqueStorage()._deviceInfo = nil}
+
+  var deviceState: SpaceX_API_Device_DeviceState {
+    get {_storage._deviceState ?? SpaceX_API_Device_DeviceState()}
+    set {_uniqueStorage()._deviceState = newValue}
+  }
+  /// Returns true if `deviceState` has been explicitly set.
+  var hasDeviceState: Bool {_storage._deviceState != nil}
+  /// Clears the value of `deviceState`. Subsequent reads from it will return its default value.
+  mutating func clearDeviceState() {_uniqueStorage()._deviceState = nil}
+
+  /// NOTE: This field was marked as deprecated in the .proto file.
+  var captivePortalEnabled: Bool {
+    get {_storage._captivePortalEnabled}
+    set {_uniqueStorage()._captivePortalEnabled = newValue}
+  }
+
+  var ipv4WanAddress: String {
+    get {_storage._ipv4WanAddress}
+    set {_uniqueStorage()._ipv4WanAddress = newValue}
+  }
+
+  var ipv6WanAddresses: [String] {
+    get {_storage._ipv6WanAddresses}
+    set {_uniqueStorage()._ipv6WanAddresses = newValue}
+  }
+
+  var hopsFromController: UInt32 {
+    get {_storage._hopsFromController}
+    set {_uniqueStorage()._hopsFromController = newValue}
+  }
+
+  var pingDropRate: Float {
+    get {_storage._pingDropRate}
+    set {_uniqueStorage()._pingDropRate = newValue}
+  }
+
+  var pingDropRate5M: Float {
+    get {_storage._pingDropRate5M}
+    set {_uniqueStorage()._pingDropRate5M = newValue}
+  }
+
+  var pingLatencyMs: Float {
+    get {_storage._pingLatencyMs}
+    set {_uniqueStorage()._pingLatencyMs = newValue}
+  }
+
+  var dishPingDropRate: Float {
+    get {_storage._dishPingDropRate}
+    set {_uniqueStorage()._dishPingDropRate = newValue}
+  }
+
+  var dishPingDropRate5M: Float {
+    get {_storage._dishPingDropRate5M}
+    set {_uniqueStorage()._dishPingDropRate5M = newValue}
+  }
+
+  var dishPingLatencyMs: Float {
+    get {_storage._dishPingLatencyMs}
+    set {_uniqueStorage()._dishPingLatencyMs = newValue}
+  }
+
+  var popPingDropRate: Float {
+    get {_storage._popPingDropRate}
+    set {_uniqueStorage()._popPingDropRate = newValue}
+  }
+
+  var popPingDropRate5M: Float {
+    get {_storage._popPingDropRate5M}
+    set {_uniqueStorage()._popPingDropRate5M = newValue}
+  }
+
+  var popPingLatencyMs: Float {
+    get {_storage._popPingLatencyMs}
+    set {_uniqueStorage()._popPingLatencyMs = newValue}
+  }
+
+  var popIpv6PingDropRate: Float {
+    get {_storage._popIpv6PingDropRate}
+    set {_uniqueStorage()._popIpv6PingDropRate = newValue}
+  }
+
+  var popIpv6PingDropRate5M: Float {
+    get {_storage._popIpv6PingDropRate5M}
+    set {_uniqueStorage()._popIpv6PingDropRate5M = newValue}
+  }
+
+  var popIpv6PingLatencyMs: Float {
+    get {_storage._popIpv6PingLatencyMs}
+    set {_uniqueStorage()._popIpv6PingLatencyMs = newValue}
+  }
+
+  /// NOTE: This field was marked as deprecated in the .proto file.
+  var rf2GhzStatus: SpaceX_API_Device_WifiBandStatus {
+    get {_storage._rf2GhzStatus ?? SpaceX_API_Device_WifiBandStatus()}
+    set {_uniqueStorage()._rf2GhzStatus = newValue}
+  }
+  /// Returns true if `rf2GhzStatus` has been explicitly set.
+  var hasRf2GhzStatus: Bool {_storage._rf2GhzStatus != nil}
+  /// Clears the value of `rf2GhzStatus`. Subsequent reads from it will return its default value.
+  mutating func clearRf2GhzStatus() {_uniqueStorage()._rf2GhzStatus = nil}
+
+  /// NOTE: This field was marked as deprecated in the .proto file.
+  var rf5GhzStatus: SpaceX_API_Device_WifiBandStatus {
+    get {_storage._rf5GhzStatus ?? SpaceX_API_Device_WifiBandStatus()}
+    set {_uniqueStorage()._rf5GhzStatus = newValue}
+  }
+  /// Returns true if `rf5GhzStatus` has been explicitly set.
+  var hasRf5GhzStatus: Bool {_storage._rf5GhzStatus != nil}
+  /// Clears the value of `rf5GhzStatus`. Subsequent reads from it will return its default value.
+  mutating func clearRf5GhzStatus() {_uniqueStorage()._rf5GhzStatus = nil}
+
+  var alerts: SpaceX_API_Device_WifiAlerts {
+    get {_storage._alerts ?? SpaceX_API_Device_WifiAlerts()}
+    set {_uniqueStorage()._alerts = newValue}
+  }
+  /// Returns true if `alerts` has been explicitly set.
+  var hasAlerts: Bool {_storage._alerts != nil}
+  /// Clears the value of `alerts`. Subsequent reads from it will return its default value.
+  mutating func clearAlerts() {_uniqueStorage()._alerts = nil}
+
+  var isAviation: Bool {
+    get {_storage._isAviation}
+    set {_uniqueStorage()._isAviation = newValue}
+  }
+
+  var config: SpaceX_API_Device_WifiConfig {
+    get {_storage._config ?? SpaceX_API_Device_WifiConfig()}
+    set {_uniqueStorage()._config = newValue}
+  }
+  /// Returns true if `config` has been explicitly set.
+  var hasConfig: Bool {_storage._config != nil}
+  /// Clears the value of `config`. Subsequent reads from it will return its default value.
+  mutating func clearConfig() {_uniqueStorage()._config = nil}
+
+  var clients: [SpaceX_API_Device_WifiClient] {
+    get {_storage._clients}
+    set {_uniqueStorage()._clients = newValue}
+  }
+
+  var hasClientIndex_p: Bool {
+    get {_storage._hasClientIndex_p}
+    set {_uniqueStorage()._hasClientIndex_p = newValue}
+  }
+
+  var clientIndex: Int32 {
+    get {_storage._clientIndex}
+    set {_uniqueStorage()._clientIndex = newValue}
+  }
+
+  var isAviationConformed: Bool {
+    get {_storage._isAviationConformed}
+    set {_uniqueStorage()._isAviationConformed = newValue}
+  }
+
+  var radiusStats: SpaceX_API_Device_RadiusStatsMap {
+    get {_storage._radiusStats ?? SpaceX_API_Device_RadiusStatsMap()}
+    set {_uniqueStorage()._radiusStats = newValue}
+  }
+  /// Returns true if `radiusStats` has been explicitly set.
+  var hasRadiusStats: Bool {_storage._radiusStats != nil}
+  /// Clears the value of `radiusStats`. Subsequent reads from it will return its default value.
+  mutating func clearRadiusStats() {_uniqueStorage()._radiusStats = nil}
+
+  var dhcpServers: [SpaceX_API_Device_DhcpServer] {
+    get {_storage._dhcpServers}
+    set {_uniqueStorage()._dhcpServers = newValue}
+  }
+
+  var poeStats: SpaceX_API_Device_PoeStats {
+    get {_storage._poeStats ?? SpaceX_API_Device_PoeStats()}
+    set {_uniqueStorage()._poeStats = newValue}
+  }
+  /// Returns true if `poeStats` has been explicitly set.
+  var hasPoeStats: Bool {_storage._poeStats != nil}
+  /// Clears the value of `poeStats`. Subsequent reads from it will return its default value.
+  mutating func clearPoeStats() {_uniqueStorage()._poeStats = nil}
+
+  var dishID: String {
+    get {_storage._dishID}
+    set {_uniqueStorage()._dishID = newValue}
+  }
+
+  var dishDisablementCode: SpaceX_API_Satellites_Network_UtDisablementCode {
+    get {_storage._dishDisablementCode}
+    set {_uniqueStorage()._dishDisablementCode = newValue}
+  }
+
+  var utcNs: Int64 {
+    get {_storage._utcNs}
+    set {_uniqueStorage()._utcNs = newValue}
+  }
+
+  var softwareUpdateStats: SpaceX_API_Device_WifiSoftwareUpdateStats {
+    get {_storage._softwareUpdateStats ?? SpaceX_API_Device_WifiSoftwareUpdateStats()}
+    set {_uniqueStorage()._softwareUpdateStats = newValue}
+  }
+  /// Returns true if `softwareUpdateStats` has been explicitly set.
+  var hasSoftwareUpdateStats: Bool {_storage._softwareUpdateStats != nil}
+  /// Clears the value of `softwareUpdateStats`. Subsequent reads from it will return its default value.
+  mutating func clearSoftwareUpdateStats() {_uniqueStorage()._softwareUpdateStats = nil}
+
+  var setupRequirement: SpaceX_API_Device_WifiSetupRequirement {
+    get {_storage._setupRequirement ?? SpaceX_API_Device_WifiSetupRequirement()}
+    set {_uniqueStorage()._setupRequirement = newValue}
+  }
+  /// Returns true if `setupRequirement` has been explicitly set.
+  var hasSetupRequirement: Bool {_storage._setupRequirement != nil}
+  /// Clears the value of `setupRequirement`. Subsequent reads from it will return its default value.
+  mutating func clearSetupRequirement() {_uniqueStorage()._setupRequirement = nil}
+
+  var secsSinceLastPublicIpv4Change: Float {
+    get {_storage._secsSinceLastPublicIpv4Change}
+    set {_uniqueStorage()._secsSinceLastPublicIpv4Change = newValue}
+  }
+
+  var usingIndividualizedCalibration: Bool {
+    get {_storage._usingIndividualizedCalibration}
+    set {_uniqueStorage()._usingIndividualizedCalibration = newValue}
+  }
+
+  var calibrationPartitionsState: SpaceX_API_Device_CalibrationPartitionsState {
+    get {_storage._calibrationPartitionsState}
+    set {_uniqueStorage()._calibrationPartitionsState = newValue}
+  }
+
+  var noWanLink: Bool {
+    get {_storage._noWanLink}
+    set {_uniqueStorage()._noWanLink = newValue}
+  }
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  fileprivate var _storage = _StorageClass.defaultInstance
+}
+
+nonisolated struct SpaceX_API_Device_WifiAuthenticateRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   var challenge: SpaceX_API_Device_SignedData {
-    get {return _challenge ?? SpaceX_API_Device_SignedData()}
+    get {_challenge ?? SpaceX_API_Device_SignedData()}
     set {_challenge = newValue}
   }
   /// Returns true if `challenge` has been explicitly set.
-  var hasChallenge: Bool {return self._challenge != nil}
+  var hasChallenge: Bool {self._challenge != nil}
   /// Clears the value of `challenge`. Subsequent reads from it will return its default value.
   mutating func clearChallenge() {self._challenge = nil}
 
@@ -1453,26 +1905,26 @@ struct SpaceX_API_Device_WifiAuthenticateRequest: Sendable {
   fileprivate var _challenge: SpaceX_API_Device_SignedData? = nil
 }
 
-struct SpaceX_API_Device_WifiAuthenticateResponse: Sendable {
+nonisolated struct SpaceX_API_Device_WifiAuthenticateResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   var wifi: SpaceX_API_Device_ChallengeResponse {
-    get {return _wifi ?? SpaceX_API_Device_ChallengeResponse()}
+    get {_wifi ?? SpaceX_API_Device_ChallengeResponse()}
     set {_wifi = newValue}
   }
   /// Returns true if `wifi` has been explicitly set.
-  var hasWifi: Bool {return self._wifi != nil}
+  var hasWifi: Bool {self._wifi != nil}
   /// Clears the value of `wifi`. Subsequent reads from it will return its default value.
   mutating func clearWifi() {self._wifi = nil}
 
   var dish: SpaceX_API_Device_ChallengeResponse {
-    get {return _dish ?? SpaceX_API_Device_ChallengeResponse()}
+    get {_dish ?? SpaceX_API_Device_ChallengeResponse()}
     set {_dish = newValue}
   }
   /// Returns true if `dish` has been explicitly set.
-  var hasDish: Bool {return self._dish != nil}
+  var hasDish: Bool {self._dish != nil}
   /// Clears the value of `dish`. Subsequent reads from it will return its default value.
   mutating func clearDish() {self._dish = nil}
 
@@ -1484,7 +1936,7 @@ struct SpaceX_API_Device_WifiAuthenticateResponse: Sendable {
   fileprivate var _dish: SpaceX_API_Device_ChallengeResponse? = nil
 }
 
-struct SpaceX_API_Device_WifiAccountBondingEvent: Sendable {
+nonisolated struct SpaceX_API_Device_WifiAccountBondingEvent: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1500,7 +1952,7 @@ struct SpaceX_API_Device_WifiAccountBondingEvent: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiNewPeerEvent: Sendable {
+nonisolated struct SpaceX_API_Device_WifiNewPeerEvent: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1512,104 +1964,104 @@ struct SpaceX_API_Device_WifiNewPeerEvent: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_PingMetrics: @unchecked Sendable {
+nonisolated struct SpaceX_API_Device_PingMetrics: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   var latencyMeanMs: Float {
-    get {return _storage._latencyMeanMs}
+    get {_storage._latencyMeanMs}
     set {_uniqueStorage()._latencyMeanMs = newValue}
   }
 
   var latencyStddevMs: Float {
-    get {return _storage._latencyStddevMs}
+    get {_storage._latencyStddevMs}
     set {_uniqueStorage()._latencyStddevMs = newValue}
   }
 
   var latencyMeanMs5M: Float {
-    get {return _storage._latencyMeanMs5M}
+    get {_storage._latencyMeanMs5M}
     set {_uniqueStorage()._latencyMeanMs5M = newValue}
   }
 
   var latencyMeanMs1H: Float {
-    get {return _storage._latencyMeanMs1H}
+    get {_storage._latencyMeanMs1H}
     set {_uniqueStorage()._latencyMeanMs1H = newValue}
   }
 
   /// NOTE: This field was marked as deprecated in the .proto file.
   var latencyMeanMs1D: Float {
-    get {return _storage._latencyMeanMs1D}
+    get {_storage._latencyMeanMs1D}
     set {_uniqueStorage()._latencyMeanMs1D = newValue}
   }
 
   var dropRate: Float {
-    get {return _storage._dropRate}
+    get {_storage._dropRate}
     set {_uniqueStorage()._dropRate = newValue}
   }
 
   var dropRate5M: Float {
-    get {return _storage._dropRate5M}
+    get {_storage._dropRate5M}
     set {_uniqueStorage()._dropRate5M = newValue}
   }
 
   var dropRate1H: Float {
-    get {return _storage._dropRate1H}
+    get {_storage._dropRate1H}
     set {_uniqueStorage()._dropRate1H = newValue}
   }
 
   var dropRate1D: Float {
-    get {return _storage._dropRate1D}
+    get {_storage._dropRate1D}
     set {_uniqueStorage()._dropRate1D = newValue}
   }
 
   var secondsSinceLastSuccess: Float {
-    get {return _storage._secondsSinceLastSuccess}
+    get {_storage._secondsSinceLastSuccess}
     set {_uniqueStorage()._secondsSinceLastSuccess = newValue}
   }
 
   var secondsSinceLast1SOutage: Float {
-    get {return _storage._secondsSinceLast1SOutage}
+    get {_storage._secondsSinceLast1SOutage}
     set {_uniqueStorage()._secondsSinceLast1SOutage = newValue}
   }
 
   var secondsSinceLast2SOutage: Float {
-    get {return _storage._secondsSinceLast2SOutage}
+    get {_storage._secondsSinceLast2SOutage}
     set {_uniqueStorage()._secondsSinceLast2SOutage = newValue}
   }
 
   var secondsSinceLast5SOutage: Float {
-    get {return _storage._secondsSinceLast5SOutage}
+    get {_storage._secondsSinceLast5SOutage}
     set {_uniqueStorage()._secondsSinceLast5SOutage = newValue}
   }
 
   var secondsSinceLast15SOutage: Float {
-    get {return _storage._secondsSinceLast15SOutage}
+    get {_storage._secondsSinceLast15SOutage}
     set {_uniqueStorage()._secondsSinceLast15SOutage = newValue}
   }
 
   var secondsSinceLast60SOutage: Float {
-    get {return _storage._secondsSinceLast60SOutage}
+    get {_storage._secondsSinceLast60SOutage}
     set {_uniqueStorage()._secondsSinceLast60SOutage = newValue}
   }
 
   var secondsSinceLast300SOutage: Float {
-    get {return _storage._secondsSinceLast300SOutage}
+    get {_storage._secondsSinceLast300SOutage}
     set {_uniqueStorage()._secondsSinceLast300SOutage = newValue}
   }
 
   var happyHours1S1D: Float {
-    get {return _storage._happyHours1S1D}
+    get {_storage._happyHours1S1D}
     set {_uniqueStorage()._happyHours1S1D = newValue}
   }
 
   var happyHours2S1D: Float {
-    get {return _storage._happyHours2S1D}
+    get {_storage._happyHours2S1D}
     set {_uniqueStorage()._happyHours2S1D = newValue}
   }
 
   var happyHours5S1D: Float {
-    get {return _storage._happyHours5S1D}
+    get {_storage._happyHours5S1D}
     set {_uniqueStorage()._happyHours5S1D = newValue}
   }
 
@@ -1620,7 +2072,7 @@ struct SpaceX_API_Device_PingMetrics: @unchecked Sendable {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-struct SpaceX_API_Device_WifiGetPingMetricsRequest: Sendable {
+nonisolated struct SpaceX_API_Device_WifiGetPingMetricsRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1630,17 +2082,17 @@ struct SpaceX_API_Device_WifiGetPingMetricsRequest: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiGetPingMetricsResponse: Sendable {
+nonisolated struct SpaceX_API_Device_WifiGetPingMetricsResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   var internet: SpaceX_API_Device_PingMetrics {
-    get {return _internet ?? SpaceX_API_Device_PingMetrics()}
+    get {_internet ?? SpaceX_API_Device_PingMetrics()}
     set {_internet = newValue}
   }
   /// Returns true if `internet` has been explicitly set.
-  var hasInternet: Bool {return self._internet != nil}
+  var hasInternet: Bool {self._internet != nil}
   /// Clears the value of `internet`. Subsequent reads from it will return its default value.
   mutating func clearInternet() {self._internet = nil}
 
@@ -1651,7 +2103,7 @@ struct SpaceX_API_Device_WifiGetPingMetricsResponse: Sendable {
   fileprivate var _internet: SpaceX_API_Device_PingMetrics? = nil
 }
 
-struct SpaceX_API_Device_WifiNetwork: Sendable {
+nonisolated struct SpaceX_API_Device_WifiNetwork: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1666,7 +2118,7 @@ struct SpaceX_API_Device_WifiNetwork: Sendable {
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  enum Band: SwiftProtobuf.Enum, Swift.CaseIterable {
+  nonisolated enum Band: SwiftProtobuf.Enum, Swift.CaseIterable {
     typealias RawValue = Int
     case wifiUnknown // = 0
     case wifi24Ghz // = 1
@@ -1707,59 +2159,59 @@ struct SpaceX_API_Device_WifiNetwork: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiPersistentStats: Sendable {
+nonisolated struct SpaceX_API_Device_WifiPersistentStats: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   var factoryResetButton: SpaceX_API_Device_WifiPersistentStats.Event {
-    get {return _factoryResetButton ?? SpaceX_API_Device_WifiPersistentStats.Event()}
+    get {_factoryResetButton ?? SpaceX_API_Device_WifiPersistentStats.Event()}
     set {_factoryResetButton = newValue}
   }
   /// Returns true if `factoryResetButton` has been explicitly set.
-  var hasFactoryResetButton: Bool {return self._factoryResetButton != nil}
+  var hasFactoryResetButton: Bool {self._factoryResetButton != nil}
   /// Clears the value of `factoryResetButton`. Subsequent reads from it will return its default value.
   mutating func clearFactoryResetButton() {self._factoryResetButton = nil}
 
   var factoryResetPlugUnplug: SpaceX_API_Device_WifiPersistentStats.Event {
-    get {return _factoryResetPlugUnplug ?? SpaceX_API_Device_WifiPersistentStats.Event()}
+    get {_factoryResetPlugUnplug ?? SpaceX_API_Device_WifiPersistentStats.Event()}
     set {_factoryResetPlugUnplug = newValue}
   }
   /// Returns true if `factoryResetPlugUnplug` has been explicitly set.
-  var hasFactoryResetPlugUnplug: Bool {return self._factoryResetPlugUnplug != nil}
+  var hasFactoryResetPlugUnplug: Bool {self._factoryResetPlugUnplug != nil}
   /// Clears the value of `factoryResetPlugUnplug`. Subsequent reads from it will return its default value.
   mutating func clearFactoryResetPlugUnplug() {self._factoryResetPlugUnplug = nil}
 
   var factoryResetCommand: SpaceX_API_Device_WifiPersistentStats.Event {
-    get {return _factoryResetCommand ?? SpaceX_API_Device_WifiPersistentStats.Event()}
+    get {_factoryResetCommand ?? SpaceX_API_Device_WifiPersistentStats.Event()}
     set {_factoryResetCommand = newValue}
   }
   /// Returns true if `factoryResetCommand` has been explicitly set.
-  var hasFactoryResetCommand: Bool {return self._factoryResetCommand != nil}
+  var hasFactoryResetCommand: Bool {self._factoryResetCommand != nil}
   /// Clears the value of `factoryResetCommand`. Subsequent reads from it will return its default value.
   mutating func clearFactoryResetCommand() {self._factoryResetCommand = nil}
 
   var factoryResetFailedLoadWifiConfig: SpaceX_API_Device_WifiPersistentStats.Event {
-    get {return _factoryResetFailedLoadWifiConfig ?? SpaceX_API_Device_WifiPersistentStats.Event()}
+    get {_factoryResetFailedLoadWifiConfig ?? SpaceX_API_Device_WifiPersistentStats.Event()}
     set {_factoryResetFailedLoadWifiConfig = newValue}
   }
   /// Returns true if `factoryResetFailedLoadWifiConfig` has been explicitly set.
-  var hasFactoryResetFailedLoadWifiConfig: Bool {return self._factoryResetFailedLoadWifiConfig != nil}
+  var hasFactoryResetFailedLoadWifiConfig: Bool {self._factoryResetFailedLoadWifiConfig != nil}
   /// Clears the value of `factoryResetFailedLoadWifiConfig`. Subsequent reads from it will return its default value.
   mutating func clearFactoryResetFailedLoadWifiConfig() {self._factoryResetFailedLoadWifiConfig = nil}
 
   var rebootFromSoftwareUpdate: SpaceX_API_Device_WifiPersistentStats.Event {
-    get {return _rebootFromSoftwareUpdate ?? SpaceX_API_Device_WifiPersistentStats.Event()}
+    get {_rebootFromSoftwareUpdate ?? SpaceX_API_Device_WifiPersistentStats.Event()}
     set {_rebootFromSoftwareUpdate = newValue}
   }
   /// Returns true if `rebootFromSoftwareUpdate` has been explicitly set.
-  var hasRebootFromSoftwareUpdate: Bool {return self._rebootFromSoftwareUpdate != nil}
+  var hasRebootFromSoftwareUpdate: Bool {self._rebootFromSoftwareUpdate != nil}
   /// Clears the value of `rebootFromSoftwareUpdate`. Subsequent reads from it will return its default value.
   mutating func clearRebootFromSoftwareUpdate() {self._rebootFromSoftwareUpdate = nil}
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  struct Event: Sendable {
+  nonisolated struct Event: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -1782,17 +2234,17 @@ struct SpaceX_API_Device_WifiPersistentStats: Sendable {
   fileprivate var _rebootFromSoftwareUpdate: SpaceX_API_Device_WifiPersistentStats.Event? = nil
 }
 
-struct SpaceX_API_Device_WifiGetPersistentStatsResponse: Sendable {
+nonisolated struct SpaceX_API_Device_WifiGetPersistentStatsResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   var stats: SpaceX_API_Device_WifiPersistentStats {
-    get {return _stats ?? SpaceX_API_Device_WifiPersistentStats()}
+    get {_stats ?? SpaceX_API_Device_WifiPersistentStats()}
     set {_stats = newValue}
   }
   /// Returns true if `stats` has been explicitly set.
-  var hasStats: Bool {return self._stats != nil}
+  var hasStats: Bool {self._stats != nil}
   /// Clears the value of `stats`. Subsequent reads from it will return its default value.
   mutating func clearStats() {self._stats = nil}
 
@@ -1803,7 +2255,7 @@ struct SpaceX_API_Device_WifiGetPersistentStatsResponse: Sendable {
   fileprivate var _stats: SpaceX_API_Device_WifiPersistentStats? = nil
 }
 
-struct SpaceX_API_Device_RadioStats: Sendable {
+nonisolated struct SpaceX_API_Device_RadioStats: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1811,44 +2263,44 @@ struct SpaceX_API_Device_RadioStats: Sendable {
   var band: SpaceX_API_Device_WifiConfig.Band = .rfUnknown
 
   var rxStats: SpaceX_API_Device_NetworkInterface.RxStats {
-    get {return _rxStats ?? SpaceX_API_Device_NetworkInterface.RxStats()}
+    get {_rxStats ?? SpaceX_API_Device_NetworkInterface.RxStats()}
     set {_rxStats = newValue}
   }
   /// Returns true if `rxStats` has been explicitly set.
-  var hasRxStats: Bool {return self._rxStats != nil}
+  var hasRxStats: Bool {self._rxStats != nil}
   /// Clears the value of `rxStats`. Subsequent reads from it will return its default value.
   mutating func clearRxStats() {self._rxStats = nil}
 
   var txStats: SpaceX_API_Device_NetworkInterface.TxStats {
-    get {return _txStats ?? SpaceX_API_Device_NetworkInterface.TxStats()}
+    get {_txStats ?? SpaceX_API_Device_NetworkInterface.TxStats()}
     set {_txStats = newValue}
   }
   /// Returns true if `txStats` has been explicitly set.
-  var hasTxStats: Bool {return self._txStats != nil}
+  var hasTxStats: Bool {self._txStats != nil}
   /// Clears the value of `txStats`. Subsequent reads from it will return its default value.
   mutating func clearTxStats() {self._txStats = nil}
 
   var thermalStatus: SpaceX_API_Device_RadioStats.ThermalStatus {
-    get {return _thermalStatus ?? SpaceX_API_Device_RadioStats.ThermalStatus()}
+    get {_thermalStatus ?? SpaceX_API_Device_RadioStats.ThermalStatus()}
     set {_thermalStatus = newValue}
   }
   /// Returns true if `thermalStatus` has been explicitly set.
-  var hasThermalStatus: Bool {return self._thermalStatus != nil}
+  var hasThermalStatus: Bool {self._thermalStatus != nil}
   /// Clears the value of `thermalStatus`. Subsequent reads from it will return its default value.
   mutating func clearThermalStatus() {self._thermalStatus = nil}
 
   var antennaStatus: SpaceX_API_Device_RadioStats.AntennaStatus {
-    get {return _antennaStatus ?? SpaceX_API_Device_RadioStats.AntennaStatus()}
+    get {_antennaStatus ?? SpaceX_API_Device_RadioStats.AntennaStatus()}
     set {_antennaStatus = newValue}
   }
   /// Returns true if `antennaStatus` has been explicitly set.
-  var hasAntennaStatus: Bool {return self._antennaStatus != nil}
+  var hasAntennaStatus: Bool {self._antennaStatus != nil}
   /// Clears the value of `antennaStatus`. Subsequent reads from it will return its default value.
   mutating func clearAntennaStatus() {self._antennaStatus = nil}
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  struct ThermalStatus: Sendable {
+  nonisolated struct ThermalStatus: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -1869,7 +2321,7 @@ struct SpaceX_API_Device_RadioStats: Sendable {
     init() {}
   }
 
-  struct AntennaStatus: Sendable {
+  nonisolated struct AntennaStatus: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -1895,2116 +2347,2676 @@ struct SpaceX_API_Device_RadioStats: Sendable {
   fileprivate var _antennaStatus: SpaceX_API_Device_RadioStats.AntennaStatus? = nil
 }
 
-struct SpaceX_API_Device_starlink_routers_hourly_metrics_v2: @unchecked Sendable {
+nonisolated struct SpaceX_API_Device_starlink_routers_hourly_metrics_v2: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   var id: SwiftProtobuf.Google_Protobuf_StringValue {
-    get {return _storage._id ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    get {_storage._id ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._id = newValue}
   }
   /// Returns true if `id` has been explicitly set.
-  var hasID: Bool {return _storage._id != nil}
+  var hasID: Bool {_storage._id != nil}
   /// Clears the value of `id`. Subsequent reads from it will return its default value.
   mutating func clearID() {_uniqueStorage()._id = nil}
 
   var timestampDate: SwiftProtobuf.Google_Protobuf_StringValue {
-    get {return _storage._timestampDate ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    get {_storage._timestampDate ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._timestampDate = newValue}
   }
   /// Returns true if `timestampDate` has been explicitly set.
-  var hasTimestampDate: Bool {return _storage._timestampDate != nil}
+  var hasTimestampDate: Bool {_storage._timestampDate != nil}
   /// Clears the value of `timestampDate`. Subsequent reads from it will return its default value.
   mutating func clearTimestampDate() {_uniqueStorage()._timestampDate = nil}
 
   var timestampHour: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._timestampHour ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._timestampHour ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._timestampHour = newValue}
   }
   /// Returns true if `timestampHour` has been explicitly set.
-  var hasTimestampHour: Bool {return _storage._timestampHour != nil}
+  var hasTimestampHour: Bool {_storage._timestampHour != nil}
   /// Clears the value of `timestampHour`. Subsequent reads from it will return its default value.
   mutating func clearTimestampHour() {_uniqueStorage()._timestampHour = nil}
 
   var timestamp: SpaceX_API_Telemetron_Public_Common_TimestampInfo {
-    get {return _storage._timestamp ?? SpaceX_API_Telemetron_Public_Common_TimestampInfo()}
+    get {_storage._timestamp ?? SpaceX_API_Telemetron_Public_Common_TimestampInfo()}
     set {_uniqueStorage()._timestamp = newValue}
   }
   /// Returns true if `timestamp` has been explicitly set.
-  var hasTimestamp: Bool {return _storage._timestamp != nil}
+  var hasTimestamp: Bool {_storage._timestamp != nil}
   /// Clears the value of `timestamp`. Subsequent reads from it will return its default value.
   mutating func clearTimestamp() {_uniqueStorage()._timestamp = nil}
 
   var sysHwGen: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._sysHwGen ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._sysHwGen ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._sysHwGen = newValue}
   }
   /// Returns true if `sysHwGen` has been explicitly set.
-  var hasSysHwGen: Bool {return _storage._sysHwGen != nil}
+  var hasSysHwGen: Bool {_storage._sysHwGen != nil}
   /// Clears the value of `sysHwGen`. Subsequent reads from it will return its default value.
   mutating func clearSysHwGen() {_uniqueStorage()._sysHwGen = nil}
 
+  var sysHwIndex: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._sysHwIndex ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._sysHwIndex = newValue}
+  }
+  /// Returns true if `sysHwIndex` has been explicitly set.
+  var hasSysHwIndex: Bool {_storage._sysHwIndex != nil}
+  /// Clears the value of `sysHwIndex`. Subsequent reads from it will return its default value.
+  mutating func clearSysHwIndex() {_uniqueStorage()._sysHwIndex = nil}
+
   var sysSw: SwiftProtobuf.Google_Protobuf_StringValue {
-    get {return _storage._sysSw ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    get {_storage._sysSw ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._sysSw = newValue}
   }
   /// Returns true if `sysSw` has been explicitly set.
-  var hasSysSw: Bool {return _storage._sysSw != nil}
+  var hasSysSw: Bool {_storage._sysSw != nil}
   /// Clears the value of `sysSw`. Subsequent reads from it will return its default value.
   mutating func clearSysSw() {_uniqueStorage()._sysSw = nil}
 
   var sysCountry: SwiftProtobuf.Google_Protobuf_StringValue {
-    get {return _storage._sysCountry ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    get {_storage._sysCountry ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._sysCountry = newValue}
   }
   /// Returns true if `sysCountry` has been explicitly set.
-  var hasSysCountry: Bool {return _storage._sysCountry != nil}
+  var hasSysCountry: Bool {_storage._sysCountry != nil}
   /// Clears the value of `sysCountry`. Subsequent reads from it will return its default value.
   mutating func clearSysCountry() {_uniqueStorage()._sysCountry = nil}
 
   var sysIsDev: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._sysIsDev ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._sysIsDev ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._sysIsDev = newValue}
   }
   /// Returns true if `sysIsDev` has been explicitly set.
-  var hasSysIsDev: Bool {return _storage._sysIsDev != nil}
+  var hasSysIsDev: Bool {_storage._sysIsDev != nil}
   /// Clears the value of `sysIsDev`. Subsequent reads from it will return its default value.
   mutating func clearSysIsDev() {_uniqueStorage()._sysIsDev = nil}
 
   var sysAllocFds: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._sysAllocFds ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._sysAllocFds ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._sysAllocFds = newValue}
   }
   /// Returns true if `sysAllocFds` has been explicitly set.
-  var hasSysAllocFds: Bool {return _storage._sysAllocFds != nil}
+  var hasSysAllocFds: Bool {_storage._sysAllocFds != nil}
   /// Clears the value of `sysAllocFds`. Subsequent reads from it will return its default value.
   mutating func clearSysAllocFds() {_uniqueStorage()._sysAllocFds = nil}
 
   var sysCpuUsage: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._sysCpuUsage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._sysCpuUsage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._sysCpuUsage = newValue}
   }
   /// Returns true if `sysCpuUsage` has been explicitly set.
-  var hasSysCpuUsage: Bool {return _storage._sysCpuUsage != nil}
+  var hasSysCpuUsage: Bool {_storage._sysCpuUsage != nil}
   /// Clears the value of `sysCpuUsage`. Subsequent reads from it will return its default value.
   mutating func clearSysCpuUsage() {_uniqueStorage()._sysCpuUsage = nil}
 
   var sysMemFreeKb: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._sysMemFreeKb ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._sysMemFreeKb ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._sysMemFreeKb = newValue}
   }
   /// Returns true if `sysMemFreeKb` has been explicitly set.
-  var hasSysMemFreeKb: Bool {return _storage._sysMemFreeKb != nil}
+  var hasSysMemFreeKb: Bool {_storage._sysMemFreeKb != nil}
   /// Clears the value of `sysMemFreeKb`. Subsequent reads from it will return its default value.
   mutating func clearSysMemFreeKb() {_uniqueStorage()._sysMemFreeKb = nil}
 
   var sysBootcount: SwiftProtobuf.Google_Protobuf_Int32Value {
-    get {return _storage._sysBootcount ?? SwiftProtobuf.Google_Protobuf_Int32Value()}
+    get {_storage._sysBootcount ?? SwiftProtobuf.Google_Protobuf_Int32Value()}
     set {_uniqueStorage()._sysBootcount = newValue}
   }
   /// Returns true if `sysBootcount` has been explicitly set.
-  var hasSysBootcount: Bool {return _storage._sysBootcount != nil}
+  var hasSysBootcount: Bool {_storage._sysBootcount != nil}
   /// Clears the value of `sysBootcount`. Subsequent reads from it will return its default value.
   mutating func clearSysBootcount() {_uniqueStorage()._sysBootcount = nil}
 
   var sysPartitionsEqual: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._sysPartitionsEqual ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._sysPartitionsEqual ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._sysPartitionsEqual = newValue}
   }
   /// Returns true if `sysPartitionsEqual` has been explicitly set.
-  var hasSysPartitionsEqual: Bool {return _storage._sysPartitionsEqual != nil}
+  var hasSysPartitionsEqual: Bool {_storage._sysPartitionsEqual != nil}
   /// Clears the value of `sysPartitionsEqual`. Subsequent reads from it will return its default value.
   mutating func clearSysPartitionsEqual() {_uniqueStorage()._sysPartitionsEqual = nil}
 
   var sysUptimeSeconds: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._sysUptimeSeconds ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._sysUptimeSeconds ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._sysUptimeSeconds = newValue}
   }
   /// Returns true if `sysUptimeSeconds` has been explicitly set.
-  var hasSysUptimeSeconds: Bool {return _storage._sysUptimeSeconds != nil}
+  var hasSysUptimeSeconds: Bool {_storage._sysUptimeSeconds != nil}
   /// Clears the value of `sysUptimeSeconds`. Subsequent reads from it will return its default value.
   mutating func clearSysUptimeSeconds() {_uniqueStorage()._sysUptimeSeconds = nil}
 
   var sysAntiRollbackVersion: SwiftProtobuf.Google_Protobuf_Int32Value {
-    get {return _storage._sysAntiRollbackVersion ?? SwiftProtobuf.Google_Protobuf_Int32Value()}
+    get {_storage._sysAntiRollbackVersion ?? SwiftProtobuf.Google_Protobuf_Int32Value()}
     set {_uniqueStorage()._sysAntiRollbackVersion = newValue}
   }
   /// Returns true if `sysAntiRollbackVersion` has been explicitly set.
-  var hasSysAntiRollbackVersion: Bool {return _storage._sysAntiRollbackVersion != nil}
+  var hasSysAntiRollbackVersion: Bool {_storage._sysAntiRollbackVersion != nil}
   /// Clears the value of `sysAntiRollbackVersion`. Subsequent reads from it will return its default value.
   mutating func clearSysAntiRollbackVersion() {_uniqueStorage()._sysAntiRollbackVersion = nil}
 
   var sysIsWitl: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._sysIsWitl ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._sysIsWitl ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._sysIsWitl = newValue}
   }
   /// Returns true if `sysIsWitl` has been explicitly set.
-  var hasSysIsWitl: Bool {return _storage._sysIsWitl != nil}
+  var hasSysIsWitl: Bool {_storage._sysIsWitl != nil}
   /// Clears the value of `sysIsWitl`. Subsequent reads from it will return its default value.
   mutating func clearSysIsWitl() {_uniqueStorage()._sysIsWitl = nil}
 
   var sysIsAviationConformed: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._sysIsAviationConformed ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._sysIsAviationConformed ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._sysIsAviationConformed = newValue}
   }
   /// Returns true if `sysIsAviationConformed` has been explicitly set.
-  var hasSysIsAviationConformed: Bool {return _storage._sysIsAviationConformed != nil}
+  var hasSysIsAviationConformed: Bool {_storage._sysIsAviationConformed != nil}
   /// Clears the value of `sysIsAviationConformed`. Subsequent reads from it will return its default value.
   mutating func clearSysIsAviationConformed() {_uniqueStorage()._sysIsAviationConformed = nil}
 
   var sysUbiMaxEc: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._sysUbiMaxEc ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._sysUbiMaxEc ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._sysUbiMaxEc = newValue}
   }
   /// Returns true if `sysUbiMaxEc` has been explicitly set.
-  var hasSysUbiMaxEc: Bool {return _storage._sysUbiMaxEc != nil}
+  var hasSysUbiMaxEc: Bool {_storage._sysUbiMaxEc != nil}
   /// Clears the value of `sysUbiMaxEc`. Subsequent reads from it will return its default value.
   mutating func clearSysUbiMaxEc() {_uniqueStorage()._sysUbiMaxEc = nil}
 
   var sysUbiBadPeb: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._sysUbiBadPeb ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._sysUbiBadPeb ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._sysUbiBadPeb = newValue}
   }
   /// Returns true if `sysUbiBadPeb` has been explicitly set.
-  var hasSysUbiBadPeb: Bool {return _storage._sysUbiBadPeb != nil}
+  var hasSysUbiBadPeb: Bool {_storage._sysUbiBadPeb != nil}
   /// Clears the value of `sysUbiBadPeb`. Subsequent reads from it will return its default value.
   mutating func clearSysUbiBadPeb() {_uniqueStorage()._sysUbiBadPeb = nil}
 
   var sysBoardRev: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._sysBoardRev ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._sysBoardRev ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._sysBoardRev = newValue}
   }
   /// Returns true if `sysBoardRev` has been explicitly set.
-  var hasSysBoardRev: Bool {return _storage._sysBoardRev != nil}
+  var hasSysBoardRev: Bool {_storage._sysBoardRev != nil}
   /// Clears the value of `sysBoardRev`. Subsequent reads from it will return its default value.
   mutating func clearSysBoardRev() {_uniqueStorage()._sysBoardRev = nil}
 
+  var sysCalibrationState: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._sysCalibrationState ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._sysCalibrationState = newValue}
+  }
+  /// Returns true if `sysCalibrationState` has been explicitly set.
+  var hasSysCalibrationState: Bool {_storage._sysCalibrationState != nil}
+  /// Clears the value of `sysCalibrationState`. Subsequent reads from it will return its default value.
+  mutating func clearSysCalibrationState() {_uniqueStorage()._sysCalibrationState = nil}
+
+  var sysCalibrationPartitionsState: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._sysCalibrationPartitionsState ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._sysCalibrationPartitionsState = newValue}
+  }
+  /// Returns true if `sysCalibrationPartitionsState` has been explicitly set.
+  var hasSysCalibrationPartitionsState: Bool {_storage._sysCalibrationPartitionsState != nil}
+  /// Clears the value of `sysCalibrationPartitionsState`. Subsequent reads from it will return its default value.
+  mutating func clearSysCalibrationPartitionsState() {_uniqueStorage()._sysCalibrationPartitionsState = nil}
+
   var radios2GhzChannel: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radios2GhzChannel ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radios2GhzChannel ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radios2GhzChannel = newValue}
   }
   /// Returns true if `radios2GhzChannel` has been explicitly set.
-  var hasRadios2GhzChannel: Bool {return _storage._radios2GhzChannel != nil}
+  var hasRadios2GhzChannel: Bool {_storage._radios2GhzChannel != nil}
   /// Clears the value of `radios2GhzChannel`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzChannel() {_uniqueStorage()._radios2GhzChannel = nil}
 
   var radios2GhzAntenna1Rssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios2GhzAntenna1Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios2GhzAntenna1Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios2GhzAntenna1Rssi = newValue}
   }
   /// Returns true if `radios2GhzAntenna1Rssi` has been explicitly set.
-  var hasRadios2GhzAntenna1Rssi: Bool {return _storage._radios2GhzAntenna1Rssi != nil}
+  var hasRadios2GhzAntenna1Rssi: Bool {_storage._radios2GhzAntenna1Rssi != nil}
   /// Clears the value of `radios2GhzAntenna1Rssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzAntenna1Rssi() {_uniqueStorage()._radios2GhzAntenna1Rssi = nil}
 
   var radios2GhzAntenna2Rssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios2GhzAntenna2Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios2GhzAntenna2Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios2GhzAntenna2Rssi = newValue}
   }
   /// Returns true if `radios2GhzAntenna2Rssi` has been explicitly set.
-  var hasRadios2GhzAntenna2Rssi: Bool {return _storage._radios2GhzAntenna2Rssi != nil}
+  var hasRadios2GhzAntenna2Rssi: Bool {_storage._radios2GhzAntenna2Rssi != nil}
   /// Clears the value of `radios2GhzAntenna2Rssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzAntenna2Rssi() {_uniqueStorage()._radios2GhzAntenna2Rssi = nil}
 
   var radios2GhzAntenna3Rssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios2GhzAntenna3Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios2GhzAntenna3Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios2GhzAntenna3Rssi = newValue}
   }
   /// Returns true if `radios2GhzAntenna3Rssi` has been explicitly set.
-  var hasRadios2GhzAntenna3Rssi: Bool {return _storage._radios2GhzAntenna3Rssi != nil}
+  var hasRadios2GhzAntenna3Rssi: Bool {_storage._radios2GhzAntenna3Rssi != nil}
   /// Clears the value of `radios2GhzAntenna3Rssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzAntenna3Rssi() {_uniqueStorage()._radios2GhzAntenna3Rssi = nil}
 
   var radios2GhzAntenna4Rssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios2GhzAntenna4Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios2GhzAntenna4Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios2GhzAntenna4Rssi = newValue}
   }
   /// Returns true if `radios2GhzAntenna4Rssi` has been explicitly set.
-  var hasRadios2GhzAntenna4Rssi: Bool {return _storage._radios2GhzAntenna4Rssi != nil}
+  var hasRadios2GhzAntenna4Rssi: Bool {_storage._radios2GhzAntenna4Rssi != nil}
   /// Clears the value of `radios2GhzAntenna4Rssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzAntenna4Rssi() {_uniqueStorage()._radios2GhzAntenna4Rssi = nil}
 
   var radios2GhzAntenna1Tssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios2GhzAntenna1Tssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios2GhzAntenna1Tssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios2GhzAntenna1Tssi = newValue}
   }
   /// Returns true if `radios2GhzAntenna1Tssi` has been explicitly set.
-  var hasRadios2GhzAntenna1Tssi: Bool {return _storage._radios2GhzAntenna1Tssi != nil}
+  var hasRadios2GhzAntenna1Tssi: Bool {_storage._radios2GhzAntenna1Tssi != nil}
   /// Clears the value of `radios2GhzAntenna1Tssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzAntenna1Tssi() {_uniqueStorage()._radios2GhzAntenna1Tssi = nil}
 
   var radios2GhzAntenna2Tssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios2GhzAntenna2Tssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios2GhzAntenna2Tssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios2GhzAntenna2Tssi = newValue}
   }
   /// Returns true if `radios2GhzAntenna2Tssi` has been explicitly set.
-  var hasRadios2GhzAntenna2Tssi: Bool {return _storage._radios2GhzAntenna2Tssi != nil}
+  var hasRadios2GhzAntenna2Tssi: Bool {_storage._radios2GhzAntenna2Tssi != nil}
   /// Clears the value of `radios2GhzAntenna2Tssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzAntenna2Tssi() {_uniqueStorage()._radios2GhzAntenna2Tssi = nil}
 
   var radios2GhzAntenna3Tssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios2GhzAntenna3Tssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios2GhzAntenna3Tssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios2GhzAntenna3Tssi = newValue}
   }
   /// Returns true if `radios2GhzAntenna3Tssi` has been explicitly set.
-  var hasRadios2GhzAntenna3Tssi: Bool {return _storage._radios2GhzAntenna3Tssi != nil}
+  var hasRadios2GhzAntenna3Tssi: Bool {_storage._radios2GhzAntenna3Tssi != nil}
   /// Clears the value of `radios2GhzAntenna3Tssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzAntenna3Tssi() {_uniqueStorage()._radios2GhzAntenna3Tssi = nil}
 
   var radios2GhzAntenna4Tssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios2GhzAntenna4Tssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios2GhzAntenna4Tssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios2GhzAntenna4Tssi = newValue}
   }
   /// Returns true if `radios2GhzAntenna4Tssi` has been explicitly set.
-  var hasRadios2GhzAntenna4Tssi: Bool {return _storage._radios2GhzAntenna4Tssi != nil}
+  var hasRadios2GhzAntenna4Tssi: Bool {_storage._radios2GhzAntenna4Tssi != nil}
   /// Clears the value of `radios2GhzAntenna4Tssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzAntenna4Tssi() {_uniqueStorage()._radios2GhzAntenna4Tssi = nil}
 
   var radios2GhzIfaceCount: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radios2GhzIfaceCount ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radios2GhzIfaceCount ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radios2GhzIfaceCount = newValue}
   }
   /// Returns true if `radios2GhzIfaceCount` has been explicitly set.
-  var hasRadios2GhzIfaceCount: Bool {return _storage._radios2GhzIfaceCount != nil}
+  var hasRadios2GhzIfaceCount: Bool {_storage._radios2GhzIfaceCount != nil}
   /// Clears the value of `radios2GhzIfaceCount`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzIfaceCount() {_uniqueStorage()._radios2GhzIfaceCount = nil}
 
   var radios2GhzChanBusyFraction: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios2GhzChanBusyFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios2GhzChanBusyFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios2GhzChanBusyFraction = newValue}
   }
   /// Returns true if `radios2GhzChanBusyFraction` has been explicitly set.
-  var hasRadios2GhzChanBusyFraction: Bool {return _storage._radios2GhzChanBusyFraction != nil}
+  var hasRadios2GhzChanBusyFraction: Bool {_storage._radios2GhzChanBusyFraction != nil}
   /// Clears the value of `radios2GhzChanBusyFraction`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzChanBusyFraction() {_uniqueStorage()._radios2GhzChanBusyFraction = nil}
 
   var radios2GhzEdccaFraction: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios2GhzEdccaFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios2GhzEdccaFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios2GhzEdccaFraction = newValue}
   }
   /// Returns true if `radios2GhzEdccaFraction` has been explicitly set.
-  var hasRadios2GhzEdccaFraction: Bool {return _storage._radios2GhzEdccaFraction != nil}
+  var hasRadios2GhzEdccaFraction: Bool {_storage._radios2GhzEdccaFraction != nil}
   /// Clears the value of `radios2GhzEdccaFraction`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzEdccaFraction() {_uniqueStorage()._radios2GhzEdccaFraction = nil}
 
   var radios2GhzOverlappingBssFraction: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios2GhzOverlappingBssFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios2GhzOverlappingBssFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios2GhzOverlappingBssFraction = newValue}
   }
   /// Returns true if `radios2GhzOverlappingBssFraction` has been explicitly set.
-  var hasRadios2GhzOverlappingBssFraction: Bool {return _storage._radios2GhzOverlappingBssFraction != nil}
+  var hasRadios2GhzOverlappingBssFraction: Bool {_storage._radios2GhzOverlappingBssFraction != nil}
   /// Clears the value of `radios2GhzOverlappingBssFraction`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzOverlappingBssFraction() {_uniqueStorage()._radios2GhzOverlappingBssFraction = nil}
 
   var radios2GhzRxBytes: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._radios2GhzRxBytes ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._radios2GhzRxBytes ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._radios2GhzRxBytes = newValue}
   }
   /// Returns true if `radios2GhzRxBytes` has been explicitly set.
-  var hasRadios2GhzRxBytes: Bool {return _storage._radios2GhzRxBytes != nil}
+  var hasRadios2GhzRxBytes: Bool {_storage._radios2GhzRxBytes != nil}
   /// Clears the value of `radios2GhzRxBytes`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzRxBytes() {_uniqueStorage()._radios2GhzRxBytes = nil}
 
   var radios2GhzRxPackets: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._radios2GhzRxPackets ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._radios2GhzRxPackets ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._radios2GhzRxPackets = newValue}
   }
   /// Returns true if `radios2GhzRxPackets` has been explicitly set.
-  var hasRadios2GhzRxPackets: Bool {return _storage._radios2GhzRxPackets != nil}
+  var hasRadios2GhzRxPackets: Bool {_storage._radios2GhzRxPackets != nil}
   /// Clears the value of `radios2GhzRxPackets`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzRxPackets() {_uniqueStorage()._radios2GhzRxPackets = nil}
 
   var radios2GhzRxErrors: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._radios2GhzRxErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._radios2GhzRxErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._radios2GhzRxErrors = newValue}
   }
   /// Returns true if `radios2GhzRxErrors` has been explicitly set.
-  var hasRadios2GhzRxErrors: Bool {return _storage._radios2GhzRxErrors != nil}
+  var hasRadios2GhzRxErrors: Bool {_storage._radios2GhzRxErrors != nil}
   /// Clears the value of `radios2GhzRxErrors`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzRxErrors() {_uniqueStorage()._radios2GhzRxErrors = nil}
 
   var radios2GhzRxFrameErrors: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._radios2GhzRxFrameErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._radios2GhzRxFrameErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._radios2GhzRxFrameErrors = newValue}
   }
   /// Returns true if `radios2GhzRxFrameErrors` has been explicitly set.
-  var hasRadios2GhzRxFrameErrors: Bool {return _storage._radios2GhzRxFrameErrors != nil}
+  var hasRadios2GhzRxFrameErrors: Bool {_storage._radios2GhzRxFrameErrors != nil}
   /// Clears the value of `radios2GhzRxFrameErrors`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzRxFrameErrors() {_uniqueStorage()._radios2GhzRxFrameErrors = nil}
 
   var radios2GhzRxPacketErrorRate: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios2GhzRxPacketErrorRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios2GhzRxPacketErrorRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios2GhzRxPacketErrorRate = newValue}
   }
   /// Returns true if `radios2GhzRxPacketErrorRate` has been explicitly set.
-  var hasRadios2GhzRxPacketErrorRate: Bool {return _storage._radios2GhzRxPacketErrorRate != nil}
+  var hasRadios2GhzRxPacketErrorRate: Bool {_storage._radios2GhzRxPacketErrorRate != nil}
   /// Clears the value of `radios2GhzRxPacketErrorRate`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzRxPacketErrorRate() {_uniqueStorage()._radios2GhzRxPacketErrorRate = nil}
 
   var radios2GhzRxAirtimeFraction: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios2GhzRxAirtimeFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios2GhzRxAirtimeFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios2GhzRxAirtimeFraction = newValue}
   }
   /// Returns true if `radios2GhzRxAirtimeFraction` has been explicitly set.
-  var hasRadios2GhzRxAirtimeFraction: Bool {return _storage._radios2GhzRxAirtimeFraction != nil}
+  var hasRadios2GhzRxAirtimeFraction: Bool {_storage._radios2GhzRxAirtimeFraction != nil}
   /// Clears the value of `radios2GhzRxAirtimeFraction`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzRxAirtimeFraction() {_uniqueStorage()._radios2GhzRxAirtimeFraction = nil}
 
   var radios2GhzTxBytes: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._radios2GhzTxBytes ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._radios2GhzTxBytes ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._radios2GhzTxBytes = newValue}
   }
   /// Returns true if `radios2GhzTxBytes` has been explicitly set.
-  var hasRadios2GhzTxBytes: Bool {return _storage._radios2GhzTxBytes != nil}
+  var hasRadios2GhzTxBytes: Bool {_storage._radios2GhzTxBytes != nil}
   /// Clears the value of `radios2GhzTxBytes`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzTxBytes() {_uniqueStorage()._radios2GhzTxBytes = nil}
 
   var radios2GhzTxPackets: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._radios2GhzTxPackets ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._radios2GhzTxPackets ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._radios2GhzTxPackets = newValue}
   }
   /// Returns true if `radios2GhzTxPackets` has been explicitly set.
-  var hasRadios2GhzTxPackets: Bool {return _storage._radios2GhzTxPackets != nil}
+  var hasRadios2GhzTxPackets: Bool {_storage._radios2GhzTxPackets != nil}
   /// Clears the value of `radios2GhzTxPackets`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzTxPackets() {_uniqueStorage()._radios2GhzTxPackets = nil}
 
   var radios2GhzTxErrors: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._radios2GhzTxErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._radios2GhzTxErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._radios2GhzTxErrors = newValue}
   }
   /// Returns true if `radios2GhzTxErrors` has been explicitly set.
-  var hasRadios2GhzTxErrors: Bool {return _storage._radios2GhzTxErrors != nil}
+  var hasRadios2GhzTxErrors: Bool {_storage._radios2GhzTxErrors != nil}
   /// Clears the value of `radios2GhzTxErrors`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzTxErrors() {_uniqueStorage()._radios2GhzTxErrors = nil}
 
   var radios2GhzTxPacketErrorRate: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios2GhzTxPacketErrorRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios2GhzTxPacketErrorRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios2GhzTxPacketErrorRate = newValue}
   }
   /// Returns true if `radios2GhzTxPacketErrorRate` has been explicitly set.
-  var hasRadios2GhzTxPacketErrorRate: Bool {return _storage._radios2GhzTxPacketErrorRate != nil}
+  var hasRadios2GhzTxPacketErrorRate: Bool {_storage._radios2GhzTxPacketErrorRate != nil}
   /// Clears the value of `radios2GhzTxPacketErrorRate`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzTxPacketErrorRate() {_uniqueStorage()._radios2GhzTxPacketErrorRate = nil}
 
   var radios2GhzTxAirtimeFraction: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios2GhzTxAirtimeFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios2GhzTxAirtimeFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios2GhzTxAirtimeFraction = newValue}
   }
   /// Returns true if `radios2GhzTxAirtimeFraction` has been explicitly set.
-  var hasRadios2GhzTxAirtimeFraction: Bool {return _storage._radios2GhzTxAirtimeFraction != nil}
+  var hasRadios2GhzTxAirtimeFraction: Bool {_storage._radios2GhzTxAirtimeFraction != nil}
   /// Clears the value of `radios2GhzTxAirtimeFraction`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzTxAirtimeFraction() {_uniqueStorage()._radios2GhzTxAirtimeFraction = nil}
 
   var radios5GhzChannel: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radios5GhzChannel ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radios5GhzChannel ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radios5GhzChannel = newValue}
   }
   /// Returns true if `radios5GhzChannel` has been explicitly set.
-  var hasRadios5GhzChannel: Bool {return _storage._radios5GhzChannel != nil}
+  var hasRadios5GhzChannel: Bool {_storage._radios5GhzChannel != nil}
   /// Clears the value of `radios5GhzChannel`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzChannel() {_uniqueStorage()._radios5GhzChannel = nil}
 
   var radios5GhzAntenna1Rssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzAntenna1Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzAntenna1Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzAntenna1Rssi = newValue}
   }
   /// Returns true if `radios5GhzAntenna1Rssi` has been explicitly set.
-  var hasRadios5GhzAntenna1Rssi: Bool {return _storage._radios5GhzAntenna1Rssi != nil}
+  var hasRadios5GhzAntenna1Rssi: Bool {_storage._radios5GhzAntenna1Rssi != nil}
   /// Clears the value of `radios5GhzAntenna1Rssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzAntenna1Rssi() {_uniqueStorage()._radios5GhzAntenna1Rssi = nil}
 
   var radios5GhzAntenna2Rssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzAntenna2Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzAntenna2Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzAntenna2Rssi = newValue}
   }
   /// Returns true if `radios5GhzAntenna2Rssi` has been explicitly set.
-  var hasRadios5GhzAntenna2Rssi: Bool {return _storage._radios5GhzAntenna2Rssi != nil}
+  var hasRadios5GhzAntenna2Rssi: Bool {_storage._radios5GhzAntenna2Rssi != nil}
   /// Clears the value of `radios5GhzAntenna2Rssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzAntenna2Rssi() {_uniqueStorage()._radios5GhzAntenna2Rssi = nil}
 
   var radios5GhzAntenna3Rssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzAntenna3Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzAntenna3Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzAntenna3Rssi = newValue}
   }
   /// Returns true if `radios5GhzAntenna3Rssi` has been explicitly set.
-  var hasRadios5GhzAntenna3Rssi: Bool {return _storage._radios5GhzAntenna3Rssi != nil}
+  var hasRadios5GhzAntenna3Rssi: Bool {_storage._radios5GhzAntenna3Rssi != nil}
   /// Clears the value of `radios5GhzAntenna3Rssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzAntenna3Rssi() {_uniqueStorage()._radios5GhzAntenna3Rssi = nil}
 
   var radios5GhzAntenna4Rssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzAntenna4Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzAntenna4Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzAntenna4Rssi = newValue}
   }
   /// Returns true if `radios5GhzAntenna4Rssi` has been explicitly set.
-  var hasRadios5GhzAntenna4Rssi: Bool {return _storage._radios5GhzAntenna4Rssi != nil}
+  var hasRadios5GhzAntenna4Rssi: Bool {_storage._radios5GhzAntenna4Rssi != nil}
   /// Clears the value of `radios5GhzAntenna4Rssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzAntenna4Rssi() {_uniqueStorage()._radios5GhzAntenna4Rssi = nil}
 
   var radios5GhzAntenna1Tssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzAntenna1Tssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzAntenna1Tssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzAntenna1Tssi = newValue}
   }
   /// Returns true if `radios5GhzAntenna1Tssi` has been explicitly set.
-  var hasRadios5GhzAntenna1Tssi: Bool {return _storage._radios5GhzAntenna1Tssi != nil}
+  var hasRadios5GhzAntenna1Tssi: Bool {_storage._radios5GhzAntenna1Tssi != nil}
   /// Clears the value of `radios5GhzAntenna1Tssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzAntenna1Tssi() {_uniqueStorage()._radios5GhzAntenna1Tssi = nil}
 
   var radios5GhzAntenna2Tssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzAntenna2Tssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzAntenna2Tssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzAntenna2Tssi = newValue}
   }
   /// Returns true if `radios5GhzAntenna2Tssi` has been explicitly set.
-  var hasRadios5GhzAntenna2Tssi: Bool {return _storage._radios5GhzAntenna2Tssi != nil}
+  var hasRadios5GhzAntenna2Tssi: Bool {_storage._radios5GhzAntenna2Tssi != nil}
   /// Clears the value of `radios5GhzAntenna2Tssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzAntenna2Tssi() {_uniqueStorage()._radios5GhzAntenna2Tssi = nil}
 
   var radios5GhzAntenna3Tssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzAntenna3Tssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzAntenna3Tssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzAntenna3Tssi = newValue}
   }
   /// Returns true if `radios5GhzAntenna3Tssi` has been explicitly set.
-  var hasRadios5GhzAntenna3Tssi: Bool {return _storage._radios5GhzAntenna3Tssi != nil}
+  var hasRadios5GhzAntenna3Tssi: Bool {_storage._radios5GhzAntenna3Tssi != nil}
   /// Clears the value of `radios5GhzAntenna3Tssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzAntenna3Tssi() {_uniqueStorage()._radios5GhzAntenna3Tssi = nil}
 
   var radios5GhzAntenna4Tssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzAntenna4Tssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzAntenna4Tssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzAntenna4Tssi = newValue}
   }
   /// Returns true if `radios5GhzAntenna4Tssi` has been explicitly set.
-  var hasRadios5GhzAntenna4Tssi: Bool {return _storage._radios5GhzAntenna4Tssi != nil}
+  var hasRadios5GhzAntenna4Tssi: Bool {_storage._radios5GhzAntenna4Tssi != nil}
   /// Clears the value of `radios5GhzAntenna4Tssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzAntenna4Tssi() {_uniqueStorage()._radios5GhzAntenna4Tssi = nil}
 
   var radios5GhzIfaceCount: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radios5GhzIfaceCount ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radios5GhzIfaceCount ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radios5GhzIfaceCount = newValue}
   }
   /// Returns true if `radios5GhzIfaceCount` has been explicitly set.
-  var hasRadios5GhzIfaceCount: Bool {return _storage._radios5GhzIfaceCount != nil}
+  var hasRadios5GhzIfaceCount: Bool {_storage._radios5GhzIfaceCount != nil}
   /// Clears the value of `radios5GhzIfaceCount`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzIfaceCount() {_uniqueStorage()._radios5GhzIfaceCount = nil}
 
   var radios5GhzChanBusyFraction: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzChanBusyFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzChanBusyFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzChanBusyFraction = newValue}
   }
   /// Returns true if `radios5GhzChanBusyFraction` has been explicitly set.
-  var hasRadios5GhzChanBusyFraction: Bool {return _storage._radios5GhzChanBusyFraction != nil}
+  var hasRadios5GhzChanBusyFraction: Bool {_storage._radios5GhzChanBusyFraction != nil}
   /// Clears the value of `radios5GhzChanBusyFraction`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzChanBusyFraction() {_uniqueStorage()._radios5GhzChanBusyFraction = nil}
 
   var radios5GhzEdccaFraction: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzEdccaFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzEdccaFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzEdccaFraction = newValue}
   }
   /// Returns true if `radios5GhzEdccaFraction` has been explicitly set.
-  var hasRadios5GhzEdccaFraction: Bool {return _storage._radios5GhzEdccaFraction != nil}
+  var hasRadios5GhzEdccaFraction: Bool {_storage._radios5GhzEdccaFraction != nil}
   /// Clears the value of `radios5GhzEdccaFraction`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzEdccaFraction() {_uniqueStorage()._radios5GhzEdccaFraction = nil}
 
   var radios5GhzOverlappingBssFraction: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzOverlappingBssFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzOverlappingBssFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzOverlappingBssFraction = newValue}
   }
   /// Returns true if `radios5GhzOverlappingBssFraction` has been explicitly set.
-  var hasRadios5GhzOverlappingBssFraction: Bool {return _storage._radios5GhzOverlappingBssFraction != nil}
+  var hasRadios5GhzOverlappingBssFraction: Bool {_storage._radios5GhzOverlappingBssFraction != nil}
   /// Clears the value of `radios5GhzOverlappingBssFraction`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzOverlappingBssFraction() {_uniqueStorage()._radios5GhzOverlappingBssFraction = nil}
 
   var radios5GhzRxBytes: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._radios5GhzRxBytes ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._radios5GhzRxBytes ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._radios5GhzRxBytes = newValue}
   }
   /// Returns true if `radios5GhzRxBytes` has been explicitly set.
-  var hasRadios5GhzRxBytes: Bool {return _storage._radios5GhzRxBytes != nil}
+  var hasRadios5GhzRxBytes: Bool {_storage._radios5GhzRxBytes != nil}
   /// Clears the value of `radios5GhzRxBytes`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzRxBytes() {_uniqueStorage()._radios5GhzRxBytes = nil}
 
   var radios5GhzRxPackets: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._radios5GhzRxPackets ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._radios5GhzRxPackets ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._radios5GhzRxPackets = newValue}
   }
   /// Returns true if `radios5GhzRxPackets` has been explicitly set.
-  var hasRadios5GhzRxPackets: Bool {return _storage._radios5GhzRxPackets != nil}
+  var hasRadios5GhzRxPackets: Bool {_storage._radios5GhzRxPackets != nil}
   /// Clears the value of `radios5GhzRxPackets`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzRxPackets() {_uniqueStorage()._radios5GhzRxPackets = nil}
 
   var radios5GhzRxErrors: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._radios5GhzRxErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._radios5GhzRxErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._radios5GhzRxErrors = newValue}
   }
   /// Returns true if `radios5GhzRxErrors` has been explicitly set.
-  var hasRadios5GhzRxErrors: Bool {return _storage._radios5GhzRxErrors != nil}
+  var hasRadios5GhzRxErrors: Bool {_storage._radios5GhzRxErrors != nil}
   /// Clears the value of `radios5GhzRxErrors`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzRxErrors() {_uniqueStorage()._radios5GhzRxErrors = nil}
 
   var radios5GhzRxFrameErrors: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._radios5GhzRxFrameErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._radios5GhzRxFrameErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._radios5GhzRxFrameErrors = newValue}
   }
   /// Returns true if `radios5GhzRxFrameErrors` has been explicitly set.
-  var hasRadios5GhzRxFrameErrors: Bool {return _storage._radios5GhzRxFrameErrors != nil}
+  var hasRadios5GhzRxFrameErrors: Bool {_storage._radios5GhzRxFrameErrors != nil}
   /// Clears the value of `radios5GhzRxFrameErrors`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzRxFrameErrors() {_uniqueStorage()._radios5GhzRxFrameErrors = nil}
 
   var radios5GhzRxPacketErrorRate: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzRxPacketErrorRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzRxPacketErrorRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzRxPacketErrorRate = newValue}
   }
   /// Returns true if `radios5GhzRxPacketErrorRate` has been explicitly set.
-  var hasRadios5GhzRxPacketErrorRate: Bool {return _storage._radios5GhzRxPacketErrorRate != nil}
+  var hasRadios5GhzRxPacketErrorRate: Bool {_storage._radios5GhzRxPacketErrorRate != nil}
   /// Clears the value of `radios5GhzRxPacketErrorRate`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzRxPacketErrorRate() {_uniqueStorage()._radios5GhzRxPacketErrorRate = nil}
 
   var radios5GhzRxAirtimeFraction: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzRxAirtimeFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzRxAirtimeFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzRxAirtimeFraction = newValue}
   }
   /// Returns true if `radios5GhzRxAirtimeFraction` has been explicitly set.
-  var hasRadios5GhzRxAirtimeFraction: Bool {return _storage._radios5GhzRxAirtimeFraction != nil}
+  var hasRadios5GhzRxAirtimeFraction: Bool {_storage._radios5GhzRxAirtimeFraction != nil}
   /// Clears the value of `radios5GhzRxAirtimeFraction`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzRxAirtimeFraction() {_uniqueStorage()._radios5GhzRxAirtimeFraction = nil}
 
   var radios5GhzTxBytes: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._radios5GhzTxBytes ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._radios5GhzTxBytes ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._radios5GhzTxBytes = newValue}
   }
   /// Returns true if `radios5GhzTxBytes` has been explicitly set.
-  var hasRadios5GhzTxBytes: Bool {return _storage._radios5GhzTxBytes != nil}
+  var hasRadios5GhzTxBytes: Bool {_storage._radios5GhzTxBytes != nil}
   /// Clears the value of `radios5GhzTxBytes`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzTxBytes() {_uniqueStorage()._radios5GhzTxBytes = nil}
 
   var radios5GhzTxPackets: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._radios5GhzTxPackets ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._radios5GhzTxPackets ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._radios5GhzTxPackets = newValue}
   }
   /// Returns true if `radios5GhzTxPackets` has been explicitly set.
-  var hasRadios5GhzTxPackets: Bool {return _storage._radios5GhzTxPackets != nil}
+  var hasRadios5GhzTxPackets: Bool {_storage._radios5GhzTxPackets != nil}
   /// Clears the value of `radios5GhzTxPackets`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzTxPackets() {_uniqueStorage()._radios5GhzTxPackets = nil}
 
   var radios5GhzTxErrors: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._radios5GhzTxErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._radios5GhzTxErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._radios5GhzTxErrors = newValue}
   }
   /// Returns true if `radios5GhzTxErrors` has been explicitly set.
-  var hasRadios5GhzTxErrors: Bool {return _storage._radios5GhzTxErrors != nil}
+  var hasRadios5GhzTxErrors: Bool {_storage._radios5GhzTxErrors != nil}
   /// Clears the value of `radios5GhzTxErrors`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzTxErrors() {_uniqueStorage()._radios5GhzTxErrors = nil}
 
   var radios5GhzTxPacketErrorRate: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzTxPacketErrorRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzTxPacketErrorRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzTxPacketErrorRate = newValue}
   }
   /// Returns true if `radios5GhzTxPacketErrorRate` has been explicitly set.
-  var hasRadios5GhzTxPacketErrorRate: Bool {return _storage._radios5GhzTxPacketErrorRate != nil}
+  var hasRadios5GhzTxPacketErrorRate: Bool {_storage._radios5GhzTxPacketErrorRate != nil}
   /// Clears the value of `radios5GhzTxPacketErrorRate`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzTxPacketErrorRate() {_uniqueStorage()._radios5GhzTxPacketErrorRate = nil}
 
   var radios5GhzTxAirtimeFraction: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzTxAirtimeFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzTxAirtimeFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzTxAirtimeFraction = newValue}
   }
   /// Returns true if `radios5GhzTxAirtimeFraction` has been explicitly set.
-  var hasRadios5GhzTxAirtimeFraction: Bool {return _storage._radios5GhzTxAirtimeFraction != nil}
+  var hasRadios5GhzTxAirtimeFraction: Bool {_storage._radios5GhzTxAirtimeFraction != nil}
   /// Clears the value of `radios5GhzTxAirtimeFraction`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzTxAirtimeFraction() {_uniqueStorage()._radios5GhzTxAirtimeFraction = nil}
 
   var radios5GhzHighChannel: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radios5GhzHighChannel ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radios5GhzHighChannel ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radios5GhzHighChannel = newValue}
   }
   /// Returns true if `radios5GhzHighChannel` has been explicitly set.
-  var hasRadios5GhzHighChannel: Bool {return _storage._radios5GhzHighChannel != nil}
+  var hasRadios5GhzHighChannel: Bool {_storage._radios5GhzHighChannel != nil}
   /// Clears the value of `radios5GhzHighChannel`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzHighChannel() {_uniqueStorage()._radios5GhzHighChannel = nil}
 
   var radios5GhzHighAntenna1Rssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzHighAntenna1Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzHighAntenna1Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzHighAntenna1Rssi = newValue}
   }
   /// Returns true if `radios5GhzHighAntenna1Rssi` has been explicitly set.
-  var hasRadios5GhzHighAntenna1Rssi: Bool {return _storage._radios5GhzHighAntenna1Rssi != nil}
+  var hasRadios5GhzHighAntenna1Rssi: Bool {_storage._radios5GhzHighAntenna1Rssi != nil}
   /// Clears the value of `radios5GhzHighAntenna1Rssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzHighAntenna1Rssi() {_uniqueStorage()._radios5GhzHighAntenna1Rssi = nil}
 
   var radios5GhzHighAntenna2Rssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzHighAntenna2Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzHighAntenna2Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzHighAntenna2Rssi = newValue}
   }
   /// Returns true if `radios5GhzHighAntenna2Rssi` has been explicitly set.
-  var hasRadios5GhzHighAntenna2Rssi: Bool {return _storage._radios5GhzHighAntenna2Rssi != nil}
+  var hasRadios5GhzHighAntenna2Rssi: Bool {_storage._radios5GhzHighAntenna2Rssi != nil}
   /// Clears the value of `radios5GhzHighAntenna2Rssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzHighAntenna2Rssi() {_uniqueStorage()._radios5GhzHighAntenna2Rssi = nil}
 
   var radios5GhzHighAntenna3Rssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzHighAntenna3Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzHighAntenna3Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzHighAntenna3Rssi = newValue}
   }
   /// Returns true if `radios5GhzHighAntenna3Rssi` has been explicitly set.
-  var hasRadios5GhzHighAntenna3Rssi: Bool {return _storage._radios5GhzHighAntenna3Rssi != nil}
+  var hasRadios5GhzHighAntenna3Rssi: Bool {_storage._radios5GhzHighAntenna3Rssi != nil}
   /// Clears the value of `radios5GhzHighAntenna3Rssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzHighAntenna3Rssi() {_uniqueStorage()._radios5GhzHighAntenna3Rssi = nil}
 
   var radios5GhzHighAntenna4Rssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzHighAntenna4Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzHighAntenna4Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzHighAntenna4Rssi = newValue}
   }
   /// Returns true if `radios5GhzHighAntenna4Rssi` has been explicitly set.
-  var hasRadios5GhzHighAntenna4Rssi: Bool {return _storage._radios5GhzHighAntenna4Rssi != nil}
+  var hasRadios5GhzHighAntenna4Rssi: Bool {_storage._radios5GhzHighAntenna4Rssi != nil}
   /// Clears the value of `radios5GhzHighAntenna4Rssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzHighAntenna4Rssi() {_uniqueStorage()._radios5GhzHighAntenna4Rssi = nil}
 
   var radios5GhzHighAntenna1Tssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzHighAntenna1Tssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzHighAntenna1Tssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzHighAntenna1Tssi = newValue}
   }
   /// Returns true if `radios5GhzHighAntenna1Tssi` has been explicitly set.
-  var hasRadios5GhzHighAntenna1Tssi: Bool {return _storage._radios5GhzHighAntenna1Tssi != nil}
+  var hasRadios5GhzHighAntenna1Tssi: Bool {_storage._radios5GhzHighAntenna1Tssi != nil}
   /// Clears the value of `radios5GhzHighAntenna1Tssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzHighAntenna1Tssi() {_uniqueStorage()._radios5GhzHighAntenna1Tssi = nil}
 
   var radios5GhzHighAntenna2Tssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzHighAntenna2Tssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzHighAntenna2Tssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzHighAntenna2Tssi = newValue}
   }
   /// Returns true if `radios5GhzHighAntenna2Tssi` has been explicitly set.
-  var hasRadios5GhzHighAntenna2Tssi: Bool {return _storage._radios5GhzHighAntenna2Tssi != nil}
+  var hasRadios5GhzHighAntenna2Tssi: Bool {_storage._radios5GhzHighAntenna2Tssi != nil}
   /// Clears the value of `radios5GhzHighAntenna2Tssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzHighAntenna2Tssi() {_uniqueStorage()._radios5GhzHighAntenna2Tssi = nil}
 
   var radios5GhzHighAntenna3Tssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzHighAntenna3Tssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzHighAntenna3Tssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzHighAntenna3Tssi = newValue}
   }
   /// Returns true if `radios5GhzHighAntenna3Tssi` has been explicitly set.
-  var hasRadios5GhzHighAntenna3Tssi: Bool {return _storage._radios5GhzHighAntenna3Tssi != nil}
+  var hasRadios5GhzHighAntenna3Tssi: Bool {_storage._radios5GhzHighAntenna3Tssi != nil}
   /// Clears the value of `radios5GhzHighAntenna3Tssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzHighAntenna3Tssi() {_uniqueStorage()._radios5GhzHighAntenna3Tssi = nil}
 
   var radios5GhzHighAntenna4Tssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzHighAntenna4Tssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzHighAntenna4Tssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzHighAntenna4Tssi = newValue}
   }
   /// Returns true if `radios5GhzHighAntenna4Tssi` has been explicitly set.
-  var hasRadios5GhzHighAntenna4Tssi: Bool {return _storage._radios5GhzHighAntenna4Tssi != nil}
+  var hasRadios5GhzHighAntenna4Tssi: Bool {_storage._radios5GhzHighAntenna4Tssi != nil}
   /// Clears the value of `radios5GhzHighAntenna4Tssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzHighAntenna4Tssi() {_uniqueStorage()._radios5GhzHighAntenna4Tssi = nil}
 
   var radios5GhzHighIfaceCount: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radios5GhzHighIfaceCount ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radios5GhzHighIfaceCount ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radios5GhzHighIfaceCount = newValue}
   }
   /// Returns true if `radios5GhzHighIfaceCount` has been explicitly set.
-  var hasRadios5GhzHighIfaceCount: Bool {return _storage._radios5GhzHighIfaceCount != nil}
+  var hasRadios5GhzHighIfaceCount: Bool {_storage._radios5GhzHighIfaceCount != nil}
   /// Clears the value of `radios5GhzHighIfaceCount`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzHighIfaceCount() {_uniqueStorage()._radios5GhzHighIfaceCount = nil}
 
   var radios5GhzHighChanBusyFraction: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzHighChanBusyFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzHighChanBusyFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzHighChanBusyFraction = newValue}
   }
   /// Returns true if `radios5GhzHighChanBusyFraction` has been explicitly set.
-  var hasRadios5GhzHighChanBusyFraction: Bool {return _storage._radios5GhzHighChanBusyFraction != nil}
+  var hasRadios5GhzHighChanBusyFraction: Bool {_storage._radios5GhzHighChanBusyFraction != nil}
   /// Clears the value of `radios5GhzHighChanBusyFraction`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzHighChanBusyFraction() {_uniqueStorage()._radios5GhzHighChanBusyFraction = nil}
 
   var radios5GhzHighEdccaFraction: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzHighEdccaFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzHighEdccaFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzHighEdccaFraction = newValue}
   }
   /// Returns true if `radios5GhzHighEdccaFraction` has been explicitly set.
-  var hasRadios5GhzHighEdccaFraction: Bool {return _storage._radios5GhzHighEdccaFraction != nil}
+  var hasRadios5GhzHighEdccaFraction: Bool {_storage._radios5GhzHighEdccaFraction != nil}
   /// Clears the value of `radios5GhzHighEdccaFraction`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzHighEdccaFraction() {_uniqueStorage()._radios5GhzHighEdccaFraction = nil}
 
   var radios5GhzHighOverlappingBssFraction: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzHighOverlappingBssFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzHighOverlappingBssFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzHighOverlappingBssFraction = newValue}
   }
   /// Returns true if `radios5GhzHighOverlappingBssFraction` has been explicitly set.
-  var hasRadios5GhzHighOverlappingBssFraction: Bool {return _storage._radios5GhzHighOverlappingBssFraction != nil}
+  var hasRadios5GhzHighOverlappingBssFraction: Bool {_storage._radios5GhzHighOverlappingBssFraction != nil}
   /// Clears the value of `radios5GhzHighOverlappingBssFraction`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzHighOverlappingBssFraction() {_uniqueStorage()._radios5GhzHighOverlappingBssFraction = nil}
 
   var radios5GhzHighRxBytes: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._radios5GhzHighRxBytes ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._radios5GhzHighRxBytes ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._radios5GhzHighRxBytes = newValue}
   }
   /// Returns true if `radios5GhzHighRxBytes` has been explicitly set.
-  var hasRadios5GhzHighRxBytes: Bool {return _storage._radios5GhzHighRxBytes != nil}
+  var hasRadios5GhzHighRxBytes: Bool {_storage._radios5GhzHighRxBytes != nil}
   /// Clears the value of `radios5GhzHighRxBytes`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzHighRxBytes() {_uniqueStorage()._radios5GhzHighRxBytes = nil}
 
   var radios5GhzHighRxPackets: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._radios5GhzHighRxPackets ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._radios5GhzHighRxPackets ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._radios5GhzHighRxPackets = newValue}
   }
   /// Returns true if `radios5GhzHighRxPackets` has been explicitly set.
-  var hasRadios5GhzHighRxPackets: Bool {return _storage._radios5GhzHighRxPackets != nil}
+  var hasRadios5GhzHighRxPackets: Bool {_storage._radios5GhzHighRxPackets != nil}
   /// Clears the value of `radios5GhzHighRxPackets`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzHighRxPackets() {_uniqueStorage()._radios5GhzHighRxPackets = nil}
 
   var radios5GhzHighRxErrors: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._radios5GhzHighRxErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._radios5GhzHighRxErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._radios5GhzHighRxErrors = newValue}
   }
   /// Returns true if `radios5GhzHighRxErrors` has been explicitly set.
-  var hasRadios5GhzHighRxErrors: Bool {return _storage._radios5GhzHighRxErrors != nil}
+  var hasRadios5GhzHighRxErrors: Bool {_storage._radios5GhzHighRxErrors != nil}
   /// Clears the value of `radios5GhzHighRxErrors`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzHighRxErrors() {_uniqueStorage()._radios5GhzHighRxErrors = nil}
 
   var radios5GhzHighRxFrameErrors: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._radios5GhzHighRxFrameErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._radios5GhzHighRxFrameErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._radios5GhzHighRxFrameErrors = newValue}
   }
   /// Returns true if `radios5GhzHighRxFrameErrors` has been explicitly set.
-  var hasRadios5GhzHighRxFrameErrors: Bool {return _storage._radios5GhzHighRxFrameErrors != nil}
+  var hasRadios5GhzHighRxFrameErrors: Bool {_storage._radios5GhzHighRxFrameErrors != nil}
   /// Clears the value of `radios5GhzHighRxFrameErrors`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzHighRxFrameErrors() {_uniqueStorage()._radios5GhzHighRxFrameErrors = nil}
 
   var radios5GhzHighRxPacketErrorRate: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzHighRxPacketErrorRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzHighRxPacketErrorRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzHighRxPacketErrorRate = newValue}
   }
   /// Returns true if `radios5GhzHighRxPacketErrorRate` has been explicitly set.
-  var hasRadios5GhzHighRxPacketErrorRate: Bool {return _storage._radios5GhzHighRxPacketErrorRate != nil}
+  var hasRadios5GhzHighRxPacketErrorRate: Bool {_storage._radios5GhzHighRxPacketErrorRate != nil}
   /// Clears the value of `radios5GhzHighRxPacketErrorRate`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzHighRxPacketErrorRate() {_uniqueStorage()._radios5GhzHighRxPacketErrorRate = nil}
 
   var radios5GhzHighRxAirtimeFraction: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzHighRxAirtimeFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzHighRxAirtimeFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzHighRxAirtimeFraction = newValue}
   }
   /// Returns true if `radios5GhzHighRxAirtimeFraction` has been explicitly set.
-  var hasRadios5GhzHighRxAirtimeFraction: Bool {return _storage._radios5GhzHighRxAirtimeFraction != nil}
+  var hasRadios5GhzHighRxAirtimeFraction: Bool {_storage._radios5GhzHighRxAirtimeFraction != nil}
   /// Clears the value of `radios5GhzHighRxAirtimeFraction`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzHighRxAirtimeFraction() {_uniqueStorage()._radios5GhzHighRxAirtimeFraction = nil}
 
   var radios5GhzHighTxBytes: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._radios5GhzHighTxBytes ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._radios5GhzHighTxBytes ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._radios5GhzHighTxBytes = newValue}
   }
   /// Returns true if `radios5GhzHighTxBytes` has been explicitly set.
-  var hasRadios5GhzHighTxBytes: Bool {return _storage._radios5GhzHighTxBytes != nil}
+  var hasRadios5GhzHighTxBytes: Bool {_storage._radios5GhzHighTxBytes != nil}
   /// Clears the value of `radios5GhzHighTxBytes`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzHighTxBytes() {_uniqueStorage()._radios5GhzHighTxBytes = nil}
 
   var radios5GhzHighTxPackets: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._radios5GhzHighTxPackets ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._radios5GhzHighTxPackets ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._radios5GhzHighTxPackets = newValue}
   }
   /// Returns true if `radios5GhzHighTxPackets` has been explicitly set.
-  var hasRadios5GhzHighTxPackets: Bool {return _storage._radios5GhzHighTxPackets != nil}
+  var hasRadios5GhzHighTxPackets: Bool {_storage._radios5GhzHighTxPackets != nil}
   /// Clears the value of `radios5GhzHighTxPackets`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzHighTxPackets() {_uniqueStorage()._radios5GhzHighTxPackets = nil}
 
   var radios5GhzHighTxErrors: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._radios5GhzHighTxErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._radios5GhzHighTxErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._radios5GhzHighTxErrors = newValue}
   }
   /// Returns true if `radios5GhzHighTxErrors` has been explicitly set.
-  var hasRadios5GhzHighTxErrors: Bool {return _storage._radios5GhzHighTxErrors != nil}
+  var hasRadios5GhzHighTxErrors: Bool {_storage._radios5GhzHighTxErrors != nil}
   /// Clears the value of `radios5GhzHighTxErrors`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzHighTxErrors() {_uniqueStorage()._radios5GhzHighTxErrors = nil}
 
   var radios5GhzHighTxPacketErrorRate: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzHighTxPacketErrorRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzHighTxPacketErrorRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzHighTxPacketErrorRate = newValue}
   }
   /// Returns true if `radios5GhzHighTxPacketErrorRate` has been explicitly set.
-  var hasRadios5GhzHighTxPacketErrorRate: Bool {return _storage._radios5GhzHighTxPacketErrorRate != nil}
+  var hasRadios5GhzHighTxPacketErrorRate: Bool {_storage._radios5GhzHighTxPacketErrorRate != nil}
   /// Clears the value of `radios5GhzHighTxPacketErrorRate`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzHighTxPacketErrorRate() {_uniqueStorage()._radios5GhzHighTxPacketErrorRate = nil}
 
   var radios5GhzHighTxAirtimeFraction: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzHighTxAirtimeFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzHighTxAirtimeFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzHighTxAirtimeFraction = newValue}
   }
   /// Returns true if `radios5GhzHighTxAirtimeFraction` has been explicitly set.
-  var hasRadios5GhzHighTxAirtimeFraction: Bool {return _storage._radios5GhzHighTxAirtimeFraction != nil}
+  var hasRadios5GhzHighTxAirtimeFraction: Bool {_storage._radios5GhzHighTxAirtimeFraction != nil}
   /// Clears the value of `radios5GhzHighTxAirtimeFraction`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzHighTxAirtimeFraction() {_uniqueStorage()._radios5GhzHighTxAirtimeFraction = nil}
 
   var radios2GhzThermalTemp: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios2GhzThermalTemp ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios2GhzThermalTemp ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios2GhzThermalTemp = newValue}
   }
   /// Returns true if `radios2GhzThermalTemp` has been explicitly set.
-  var hasRadios2GhzThermalTemp: Bool {return _storage._radios2GhzThermalTemp != nil}
+  var hasRadios2GhzThermalTemp: Bool {_storage._radios2GhzThermalTemp != nil}
   /// Clears the value of `radios2GhzThermalTemp`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzThermalTemp() {_uniqueStorage()._radios2GhzThermalTemp = nil}
 
   var radios5GhzThermalTemp: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzThermalTemp ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzThermalTemp ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzThermalTemp = newValue}
   }
   /// Returns true if `radios5GhzThermalTemp` has been explicitly set.
-  var hasRadios5GhzThermalTemp: Bool {return _storage._radios5GhzThermalTemp != nil}
+  var hasRadios5GhzThermalTemp: Bool {_storage._radios5GhzThermalTemp != nil}
   /// Clears the value of `radios5GhzThermalTemp`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzThermalTemp() {_uniqueStorage()._radios5GhzThermalTemp = nil}
 
   var radios5GhzHighThermalTemp: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzHighThermalTemp ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzHighThermalTemp ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzHighThermalTemp = newValue}
   }
   /// Returns true if `radios5GhzHighThermalTemp` has been explicitly set.
-  var hasRadios5GhzHighThermalTemp: Bool {return _storage._radios5GhzHighThermalTemp != nil}
+  var hasRadios5GhzHighThermalTemp: Bool {_storage._radios5GhzHighThermalTemp != nil}
   /// Clears the value of `radios5GhzHighThermalTemp`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzHighThermalTemp() {_uniqueStorage()._radios5GhzHighThermalTemp = nil}
 
   var radios2GhzThermalDutyCycle: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios2GhzThermalDutyCycle ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios2GhzThermalDutyCycle ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios2GhzThermalDutyCycle = newValue}
   }
   /// Returns true if `radios2GhzThermalDutyCycle` has been explicitly set.
-  var hasRadios2GhzThermalDutyCycle: Bool {return _storage._radios2GhzThermalDutyCycle != nil}
+  var hasRadios2GhzThermalDutyCycle: Bool {_storage._radios2GhzThermalDutyCycle != nil}
   /// Clears the value of `radios2GhzThermalDutyCycle`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzThermalDutyCycle() {_uniqueStorage()._radios2GhzThermalDutyCycle = nil}
 
   var radios5GhzThermalDutyCycle: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzThermalDutyCycle ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzThermalDutyCycle ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzThermalDutyCycle = newValue}
   }
   /// Returns true if `radios5GhzThermalDutyCycle` has been explicitly set.
-  var hasRadios5GhzThermalDutyCycle: Bool {return _storage._radios5GhzThermalDutyCycle != nil}
+  var hasRadios5GhzThermalDutyCycle: Bool {_storage._radios5GhzThermalDutyCycle != nil}
   /// Clears the value of `radios5GhzThermalDutyCycle`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzThermalDutyCycle() {_uniqueStorage()._radios5GhzThermalDutyCycle = nil}
 
   var radios5GhzHighThermalDutyCycle: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzHighThermalDutyCycle ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzHighThermalDutyCycle ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzHighThermalDutyCycle = newValue}
   }
   /// Returns true if `radios5GhzHighThermalDutyCycle` has been explicitly set.
-  var hasRadios5GhzHighThermalDutyCycle: Bool {return _storage._radios5GhzHighThermalDutyCycle != nil}
+  var hasRadios5GhzHighThermalDutyCycle: Bool {_storage._radios5GhzHighThermalDutyCycle != nil}
   /// Clears the value of `radios5GhzHighThermalDutyCycle`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzHighThermalDutyCycle() {_uniqueStorage()._radios5GhzHighThermalDutyCycle = nil}
 
   var radios2GhzThermalThrottledSeconds: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radios2GhzThermalThrottledSeconds ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radios2GhzThermalThrottledSeconds ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radios2GhzThermalThrottledSeconds = newValue}
   }
   /// Returns true if `radios2GhzThermalThrottledSeconds` has been explicitly set.
-  var hasRadios2GhzThermalThrottledSeconds: Bool {return _storage._radios2GhzThermalThrottledSeconds != nil}
+  var hasRadios2GhzThermalThrottledSeconds: Bool {_storage._radios2GhzThermalThrottledSeconds != nil}
   /// Clears the value of `radios2GhzThermalThrottledSeconds`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzThermalThrottledSeconds() {_uniqueStorage()._radios2GhzThermalThrottledSeconds = nil}
 
   var radios5GhzThermalThrottledSeconds: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radios5GhzThermalThrottledSeconds ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radios5GhzThermalThrottledSeconds ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radios5GhzThermalThrottledSeconds = newValue}
   }
   /// Returns true if `radios5GhzThermalThrottledSeconds` has been explicitly set.
-  var hasRadios5GhzThermalThrottledSeconds: Bool {return _storage._radios5GhzThermalThrottledSeconds != nil}
+  var hasRadios5GhzThermalThrottledSeconds: Bool {_storage._radios5GhzThermalThrottledSeconds != nil}
   /// Clears the value of `radios5GhzThermalThrottledSeconds`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzThermalThrottledSeconds() {_uniqueStorage()._radios5GhzThermalThrottledSeconds = nil}
 
   var radios5GhzHighThermalThrottledSeconds: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radios5GhzHighThermalThrottledSeconds ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radios5GhzHighThermalThrottledSeconds ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radios5GhzHighThermalThrottledSeconds = newValue}
   }
   /// Returns true if `radios5GhzHighThermalThrottledSeconds` has been explicitly set.
-  var hasRadios5GhzHighThermalThrottledSeconds: Bool {return _storage._radios5GhzHighThermalThrottledSeconds != nil}
+  var hasRadios5GhzHighThermalThrottledSeconds: Bool {_storage._radios5GhzHighThermalThrottledSeconds != nil}
   /// Clears the value of `radios5GhzHighThermalThrottledSeconds`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzHighThermalThrottledSeconds() {_uniqueStorage()._radios5GhzHighThermalThrottledSeconds = nil}
 
   var boardTemp: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._boardTemp ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._boardTemp ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._boardTemp = newValue}
   }
   /// Returns true if `boardTemp` has been explicitly set.
-  var hasBoardTemp: Bool {return _storage._boardTemp != nil}
+  var hasBoardTemp: Bool {_storage._boardTemp != nil}
   /// Clears the value of `boardTemp`. Subsequent reads from it will return its default value.
   mutating func clearBoardTemp() {_uniqueStorage()._boardTemp = nil}
 
+  var ambientTemp: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._ambientTemp ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._ambientTemp = newValue}
+  }
+  /// Returns true if `ambientTemp` has been explicitly set.
+  var hasAmbientTemp: Bool {_storage._ambientTemp != nil}
+  /// Clears the value of `ambientTemp`. Subsequent reads from it will return its default value.
+  mutating func clearAmbientTemp() {_uniqueStorage()._ambientTemp = nil}
+
+  var cpuTemp: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._cpuTemp ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._cpuTemp = newValue}
+  }
+  /// Returns true if `cpuTemp` has been explicitly set.
+  var hasCpuTemp: Bool {_storage._cpuTemp != nil}
+  /// Clears the value of `cpuTemp`. Subsequent reads from it will return its default value.
+  mutating func clearCpuTemp() {_uniqueStorage()._cpuTemp = nil}
+
   var poeMcuDieTemp: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._poeMcuDieTemp ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._poeMcuDieTemp ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._poeMcuDieTemp = newValue}
   }
   /// Returns true if `poeMcuDieTemp` has been explicitly set.
-  var hasPoeMcuDieTemp: Bool {return _storage._poeMcuDieTemp != nil}
+  var hasPoeMcuDieTemp: Bool {_storage._poeMcuDieTemp != nil}
   /// Clears the value of `poeMcuDieTemp`. Subsequent reads from it will return its default value.
   mutating func clearPoeMcuDieTemp() {_uniqueStorage()._poeMcuDieTemp = nil}
 
+  var poePercentWaterDetectAvg: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._poePercentWaterDetectAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._poePercentWaterDetectAvg = newValue}
+  }
+  /// Returns true if `poePercentWaterDetectAvg` has been explicitly set.
+  var hasPoePercentWaterDetectAvg: Bool {_storage._poePercentWaterDetectAvg != nil}
+  /// Clears the value of `poePercentWaterDetectAvg`. Subsequent reads from it will return its default value.
+  mutating func clearPoePercentWaterDetectAvg() {_uniqueStorage()._poePercentWaterDetectAvg = nil}
+
   var ifacesLanEthRxBytes: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._ifacesLanEthRxBytes ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._ifacesLanEthRxBytes ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._ifacesLanEthRxBytes = newValue}
   }
   /// Returns true if `ifacesLanEthRxBytes` has been explicitly set.
-  var hasIfacesLanEthRxBytes: Bool {return _storage._ifacesLanEthRxBytes != nil}
+  var hasIfacesLanEthRxBytes: Bool {_storage._ifacesLanEthRxBytes != nil}
   /// Clears the value of `ifacesLanEthRxBytes`. Subsequent reads from it will return its default value.
   mutating func clearIfacesLanEthRxBytes() {_uniqueStorage()._ifacesLanEthRxBytes = nil}
 
   var ifacesLanEthRxPackets: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._ifacesLanEthRxPackets ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._ifacesLanEthRxPackets ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._ifacesLanEthRxPackets = newValue}
   }
   /// Returns true if `ifacesLanEthRxPackets` has been explicitly set.
-  var hasIfacesLanEthRxPackets: Bool {return _storage._ifacesLanEthRxPackets != nil}
+  var hasIfacesLanEthRxPackets: Bool {_storage._ifacesLanEthRxPackets != nil}
   /// Clears the value of `ifacesLanEthRxPackets`. Subsequent reads from it will return its default value.
   mutating func clearIfacesLanEthRxPackets() {_uniqueStorage()._ifacesLanEthRxPackets = nil}
 
   var ifacesLanEthRxErrors: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._ifacesLanEthRxErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._ifacesLanEthRxErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._ifacesLanEthRxErrors = newValue}
   }
   /// Returns true if `ifacesLanEthRxErrors` has been explicitly set.
-  var hasIfacesLanEthRxErrors: Bool {return _storage._ifacesLanEthRxErrors != nil}
+  var hasIfacesLanEthRxErrors: Bool {_storage._ifacesLanEthRxErrors != nil}
   /// Clears the value of `ifacesLanEthRxErrors`. Subsequent reads from it will return its default value.
   mutating func clearIfacesLanEthRxErrors() {_uniqueStorage()._ifacesLanEthRxErrors = nil}
 
   var ifacesLanEthRxFrameErrors: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._ifacesLanEthRxFrameErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._ifacesLanEthRxFrameErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._ifacesLanEthRxFrameErrors = newValue}
   }
   /// Returns true if `ifacesLanEthRxFrameErrors` has been explicitly set.
-  var hasIfacesLanEthRxFrameErrors: Bool {return _storage._ifacesLanEthRxFrameErrors != nil}
+  var hasIfacesLanEthRxFrameErrors: Bool {_storage._ifacesLanEthRxFrameErrors != nil}
   /// Clears the value of `ifacesLanEthRxFrameErrors`. Subsequent reads from it will return its default value.
   mutating func clearIfacesLanEthRxFrameErrors() {_uniqueStorage()._ifacesLanEthRxFrameErrors = nil}
 
   var ifacesLanEthTxBytes: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._ifacesLanEthTxBytes ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._ifacesLanEthTxBytes ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._ifacesLanEthTxBytes = newValue}
   }
   /// Returns true if `ifacesLanEthTxBytes` has been explicitly set.
-  var hasIfacesLanEthTxBytes: Bool {return _storage._ifacesLanEthTxBytes != nil}
+  var hasIfacesLanEthTxBytes: Bool {_storage._ifacesLanEthTxBytes != nil}
   /// Clears the value of `ifacesLanEthTxBytes`. Subsequent reads from it will return its default value.
   mutating func clearIfacesLanEthTxBytes() {_uniqueStorage()._ifacesLanEthTxBytes = nil}
 
   var ifacesLanEthTxPackets: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._ifacesLanEthTxPackets ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._ifacesLanEthTxPackets ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._ifacesLanEthTxPackets = newValue}
   }
   /// Returns true if `ifacesLanEthTxPackets` has been explicitly set.
-  var hasIfacesLanEthTxPackets: Bool {return _storage._ifacesLanEthTxPackets != nil}
+  var hasIfacesLanEthTxPackets: Bool {_storage._ifacesLanEthTxPackets != nil}
   /// Clears the value of `ifacesLanEthTxPackets`. Subsequent reads from it will return its default value.
   mutating func clearIfacesLanEthTxPackets() {_uniqueStorage()._ifacesLanEthTxPackets = nil}
 
   var ifacesLanEthTxErrors: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._ifacesLanEthTxErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._ifacesLanEthTxErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._ifacesLanEthTxErrors = newValue}
   }
   /// Returns true if `ifacesLanEthTxErrors` has been explicitly set.
-  var hasIfacesLanEthTxErrors: Bool {return _storage._ifacesLanEthTxErrors != nil}
+  var hasIfacesLanEthTxErrors: Bool {_storage._ifacesLanEthTxErrors != nil}
   /// Clears the value of `ifacesLanEthTxErrors`. Subsequent reads from it will return its default value.
   mutating func clearIfacesLanEthTxErrors() {_uniqueStorage()._ifacesLanEthTxErrors = nil}
 
   var ifacesLan1EthRxBytes: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._ifacesLan1EthRxBytes ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._ifacesLan1EthRxBytes ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._ifacesLan1EthRxBytes = newValue}
   }
   /// Returns true if `ifacesLan1EthRxBytes` has been explicitly set.
-  var hasIfacesLan1EthRxBytes: Bool {return _storage._ifacesLan1EthRxBytes != nil}
+  var hasIfacesLan1EthRxBytes: Bool {_storage._ifacesLan1EthRxBytes != nil}
   /// Clears the value of `ifacesLan1EthRxBytes`. Subsequent reads from it will return its default value.
   mutating func clearIfacesLan1EthRxBytes() {_uniqueStorage()._ifacesLan1EthRxBytes = nil}
 
   var ifacesLan1EthRxPackets: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._ifacesLan1EthRxPackets ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._ifacesLan1EthRxPackets ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._ifacesLan1EthRxPackets = newValue}
   }
   /// Returns true if `ifacesLan1EthRxPackets` has been explicitly set.
-  var hasIfacesLan1EthRxPackets: Bool {return _storage._ifacesLan1EthRxPackets != nil}
+  var hasIfacesLan1EthRxPackets: Bool {_storage._ifacesLan1EthRxPackets != nil}
   /// Clears the value of `ifacesLan1EthRxPackets`. Subsequent reads from it will return its default value.
   mutating func clearIfacesLan1EthRxPackets() {_uniqueStorage()._ifacesLan1EthRxPackets = nil}
 
   var ifacesLan1EthRxErrors: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._ifacesLan1EthRxErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._ifacesLan1EthRxErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._ifacesLan1EthRxErrors = newValue}
   }
   /// Returns true if `ifacesLan1EthRxErrors` has been explicitly set.
-  var hasIfacesLan1EthRxErrors: Bool {return _storage._ifacesLan1EthRxErrors != nil}
+  var hasIfacesLan1EthRxErrors: Bool {_storage._ifacesLan1EthRxErrors != nil}
   /// Clears the value of `ifacesLan1EthRxErrors`. Subsequent reads from it will return its default value.
   mutating func clearIfacesLan1EthRxErrors() {_uniqueStorage()._ifacesLan1EthRxErrors = nil}
 
   var ifacesLan1EthRxFrameErrors: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._ifacesLan1EthRxFrameErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._ifacesLan1EthRxFrameErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._ifacesLan1EthRxFrameErrors = newValue}
   }
   /// Returns true if `ifacesLan1EthRxFrameErrors` has been explicitly set.
-  var hasIfacesLan1EthRxFrameErrors: Bool {return _storage._ifacesLan1EthRxFrameErrors != nil}
+  var hasIfacesLan1EthRxFrameErrors: Bool {_storage._ifacesLan1EthRxFrameErrors != nil}
   /// Clears the value of `ifacesLan1EthRxFrameErrors`. Subsequent reads from it will return its default value.
   mutating func clearIfacesLan1EthRxFrameErrors() {_uniqueStorage()._ifacesLan1EthRxFrameErrors = nil}
 
   var ifacesLan1EthTxBytes: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._ifacesLan1EthTxBytes ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._ifacesLan1EthTxBytes ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._ifacesLan1EthTxBytes = newValue}
   }
   /// Returns true if `ifacesLan1EthTxBytes` has been explicitly set.
-  var hasIfacesLan1EthTxBytes: Bool {return _storage._ifacesLan1EthTxBytes != nil}
+  var hasIfacesLan1EthTxBytes: Bool {_storage._ifacesLan1EthTxBytes != nil}
   /// Clears the value of `ifacesLan1EthTxBytes`. Subsequent reads from it will return its default value.
   mutating func clearIfacesLan1EthTxBytes() {_uniqueStorage()._ifacesLan1EthTxBytes = nil}
 
   var ifacesLan1EthTxPackets: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._ifacesLan1EthTxPackets ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._ifacesLan1EthTxPackets ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._ifacesLan1EthTxPackets = newValue}
   }
   /// Returns true if `ifacesLan1EthTxPackets` has been explicitly set.
-  var hasIfacesLan1EthTxPackets: Bool {return _storage._ifacesLan1EthTxPackets != nil}
+  var hasIfacesLan1EthTxPackets: Bool {_storage._ifacesLan1EthTxPackets != nil}
   /// Clears the value of `ifacesLan1EthTxPackets`. Subsequent reads from it will return its default value.
   mutating func clearIfacesLan1EthTxPackets() {_uniqueStorage()._ifacesLan1EthTxPackets = nil}
 
   var ifacesLan1EthTxErrors: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._ifacesLan1EthTxErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._ifacesLan1EthTxErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._ifacesLan1EthTxErrors = newValue}
   }
   /// Returns true if `ifacesLan1EthTxErrors` has been explicitly set.
-  var hasIfacesLan1EthTxErrors: Bool {return _storage._ifacesLan1EthTxErrors != nil}
+  var hasIfacesLan1EthTxErrors: Bool {_storage._ifacesLan1EthTxErrors != nil}
   /// Clears the value of `ifacesLan1EthTxErrors`. Subsequent reads from it will return its default value.
   mutating func clearIfacesLan1EthTxErrors() {_uniqueStorage()._ifacesLan1EthTxErrors = nil}
 
   var ifacesWanEthRxBytes: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._ifacesWanEthRxBytes ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._ifacesWanEthRxBytes ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._ifacesWanEthRxBytes = newValue}
   }
   /// Returns true if `ifacesWanEthRxBytes` has been explicitly set.
-  var hasIfacesWanEthRxBytes: Bool {return _storage._ifacesWanEthRxBytes != nil}
+  var hasIfacesWanEthRxBytes: Bool {_storage._ifacesWanEthRxBytes != nil}
   /// Clears the value of `ifacesWanEthRxBytes`. Subsequent reads from it will return its default value.
   mutating func clearIfacesWanEthRxBytes() {_uniqueStorage()._ifacesWanEthRxBytes = nil}
 
   var ifacesWanEthRxPackets: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._ifacesWanEthRxPackets ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._ifacesWanEthRxPackets ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._ifacesWanEthRxPackets = newValue}
   }
   /// Returns true if `ifacesWanEthRxPackets` has been explicitly set.
-  var hasIfacesWanEthRxPackets: Bool {return _storage._ifacesWanEthRxPackets != nil}
+  var hasIfacesWanEthRxPackets: Bool {_storage._ifacesWanEthRxPackets != nil}
   /// Clears the value of `ifacesWanEthRxPackets`. Subsequent reads from it will return its default value.
   mutating func clearIfacesWanEthRxPackets() {_uniqueStorage()._ifacesWanEthRxPackets = nil}
 
   var ifacesWanEthRxErrors: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._ifacesWanEthRxErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._ifacesWanEthRxErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._ifacesWanEthRxErrors = newValue}
   }
   /// Returns true if `ifacesWanEthRxErrors` has been explicitly set.
-  var hasIfacesWanEthRxErrors: Bool {return _storage._ifacesWanEthRxErrors != nil}
+  var hasIfacesWanEthRxErrors: Bool {_storage._ifacesWanEthRxErrors != nil}
   /// Clears the value of `ifacesWanEthRxErrors`. Subsequent reads from it will return its default value.
   mutating func clearIfacesWanEthRxErrors() {_uniqueStorage()._ifacesWanEthRxErrors = nil}
 
   var ifacesWanEthRxFrameErrors: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._ifacesWanEthRxFrameErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._ifacesWanEthRxFrameErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._ifacesWanEthRxFrameErrors = newValue}
   }
   /// Returns true if `ifacesWanEthRxFrameErrors` has been explicitly set.
-  var hasIfacesWanEthRxFrameErrors: Bool {return _storage._ifacesWanEthRxFrameErrors != nil}
+  var hasIfacesWanEthRxFrameErrors: Bool {_storage._ifacesWanEthRxFrameErrors != nil}
   /// Clears the value of `ifacesWanEthRxFrameErrors`. Subsequent reads from it will return its default value.
   mutating func clearIfacesWanEthRxFrameErrors() {_uniqueStorage()._ifacesWanEthRxFrameErrors = nil}
 
   var ifacesWanEthTxBytes: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._ifacesWanEthTxBytes ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._ifacesWanEthTxBytes ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._ifacesWanEthTxBytes = newValue}
   }
   /// Returns true if `ifacesWanEthTxBytes` has been explicitly set.
-  var hasIfacesWanEthTxBytes: Bool {return _storage._ifacesWanEthTxBytes != nil}
+  var hasIfacesWanEthTxBytes: Bool {_storage._ifacesWanEthTxBytes != nil}
   /// Clears the value of `ifacesWanEthTxBytes`. Subsequent reads from it will return its default value.
   mutating func clearIfacesWanEthTxBytes() {_uniqueStorage()._ifacesWanEthTxBytes = nil}
 
   var ifacesWanEthTxPackets: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._ifacesWanEthTxPackets ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._ifacesWanEthTxPackets ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._ifacesWanEthTxPackets = newValue}
   }
   /// Returns true if `ifacesWanEthTxPackets` has been explicitly set.
-  var hasIfacesWanEthTxPackets: Bool {return _storage._ifacesWanEthTxPackets != nil}
+  var hasIfacesWanEthTxPackets: Bool {_storage._ifacesWanEthTxPackets != nil}
   /// Clears the value of `ifacesWanEthTxPackets`. Subsequent reads from it will return its default value.
   mutating func clearIfacesWanEthTxPackets() {_uniqueStorage()._ifacesWanEthTxPackets = nil}
 
   var ifacesWanEthTxErrors: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._ifacesWanEthTxErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._ifacesWanEthTxErrors ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._ifacesWanEthTxErrors = newValue}
   }
   /// Returns true if `ifacesWanEthTxErrors` has been explicitly set.
-  var hasIfacesWanEthTxErrors: Bool {return _storage._ifacesWanEthTxErrors != nil}
+  var hasIfacesWanEthTxErrors: Bool {_storage._ifacesWanEthTxErrors != nil}
   /// Clears the value of `ifacesWanEthTxErrors`. Subsequent reads from it will return its default value.
   mutating func clearIfacesWanEthTxErrors() {_uniqueStorage()._ifacesWanEthTxErrors = nil}
 
+  var ifacesWanPort: SwiftProtobuf.Google_Protobuf_StringValue {
+    get {_storage._ifacesWanPort ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    set {_uniqueStorage()._ifacesWanPort = newValue}
+  }
+  /// Returns true if `ifacesWanPort` has been explicitly set.
+  var hasIfacesWanPort: Bool {_storage._ifacesWanPort != nil}
+  /// Clears the value of `ifacesWanPort`. Subsequent reads from it will return its default value.
+  mutating func clearIfacesWanPort() {_uniqueStorage()._ifacesWanPort = nil}
+
   var clients: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clients ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clients ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clients = newValue}
   }
   /// Returns true if `clients` has been explicitly set.
-  var hasClients: Bool {return _storage._clients != nil}
+  var hasClients: Bool {_storage._clients != nil}
   /// Clears the value of `clients`. Subsequent reads from it will return its default value.
   mutating func clearClients() {_uniqueStorage()._clients = nil}
 
   var clients2Ghz: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clients2Ghz ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clients2Ghz ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clients2Ghz = newValue}
   }
   /// Returns true if `clients2Ghz` has been explicitly set.
-  var hasClients2Ghz: Bool {return _storage._clients2Ghz != nil}
+  var hasClients2Ghz: Bool {_storage._clients2Ghz != nil}
   /// Clears the value of `clients2Ghz`. Subsequent reads from it will return its default value.
   mutating func clearClients2Ghz() {_uniqueStorage()._clients2Ghz = nil}
 
   var clients5Ghz: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clients5Ghz ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clients5Ghz ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clients5Ghz = newValue}
   }
   /// Returns true if `clients5Ghz` has been explicitly set.
-  var hasClients5Ghz: Bool {return _storage._clients5Ghz != nil}
+  var hasClients5Ghz: Bool {_storage._clients5Ghz != nil}
   /// Clears the value of `clients5Ghz`. Subsequent reads from it will return its default value.
   mutating func clearClients5Ghz() {_uniqueStorage()._clients5Ghz = nil}
 
   var clients5GhzHigh: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clients5GhzHigh ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clients5GhzHigh ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clients5GhzHigh = newValue}
   }
   /// Returns true if `clients5GhzHigh` has been explicitly set.
-  var hasClients5GhzHigh: Bool {return _storage._clients5GhzHigh != nil}
+  var hasClients5GhzHigh: Bool {_storage._clients5GhzHigh != nil}
   /// Clears the value of `clients5GhzHigh`. Subsequent reads from it will return its default value.
   mutating func clearClients5GhzHigh() {_uniqueStorage()._clients5GhzHigh = nil}
 
+  var clientsWireless: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._clientsWireless ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._clientsWireless = newValue}
+  }
+  /// Returns true if `clientsWireless` has been explicitly set.
+  var hasClientsWireless: Bool {_storage._clientsWireless != nil}
+  /// Clears the value of `clientsWireless`. Subsequent reads from it will return its default value.
+  mutating func clearClientsWireless() {_uniqueStorage()._clientsWireless = nil}
+
+  var clientsMlo: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._clientsMlo ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._clientsMlo = newValue}
+  }
+  /// Returns true if `clientsMlo` has been explicitly set.
+  var hasClientsMlo: Bool {_storage._clientsMlo != nil}
+  /// Clears the value of `clientsMlo`. Subsequent reads from it will return its default value.
+  mutating func clearClientsMlo() {_uniqueStorage()._clientsMlo = nil}
+
   var clientsEth: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clientsEth ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clientsEth ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clientsEth = newValue}
   }
   /// Returns true if `clientsEth` has been explicitly set.
-  var hasClientsEth: Bool {return _storage._clientsEth != nil}
+  var hasClientsEth: Bool {_storage._clientsEth != nil}
   /// Clears the value of `clientsEth`. Subsequent reads from it will return its default value.
   mutating func clearClientsEth() {_uniqueStorage()._clientsEth = nil}
 
   var clients5GhzRxBandwidth20Mhz: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clients5GhzRxBandwidth20Mhz ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clients5GhzRxBandwidth20Mhz ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clients5GhzRxBandwidth20Mhz = newValue}
   }
   /// Returns true if `clients5GhzRxBandwidth20Mhz` has been explicitly set.
-  var hasClients5GhzRxBandwidth20Mhz: Bool {return _storage._clients5GhzRxBandwidth20Mhz != nil}
+  var hasClients5GhzRxBandwidth20Mhz: Bool {_storage._clients5GhzRxBandwidth20Mhz != nil}
   /// Clears the value of `clients5GhzRxBandwidth20Mhz`. Subsequent reads from it will return its default value.
   mutating func clearClients5GhzRxBandwidth20Mhz() {_uniqueStorage()._clients5GhzRxBandwidth20Mhz = nil}
 
   var clients5GhzRxBandwidth40Mhz: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clients5GhzRxBandwidth40Mhz ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clients5GhzRxBandwidth40Mhz ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clients5GhzRxBandwidth40Mhz = newValue}
   }
   /// Returns true if `clients5GhzRxBandwidth40Mhz` has been explicitly set.
-  var hasClients5GhzRxBandwidth40Mhz: Bool {return _storage._clients5GhzRxBandwidth40Mhz != nil}
+  var hasClients5GhzRxBandwidth40Mhz: Bool {_storage._clients5GhzRxBandwidth40Mhz != nil}
   /// Clears the value of `clients5GhzRxBandwidth40Mhz`. Subsequent reads from it will return its default value.
   mutating func clearClients5GhzRxBandwidth40Mhz() {_uniqueStorage()._clients5GhzRxBandwidth40Mhz = nil}
 
   var clients5GhzRxBandwidth80Mhz: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clients5GhzRxBandwidth80Mhz ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clients5GhzRxBandwidth80Mhz ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clients5GhzRxBandwidth80Mhz = newValue}
   }
   /// Returns true if `clients5GhzRxBandwidth80Mhz` has been explicitly set.
-  var hasClients5GhzRxBandwidth80Mhz: Bool {return _storage._clients5GhzRxBandwidth80Mhz != nil}
+  var hasClients5GhzRxBandwidth80Mhz: Bool {_storage._clients5GhzRxBandwidth80Mhz != nil}
   /// Clears the value of `clients5GhzRxBandwidth80Mhz`. Subsequent reads from it will return its default value.
   mutating func clearClients5GhzRxBandwidth80Mhz() {_uniqueStorage()._clients5GhzRxBandwidth80Mhz = nil}
 
+  var clients5GhzRxBandwidth160Mhz: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._clients5GhzRxBandwidth160Mhz ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._clients5GhzRxBandwidth160Mhz = newValue}
+  }
+  /// Returns true if `clients5GhzRxBandwidth160Mhz` has been explicitly set.
+  var hasClients5GhzRxBandwidth160Mhz: Bool {_storage._clients5GhzRxBandwidth160Mhz != nil}
+  /// Clears the value of `clients5GhzRxBandwidth160Mhz`. Subsequent reads from it will return its default value.
+  mutating func clearClients5GhzRxBandwidth160Mhz() {_uniqueStorage()._clients5GhzRxBandwidth160Mhz = nil}
+
   var clientsRepeater: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clientsRepeater ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clientsRepeater ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clientsRepeater = newValue}
   }
   /// Returns true if `clientsRepeater` has been explicitly set.
-  var hasClientsRepeater: Bool {return _storage._clientsRepeater != nil}
+  var hasClientsRepeater: Bool {_storage._clientsRepeater != nil}
   /// Clears the value of `clientsRepeater`. Subsequent reads from it will return its default value.
   mutating func clearClientsRepeater() {_uniqueStorage()._clientsRepeater = nil}
 
   var clientsRepeater2Ghz: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clientsRepeater2Ghz ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clientsRepeater2Ghz ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clientsRepeater2Ghz = newValue}
   }
   /// Returns true if `clientsRepeater2Ghz` has been explicitly set.
-  var hasClientsRepeater2Ghz: Bool {return _storage._clientsRepeater2Ghz != nil}
+  var hasClientsRepeater2Ghz: Bool {_storage._clientsRepeater2Ghz != nil}
   /// Clears the value of `clientsRepeater2Ghz`. Subsequent reads from it will return its default value.
   mutating func clearClientsRepeater2Ghz() {_uniqueStorage()._clientsRepeater2Ghz = nil}
 
   var clientsRepeater5Ghz: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clientsRepeater5Ghz ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clientsRepeater5Ghz ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clientsRepeater5Ghz = newValue}
   }
   /// Returns true if `clientsRepeater5Ghz` has been explicitly set.
-  var hasClientsRepeater5Ghz: Bool {return _storage._clientsRepeater5Ghz != nil}
+  var hasClientsRepeater5Ghz: Bool {_storage._clientsRepeater5Ghz != nil}
   /// Clears the value of `clientsRepeater5Ghz`. Subsequent reads from it will return its default value.
   mutating func clearClientsRepeater5Ghz() {_uniqueStorage()._clientsRepeater5Ghz = nil}
 
   var clientsRepeater5GhzHigh: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clientsRepeater5GhzHigh ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clientsRepeater5GhzHigh ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clientsRepeater5GhzHigh = newValue}
   }
   /// Returns true if `clientsRepeater5GhzHigh` has been explicitly set.
-  var hasClientsRepeater5GhzHigh: Bool {return _storage._clientsRepeater5GhzHigh != nil}
+  var hasClientsRepeater5GhzHigh: Bool {_storage._clientsRepeater5GhzHigh != nil}
   /// Clears the value of `clientsRepeater5GhzHigh`. Subsequent reads from it will return its default value.
   mutating func clearClientsRepeater5GhzHigh() {_uniqueStorage()._clientsRepeater5GhzHigh = nil}
 
   var clientsRepeaterEth: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clientsRepeaterEth ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clientsRepeaterEth ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clientsRepeaterEth = newValue}
   }
   /// Returns true if `clientsRepeaterEth` has been explicitly set.
-  var hasClientsRepeaterEth: Bool {return _storage._clientsRepeaterEth != nil}
+  var hasClientsRepeaterEth: Bool {_storage._clientsRepeaterEth != nil}
   /// Clears the value of `clientsRepeaterEth`. Subsequent reads from it will return its default value.
   mutating func clearClientsRepeaterEth() {_uniqueStorage()._clientsRepeaterEth = nil}
 
   var meshHops: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._meshHops ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._meshHops ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._meshHops = newValue}
   }
   /// Returns true if `meshHops` has been explicitly set.
-  var hasMeshHops: Bool {return _storage._meshHops != nil}
+  var hasMeshHops: Bool {_storage._meshHops != nil}
   /// Clears the value of `meshHops`. Subsequent reads from it will return its default value.
   mutating func clearMeshHops() {_uniqueStorage()._meshHops = nil}
 
   var meshOneHopRssiAvg2Ghz: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._meshOneHopRssiAvg2Ghz ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._meshOneHopRssiAvg2Ghz ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._meshOneHopRssiAvg2Ghz = newValue}
   }
   /// Returns true if `meshOneHopRssiAvg2Ghz` has been explicitly set.
-  var hasMeshOneHopRssiAvg2Ghz: Bool {return _storage._meshOneHopRssiAvg2Ghz != nil}
+  var hasMeshOneHopRssiAvg2Ghz: Bool {_storage._meshOneHopRssiAvg2Ghz != nil}
   /// Clears the value of `meshOneHopRssiAvg2Ghz`. Subsequent reads from it will return its default value.
   mutating func clearMeshOneHopRssiAvg2Ghz() {_uniqueStorage()._meshOneHopRssiAvg2Ghz = nil}
 
   var meshOneHopRssiAvg5Ghz: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._meshOneHopRssiAvg5Ghz ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._meshOneHopRssiAvg5Ghz ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._meshOneHopRssiAvg5Ghz = newValue}
   }
   /// Returns true if `meshOneHopRssiAvg5Ghz` has been explicitly set.
-  var hasMeshOneHopRssiAvg5Ghz: Bool {return _storage._meshOneHopRssiAvg5Ghz != nil}
+  var hasMeshOneHopRssiAvg5Ghz: Bool {_storage._meshOneHopRssiAvg5Ghz != nil}
   /// Clears the value of `meshOneHopRssiAvg5Ghz`. Subsequent reads from it will return its default value.
   mutating func clearMeshOneHopRssiAvg5Ghz() {_uniqueStorage()._meshOneHopRssiAvg5Ghz = nil}
 
   var meshOneHopRssiAvg5GhzHigh: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._meshOneHopRssiAvg5GhzHigh ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._meshOneHopRssiAvg5GhzHigh ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._meshOneHopRssiAvg5GhzHigh = newValue}
   }
   /// Returns true if `meshOneHopRssiAvg5GhzHigh` has been explicitly set.
-  var hasMeshOneHopRssiAvg5GhzHigh: Bool {return _storage._meshOneHopRssiAvg5GhzHigh != nil}
+  var hasMeshOneHopRssiAvg5GhzHigh: Bool {_storage._meshOneHopRssiAvg5GhzHigh != nil}
   /// Clears the value of `meshOneHopRssiAvg5GhzHigh`. Subsequent reads from it will return its default value.
   mutating func clearMeshOneHopRssiAvg5GhzHigh() {_uniqueStorage()._meshOneHopRssiAvg5GhzHigh = nil}
 
   var meshTwoHopRssiAvg2Ghz: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._meshTwoHopRssiAvg2Ghz ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._meshTwoHopRssiAvg2Ghz ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._meshTwoHopRssiAvg2Ghz = newValue}
   }
   /// Returns true if `meshTwoHopRssiAvg2Ghz` has been explicitly set.
-  var hasMeshTwoHopRssiAvg2Ghz: Bool {return _storage._meshTwoHopRssiAvg2Ghz != nil}
+  var hasMeshTwoHopRssiAvg2Ghz: Bool {_storage._meshTwoHopRssiAvg2Ghz != nil}
   /// Clears the value of `meshTwoHopRssiAvg2Ghz`. Subsequent reads from it will return its default value.
   mutating func clearMeshTwoHopRssiAvg2Ghz() {_uniqueStorage()._meshTwoHopRssiAvg2Ghz = nil}
 
   var meshTwoHopRssiAvg5Ghz: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._meshTwoHopRssiAvg5Ghz ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._meshTwoHopRssiAvg5Ghz ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._meshTwoHopRssiAvg5Ghz = newValue}
   }
   /// Returns true if `meshTwoHopRssiAvg5Ghz` has been explicitly set.
-  var hasMeshTwoHopRssiAvg5Ghz: Bool {return _storage._meshTwoHopRssiAvg5Ghz != nil}
+  var hasMeshTwoHopRssiAvg5Ghz: Bool {_storage._meshTwoHopRssiAvg5Ghz != nil}
   /// Clears the value of `meshTwoHopRssiAvg5Ghz`. Subsequent reads from it will return its default value.
   mutating func clearMeshTwoHopRssiAvg5Ghz() {_uniqueStorage()._meshTwoHopRssiAvg5Ghz = nil}
 
   var meshTwoHopRssiAvg5GhzHigh: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._meshTwoHopRssiAvg5GhzHigh ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._meshTwoHopRssiAvg5GhzHigh ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._meshTwoHopRssiAvg5GhzHigh = newValue}
   }
   /// Returns true if `meshTwoHopRssiAvg5GhzHigh` has been explicitly set.
-  var hasMeshTwoHopRssiAvg5GhzHigh: Bool {return _storage._meshTwoHopRssiAvg5GhzHigh != nil}
+  var hasMeshTwoHopRssiAvg5GhzHigh: Bool {_storage._meshTwoHopRssiAvg5GhzHigh != nil}
   /// Clears the value of `meshTwoHopRssiAvg5GhzHigh`. Subsequent reads from it will return its default value.
   mutating func clearMeshTwoHopRssiAvg5GhzHigh() {_uniqueStorage()._meshTwoHopRssiAvg5GhzHigh = nil}
 
   var repeaterTxRateMbpsMin: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._repeaterTxRateMbpsMin ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._repeaterTxRateMbpsMin ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._repeaterTxRateMbpsMin = newValue}
   }
   /// Returns true if `repeaterTxRateMbpsMin` has been explicitly set.
-  var hasRepeaterTxRateMbpsMin: Bool {return _storage._repeaterTxRateMbpsMin != nil}
+  var hasRepeaterTxRateMbpsMin: Bool {_storage._repeaterTxRateMbpsMin != nil}
   /// Clears the value of `repeaterTxRateMbpsMin`. Subsequent reads from it will return its default value.
   mutating func clearRepeaterTxRateMbpsMin() {_uniqueStorage()._repeaterTxRateMbpsMin = nil}
 
   var repeaterRxRateMbpsMin: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._repeaterRxRateMbpsMin ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._repeaterRxRateMbpsMin ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._repeaterRxRateMbpsMin = newValue}
   }
   /// Returns true if `repeaterRxRateMbpsMin` has been explicitly set.
-  var hasRepeaterRxRateMbpsMin: Bool {return _storage._repeaterRxRateMbpsMin != nil}
+  var hasRepeaterRxRateMbpsMin: Bool {_storage._repeaterRxRateMbpsMin != nil}
   /// Clears the value of `repeaterRxRateMbpsMin`. Subsequent reads from it will return its default value.
   mutating func clearRepeaterRxRateMbpsMin() {_uniqueStorage()._repeaterRxRateMbpsMin = nil}
 
   var repeaterTxRateMbpsAvg: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._repeaterTxRateMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._repeaterTxRateMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._repeaterTxRateMbpsAvg = newValue}
   }
   /// Returns true if `repeaterTxRateMbpsAvg` has been explicitly set.
-  var hasRepeaterTxRateMbpsAvg: Bool {return _storage._repeaterTxRateMbpsAvg != nil}
+  var hasRepeaterTxRateMbpsAvg: Bool {_storage._repeaterTxRateMbpsAvg != nil}
   /// Clears the value of `repeaterTxRateMbpsAvg`. Subsequent reads from it will return its default value.
   mutating func clearRepeaterTxRateMbpsAvg() {_uniqueStorage()._repeaterTxRateMbpsAvg = nil}
 
   var repeaterRxRateMbpsAvg: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._repeaterRxRateMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._repeaterRxRateMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._repeaterRxRateMbpsAvg = newValue}
   }
   /// Returns true if `repeaterRxRateMbpsAvg` has been explicitly set.
-  var hasRepeaterRxRateMbpsAvg: Bool {return _storage._repeaterRxRateMbpsAvg != nil}
+  var hasRepeaterRxRateMbpsAvg: Bool {_storage._repeaterRxRateMbpsAvg != nil}
   /// Clears the value of `repeaterRxRateMbpsAvg`. Subsequent reads from it will return its default value.
   mutating func clearRepeaterRxRateMbpsAvg() {_uniqueStorage()._repeaterRxRateMbpsAvg = nil}
 
   var repeaterSecondsSince2SOutageMin: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._repeaterSecondsSince2SOutageMin ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._repeaterSecondsSince2SOutageMin ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._repeaterSecondsSince2SOutageMin = newValue}
   }
   /// Returns true if `repeaterSecondsSince2SOutageMin` has been explicitly set.
-  var hasRepeaterSecondsSince2SOutageMin: Bool {return _storage._repeaterSecondsSince2SOutageMin != nil}
+  var hasRepeaterSecondsSince2SOutageMin: Bool {_storage._repeaterSecondsSince2SOutageMin != nil}
   /// Clears the value of `repeaterSecondsSince2SOutageMin`. Subsequent reads from it will return its default value.
   mutating func clearRepeaterSecondsSince2SOutageMin() {_uniqueStorage()._repeaterSecondsSince2SOutageMin = nil}
 
   var repeaterSecondsSince5SOutageMin: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._repeaterSecondsSince5SOutageMin ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._repeaterSecondsSince5SOutageMin ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._repeaterSecondsSince5SOutageMin = newValue}
   }
   /// Returns true if `repeaterSecondsSince5SOutageMin` has been explicitly set.
-  var hasRepeaterSecondsSince5SOutageMin: Bool {return _storage._repeaterSecondsSince5SOutageMin != nil}
+  var hasRepeaterSecondsSince5SOutageMin: Bool {_storage._repeaterSecondsSince5SOutageMin != nil}
   /// Clears the value of `repeaterSecondsSince5SOutageMin`. Subsequent reads from it will return its default value.
   mutating func clearRepeaterSecondsSince5SOutageMin() {_uniqueStorage()._repeaterSecondsSince5SOutageMin = nil}
 
   var repeaterSecondsSince2SOutageAvg: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._repeaterSecondsSince2SOutageAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._repeaterSecondsSince2SOutageAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._repeaterSecondsSince2SOutageAvg = newValue}
   }
   /// Returns true if `repeaterSecondsSince2SOutageAvg` has been explicitly set.
-  var hasRepeaterSecondsSince2SOutageAvg: Bool {return _storage._repeaterSecondsSince2SOutageAvg != nil}
+  var hasRepeaterSecondsSince2SOutageAvg: Bool {_storage._repeaterSecondsSince2SOutageAvg != nil}
   /// Clears the value of `repeaterSecondsSince2SOutageAvg`. Subsequent reads from it will return its default value.
   mutating func clearRepeaterSecondsSince2SOutageAvg() {_uniqueStorage()._repeaterSecondsSince2SOutageAvg = nil}
 
   var repeaterSecondsSince5SOutageAvg: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._repeaterSecondsSince5SOutageAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._repeaterSecondsSince5SOutageAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._repeaterSecondsSince5SOutageAvg = newValue}
   }
   /// Returns true if `repeaterSecondsSince5SOutageAvg` has been explicitly set.
-  var hasRepeaterSecondsSince5SOutageAvg: Bool {return _storage._repeaterSecondsSince5SOutageAvg != nil}
+  var hasRepeaterSecondsSince5SOutageAvg: Bool {_storage._repeaterSecondsSince5SOutageAvg != nil}
   /// Clears the value of `repeaterSecondsSince5SOutageAvg`. Subsequent reads from it will return its default value.
   mutating func clearRepeaterSecondsSince5SOutageAvg() {_uniqueStorage()._repeaterSecondsSince5SOutageAvg = nil}
 
   var repeaterLatencyMs1HMax: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._repeaterLatencyMs1HMax ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._repeaterLatencyMs1HMax ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._repeaterLatencyMs1HMax = newValue}
   }
   /// Returns true if `repeaterLatencyMs1HMax` has been explicitly set.
-  var hasRepeaterLatencyMs1HMax: Bool {return _storage._repeaterLatencyMs1HMax != nil}
+  var hasRepeaterLatencyMs1HMax: Bool {_storage._repeaterLatencyMs1HMax != nil}
   /// Clears the value of `repeaterLatencyMs1HMax`. Subsequent reads from it will return its default value.
   mutating func clearRepeaterLatencyMs1HMax() {_uniqueStorage()._repeaterLatencyMs1HMax = nil}
 
   var repeaterLatencyMs1HAvg: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._repeaterLatencyMs1HAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._repeaterLatencyMs1HAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._repeaterLatencyMs1HAvg = newValue}
   }
   /// Returns true if `repeaterLatencyMs1HAvg` has been explicitly set.
-  var hasRepeaterLatencyMs1HAvg: Bool {return _storage._repeaterLatencyMs1HAvg != nil}
+  var hasRepeaterLatencyMs1HAvg: Bool {_storage._repeaterLatencyMs1HAvg != nil}
   /// Clears the value of `repeaterLatencyMs1HAvg`. Subsequent reads from it will return its default value.
   mutating func clearRepeaterLatencyMs1HAvg() {_uniqueStorage()._repeaterLatencyMs1HAvg = nil}
 
   var meshTopologyChangeCount1D: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._meshTopologyChangeCount1D ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._meshTopologyChangeCount1D ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._meshTopologyChangeCount1D = newValue}
   }
   /// Returns true if `meshTopologyChangeCount1D` has been explicitly set.
-  var hasMeshTopologyChangeCount1D: Bool {return _storage._meshTopologyChangeCount1D != nil}
+  var hasMeshTopologyChangeCount1D: Bool {_storage._meshTopologyChangeCount1D != nil}
   /// Clears the value of `meshTopologyChangeCount1D`. Subsequent reads from it will return its default value.
   mutating func clearMeshTopologyChangeCount1D() {_uniqueStorage()._meshTopologyChangeCount1D = nil}
 
+  var macExportsSuccessful: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._macExportsSuccessful ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._macExportsSuccessful = newValue}
+  }
+  /// Returns true if `macExportsSuccessful` has been explicitly set.
+  var hasMacExportsSuccessful: Bool {_storage._macExportsSuccessful != nil}
+  /// Clears the value of `macExportsSuccessful`. Subsequent reads from it will return its default value.
+  mutating func clearMacExportsSuccessful() {_uniqueStorage()._macExportsSuccessful = nil}
+
+  var macExportsServerConnectErrors: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._macExportsServerConnectErrors ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._macExportsServerConnectErrors = newValue}
+  }
+  /// Returns true if `macExportsServerConnectErrors` has been explicitly set.
+  var hasMacExportsServerConnectErrors: Bool {_storage._macExportsServerConnectErrors != nil}
+  /// Clears the value of `macExportsServerConnectErrors`. Subsequent reads from it will return its default value.
+  mutating func clearMacExportsServerConnectErrors() {_uniqueStorage()._macExportsServerConnectErrors = nil}
+
+  var macExportsServerSendErrors: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._macExportsServerSendErrors ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._macExportsServerSendErrors = newValue}
+  }
+  /// Returns true if `macExportsServerSendErrors` has been explicitly set.
+  var hasMacExportsServerSendErrors: Bool {_storage._macExportsServerSendErrors != nil}
+  /// Clears the value of `macExportsServerSendErrors`. Subsequent reads from it will return its default value.
+  mutating func clearMacExportsServerSendErrors() {_uniqueStorage()._macExportsServerSendErrors = nil}
+
   var pingSecondsSinceLast1SOutage: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingSecondsSinceLast1SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingSecondsSinceLast1SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingSecondsSinceLast1SOutage = newValue}
   }
   /// Returns true if `pingSecondsSinceLast1SOutage` has been explicitly set.
-  var hasPingSecondsSinceLast1SOutage: Bool {return _storage._pingSecondsSinceLast1SOutage != nil}
+  var hasPingSecondsSinceLast1SOutage: Bool {_storage._pingSecondsSinceLast1SOutage != nil}
   /// Clears the value of `pingSecondsSinceLast1SOutage`. Subsequent reads from it will return its default value.
   mutating func clearPingSecondsSinceLast1SOutage() {_uniqueStorage()._pingSecondsSinceLast1SOutage = nil}
 
   var pingSecondsSinceLast2SOutage: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingSecondsSinceLast2SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingSecondsSinceLast2SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingSecondsSinceLast2SOutage = newValue}
   }
   /// Returns true if `pingSecondsSinceLast2SOutage` has been explicitly set.
-  var hasPingSecondsSinceLast2SOutage: Bool {return _storage._pingSecondsSinceLast2SOutage != nil}
+  var hasPingSecondsSinceLast2SOutage: Bool {_storage._pingSecondsSinceLast2SOutage != nil}
   /// Clears the value of `pingSecondsSinceLast2SOutage`. Subsequent reads from it will return its default value.
   mutating func clearPingSecondsSinceLast2SOutage() {_uniqueStorage()._pingSecondsSinceLast2SOutage = nil}
 
   var pingSecondsSinceLast5SOutage: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingSecondsSinceLast5SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingSecondsSinceLast5SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingSecondsSinceLast5SOutage = newValue}
   }
   /// Returns true if `pingSecondsSinceLast5SOutage` has been explicitly set.
-  var hasPingSecondsSinceLast5SOutage: Bool {return _storage._pingSecondsSinceLast5SOutage != nil}
+  var hasPingSecondsSinceLast5SOutage: Bool {_storage._pingSecondsSinceLast5SOutage != nil}
   /// Clears the value of `pingSecondsSinceLast5SOutage`. Subsequent reads from it will return its default value.
   mutating func clearPingSecondsSinceLast5SOutage() {_uniqueStorage()._pingSecondsSinceLast5SOutage = nil}
 
   var pingSecondsSinceLast60SOutage: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingSecondsSinceLast60SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingSecondsSinceLast60SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingSecondsSinceLast60SOutage = newValue}
   }
   /// Returns true if `pingSecondsSinceLast60SOutage` has been explicitly set.
-  var hasPingSecondsSinceLast60SOutage: Bool {return _storage._pingSecondsSinceLast60SOutage != nil}
+  var hasPingSecondsSinceLast60SOutage: Bool {_storage._pingSecondsSinceLast60SOutage != nil}
   /// Clears the value of `pingSecondsSinceLast60SOutage`. Subsequent reads from it will return its default value.
   mutating func clearPingSecondsSinceLast60SOutage() {_uniqueStorage()._pingSecondsSinceLast60SOutage = nil}
 
   var pingSecondsSinceLast300SOutage: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingSecondsSinceLast300SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingSecondsSinceLast300SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingSecondsSinceLast300SOutage = newValue}
   }
   /// Returns true if `pingSecondsSinceLast300SOutage` has been explicitly set.
-  var hasPingSecondsSinceLast300SOutage: Bool {return _storage._pingSecondsSinceLast300SOutage != nil}
+  var hasPingSecondsSinceLast300SOutage: Bool {_storage._pingSecondsSinceLast300SOutage != nil}
   /// Clears the value of `pingSecondsSinceLast300SOutage`. Subsequent reads from it will return its default value.
   mutating func clearPingSecondsSinceLast300SOutage() {_uniqueStorage()._pingSecondsSinceLast300SOutage = nil}
 
   var pingDropRate: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingDropRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingDropRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingDropRate = newValue}
   }
   /// Returns true if `pingDropRate` has been explicitly set.
-  var hasPingDropRate: Bool {return _storage._pingDropRate != nil}
+  var hasPingDropRate: Bool {_storage._pingDropRate != nil}
   /// Clears the value of `pingDropRate`. Subsequent reads from it will return its default value.
   mutating func clearPingDropRate() {_uniqueStorage()._pingDropRate = nil}
 
   var pingDropRateLast1H: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingDropRateLast1H ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingDropRateLast1H ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingDropRateLast1H = newValue}
   }
   /// Returns true if `pingDropRateLast1H` has been explicitly set.
-  var hasPingDropRateLast1H: Bool {return _storage._pingDropRateLast1H != nil}
+  var hasPingDropRateLast1H: Bool {_storage._pingDropRateLast1H != nil}
   /// Clears the value of `pingDropRateLast1H`. Subsequent reads from it will return its default value.
   mutating func clearPingDropRateLast1H() {_uniqueStorage()._pingDropRateLast1H = nil}
 
   var pingLatency: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingLatency ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingLatency ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingLatency = newValue}
   }
   /// Returns true if `pingLatency` has been explicitly set.
-  var hasPingLatency: Bool {return _storage._pingLatency != nil}
+  var hasPingLatency: Bool {_storage._pingLatency != nil}
   /// Clears the value of `pingLatency`. Subsequent reads from it will return its default value.
   mutating func clearPingLatency() {_uniqueStorage()._pingLatency = nil}
 
   var pingLatencyLast1H: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingLatencyLast1H ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingLatencyLast1H ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingLatencyLast1H = newValue}
   }
   /// Returns true if `pingLatencyLast1H` has been explicitly set.
-  var hasPingLatencyLast1H: Bool {return _storage._pingLatencyLast1H != nil}
+  var hasPingLatencyLast1H: Bool {_storage._pingLatencyLast1H != nil}
   /// Clears the value of `pingLatencyLast1H`. Subsequent reads from it will return its default value.
   mutating func clearPingLatencyLast1H() {_uniqueStorage()._pingLatencyLast1H = nil}
 
   var pingDishSecondsSinceLast1SOutage: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingDishSecondsSinceLast1SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingDishSecondsSinceLast1SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingDishSecondsSinceLast1SOutage = newValue}
   }
   /// Returns true if `pingDishSecondsSinceLast1SOutage` has been explicitly set.
-  var hasPingDishSecondsSinceLast1SOutage: Bool {return _storage._pingDishSecondsSinceLast1SOutage != nil}
+  var hasPingDishSecondsSinceLast1SOutage: Bool {_storage._pingDishSecondsSinceLast1SOutage != nil}
   /// Clears the value of `pingDishSecondsSinceLast1SOutage`. Subsequent reads from it will return its default value.
   mutating func clearPingDishSecondsSinceLast1SOutage() {_uniqueStorage()._pingDishSecondsSinceLast1SOutage = nil}
 
   var pingDishSecondsSinceLast2SOutage: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingDishSecondsSinceLast2SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingDishSecondsSinceLast2SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingDishSecondsSinceLast2SOutage = newValue}
   }
   /// Returns true if `pingDishSecondsSinceLast2SOutage` has been explicitly set.
-  var hasPingDishSecondsSinceLast2SOutage: Bool {return _storage._pingDishSecondsSinceLast2SOutage != nil}
+  var hasPingDishSecondsSinceLast2SOutage: Bool {_storage._pingDishSecondsSinceLast2SOutage != nil}
   /// Clears the value of `pingDishSecondsSinceLast2SOutage`. Subsequent reads from it will return its default value.
   mutating func clearPingDishSecondsSinceLast2SOutage() {_uniqueStorage()._pingDishSecondsSinceLast2SOutage = nil}
 
   var pingDishSecondsSinceLast5SOutage: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingDishSecondsSinceLast5SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingDishSecondsSinceLast5SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingDishSecondsSinceLast5SOutage = newValue}
   }
   /// Returns true if `pingDishSecondsSinceLast5SOutage` has been explicitly set.
-  var hasPingDishSecondsSinceLast5SOutage: Bool {return _storage._pingDishSecondsSinceLast5SOutage != nil}
+  var hasPingDishSecondsSinceLast5SOutage: Bool {_storage._pingDishSecondsSinceLast5SOutage != nil}
   /// Clears the value of `pingDishSecondsSinceLast5SOutage`. Subsequent reads from it will return its default value.
   mutating func clearPingDishSecondsSinceLast5SOutage() {_uniqueStorage()._pingDishSecondsSinceLast5SOutage = nil}
 
   var pingDishSecondsSinceLast60SOutage: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingDishSecondsSinceLast60SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingDishSecondsSinceLast60SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingDishSecondsSinceLast60SOutage = newValue}
   }
   /// Returns true if `pingDishSecondsSinceLast60SOutage` has been explicitly set.
-  var hasPingDishSecondsSinceLast60SOutage: Bool {return _storage._pingDishSecondsSinceLast60SOutage != nil}
+  var hasPingDishSecondsSinceLast60SOutage: Bool {_storage._pingDishSecondsSinceLast60SOutage != nil}
   /// Clears the value of `pingDishSecondsSinceLast60SOutage`. Subsequent reads from it will return its default value.
   mutating func clearPingDishSecondsSinceLast60SOutage() {_uniqueStorage()._pingDishSecondsSinceLast60SOutage = nil}
 
   var pingDishSecondsSinceLast300SOutage: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingDishSecondsSinceLast300SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingDishSecondsSinceLast300SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingDishSecondsSinceLast300SOutage = newValue}
   }
   /// Returns true if `pingDishSecondsSinceLast300SOutage` has been explicitly set.
-  var hasPingDishSecondsSinceLast300SOutage: Bool {return _storage._pingDishSecondsSinceLast300SOutage != nil}
+  var hasPingDishSecondsSinceLast300SOutage: Bool {_storage._pingDishSecondsSinceLast300SOutage != nil}
   /// Clears the value of `pingDishSecondsSinceLast300SOutage`. Subsequent reads from it will return its default value.
   mutating func clearPingDishSecondsSinceLast300SOutage() {_uniqueStorage()._pingDishSecondsSinceLast300SOutage = nil}
 
   var pingDishDropRate: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingDishDropRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingDishDropRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingDishDropRate = newValue}
   }
   /// Returns true if `pingDishDropRate` has been explicitly set.
-  var hasPingDishDropRate: Bool {return _storage._pingDishDropRate != nil}
+  var hasPingDishDropRate: Bool {_storage._pingDishDropRate != nil}
   /// Clears the value of `pingDishDropRate`. Subsequent reads from it will return its default value.
   mutating func clearPingDishDropRate() {_uniqueStorage()._pingDishDropRate = nil}
 
   var pingDishDropRateLast1H: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingDishDropRateLast1H ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingDishDropRateLast1H ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingDishDropRateLast1H = newValue}
   }
   /// Returns true if `pingDishDropRateLast1H` has been explicitly set.
-  var hasPingDishDropRateLast1H: Bool {return _storage._pingDishDropRateLast1H != nil}
+  var hasPingDishDropRateLast1H: Bool {_storage._pingDishDropRateLast1H != nil}
   /// Clears the value of `pingDishDropRateLast1H`. Subsequent reads from it will return its default value.
   mutating func clearPingDishDropRateLast1H() {_uniqueStorage()._pingDishDropRateLast1H = nil}
 
   var pingDishLatency: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingDishLatency ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingDishLatency ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingDishLatency = newValue}
   }
   /// Returns true if `pingDishLatency` has been explicitly set.
-  var hasPingDishLatency: Bool {return _storage._pingDishLatency != nil}
+  var hasPingDishLatency: Bool {_storage._pingDishLatency != nil}
   /// Clears the value of `pingDishLatency`. Subsequent reads from it will return its default value.
   mutating func clearPingDishLatency() {_uniqueStorage()._pingDishLatency = nil}
 
   var pingDishLatencyLast1H: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingDishLatencyLast1H ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingDishLatencyLast1H ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingDishLatencyLast1H = newValue}
   }
   /// Returns true if `pingDishLatencyLast1H` has been explicitly set.
-  var hasPingDishLatencyLast1H: Bool {return _storage._pingDishLatencyLast1H != nil}
+  var hasPingDishLatencyLast1H: Bool {_storage._pingDishLatencyLast1H != nil}
   /// Clears the value of `pingDishLatencyLast1H`. Subsequent reads from it will return its default value.
   mutating func clearPingDishLatencyLast1H() {_uniqueStorage()._pingDishLatencyLast1H = nil}
 
+  var pingPopIpv6DropRateLast1H: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._pingPopIpv6DropRateLast1H ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._pingPopIpv6DropRateLast1H = newValue}
+  }
+  /// Returns true if `pingPopIpv6DropRateLast1H` has been explicitly set.
+  var hasPingPopIpv6DropRateLast1H: Bool {_storage._pingPopIpv6DropRateLast1H != nil}
+  /// Clears the value of `pingPopIpv6DropRateLast1H`. Subsequent reads from it will return its default value.
+  mutating func clearPingPopIpv6DropRateLast1H() {_uniqueStorage()._pingPopIpv6DropRateLast1H = nil}
+
+  var pingPopIpv6LatencyLast1H: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._pingPopIpv6LatencyLast1H ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._pingPopIpv6LatencyLast1H = newValue}
+  }
+  /// Returns true if `pingPopIpv6LatencyLast1H` has been explicitly set.
+  var hasPingPopIpv6LatencyLast1H: Bool {_storage._pingPopIpv6LatencyLast1H != nil}
+  /// Clears the value of `pingPopIpv6LatencyLast1H`. Subsequent reads from it will return its default value.
+  mutating func clearPingPopIpv6LatencyLast1H() {_uniqueStorage()._pingPopIpv6LatencyLast1H = nil}
+
   var clientSpeedtestRouterDownloadMbps: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._clientSpeedtestRouterDownloadMbps ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._clientSpeedtestRouterDownloadMbps ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._clientSpeedtestRouterDownloadMbps = newValue}
   }
   /// Returns true if `clientSpeedtestRouterDownloadMbps` has been explicitly set.
-  var hasClientSpeedtestRouterDownloadMbps: Bool {return _storage._clientSpeedtestRouterDownloadMbps != nil}
+  var hasClientSpeedtestRouterDownloadMbps: Bool {_storage._clientSpeedtestRouterDownloadMbps != nil}
   /// Clears the value of `clientSpeedtestRouterDownloadMbps`. Subsequent reads from it will return its default value.
   mutating func clearClientSpeedtestRouterDownloadMbps() {_uniqueStorage()._clientSpeedtestRouterDownloadMbps = nil}
 
+  var clientSpeedtestRouterDownloadTotalBytesTransferred: SwiftProtobuf.Google_Protobuf_UInt64Value {
+    get {_storage._clientSpeedtestRouterDownloadTotalBytesTransferred ?? SwiftProtobuf.Google_Protobuf_UInt64Value()}
+    set {_uniqueStorage()._clientSpeedtestRouterDownloadTotalBytesTransferred = newValue}
+  }
+  /// Returns true if `clientSpeedtestRouterDownloadTotalBytesTransferred` has been explicitly set.
+  var hasClientSpeedtestRouterDownloadTotalBytesTransferred: Bool {_storage._clientSpeedtestRouterDownloadTotalBytesTransferred != nil}
+  /// Clears the value of `clientSpeedtestRouterDownloadTotalBytesTransferred`. Subsequent reads from it will return its default value.
+  mutating func clearClientSpeedtestRouterDownloadTotalBytesTransferred() {_uniqueStorage()._clientSpeedtestRouterDownloadTotalBytesTransferred = nil}
+
+  var clientSpeedtestRouterDownloadBytesTransferredDurationS: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._clientSpeedtestRouterDownloadBytesTransferredDurationS ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._clientSpeedtestRouterDownloadBytesTransferredDurationS = newValue}
+  }
+  /// Returns true if `clientSpeedtestRouterDownloadBytesTransferredDurationS` has been explicitly set.
+  var hasClientSpeedtestRouterDownloadBytesTransferredDurationS: Bool {_storage._clientSpeedtestRouterDownloadBytesTransferredDurationS != nil}
+  /// Clears the value of `clientSpeedtestRouterDownloadBytesTransferredDurationS`. Subsequent reads from it will return its default value.
+  mutating func clearClientSpeedtestRouterDownloadBytesTransferredDurationS() {_uniqueStorage()._clientSpeedtestRouterDownloadBytesTransferredDurationS = nil}
+
+  var clientSpeedtestRouterDownloadTargetIpv6Low: SwiftProtobuf.Google_Protobuf_UInt64Value {
+    get {_storage._clientSpeedtestRouterDownloadTargetIpv6Low ?? SwiftProtobuf.Google_Protobuf_UInt64Value()}
+    set {_uniqueStorage()._clientSpeedtestRouterDownloadTargetIpv6Low = newValue}
+  }
+  /// Returns true if `clientSpeedtestRouterDownloadTargetIpv6Low` has been explicitly set.
+  var hasClientSpeedtestRouterDownloadTargetIpv6Low: Bool {_storage._clientSpeedtestRouterDownloadTargetIpv6Low != nil}
+  /// Clears the value of `clientSpeedtestRouterDownloadTargetIpv6Low`. Subsequent reads from it will return its default value.
+  mutating func clearClientSpeedtestRouterDownloadTargetIpv6Low() {_uniqueStorage()._clientSpeedtestRouterDownloadTargetIpv6Low = nil}
+
+  var clientSpeedtestRouterDownloadTargetIpv6High: SwiftProtobuf.Google_Protobuf_UInt64Value {
+    get {_storage._clientSpeedtestRouterDownloadTargetIpv6High ?? SwiftProtobuf.Google_Protobuf_UInt64Value()}
+    set {_uniqueStorage()._clientSpeedtestRouterDownloadTargetIpv6High = newValue}
+  }
+  /// Returns true if `clientSpeedtestRouterDownloadTargetIpv6High` has been explicitly set.
+  var hasClientSpeedtestRouterDownloadTargetIpv6High: Bool {_storage._clientSpeedtestRouterDownloadTargetIpv6High != nil}
+  /// Clears the value of `clientSpeedtestRouterDownloadTargetIpv6High`. Subsequent reads from it will return its default value.
+  mutating func clearClientSpeedtestRouterDownloadTargetIpv6High() {_uniqueStorage()._clientSpeedtestRouterDownloadTargetIpv6High = nil}
+
   var clientSpeedtestRouterUploadMbps: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._clientSpeedtestRouterUploadMbps ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._clientSpeedtestRouterUploadMbps ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._clientSpeedtestRouterUploadMbps = newValue}
   }
   /// Returns true if `clientSpeedtestRouterUploadMbps` has been explicitly set.
-  var hasClientSpeedtestRouterUploadMbps: Bool {return _storage._clientSpeedtestRouterUploadMbps != nil}
+  var hasClientSpeedtestRouterUploadMbps: Bool {_storage._clientSpeedtestRouterUploadMbps != nil}
   /// Clears the value of `clientSpeedtestRouterUploadMbps`. Subsequent reads from it will return its default value.
   mutating func clearClientSpeedtestRouterUploadMbps() {_uniqueStorage()._clientSpeedtestRouterUploadMbps = nil}
 
+  var clientSpeedtestRouterUploadTotalBytesTransferred: SwiftProtobuf.Google_Protobuf_UInt64Value {
+    get {_storage._clientSpeedtestRouterUploadTotalBytesTransferred ?? SwiftProtobuf.Google_Protobuf_UInt64Value()}
+    set {_uniqueStorage()._clientSpeedtestRouterUploadTotalBytesTransferred = newValue}
+  }
+  /// Returns true if `clientSpeedtestRouterUploadTotalBytesTransferred` has been explicitly set.
+  var hasClientSpeedtestRouterUploadTotalBytesTransferred: Bool {_storage._clientSpeedtestRouterUploadTotalBytesTransferred != nil}
+  /// Clears the value of `clientSpeedtestRouterUploadTotalBytesTransferred`. Subsequent reads from it will return its default value.
+  mutating func clearClientSpeedtestRouterUploadTotalBytesTransferred() {_uniqueStorage()._clientSpeedtestRouterUploadTotalBytesTransferred = nil}
+
+  var clientSpeedtestRouterUploadBytesTransferredDurationS: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._clientSpeedtestRouterUploadBytesTransferredDurationS ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._clientSpeedtestRouterUploadBytesTransferredDurationS = newValue}
+  }
+  /// Returns true if `clientSpeedtestRouterUploadBytesTransferredDurationS` has been explicitly set.
+  var hasClientSpeedtestRouterUploadBytesTransferredDurationS: Bool {_storage._clientSpeedtestRouterUploadBytesTransferredDurationS != nil}
+  /// Clears the value of `clientSpeedtestRouterUploadBytesTransferredDurationS`. Subsequent reads from it will return its default value.
+  mutating func clearClientSpeedtestRouterUploadBytesTransferredDurationS() {_uniqueStorage()._clientSpeedtestRouterUploadBytesTransferredDurationS = nil}
+
+  var clientSpeedtestRouterUploadTargetIpv6Low: SwiftProtobuf.Google_Protobuf_UInt64Value {
+    get {_storage._clientSpeedtestRouterUploadTargetIpv6Low ?? SwiftProtobuf.Google_Protobuf_UInt64Value()}
+    set {_uniqueStorage()._clientSpeedtestRouterUploadTargetIpv6Low = newValue}
+  }
+  /// Returns true if `clientSpeedtestRouterUploadTargetIpv6Low` has been explicitly set.
+  var hasClientSpeedtestRouterUploadTargetIpv6Low: Bool {_storage._clientSpeedtestRouterUploadTargetIpv6Low != nil}
+  /// Clears the value of `clientSpeedtestRouterUploadTargetIpv6Low`. Subsequent reads from it will return its default value.
+  mutating func clearClientSpeedtestRouterUploadTargetIpv6Low() {_uniqueStorage()._clientSpeedtestRouterUploadTargetIpv6Low = nil}
+
+  var clientSpeedtestRouterUploadTargetIpv6High: SwiftProtobuf.Google_Protobuf_UInt64Value {
+    get {_storage._clientSpeedtestRouterUploadTargetIpv6High ?? SwiftProtobuf.Google_Protobuf_UInt64Value()}
+    set {_uniqueStorage()._clientSpeedtestRouterUploadTargetIpv6High = newValue}
+  }
+  /// Returns true if `clientSpeedtestRouterUploadTargetIpv6High` has been explicitly set.
+  var hasClientSpeedtestRouterUploadTargetIpv6High: Bool {_storage._clientSpeedtestRouterUploadTargetIpv6High != nil}
+  /// Clears the value of `clientSpeedtestRouterUploadTargetIpv6High`. Subsequent reads from it will return its default value.
+  mutating func clearClientSpeedtestRouterUploadTargetIpv6High() {_uniqueStorage()._clientSpeedtestRouterUploadTargetIpv6High = nil}
+
   var clientSpeedtestRouterRssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._clientSpeedtestRouterRssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._clientSpeedtestRouterRssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._clientSpeedtestRouterRssi = newValue}
   }
   /// Returns true if `clientSpeedtestRouterRssi` has been explicitly set.
-  var hasClientSpeedtestRouterRssi: Bool {return _storage._clientSpeedtestRouterRssi != nil}
+  var hasClientSpeedtestRouterRssi: Bool {_storage._clientSpeedtestRouterRssi != nil}
   /// Clears the value of `clientSpeedtestRouterRssi`. Subsequent reads from it will return its default value.
   mutating func clearClientSpeedtestRouterRssi() {_uniqueStorage()._clientSpeedtestRouterRssi = nil}
 
   var clientSpeedtestWifiDownloadMbps: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._clientSpeedtestWifiDownloadMbps ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._clientSpeedtestWifiDownloadMbps ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._clientSpeedtestWifiDownloadMbps = newValue}
   }
   /// Returns true if `clientSpeedtestWifiDownloadMbps` has been explicitly set.
-  var hasClientSpeedtestWifiDownloadMbps: Bool {return _storage._clientSpeedtestWifiDownloadMbps != nil}
+  var hasClientSpeedtestWifiDownloadMbps: Bool {_storage._clientSpeedtestWifiDownloadMbps != nil}
   /// Clears the value of `clientSpeedtestWifiDownloadMbps`. Subsequent reads from it will return its default value.
   mutating func clearClientSpeedtestWifiDownloadMbps() {_uniqueStorage()._clientSpeedtestWifiDownloadMbps = nil}
 
   var clientSpeedtestWifiUploadMbps: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._clientSpeedtestWifiUploadMbps ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._clientSpeedtestWifiUploadMbps ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._clientSpeedtestWifiUploadMbps = newValue}
   }
   /// Returns true if `clientSpeedtestWifiUploadMbps` has been explicitly set.
-  var hasClientSpeedtestWifiUploadMbps: Bool {return _storage._clientSpeedtestWifiUploadMbps != nil}
+  var hasClientSpeedtestWifiUploadMbps: Bool {_storage._clientSpeedtestWifiUploadMbps != nil}
   /// Clears the value of `clientSpeedtestWifiUploadMbps`. Subsequent reads from it will return its default value.
   mutating func clearClientSpeedtestWifiUploadMbps() {_uniqueStorage()._clientSpeedtestWifiUploadMbps = nil}
 
   var clientSpeedtestClientDownloadMbps: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._clientSpeedtestClientDownloadMbps ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._clientSpeedtestClientDownloadMbps ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._clientSpeedtestClientDownloadMbps = newValue}
   }
   /// Returns true if `clientSpeedtestClientDownloadMbps` has been explicitly set.
-  var hasClientSpeedtestClientDownloadMbps: Bool {return _storage._clientSpeedtestClientDownloadMbps != nil}
+  var hasClientSpeedtestClientDownloadMbps: Bool {_storage._clientSpeedtestClientDownloadMbps != nil}
   /// Clears the value of `clientSpeedtestClientDownloadMbps`. Subsequent reads from it will return its default value.
   mutating func clearClientSpeedtestClientDownloadMbps() {_uniqueStorage()._clientSpeedtestClientDownloadMbps = nil}
 
   var clientSpeedtestClientUploadMbps: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._clientSpeedtestClientUploadMbps ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._clientSpeedtestClientUploadMbps ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._clientSpeedtestClientUploadMbps = newValue}
   }
   /// Returns true if `clientSpeedtestClientUploadMbps` has been explicitly set.
-  var hasClientSpeedtestClientUploadMbps: Bool {return _storage._clientSpeedtestClientUploadMbps != nil}
+  var hasClientSpeedtestClientUploadMbps: Bool {_storage._clientSpeedtestClientUploadMbps != nil}
   /// Clears the value of `clientSpeedtestClientUploadMbps`. Subsequent reads from it will return its default value.
   mutating func clearClientSpeedtestClientUploadMbps() {_uniqueStorage()._clientSpeedtestClientUploadMbps = nil}
 
   var clientSpeedtestClientRssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._clientSpeedtestClientRssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._clientSpeedtestClientRssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._clientSpeedtestClientRssi = newValue}
   }
   /// Returns true if `clientSpeedtestClientRssi` has been explicitly set.
-  var hasClientSpeedtestClientRssi: Bool {return _storage._clientSpeedtestClientRssi != nil}
+  var hasClientSpeedtestClientRssi: Bool {_storage._clientSpeedtestClientRssi != nil}
   /// Clears the value of `clientSpeedtestClientRssi`. Subsequent reads from it will return its default value.
   mutating func clearClientSpeedtestClientRssi() {_uniqueStorage()._clientSpeedtestClientRssi = nil}
 
   var clientSpeedtestClientIface: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clientSpeedtestClientIface ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clientSpeedtestClientIface ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clientSpeedtestClientIface = newValue}
   }
   /// Returns true if `clientSpeedtestClientIface` has been explicitly set.
-  var hasClientSpeedtestClientIface: Bool {return _storage._clientSpeedtestClientIface != nil}
+  var hasClientSpeedtestClientIface: Bool {_storage._clientSpeedtestClientIface != nil}
   /// Clears the value of `clientSpeedtestClientIface`. Subsequent reads from it will return its default value.
   mutating func clearClientSpeedtestClientIface() {_uniqueStorage()._clientSpeedtestClientIface = nil}
 
   var clientSpeedtestClientOui: SwiftProtobuf.Google_Protobuf_StringValue {
-    get {return _storage._clientSpeedtestClientOui ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    get {_storage._clientSpeedtestClientOui ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._clientSpeedtestClientOui = newValue}
   }
   /// Returns true if `clientSpeedtestClientOui` has been explicitly set.
-  var hasClientSpeedtestClientOui: Bool {return _storage._clientSpeedtestClientOui != nil}
+  var hasClientSpeedtestClientOui: Bool {_storage._clientSpeedtestClientOui != nil}
   /// Clears the value of `clientSpeedtestClientOui`. Subsequent reads from it will return its default value.
   mutating func clearClientSpeedtestClientOui() {_uniqueStorage()._clientSpeedtestClientOui = nil}
 
   var clientSpeedtestClientTxRate: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clientSpeedtestClientTxRate ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clientSpeedtestClientTxRate ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clientSpeedtestClientTxRate = newValue}
   }
   /// Returns true if `clientSpeedtestClientTxRate` has been explicitly set.
-  var hasClientSpeedtestClientTxRate: Bool {return _storage._clientSpeedtestClientTxRate != nil}
+  var hasClientSpeedtestClientTxRate: Bool {_storage._clientSpeedtestClientTxRate != nil}
   /// Clears the value of `clientSpeedtestClientTxRate`. Subsequent reads from it will return its default value.
   mutating func clearClientSpeedtestClientTxRate() {_uniqueStorage()._clientSpeedtestClientTxRate = nil}
 
   var clientSpeedtestClientRxRate: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clientSpeedtestClientRxRate ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clientSpeedtestClientRxRate ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clientSpeedtestClientRxRate = newValue}
   }
   /// Returns true if `clientSpeedtestClientRxRate` has been explicitly set.
-  var hasClientSpeedtestClientRxRate: Bool {return _storage._clientSpeedtestClientRxRate != nil}
+  var hasClientSpeedtestClientRxRate: Bool {_storage._clientSpeedtestClientRxRate != nil}
   /// Clears the value of `clientSpeedtestClientRxRate`. Subsequent reads from it will return its default value.
   mutating func clearClientSpeedtestClientRxRate() {_uniqueStorage()._clientSpeedtestClientRxRate = nil}
 
   var clientSpeedtestClientPlatformType: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clientSpeedtestClientPlatformType ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clientSpeedtestClientPlatformType ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clientSpeedtestClientPlatformType = newValue}
   }
   /// Returns true if `clientSpeedtestClientPlatformType` has been explicitly set.
-  var hasClientSpeedtestClientPlatformType: Bool {return _storage._clientSpeedtestClientPlatformType != nil}
+  var hasClientSpeedtestClientPlatformType: Bool {_storage._clientSpeedtestClientPlatformType != nil}
   /// Clears the value of `clientSpeedtestClientPlatformType`. Subsequent reads from it will return its default value.
   mutating func clearClientSpeedtestClientPlatformType() {_uniqueStorage()._clientSpeedtestClientPlatformType = nil}
 
   var speedtestTcp8DownloadMbpsAvg: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._speedtestTcp8DownloadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._speedtestTcp8DownloadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._speedtestTcp8DownloadMbpsAvg = newValue}
   }
   /// Returns true if `speedtestTcp8DownloadMbpsAvg` has been explicitly set.
-  var hasSpeedtestTcp8DownloadMbpsAvg: Bool {return _storage._speedtestTcp8DownloadMbpsAvg != nil}
+  var hasSpeedtestTcp8DownloadMbpsAvg: Bool {_storage._speedtestTcp8DownloadMbpsAvg != nil}
   /// Clears the value of `speedtestTcp8DownloadMbpsAvg`. Subsequent reads from it will return its default value.
   mutating func clearSpeedtestTcp8DownloadMbpsAvg() {_uniqueStorage()._speedtestTcp8DownloadMbpsAvg = nil}
 
   var speedtestTcp8DownloadMbpsMax: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._speedtestTcp8DownloadMbpsMax ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._speedtestTcp8DownloadMbpsMax ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._speedtestTcp8DownloadMbpsMax = newValue}
   }
   /// Returns true if `speedtestTcp8DownloadMbpsMax` has been explicitly set.
-  var hasSpeedtestTcp8DownloadMbpsMax: Bool {return _storage._speedtestTcp8DownloadMbpsMax != nil}
+  var hasSpeedtestTcp8DownloadMbpsMax: Bool {_storage._speedtestTcp8DownloadMbpsMax != nil}
   /// Clears the value of `speedtestTcp8DownloadMbpsMax`. Subsequent reads from it will return its default value.
   mutating func clearSpeedtestTcp8DownloadMbpsMax() {_uniqueStorage()._speedtestTcp8DownloadMbpsMax = nil}
 
   var speedtestTcp8UploadMbpsAvg: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._speedtestTcp8UploadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._speedtestTcp8UploadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._speedtestTcp8UploadMbpsAvg = newValue}
   }
   /// Returns true if `speedtestTcp8UploadMbpsAvg` has been explicitly set.
-  var hasSpeedtestTcp8UploadMbpsAvg: Bool {return _storage._speedtestTcp8UploadMbpsAvg != nil}
+  var hasSpeedtestTcp8UploadMbpsAvg: Bool {_storage._speedtestTcp8UploadMbpsAvg != nil}
   /// Clears the value of `speedtestTcp8UploadMbpsAvg`. Subsequent reads from it will return its default value.
   mutating func clearSpeedtestTcp8UploadMbpsAvg() {_uniqueStorage()._speedtestTcp8UploadMbpsAvg = nil}
 
   var speedtestTcp8UploadMbpsMax: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._speedtestTcp8UploadMbpsMax ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._speedtestTcp8UploadMbpsMax ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._speedtestTcp8UploadMbpsMax = newValue}
   }
   /// Returns true if `speedtestTcp8UploadMbpsMax` has been explicitly set.
-  var hasSpeedtestTcp8UploadMbpsMax: Bool {return _storage._speedtestTcp8UploadMbpsMax != nil}
+  var hasSpeedtestTcp8UploadMbpsMax: Bool {_storage._speedtestTcp8UploadMbpsMax != nil}
   /// Clears the value of `speedtestTcp8UploadMbpsMax`. Subsequent reads from it will return its default value.
   mutating func clearSpeedtestTcp8UploadMbpsMax() {_uniqueStorage()._speedtestTcp8UploadMbpsMax = nil}
 
   var speedtestTcp64DownloadMbpsAvg: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._speedtestTcp64DownloadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._speedtestTcp64DownloadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._speedtestTcp64DownloadMbpsAvg = newValue}
   }
   /// Returns true if `speedtestTcp64DownloadMbpsAvg` has been explicitly set.
-  var hasSpeedtestTcp64DownloadMbpsAvg: Bool {return _storage._speedtestTcp64DownloadMbpsAvg != nil}
+  var hasSpeedtestTcp64DownloadMbpsAvg: Bool {_storage._speedtestTcp64DownloadMbpsAvg != nil}
   /// Clears the value of `speedtestTcp64DownloadMbpsAvg`. Subsequent reads from it will return its default value.
   mutating func clearSpeedtestTcp64DownloadMbpsAvg() {_uniqueStorage()._speedtestTcp64DownloadMbpsAvg = nil}
 
   var speedtestTcp64DownloadMbpsMax: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._speedtestTcp64DownloadMbpsMax ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._speedtestTcp64DownloadMbpsMax ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._speedtestTcp64DownloadMbpsMax = newValue}
   }
   /// Returns true if `speedtestTcp64DownloadMbpsMax` has been explicitly set.
-  var hasSpeedtestTcp64DownloadMbpsMax: Bool {return _storage._speedtestTcp64DownloadMbpsMax != nil}
+  var hasSpeedtestTcp64DownloadMbpsMax: Bool {_storage._speedtestTcp64DownloadMbpsMax != nil}
   /// Clears the value of `speedtestTcp64DownloadMbpsMax`. Subsequent reads from it will return its default value.
   mutating func clearSpeedtestTcp64DownloadMbpsMax() {_uniqueStorage()._speedtestTcp64DownloadMbpsMax = nil}
 
   var speedtestTcp64UploadMbpsAvg: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._speedtestTcp64UploadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._speedtestTcp64UploadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._speedtestTcp64UploadMbpsAvg = newValue}
   }
   /// Returns true if `speedtestTcp64UploadMbpsAvg` has been explicitly set.
-  var hasSpeedtestTcp64UploadMbpsAvg: Bool {return _storage._speedtestTcp64UploadMbpsAvg != nil}
+  var hasSpeedtestTcp64UploadMbpsAvg: Bool {_storage._speedtestTcp64UploadMbpsAvg != nil}
   /// Clears the value of `speedtestTcp64UploadMbpsAvg`. Subsequent reads from it will return its default value.
   mutating func clearSpeedtestTcp64UploadMbpsAvg() {_uniqueStorage()._speedtestTcp64UploadMbpsAvg = nil}
 
   var speedtestTcp64UploadMbpsMax: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._speedtestTcp64UploadMbpsMax ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._speedtestTcp64UploadMbpsMax ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._speedtestTcp64UploadMbpsMax = newValue}
   }
   /// Returns true if `speedtestTcp64UploadMbpsMax` has been explicitly set.
-  var hasSpeedtestTcp64UploadMbpsMax: Bool {return _storage._speedtestTcp64UploadMbpsMax != nil}
+  var hasSpeedtestTcp64UploadMbpsMax: Bool {_storage._speedtestTcp64UploadMbpsMax != nil}
   /// Clears the value of `speedtestTcp64UploadMbpsMax`. Subsequent reads from it will return its default value.
   mutating func clearSpeedtestTcp64UploadMbpsMax() {_uniqueStorage()._speedtestTcp64UploadMbpsMax = nil}
 
+  var speedtestTcp1DownloadMbpsAvg: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._speedtestTcp1DownloadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._speedtestTcp1DownloadMbpsAvg = newValue}
+  }
+  /// Returns true if `speedtestTcp1DownloadMbpsAvg` has been explicitly set.
+  var hasSpeedtestTcp1DownloadMbpsAvg: Bool {_storage._speedtestTcp1DownloadMbpsAvg != nil}
+  /// Clears the value of `speedtestTcp1DownloadMbpsAvg`. Subsequent reads from it will return its default value.
+  mutating func clearSpeedtestTcp1DownloadMbpsAvg() {_uniqueStorage()._speedtestTcp1DownloadMbpsAvg = nil}
+
+  var speedtestTcp1DownloadMbpsMax: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._speedtestTcp1DownloadMbpsMax ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._speedtestTcp1DownloadMbpsMax = newValue}
+  }
+  /// Returns true if `speedtestTcp1DownloadMbpsMax` has been explicitly set.
+  var hasSpeedtestTcp1DownloadMbpsMax: Bool {_storage._speedtestTcp1DownloadMbpsMax != nil}
+  /// Clears the value of `speedtestTcp1DownloadMbpsMax`. Subsequent reads from it will return its default value.
+  mutating func clearSpeedtestTcp1DownloadMbpsMax() {_uniqueStorage()._speedtestTcp1DownloadMbpsMax = nil}
+
+  var speedtestTcp1UploadMbpsAvg: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._speedtestTcp1UploadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._speedtestTcp1UploadMbpsAvg = newValue}
+  }
+  /// Returns true if `speedtestTcp1UploadMbpsAvg` has been explicitly set.
+  var hasSpeedtestTcp1UploadMbpsAvg: Bool {_storage._speedtestTcp1UploadMbpsAvg != nil}
+  /// Clears the value of `speedtestTcp1UploadMbpsAvg`. Subsequent reads from it will return its default value.
+  mutating func clearSpeedtestTcp1UploadMbpsAvg() {_uniqueStorage()._speedtestTcp1UploadMbpsAvg = nil}
+
+  var speedtestTcp1UploadMbpsMax: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._speedtestTcp1UploadMbpsMax ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._speedtestTcp1UploadMbpsMax = newValue}
+  }
+  /// Returns true if `speedtestTcp1UploadMbpsMax` has been explicitly set.
+  var hasSpeedtestTcp1UploadMbpsMax: Bool {_storage._speedtestTcp1UploadMbpsMax != nil}
+  /// Clears the value of `speedtestTcp1UploadMbpsMax`. Subsequent reads from it will return its default value.
+  mutating func clearSpeedtestTcp1UploadMbpsMax() {_uniqueStorage()._speedtestTcp1UploadMbpsMax = nil}
+
+  var speedtestTcp8DownloadMeanTcpConnectTime: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._speedtestTcp8DownloadMeanTcpConnectTime ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._speedtestTcp8DownloadMeanTcpConnectTime = newValue}
+  }
+  /// Returns true if `speedtestTcp8DownloadMeanTcpConnectTime` has been explicitly set.
+  var hasSpeedtestTcp8DownloadMeanTcpConnectTime: Bool {_storage._speedtestTcp8DownloadMeanTcpConnectTime != nil}
+  /// Clears the value of `speedtestTcp8DownloadMeanTcpConnectTime`. Subsequent reads from it will return its default value.
+  mutating func clearSpeedtestTcp8DownloadMeanTcpConnectTime() {_uniqueStorage()._speedtestTcp8DownloadMeanTcpConnectTime = nil}
+
+  var speedtestTcp8UploadMeanTcpConnectTime: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._speedtestTcp8UploadMeanTcpConnectTime ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._speedtestTcp8UploadMeanTcpConnectTime = newValue}
+  }
+  /// Returns true if `speedtestTcp8UploadMeanTcpConnectTime` has been explicitly set.
+  var hasSpeedtestTcp8UploadMeanTcpConnectTime: Bool {_storage._speedtestTcp8UploadMeanTcpConnectTime != nil}
+  /// Clears the value of `speedtestTcp8UploadMeanTcpConnectTime`. Subsequent reads from it will return its default value.
+  mutating func clearSpeedtestTcp8UploadMeanTcpConnectTime() {_uniqueStorage()._speedtestTcp8UploadMeanTcpConnectTime = nil}
+
+  var speedtestTcp8DownloadCfRayHeaders: [String] {
+    get {_storage._speedtestTcp8DownloadCfRayHeaders}
+    set {_uniqueStorage()._speedtestTcp8DownloadCfRayHeaders = newValue}
+  }
+
+  var speedtestTcp8UploadCfRayHeaders: [String] {
+    get {_storage._speedtestTcp8UploadCfRayHeaders}
+    set {_uniqueStorage()._speedtestTcp8UploadCfRayHeaders = newValue}
+  }
+
+  var speedtestTcp1DownloadMeanTcpConnectTime: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._speedtestTcp1DownloadMeanTcpConnectTime ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._speedtestTcp1DownloadMeanTcpConnectTime = newValue}
+  }
+  /// Returns true if `speedtestTcp1DownloadMeanTcpConnectTime` has been explicitly set.
+  var hasSpeedtestTcp1DownloadMeanTcpConnectTime: Bool {_storage._speedtestTcp1DownloadMeanTcpConnectTime != nil}
+  /// Clears the value of `speedtestTcp1DownloadMeanTcpConnectTime`. Subsequent reads from it will return its default value.
+  mutating func clearSpeedtestTcp1DownloadMeanTcpConnectTime() {_uniqueStorage()._speedtestTcp1DownloadMeanTcpConnectTime = nil}
+
+  var speedtestTcp1UploadMeanTcpConnectTime: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._speedtestTcp1UploadMeanTcpConnectTime ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._speedtestTcp1UploadMeanTcpConnectTime = newValue}
+  }
+  /// Returns true if `speedtestTcp1UploadMeanTcpConnectTime` has been explicitly set.
+  var hasSpeedtestTcp1UploadMeanTcpConnectTime: Bool {_storage._speedtestTcp1UploadMeanTcpConnectTime != nil}
+  /// Clears the value of `speedtestTcp1UploadMeanTcpConnectTime`. Subsequent reads from it will return its default value.
+  mutating func clearSpeedtestTcp1UploadMeanTcpConnectTime() {_uniqueStorage()._speedtestTcp1UploadMeanTcpConnectTime = nil}
+
+  var speedtestTcp1DownloadCfRayHeaders: [String] {
+    get {_storage._speedtestTcp1DownloadCfRayHeaders}
+    set {_uniqueStorage()._speedtestTcp1DownloadCfRayHeaders = newValue}
+  }
+
+  var speedtestTcp1UploadCfRayHeaders: [String] {
+    get {_storage._speedtestTcp1UploadCfRayHeaders}
+    set {_uniqueStorage()._speedtestTcp1UploadCfRayHeaders = newValue}
+  }
+
   var dishCellID: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._dishCellID ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._dishCellID ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._dishCellID = newValue}
   }
   /// Returns true if `dishCellID` has been explicitly set.
-  var hasDishCellID: Bool {return _storage._dishCellID != nil}
+  var hasDishCellID: Bool {_storage._dishCellID != nil}
   /// Clears the value of `dishCellID`. Subsequent reads from it will return its default value.
   mutating func clearDishCellID() {_uniqueStorage()._dishCellID = nil}
 
   var configSetupComplete: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configSetupComplete ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configSetupComplete ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configSetupComplete = newValue}
   }
   /// Returns true if `configSetupComplete` has been explicitly set.
-  var hasConfigSetupComplete: Bool {return _storage._configSetupComplete != nil}
+  var hasConfigSetupComplete: Bool {_storage._configSetupComplete != nil}
   /// Clears the value of `configSetupComplete`. Subsequent reads from it will return its default value.
   mutating func clearConfigSetupComplete() {_uniqueStorage()._configSetupComplete = nil}
 
   var configBandsSplit: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configBandsSplit ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configBandsSplit ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configBandsSplit = newValue}
   }
   /// Returns true if `configBandsSplit` has been explicitly set.
-  var hasConfigBandsSplit: Bool {return _storage._configBandsSplit != nil}
+  var hasConfigBandsSplit: Bool {_storage._configBandsSplit != nil}
   /// Clears the value of `configBandsSplit`. Subsequent reads from it will return its default value.
   mutating func clearConfigBandsSplit() {_uniqueStorage()._configBandsSplit = nil}
 
   var configIsRepeater: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configIsRepeater ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configIsRepeater ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configIsRepeater = newValue}
   }
   /// Returns true if `configIsRepeater` has been explicitly set.
-  var hasConfigIsRepeater: Bool {return _storage._configIsRepeater != nil}
+  var hasConfigIsRepeater: Bool {_storage._configIsRepeater != nil}
   /// Clears the value of `configIsRepeater`. Subsequent reads from it will return its default value.
   mutating func clearConfigIsRepeater() {_uniqueStorage()._configIsRepeater = nil}
 
   var configOpenNetwork: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configOpenNetwork ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configOpenNetwork ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configOpenNetwork = newValue}
   }
   /// Returns true if `configOpenNetwork` has been explicitly set.
-  var hasConfigOpenNetwork: Bool {return _storage._configOpenNetwork != nil}
+  var hasConfigOpenNetwork: Bool {_storage._configOpenNetwork != nil}
   /// Clears the value of `configOpenNetwork`. Subsequent reads from it will return its default value.
   mutating func clearConfigOpenNetwork() {_uniqueStorage()._configOpenNetwork = nil}
 
   var configIsAviation: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configIsAviation ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configIsAviation ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configIsAviation = newValue}
   }
   /// Returns true if `configIsAviation` has been explicitly set.
-  var hasConfigIsAviation: Bool {return _storage._configIsAviation != nil}
+  var hasConfigIsAviation: Bool {_storage._configIsAviation != nil}
   /// Clears the value of `configIsAviation`. Subsequent reads from it will return its default value.
   mutating func clearConfigIsAviation() {_uniqueStorage()._configIsAviation = nil}
 
   var configSecureDns: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configSecureDns ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configSecureDns ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configSecureDns = newValue}
   }
   /// Returns true if `configSecureDns` has been explicitly set.
-  var hasConfigSecureDns: Bool {return _storage._configSecureDns != nil}
+  var hasConfigSecureDns: Bool {_storage._configSecureDns != nil}
   /// Clears the value of `configSecureDns`. Subsequent reads from it will return its default value.
   mutating func clearConfigSecureDns() {_uniqueStorage()._configSecureDns = nil}
 
   var configLegacy: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configLegacy ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configLegacy ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configLegacy = newValue}
   }
   /// Returns true if `configLegacy` has been explicitly set.
-  var hasConfigLegacy: Bool {return _storage._configLegacy != nil}
+  var hasConfigLegacy: Bool {_storage._configLegacy != nil}
   /// Clears the value of `configLegacy`. Subsequent reads from it will return its default value.
   mutating func clearConfigLegacy() {_uniqueStorage()._configLegacy = nil}
 
   var configApMode: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configApMode ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configApMode ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configApMode = newValue}
   }
   /// Returns true if `configApMode` has been explicitly set.
-  var hasConfigApMode: Bool {return _storage._configApMode != nil}
+  var hasConfigApMode: Bool {_storage._configApMode != nil}
   /// Clears the value of `configApMode`. Subsequent reads from it will return its default value.
   mutating func clearConfigApMode() {_uniqueStorage()._configApMode = nil}
 
   var configDfsEnabled: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configDfsEnabled ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configDfsEnabled ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configDfsEnabled = newValue}
   }
   /// Returns true if `configDfsEnabled` has been explicitly set.
-  var hasConfigDfsEnabled: Bool {return _storage._configDfsEnabled != nil}
+  var hasConfigDfsEnabled: Bool {_storage._configDfsEnabled != nil}
   /// Clears the value of `configDfsEnabled`. Subsequent reads from it will return its default value.
   mutating func clearConfigDfsEnabled() {_uniqueStorage()._configDfsEnabled = nil}
 
   var configNetworkNameIsDefault: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configNetworkNameIsDefault ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configNetworkNameIsDefault ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configNetworkNameIsDefault = newValue}
   }
   /// Returns true if `configNetworkNameIsDefault` has been explicitly set.
-  var hasConfigNetworkNameIsDefault: Bool {return _storage._configNetworkNameIsDefault != nil}
+  var hasConfigNetworkNameIsDefault: Bool {_storage._configNetworkNameIsDefault != nil}
   /// Clears the value of `configNetworkNameIsDefault`. Subsequent reads from it will return its default value.
   mutating func clearConfigNetworkNameIsDefault() {_uniqueStorage()._configNetworkNameIsDefault = nil}
 
   var configRemoteSshEnabled: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configRemoteSshEnabled ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configRemoteSshEnabled ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configRemoteSshEnabled = newValue}
   }
   /// Returns true if `configRemoteSshEnabled` has been explicitly set.
-  var hasConfigRemoteSshEnabled: Bool {return _storage._configRemoteSshEnabled != nil}
+  var hasConfigRemoteSshEnabled: Bool {_storage._configRemoteSshEnabled != nil}
   /// Clears the value of `configRemoteSshEnabled`. Subsequent reads from it will return its default value.
   mutating func clearConfigRemoteSshEnabled() {_uniqueStorage()._configRemoteSshEnabled = nil}
 
   var configIsRepeaterWired: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configIsRepeaterWired ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configIsRepeaterWired ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configIsRepeaterWired = newValue}
   }
   /// Returns true if `configIsRepeaterWired` has been explicitly set.
-  var hasConfigIsRepeaterWired: Bool {return _storage._configIsRepeaterWired != nil}
+  var hasConfigIsRepeaterWired: Bool {_storage._configIsRepeaterWired != nil}
   /// Clears the value of `configIsRepeaterWired`. Subsequent reads from it will return its default value.
   mutating func clearConfigIsRepeaterWired() {_uniqueStorage()._configIsRepeaterWired = nil}
 
   var configIsRepeaterWireless: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configIsRepeaterWireless ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configIsRepeaterWireless ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configIsRepeaterWireless = newValue}
   }
   /// Returns true if `configIsRepeaterWireless` has been explicitly set.
-  var hasConfigIsRepeaterWireless: Bool {return _storage._configIsRepeaterWireless != nil}
+  var hasConfigIsRepeaterWireless: Bool {_storage._configIsRepeaterWireless != nil}
   /// Clears the value of `configIsRepeaterWireless`. Subsequent reads from it will return its default value.
   mutating func clearConfigIsRepeaterWireless() {_uniqueStorage()._configIsRepeaterWireless = nil}
 
   var configBlockSchedulesSet: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._configBlockSchedulesSet ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._configBlockSchedulesSet ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._configBlockSchedulesSet = newValue}
   }
   /// Returns true if `configBlockSchedulesSet` has been explicitly set.
-  var hasConfigBlockSchedulesSet: Bool {return _storage._configBlockSchedulesSet != nil}
+  var hasConfigBlockSchedulesSet: Bool {_storage._configBlockSchedulesSet != nil}
   /// Clears the value of `configBlockSchedulesSet`. Subsequent reads from it will return its default value.
   mutating func clearConfigBlockSchedulesSet() {_uniqueStorage()._configBlockSchedulesSet = nil}
 
   var configCustomNameservers: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configCustomNameservers ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configCustomNameservers ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configCustomNameservers = newValue}
   }
   /// Returns true if `configCustomNameservers` has been explicitly set.
-  var hasConfigCustomNameservers: Bool {return _storage._configCustomNameservers != nil}
+  var hasConfigCustomNameservers: Bool {_storage._configCustomNameservers != nil}
   /// Clears the value of `configCustomNameservers`. Subsequent reads from it will return its default value.
   mutating func clearConfigCustomNameservers() {_uniqueStorage()._configCustomNameservers = nil}
 
   var configDisableMeshOnboarding: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configDisableMeshOnboarding ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configDisableMeshOnboarding ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configDisableMeshOnboarding = newValue}
   }
   /// Returns true if `configDisableMeshOnboarding` has been explicitly set.
-  var hasConfigDisableMeshOnboarding: Bool {return _storage._configDisableMeshOnboarding != nil}
+  var hasConfigDisableMeshOnboarding: Bool {_storage._configDisableMeshOnboarding != nil}
   /// Clears the value of `configDisableMeshOnboarding`. Subsequent reads from it will return its default value.
   mutating func clearConfigDisableMeshOnboarding() {_uniqueStorage()._configDisableMeshOnboarding = nil}
 
   var configPinCountryCode: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configPinCountryCode ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configPinCountryCode ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configPinCountryCode = newValue}
   }
   /// Returns true if `configPinCountryCode` has been explicitly set.
-  var hasConfigPinCountryCode: Bool {return _storage._configPinCountryCode != nil}
+  var hasConfigPinCountryCode: Bool {_storage._configPinCountryCode != nil}
   /// Clears the value of `configPinCountryCode`. Subsequent reads from it will return its default value.
   mutating func clearConfigPinCountryCode() {_uniqueStorage()._configPinCountryCode = nil}
 
   var configDisableUpdateReboot: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configDisableUpdateReboot ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configDisableUpdateReboot ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configDisableUpdateReboot = newValue}
   }
   /// Returns true if `configDisableUpdateReboot` has been explicitly set.
-  var hasConfigDisableUpdateReboot: Bool {return _storage._configDisableUpdateReboot != nil}
+  var hasConfigDisableUpdateReboot: Bool {_storage._configDisableUpdateReboot != nil}
   /// Clears the value of `configDisableUpdateReboot`. Subsequent reads from it will return its default value.
   mutating func clearConfigDisableUpdateReboot() {_uniqueStorage()._configDisableUpdateReboot = nil}
 
+  var configHTTPSContentHostingEnabled: SwiftProtobuf.Google_Protobuf_BoolValue {
+    get {_storage._configHTTPSContentHostingEnabled ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    set {_uniqueStorage()._configHTTPSContentHostingEnabled = newValue}
+  }
+  /// Returns true if `configHTTPSContentHostingEnabled` has been explicitly set.
+  var hasConfigHTTPSContentHostingEnabled: Bool {_storage._configHTTPSContentHostingEnabled != nil}
+  /// Clears the value of `configHTTPSContentHostingEnabled`. Subsequent reads from it will return its default value.
+  mutating func clearConfigHTTPSContentHostingEnabled() {_uniqueStorage()._configHTTPSContentHostingEnabled = nil}
+
+  var configOnlyOverflightBlockingEnabled: SwiftProtobuf.Google_Protobuf_BoolValue {
+    get {_storage._configOnlyOverflightBlockingEnabled ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    set {_uniqueStorage()._configOnlyOverflightBlockingEnabled = newValue}
+  }
+  /// Returns true if `configOnlyOverflightBlockingEnabled` has been explicitly set.
+  var hasConfigOnlyOverflightBlockingEnabled: Bool {_storage._configOnlyOverflightBlockingEnabled != nil}
+  /// Clears the value of `configOnlyOverflightBlockingEnabled`. Subsequent reads from it will return its default value.
+  mutating func clearConfigOnlyOverflightBlockingEnabled() {_uniqueStorage()._configOnlyOverflightBlockingEnabled = nil}
+
+  var configOfflineNetworksDisablementEnabled: SwiftProtobuf.Google_Protobuf_BoolValue {
+    get {_storage._configOfflineNetworksDisablementEnabled ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    set {_uniqueStorage()._configOfflineNetworksDisablementEnabled = newValue}
+  }
+  /// Returns true if `configOfflineNetworksDisablementEnabled` has been explicitly set.
+  var hasConfigOfflineNetworksDisablementEnabled: Bool {_storage._configOfflineNetworksDisablementEnabled != nil}
+  /// Clears the value of `configOfflineNetworksDisablementEnabled`. Subsequent reads from it will return its default value.
+  mutating func clearConfigOfflineNetworksDisablementEnabled() {_uniqueStorage()._configOfflineNetworksDisablementEnabled = nil}
+
+  var configCustomDnsDisabled: SwiftProtobuf.Google_Protobuf_BoolValue {
+    get {_storage._configCustomDnsDisabled ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    set {_uniqueStorage()._configCustomDnsDisabled = newValue}
+  }
+  /// Returns true if `configCustomDnsDisabled` has been explicitly set.
+  var hasConfigCustomDnsDisabled: Bool {_storage._configCustomDnsDisabled != nil}
+  /// Clears the value of `configCustomDnsDisabled`. Subsequent reads from it will return its default value.
+  mutating func clearConfigCustomDnsDisabled() {_uniqueStorage()._configCustomDnsDisabled = nil}
+
+  var configForeflightEnabled: SwiftProtobuf.Google_Protobuf_BoolValue {
+    get {_storage._configForeflightEnabled ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    set {_uniqueStorage()._configForeflightEnabled = newValue}
+  }
+  /// Returns true if `configForeflightEnabled` has been explicitly set.
+  var hasConfigForeflightEnabled: Bool {_storage._configForeflightEnabled != nil}
+  /// Clears the value of `configForeflightEnabled`. Subsequent reads from it will return its default value.
+  mutating func clearConfigForeflightEnabled() {_uniqueStorage()._configForeflightEnabled = nil}
+
+  var configOutdoorMode: SwiftProtobuf.Google_Protobuf_BoolValue {
+    get {_storage._configOutdoorMode ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    set {_uniqueStorage()._configOutdoorMode = newValue}
+  }
+  /// Returns true if `configOutdoorMode` has been explicitly set.
+  var hasConfigOutdoorMode: Bool {_storage._configOutdoorMode != nil}
+  /// Clears the value of `configOutdoorMode`. Subsequent reads from it will return its default value.
+  mutating func clearConfigOutdoorMode() {_uniqueStorage()._configOutdoorMode = nil}
+
   var configDisable2Ghz: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configDisable2Ghz ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configDisable2Ghz ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configDisable2Ghz = newValue}
   }
   /// Returns true if `configDisable2Ghz` has been explicitly set.
-  var hasConfigDisable2Ghz: Bool {return _storage._configDisable2Ghz != nil}
+  var hasConfigDisable2Ghz: Bool {_storage._configDisable2Ghz != nil}
   /// Clears the value of `configDisable2Ghz`. Subsequent reads from it will return its default value.
   mutating func clearConfigDisable2Ghz() {_uniqueStorage()._configDisable2Ghz = nil}
 
   var configDisable5Ghz: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configDisable5Ghz ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configDisable5Ghz ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configDisable5Ghz = newValue}
   }
   /// Returns true if `configDisable5Ghz` has been explicitly set.
-  var hasConfigDisable5Ghz: Bool {return _storage._configDisable5Ghz != nil}
+  var hasConfigDisable5Ghz: Bool {_storage._configDisable5Ghz != nil}
   /// Clears the value of `configDisable5Ghz`. Subsequent reads from it will return its default value.
   mutating func clearConfigDisable5Ghz() {_uniqueStorage()._configDisable5Ghz = nil}
 
   var configDisable5GhzHigh: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configDisable5GhzHigh ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configDisable5GhzHigh ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configDisable5GhzHigh = newValue}
   }
   /// Returns true if `configDisable5GhzHigh` has been explicitly set.
-  var hasConfigDisable5GhzHigh: Bool {return _storage._configDisable5GhzHigh != nil}
+  var hasConfigDisable5GhzHigh: Bool {_storage._configDisable5GhzHigh != nil}
   /// Clears the value of `configDisable5GhzHigh`. Subsequent reads from it will return its default value.
   mutating func clearConfigDisable5GhzHigh() {_uniqueStorage()._configDisable5GhzHigh = nil}
 
   var configChannel2Ghz: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._configChannel2Ghz ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._configChannel2Ghz ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._configChannel2Ghz = newValue}
   }
   /// Returns true if `configChannel2Ghz` has been explicitly set.
-  var hasConfigChannel2Ghz: Bool {return _storage._configChannel2Ghz != nil}
+  var hasConfigChannel2Ghz: Bool {_storage._configChannel2Ghz != nil}
   /// Clears the value of `configChannel2Ghz`. Subsequent reads from it will return its default value.
   mutating func clearConfigChannel2Ghz() {_uniqueStorage()._configChannel2Ghz = nil}
 
   var configChannel5Ghz: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._configChannel5Ghz ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._configChannel5Ghz ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._configChannel5Ghz = newValue}
   }
   /// Returns true if `configChannel5Ghz` has been explicitly set.
-  var hasConfigChannel5Ghz: Bool {return _storage._configChannel5Ghz != nil}
+  var hasConfigChannel5Ghz: Bool {_storage._configChannel5Ghz != nil}
   /// Clears the value of `configChannel5Ghz`. Subsequent reads from it will return its default value.
   mutating func clearConfigChannel5Ghz() {_uniqueStorage()._configChannel5Ghz = nil}
 
   var configChannel5GhzHigh: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._configChannel5GhzHigh ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._configChannel5GhzHigh ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._configChannel5GhzHigh = newValue}
   }
   /// Returns true if `configChannel5GhzHigh` has been explicitly set.
-  var hasConfigChannel5GhzHigh: Bool {return _storage._configChannel5GhzHigh != nil}
+  var hasConfigChannel5GhzHigh: Bool {_storage._configChannel5GhzHigh != nil}
   /// Clears the value of `configChannel5GhzHigh`. Subsequent reads from it will return its default value.
   mutating func clearConfigChannel5GhzHigh() {_uniqueStorage()._configChannel5GhzHigh = nil}
 
   var configNetworks: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._configNetworks ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._configNetworks ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._configNetworks = newValue}
   }
   /// Returns true if `configNetworks` has been explicitly set.
-  var hasConfigNetworks: Bool {return _storage._configNetworks != nil}
+  var hasConfigNetworks: Bool {_storage._configNetworks != nil}
   /// Clears the value of `configNetworks`. Subsequent reads from it will return its default value.
   mutating func clearConfigNetworks() {_uniqueStorage()._configNetworks = nil}
 
   var configNetworksGuest: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._configNetworksGuest ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._configNetworksGuest ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._configNetworksGuest = newValue}
   }
   /// Returns true if `configNetworksGuest` has been explicitly set.
-  var hasConfigNetworksGuest: Bool {return _storage._configNetworksGuest != nil}
+  var hasConfigNetworksGuest: Bool {_storage._configNetworksGuest != nil}
   /// Clears the value of `configNetworksGuest`. Subsequent reads from it will return its default value.
   mutating func clearConfigNetworksGuest() {_uniqueStorage()._configNetworksGuest = nil}
 
   var configNetworksHidden: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._configNetworksHidden ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._configNetworksHidden ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._configNetworksHidden = newValue}
   }
   /// Returns true if `configNetworksHidden` has been explicitly set.
-  var hasConfigNetworksHidden: Bool {return _storage._configNetworksHidden != nil}
+  var hasConfigNetworksHidden: Bool {_storage._configNetworksHidden != nil}
   /// Clears the value of `configNetworksHidden`. Subsequent reads from it will return its default value.
   mutating func clearConfigNetworksHidden() {_uniqueStorage()._configNetworksHidden = nil}
 
   var configNetworksClientIsolation: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._configNetworksClientIsolation ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._configNetworksClientIsolation ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._configNetworksClientIsolation = newValue}
   }
   /// Returns true if `configNetworksClientIsolation` has been explicitly set.
-  var hasConfigNetworksClientIsolation: Bool {return _storage._configNetworksClientIsolation != nil}
+  var hasConfigNetworksClientIsolation: Bool {_storage._configNetworksClientIsolation != nil}
   /// Clears the value of `configNetworksClientIsolation`. Subsequent reads from it will return its default value.
   mutating func clearConfigNetworksClientIsolation() {_uniqueStorage()._configNetworksClientIsolation = nil}
 
   var configNetworksBandsSplit: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._configNetworksBandsSplit ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._configNetworksBandsSplit ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._configNetworksBandsSplit = newValue}
   }
   /// Returns true if `configNetworksBandsSplit` has been explicitly set.
-  var hasConfigNetworksBandsSplit: Bool {return _storage._configNetworksBandsSplit != nil}
+  var hasConfigNetworksBandsSplit: Bool {_storage._configNetworksBandsSplit != nil}
   /// Clears the value of `configNetworksBandsSplit`. Subsequent reads from it will return its default value.
   mutating func clearConfigNetworksBandsSplit() {_uniqueStorage()._configNetworksBandsSplit = nil}
 
+  var configNetworksUser: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._configNetworksUser ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._configNetworksUser = newValue}
+  }
+  /// Returns true if `configNetworksUser` has been explicitly set.
+  var hasConfigNetworksUser: Bool {_storage._configNetworksUser != nil}
+  /// Clears the value of `configNetworksUser`. Subsequent reads from it will return its default value.
+  mutating func clearConfigNetworksUser() {_uniqueStorage()._configNetworksUser = nil}
+
+  var wifiReloadCount: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._wifiReloadCount ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._wifiReloadCount = newValue}
+  }
+  /// Returns true if `wifiReloadCount` has been explicitly set.
+  var hasWifiReloadCount: Bool {_storage._wifiReloadCount != nil}
+  /// Clears the value of `wifiReloadCount`. Subsequent reads from it will return its default value.
+  mutating func clearWifiReloadCount() {_uniqueStorage()._wifiReloadCount = nil}
+
+  var radiusReloadCount: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._radiusReloadCount ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._radiusReloadCount = newValue}
+  }
+  /// Returns true if `radiusReloadCount` has been explicitly set.
+  var hasRadiusReloadCount: Bool {_storage._radiusReloadCount != nil}
+  /// Clears the value of `radiusReloadCount`. Subsequent reads from it will return its default value.
+  mutating func clearRadiusReloadCount() {_uniqueStorage()._radiusReloadCount = nil}
+
+  var opensshReloadCount: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._opensshReloadCount ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._opensshReloadCount = newValue}
+  }
+  /// Returns true if `opensshReloadCount` has been explicitly set.
+  var hasOpensshReloadCount: Bool {_storage._opensshReloadCount != nil}
+  /// Clears the value of `opensshReloadCount`. Subsequent reads from it will return its default value.
+  mutating func clearOpensshReloadCount() {_uniqueStorage()._opensshReloadCount = nil}
+
+  var iptablesReloadCount: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._iptablesReloadCount ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._iptablesReloadCount = newValue}
+  }
+  /// Returns true if `iptablesReloadCount` has been explicitly set.
+  var hasIptablesReloadCount: Bool {_storage._iptablesReloadCount != nil}
+  /// Clears the value of `iptablesReloadCount`. Subsequent reads from it will return its default value.
+  mutating func clearIptablesReloadCount() {_uniqueStorage()._iptablesReloadCount = nil}
+
+  var ebtablesReloadCount: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._ebtablesReloadCount ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._ebtablesReloadCount = newValue}
+  }
+  /// Returns true if `ebtablesReloadCount` has been explicitly set.
+  var hasEbtablesReloadCount: Bool {_storage._ebtablesReloadCount != nil}
+  /// Clears the value of `ebtablesReloadCount`. Subsequent reads from it will return its default value.
+  mutating func clearEbtablesReloadCount() {_uniqueStorage()._ebtablesReloadCount = nil}
+
+  var trafficControlReloadCount: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._trafficControlReloadCount ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._trafficControlReloadCount = newValue}
+  }
+  /// Returns true if `trafficControlReloadCount` has been explicitly set.
+  var hasTrafficControlReloadCount: Bool {_storage._trafficControlReloadCount != nil}
+  /// Clears the value of `trafficControlReloadCount`. Subsequent reads from it will return its default value.
+  mutating func clearTrafficControlReloadCount() {_uniqueStorage()._trafficControlReloadCount = nil}
+
+  var dhcpReloadCount: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._dhcpReloadCount ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._dhcpReloadCount = newValue}
+  }
+  /// Returns true if `dhcpReloadCount` has been explicitly set.
+  var hasDhcpReloadCount: Bool {_storage._dhcpReloadCount != nil}
+  /// Clears the value of `dhcpReloadCount`. Subsequent reads from it will return its default value.
+  mutating func clearDhcpReloadCount() {_uniqueStorage()._dhcpReloadCount = nil}
+
+  var dhcpv6ReloadCount: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._dhcpv6ReloadCount ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._dhcpv6ReloadCount = newValue}
+  }
+  /// Returns true if `dhcpv6ReloadCount` has been explicitly set.
+  var hasDhcpv6ReloadCount: Bool {_storage._dhcpv6ReloadCount != nil}
+  /// Clears the value of `dhcpv6ReloadCount`. Subsequent reads from it will return its default value.
+  mutating func clearDhcpv6ReloadCount() {_uniqueStorage()._dhcpv6ReloadCount = nil}
+
+  var systemReloadCount: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._systemReloadCount ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._systemReloadCount = newValue}
+  }
+  /// Returns true if `systemReloadCount` has been explicitly set.
+  var hasSystemReloadCount: Bool {_storage._systemReloadCount != nil}
+  /// Clears the value of `systemReloadCount`. Subsequent reads from it will return its default value.
+  mutating func clearSystemReloadCount() {_uniqueStorage()._systemReloadCount = nil}
+
+  var dnsReloadCount: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._dnsReloadCount ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._dnsReloadCount = newValue}
+  }
+  /// Returns true if `dnsReloadCount` has been explicitly set.
+  var hasDnsReloadCount: Bool {_storage._dnsReloadCount != nil}
+  /// Clears the value of `dnsReloadCount`. Subsequent reads from it will return its default value.
+  mutating func clearDnsReloadCount() {_uniqueStorage()._dnsReloadCount = nil}
+
+  var httpsReloadCount: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._httpsReloadCount ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._httpsReloadCount = newValue}
+  }
+  /// Returns true if `httpsReloadCount` has been explicitly set.
+  var hasHTTPSReloadCount: Bool {_storage._httpsReloadCount != nil}
+  /// Clears the value of `httpsReloadCount`. Subsequent reads from it will return its default value.
+  mutating func clearHTTPSReloadCount() {_uniqueStorage()._httpsReloadCount = nil}
+
+  var bandSteeringReloadCount: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._bandSteeringReloadCount ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._bandSteeringReloadCount = newValue}
+  }
+  /// Returns true if `bandSteeringReloadCount` has been explicitly set.
+  var hasBandSteeringReloadCount: Bool {_storage._bandSteeringReloadCount != nil}
+  /// Clears the value of `bandSteeringReloadCount`. Subsequent reads from it will return its default value.
+  mutating func clearBandSteeringReloadCount() {_uniqueStorage()._bandSteeringReloadCount = nil}
+
+  var commitCount: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._commitCount ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._commitCount = newValue}
+  }
+  /// Returns true if `commitCount` has been explicitly set.
+  var hasCommitCount: Bool {_storage._commitCount != nil}
+  /// Clears the value of `commitCount`. Subsequent reads from it will return its default value.
+  mutating func clearCommitCount() {_uniqueStorage()._commitCount = nil}
+
+  var networkReloadCount: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._networkReloadCount ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._networkReloadCount = newValue}
+  }
+  /// Returns true if `networkReloadCount` has been explicitly set.
+  var hasNetworkReloadCount: Bool {_storage._networkReloadCount != nil}
+  /// Clears the value of `networkReloadCount`. Subsequent reads from it will return its default value.
+  mutating func clearNetworkReloadCount() {_uniqueStorage()._networkReloadCount = nil}
+
+  var foreflightReloadCount: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._foreflightReloadCount ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._foreflightReloadCount = newValue}
+  }
+  /// Returns true if `foreflightReloadCount` has been explicitly set.
+  var hasForeflightReloadCount: Bool {_storage._foreflightReloadCount != nil}
+  /// Clears the value of `foreflightReloadCount`. Subsequent reads from it will return its default value.
+  mutating func clearForeflightReloadCount() {_uniqueStorage()._foreflightReloadCount = nil}
+
   var wanTrafficControlCakeBytes: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._wanTrafficControlCakeBytes ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._wanTrafficControlCakeBytes ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._wanTrafficControlCakeBytes = newValue}
   }
   /// Returns true if `wanTrafficControlCakeBytes` has been explicitly set.
-  var hasWanTrafficControlCakeBytes: Bool {return _storage._wanTrafficControlCakeBytes != nil}
+  var hasWanTrafficControlCakeBytes: Bool {_storage._wanTrafficControlCakeBytes != nil}
   /// Clears the value of `wanTrafficControlCakeBytes`. Subsequent reads from it will return its default value.
   mutating func clearWanTrafficControlCakeBytes() {_uniqueStorage()._wanTrafficControlCakeBytes = nil}
 
   var wanTrafficControlCakePackets: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._wanTrafficControlCakePackets ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._wanTrafficControlCakePackets ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._wanTrafficControlCakePackets = newValue}
   }
   /// Returns true if `wanTrafficControlCakePackets` has been explicitly set.
-  var hasWanTrafficControlCakePackets: Bool {return _storage._wanTrafficControlCakePackets != nil}
+  var hasWanTrafficControlCakePackets: Bool {_storage._wanTrafficControlCakePackets != nil}
   /// Clears the value of `wanTrafficControlCakePackets`. Subsequent reads from it will return its default value.
   mutating func clearWanTrafficControlCakePackets() {_uniqueStorage()._wanTrafficControlCakePackets = nil}
 
   var wanTrafficControlCakeDrops: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._wanTrafficControlCakeDrops ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._wanTrafficControlCakeDrops ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._wanTrafficControlCakeDrops = newValue}
   }
   /// Returns true if `wanTrafficControlCakeDrops` has been explicitly set.
-  var hasWanTrafficControlCakeDrops: Bool {return _storage._wanTrafficControlCakeDrops != nil}
+  var hasWanTrafficControlCakeDrops: Bool {_storage._wanTrafficControlCakeDrops != nil}
   /// Clears the value of `wanTrafficControlCakeDrops`. Subsequent reads from it will return its default value.
   mutating func clearWanTrafficControlCakeDrops() {_uniqueStorage()._wanTrafficControlCakeDrops = nil}
 
   var wanTrafficControlCakeAckDrops: SwiftProtobuf.Google_Protobuf_Int64Value {
-    get {return _storage._wanTrafficControlCakeAckDrops ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
+    get {_storage._wanTrafficControlCakeAckDrops ?? SwiftProtobuf.Google_Protobuf_Int64Value()}
     set {_uniqueStorage()._wanTrafficControlCakeAckDrops = newValue}
   }
   /// Returns true if `wanTrafficControlCakeAckDrops` has been explicitly set.
-  var hasWanTrafficControlCakeAckDrops: Bool {return _storage._wanTrafficControlCakeAckDrops != nil}
+  var hasWanTrafficControlCakeAckDrops: Bool {_storage._wanTrafficControlCakeAckDrops != nil}
   /// Clears the value of `wanTrafficControlCakeAckDrops`. Subsequent reads from it will return its default value.
   mutating func clearWanTrafficControlCakeAckDrops() {_uniqueStorage()._wanTrafficControlCakeAckDrops = nil}
 
   var conntrackEntries: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._conntrackEntries ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._conntrackEntries ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._conntrackEntries = newValue}
   }
   /// Returns true if `conntrackEntries` has been explicitly set.
-  var hasConntrackEntries: Bool {return _storage._conntrackEntries != nil}
+  var hasConntrackEntries: Bool {_storage._conntrackEntries != nil}
   /// Clears the value of `conntrackEntries`. Subsequent reads from it will return its default value.
   mutating func clearConntrackEntries() {_uniqueStorage()._conntrackEntries = nil}
 
   var dhcpSecsEq0: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._dhcpSecsEq0 ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._dhcpSecsEq0 ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._dhcpSecsEq0 = newValue}
   }
   /// Returns true if `dhcpSecsEq0` has been explicitly set.
-  var hasDhcpSecsEq0: Bool {return _storage._dhcpSecsEq0 != nil}
+  var hasDhcpSecsEq0: Bool {_storage._dhcpSecsEq0 != nil}
   /// Clears the value of `dhcpSecsEq0`. Subsequent reads from it will return its default value.
   mutating func clearDhcpSecsEq0() {_uniqueStorage()._dhcpSecsEq0 = nil}
 
   var dhcpSecsGt0: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._dhcpSecsGt0 ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._dhcpSecsGt0 ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._dhcpSecsGt0 = newValue}
   }
   /// Returns true if `dhcpSecsGt0` has been explicitly set.
-  var hasDhcpSecsGt0: Bool {return _storage._dhcpSecsGt0 != nil}
+  var hasDhcpSecsGt0: Bool {_storage._dhcpSecsGt0 != nil}
   /// Clears the value of `dhcpSecsGt0`. Subsequent reads from it will return its default value.
   mutating func clearDhcpSecsGt0() {_uniqueStorage()._dhcpSecsGt0 = nil}
 
   var dhcpSecsGt10: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._dhcpSecsGt10 ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._dhcpSecsGt10 ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._dhcpSecsGt10 = newValue}
   }
   /// Returns true if `dhcpSecsGt10` has been explicitly set.
-  var hasDhcpSecsGt10: Bool {return _storage._dhcpSecsGt10 != nil}
+  var hasDhcpSecsGt10: Bool {_storage._dhcpSecsGt10 != nil}
   /// Clears the value of `dhcpSecsGt10`. Subsequent reads from it will return its default value.
   mutating func clearDhcpSecsGt10() {_uniqueStorage()._dhcpSecsGt10 = nil}
 
   var dhcpSecsGt30: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._dhcpSecsGt30 ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._dhcpSecsGt30 ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._dhcpSecsGt30 = newValue}
   }
   /// Returns true if `dhcpSecsGt30` has been explicitly set.
-  var hasDhcpSecsGt30: Bool {return _storage._dhcpSecsGt30 != nil}
+  var hasDhcpSecsGt30: Bool {_storage._dhcpSecsGt30 != nil}
   /// Clears the value of `dhcpSecsGt30`. Subsequent reads from it will return its default value.
   mutating func clearDhcpSecsGt30() {_uniqueStorage()._dhcpSecsGt30 = nil}
 
   var dhcpSecsGt60: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._dhcpSecsGt60 ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._dhcpSecsGt60 ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._dhcpSecsGt60 = newValue}
   }
   /// Returns true if `dhcpSecsGt60` has been explicitly set.
-  var hasDhcpSecsGt60: Bool {return _storage._dhcpSecsGt60 != nil}
+  var hasDhcpSecsGt60: Bool {_storage._dhcpSecsGt60 != nil}
   /// Clears the value of `dhcpSecsGt60`. Subsequent reads from it will return its default value.
   mutating func clearDhcpSecsGt60() {_uniqueStorage()._dhcpSecsGt60 = nil}
+
+  var dnsForwards: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._dnsForwards ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._dnsForwards = newValue}
+  }
+  /// Returns true if `dnsForwards` has been explicitly set.
+  var hasDnsForwards: Bool {_storage._dnsForwards != nil}
+  /// Clears the value of `dnsForwards`. Subsequent reads from it will return its default value.
+  mutating func clearDnsForwards() {_uniqueStorage()._dnsForwards = nil}
+
+  var dnsForwardsSuccess: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._dnsForwardsSuccess ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._dnsForwardsSuccess = newValue}
+  }
+  /// Returns true if `dnsForwardsSuccess` has been explicitly set.
+  var hasDnsForwardsSuccess: Bool {_storage._dnsForwardsSuccess != nil}
+  /// Clears the value of `dnsForwardsSuccess`. Subsequent reads from it will return its default value.
+  mutating func clearDnsForwardsSuccess() {_uniqueStorage()._dnsForwardsSuccess = nil}
+
+  var dnsForwardsServerFailure: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._dnsForwardsServerFailure ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._dnsForwardsServerFailure = newValue}
+  }
+  /// Returns true if `dnsForwardsServerFailure` has been explicitly set.
+  var hasDnsForwardsServerFailure: Bool {_storage._dnsForwardsServerFailure != nil}
+  /// Clears the value of `dnsForwardsServerFailure`. Subsequent reads from it will return its default value.
+  mutating func clearDnsForwardsServerFailure() {_uniqueStorage()._dnsForwardsServerFailure = nil}
+
+  var dnsForwardsNoServerResponse: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._dnsForwardsNoServerResponse ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._dnsForwardsNoServerResponse = newValue}
+  }
+  /// Returns true if `dnsForwardsNoServerResponse` has been explicitly set.
+  var hasDnsForwardsNoServerResponse: Bool {_storage._dnsForwardsNoServerResponse != nil}
+  /// Clears the value of `dnsForwardsNoServerResponse`. Subsequent reads from it will return its default value.
+  mutating func clearDnsForwardsNoServerResponse() {_uniqueStorage()._dnsForwardsNoServerResponse = nil}
+
+  var dnsForwardsSuccessOnDefaultBackup: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._dnsForwardsSuccessOnDefaultBackup ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._dnsForwardsSuccessOnDefaultBackup = newValue}
+  }
+  /// Returns true if `dnsForwardsSuccessOnDefaultBackup` has been explicitly set.
+  var hasDnsForwardsSuccessOnDefaultBackup: Bool {_storage._dnsForwardsSuccessOnDefaultBackup != nil}
+  /// Clears the value of `dnsForwardsSuccessOnDefaultBackup`. Subsequent reads from it will return its default value.
+  mutating func clearDnsForwardsSuccessOnDefaultBackup() {_uniqueStorage()._dnsForwardsSuccessOnDefaultBackup = nil}
+
+  var dnsForwardsDropped: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._dnsForwardsDropped ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._dnsForwardsDropped = newValue}
+  }
+  /// Returns true if `dnsForwardsDropped` has been explicitly set.
+  var hasDnsForwardsDropped: Bool {_storage._dnsForwardsDropped != nil}
+  /// Clears the value of `dnsForwardsDropped`. Subsequent reads from it will return its default value.
+  mutating func clearDnsForwardsDropped() {_uniqueStorage()._dnsForwardsDropped = nil}
+
+  var dnsForwardsWithBackup: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._dnsForwardsWithBackup ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._dnsForwardsWithBackup = newValue}
+  }
+  /// Returns true if `dnsForwardsWithBackup` has been explicitly set.
+  var hasDnsForwardsWithBackup: Bool {_storage._dnsForwardsWithBackup != nil}
+  /// Clears the value of `dnsForwardsWithBackup`. Subsequent reads from it will return its default value.
+  mutating func clearDnsForwardsWithBackup() {_uniqueStorage()._dnsForwardsWithBackup = nil}
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -4013,7 +5025,7 @@ struct SpaceX_API_Device_starlink_routers_hourly_metrics_v2: @unchecked Sendable
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-struct SpaceX_API_Device_starlink_router_alerts: Sendable {
+nonisolated struct SpaceX_API_Device_starlink_router_alerts: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4025,22 +5037,28 @@ struct SpaceX_API_Device_starlink_router_alerts: Sendable {
   var active: Bool = false
 
   var start: SpaceX_API_Telemetron_Public_Common_TimestampInfo {
-    get {return _start ?? SpaceX_API_Telemetron_Public_Common_TimestampInfo()}
+    get {_start ?? SpaceX_API_Telemetron_Public_Common_TimestampInfo()}
     set {_start = newValue}
   }
   /// Returns true if `start` has been explicitly set.
-  var hasStart: Bool {return self._start != nil}
+  var hasStart: Bool {self._start != nil}
   /// Clears the value of `start`. Subsequent reads from it will return its default value.
   mutating func clearStart() {self._start = nil}
 
   var end: SpaceX_API_Telemetron_Public_Common_TimestampInfo {
-    get {return _end ?? SpaceX_API_Telemetron_Public_Common_TimestampInfo()}
+    get {_end ?? SpaceX_API_Telemetron_Public_Common_TimestampInfo()}
     set {_end = newValue}
   }
   /// Returns true if `end` has been explicitly set.
-  var hasEnd: Bool {return self._end != nil}
+  var hasEnd: Bool {self._end != nil}
   /// Clears the value of `end`. Subsequent reads from it will return its default value.
   mutating func clearEnd() {self._end = nil}
+
+  var hardware: String = String()
+
+  var software: String = String()
+
+  var details: String = String()
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -4050,288 +5068,360 @@ struct SpaceX_API_Device_starlink_router_alerts: Sendable {
   fileprivate var _end: SpaceX_API_Telemetron_Public_Common_TimestampInfo? = nil
 }
 
-struct SpaceX_API_Device_starlink_router_client_speedtests: @unchecked Sendable {
+nonisolated struct SpaceX_API_Device_starlink_router_client_speedtests: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   var id: String {
-    get {return _storage._id}
+    get {_storage._id}
     set {_uniqueStorage()._id = newValue}
   }
 
   var dataRecord: SpaceX_API_Telemetron_Public_Common_TimestampInfo {
-    get {return _storage._dataRecord ?? SpaceX_API_Telemetron_Public_Common_TimestampInfo()}
+    get {_storage._dataRecord ?? SpaceX_API_Telemetron_Public_Common_TimestampInfo()}
     set {_uniqueStorage()._dataRecord = newValue}
   }
   /// Returns true if `dataRecord` has been explicitly set.
-  var hasDataRecord: Bool {return _storage._dataRecord != nil}
+  var hasDataRecord: Bool {_storage._dataRecord != nil}
   /// Clears the value of `dataRecord`. Subsequent reads from it will return its default value.
   mutating func clearDataRecord() {_uniqueStorage()._dataRecord = nil}
 
   var country: String {
-    get {return _storage._country}
+    get {_storage._country}
     set {_uniqueStorage()._country = newValue}
   }
 
   var speedtestID: SwiftProtobuf.Google_Protobuf_StringValue {
-    get {return _storage._speedtestID ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    get {_storage._speedtestID ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._speedtestID = newValue}
   }
   /// Returns true if `speedtestID` has been explicitly set.
-  var hasSpeedtestID: Bool {return _storage._speedtestID != nil}
+  var hasSpeedtestID: Bool {_storage._speedtestID != nil}
   /// Clears the value of `speedtestID`. Subsequent reads from it will return its default value.
   mutating func clearSpeedtestID() {_uniqueStorage()._speedtestID = nil}
 
   var clientRssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._clientRssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._clientRssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._clientRssi = newValue}
   }
   /// Returns true if `clientRssi` has been explicitly set.
-  var hasClientRssi: Bool {return _storage._clientRssi != nil}
+  var hasClientRssi: Bool {_storage._clientRssi != nil}
   /// Clears the value of `clientRssi`. Subsequent reads from it will return its default value.
   mutating func clearClientRssi() {_uniqueStorage()._clientRssi = nil}
 
   var routerRssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._routerRssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._routerRssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._routerRssi = newValue}
   }
   /// Returns true if `routerRssi` has been explicitly set.
-  var hasRouterRssi: Bool {return _storage._routerRssi != nil}
+  var hasRouterRssi: Bool {_storage._routerRssi != nil}
   /// Clears the value of `routerRssi`. Subsequent reads from it will return its default value.
   mutating func clearRouterRssi() {_uniqueStorage()._routerRssi = nil}
 
   var clientIface: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clientIface ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clientIface ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clientIface = newValue}
   }
   /// Returns true if `clientIface` has been explicitly set.
-  var hasClientIface: Bool {return _storage._clientIface != nil}
+  var hasClientIface: Bool {_storage._clientIface != nil}
   /// Clears the value of `clientIface`. Subsequent reads from it will return its default value.
   mutating func clearClientIface() {_uniqueStorage()._clientIface = nil}
 
   var clientOui: SwiftProtobuf.Google_Protobuf_StringValue {
-    get {return _storage._clientOui ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    get {_storage._clientOui ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._clientOui = newValue}
   }
   /// Returns true if `clientOui` has been explicitly set.
-  var hasClientOui: Bool {return _storage._clientOui != nil}
+  var hasClientOui: Bool {_storage._clientOui != nil}
   /// Clears the value of `clientOui`. Subsequent reads from it will return its default value.
   mutating func clearClientOui() {_uniqueStorage()._clientOui = nil}
 
   var clientTxRate: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clientTxRate ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clientTxRate ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clientTxRate = newValue}
   }
   /// Returns true if `clientTxRate` has been explicitly set.
-  var hasClientTxRate: Bool {return _storage._clientTxRate != nil}
+  var hasClientTxRate: Bool {_storage._clientTxRate != nil}
   /// Clears the value of `clientTxRate`. Subsequent reads from it will return its default value.
   mutating func clearClientTxRate() {_uniqueStorage()._clientTxRate = nil}
 
   var clientRxRate: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clientRxRate ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clientRxRate ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clientRxRate = newValue}
   }
   /// Returns true if `clientRxRate` has been explicitly set.
-  var hasClientRxRate: Bool {return _storage._clientRxRate != nil}
+  var hasClientRxRate: Bool {_storage._clientRxRate != nil}
   /// Clears the value of `clientRxRate`. Subsequent reads from it will return its default value.
   mutating func clearClientRxRate() {_uniqueStorage()._clientRxRate = nil}
 
   var clientPlatformType: SwiftProtobuf.Google_Protobuf_StringValue {
-    get {return _storage._clientPlatformType ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    get {_storage._clientPlatformType ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._clientPlatformType = newValue}
   }
   /// Returns true if `clientPlatformType` has been explicitly set.
-  var hasClientPlatformType: Bool {return _storage._clientPlatformType != nil}
+  var hasClientPlatformType: Bool {_storage._clientPlatformType != nil}
   /// Clears the value of `clientPlatformType`. Subsequent reads from it will return its default value.
   mutating func clearClientPlatformType() {_uniqueStorage()._clientPlatformType = nil}
 
   var clientAppVersion: SwiftProtobuf.Google_Protobuf_StringValue {
-    get {return _storage._clientAppVersion ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    get {_storage._clientAppVersion ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._clientAppVersion = newValue}
   }
   /// Returns true if `clientAppVersion` has been explicitly set.
-  var hasClientAppVersion: Bool {return _storage._clientAppVersion != nil}
+  var hasClientAppVersion: Bool {_storage._clientAppVersion != nil}
   /// Clears the value of `clientAppVersion`. Subsequent reads from it will return its default value.
   mutating func clearClientAppVersion() {_uniqueStorage()._clientAppVersion = nil}
 
   var clientAppBuild: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clientAppBuild ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clientAppBuild ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clientAppBuild = newValue}
   }
   /// Returns true if `clientAppBuild` has been explicitly set.
-  var hasClientAppBuild: Bool {return _storage._clientAppBuild != nil}
+  var hasClientAppBuild: Bool {_storage._clientAppBuild != nil}
   /// Clears the value of `clientAppBuild`. Subsequent reads from it will return its default value.
   mutating func clearClientAppBuild() {_uniqueStorage()._clientAppBuild = nil}
 
   var clientRxPhyMode: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clientRxPhyMode ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clientRxPhyMode ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clientRxPhyMode = newValue}
   }
   /// Returns true if `clientRxPhyMode` has been explicitly set.
-  var hasClientRxPhyMode: Bool {return _storage._clientRxPhyMode != nil}
+  var hasClientRxPhyMode: Bool {_storage._clientRxPhyMode != nil}
   /// Clears the value of `clientRxPhyMode`. Subsequent reads from it will return its default value.
   mutating func clearClientRxPhyMode() {_uniqueStorage()._clientRxPhyMode = nil}
 
   var clientRxSpatialStreams: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clientRxSpatialStreams ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clientRxSpatialStreams ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clientRxSpatialStreams = newValue}
   }
   /// Returns true if `clientRxSpatialStreams` has been explicitly set.
-  var hasClientRxSpatialStreams: Bool {return _storage._clientRxSpatialStreams != nil}
+  var hasClientRxSpatialStreams: Bool {_storage._clientRxSpatialStreams != nil}
   /// Clears the value of `clientRxSpatialStreams`. Subsequent reads from it will return its default value.
   mutating func clearClientRxSpatialStreams() {_uniqueStorage()._clientRxSpatialStreams = nil}
 
   var clientRxMcs: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clientRxMcs ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clientRxMcs ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clientRxMcs = newValue}
   }
   /// Returns true if `clientRxMcs` has been explicitly set.
-  var hasClientRxMcs: Bool {return _storage._clientRxMcs != nil}
+  var hasClientRxMcs: Bool {_storage._clientRxMcs != nil}
   /// Clears the value of `clientRxMcs`. Subsequent reads from it will return its default value.
   mutating func clearClientRxMcs() {_uniqueStorage()._clientRxMcs = nil}
 
   var clientDownloadStartTime: SpaceX_API_Telemetron_Public_Common_TimestampInfo {
-    get {return _storage._clientDownloadStartTime ?? SpaceX_API_Telemetron_Public_Common_TimestampInfo()}
+    get {_storage._clientDownloadStartTime ?? SpaceX_API_Telemetron_Public_Common_TimestampInfo()}
     set {_uniqueStorage()._clientDownloadStartTime = newValue}
   }
   /// Returns true if `clientDownloadStartTime` has been explicitly set.
-  var hasClientDownloadStartTime: Bool {return _storage._clientDownloadStartTime != nil}
+  var hasClientDownloadStartTime: Bool {_storage._clientDownloadStartTime != nil}
   /// Clears the value of `clientDownloadStartTime`. Subsequent reads from it will return its default value.
   mutating func clearClientDownloadStartTime() {_uniqueStorage()._clientDownloadStartTime = nil}
 
   var clientUploadStartTime: SpaceX_API_Telemetron_Public_Common_TimestampInfo {
-    get {return _storage._clientUploadStartTime ?? SpaceX_API_Telemetron_Public_Common_TimestampInfo()}
+    get {_storage._clientUploadStartTime ?? SpaceX_API_Telemetron_Public_Common_TimestampInfo()}
     set {_uniqueStorage()._clientUploadStartTime = newValue}
   }
   /// Returns true if `clientUploadStartTime` has been explicitly set.
-  var hasClientUploadStartTime: Bool {return _storage._clientUploadStartTime != nil}
+  var hasClientUploadStartTime: Bool {_storage._clientUploadStartTime != nil}
   /// Clears the value of `clientUploadStartTime`. Subsequent reads from it will return its default value.
   mutating func clearClientUploadStartTime() {_uniqueStorage()._clientUploadStartTime = nil}
 
   var clientDownloadMbpsAvg: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._clientDownloadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._clientDownloadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._clientDownloadMbpsAvg = newValue}
   }
   /// Returns true if `clientDownloadMbpsAvg` has been explicitly set.
-  var hasClientDownloadMbpsAvg: Bool {return _storage._clientDownloadMbpsAvg != nil}
+  var hasClientDownloadMbpsAvg: Bool {_storage._clientDownloadMbpsAvg != nil}
   /// Clears the value of `clientDownloadMbpsAvg`. Subsequent reads from it will return its default value.
   mutating func clearClientDownloadMbpsAvg() {_uniqueStorage()._clientDownloadMbpsAvg = nil}
 
   var clientUploadMbpsAvg: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._clientUploadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._clientUploadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._clientUploadMbpsAvg = newValue}
   }
   /// Returns true if `clientUploadMbpsAvg` has been explicitly set.
-  var hasClientUploadMbpsAvg: Bool {return _storage._clientUploadMbpsAvg != nil}
+  var hasClientUploadMbpsAvg: Bool {_storage._clientUploadMbpsAvg != nil}
   /// Clears the value of `clientUploadMbpsAvg`. Subsequent reads from it will return its default value.
   mutating func clearClientUploadMbpsAvg() {_uniqueStorage()._clientUploadMbpsAvg = nil}
 
   var clientTarget: SwiftProtobuf.Google_Protobuf_StringValue {
-    get {return _storage._clientTarget ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    get {_storage._clientTarget ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._clientTarget = newValue}
   }
   /// Returns true if `clientTarget` has been explicitly set.
-  var hasClientTarget: Bool {return _storage._clientTarget != nil}
+  var hasClientTarget: Bool {_storage._clientTarget != nil}
   /// Clears the value of `clientTarget`. Subsequent reads from it will return its default value.
   mutating func clearClientTarget() {_uniqueStorage()._clientTarget = nil}
 
   var clientTcpStreams: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clientTcpStreams ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clientTcpStreams ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clientTcpStreams = newValue}
   }
   /// Returns true if `clientTcpStreams` has been explicitly set.
-  var hasClientTcpStreams: Bool {return _storage._clientTcpStreams != nil}
+  var hasClientTcpStreams: Bool {_storage._clientTcpStreams != nil}
   /// Clears the value of `clientTcpStreams`. Subsequent reads from it will return its default value.
   mutating func clearClientTcpStreams() {_uniqueStorage()._clientTcpStreams = nil}
 
   var routerDownloadStartTime: SpaceX_API_Telemetron_Public_Common_TimestampInfo {
-    get {return _storage._routerDownloadStartTime ?? SpaceX_API_Telemetron_Public_Common_TimestampInfo()}
+    get {_storage._routerDownloadStartTime ?? SpaceX_API_Telemetron_Public_Common_TimestampInfo()}
     set {_uniqueStorage()._routerDownloadStartTime = newValue}
   }
   /// Returns true if `routerDownloadStartTime` has been explicitly set.
-  var hasRouterDownloadStartTime: Bool {return _storage._routerDownloadStartTime != nil}
+  var hasRouterDownloadStartTime: Bool {_storage._routerDownloadStartTime != nil}
   /// Clears the value of `routerDownloadStartTime`. Subsequent reads from it will return its default value.
   mutating func clearRouterDownloadStartTime() {_uniqueStorage()._routerDownloadStartTime = nil}
 
   var routerUploadStartTime: SpaceX_API_Telemetron_Public_Common_TimestampInfo {
-    get {return _storage._routerUploadStartTime ?? SpaceX_API_Telemetron_Public_Common_TimestampInfo()}
+    get {_storage._routerUploadStartTime ?? SpaceX_API_Telemetron_Public_Common_TimestampInfo()}
     set {_uniqueStorage()._routerUploadStartTime = newValue}
   }
   /// Returns true if `routerUploadStartTime` has been explicitly set.
-  var hasRouterUploadStartTime: Bool {return _storage._routerUploadStartTime != nil}
+  var hasRouterUploadStartTime: Bool {_storage._routerUploadStartTime != nil}
   /// Clears the value of `routerUploadStartTime`. Subsequent reads from it will return its default value.
   mutating func clearRouterUploadStartTime() {_uniqueStorage()._routerUploadStartTime = nil}
 
   var routerDownloadMbpsAvg: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._routerDownloadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._routerDownloadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._routerDownloadMbpsAvg = newValue}
   }
   /// Returns true if `routerDownloadMbpsAvg` has been explicitly set.
-  var hasRouterDownloadMbpsAvg: Bool {return _storage._routerDownloadMbpsAvg != nil}
+  var hasRouterDownloadMbpsAvg: Bool {_storage._routerDownloadMbpsAvg != nil}
   /// Clears the value of `routerDownloadMbpsAvg`. Subsequent reads from it will return its default value.
   mutating func clearRouterDownloadMbpsAvg() {_uniqueStorage()._routerDownloadMbpsAvg = nil}
 
   var routerUploadMbpsAvg: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._routerUploadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._routerUploadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._routerUploadMbpsAvg = newValue}
   }
   /// Returns true if `routerUploadMbpsAvg` has been explicitly set.
-  var hasRouterUploadMbpsAvg: Bool {return _storage._routerUploadMbpsAvg != nil}
+  var hasRouterUploadMbpsAvg: Bool {_storage._routerUploadMbpsAvg != nil}
   /// Clears the value of `routerUploadMbpsAvg`. Subsequent reads from it will return its default value.
   mutating func clearRouterUploadMbpsAvg() {_uniqueStorage()._routerUploadMbpsAvg = nil}
 
   var routerTarget: SwiftProtobuf.Google_Protobuf_StringValue {
-    get {return _storage._routerTarget ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    get {_storage._routerTarget ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._routerTarget = newValue}
   }
   /// Returns true if `routerTarget` has been explicitly set.
-  var hasRouterTarget: Bool {return _storage._routerTarget != nil}
+  var hasRouterTarget: Bool {_storage._routerTarget != nil}
   /// Clears the value of `routerTarget`. Subsequent reads from it will return its default value.
   mutating func clearRouterTarget() {_uniqueStorage()._routerTarget = nil}
 
   var routerTcpStreams: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._routerTcpStreams ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._routerTcpStreams ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._routerTcpStreams = newValue}
   }
   /// Returns true if `routerTcpStreams` has been explicitly set.
-  var hasRouterTcpStreams: Bool {return _storage._routerTcpStreams != nil}
+  var hasRouterTcpStreams: Bool {_storage._routerTcpStreams != nil}
   /// Clears the value of `routerTcpStreams`. Subsequent reads from it will return its default value.
   mutating func clearRouterTcpStreams() {_uniqueStorage()._routerTcpStreams = nil}
 
+  var routerDownloadTotalBytesTransferred: SwiftProtobuf.Google_Protobuf_UInt64Value {
+    get {_storage._routerDownloadTotalBytesTransferred ?? SwiftProtobuf.Google_Protobuf_UInt64Value()}
+    set {_uniqueStorage()._routerDownloadTotalBytesTransferred = newValue}
+  }
+  /// Returns true if `routerDownloadTotalBytesTransferred` has been explicitly set.
+  var hasRouterDownloadTotalBytesTransferred: Bool {_storage._routerDownloadTotalBytesTransferred != nil}
+  /// Clears the value of `routerDownloadTotalBytesTransferred`. Subsequent reads from it will return its default value.
+  mutating func clearRouterDownloadTotalBytesTransferred() {_uniqueStorage()._routerDownloadTotalBytesTransferred = nil}
+
+  var routerDownloadBytesTransferredDurationS: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._routerDownloadBytesTransferredDurationS ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._routerDownloadBytesTransferredDurationS = newValue}
+  }
+  /// Returns true if `routerDownloadBytesTransferredDurationS` has been explicitly set.
+  var hasRouterDownloadBytesTransferredDurationS: Bool {_storage._routerDownloadBytesTransferredDurationS != nil}
+  /// Clears the value of `routerDownloadBytesTransferredDurationS`. Subsequent reads from it will return its default value.
+  mutating func clearRouterDownloadBytesTransferredDurationS() {_uniqueStorage()._routerDownloadBytesTransferredDurationS = nil}
+
+  var routerDownloadTargetIpv6Low: SwiftProtobuf.Google_Protobuf_UInt64Value {
+    get {_storage._routerDownloadTargetIpv6Low ?? SwiftProtobuf.Google_Protobuf_UInt64Value()}
+    set {_uniqueStorage()._routerDownloadTargetIpv6Low = newValue}
+  }
+  /// Returns true if `routerDownloadTargetIpv6Low` has been explicitly set.
+  var hasRouterDownloadTargetIpv6Low: Bool {_storage._routerDownloadTargetIpv6Low != nil}
+  /// Clears the value of `routerDownloadTargetIpv6Low`. Subsequent reads from it will return its default value.
+  mutating func clearRouterDownloadTargetIpv6Low() {_uniqueStorage()._routerDownloadTargetIpv6Low = nil}
+
+  var routerDownloadTargetIpv6High: SwiftProtobuf.Google_Protobuf_UInt64Value {
+    get {_storage._routerDownloadTargetIpv6High ?? SwiftProtobuf.Google_Protobuf_UInt64Value()}
+    set {_uniqueStorage()._routerDownloadTargetIpv6High = newValue}
+  }
+  /// Returns true if `routerDownloadTargetIpv6High` has been explicitly set.
+  var hasRouterDownloadTargetIpv6High: Bool {_storage._routerDownloadTargetIpv6High != nil}
+  /// Clears the value of `routerDownloadTargetIpv6High`. Subsequent reads from it will return its default value.
+  mutating func clearRouterDownloadTargetIpv6High() {_uniqueStorage()._routerDownloadTargetIpv6High = nil}
+
+  var routerUploadTotalBytesTransferred: SwiftProtobuf.Google_Protobuf_UInt64Value {
+    get {_storage._routerUploadTotalBytesTransferred ?? SwiftProtobuf.Google_Protobuf_UInt64Value()}
+    set {_uniqueStorage()._routerUploadTotalBytesTransferred = newValue}
+  }
+  /// Returns true if `routerUploadTotalBytesTransferred` has been explicitly set.
+  var hasRouterUploadTotalBytesTransferred: Bool {_storage._routerUploadTotalBytesTransferred != nil}
+  /// Clears the value of `routerUploadTotalBytesTransferred`. Subsequent reads from it will return its default value.
+  mutating func clearRouterUploadTotalBytesTransferred() {_uniqueStorage()._routerUploadTotalBytesTransferred = nil}
+
+  var routerUploadBytesTransferredDurationS: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._routerUploadBytesTransferredDurationS ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._routerUploadBytesTransferredDurationS = newValue}
+  }
+  /// Returns true if `routerUploadBytesTransferredDurationS` has been explicitly set.
+  var hasRouterUploadBytesTransferredDurationS: Bool {_storage._routerUploadBytesTransferredDurationS != nil}
+  /// Clears the value of `routerUploadBytesTransferredDurationS`. Subsequent reads from it will return its default value.
+  mutating func clearRouterUploadBytesTransferredDurationS() {_uniqueStorage()._routerUploadBytesTransferredDurationS = nil}
+
+  var routerUploadTargetIpv6Low: SwiftProtobuf.Google_Protobuf_UInt64Value {
+    get {_storage._routerUploadTargetIpv6Low ?? SwiftProtobuf.Google_Protobuf_UInt64Value()}
+    set {_uniqueStorage()._routerUploadTargetIpv6Low = newValue}
+  }
+  /// Returns true if `routerUploadTargetIpv6Low` has been explicitly set.
+  var hasRouterUploadTargetIpv6Low: Bool {_storage._routerUploadTargetIpv6Low != nil}
+  /// Clears the value of `routerUploadTargetIpv6Low`. Subsequent reads from it will return its default value.
+  mutating func clearRouterUploadTargetIpv6Low() {_uniqueStorage()._routerUploadTargetIpv6Low = nil}
+
+  var routerUploadTargetIpv6High: SwiftProtobuf.Google_Protobuf_UInt64Value {
+    get {_storage._routerUploadTargetIpv6High ?? SwiftProtobuf.Google_Protobuf_UInt64Value()}
+    set {_uniqueStorage()._routerUploadTargetIpv6High = newValue}
+  }
+  /// Returns true if `routerUploadTargetIpv6High` has been explicitly set.
+  var hasRouterUploadTargetIpv6High: Bool {_storage._routerUploadTargetIpv6High != nil}
+  /// Clears the value of `routerUploadTargetIpv6High`. Subsequent reads from it will return its default value.
+  mutating func clearRouterUploadTargetIpv6High() {_uniqueStorage()._routerUploadTargetIpv6High = nil}
+
   var wifiDownloadStartTime: SpaceX_API_Telemetron_Public_Common_TimestampInfo {
-    get {return _storage._wifiDownloadStartTime ?? SpaceX_API_Telemetron_Public_Common_TimestampInfo()}
+    get {_storage._wifiDownloadStartTime ?? SpaceX_API_Telemetron_Public_Common_TimestampInfo()}
     set {_uniqueStorage()._wifiDownloadStartTime = newValue}
   }
   /// Returns true if `wifiDownloadStartTime` has been explicitly set.
-  var hasWifiDownloadStartTime: Bool {return _storage._wifiDownloadStartTime != nil}
+  var hasWifiDownloadStartTime: Bool {_storage._wifiDownloadStartTime != nil}
   /// Clears the value of `wifiDownloadStartTime`. Subsequent reads from it will return its default value.
   mutating func clearWifiDownloadStartTime() {_uniqueStorage()._wifiDownloadStartTime = nil}
 
   var wifiUploadStartTime: SpaceX_API_Telemetron_Public_Common_TimestampInfo {
-    get {return _storage._wifiUploadStartTime ?? SpaceX_API_Telemetron_Public_Common_TimestampInfo()}
+    get {_storage._wifiUploadStartTime ?? SpaceX_API_Telemetron_Public_Common_TimestampInfo()}
     set {_uniqueStorage()._wifiUploadStartTime = newValue}
   }
   /// Returns true if `wifiUploadStartTime` has been explicitly set.
-  var hasWifiUploadStartTime: Bool {return _storage._wifiUploadStartTime != nil}
+  var hasWifiUploadStartTime: Bool {_storage._wifiUploadStartTime != nil}
   /// Clears the value of `wifiUploadStartTime`. Subsequent reads from it will return its default value.
   mutating func clearWifiUploadStartTime() {_uniqueStorage()._wifiUploadStartTime = nil}
 
   var wifiDownloadMbpsAvg: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._wifiDownloadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._wifiDownloadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._wifiDownloadMbpsAvg = newValue}
   }
   /// Returns true if `wifiDownloadMbpsAvg` has been explicitly set.
-  var hasWifiDownloadMbpsAvg: Bool {return _storage._wifiDownloadMbpsAvg != nil}
+  var hasWifiDownloadMbpsAvg: Bool {_storage._wifiDownloadMbpsAvg != nil}
   /// Clears the value of `wifiDownloadMbpsAvg`. Subsequent reads from it will return its default value.
   mutating func clearWifiDownloadMbpsAvg() {_uniqueStorage()._wifiDownloadMbpsAvg = nil}
 
   var wifiUploadMbpsAvg: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._wifiUploadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._wifiUploadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._wifiUploadMbpsAvg = newValue}
   }
   /// Returns true if `wifiUploadMbpsAvg` has been explicitly set.
-  var hasWifiUploadMbpsAvg: Bool {return _storage._wifiUploadMbpsAvg != nil}
+  var hasWifiUploadMbpsAvg: Bool {_storage._wifiUploadMbpsAvg != nil}
   /// Clears the value of `wifiUploadMbpsAvg`. Subsequent reads from it will return its default value.
   mutating func clearWifiUploadMbpsAvg() {_uniqueStorage()._wifiUploadMbpsAvg = nil}
 
@@ -4342,295 +5432,646 @@ struct SpaceX_API_Device_starlink_router_client_speedtests: @unchecked Sendable 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-struct SpaceX_API_Device_StarlinkRouterClients: @unchecked Sendable {
+nonisolated struct SpaceX_API_Device_StarlinkRouterClients: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   var routerID: String {
-    get {return _storage._routerID}
+    get {_storage._routerID}
     set {_uniqueStorage()._routerID = newValue}
   }
 
   var timestamp: SpaceX_API_Telemetron_Public_Common_TimestampInfo {
-    get {return _storage._timestamp ?? SpaceX_API_Telemetron_Public_Common_TimestampInfo()}
+    get {_storage._timestamp ?? SpaceX_API_Telemetron_Public_Common_TimestampInfo()}
     set {_uniqueStorage()._timestamp = newValue}
   }
   /// Returns true if `timestamp` has been explicitly set.
-  var hasTimestamp: Bool {return _storage._timestamp != nil}
+  var hasTimestamp: Bool {_storage._timestamp != nil}
   /// Clears the value of `timestamp`. Subsequent reads from it will return its default value.
   mutating func clearTimestamp() {_uniqueStorage()._timestamp = nil}
 
   var clientID: UInt32 {
-    get {return _storage._clientID}
+    get {_storage._clientID}
     set {_uniqueStorage()._clientID = newValue}
   }
 
   var clientTelemIndex: String {
-    get {return _storage._clientTelemIndex}
+    get {_storage._clientTelemIndex}
     set {_uniqueStorage()._clientTelemIndex = newValue}
   }
 
+  var usingMlo: SwiftProtobuf.Google_Protobuf_BoolValue {
+    get {_storage._usingMlo ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    set {_uniqueStorage()._usingMlo = newValue}
+  }
+  /// Returns true if `usingMlo` has been explicitly set.
+  var hasUsingMlo: Bool {_storage._usingMlo != nil}
+  /// Clears the value of `usingMlo`. Subsequent reads from it will return its default value.
+  mutating func clearUsingMlo() {_uniqueStorage()._usingMlo = nil}
+
   var routerHw: SwiftProtobuf.Google_Protobuf_StringValue {
-    get {return _storage._routerHw ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    get {_storage._routerHw ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._routerHw = newValue}
   }
   /// Returns true if `routerHw` has been explicitly set.
-  var hasRouterHw: Bool {return _storage._routerHw != nil}
+  var hasRouterHw: Bool {_storage._routerHw != nil}
   /// Clears the value of `routerHw`. Subsequent reads from it will return its default value.
   mutating func clearRouterHw() {_uniqueStorage()._routerHw = nil}
 
   var routerSw: SwiftProtobuf.Google_Protobuf_StringValue {
-    get {return _storage._routerSw ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    get {_storage._routerSw ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._routerSw = newValue}
   }
   /// Returns true if `routerSw` has been explicitly set.
-  var hasRouterSw: Bool {return _storage._routerSw != nil}
+  var hasRouterSw: Bool {_storage._routerSw != nil}
   /// Clears the value of `routerSw`. Subsequent reads from it will return its default value.
   mutating func clearRouterSw() {_uniqueStorage()._routerSw = nil}
 
+  var routerUptimeS: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._routerUptimeS ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._routerUptimeS = newValue}
+  }
+  /// Returns true if `routerUptimeS` has been explicitly set.
+  var hasRouterUptimeS: Bool {_storage._routerUptimeS != nil}
+  /// Clears the value of `routerUptimeS`. Subsequent reads from it will return its default value.
+  mutating func clearRouterUptimeS() {_uniqueStorage()._routerUptimeS = nil}
+
   var clientRouterID: SwiftProtobuf.Google_Protobuf_StringValue {
-    get {return _storage._clientRouterID ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    get {_storage._clientRouterID ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._clientRouterID = newValue}
   }
   /// Returns true if `clientRouterID` has been explicitly set.
-  var hasClientRouterID: Bool {return _storage._clientRouterID != nil}
+  var hasClientRouterID: Bool {_storage._clientRouterID != nil}
   /// Clears the value of `clientRouterID`. Subsequent reads from it will return its default value.
   mutating func clearClientRouterID() {_uniqueStorage()._clientRouterID = nil}
 
   var clientHw: SwiftProtobuf.Google_Protobuf_StringValue {
-    get {return _storage._clientHw ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    get {_storage._clientHw ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._clientHw = newValue}
   }
   /// Returns true if `clientHw` has been explicitly set.
-  var hasClientHw: Bool {return _storage._clientHw != nil}
+  var hasClientHw: Bool {_storage._clientHw != nil}
   /// Clears the value of `clientHw`. Subsequent reads from it will return its default value.
   mutating func clearClientHw() {_uniqueStorage()._clientHw = nil}
 
   var clientSw: SwiftProtobuf.Google_Protobuf_StringValue {
-    get {return _storage._clientSw ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    get {_storage._clientSw ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._clientSw = newValue}
   }
   /// Returns true if `clientSw` has been explicitly set.
-  var hasClientSw: Bool {return _storage._clientSw != nil}
+  var hasClientSw: Bool {_storage._clientSw != nil}
   /// Clears the value of `clientSw`. Subsequent reads from it will return its default value.
   mutating func clearClientSw() {_uniqueStorage()._clientSw = nil}
 
   var oui: SwiftProtobuf.Google_Protobuf_StringValue {
-    get {return _storage._oui ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    get {_storage._oui ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._oui = newValue}
   }
   /// Returns true if `oui` has been explicitly set.
-  var hasOui: Bool {return _storage._oui != nil}
+  var hasOui: Bool {_storage._oui != nil}
   /// Clears the value of `oui`. Subsequent reads from it will return its default value.
   mutating func clearOui() {_uniqueStorage()._oui = nil}
 
   var upstreamID: SwiftProtobuf.Google_Protobuf_StringValue {
-    get {return _storage._upstreamID ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    get {_storage._upstreamID ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._upstreamID = newValue}
   }
   /// Returns true if `upstreamID` has been explicitly set.
-  var hasUpstreamID: Bool {return _storage._upstreamID != nil}
+  var hasUpstreamID: Bool {_storage._upstreamID != nil}
   /// Clears the value of `upstreamID`. Subsequent reads from it will return its default value.
   mutating func clearUpstreamID() {_uniqueStorage()._upstreamID = nil}
 
   var isRepeater: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._isRepeater ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._isRepeater ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._isRepeater = newValue}
   }
   /// Returns true if `isRepeater` has been explicitly set.
-  var hasIsRepeater: Bool {return _storage._isRepeater != nil}
+  var hasIsRepeater: Bool {_storage._isRepeater != nil}
   /// Clears the value of `isRepeater`. Subsequent reads from it will return its default value.
   mutating func clearIsRepeater() {_uniqueStorage()._isRepeater = nil}
 
   var connectedS: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._connectedS ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._connectedS ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._connectedS = newValue}
   }
   /// Returns true if `connectedS` has been explicitly set.
-  var hasConnectedS: Bool {return _storage._connectedS != nil}
+  var hasConnectedS: Bool {_storage._connectedS != nil}
   /// Clears the value of `connectedS`. Subsequent reads from it will return its default value.
   mutating func clearConnectedS() {_uniqueStorage()._connectedS = nil}
 
   var interface: SwiftProtobuf.Google_Protobuf_StringValue {
-    get {return _storage._interface ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    get {_storage._interface ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._interface = newValue}
   }
   /// Returns true if `interface` has been explicitly set.
-  var hasInterface: Bool {return _storage._interface != nil}
+  var hasInterface: Bool {_storage._interface != nil}
   /// Clears the value of `interface`. Subsequent reads from it will return its default value.
   mutating func clearInterface() {_uniqueStorage()._interface = nil}
 
   var radioChannel: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radioChannel ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radioChannel ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radioChannel = newValue}
   }
   /// Returns true if `radioChannel` has been explicitly set.
-  var hasRadioChannel: Bool {return _storage._radioChannel != nil}
+  var hasRadioChannel: Bool {_storage._radioChannel != nil}
   /// Clears the value of `radioChannel`. Subsequent reads from it will return its default value.
   mutating func clearRadioChannel() {_uniqueStorage()._radioChannel = nil}
 
   var rssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._rssi = newValue}
   }
   /// Returns true if `rssi` has been explicitly set.
-  var hasRssi: Bool {return _storage._rssi != nil}
+  var hasRssi: Bool {_storage._rssi != nil}
   /// Clears the value of `rssi`. Subsequent reads from it will return its default value.
   mutating func clearRssi() {_uniqueStorage()._rssi = nil}
 
   var rxMcs: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._rxMcs ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._rxMcs ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._rxMcs = newValue}
   }
   /// Returns true if `rxMcs` has been explicitly set.
-  var hasRxMcs: Bool {return _storage._rxMcs != nil}
+  var hasRxMcs: Bool {_storage._rxMcs != nil}
   /// Clears the value of `rxMcs`. Subsequent reads from it will return its default value.
   mutating func clearRxMcs() {_uniqueStorage()._rxMcs = nil}
 
   var txMcs: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._txMcs ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._txMcs ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._txMcs = newValue}
   }
   /// Returns true if `txMcs` has been explicitly set.
-  var hasTxMcs: Bool {return _storage._txMcs != nil}
+  var hasTxMcs: Bool {_storage._txMcs != nil}
   /// Clears the value of `txMcs`. Subsequent reads from it will return its default value.
   mutating func clearTxMcs() {_uniqueStorage()._txMcs = nil}
 
   var rxRate: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._rxRate ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._rxRate ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._rxRate = newValue}
   }
   /// Returns true if `rxRate` has been explicitly set.
-  var hasRxRate: Bool {return _storage._rxRate != nil}
+  var hasRxRate: Bool {_storage._rxRate != nil}
   /// Clears the value of `rxRate`. Subsequent reads from it will return its default value.
   mutating func clearRxRate() {_uniqueStorage()._rxRate = nil}
 
   var txRate: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._txRate ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._txRate ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._txRate = newValue}
   }
   /// Returns true if `txRate` has been explicitly set.
-  var hasTxRate: Bool {return _storage._txRate != nil}
+  var hasTxRate: Bool {_storage._txRate != nil}
   /// Clears the value of `txRate`. Subsequent reads from it will return its default value.
   mutating func clearTxRate() {_uniqueStorage()._txRate = nil}
 
   var rxBandwidth: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._rxBandwidth ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._rxBandwidth ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._rxBandwidth = newValue}
   }
   /// Returns true if `rxBandwidth` has been explicitly set.
-  var hasRxBandwidth: Bool {return _storage._rxBandwidth != nil}
+  var hasRxBandwidth: Bool {_storage._rxBandwidth != nil}
   /// Clears the value of `rxBandwidth`. Subsequent reads from it will return its default value.
   mutating func clearRxBandwidth() {_uniqueStorage()._rxBandwidth = nil}
 
   var rxSpatialStreams: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._rxSpatialStreams ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._rxSpatialStreams ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._rxSpatialStreams = newValue}
   }
   /// Returns true if `rxSpatialStreams` has been explicitly set.
-  var hasRxSpatialStreams: Bool {return _storage._rxSpatialStreams != nil}
+  var hasRxSpatialStreams: Bool {_storage._rxSpatialStreams != nil}
   /// Clears the value of `rxSpatialStreams`. Subsequent reads from it will return its default value.
   mutating func clearRxSpatialStreams() {_uniqueStorage()._rxSpatialStreams = nil}
 
   var rxPhyMode: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._rxPhyMode ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._rxPhyMode ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._rxPhyMode = newValue}
   }
   /// Returns true if `rxPhyMode` has been explicitly set.
-  var hasRxPhyMode: Bool {return _storage._rxPhyMode != nil}
+  var hasRxPhyMode: Bool {_storage._rxPhyMode != nil}
   /// Clears the value of `rxPhyMode`. Subsequent reads from it will return its default value.
   mutating func clearRxPhyMode() {_uniqueStorage()._rxPhyMode = nil}
 
+  var link2GhzRadioChannel: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._link2GhzRadioChannel ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._link2GhzRadioChannel = newValue}
+  }
+  /// Returns true if `link2GhzRadioChannel` has been explicitly set.
+  var hasLink2GhzRadioChannel: Bool {_storage._link2GhzRadioChannel != nil}
+  /// Clears the value of `link2GhzRadioChannel`. Subsequent reads from it will return its default value.
+  mutating func clearLink2GhzRadioChannel() {_uniqueStorage()._link2GhzRadioChannel = nil}
+
+  var link2GhzRssi: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._link2GhzRssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._link2GhzRssi = newValue}
+  }
+  /// Returns true if `link2GhzRssi` has been explicitly set.
+  var hasLink2GhzRssi: Bool {_storage._link2GhzRssi != nil}
+  /// Clears the value of `link2GhzRssi`. Subsequent reads from it will return its default value.
+  mutating func clearLink2GhzRssi() {_uniqueStorage()._link2GhzRssi = nil}
+
+  var link2GhzRxMcs: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._link2GhzRxMcs ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._link2GhzRxMcs = newValue}
+  }
+  /// Returns true if `link2GhzRxMcs` has been explicitly set.
+  var hasLink2GhzRxMcs: Bool {_storage._link2GhzRxMcs != nil}
+  /// Clears the value of `link2GhzRxMcs`. Subsequent reads from it will return its default value.
+  mutating func clearLink2GhzRxMcs() {_uniqueStorage()._link2GhzRxMcs = nil}
+
+  var link2GhzTxMcs: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._link2GhzTxMcs ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._link2GhzTxMcs = newValue}
+  }
+  /// Returns true if `link2GhzTxMcs` has been explicitly set.
+  var hasLink2GhzTxMcs: Bool {_storage._link2GhzTxMcs != nil}
+  /// Clears the value of `link2GhzTxMcs`. Subsequent reads from it will return its default value.
+  mutating func clearLink2GhzTxMcs() {_uniqueStorage()._link2GhzTxMcs = nil}
+
+  var link2GhzRxRate: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._link2GhzRxRate ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._link2GhzRxRate = newValue}
+  }
+  /// Returns true if `link2GhzRxRate` has been explicitly set.
+  var hasLink2GhzRxRate: Bool {_storage._link2GhzRxRate != nil}
+  /// Clears the value of `link2GhzRxRate`. Subsequent reads from it will return its default value.
+  mutating func clearLink2GhzRxRate() {_uniqueStorage()._link2GhzRxRate = nil}
+
+  var link2GhzTxRate: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._link2GhzTxRate ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._link2GhzTxRate = newValue}
+  }
+  /// Returns true if `link2GhzTxRate` has been explicitly set.
+  var hasLink2GhzTxRate: Bool {_storage._link2GhzTxRate != nil}
+  /// Clears the value of `link2GhzTxRate`. Subsequent reads from it will return its default value.
+  mutating func clearLink2GhzTxRate() {_uniqueStorage()._link2GhzTxRate = nil}
+
+  var link2GhzRxBandwidth: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._link2GhzRxBandwidth ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._link2GhzRxBandwidth = newValue}
+  }
+  /// Returns true if `link2GhzRxBandwidth` has been explicitly set.
+  var hasLink2GhzRxBandwidth: Bool {_storage._link2GhzRxBandwidth != nil}
+  /// Clears the value of `link2GhzRxBandwidth`. Subsequent reads from it will return its default value.
+  mutating func clearLink2GhzRxBandwidth() {_uniqueStorage()._link2GhzRxBandwidth = nil}
+
+  var link2GhzRxSpatialStreams: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._link2GhzRxSpatialStreams ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._link2GhzRxSpatialStreams = newValue}
+  }
+  /// Returns true if `link2GhzRxSpatialStreams` has been explicitly set.
+  var hasLink2GhzRxSpatialStreams: Bool {_storage._link2GhzRxSpatialStreams != nil}
+  /// Clears the value of `link2GhzRxSpatialStreams`. Subsequent reads from it will return its default value.
+  mutating func clearLink2GhzRxSpatialStreams() {_uniqueStorage()._link2GhzRxSpatialStreams = nil}
+
+  var link2GhzRxPhyMode: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._link2GhzRxPhyMode ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._link2GhzRxPhyMode = newValue}
+  }
+  /// Returns true if `link2GhzRxPhyMode` has been explicitly set.
+  var hasLink2GhzRxPhyMode: Bool {_storage._link2GhzRxPhyMode != nil}
+  /// Clears the value of `link2GhzRxPhyMode`. Subsequent reads from it will return its default value.
+  mutating func clearLink2GhzRxPhyMode() {_uniqueStorage()._link2GhzRxPhyMode = nil}
+
+  var link5GhzRadioChannel: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._link5GhzRadioChannel ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._link5GhzRadioChannel = newValue}
+  }
+  /// Returns true if `link5GhzRadioChannel` has been explicitly set.
+  var hasLink5GhzRadioChannel: Bool {_storage._link5GhzRadioChannel != nil}
+  /// Clears the value of `link5GhzRadioChannel`. Subsequent reads from it will return its default value.
+  mutating func clearLink5GhzRadioChannel() {_uniqueStorage()._link5GhzRadioChannel = nil}
+
+  var link5GhzRssi: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._link5GhzRssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._link5GhzRssi = newValue}
+  }
+  /// Returns true if `link5GhzRssi` has been explicitly set.
+  var hasLink5GhzRssi: Bool {_storage._link5GhzRssi != nil}
+  /// Clears the value of `link5GhzRssi`. Subsequent reads from it will return its default value.
+  mutating func clearLink5GhzRssi() {_uniqueStorage()._link5GhzRssi = nil}
+
+  var link5GhzRxMcs: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._link5GhzRxMcs ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._link5GhzRxMcs = newValue}
+  }
+  /// Returns true if `link5GhzRxMcs` has been explicitly set.
+  var hasLink5GhzRxMcs: Bool {_storage._link5GhzRxMcs != nil}
+  /// Clears the value of `link5GhzRxMcs`. Subsequent reads from it will return its default value.
+  mutating func clearLink5GhzRxMcs() {_uniqueStorage()._link5GhzRxMcs = nil}
+
+  var link5GhzTxMcs: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._link5GhzTxMcs ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._link5GhzTxMcs = newValue}
+  }
+  /// Returns true if `link5GhzTxMcs` has been explicitly set.
+  var hasLink5GhzTxMcs: Bool {_storage._link5GhzTxMcs != nil}
+  /// Clears the value of `link5GhzTxMcs`. Subsequent reads from it will return its default value.
+  mutating func clearLink5GhzTxMcs() {_uniqueStorage()._link5GhzTxMcs = nil}
+
+  var link5GhzRxRate: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._link5GhzRxRate ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._link5GhzRxRate = newValue}
+  }
+  /// Returns true if `link5GhzRxRate` has been explicitly set.
+  var hasLink5GhzRxRate: Bool {_storage._link5GhzRxRate != nil}
+  /// Clears the value of `link5GhzRxRate`. Subsequent reads from it will return its default value.
+  mutating func clearLink5GhzRxRate() {_uniqueStorage()._link5GhzRxRate = nil}
+
+  var link5GhzTxRate: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._link5GhzTxRate ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._link5GhzTxRate = newValue}
+  }
+  /// Returns true if `link5GhzTxRate` has been explicitly set.
+  var hasLink5GhzTxRate: Bool {_storage._link5GhzTxRate != nil}
+  /// Clears the value of `link5GhzTxRate`. Subsequent reads from it will return its default value.
+  mutating func clearLink5GhzTxRate() {_uniqueStorage()._link5GhzTxRate = nil}
+
+  var link5GhzRxBandwidth: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._link5GhzRxBandwidth ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._link5GhzRxBandwidth = newValue}
+  }
+  /// Returns true if `link5GhzRxBandwidth` has been explicitly set.
+  var hasLink5GhzRxBandwidth: Bool {_storage._link5GhzRxBandwidth != nil}
+  /// Clears the value of `link5GhzRxBandwidth`. Subsequent reads from it will return its default value.
+  mutating func clearLink5GhzRxBandwidth() {_uniqueStorage()._link5GhzRxBandwidth = nil}
+
+  var link5GhzRxSpatialStreams: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._link5GhzRxSpatialStreams ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._link5GhzRxSpatialStreams = newValue}
+  }
+  /// Returns true if `link5GhzRxSpatialStreams` has been explicitly set.
+  var hasLink5GhzRxSpatialStreams: Bool {_storage._link5GhzRxSpatialStreams != nil}
+  /// Clears the value of `link5GhzRxSpatialStreams`. Subsequent reads from it will return its default value.
+  mutating func clearLink5GhzRxSpatialStreams() {_uniqueStorage()._link5GhzRxSpatialStreams = nil}
+
+  var link5GhzRxPhyMode: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._link5GhzRxPhyMode ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._link5GhzRxPhyMode = newValue}
+  }
+  /// Returns true if `link5GhzRxPhyMode` has been explicitly set.
+  var hasLink5GhzRxPhyMode: Bool {_storage._link5GhzRxPhyMode != nil}
+  /// Clears the value of `link5GhzRxPhyMode`. Subsequent reads from it will return its default value.
+  mutating func clearLink5GhzRxPhyMode() {_uniqueStorage()._link5GhzRxPhyMode = nil}
+
   var meshHops: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._meshHops ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._meshHops ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._meshHops = newValue}
   }
   /// Returns true if `meshHops` has been explicitly set.
-  var hasMeshHops: Bool {return _storage._meshHops != nil}
+  var hasMeshHops: Bool {_storage._meshHops != nil}
   /// Clears the value of `meshHops`. Subsequent reads from it will return its default value.
   mutating func clearMeshHops() {_uniqueStorage()._meshHops = nil}
 
   var speedtestUploadMbps: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._speedtestUploadMbps ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._speedtestUploadMbps ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._speedtestUploadMbps = newValue}
   }
   /// Returns true if `speedtestUploadMbps` has been explicitly set.
-  var hasSpeedtestUploadMbps: Bool {return _storage._speedtestUploadMbps != nil}
+  var hasSpeedtestUploadMbps: Bool {_storage._speedtestUploadMbps != nil}
   /// Clears the value of `speedtestUploadMbps`. Subsequent reads from it will return its default value.
   mutating func clearSpeedtestUploadMbps() {_uniqueStorage()._speedtestUploadMbps = nil}
 
   var speedtestDownloadMbps: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._speedtestDownloadMbps ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._speedtestDownloadMbps ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._speedtestDownloadMbps = newValue}
   }
   /// Returns true if `speedtestDownloadMbps` has been explicitly set.
-  var hasSpeedtestDownloadMbps: Bool {return _storage._speedtestDownloadMbps != nil}
+  var hasSpeedtestDownloadMbps: Bool {_storage._speedtestDownloadMbps != nil}
   /// Clears the value of `speedtestDownloadMbps`. Subsequent reads from it will return its default value.
   mutating func clearSpeedtestDownloadMbps() {_uniqueStorage()._speedtestDownloadMbps = nil}
 
   var siteSurveyRssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._siteSurveyRssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._siteSurveyRssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._siteSurveyRssi = newValue}
   }
   /// Returns true if `siteSurveyRssi` has been explicitly set.
-  var hasSiteSurveyRssi: Bool {return _storage._siteSurveyRssi != nil}
+  var hasSiteSurveyRssi: Bool {_storage._siteSurveyRssi != nil}
   /// Clears the value of `siteSurveyRssi`. Subsequent reads from it will return its default value.
   mutating func clearSiteSurveyRssi() {_uniqueStorage()._siteSurveyRssi = nil}
 
   var siteSurveyEstRxRate: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._siteSurveyEstRxRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._siteSurveyEstRxRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._siteSurveyEstRxRate = newValue}
   }
   /// Returns true if `siteSurveyEstRxRate` has been explicitly set.
-  var hasSiteSurveyEstRxRate: Bool {return _storage._siteSurveyEstRxRate != nil}
+  var hasSiteSurveyEstRxRate: Bool {_storage._siteSurveyEstRxRate != nil}
   /// Clears the value of `siteSurveyEstRxRate`. Subsequent reads from it will return its default value.
   mutating func clearSiteSurveyEstRxRate() {_uniqueStorage()._siteSurveyEstRxRate = nil}
 
   var estControllerThroughputMbps: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._estControllerThroughputMbps ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._estControllerThroughputMbps ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._estControllerThroughputMbps = newValue}
   }
   /// Returns true if `estControllerThroughputMbps` has been explicitly set.
-  var hasEstControllerThroughputMbps: Bool {return _storage._estControllerThroughputMbps != nil}
+  var hasEstControllerThroughputMbps: Bool {_storage._estControllerThroughputMbps != nil}
   /// Clears the value of `estControllerThroughputMbps`. Subsequent reads from it will return its default value.
   mutating func clearEstControllerThroughputMbps() {_uniqueStorage()._estControllerThroughputMbps = nil}
 
   var pingDropRateLast1H: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingDropRateLast1H ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingDropRateLast1H ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingDropRateLast1H = newValue}
   }
   /// Returns true if `pingDropRateLast1H` has been explicitly set.
-  var hasPingDropRateLast1H: Bool {return _storage._pingDropRateLast1H != nil}
+  var hasPingDropRateLast1H: Bool {_storage._pingDropRateLast1H != nil}
   /// Clears the value of `pingDropRateLast1H`. Subsequent reads from it will return its default value.
   mutating func clearPingDropRateLast1H() {_uniqueStorage()._pingDropRateLast1H = nil}
 
   var pingLatencyLast1H: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingLatencyLast1H ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingLatencyLast1H ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingLatencyLast1H = newValue}
   }
   /// Returns true if `pingLatencyLast1H` has been explicitly set.
-  var hasPingLatencyLast1H: Bool {return _storage._pingLatencyLast1H != nil}
+  var hasPingLatencyLast1H: Bool {_storage._pingLatencyLast1H != nil}
   /// Clears the value of `pingLatencyLast1H`. Subsequent reads from it will return its default value.
   mutating func clearPingLatencyLast1H() {_uniqueStorage()._pingLatencyLast1H = nil}
 
   var steerState: SwiftProtobuf.Google_Protobuf_StringValue {
-    get {return _storage._steerState ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    get {_storage._steerState ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._steerState = newValue}
   }
   /// Returns true if `steerState` has been explicitly set.
-  var hasSteerState: Bool {return _storage._steerState != nil}
+  var hasSteerState: Bool {_storage._steerState != nil}
   /// Clears the value of `steerState`. Subsequent reads from it will return its default value.
   mutating func clearSteerState() {_uniqueStorage()._steerState = nil}
 
   var blocked: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._blocked ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._blocked ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._blocked = newValue}
   }
   /// Returns true if `blocked` has been explicitly set.
-  var hasBlocked: Bool {return _storage._blocked != nil}
+  var hasBlocked: Bool {_storage._blocked != nil}
   /// Clears the value of `blocked`. Subsequent reads from it will return its default value.
   mutating func clearBlocked() {_uniqueStorage()._blocked = nil}
+
+  var throughputLimitedLastFired: SpaceX_API_Telemetron_Public_Common_TimestampInfo {
+    get {_storage._throughputLimitedLastFired ?? SpaceX_API_Telemetron_Public_Common_TimestampInfo()}
+    set {_uniqueStorage()._throughputLimitedLastFired = newValue}
+  }
+  /// Returns true if `throughputLimitedLastFired` has been explicitly set.
+  var hasThroughputLimitedLastFired: Bool {_storage._throughputLimitedLastFired != nil}
+  /// Clears the value of `throughputLimitedLastFired`. Subsequent reads from it will return its default value.
+  mutating func clearThroughputLimitedLastFired() {_uniqueStorage()._throughputLimitedLastFired = nil}
+
+  var hasDhcpV4Lease_p: SwiftProtobuf.Google_Protobuf_BoolValue {
+    get {_storage._hasDhcpV4Lease_p ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    set {_uniqueStorage()._hasDhcpV4Lease_p = newValue}
+  }
+  /// Returns true if `hasDhcpV4Lease_p` has been explicitly set.
+  var hasHasDhcpV4Lease_p: Bool {_storage._hasDhcpV4Lease_p != nil}
+  /// Clears the value of `hasDhcpV4Lease_p`. Subsequent reads from it will return its default value.
+  mutating func clearHasDhcpV4Lease_p() {_uniqueStorage()._hasDhcpV4Lease_p = nil}
+
+  var ipv4Address: SwiftProtobuf.Google_Protobuf_StringValue {
+    get {_storage._ipv4Address ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    set {_uniqueStorage()._ipv4Address = newValue}
+  }
+  /// Returns true if `ipv4Address` has been explicitly set.
+  var hasIpv4Address: Bool {_storage._ipv4Address != nil}
+  /// Clears the value of `ipv4Address`. Subsequent reads from it will return its default value.
+  mutating func clearIpv4Address() {_uniqueStorage()._ipv4Address = nil}
+
+  var hasHostname_p: SwiftProtobuf.Google_Protobuf_BoolValue {
+    get {_storage._hasHostname_p ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    set {_uniqueStorage()._hasHostname_p = newValue}
+  }
+  /// Returns true if `hasHostname_p` has been explicitly set.
+  var hasHasHostname_p: Bool {_storage._hasHostname_p != nil}
+  /// Clears the value of `hasHostname_p`. Subsequent reads from it will return its default value.
+  mutating func clearHasHostname_p() {_uniqueStorage()._hasHostname_p = nil}
+
+  var dhcpV4LeaseIsActive: SwiftProtobuf.Google_Protobuf_BoolValue {
+    get {_storage._dhcpV4LeaseIsActive ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    set {_uniqueStorage()._dhcpV4LeaseIsActive = newValue}
+  }
+  /// Returns true if `dhcpV4LeaseIsActive` has been explicitly set.
+  var hasDhcpV4LeaseIsActive: Bool {_storage._dhcpV4LeaseIsActive != nil}
+  /// Clears the value of `dhcpV4LeaseIsActive`. Subsequent reads from it will return its default value.
+  mutating func clearDhcpV4LeaseIsActive() {_uniqueStorage()._dhcpV4LeaseIsActive = nil}
+
+  var dhcpV4LeaseWasRenewed: SwiftProtobuf.Google_Protobuf_BoolValue {
+    get {_storage._dhcpV4LeaseWasRenewed ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    set {_uniqueStorage()._dhcpV4LeaseWasRenewed = newValue}
+  }
+  /// Returns true if `dhcpV4LeaseWasRenewed` has been explicitly set.
+  var hasDhcpV4LeaseWasRenewed: Bool {_storage._dhcpV4LeaseWasRenewed != nil}
+  /// Clears the value of `dhcpV4LeaseWasRenewed`. Subsequent reads from it will return its default value.
+  mutating func clearDhcpV4LeaseWasRenewed() {_uniqueStorage()._dhcpV4LeaseWasRenewed = nil}
+
+  var secondsUntilDhcpV4LeaseExpires: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._secondsUntilDhcpV4LeaseExpires ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._secondsUntilDhcpV4LeaseExpires = newValue}
+  }
+  /// Returns true if `secondsUntilDhcpV4LeaseExpires` has been explicitly set.
+  var hasSecondsUntilDhcpV4LeaseExpires: Bool {_storage._secondsUntilDhcpV4LeaseExpires != nil}
+  /// Clears the value of `secondsUntilDhcpV4LeaseExpires`. Subsequent reads from it will return its default value.
+  mutating func clearSecondsUntilDhcpV4LeaseExpires() {_uniqueStorage()._secondsUntilDhcpV4LeaseExpires = nil}
+
+  var dissociationsUnder10S: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._dissociationsUnder10S ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._dissociationsUnder10S = newValue}
+  }
+  /// Returns true if `dissociationsUnder10S` has been explicitly set.
+  var hasDissociationsUnder10S: Bool {_storage._dissociationsUnder10S != nil}
+  /// Clears the value of `dissociationsUnder10S`. Subsequent reads from it will return its default value.
+  mutating func clearDissociationsUnder10S() {_uniqueStorage()._dissociationsUnder10S = nil}
+
+  var dissociationsUnder30S: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._dissociationsUnder30S ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._dissociationsUnder30S = newValue}
+  }
+  /// Returns true if `dissociationsUnder30S` has been explicitly set.
+  var hasDissociationsUnder30S: Bool {_storage._dissociationsUnder30S != nil}
+  /// Clears the value of `dissociationsUnder30S`. Subsequent reads from it will return its default value.
+  mutating func clearDissociationsUnder30S() {_uniqueStorage()._dissociationsUnder30S = nil}
+
+  var dissociationsUnder60S: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._dissociationsUnder60S ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._dissociationsUnder60S = newValue}
+  }
+  /// Returns true if `dissociationsUnder60S` has been explicitly set.
+  var hasDissociationsUnder60S: Bool {_storage._dissociationsUnder60S != nil}
+  /// Clears the value of `dissociationsUnder60S`. Subsequent reads from it will return its default value.
+  mutating func clearDissociationsUnder60S() {_uniqueStorage()._dissociationsUnder60S = nil}
+
+  var dissociationsUnder120S: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._dissociationsUnder120S ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._dissociationsUnder120S = newValue}
+  }
+  /// Returns true if `dissociationsUnder120S` has been explicitly set.
+  var hasDissociationsUnder120S: Bool {_storage._dissociationsUnder120S != nil}
+  /// Clears the value of `dissociationsUnder120S`. Subsequent reads from it will return its default value.
+  mutating func clearDissociationsUnder120S() {_uniqueStorage()._dissociationsUnder120S = nil}
+
+  var secondsToConnTcpIpv4: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._secondsToConnTcpIpv4 ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._secondsToConnTcpIpv4 = newValue}
+  }
+  /// Returns true if `secondsToConnTcpIpv4` has been explicitly set.
+  var hasSecondsToConnTcpIpv4: Bool {_storage._secondsToConnTcpIpv4 != nil}
+  /// Clears the value of `secondsToConnTcpIpv4`. Subsequent reads from it will return its default value.
+  mutating func clearSecondsToConnTcpIpv4() {_uniqueStorage()._secondsToConnTcpIpv4 = nil}
+
+  var secondsToConnTcpIpv6: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._secondsToConnTcpIpv6 ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._secondsToConnTcpIpv6 = newValue}
+  }
+  /// Returns true if `secondsToConnTcpIpv6` has been explicitly set.
+  var hasSecondsToConnTcpIpv6: Bool {_storage._secondsToConnTcpIpv6 != nil}
+  /// Clears the value of `secondsToConnTcpIpv6`. Subsequent reads from it will return its default value.
+  mutating func clearSecondsToConnTcpIpv6() {_uniqueStorage()._secondsToConnTcpIpv6 = nil}
+
+  var secondsToConnUdpIpv4: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._secondsToConnUdpIpv4 ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._secondsToConnUdpIpv4 = newValue}
+  }
+  /// Returns true if `secondsToConnUdpIpv4` has been explicitly set.
+  var hasSecondsToConnUdpIpv4: Bool {_storage._secondsToConnUdpIpv4 != nil}
+  /// Clears the value of `secondsToConnUdpIpv4`. Subsequent reads from it will return its default value.
+  mutating func clearSecondsToConnUdpIpv4() {_uniqueStorage()._secondsToConnUdpIpv4 = nil}
+
+  var secondsToConnUdpIpv6: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._secondsToConnUdpIpv6 ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._secondsToConnUdpIpv6 = newValue}
+  }
+  /// Returns true if `secondsToConnUdpIpv6` has been explicitly set.
+  var hasSecondsToConnUdpIpv6: Bool {_storage._secondsToConnUdpIpv6 != nil}
+  /// Clears the value of `secondsToConnUdpIpv6`. Subsequent reads from it will return its default value.
+  mutating func clearSecondsToConnUdpIpv6() {_uniqueStorage()._secondsToConnUdpIpv6 = nil}
+
+  var flowsTcpIpv4: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._flowsTcpIpv4 ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._flowsTcpIpv4 = newValue}
+  }
+  /// Returns true if `flowsTcpIpv4` has been explicitly set.
+  var hasFlowsTcpIpv4: Bool {_storage._flowsTcpIpv4 != nil}
+  /// Clears the value of `flowsTcpIpv4`. Subsequent reads from it will return its default value.
+  mutating func clearFlowsTcpIpv4() {_uniqueStorage()._flowsTcpIpv4 = nil}
+
+  var flowsTcpIpv6: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._flowsTcpIpv6 ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._flowsTcpIpv6 = newValue}
+  }
+  /// Returns true if `flowsTcpIpv6` has been explicitly set.
+  var hasFlowsTcpIpv6: Bool {_storage._flowsTcpIpv6 != nil}
+  /// Clears the value of `flowsTcpIpv6`. Subsequent reads from it will return its default value.
+  mutating func clearFlowsTcpIpv6() {_uniqueStorage()._flowsTcpIpv6 = nil}
+
+  var flowsUdpIpv4: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._flowsUdpIpv4 ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._flowsUdpIpv4 = newValue}
+  }
+  /// Returns true if `flowsUdpIpv4` has been explicitly set.
+  var hasFlowsUdpIpv4: Bool {_storage._flowsUdpIpv4 != nil}
+  /// Clears the value of `flowsUdpIpv4`. Subsequent reads from it will return its default value.
+  mutating func clearFlowsUdpIpv4() {_uniqueStorage()._flowsUdpIpv4 = nil}
+
+  var flowsUdpIpv6: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._flowsUdpIpv6 ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._flowsUdpIpv6 = newValue}
+  }
+  /// Returns true if `flowsUdpIpv6` has been explicitly set.
+  var hasFlowsUdpIpv6: Bool {_storage._flowsUdpIpv6 != nil}
+  /// Clears the value of `flowsUdpIpv6`. Subsequent reads from it will return its default value.
+  mutating func clearFlowsUdpIpv6() {_uniqueStorage()._flowsUdpIpv6 = nil}
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -4639,27 +6080,260 @@ struct SpaceX_API_Device_StarlinkRouterClients: @unchecked Sendable {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-struct SpaceX_API_Device_WifiSetClientGivenNameRequest: Sendable {
+nonisolated struct SpaceX_API_Device_StarlinkRouterClientTesterRun: @unchecked Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var clientTesterRouterID: String {
+    get {_storage._clientTesterRouterID}
+    set {_uniqueStorage()._clientTesterRouterID = newValue}
+  }
+
+  var timestamp: SpaceX_API_Telemetron_Public_Common_TimestampInfo {
+    get {_storage._timestamp ?? SpaceX_API_Telemetron_Public_Common_TimestampInfo()}
+    set {_uniqueStorage()._timestamp = newValue}
+  }
+  /// Returns true if `timestamp` has been explicitly set.
+  var hasTimestamp: Bool {_storage._timestamp != nil}
+  /// Clears the value of `timestamp`. Subsequent reads from it will return its default value.
+  mutating func clearTimestamp() {_uniqueStorage()._timestamp = nil}
+
+  var clientIfaceName: SwiftProtobuf.Google_Protobuf_StringValue {
+    get {_storage._clientIfaceName ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    set {_uniqueStorage()._clientIfaceName = newValue}
+  }
+  /// Returns true if `clientIfaceName` has been explicitly set.
+  var hasClientIfaceName: Bool {_storage._clientIfaceName != nil}
+  /// Clears the value of `clientIfaceName`. Subsequent reads from it will return its default value.
+  mutating func clearClientIfaceName() {_uniqueStorage()._clientIfaceName = nil}
+
+  var targetSsid: SwiftProtobuf.Google_Protobuf_StringValue {
+    get {_storage._targetSsid ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    set {_uniqueStorage()._targetSsid = newValue}
+  }
+  /// Returns true if `targetSsid` has been explicitly set.
+  var hasTargetSsid: Bool {_storage._targetSsid != nil}
+  /// Clears the value of `targetSsid`. Subsequent reads from it will return its default value.
+  mutating func clearTargetSsid() {_uniqueStorage()._targetSsid = nil}
+
+  var targetHasPassword: SwiftProtobuf.Google_Protobuf_BoolValue {
+    get {_storage._targetHasPassword ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    set {_uniqueStorage()._targetHasPassword = newValue}
+  }
+  /// Returns true if `targetHasPassword` has been explicitly set.
+  var hasTargetHasPassword: Bool {_storage._targetHasPassword != nil}
+  /// Clears the value of `targetHasPassword`. Subsequent reads from it will return its default value.
+  mutating func clearTargetHasPassword() {_uniqueStorage()._targetHasPassword = nil}
+
+  var targetAuth: SwiftProtobuf.Google_Protobuf_StringValue {
+    get {_storage._targetAuth ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    set {_uniqueStorage()._targetAuth = newValue}
+  }
+  /// Returns true if `targetAuth` has been explicitly set.
+  var hasTargetAuth: Bool {_storage._targetAuth != nil}
+  /// Clears the value of `targetAuth`. Subsequent reads from it will return its default value.
+  mutating func clearTargetAuth() {_uniqueStorage()._targetAuth = nil}
+
+  var targetEncryption: SwiftProtobuf.Google_Protobuf_StringValue {
+    get {_storage._targetEncryption ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    set {_uniqueStorage()._targetEncryption = newValue}
+  }
+  /// Returns true if `targetEncryption` has been explicitly set.
+  var hasTargetEncryption: Bool {_storage._targetEncryption != nil}
+  /// Clears the value of `targetEncryption`. Subsequent reads from it will return its default value.
+  mutating func clearTargetEncryption() {_uniqueStorage()._targetEncryption = nil}
+
+  var targetBssid: SwiftProtobuf.Google_Protobuf_StringValue {
+    get {_storage._targetBssid ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    set {_uniqueStorage()._targetBssid = newValue}
+  }
+  /// Returns true if `targetBssid` has been explicitly set.
+  var hasTargetBssid: Bool {_storage._targetBssid != nil}
+  /// Clears the value of `targetBssid`. Subsequent reads from it will return its default value.
+  mutating func clearTargetBssid() {_uniqueStorage()._targetBssid = nil}
+
+  var targetIrttServer: SwiftProtobuf.Google_Protobuf_StringValue {
+    get {_storage._targetIrttServer ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    set {_uniqueStorage()._targetIrttServer = newValue}
+  }
+  /// Returns true if `targetIrttServer` has been explicitly set.
+  var hasTargetIrttServer: Bool {_storage._targetIrttServer != nil}
+  /// Clears the value of `targetIrttServer`. Subsequent reads from it will return its default value.
+  mutating func clearTargetIrttServer() {_uniqueStorage()._targetIrttServer = nil}
+
+  var iteration: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._iteration ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._iteration = newValue}
+  }
+  /// Returns true if `iteration` has been explicitly set.
+  var hasIteration: Bool {_storage._iteration != nil}
+  /// Clears the value of `iteration`. Subsequent reads from it will return its default value.
+  mutating func clearIteration() {_uniqueStorage()._iteration = nil}
+
+  var errorCode: SwiftProtobuf.Google_Protobuf_StringValue {
+    get {_storage._errorCode ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    set {_uniqueStorage()._errorCode = newValue}
+  }
+  /// Returns true if `errorCode` has been explicitly set.
+  var hasErrorCode: Bool {_storage._errorCode != nil}
+  /// Clears the value of `errorCode`. Subsequent reads from it will return its default value.
+  mutating func clearErrorCode() {_uniqueStorage()._errorCode = nil}
+
+  var secondsToAssociate: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._secondsToAssociate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._secondsToAssociate = newValue}
+  }
+  /// Returns true if `secondsToAssociate` has been explicitly set.
+  var hasSecondsToAssociate: Bool {_storage._secondsToAssociate != nil}
+  /// Clears the value of `secondsToAssociate`. Subsequent reads from it will return its default value.
+  mutating func clearSecondsToAssociate() {_uniqueStorage()._secondsToAssociate = nil}
+
+  var secondsToLease: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._secondsToLease ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._secondsToLease = newValue}
+  }
+  /// Returns true if `secondsToLease` has been explicitly set.
+  var hasSecondsToLease: Bool {_storage._secondsToLease != nil}
+  /// Clears the value of `secondsToLease`. Subsequent reads from it will return its default value.
+  mutating func clearSecondsToLease() {_uniqueStorage()._secondsToLease = nil}
+
+  var secondsToResolveRouter: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._secondsToResolveRouter ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._secondsToResolveRouter = newValue}
+  }
+  /// Returns true if `secondsToResolveRouter` has been explicitly set.
+  var hasSecondsToResolveRouter: Bool {_storage._secondsToResolveRouter != nil}
+  /// Clears the value of `secondsToResolveRouter`. Subsequent reads from it will return its default value.
+  mutating func clearSecondsToResolveRouter() {_uniqueStorage()._secondsToResolveRouter = nil}
+
+  var secondsToResolveInternet: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._secondsToResolveInternet ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._secondsToResolveInternet = newValue}
+  }
+  /// Returns true if `secondsToResolveInternet` has been explicitly set.
+  var hasSecondsToResolveInternet: Bool {_storage._secondsToResolveInternet != nil}
+  /// Clears the value of `secondsToResolveInternet`. Subsequent reads from it will return its default value.
+  mutating func clearSecondsToResolveInternet() {_uniqueStorage()._secondsToResolveInternet = nil}
+
+  var secondsToPingDish: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._secondsToPingDish ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._secondsToPingDish = newValue}
+  }
+  /// Returns true if `secondsToPingDish` has been explicitly set.
+  var hasSecondsToPingDish: Bool {_storage._secondsToPingDish != nil}
+  /// Clears the value of `secondsToPingDish`. Subsequent reads from it will return its default value.
+  mutating func clearSecondsToPingDish() {_uniqueStorage()._secondsToPingDish = nil}
+
+  var v4IrttTestDurationS: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._v4IrttTestDurationS ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._v4IrttTestDurationS = newValue}
+  }
+  /// Returns true if `v4IrttTestDurationS` has been explicitly set.
+  var hasV4IrttTestDurationS: Bool {_storage._v4IrttTestDurationS != nil}
+  /// Clears the value of `v4IrttTestDurationS`. Subsequent reads from it will return its default value.
+  mutating func clearV4IrttTestDurationS() {_uniqueStorage()._v4IrttTestDurationS = nil}
+
+  var v4IrttRttLatencyMinMs: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._v4IrttRttLatencyMinMs ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._v4IrttRttLatencyMinMs = newValue}
+  }
+  /// Returns true if `v4IrttRttLatencyMinMs` has been explicitly set.
+  var hasV4IrttRttLatencyMinMs: Bool {_storage._v4IrttRttLatencyMinMs != nil}
+  /// Clears the value of `v4IrttRttLatencyMinMs`. Subsequent reads from it will return its default value.
+  mutating func clearV4IrttRttLatencyMinMs() {_uniqueStorage()._v4IrttRttLatencyMinMs = nil}
+
+  var v4IrttRttLatencyMeanMs: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._v4IrttRttLatencyMeanMs ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._v4IrttRttLatencyMeanMs = newValue}
+  }
+  /// Returns true if `v4IrttRttLatencyMeanMs` has been explicitly set.
+  var hasV4IrttRttLatencyMeanMs: Bool {_storage._v4IrttRttLatencyMeanMs != nil}
+  /// Clears the value of `v4IrttRttLatencyMeanMs`. Subsequent reads from it will return its default value.
+  mutating func clearV4IrttRttLatencyMeanMs() {_uniqueStorage()._v4IrttRttLatencyMeanMs = nil}
+
+  var v4IrttRttLatencyMedianMs: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._v4IrttRttLatencyMedianMs ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._v4IrttRttLatencyMedianMs = newValue}
+  }
+  /// Returns true if `v4IrttRttLatencyMedianMs` has been explicitly set.
+  var hasV4IrttRttLatencyMedianMs: Bool {_storage._v4IrttRttLatencyMedianMs != nil}
+  /// Clears the value of `v4IrttRttLatencyMedianMs`. Subsequent reads from it will return its default value.
+  mutating func clearV4IrttRttLatencyMedianMs() {_uniqueStorage()._v4IrttRttLatencyMedianMs = nil}
+
+  var v4IrttRttLatencyMaxMs: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._v4IrttRttLatencyMaxMs ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._v4IrttRttLatencyMaxMs = newValue}
+  }
+  /// Returns true if `v4IrttRttLatencyMaxMs` has been explicitly set.
+  var hasV4IrttRttLatencyMaxMs: Bool {_storage._v4IrttRttLatencyMaxMs != nil}
+  /// Clears the value of `v4IrttRttLatencyMaxMs`. Subsequent reads from it will return its default value.
+  mutating func clearV4IrttRttLatencyMaxMs() {_uniqueStorage()._v4IrttRttLatencyMaxMs = nil}
+
+  var v4IrttRttLatencyStdDevMs: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._v4IrttRttLatencyStdDevMs ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._v4IrttRttLatencyStdDevMs = newValue}
+  }
+  /// Returns true if `v4IrttRttLatencyStdDevMs` has been explicitly set.
+  var hasV4IrttRttLatencyStdDevMs: Bool {_storage._v4IrttRttLatencyStdDevMs != nil}
+  /// Clears the value of `v4IrttRttLatencyStdDevMs`. Subsequent reads from it will return its default value.
+  mutating func clearV4IrttRttLatencyStdDevMs() {_uniqueStorage()._v4IrttRttLatencyStdDevMs = nil}
+
+  var v4IrttPktsSent: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._v4IrttPktsSent ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._v4IrttPktsSent = newValue}
+  }
+  /// Returns true if `v4IrttPktsSent` has been explicitly set.
+  var hasV4IrttPktsSent: Bool {_storage._v4IrttPktsSent != nil}
+  /// Clears the value of `v4IrttPktsSent`. Subsequent reads from it will return its default value.
+  mutating func clearV4IrttPktsSent() {_uniqueStorage()._v4IrttPktsSent = nil}
+
+  var v4IrttPktsRecv: SwiftProtobuf.Google_Protobuf_UInt32Value {
+    get {_storage._v4IrttPktsRecv ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    set {_uniqueStorage()._v4IrttPktsRecv = newValue}
+  }
+  /// Returns true if `v4IrttPktsRecv` has been explicitly set.
+  var hasV4IrttPktsRecv: Bool {_storage._v4IrttPktsRecv != nil}
+  /// Clears the value of `v4IrttPktsRecv`. Subsequent reads from it will return its default value.
+  mutating func clearV4IrttPktsRecv() {_uniqueStorage()._v4IrttPktsRecv = nil}
+
+  var v4IrttLossPercent: SwiftProtobuf.Google_Protobuf_FloatValue {
+    get {_storage._v4IrttLossPercent ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    set {_uniqueStorage()._v4IrttLossPercent = newValue}
+  }
+  /// Returns true if `v4IrttLossPercent` has been explicitly set.
+  var hasV4IrttLossPercent: Bool {_storage._v4IrttLossPercent != nil}
+  /// Clears the value of `v4IrttLossPercent`. Subsequent reads from it will return its default value.
+  mutating func clearV4IrttLossPercent() {_uniqueStorage()._v4IrttLossPercent = nil}
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  fileprivate var _storage = _StorageClass.defaultInstance
+}
+
+nonisolated struct SpaceX_API_Device_WifiSetClientGivenNameRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// NOTE: This field was marked as deprecated in the .proto file.
   var clientName: SpaceX_API_Device_ClientName {
-    get {return _clientName ?? SpaceX_API_Device_ClientName()}
+    get {_clientName ?? SpaceX_API_Device_ClientName()}
     set {_clientName = newValue}
   }
   /// Returns true if `clientName` has been explicitly set.
-  var hasClientName: Bool {return self._clientName != nil}
+  var hasClientName: Bool {self._clientName != nil}
   /// Clears the value of `clientName`. Subsequent reads from it will return its default value.
   mutating func clearClientName() {self._clientName = nil}
 
   var clientConfig: SpaceX_API_Device_ClientConfig {
-    get {return _clientConfig ?? SpaceX_API_Device_ClientConfig()}
+    get {_clientConfig ?? SpaceX_API_Device_ClientConfig()}
     set {_clientConfig = newValue}
   }
   /// Returns true if `clientConfig` has been explicitly set.
-  var hasClientConfig: Bool {return self._clientConfig != nil}
+  var hasClientConfig: Bool {self._clientConfig != nil}
   /// Clears the value of `clientConfig`. Subsequent reads from it will return its default value.
   mutating func clearClientConfig() {self._clientConfig = nil}
 
@@ -4671,7 +6345,7 @@ struct SpaceX_API_Device_WifiSetClientGivenNameRequest: Sendable {
   fileprivate var _clientConfig: SpaceX_API_Device_ClientConfig? = nil
 }
 
-struct SpaceX_API_Device_WifiSelfTestRequest: Sendable {
+nonisolated struct SpaceX_API_Device_WifiSelfTestRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4681,17 +6355,17 @@ struct SpaceX_API_Device_WifiSelfTestRequest: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiSelfTestResponse: Sendable {
+nonisolated struct SpaceX_API_Device_WifiSelfTestResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   var selfTest: SpaceX_API_Device_WifiSelfTest {
-    get {return _selfTest ?? SpaceX_API_Device_WifiSelfTest()}
+    get {_selfTest ?? SpaceX_API_Device_WifiSelfTest()}
     set {_selfTest = newValue}
   }
   /// Returns true if `selfTest` has been explicitly set.
-  var hasSelfTest: Bool {return self._selfTest != nil}
+  var hasSelfTest: Bool {self._selfTest != nil}
   /// Clears the value of `selfTest`. Subsequent reads from it will return its default value.
   mutating func clearSelfTest() {self._selfTest = nil}
 
@@ -4704,7 +6378,7 @@ struct SpaceX_API_Device_WifiSelfTestResponse: Sendable {
   fileprivate var _selfTest: SpaceX_API_Device_WifiSelfTest? = nil
 }
 
-struct SpaceX_API_Device_WifiRunSelfTestRequest: Sendable {
+nonisolated struct SpaceX_API_Device_WifiRunSelfTestRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4714,7 +6388,7 @@ struct SpaceX_API_Device_WifiRunSelfTestRequest: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiRfTestRequest: Sendable {
+nonisolated struct SpaceX_API_Device_WifiRfTestRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4744,7 +6418,7 @@ struct SpaceX_API_Device_WifiRfTestRequest: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiRfTestResponse: Sendable {
+nonisolated struct SpaceX_API_Device_WifiRfTestResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4756,7 +6430,7 @@ struct SpaceX_API_Device_WifiRfTestResponse: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiGetFirewallRequest: Sendable {
+nonisolated struct SpaceX_API_Device_WifiGetFirewallRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4766,7 +6440,7 @@ struct SpaceX_API_Device_WifiGetFirewallRequest: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiGetFirewallResponse: Sendable {
+nonisolated struct SpaceX_API_Device_WifiGetFirewallResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4775,12 +6449,14 @@ struct SpaceX_API_Device_WifiGetFirewallResponse: Sendable {
 
   var iptables6: String = String()
 
+  var ipset: String = String()
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 }
 
-struct SpaceX_API_Device_WifiTogglePoeNegotiationRequest: Sendable {
+nonisolated struct SpaceX_API_Device_WifiTogglePoeNegotiationRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4792,7 +6468,7 @@ struct SpaceX_API_Device_WifiTogglePoeNegotiationRequest: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiCalibrationModeRequest: Sendable {
+nonisolated struct SpaceX_API_Device_WifiCalibrationModeRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4802,1215 +6478,1215 @@ struct SpaceX_API_Device_WifiCalibrationModeRequest: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_starlink_router_hourly_metrics_v2: @unchecked Sendable {
+nonisolated struct SpaceX_API_Device_starlink_router_hourly_metrics_v2: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   var id: SwiftProtobuf.Google_Protobuf_StringValue {
-    get {return _storage._id ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    get {_storage._id ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._id = newValue}
   }
   /// Returns true if `id` has been explicitly set.
-  var hasID: Bool {return _storage._id != nil}
+  var hasID: Bool {_storage._id != nil}
   /// Clears the value of `id`. Subsequent reads from it will return its default value.
   mutating func clearID() {_uniqueStorage()._id = nil}
 
   var timestampDate: SwiftProtobuf.Google_Protobuf_StringValue {
-    get {return _storage._timestampDate ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    get {_storage._timestampDate ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._timestampDate = newValue}
   }
   /// Returns true if `timestampDate` has been explicitly set.
-  var hasTimestampDate: Bool {return _storage._timestampDate != nil}
+  var hasTimestampDate: Bool {_storage._timestampDate != nil}
   /// Clears the value of `timestampDate`. Subsequent reads from it will return its default value.
   mutating func clearTimestampDate() {_uniqueStorage()._timestampDate = nil}
 
   var timestampHour: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._timestampHour ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._timestampHour ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._timestampHour = newValue}
   }
   /// Returns true if `timestampHour` has been explicitly set.
-  var hasTimestampHour: Bool {return _storage._timestampHour != nil}
+  var hasTimestampHour: Bool {_storage._timestampHour != nil}
   /// Clears the value of `timestampHour`. Subsequent reads from it will return its default value.
   mutating func clearTimestampHour() {_uniqueStorage()._timestampHour = nil}
 
   var sysHwGen: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._sysHwGen ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._sysHwGen ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._sysHwGen = newValue}
   }
   /// Returns true if `sysHwGen` has been explicitly set.
-  var hasSysHwGen: Bool {return _storage._sysHwGen != nil}
+  var hasSysHwGen: Bool {_storage._sysHwGen != nil}
   /// Clears the value of `sysHwGen`. Subsequent reads from it will return its default value.
   mutating func clearSysHwGen() {_uniqueStorage()._sysHwGen = nil}
 
   var sysSw: SwiftProtobuf.Google_Protobuf_StringValue {
-    get {return _storage._sysSw ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    get {_storage._sysSw ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._sysSw = newValue}
   }
   /// Returns true if `sysSw` has been explicitly set.
-  var hasSysSw: Bool {return _storage._sysSw != nil}
+  var hasSysSw: Bool {_storage._sysSw != nil}
   /// Clears the value of `sysSw`. Subsequent reads from it will return its default value.
   mutating func clearSysSw() {_uniqueStorage()._sysSw = nil}
 
   var sysCountry: SwiftProtobuf.Google_Protobuf_StringValue {
-    get {return _storage._sysCountry ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    get {_storage._sysCountry ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._sysCountry = newValue}
   }
   /// Returns true if `sysCountry` has been explicitly set.
-  var hasSysCountry: Bool {return _storage._sysCountry != nil}
+  var hasSysCountry: Bool {_storage._sysCountry != nil}
   /// Clears the value of `sysCountry`. Subsequent reads from it will return its default value.
   mutating func clearSysCountry() {_uniqueStorage()._sysCountry = nil}
 
   var sysIsDev: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._sysIsDev ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._sysIsDev ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._sysIsDev = newValue}
   }
   /// Returns true if `sysIsDev` has been explicitly set.
-  var hasSysIsDev: Bool {return _storage._sysIsDev != nil}
+  var hasSysIsDev: Bool {_storage._sysIsDev != nil}
   /// Clears the value of `sysIsDev`. Subsequent reads from it will return its default value.
   mutating func clearSysIsDev() {_uniqueStorage()._sysIsDev = nil}
 
   var sysAllocFds: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._sysAllocFds ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._sysAllocFds ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._sysAllocFds = newValue}
   }
   /// Returns true if `sysAllocFds` has been explicitly set.
-  var hasSysAllocFds: Bool {return _storage._sysAllocFds != nil}
+  var hasSysAllocFds: Bool {_storage._sysAllocFds != nil}
   /// Clears the value of `sysAllocFds`. Subsequent reads from it will return its default value.
   mutating func clearSysAllocFds() {_uniqueStorage()._sysAllocFds = nil}
 
   var sysCpuUsage: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._sysCpuUsage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._sysCpuUsage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._sysCpuUsage = newValue}
   }
   /// Returns true if `sysCpuUsage` has been explicitly set.
-  var hasSysCpuUsage: Bool {return _storage._sysCpuUsage != nil}
+  var hasSysCpuUsage: Bool {_storage._sysCpuUsage != nil}
   /// Clears the value of `sysCpuUsage`. Subsequent reads from it will return its default value.
   mutating func clearSysCpuUsage() {_uniqueStorage()._sysCpuUsage = nil}
 
   var sysMemFreeKb: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._sysMemFreeKb ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._sysMemFreeKb ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._sysMemFreeKb = newValue}
   }
   /// Returns true if `sysMemFreeKb` has been explicitly set.
-  var hasSysMemFreeKb: Bool {return _storage._sysMemFreeKb != nil}
+  var hasSysMemFreeKb: Bool {_storage._sysMemFreeKb != nil}
   /// Clears the value of `sysMemFreeKb`. Subsequent reads from it will return its default value.
   mutating func clearSysMemFreeKb() {_uniqueStorage()._sysMemFreeKb = nil}
 
   var sysBootcount: SwiftProtobuf.Google_Protobuf_Int32Value {
-    get {return _storage._sysBootcount ?? SwiftProtobuf.Google_Protobuf_Int32Value()}
+    get {_storage._sysBootcount ?? SwiftProtobuf.Google_Protobuf_Int32Value()}
     set {_uniqueStorage()._sysBootcount = newValue}
   }
   /// Returns true if `sysBootcount` has been explicitly set.
-  var hasSysBootcount: Bool {return _storage._sysBootcount != nil}
+  var hasSysBootcount: Bool {_storage._sysBootcount != nil}
   /// Clears the value of `sysBootcount`. Subsequent reads from it will return its default value.
   mutating func clearSysBootcount() {_uniqueStorage()._sysBootcount = nil}
 
   var sysPartitionsEqual: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._sysPartitionsEqual ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._sysPartitionsEqual ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._sysPartitionsEqual = newValue}
   }
   /// Returns true if `sysPartitionsEqual` has been explicitly set.
-  var hasSysPartitionsEqual: Bool {return _storage._sysPartitionsEqual != nil}
+  var hasSysPartitionsEqual: Bool {_storage._sysPartitionsEqual != nil}
   /// Clears the value of `sysPartitionsEqual`. Subsequent reads from it will return its default value.
   mutating func clearSysPartitionsEqual() {_uniqueStorage()._sysPartitionsEqual = nil}
 
   var sysUptimeSeconds: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._sysUptimeSeconds ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._sysUptimeSeconds ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._sysUptimeSeconds = newValue}
   }
   /// Returns true if `sysUptimeSeconds` has been explicitly set.
-  var hasSysUptimeSeconds: Bool {return _storage._sysUptimeSeconds != nil}
+  var hasSysUptimeSeconds: Bool {_storage._sysUptimeSeconds != nil}
   /// Clears the value of `sysUptimeSeconds`. Subsequent reads from it will return its default value.
   mutating func clearSysUptimeSeconds() {_uniqueStorage()._sysUptimeSeconds = nil}
 
   var sysAntiRollbackVersion: SwiftProtobuf.Google_Protobuf_Int32Value {
-    get {return _storage._sysAntiRollbackVersion ?? SwiftProtobuf.Google_Protobuf_Int32Value()}
+    get {_storage._sysAntiRollbackVersion ?? SwiftProtobuf.Google_Protobuf_Int32Value()}
     set {_uniqueStorage()._sysAntiRollbackVersion = newValue}
   }
   /// Returns true if `sysAntiRollbackVersion` has been explicitly set.
-  var hasSysAntiRollbackVersion: Bool {return _storage._sysAntiRollbackVersion != nil}
+  var hasSysAntiRollbackVersion: Bool {_storage._sysAntiRollbackVersion != nil}
   /// Clears the value of `sysAntiRollbackVersion`. Subsequent reads from it will return its default value.
   mutating func clearSysAntiRollbackVersion() {_uniqueStorage()._sysAntiRollbackVersion = nil}
 
   var radios2GhzChannel: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radios2GhzChannel ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radios2GhzChannel ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radios2GhzChannel = newValue}
   }
   /// Returns true if `radios2GhzChannel` has been explicitly set.
-  var hasRadios2GhzChannel: Bool {return _storage._radios2GhzChannel != nil}
+  var hasRadios2GhzChannel: Bool {_storage._radios2GhzChannel != nil}
   /// Clears the value of `radios2GhzChannel`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzChannel() {_uniqueStorage()._radios2GhzChannel = nil}
 
   var radios2GhzAntenna1Rssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios2GhzAntenna1Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios2GhzAntenna1Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios2GhzAntenna1Rssi = newValue}
   }
   /// Returns true if `radios2GhzAntenna1Rssi` has been explicitly set.
-  var hasRadios2GhzAntenna1Rssi: Bool {return _storage._radios2GhzAntenna1Rssi != nil}
+  var hasRadios2GhzAntenna1Rssi: Bool {_storage._radios2GhzAntenna1Rssi != nil}
   /// Clears the value of `radios2GhzAntenna1Rssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzAntenna1Rssi() {_uniqueStorage()._radios2GhzAntenna1Rssi = nil}
 
   var radios2GhzAntenna2Rssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios2GhzAntenna2Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios2GhzAntenna2Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios2GhzAntenna2Rssi = newValue}
   }
   /// Returns true if `radios2GhzAntenna2Rssi` has been explicitly set.
-  var hasRadios2GhzAntenna2Rssi: Bool {return _storage._radios2GhzAntenna2Rssi != nil}
+  var hasRadios2GhzAntenna2Rssi: Bool {_storage._radios2GhzAntenna2Rssi != nil}
   /// Clears the value of `radios2GhzAntenna2Rssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzAntenna2Rssi() {_uniqueStorage()._radios2GhzAntenna2Rssi = nil}
 
   var radios2GhzAntenna3Rssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios2GhzAntenna3Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios2GhzAntenna3Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios2GhzAntenna3Rssi = newValue}
   }
   /// Returns true if `radios2GhzAntenna3Rssi` has been explicitly set.
-  var hasRadios2GhzAntenna3Rssi: Bool {return _storage._radios2GhzAntenna3Rssi != nil}
+  var hasRadios2GhzAntenna3Rssi: Bool {_storage._radios2GhzAntenna3Rssi != nil}
   /// Clears the value of `radios2GhzAntenna3Rssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzAntenna3Rssi() {_uniqueStorage()._radios2GhzAntenna3Rssi = nil}
 
   var radios2GhzIfaceCount: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radios2GhzIfaceCount ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radios2GhzIfaceCount ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radios2GhzIfaceCount = newValue}
   }
   /// Returns true if `radios2GhzIfaceCount` has been explicitly set.
-  var hasRadios2GhzIfaceCount: Bool {return _storage._radios2GhzIfaceCount != nil}
+  var hasRadios2GhzIfaceCount: Bool {_storage._radios2GhzIfaceCount != nil}
   /// Clears the value of `radios2GhzIfaceCount`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzIfaceCount() {_uniqueStorage()._radios2GhzIfaceCount = nil}
 
   var radios2GhzChanBusyFraction: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios2GhzChanBusyFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios2GhzChanBusyFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios2GhzChanBusyFraction = newValue}
   }
   /// Returns true if `radios2GhzChanBusyFraction` has been explicitly set.
-  var hasRadios2GhzChanBusyFraction: Bool {return _storage._radios2GhzChanBusyFraction != nil}
+  var hasRadios2GhzChanBusyFraction: Bool {_storage._radios2GhzChanBusyFraction != nil}
   /// Clears the value of `radios2GhzChanBusyFraction`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzChanBusyFraction() {_uniqueStorage()._radios2GhzChanBusyFraction = nil}
 
   var radios2GhzEdccaFraction: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios2GhzEdccaFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios2GhzEdccaFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios2GhzEdccaFraction = newValue}
   }
   /// Returns true if `radios2GhzEdccaFraction` has been explicitly set.
-  var hasRadios2GhzEdccaFraction: Bool {return _storage._radios2GhzEdccaFraction != nil}
+  var hasRadios2GhzEdccaFraction: Bool {_storage._radios2GhzEdccaFraction != nil}
   /// Clears the value of `radios2GhzEdccaFraction`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzEdccaFraction() {_uniqueStorage()._radios2GhzEdccaFraction = nil}
 
   var radios2GhzOverlappingBssFraction: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios2GhzOverlappingBssFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios2GhzOverlappingBssFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios2GhzOverlappingBssFraction = newValue}
   }
   /// Returns true if `radios2GhzOverlappingBssFraction` has been explicitly set.
-  var hasRadios2GhzOverlappingBssFraction: Bool {return _storage._radios2GhzOverlappingBssFraction != nil}
+  var hasRadios2GhzOverlappingBssFraction: Bool {_storage._radios2GhzOverlappingBssFraction != nil}
   /// Clears the value of `radios2GhzOverlappingBssFraction`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzOverlappingBssFraction() {_uniqueStorage()._radios2GhzOverlappingBssFraction = nil}
 
   var radios2GhzRxBytes: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radios2GhzRxBytes ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radios2GhzRxBytes ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radios2GhzRxBytes = newValue}
   }
   /// Returns true if `radios2GhzRxBytes` has been explicitly set.
-  var hasRadios2GhzRxBytes: Bool {return _storage._radios2GhzRxBytes != nil}
+  var hasRadios2GhzRxBytes: Bool {_storage._radios2GhzRxBytes != nil}
   /// Clears the value of `radios2GhzRxBytes`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzRxBytes() {_uniqueStorage()._radios2GhzRxBytes = nil}
 
   var radios2GhzRxPackets: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radios2GhzRxPackets ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radios2GhzRxPackets ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radios2GhzRxPackets = newValue}
   }
   /// Returns true if `radios2GhzRxPackets` has been explicitly set.
-  var hasRadios2GhzRxPackets: Bool {return _storage._radios2GhzRxPackets != nil}
+  var hasRadios2GhzRxPackets: Bool {_storage._radios2GhzRxPackets != nil}
   /// Clears the value of `radios2GhzRxPackets`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzRxPackets() {_uniqueStorage()._radios2GhzRxPackets = nil}
 
   var radios2GhzRxErrors: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radios2GhzRxErrors ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radios2GhzRxErrors ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radios2GhzRxErrors = newValue}
   }
   /// Returns true if `radios2GhzRxErrors` has been explicitly set.
-  var hasRadios2GhzRxErrors: Bool {return _storage._radios2GhzRxErrors != nil}
+  var hasRadios2GhzRxErrors: Bool {_storage._radios2GhzRxErrors != nil}
   /// Clears the value of `radios2GhzRxErrors`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzRxErrors() {_uniqueStorage()._radios2GhzRxErrors = nil}
 
   var radios2GhzRxFrameErrors: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radios2GhzRxFrameErrors ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radios2GhzRxFrameErrors ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radios2GhzRxFrameErrors = newValue}
   }
   /// Returns true if `radios2GhzRxFrameErrors` has been explicitly set.
-  var hasRadios2GhzRxFrameErrors: Bool {return _storage._radios2GhzRxFrameErrors != nil}
+  var hasRadios2GhzRxFrameErrors: Bool {_storage._radios2GhzRxFrameErrors != nil}
   /// Clears the value of `radios2GhzRxFrameErrors`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzRxFrameErrors() {_uniqueStorage()._radios2GhzRxFrameErrors = nil}
 
   var radios2GhzRxPacketErrorRate: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios2GhzRxPacketErrorRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios2GhzRxPacketErrorRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios2GhzRxPacketErrorRate = newValue}
   }
   /// Returns true if `radios2GhzRxPacketErrorRate` has been explicitly set.
-  var hasRadios2GhzRxPacketErrorRate: Bool {return _storage._radios2GhzRxPacketErrorRate != nil}
+  var hasRadios2GhzRxPacketErrorRate: Bool {_storage._radios2GhzRxPacketErrorRate != nil}
   /// Clears the value of `radios2GhzRxPacketErrorRate`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzRxPacketErrorRate() {_uniqueStorage()._radios2GhzRxPacketErrorRate = nil}
 
   var radios2GhzRxAirtimeFraction: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios2GhzRxAirtimeFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios2GhzRxAirtimeFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios2GhzRxAirtimeFraction = newValue}
   }
   /// Returns true if `radios2GhzRxAirtimeFraction` has been explicitly set.
-  var hasRadios2GhzRxAirtimeFraction: Bool {return _storage._radios2GhzRxAirtimeFraction != nil}
+  var hasRadios2GhzRxAirtimeFraction: Bool {_storage._radios2GhzRxAirtimeFraction != nil}
   /// Clears the value of `radios2GhzRxAirtimeFraction`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzRxAirtimeFraction() {_uniqueStorage()._radios2GhzRxAirtimeFraction = nil}
 
   var radios2GhzTxBytes: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radios2GhzTxBytes ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radios2GhzTxBytes ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radios2GhzTxBytes = newValue}
   }
   /// Returns true if `radios2GhzTxBytes` has been explicitly set.
-  var hasRadios2GhzTxBytes: Bool {return _storage._radios2GhzTxBytes != nil}
+  var hasRadios2GhzTxBytes: Bool {_storage._radios2GhzTxBytes != nil}
   /// Clears the value of `radios2GhzTxBytes`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzTxBytes() {_uniqueStorage()._radios2GhzTxBytes = nil}
 
   var radios2GhzTxPackets: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radios2GhzTxPackets ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radios2GhzTxPackets ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radios2GhzTxPackets = newValue}
   }
   /// Returns true if `radios2GhzTxPackets` has been explicitly set.
-  var hasRadios2GhzTxPackets: Bool {return _storage._radios2GhzTxPackets != nil}
+  var hasRadios2GhzTxPackets: Bool {_storage._radios2GhzTxPackets != nil}
   /// Clears the value of `radios2GhzTxPackets`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzTxPackets() {_uniqueStorage()._radios2GhzTxPackets = nil}
 
   var radios2GhzTxErrors: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radios2GhzTxErrors ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radios2GhzTxErrors ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radios2GhzTxErrors = newValue}
   }
   /// Returns true if `radios2GhzTxErrors` has been explicitly set.
-  var hasRadios2GhzTxErrors: Bool {return _storage._radios2GhzTxErrors != nil}
+  var hasRadios2GhzTxErrors: Bool {_storage._radios2GhzTxErrors != nil}
   /// Clears the value of `radios2GhzTxErrors`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzTxErrors() {_uniqueStorage()._radios2GhzTxErrors = nil}
 
   var radios2GhzTxPacketErrorRate: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios2GhzTxPacketErrorRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios2GhzTxPacketErrorRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios2GhzTxPacketErrorRate = newValue}
   }
   /// Returns true if `radios2GhzTxPacketErrorRate` has been explicitly set.
-  var hasRadios2GhzTxPacketErrorRate: Bool {return _storage._radios2GhzTxPacketErrorRate != nil}
+  var hasRadios2GhzTxPacketErrorRate: Bool {_storage._radios2GhzTxPacketErrorRate != nil}
   /// Clears the value of `radios2GhzTxPacketErrorRate`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzTxPacketErrorRate() {_uniqueStorage()._radios2GhzTxPacketErrorRate = nil}
 
   var radios2GhzTxAirtimeFraction: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios2GhzTxAirtimeFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios2GhzTxAirtimeFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios2GhzTxAirtimeFraction = newValue}
   }
   /// Returns true if `radios2GhzTxAirtimeFraction` has been explicitly set.
-  var hasRadios2GhzTxAirtimeFraction: Bool {return _storage._radios2GhzTxAirtimeFraction != nil}
+  var hasRadios2GhzTxAirtimeFraction: Bool {_storage._radios2GhzTxAirtimeFraction != nil}
   /// Clears the value of `radios2GhzTxAirtimeFraction`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzTxAirtimeFraction() {_uniqueStorage()._radios2GhzTxAirtimeFraction = nil}
 
   var radios5GhzChannel: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radios5GhzChannel ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radios5GhzChannel ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radios5GhzChannel = newValue}
   }
   /// Returns true if `radios5GhzChannel` has been explicitly set.
-  var hasRadios5GhzChannel: Bool {return _storage._radios5GhzChannel != nil}
+  var hasRadios5GhzChannel: Bool {_storage._radios5GhzChannel != nil}
   /// Clears the value of `radios5GhzChannel`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzChannel() {_uniqueStorage()._radios5GhzChannel = nil}
 
   var radios5GhzAntenna1Rssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzAntenna1Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzAntenna1Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzAntenna1Rssi = newValue}
   }
   /// Returns true if `radios5GhzAntenna1Rssi` has been explicitly set.
-  var hasRadios5GhzAntenna1Rssi: Bool {return _storage._radios5GhzAntenna1Rssi != nil}
+  var hasRadios5GhzAntenna1Rssi: Bool {_storage._radios5GhzAntenna1Rssi != nil}
   /// Clears the value of `radios5GhzAntenna1Rssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzAntenna1Rssi() {_uniqueStorage()._radios5GhzAntenna1Rssi = nil}
 
   var radios5GhzAntenna2Rssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzAntenna2Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzAntenna2Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzAntenna2Rssi = newValue}
   }
   /// Returns true if `radios5GhzAntenna2Rssi` has been explicitly set.
-  var hasRadios5GhzAntenna2Rssi: Bool {return _storage._radios5GhzAntenna2Rssi != nil}
+  var hasRadios5GhzAntenna2Rssi: Bool {_storage._radios5GhzAntenna2Rssi != nil}
   /// Clears the value of `radios5GhzAntenna2Rssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzAntenna2Rssi() {_uniqueStorage()._radios5GhzAntenna2Rssi = nil}
 
   var radios5GhzAntenna3Rssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzAntenna3Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzAntenna3Rssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzAntenna3Rssi = newValue}
   }
   /// Returns true if `radios5GhzAntenna3Rssi` has been explicitly set.
-  var hasRadios5GhzAntenna3Rssi: Bool {return _storage._radios5GhzAntenna3Rssi != nil}
+  var hasRadios5GhzAntenna3Rssi: Bool {_storage._radios5GhzAntenna3Rssi != nil}
   /// Clears the value of `radios5GhzAntenna3Rssi`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzAntenna3Rssi() {_uniqueStorage()._radios5GhzAntenna3Rssi = nil}
 
   var radios5GhzIfaceCount: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radios5GhzIfaceCount ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radios5GhzIfaceCount ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radios5GhzIfaceCount = newValue}
   }
   /// Returns true if `radios5GhzIfaceCount` has been explicitly set.
-  var hasRadios5GhzIfaceCount: Bool {return _storage._radios5GhzIfaceCount != nil}
+  var hasRadios5GhzIfaceCount: Bool {_storage._radios5GhzIfaceCount != nil}
   /// Clears the value of `radios5GhzIfaceCount`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzIfaceCount() {_uniqueStorage()._radios5GhzIfaceCount = nil}
 
   var radios5GhzChanBusyFraction: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzChanBusyFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzChanBusyFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzChanBusyFraction = newValue}
   }
   /// Returns true if `radios5GhzChanBusyFraction` has been explicitly set.
-  var hasRadios5GhzChanBusyFraction: Bool {return _storage._radios5GhzChanBusyFraction != nil}
+  var hasRadios5GhzChanBusyFraction: Bool {_storage._radios5GhzChanBusyFraction != nil}
   /// Clears the value of `radios5GhzChanBusyFraction`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzChanBusyFraction() {_uniqueStorage()._radios5GhzChanBusyFraction = nil}
 
   var radios5GhzEdccaFraction: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzEdccaFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzEdccaFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzEdccaFraction = newValue}
   }
   /// Returns true if `radios5GhzEdccaFraction` has been explicitly set.
-  var hasRadios5GhzEdccaFraction: Bool {return _storage._radios5GhzEdccaFraction != nil}
+  var hasRadios5GhzEdccaFraction: Bool {_storage._radios5GhzEdccaFraction != nil}
   /// Clears the value of `radios5GhzEdccaFraction`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzEdccaFraction() {_uniqueStorage()._radios5GhzEdccaFraction = nil}
 
   var radios5GhzOverlappingBssFraction: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzOverlappingBssFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzOverlappingBssFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzOverlappingBssFraction = newValue}
   }
   /// Returns true if `radios5GhzOverlappingBssFraction` has been explicitly set.
-  var hasRadios5GhzOverlappingBssFraction: Bool {return _storage._radios5GhzOverlappingBssFraction != nil}
+  var hasRadios5GhzOverlappingBssFraction: Bool {_storage._radios5GhzOverlappingBssFraction != nil}
   /// Clears the value of `radios5GhzOverlappingBssFraction`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzOverlappingBssFraction() {_uniqueStorage()._radios5GhzOverlappingBssFraction = nil}
 
   var radios5GhzRxBytes: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radios5GhzRxBytes ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radios5GhzRxBytes ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radios5GhzRxBytes = newValue}
   }
   /// Returns true if `radios5GhzRxBytes` has been explicitly set.
-  var hasRadios5GhzRxBytes: Bool {return _storage._radios5GhzRxBytes != nil}
+  var hasRadios5GhzRxBytes: Bool {_storage._radios5GhzRxBytes != nil}
   /// Clears the value of `radios5GhzRxBytes`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzRxBytes() {_uniqueStorage()._radios5GhzRxBytes = nil}
 
   var radios5GhzRxPackets: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radios5GhzRxPackets ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radios5GhzRxPackets ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radios5GhzRxPackets = newValue}
   }
   /// Returns true if `radios5GhzRxPackets` has been explicitly set.
-  var hasRadios5GhzRxPackets: Bool {return _storage._radios5GhzRxPackets != nil}
+  var hasRadios5GhzRxPackets: Bool {_storage._radios5GhzRxPackets != nil}
   /// Clears the value of `radios5GhzRxPackets`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzRxPackets() {_uniqueStorage()._radios5GhzRxPackets = nil}
 
   var radios5GhzRxErrors: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radios5GhzRxErrors ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radios5GhzRxErrors ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radios5GhzRxErrors = newValue}
   }
   /// Returns true if `radios5GhzRxErrors` has been explicitly set.
-  var hasRadios5GhzRxErrors: Bool {return _storage._radios5GhzRxErrors != nil}
+  var hasRadios5GhzRxErrors: Bool {_storage._radios5GhzRxErrors != nil}
   /// Clears the value of `radios5GhzRxErrors`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzRxErrors() {_uniqueStorage()._radios5GhzRxErrors = nil}
 
   var radios5GhzRxFrameErrors: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radios5GhzRxFrameErrors ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radios5GhzRxFrameErrors ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radios5GhzRxFrameErrors = newValue}
   }
   /// Returns true if `radios5GhzRxFrameErrors` has been explicitly set.
-  var hasRadios5GhzRxFrameErrors: Bool {return _storage._radios5GhzRxFrameErrors != nil}
+  var hasRadios5GhzRxFrameErrors: Bool {_storage._radios5GhzRxFrameErrors != nil}
   /// Clears the value of `radios5GhzRxFrameErrors`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzRxFrameErrors() {_uniqueStorage()._radios5GhzRxFrameErrors = nil}
 
   var radios5GhzRxPacketErrorRate: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzRxPacketErrorRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzRxPacketErrorRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzRxPacketErrorRate = newValue}
   }
   /// Returns true if `radios5GhzRxPacketErrorRate` has been explicitly set.
-  var hasRadios5GhzRxPacketErrorRate: Bool {return _storage._radios5GhzRxPacketErrorRate != nil}
+  var hasRadios5GhzRxPacketErrorRate: Bool {_storage._radios5GhzRxPacketErrorRate != nil}
   /// Clears the value of `radios5GhzRxPacketErrorRate`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzRxPacketErrorRate() {_uniqueStorage()._radios5GhzRxPacketErrorRate = nil}
 
   var radios5GhzRxAirtimeFraction: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzRxAirtimeFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzRxAirtimeFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzRxAirtimeFraction = newValue}
   }
   /// Returns true if `radios5GhzRxAirtimeFraction` has been explicitly set.
-  var hasRadios5GhzRxAirtimeFraction: Bool {return _storage._radios5GhzRxAirtimeFraction != nil}
+  var hasRadios5GhzRxAirtimeFraction: Bool {_storage._radios5GhzRxAirtimeFraction != nil}
   /// Clears the value of `radios5GhzRxAirtimeFraction`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzRxAirtimeFraction() {_uniqueStorage()._radios5GhzRxAirtimeFraction = nil}
 
   var radios5GhzTxBytes: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radios5GhzTxBytes ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radios5GhzTxBytes ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radios5GhzTxBytes = newValue}
   }
   /// Returns true if `radios5GhzTxBytes` has been explicitly set.
-  var hasRadios5GhzTxBytes: Bool {return _storage._radios5GhzTxBytes != nil}
+  var hasRadios5GhzTxBytes: Bool {_storage._radios5GhzTxBytes != nil}
   /// Clears the value of `radios5GhzTxBytes`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzTxBytes() {_uniqueStorage()._radios5GhzTxBytes = nil}
 
   var radios5GhzTxPackets: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radios5GhzTxPackets ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radios5GhzTxPackets ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radios5GhzTxPackets = newValue}
   }
   /// Returns true if `radios5GhzTxPackets` has been explicitly set.
-  var hasRadios5GhzTxPackets: Bool {return _storage._radios5GhzTxPackets != nil}
+  var hasRadios5GhzTxPackets: Bool {_storage._radios5GhzTxPackets != nil}
   /// Clears the value of `radios5GhzTxPackets`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzTxPackets() {_uniqueStorage()._radios5GhzTxPackets = nil}
 
   var radios5GhzTxErrors: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radios5GhzTxErrors ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radios5GhzTxErrors ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radios5GhzTxErrors = newValue}
   }
   /// Returns true if `radios5GhzTxErrors` has been explicitly set.
-  var hasRadios5GhzTxErrors: Bool {return _storage._radios5GhzTxErrors != nil}
+  var hasRadios5GhzTxErrors: Bool {_storage._radios5GhzTxErrors != nil}
   /// Clears the value of `radios5GhzTxErrors`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzTxErrors() {_uniqueStorage()._radios5GhzTxErrors = nil}
 
   var radios5GhzTxPacketErrorRate: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzTxPacketErrorRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzTxPacketErrorRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzTxPacketErrorRate = newValue}
   }
   /// Returns true if `radios5GhzTxPacketErrorRate` has been explicitly set.
-  var hasRadios5GhzTxPacketErrorRate: Bool {return _storage._radios5GhzTxPacketErrorRate != nil}
+  var hasRadios5GhzTxPacketErrorRate: Bool {_storage._radios5GhzTxPacketErrorRate != nil}
   /// Clears the value of `radios5GhzTxPacketErrorRate`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzTxPacketErrorRate() {_uniqueStorage()._radios5GhzTxPacketErrorRate = nil}
 
   var radios5GhzTxAirtimeFraction: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzTxAirtimeFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzTxAirtimeFraction ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzTxAirtimeFraction = newValue}
   }
   /// Returns true if `radios5GhzTxAirtimeFraction` has been explicitly set.
-  var hasRadios5GhzTxAirtimeFraction: Bool {return _storage._radios5GhzTxAirtimeFraction != nil}
+  var hasRadios5GhzTxAirtimeFraction: Bool {_storage._radios5GhzTxAirtimeFraction != nil}
   /// Clears the value of `radios5GhzTxAirtimeFraction`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzTxAirtimeFraction() {_uniqueStorage()._radios5GhzTxAirtimeFraction = nil}
 
   var radios2GhzThermalTemp: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios2GhzThermalTemp ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios2GhzThermalTemp ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios2GhzThermalTemp = newValue}
   }
   /// Returns true if `radios2GhzThermalTemp` has been explicitly set.
-  var hasRadios2GhzThermalTemp: Bool {return _storage._radios2GhzThermalTemp != nil}
+  var hasRadios2GhzThermalTemp: Bool {_storage._radios2GhzThermalTemp != nil}
   /// Clears the value of `radios2GhzThermalTemp`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzThermalTemp() {_uniqueStorage()._radios2GhzThermalTemp = nil}
 
   var radios5GhzThermalTemp: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzThermalTemp ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzThermalTemp ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzThermalTemp = newValue}
   }
   /// Returns true if `radios5GhzThermalTemp` has been explicitly set.
-  var hasRadios5GhzThermalTemp: Bool {return _storage._radios5GhzThermalTemp != nil}
+  var hasRadios5GhzThermalTemp: Bool {_storage._radios5GhzThermalTemp != nil}
   /// Clears the value of `radios5GhzThermalTemp`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzThermalTemp() {_uniqueStorage()._radios5GhzThermalTemp = nil}
 
   var radios2GhzThermalDutyCycle: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios2GhzThermalDutyCycle ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios2GhzThermalDutyCycle ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios2GhzThermalDutyCycle = newValue}
   }
   /// Returns true if `radios2GhzThermalDutyCycle` has been explicitly set.
-  var hasRadios2GhzThermalDutyCycle: Bool {return _storage._radios2GhzThermalDutyCycle != nil}
+  var hasRadios2GhzThermalDutyCycle: Bool {_storage._radios2GhzThermalDutyCycle != nil}
   /// Clears the value of `radios2GhzThermalDutyCycle`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzThermalDutyCycle() {_uniqueStorage()._radios2GhzThermalDutyCycle = nil}
 
   var radios5GhzThermalDutyCycle: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._radios5GhzThermalDutyCycle ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._radios5GhzThermalDutyCycle ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._radios5GhzThermalDutyCycle = newValue}
   }
   /// Returns true if `radios5GhzThermalDutyCycle` has been explicitly set.
-  var hasRadios5GhzThermalDutyCycle: Bool {return _storage._radios5GhzThermalDutyCycle != nil}
+  var hasRadios5GhzThermalDutyCycle: Bool {_storage._radios5GhzThermalDutyCycle != nil}
   /// Clears the value of `radios5GhzThermalDutyCycle`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzThermalDutyCycle() {_uniqueStorage()._radios5GhzThermalDutyCycle = nil}
 
   var radios2GhzThermalThrottledSeconds: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radios2GhzThermalThrottledSeconds ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radios2GhzThermalThrottledSeconds ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radios2GhzThermalThrottledSeconds = newValue}
   }
   /// Returns true if `radios2GhzThermalThrottledSeconds` has been explicitly set.
-  var hasRadios2GhzThermalThrottledSeconds: Bool {return _storage._radios2GhzThermalThrottledSeconds != nil}
+  var hasRadios2GhzThermalThrottledSeconds: Bool {_storage._radios2GhzThermalThrottledSeconds != nil}
   /// Clears the value of `radios2GhzThermalThrottledSeconds`. Subsequent reads from it will return its default value.
   mutating func clearRadios2GhzThermalThrottledSeconds() {_uniqueStorage()._radios2GhzThermalThrottledSeconds = nil}
 
   var radios5GhzThermalThrottledSeconds: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._radios5GhzThermalThrottledSeconds ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._radios5GhzThermalThrottledSeconds ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._radios5GhzThermalThrottledSeconds = newValue}
   }
   /// Returns true if `radios5GhzThermalThrottledSeconds` has been explicitly set.
-  var hasRadios5GhzThermalThrottledSeconds: Bool {return _storage._radios5GhzThermalThrottledSeconds != nil}
+  var hasRadios5GhzThermalThrottledSeconds: Bool {_storage._radios5GhzThermalThrottledSeconds != nil}
   /// Clears the value of `radios5GhzThermalThrottledSeconds`. Subsequent reads from it will return its default value.
   mutating func clearRadios5GhzThermalThrottledSeconds() {_uniqueStorage()._radios5GhzThermalThrottledSeconds = nil}
 
   var ifacesLanEthRxBytes: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._ifacesLanEthRxBytes ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._ifacesLanEthRxBytes ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._ifacesLanEthRxBytes = newValue}
   }
   /// Returns true if `ifacesLanEthRxBytes` has been explicitly set.
-  var hasIfacesLanEthRxBytes: Bool {return _storage._ifacesLanEthRxBytes != nil}
+  var hasIfacesLanEthRxBytes: Bool {_storage._ifacesLanEthRxBytes != nil}
   /// Clears the value of `ifacesLanEthRxBytes`. Subsequent reads from it will return its default value.
   mutating func clearIfacesLanEthRxBytes() {_uniqueStorage()._ifacesLanEthRxBytes = nil}
 
   var ifacesLanEthRxPackets: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._ifacesLanEthRxPackets ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._ifacesLanEthRxPackets ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._ifacesLanEthRxPackets = newValue}
   }
   /// Returns true if `ifacesLanEthRxPackets` has been explicitly set.
-  var hasIfacesLanEthRxPackets: Bool {return _storage._ifacesLanEthRxPackets != nil}
+  var hasIfacesLanEthRxPackets: Bool {_storage._ifacesLanEthRxPackets != nil}
   /// Clears the value of `ifacesLanEthRxPackets`. Subsequent reads from it will return its default value.
   mutating func clearIfacesLanEthRxPackets() {_uniqueStorage()._ifacesLanEthRxPackets = nil}
 
   var ifacesLanEthRxErrors: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._ifacesLanEthRxErrors ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._ifacesLanEthRxErrors ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._ifacesLanEthRxErrors = newValue}
   }
   /// Returns true if `ifacesLanEthRxErrors` has been explicitly set.
-  var hasIfacesLanEthRxErrors: Bool {return _storage._ifacesLanEthRxErrors != nil}
+  var hasIfacesLanEthRxErrors: Bool {_storage._ifacesLanEthRxErrors != nil}
   /// Clears the value of `ifacesLanEthRxErrors`. Subsequent reads from it will return its default value.
   mutating func clearIfacesLanEthRxErrors() {_uniqueStorage()._ifacesLanEthRxErrors = nil}
 
   var ifacesLanEthRxFrameErrors: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._ifacesLanEthRxFrameErrors ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._ifacesLanEthRxFrameErrors ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._ifacesLanEthRxFrameErrors = newValue}
   }
   /// Returns true if `ifacesLanEthRxFrameErrors` has been explicitly set.
-  var hasIfacesLanEthRxFrameErrors: Bool {return _storage._ifacesLanEthRxFrameErrors != nil}
+  var hasIfacesLanEthRxFrameErrors: Bool {_storage._ifacesLanEthRxFrameErrors != nil}
   /// Clears the value of `ifacesLanEthRxFrameErrors`. Subsequent reads from it will return its default value.
   mutating func clearIfacesLanEthRxFrameErrors() {_uniqueStorage()._ifacesLanEthRxFrameErrors = nil}
 
   var ifacesLanEthTxBytes: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._ifacesLanEthTxBytes ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._ifacesLanEthTxBytes ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._ifacesLanEthTxBytes = newValue}
   }
   /// Returns true if `ifacesLanEthTxBytes` has been explicitly set.
-  var hasIfacesLanEthTxBytes: Bool {return _storage._ifacesLanEthTxBytes != nil}
+  var hasIfacesLanEthTxBytes: Bool {_storage._ifacesLanEthTxBytes != nil}
   /// Clears the value of `ifacesLanEthTxBytes`. Subsequent reads from it will return its default value.
   mutating func clearIfacesLanEthTxBytes() {_uniqueStorage()._ifacesLanEthTxBytes = nil}
 
   var ifacesLanEthTxPackets: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._ifacesLanEthTxPackets ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._ifacesLanEthTxPackets ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._ifacesLanEthTxPackets = newValue}
   }
   /// Returns true if `ifacesLanEthTxPackets` has been explicitly set.
-  var hasIfacesLanEthTxPackets: Bool {return _storage._ifacesLanEthTxPackets != nil}
+  var hasIfacesLanEthTxPackets: Bool {_storage._ifacesLanEthTxPackets != nil}
   /// Clears the value of `ifacesLanEthTxPackets`. Subsequent reads from it will return its default value.
   mutating func clearIfacesLanEthTxPackets() {_uniqueStorage()._ifacesLanEthTxPackets = nil}
 
   var ifacesLanEthTxErrors: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._ifacesLanEthTxErrors ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._ifacesLanEthTxErrors ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._ifacesLanEthTxErrors = newValue}
   }
   /// Returns true if `ifacesLanEthTxErrors` has been explicitly set.
-  var hasIfacesLanEthTxErrors: Bool {return _storage._ifacesLanEthTxErrors != nil}
+  var hasIfacesLanEthTxErrors: Bool {_storage._ifacesLanEthTxErrors != nil}
   /// Clears the value of `ifacesLanEthTxErrors`. Subsequent reads from it will return its default value.
   mutating func clearIfacesLanEthTxErrors() {_uniqueStorage()._ifacesLanEthTxErrors = nil}
 
   var ifacesWanEthRxBytes: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._ifacesWanEthRxBytes ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._ifacesWanEthRxBytes ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._ifacesWanEthRxBytes = newValue}
   }
   /// Returns true if `ifacesWanEthRxBytes` has been explicitly set.
-  var hasIfacesWanEthRxBytes: Bool {return _storage._ifacesWanEthRxBytes != nil}
+  var hasIfacesWanEthRxBytes: Bool {_storage._ifacesWanEthRxBytes != nil}
   /// Clears the value of `ifacesWanEthRxBytes`. Subsequent reads from it will return its default value.
   mutating func clearIfacesWanEthRxBytes() {_uniqueStorage()._ifacesWanEthRxBytes = nil}
 
   var ifacesWanEthRxPackets: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._ifacesWanEthRxPackets ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._ifacesWanEthRxPackets ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._ifacesWanEthRxPackets = newValue}
   }
   /// Returns true if `ifacesWanEthRxPackets` has been explicitly set.
-  var hasIfacesWanEthRxPackets: Bool {return _storage._ifacesWanEthRxPackets != nil}
+  var hasIfacesWanEthRxPackets: Bool {_storage._ifacesWanEthRxPackets != nil}
   /// Clears the value of `ifacesWanEthRxPackets`. Subsequent reads from it will return its default value.
   mutating func clearIfacesWanEthRxPackets() {_uniqueStorage()._ifacesWanEthRxPackets = nil}
 
   var ifacesWanEthRxErrors: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._ifacesWanEthRxErrors ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._ifacesWanEthRxErrors ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._ifacesWanEthRxErrors = newValue}
   }
   /// Returns true if `ifacesWanEthRxErrors` has been explicitly set.
-  var hasIfacesWanEthRxErrors: Bool {return _storage._ifacesWanEthRxErrors != nil}
+  var hasIfacesWanEthRxErrors: Bool {_storage._ifacesWanEthRxErrors != nil}
   /// Clears the value of `ifacesWanEthRxErrors`. Subsequent reads from it will return its default value.
   mutating func clearIfacesWanEthRxErrors() {_uniqueStorage()._ifacesWanEthRxErrors = nil}
 
   var ifacesWanEthRxFrameErrors: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._ifacesWanEthRxFrameErrors ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._ifacesWanEthRxFrameErrors ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._ifacesWanEthRxFrameErrors = newValue}
   }
   /// Returns true if `ifacesWanEthRxFrameErrors` has been explicitly set.
-  var hasIfacesWanEthRxFrameErrors: Bool {return _storage._ifacesWanEthRxFrameErrors != nil}
+  var hasIfacesWanEthRxFrameErrors: Bool {_storage._ifacesWanEthRxFrameErrors != nil}
   /// Clears the value of `ifacesWanEthRxFrameErrors`. Subsequent reads from it will return its default value.
   mutating func clearIfacesWanEthRxFrameErrors() {_uniqueStorage()._ifacesWanEthRxFrameErrors = nil}
 
   var ifacesWanEthTxBytes: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._ifacesWanEthTxBytes ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._ifacesWanEthTxBytes ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._ifacesWanEthTxBytes = newValue}
   }
   /// Returns true if `ifacesWanEthTxBytes` has been explicitly set.
-  var hasIfacesWanEthTxBytes: Bool {return _storage._ifacesWanEthTxBytes != nil}
+  var hasIfacesWanEthTxBytes: Bool {_storage._ifacesWanEthTxBytes != nil}
   /// Clears the value of `ifacesWanEthTxBytes`. Subsequent reads from it will return its default value.
   mutating func clearIfacesWanEthTxBytes() {_uniqueStorage()._ifacesWanEthTxBytes = nil}
 
   var ifacesWanEthTxPackets: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._ifacesWanEthTxPackets ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._ifacesWanEthTxPackets ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._ifacesWanEthTxPackets = newValue}
   }
   /// Returns true if `ifacesWanEthTxPackets` has been explicitly set.
-  var hasIfacesWanEthTxPackets: Bool {return _storage._ifacesWanEthTxPackets != nil}
+  var hasIfacesWanEthTxPackets: Bool {_storage._ifacesWanEthTxPackets != nil}
   /// Clears the value of `ifacesWanEthTxPackets`. Subsequent reads from it will return its default value.
   mutating func clearIfacesWanEthTxPackets() {_uniqueStorage()._ifacesWanEthTxPackets = nil}
 
   var ifacesWanEthTxErrors: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._ifacesWanEthTxErrors ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._ifacesWanEthTxErrors ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._ifacesWanEthTxErrors = newValue}
   }
   /// Returns true if `ifacesWanEthTxErrors` has been explicitly set.
-  var hasIfacesWanEthTxErrors: Bool {return _storage._ifacesWanEthTxErrors != nil}
+  var hasIfacesWanEthTxErrors: Bool {_storage._ifacesWanEthTxErrors != nil}
   /// Clears the value of `ifacesWanEthTxErrors`. Subsequent reads from it will return its default value.
   mutating func clearIfacesWanEthTxErrors() {_uniqueStorage()._ifacesWanEthTxErrors = nil}
 
   var clients: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clients ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clients ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clients = newValue}
   }
   /// Returns true if `clients` has been explicitly set.
-  var hasClients: Bool {return _storage._clients != nil}
+  var hasClients: Bool {_storage._clients != nil}
   /// Clears the value of `clients`. Subsequent reads from it will return its default value.
   mutating func clearClients() {_uniqueStorage()._clients = nil}
 
   var clients2Ghz: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clients2Ghz ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clients2Ghz ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clients2Ghz = newValue}
   }
   /// Returns true if `clients2Ghz` has been explicitly set.
-  var hasClients2Ghz: Bool {return _storage._clients2Ghz != nil}
+  var hasClients2Ghz: Bool {_storage._clients2Ghz != nil}
   /// Clears the value of `clients2Ghz`. Subsequent reads from it will return its default value.
   mutating func clearClients2Ghz() {_uniqueStorage()._clients2Ghz = nil}
 
   var clients5Ghz: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clients5Ghz ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clients5Ghz ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clients5Ghz = newValue}
   }
   /// Returns true if `clients5Ghz` has been explicitly set.
-  var hasClients5Ghz: Bool {return _storage._clients5Ghz != nil}
+  var hasClients5Ghz: Bool {_storage._clients5Ghz != nil}
   /// Clears the value of `clients5Ghz`. Subsequent reads from it will return its default value.
   mutating func clearClients5Ghz() {_uniqueStorage()._clients5Ghz = nil}
 
   var clientsEth: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clientsEth ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clientsEth ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clientsEth = newValue}
   }
   /// Returns true if `clientsEth` has been explicitly set.
-  var hasClientsEth: Bool {return _storage._clientsEth != nil}
+  var hasClientsEth: Bool {_storage._clientsEth != nil}
   /// Clears the value of `clientsEth`. Subsequent reads from it will return its default value.
   mutating func clearClientsEth() {_uniqueStorage()._clientsEth = nil}
 
   var clientsRepeater: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clientsRepeater ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clientsRepeater ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clientsRepeater = newValue}
   }
   /// Returns true if `clientsRepeater` has been explicitly set.
-  var hasClientsRepeater: Bool {return _storage._clientsRepeater != nil}
+  var hasClientsRepeater: Bool {_storage._clientsRepeater != nil}
   /// Clears the value of `clientsRepeater`. Subsequent reads from it will return its default value.
   mutating func clearClientsRepeater() {_uniqueStorage()._clientsRepeater = nil}
 
   var clientsRepeater2Ghz: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clientsRepeater2Ghz ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clientsRepeater2Ghz ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clientsRepeater2Ghz = newValue}
   }
   /// Returns true if `clientsRepeater2Ghz` has been explicitly set.
-  var hasClientsRepeater2Ghz: Bool {return _storage._clientsRepeater2Ghz != nil}
+  var hasClientsRepeater2Ghz: Bool {_storage._clientsRepeater2Ghz != nil}
   /// Clears the value of `clientsRepeater2Ghz`. Subsequent reads from it will return its default value.
   mutating func clearClientsRepeater2Ghz() {_uniqueStorage()._clientsRepeater2Ghz = nil}
 
   var clientsRepeater5Ghz: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clientsRepeater5Ghz ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clientsRepeater5Ghz ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clientsRepeater5Ghz = newValue}
   }
   /// Returns true if `clientsRepeater5Ghz` has been explicitly set.
-  var hasClientsRepeater5Ghz: Bool {return _storage._clientsRepeater5Ghz != nil}
+  var hasClientsRepeater5Ghz: Bool {_storage._clientsRepeater5Ghz != nil}
   /// Clears the value of `clientsRepeater5Ghz`. Subsequent reads from it will return its default value.
   mutating func clearClientsRepeater5Ghz() {_uniqueStorage()._clientsRepeater5Ghz = nil}
 
   var clientsRepeaterEth: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clientsRepeaterEth ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clientsRepeaterEth ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clientsRepeaterEth = newValue}
   }
   /// Returns true if `clientsRepeaterEth` has been explicitly set.
-  var hasClientsRepeaterEth: Bool {return _storage._clientsRepeaterEth != nil}
+  var hasClientsRepeaterEth: Bool {_storage._clientsRepeaterEth != nil}
   /// Clears the value of `clientsRepeaterEth`. Subsequent reads from it will return its default value.
   mutating func clearClientsRepeaterEth() {_uniqueStorage()._clientsRepeaterEth = nil}
 
   var meshHops: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._meshHops ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._meshHops ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._meshHops = newValue}
   }
   /// Returns true if `meshHops` has been explicitly set.
-  var hasMeshHops: Bool {return _storage._meshHops != nil}
+  var hasMeshHops: Bool {_storage._meshHops != nil}
   /// Clears the value of `meshHops`. Subsequent reads from it will return its default value.
   mutating func clearMeshHops() {_uniqueStorage()._meshHops = nil}
 
   var meshOneHopRssiAvg2Ghz: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._meshOneHopRssiAvg2Ghz ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._meshOneHopRssiAvg2Ghz ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._meshOneHopRssiAvg2Ghz = newValue}
   }
   /// Returns true if `meshOneHopRssiAvg2Ghz` has been explicitly set.
-  var hasMeshOneHopRssiAvg2Ghz: Bool {return _storage._meshOneHopRssiAvg2Ghz != nil}
+  var hasMeshOneHopRssiAvg2Ghz: Bool {_storage._meshOneHopRssiAvg2Ghz != nil}
   /// Clears the value of `meshOneHopRssiAvg2Ghz`. Subsequent reads from it will return its default value.
   mutating func clearMeshOneHopRssiAvg2Ghz() {_uniqueStorage()._meshOneHopRssiAvg2Ghz = nil}
 
   var meshOneHopRssiAvg5Ghz: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._meshOneHopRssiAvg5Ghz ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._meshOneHopRssiAvg5Ghz ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._meshOneHopRssiAvg5Ghz = newValue}
   }
   /// Returns true if `meshOneHopRssiAvg5Ghz` has been explicitly set.
-  var hasMeshOneHopRssiAvg5Ghz: Bool {return _storage._meshOneHopRssiAvg5Ghz != nil}
+  var hasMeshOneHopRssiAvg5Ghz: Bool {_storage._meshOneHopRssiAvg5Ghz != nil}
   /// Clears the value of `meshOneHopRssiAvg5Ghz`. Subsequent reads from it will return its default value.
   mutating func clearMeshOneHopRssiAvg5Ghz() {_uniqueStorage()._meshOneHopRssiAvg5Ghz = nil}
 
   var meshTwoHopRssiAvg2Ghz: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._meshTwoHopRssiAvg2Ghz ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._meshTwoHopRssiAvg2Ghz ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._meshTwoHopRssiAvg2Ghz = newValue}
   }
   /// Returns true if `meshTwoHopRssiAvg2Ghz` has been explicitly set.
-  var hasMeshTwoHopRssiAvg2Ghz: Bool {return _storage._meshTwoHopRssiAvg2Ghz != nil}
+  var hasMeshTwoHopRssiAvg2Ghz: Bool {_storage._meshTwoHopRssiAvg2Ghz != nil}
   /// Clears the value of `meshTwoHopRssiAvg2Ghz`. Subsequent reads from it will return its default value.
   mutating func clearMeshTwoHopRssiAvg2Ghz() {_uniqueStorage()._meshTwoHopRssiAvg2Ghz = nil}
 
   var meshTwoHopRssiAvg5Ghz: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._meshTwoHopRssiAvg5Ghz ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._meshTwoHopRssiAvg5Ghz ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._meshTwoHopRssiAvg5Ghz = newValue}
   }
   /// Returns true if `meshTwoHopRssiAvg5Ghz` has been explicitly set.
-  var hasMeshTwoHopRssiAvg5Ghz: Bool {return _storage._meshTwoHopRssiAvg5Ghz != nil}
+  var hasMeshTwoHopRssiAvg5Ghz: Bool {_storage._meshTwoHopRssiAvg5Ghz != nil}
   /// Clears the value of `meshTwoHopRssiAvg5Ghz`. Subsequent reads from it will return its default value.
   mutating func clearMeshTwoHopRssiAvg5Ghz() {_uniqueStorage()._meshTwoHopRssiAvg5Ghz = nil}
 
   var pingSecondsSinceLast1SOutage: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingSecondsSinceLast1SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingSecondsSinceLast1SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingSecondsSinceLast1SOutage = newValue}
   }
   /// Returns true if `pingSecondsSinceLast1SOutage` has been explicitly set.
-  var hasPingSecondsSinceLast1SOutage: Bool {return _storage._pingSecondsSinceLast1SOutage != nil}
+  var hasPingSecondsSinceLast1SOutage: Bool {_storage._pingSecondsSinceLast1SOutage != nil}
   /// Clears the value of `pingSecondsSinceLast1SOutage`. Subsequent reads from it will return its default value.
   mutating func clearPingSecondsSinceLast1SOutage() {_uniqueStorage()._pingSecondsSinceLast1SOutage = nil}
 
   var pingSecondsSinceLast2SOutage: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingSecondsSinceLast2SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingSecondsSinceLast2SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingSecondsSinceLast2SOutage = newValue}
   }
   /// Returns true if `pingSecondsSinceLast2SOutage` has been explicitly set.
-  var hasPingSecondsSinceLast2SOutage: Bool {return _storage._pingSecondsSinceLast2SOutage != nil}
+  var hasPingSecondsSinceLast2SOutage: Bool {_storage._pingSecondsSinceLast2SOutage != nil}
   /// Clears the value of `pingSecondsSinceLast2SOutage`. Subsequent reads from it will return its default value.
   mutating func clearPingSecondsSinceLast2SOutage() {_uniqueStorage()._pingSecondsSinceLast2SOutage = nil}
 
   var pingSecondsSinceLast5SOutage: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingSecondsSinceLast5SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingSecondsSinceLast5SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingSecondsSinceLast5SOutage = newValue}
   }
   /// Returns true if `pingSecondsSinceLast5SOutage` has been explicitly set.
-  var hasPingSecondsSinceLast5SOutage: Bool {return _storage._pingSecondsSinceLast5SOutage != nil}
+  var hasPingSecondsSinceLast5SOutage: Bool {_storage._pingSecondsSinceLast5SOutage != nil}
   /// Clears the value of `pingSecondsSinceLast5SOutage`. Subsequent reads from it will return its default value.
   mutating func clearPingSecondsSinceLast5SOutage() {_uniqueStorage()._pingSecondsSinceLast5SOutage = nil}
 
   var pingSecondsSinceLast60SOutage: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingSecondsSinceLast60SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingSecondsSinceLast60SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingSecondsSinceLast60SOutage = newValue}
   }
   /// Returns true if `pingSecondsSinceLast60SOutage` has been explicitly set.
-  var hasPingSecondsSinceLast60SOutage: Bool {return _storage._pingSecondsSinceLast60SOutage != nil}
+  var hasPingSecondsSinceLast60SOutage: Bool {_storage._pingSecondsSinceLast60SOutage != nil}
   /// Clears the value of `pingSecondsSinceLast60SOutage`. Subsequent reads from it will return its default value.
   mutating func clearPingSecondsSinceLast60SOutage() {_uniqueStorage()._pingSecondsSinceLast60SOutage = nil}
 
   var pingSecondsSinceLast300SOutage: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingSecondsSinceLast300SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingSecondsSinceLast300SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingSecondsSinceLast300SOutage = newValue}
   }
   /// Returns true if `pingSecondsSinceLast300SOutage` has been explicitly set.
-  var hasPingSecondsSinceLast300SOutage: Bool {return _storage._pingSecondsSinceLast300SOutage != nil}
+  var hasPingSecondsSinceLast300SOutage: Bool {_storage._pingSecondsSinceLast300SOutage != nil}
   /// Clears the value of `pingSecondsSinceLast300SOutage`. Subsequent reads from it will return its default value.
   mutating func clearPingSecondsSinceLast300SOutage() {_uniqueStorage()._pingSecondsSinceLast300SOutage = nil}
 
   var pingDropRate: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingDropRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingDropRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingDropRate = newValue}
   }
   /// Returns true if `pingDropRate` has been explicitly set.
-  var hasPingDropRate: Bool {return _storage._pingDropRate != nil}
+  var hasPingDropRate: Bool {_storage._pingDropRate != nil}
   /// Clears the value of `pingDropRate`. Subsequent reads from it will return its default value.
   mutating func clearPingDropRate() {_uniqueStorage()._pingDropRate = nil}
 
   var pingDropRateLast1H: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingDropRateLast1H ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingDropRateLast1H ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingDropRateLast1H = newValue}
   }
   /// Returns true if `pingDropRateLast1H` has been explicitly set.
-  var hasPingDropRateLast1H: Bool {return _storage._pingDropRateLast1H != nil}
+  var hasPingDropRateLast1H: Bool {_storage._pingDropRateLast1H != nil}
   /// Clears the value of `pingDropRateLast1H`. Subsequent reads from it will return its default value.
   mutating func clearPingDropRateLast1H() {_uniqueStorage()._pingDropRateLast1H = nil}
 
   var pingLatency: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingLatency ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingLatency ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingLatency = newValue}
   }
   /// Returns true if `pingLatency` has been explicitly set.
-  var hasPingLatency: Bool {return _storage._pingLatency != nil}
+  var hasPingLatency: Bool {_storage._pingLatency != nil}
   /// Clears the value of `pingLatency`. Subsequent reads from it will return its default value.
   mutating func clearPingLatency() {_uniqueStorage()._pingLatency = nil}
 
   var pingDishSecondsSinceLast1SOutage: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingDishSecondsSinceLast1SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingDishSecondsSinceLast1SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingDishSecondsSinceLast1SOutage = newValue}
   }
   /// Returns true if `pingDishSecondsSinceLast1SOutage` has been explicitly set.
-  var hasPingDishSecondsSinceLast1SOutage: Bool {return _storage._pingDishSecondsSinceLast1SOutage != nil}
+  var hasPingDishSecondsSinceLast1SOutage: Bool {_storage._pingDishSecondsSinceLast1SOutage != nil}
   /// Clears the value of `pingDishSecondsSinceLast1SOutage`. Subsequent reads from it will return its default value.
   mutating func clearPingDishSecondsSinceLast1SOutage() {_uniqueStorage()._pingDishSecondsSinceLast1SOutage = nil}
 
   var pingDishSecondsSinceLast2SOutage: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingDishSecondsSinceLast2SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingDishSecondsSinceLast2SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingDishSecondsSinceLast2SOutage = newValue}
   }
   /// Returns true if `pingDishSecondsSinceLast2SOutage` has been explicitly set.
-  var hasPingDishSecondsSinceLast2SOutage: Bool {return _storage._pingDishSecondsSinceLast2SOutage != nil}
+  var hasPingDishSecondsSinceLast2SOutage: Bool {_storage._pingDishSecondsSinceLast2SOutage != nil}
   /// Clears the value of `pingDishSecondsSinceLast2SOutage`. Subsequent reads from it will return its default value.
   mutating func clearPingDishSecondsSinceLast2SOutage() {_uniqueStorage()._pingDishSecondsSinceLast2SOutage = nil}
 
   var pingDishSecondsSinceLast5SOutage: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingDishSecondsSinceLast5SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingDishSecondsSinceLast5SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingDishSecondsSinceLast5SOutage = newValue}
   }
   /// Returns true if `pingDishSecondsSinceLast5SOutage` has been explicitly set.
-  var hasPingDishSecondsSinceLast5SOutage: Bool {return _storage._pingDishSecondsSinceLast5SOutage != nil}
+  var hasPingDishSecondsSinceLast5SOutage: Bool {_storage._pingDishSecondsSinceLast5SOutage != nil}
   /// Clears the value of `pingDishSecondsSinceLast5SOutage`. Subsequent reads from it will return its default value.
   mutating func clearPingDishSecondsSinceLast5SOutage() {_uniqueStorage()._pingDishSecondsSinceLast5SOutage = nil}
 
   var pingDishSecondsSinceLast60SOutage: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingDishSecondsSinceLast60SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingDishSecondsSinceLast60SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingDishSecondsSinceLast60SOutage = newValue}
   }
   /// Returns true if `pingDishSecondsSinceLast60SOutage` has been explicitly set.
-  var hasPingDishSecondsSinceLast60SOutage: Bool {return _storage._pingDishSecondsSinceLast60SOutage != nil}
+  var hasPingDishSecondsSinceLast60SOutage: Bool {_storage._pingDishSecondsSinceLast60SOutage != nil}
   /// Clears the value of `pingDishSecondsSinceLast60SOutage`. Subsequent reads from it will return its default value.
   mutating func clearPingDishSecondsSinceLast60SOutage() {_uniqueStorage()._pingDishSecondsSinceLast60SOutage = nil}
 
   var pingDishSecondsSinceLast300SOutage: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingDishSecondsSinceLast300SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingDishSecondsSinceLast300SOutage ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingDishSecondsSinceLast300SOutage = newValue}
   }
   /// Returns true if `pingDishSecondsSinceLast300SOutage` has been explicitly set.
-  var hasPingDishSecondsSinceLast300SOutage: Bool {return _storage._pingDishSecondsSinceLast300SOutage != nil}
+  var hasPingDishSecondsSinceLast300SOutage: Bool {_storage._pingDishSecondsSinceLast300SOutage != nil}
   /// Clears the value of `pingDishSecondsSinceLast300SOutage`. Subsequent reads from it will return its default value.
   mutating func clearPingDishSecondsSinceLast300SOutage() {_uniqueStorage()._pingDishSecondsSinceLast300SOutage = nil}
 
   var pingDishDropRate: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingDishDropRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingDishDropRate ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingDishDropRate = newValue}
   }
   /// Returns true if `pingDishDropRate` has been explicitly set.
-  var hasPingDishDropRate: Bool {return _storage._pingDishDropRate != nil}
+  var hasPingDishDropRate: Bool {_storage._pingDishDropRate != nil}
   /// Clears the value of `pingDishDropRate`. Subsequent reads from it will return its default value.
   mutating func clearPingDishDropRate() {_uniqueStorage()._pingDishDropRate = nil}
 
   var pingDishDropRateLast1H: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingDishDropRateLast1H ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingDishDropRateLast1H ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingDishDropRateLast1H = newValue}
   }
   /// Returns true if `pingDishDropRateLast1H` has been explicitly set.
-  var hasPingDishDropRateLast1H: Bool {return _storage._pingDishDropRateLast1H != nil}
+  var hasPingDishDropRateLast1H: Bool {_storage._pingDishDropRateLast1H != nil}
   /// Clears the value of `pingDishDropRateLast1H`. Subsequent reads from it will return its default value.
   mutating func clearPingDishDropRateLast1H() {_uniqueStorage()._pingDishDropRateLast1H = nil}
 
   var pingDishLatency: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._pingDishLatency ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._pingDishLatency ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._pingDishLatency = newValue}
   }
   /// Returns true if `pingDishLatency` has been explicitly set.
-  var hasPingDishLatency: Bool {return _storage._pingDishLatency != nil}
+  var hasPingDishLatency: Bool {_storage._pingDishLatency != nil}
   /// Clears the value of `pingDishLatency`. Subsequent reads from it will return its default value.
   mutating func clearPingDishLatency() {_uniqueStorage()._pingDishLatency = nil}
 
   var clientSpeedtestRouterDownloadMbps: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._clientSpeedtestRouterDownloadMbps ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._clientSpeedtestRouterDownloadMbps ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._clientSpeedtestRouterDownloadMbps = newValue}
   }
   /// Returns true if `clientSpeedtestRouterDownloadMbps` has been explicitly set.
-  var hasClientSpeedtestRouterDownloadMbps: Bool {return _storage._clientSpeedtestRouterDownloadMbps != nil}
+  var hasClientSpeedtestRouterDownloadMbps: Bool {_storage._clientSpeedtestRouterDownloadMbps != nil}
   /// Clears the value of `clientSpeedtestRouterDownloadMbps`. Subsequent reads from it will return its default value.
   mutating func clearClientSpeedtestRouterDownloadMbps() {_uniqueStorage()._clientSpeedtestRouterDownloadMbps = nil}
 
   var clientSpeedtestRouterUploadMbps: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._clientSpeedtestRouterUploadMbps ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._clientSpeedtestRouterUploadMbps ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._clientSpeedtestRouterUploadMbps = newValue}
   }
   /// Returns true if `clientSpeedtestRouterUploadMbps` has been explicitly set.
-  var hasClientSpeedtestRouterUploadMbps: Bool {return _storage._clientSpeedtestRouterUploadMbps != nil}
+  var hasClientSpeedtestRouterUploadMbps: Bool {_storage._clientSpeedtestRouterUploadMbps != nil}
   /// Clears the value of `clientSpeedtestRouterUploadMbps`. Subsequent reads from it will return its default value.
   mutating func clearClientSpeedtestRouterUploadMbps() {_uniqueStorage()._clientSpeedtestRouterUploadMbps = nil}
 
   var clientSpeedtestRouterRssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._clientSpeedtestRouterRssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._clientSpeedtestRouterRssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._clientSpeedtestRouterRssi = newValue}
   }
   /// Returns true if `clientSpeedtestRouterRssi` has been explicitly set.
-  var hasClientSpeedtestRouterRssi: Bool {return _storage._clientSpeedtestRouterRssi != nil}
+  var hasClientSpeedtestRouterRssi: Bool {_storage._clientSpeedtestRouterRssi != nil}
   /// Clears the value of `clientSpeedtestRouterRssi`. Subsequent reads from it will return its default value.
   mutating func clearClientSpeedtestRouterRssi() {_uniqueStorage()._clientSpeedtestRouterRssi = nil}
 
   var clientSpeedtestWifiDownloadMbps: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._clientSpeedtestWifiDownloadMbps ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._clientSpeedtestWifiDownloadMbps ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._clientSpeedtestWifiDownloadMbps = newValue}
   }
   /// Returns true if `clientSpeedtestWifiDownloadMbps` has been explicitly set.
-  var hasClientSpeedtestWifiDownloadMbps: Bool {return _storage._clientSpeedtestWifiDownloadMbps != nil}
+  var hasClientSpeedtestWifiDownloadMbps: Bool {_storage._clientSpeedtestWifiDownloadMbps != nil}
   /// Clears the value of `clientSpeedtestWifiDownloadMbps`. Subsequent reads from it will return its default value.
   mutating func clearClientSpeedtestWifiDownloadMbps() {_uniqueStorage()._clientSpeedtestWifiDownloadMbps = nil}
 
   var clientSpeedtestWifiUploadMbps: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._clientSpeedtestWifiUploadMbps ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._clientSpeedtestWifiUploadMbps ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._clientSpeedtestWifiUploadMbps = newValue}
   }
   /// Returns true if `clientSpeedtestWifiUploadMbps` has been explicitly set.
-  var hasClientSpeedtestWifiUploadMbps: Bool {return _storage._clientSpeedtestWifiUploadMbps != nil}
+  var hasClientSpeedtestWifiUploadMbps: Bool {_storage._clientSpeedtestWifiUploadMbps != nil}
   /// Clears the value of `clientSpeedtestWifiUploadMbps`. Subsequent reads from it will return its default value.
   mutating func clearClientSpeedtestWifiUploadMbps() {_uniqueStorage()._clientSpeedtestWifiUploadMbps = nil}
 
   var clientSpeedtestClientDownloadMbps: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._clientSpeedtestClientDownloadMbps ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._clientSpeedtestClientDownloadMbps ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._clientSpeedtestClientDownloadMbps = newValue}
   }
   /// Returns true if `clientSpeedtestClientDownloadMbps` has been explicitly set.
-  var hasClientSpeedtestClientDownloadMbps: Bool {return _storage._clientSpeedtestClientDownloadMbps != nil}
+  var hasClientSpeedtestClientDownloadMbps: Bool {_storage._clientSpeedtestClientDownloadMbps != nil}
   /// Clears the value of `clientSpeedtestClientDownloadMbps`. Subsequent reads from it will return its default value.
   mutating func clearClientSpeedtestClientDownloadMbps() {_uniqueStorage()._clientSpeedtestClientDownloadMbps = nil}
 
   var clientSpeedtestClientUploadMbps: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._clientSpeedtestClientUploadMbps ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._clientSpeedtestClientUploadMbps ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._clientSpeedtestClientUploadMbps = newValue}
   }
   /// Returns true if `clientSpeedtestClientUploadMbps` has been explicitly set.
-  var hasClientSpeedtestClientUploadMbps: Bool {return _storage._clientSpeedtestClientUploadMbps != nil}
+  var hasClientSpeedtestClientUploadMbps: Bool {_storage._clientSpeedtestClientUploadMbps != nil}
   /// Clears the value of `clientSpeedtestClientUploadMbps`. Subsequent reads from it will return its default value.
   mutating func clearClientSpeedtestClientUploadMbps() {_uniqueStorage()._clientSpeedtestClientUploadMbps = nil}
 
   var clientSpeedtestClientRssi: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._clientSpeedtestClientRssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._clientSpeedtestClientRssi ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._clientSpeedtestClientRssi = newValue}
   }
   /// Returns true if `clientSpeedtestClientRssi` has been explicitly set.
-  var hasClientSpeedtestClientRssi: Bool {return _storage._clientSpeedtestClientRssi != nil}
+  var hasClientSpeedtestClientRssi: Bool {_storage._clientSpeedtestClientRssi != nil}
   /// Clears the value of `clientSpeedtestClientRssi`. Subsequent reads from it will return its default value.
   mutating func clearClientSpeedtestClientRssi() {_uniqueStorage()._clientSpeedtestClientRssi = nil}
 
   var clientSpeedtestClientIface: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clientSpeedtestClientIface ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clientSpeedtestClientIface ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clientSpeedtestClientIface = newValue}
   }
   /// Returns true if `clientSpeedtestClientIface` has been explicitly set.
-  var hasClientSpeedtestClientIface: Bool {return _storage._clientSpeedtestClientIface != nil}
+  var hasClientSpeedtestClientIface: Bool {_storage._clientSpeedtestClientIface != nil}
   /// Clears the value of `clientSpeedtestClientIface`. Subsequent reads from it will return its default value.
   mutating func clearClientSpeedtestClientIface() {_uniqueStorage()._clientSpeedtestClientIface = nil}
 
   var clientSpeedtestClientOui: SwiftProtobuf.Google_Protobuf_StringValue {
-    get {return _storage._clientSpeedtestClientOui ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+    get {_storage._clientSpeedtestClientOui ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._clientSpeedtestClientOui = newValue}
   }
   /// Returns true if `clientSpeedtestClientOui` has been explicitly set.
-  var hasClientSpeedtestClientOui: Bool {return _storage._clientSpeedtestClientOui != nil}
+  var hasClientSpeedtestClientOui: Bool {_storage._clientSpeedtestClientOui != nil}
   /// Clears the value of `clientSpeedtestClientOui`. Subsequent reads from it will return its default value.
   mutating func clearClientSpeedtestClientOui() {_uniqueStorage()._clientSpeedtestClientOui = nil}
 
   var clientSpeedtestClientTxRate: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clientSpeedtestClientTxRate ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clientSpeedtestClientTxRate ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clientSpeedtestClientTxRate = newValue}
   }
   /// Returns true if `clientSpeedtestClientTxRate` has been explicitly set.
-  var hasClientSpeedtestClientTxRate: Bool {return _storage._clientSpeedtestClientTxRate != nil}
+  var hasClientSpeedtestClientTxRate: Bool {_storage._clientSpeedtestClientTxRate != nil}
   /// Clears the value of `clientSpeedtestClientTxRate`. Subsequent reads from it will return its default value.
   mutating func clearClientSpeedtestClientTxRate() {_uniqueStorage()._clientSpeedtestClientTxRate = nil}
 
   var clientSpeedtestClientRxRate: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clientSpeedtestClientRxRate ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clientSpeedtestClientRxRate ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clientSpeedtestClientRxRate = newValue}
   }
   /// Returns true if `clientSpeedtestClientRxRate` has been explicitly set.
-  var hasClientSpeedtestClientRxRate: Bool {return _storage._clientSpeedtestClientRxRate != nil}
+  var hasClientSpeedtestClientRxRate: Bool {_storage._clientSpeedtestClientRxRate != nil}
   /// Clears the value of `clientSpeedtestClientRxRate`. Subsequent reads from it will return its default value.
   mutating func clearClientSpeedtestClientRxRate() {_uniqueStorage()._clientSpeedtestClientRxRate = nil}
 
   var clientSpeedtestClientPlatformType: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._clientSpeedtestClientPlatformType ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._clientSpeedtestClientPlatformType ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._clientSpeedtestClientPlatformType = newValue}
   }
   /// Returns true if `clientSpeedtestClientPlatformType` has been explicitly set.
-  var hasClientSpeedtestClientPlatformType: Bool {return _storage._clientSpeedtestClientPlatformType != nil}
+  var hasClientSpeedtestClientPlatformType: Bool {_storage._clientSpeedtestClientPlatformType != nil}
   /// Clears the value of `clientSpeedtestClientPlatformType`. Subsequent reads from it will return its default value.
   mutating func clearClientSpeedtestClientPlatformType() {_uniqueStorage()._clientSpeedtestClientPlatformType = nil}
 
   var speedtestTcp8DownloadMbpsAvg: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._speedtestTcp8DownloadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._speedtestTcp8DownloadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._speedtestTcp8DownloadMbpsAvg = newValue}
   }
   /// Returns true if `speedtestTcp8DownloadMbpsAvg` has been explicitly set.
-  var hasSpeedtestTcp8DownloadMbpsAvg: Bool {return _storage._speedtestTcp8DownloadMbpsAvg != nil}
+  var hasSpeedtestTcp8DownloadMbpsAvg: Bool {_storage._speedtestTcp8DownloadMbpsAvg != nil}
   /// Clears the value of `speedtestTcp8DownloadMbpsAvg`. Subsequent reads from it will return its default value.
   mutating func clearSpeedtestTcp8DownloadMbpsAvg() {_uniqueStorage()._speedtestTcp8DownloadMbpsAvg = nil}
 
   var speedtestTcp8DownloadMbpsMax: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._speedtestTcp8DownloadMbpsMax ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._speedtestTcp8DownloadMbpsMax ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._speedtestTcp8DownloadMbpsMax = newValue}
   }
   /// Returns true if `speedtestTcp8DownloadMbpsMax` has been explicitly set.
-  var hasSpeedtestTcp8DownloadMbpsMax: Bool {return _storage._speedtestTcp8DownloadMbpsMax != nil}
+  var hasSpeedtestTcp8DownloadMbpsMax: Bool {_storage._speedtestTcp8DownloadMbpsMax != nil}
   /// Clears the value of `speedtestTcp8DownloadMbpsMax`. Subsequent reads from it will return its default value.
   mutating func clearSpeedtestTcp8DownloadMbpsMax() {_uniqueStorage()._speedtestTcp8DownloadMbpsMax = nil}
 
   var speedtestTcp8UploadMbpsAvg: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._speedtestTcp8UploadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._speedtestTcp8UploadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._speedtestTcp8UploadMbpsAvg = newValue}
   }
   /// Returns true if `speedtestTcp8UploadMbpsAvg` has been explicitly set.
-  var hasSpeedtestTcp8UploadMbpsAvg: Bool {return _storage._speedtestTcp8UploadMbpsAvg != nil}
+  var hasSpeedtestTcp8UploadMbpsAvg: Bool {_storage._speedtestTcp8UploadMbpsAvg != nil}
   /// Clears the value of `speedtestTcp8UploadMbpsAvg`. Subsequent reads from it will return its default value.
   mutating func clearSpeedtestTcp8UploadMbpsAvg() {_uniqueStorage()._speedtestTcp8UploadMbpsAvg = nil}
 
   var speedtestTcp8UploadMbpsMax: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._speedtestTcp8UploadMbpsMax ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._speedtestTcp8UploadMbpsMax ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._speedtestTcp8UploadMbpsMax = newValue}
   }
   /// Returns true if `speedtestTcp8UploadMbpsMax` has been explicitly set.
-  var hasSpeedtestTcp8UploadMbpsMax: Bool {return _storage._speedtestTcp8UploadMbpsMax != nil}
+  var hasSpeedtestTcp8UploadMbpsMax: Bool {_storage._speedtestTcp8UploadMbpsMax != nil}
   /// Clears the value of `speedtestTcp8UploadMbpsMax`. Subsequent reads from it will return its default value.
   mutating func clearSpeedtestTcp8UploadMbpsMax() {_uniqueStorage()._speedtestTcp8UploadMbpsMax = nil}
 
   var speedtestTcp64DownloadMbpsAvg: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._speedtestTcp64DownloadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._speedtestTcp64DownloadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._speedtestTcp64DownloadMbpsAvg = newValue}
   }
   /// Returns true if `speedtestTcp64DownloadMbpsAvg` has been explicitly set.
-  var hasSpeedtestTcp64DownloadMbpsAvg: Bool {return _storage._speedtestTcp64DownloadMbpsAvg != nil}
+  var hasSpeedtestTcp64DownloadMbpsAvg: Bool {_storage._speedtestTcp64DownloadMbpsAvg != nil}
   /// Clears the value of `speedtestTcp64DownloadMbpsAvg`. Subsequent reads from it will return its default value.
   mutating func clearSpeedtestTcp64DownloadMbpsAvg() {_uniqueStorage()._speedtestTcp64DownloadMbpsAvg = nil}
 
   var speedtestTcp64DownloadMbpsMax: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._speedtestTcp64DownloadMbpsMax ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._speedtestTcp64DownloadMbpsMax ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._speedtestTcp64DownloadMbpsMax = newValue}
   }
   /// Returns true if `speedtestTcp64DownloadMbpsMax` has been explicitly set.
-  var hasSpeedtestTcp64DownloadMbpsMax: Bool {return _storage._speedtestTcp64DownloadMbpsMax != nil}
+  var hasSpeedtestTcp64DownloadMbpsMax: Bool {_storage._speedtestTcp64DownloadMbpsMax != nil}
   /// Clears the value of `speedtestTcp64DownloadMbpsMax`. Subsequent reads from it will return its default value.
   mutating func clearSpeedtestTcp64DownloadMbpsMax() {_uniqueStorage()._speedtestTcp64DownloadMbpsMax = nil}
 
   var speedtestTcp64UploadMbpsAvg: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._speedtestTcp64UploadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._speedtestTcp64UploadMbpsAvg ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._speedtestTcp64UploadMbpsAvg = newValue}
   }
   /// Returns true if `speedtestTcp64UploadMbpsAvg` has been explicitly set.
-  var hasSpeedtestTcp64UploadMbpsAvg: Bool {return _storage._speedtestTcp64UploadMbpsAvg != nil}
+  var hasSpeedtestTcp64UploadMbpsAvg: Bool {_storage._speedtestTcp64UploadMbpsAvg != nil}
   /// Clears the value of `speedtestTcp64UploadMbpsAvg`. Subsequent reads from it will return its default value.
   mutating func clearSpeedtestTcp64UploadMbpsAvg() {_uniqueStorage()._speedtestTcp64UploadMbpsAvg = nil}
 
   var speedtestTcp64UploadMbpsMax: SwiftProtobuf.Google_Protobuf_FloatValue {
-    get {return _storage._speedtestTcp64UploadMbpsMax ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+    get {_storage._speedtestTcp64UploadMbpsMax ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
     set {_uniqueStorage()._speedtestTcp64UploadMbpsMax = newValue}
   }
   /// Returns true if `speedtestTcp64UploadMbpsMax` has been explicitly set.
-  var hasSpeedtestTcp64UploadMbpsMax: Bool {return _storage._speedtestTcp64UploadMbpsMax != nil}
+  var hasSpeedtestTcp64UploadMbpsMax: Bool {_storage._speedtestTcp64UploadMbpsMax != nil}
   /// Clears the value of `speedtestTcp64UploadMbpsMax`. Subsequent reads from it will return its default value.
   mutating func clearSpeedtestTcp64UploadMbpsMax() {_uniqueStorage()._speedtestTcp64UploadMbpsMax = nil}
 
   var dishCellID: SwiftProtobuf.Google_Protobuf_UInt32Value {
-    get {return _storage._dishCellID ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
+    get {_storage._dishCellID ?? SwiftProtobuf.Google_Protobuf_UInt32Value()}
     set {_uniqueStorage()._dishCellID = newValue}
   }
   /// Returns true if `dishCellID` has been explicitly set.
-  var hasDishCellID: Bool {return _storage._dishCellID != nil}
+  var hasDishCellID: Bool {_storage._dishCellID != nil}
   /// Clears the value of `dishCellID`. Subsequent reads from it will return its default value.
   mutating func clearDishCellID() {_uniqueStorage()._dishCellID = nil}
 
   var configSetupComplete: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configSetupComplete ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configSetupComplete ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configSetupComplete = newValue}
   }
   /// Returns true if `configSetupComplete` has been explicitly set.
-  var hasConfigSetupComplete: Bool {return _storage._configSetupComplete != nil}
+  var hasConfigSetupComplete: Bool {_storage._configSetupComplete != nil}
   /// Clears the value of `configSetupComplete`. Subsequent reads from it will return its default value.
   mutating func clearConfigSetupComplete() {_uniqueStorage()._configSetupComplete = nil}
 
   var configBandsSplit: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configBandsSplit ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configBandsSplit ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configBandsSplit = newValue}
   }
   /// Returns true if `configBandsSplit` has been explicitly set.
-  var hasConfigBandsSplit: Bool {return _storage._configBandsSplit != nil}
+  var hasConfigBandsSplit: Bool {_storage._configBandsSplit != nil}
   /// Clears the value of `configBandsSplit`. Subsequent reads from it will return its default value.
   mutating func clearConfigBandsSplit() {_uniqueStorage()._configBandsSplit = nil}
 
   var configIsRepeater: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configIsRepeater ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configIsRepeater ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configIsRepeater = newValue}
   }
   /// Returns true if `configIsRepeater` has been explicitly set.
-  var hasConfigIsRepeater: Bool {return _storage._configIsRepeater != nil}
+  var hasConfigIsRepeater: Bool {_storage._configIsRepeater != nil}
   /// Clears the value of `configIsRepeater`. Subsequent reads from it will return its default value.
   mutating func clearConfigIsRepeater() {_uniqueStorage()._configIsRepeater = nil}
 
   var configOpenNetwork: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configOpenNetwork ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configOpenNetwork ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configOpenNetwork = newValue}
   }
   /// Returns true if `configOpenNetwork` has been explicitly set.
-  var hasConfigOpenNetwork: Bool {return _storage._configOpenNetwork != nil}
+  var hasConfigOpenNetwork: Bool {_storage._configOpenNetwork != nil}
   /// Clears the value of `configOpenNetwork`. Subsequent reads from it will return its default value.
   mutating func clearConfigOpenNetwork() {_uniqueStorage()._configOpenNetwork = nil}
 
   var configIsAviation: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configIsAviation ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configIsAviation ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configIsAviation = newValue}
   }
   /// Returns true if `configIsAviation` has been explicitly set.
-  var hasConfigIsAviation: Bool {return _storage._configIsAviation != nil}
+  var hasConfigIsAviation: Bool {_storage._configIsAviation != nil}
   /// Clears the value of `configIsAviation`. Subsequent reads from it will return its default value.
   mutating func clearConfigIsAviation() {_uniqueStorage()._configIsAviation = nil}
 
   var configSecureDns: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configSecureDns ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configSecureDns ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configSecureDns = newValue}
   }
   /// Returns true if `configSecureDns` has been explicitly set.
-  var hasConfigSecureDns: Bool {return _storage._configSecureDns != nil}
+  var hasConfigSecureDns: Bool {_storage._configSecureDns != nil}
   /// Clears the value of `configSecureDns`. Subsequent reads from it will return its default value.
   mutating func clearConfigSecureDns() {_uniqueStorage()._configSecureDns = nil}
 
   var configLegacy: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configLegacy ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configLegacy ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configLegacy = newValue}
   }
   /// Returns true if `configLegacy` has been explicitly set.
-  var hasConfigLegacy: Bool {return _storage._configLegacy != nil}
+  var hasConfigLegacy: Bool {_storage._configLegacy != nil}
   /// Clears the value of `configLegacy`. Subsequent reads from it will return its default value.
   mutating func clearConfigLegacy() {_uniqueStorage()._configLegacy = nil}
 
   var configApMode: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configApMode ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configApMode ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configApMode = newValue}
   }
   /// Returns true if `configApMode` has been explicitly set.
-  var hasConfigApMode: Bool {return _storage._configApMode != nil}
+  var hasConfigApMode: Bool {_storage._configApMode != nil}
   /// Clears the value of `configApMode`. Subsequent reads from it will return its default value.
   mutating func clearConfigApMode() {_uniqueStorage()._configApMode = nil}
 
   var configDfsEnabled: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configDfsEnabled ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configDfsEnabled ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configDfsEnabled = newValue}
   }
   /// Returns true if `configDfsEnabled` has been explicitly set.
-  var hasConfigDfsEnabled: Bool {return _storage._configDfsEnabled != nil}
+  var hasConfigDfsEnabled: Bool {_storage._configDfsEnabled != nil}
   /// Clears the value of `configDfsEnabled`. Subsequent reads from it will return its default value.
   mutating func clearConfigDfsEnabled() {_uniqueStorage()._configDfsEnabled = nil}
 
   var configNetworkNameIsDefault: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configNetworkNameIsDefault ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configNetworkNameIsDefault ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configNetworkNameIsDefault = newValue}
   }
   /// Returns true if `configNetworkNameIsDefault` has been explicitly set.
-  var hasConfigNetworkNameIsDefault: Bool {return _storage._configNetworkNameIsDefault != nil}
+  var hasConfigNetworkNameIsDefault: Bool {_storage._configNetworkNameIsDefault != nil}
   /// Clears the value of `configNetworkNameIsDefault`. Subsequent reads from it will return its default value.
   mutating func clearConfigNetworkNameIsDefault() {_uniqueStorage()._configNetworkNameIsDefault = nil}
 
   /// NOTE: This field was marked as deprecated in the .proto file.
   var configRemoteSshEnabled: SwiftProtobuf.Google_Protobuf_BoolValue {
-    get {return _storage._configRemoteSshEnabled ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+    get {_storage._configRemoteSshEnabled ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._configRemoteSshEnabled = newValue}
   }
   /// Returns true if `configRemoteSshEnabled` has been explicitly set.
-  var hasConfigRemoteSshEnabled: Bool {return _storage._configRemoteSshEnabled != nil}
+  var hasConfigRemoteSshEnabled: Bool {_storage._configRemoteSshEnabled != nil}
   /// Clears the value of `configRemoteSshEnabled`. Subsequent reads from it will return its default value.
   mutating func clearConfigRemoteSshEnabled() {_uniqueStorage()._configRemoteSshEnabled = nil}
 
@@ -6021,7 +7697,7 @@ struct SpaceX_API_Device_starlink_router_hourly_metrics_v2: @unchecked Sendable 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-struct SpaceX_API_Device_WifiGuestInfoRequest: Sendable {
+nonisolated struct SpaceX_API_Device_WifiGuestInfoRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -6031,7 +7707,7 @@ struct SpaceX_API_Device_WifiGuestInfoRequest: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiGuestInfoResponse: Sendable {
+nonisolated struct SpaceX_API_Device_WifiGuestInfoResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -6051,7 +7727,7 @@ struct SpaceX_API_Device_WifiGuestInfoResponse: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiFactoryTestCommandRequest: Sendable {
+nonisolated struct SpaceX_API_Device_WifiFactoryTestCommandRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -6084,7 +7760,7 @@ struct SpaceX_API_Device_WifiFactoryTestCommandRequest: Sendable {
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  enum OneOf_Command: Equatable, Sendable {
+  nonisolated enum OneOf_Command: Equatable, Sendable {
     case iwprivCommand(SpaceX_API_Device_IwprivCommand)
     case ipLinkSetCommand(SpaceX_API_Device_IpLinkSetCommand)
     case ipAddrSetCommand(SpaceX_API_Device_IpAddrSetCommand)
@@ -6094,7 +7770,7 @@ struct SpaceX_API_Device_WifiFactoryTestCommandRequest: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiFactoryTestCommandResponse: Sendable {
+nonisolated struct SpaceX_API_Device_WifiFactoryTestCommandResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -6106,7 +7782,7 @@ struct SpaceX_API_Device_WifiFactoryTestCommandResponse: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_IwprivCommand: Sendable {
+nonisolated struct SpaceX_API_Device_IwprivCommand: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -6119,7 +7795,7 @@ struct SpaceX_API_Device_IwprivCommand: Sendable {
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  enum Ioctl: SwiftProtobuf.Enum, Swift.CaseIterable {
+  nonisolated enum Ioctl: SwiftProtobuf.Enum, Swift.CaseIterable {
     typealias RawValue = Int
     case set // = 0
     case e2P // = 1
@@ -6164,7 +7840,7 @@ struct SpaceX_API_Device_IwprivCommand: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_IpLinkSetCommand: Sendable {
+nonisolated struct SpaceX_API_Device_IpLinkSetCommand: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -6178,7 +7854,7 @@ struct SpaceX_API_Device_IpLinkSetCommand: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_IpAddrSetCommand: Sendable {
+nonisolated struct SpaceX_API_Device_IpAddrSetCommand: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -6194,7 +7870,7 @@ struct SpaceX_API_Device_IpAddrSetCommand: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiStartLocalTelemProxyRequest: Sendable {
+nonisolated struct SpaceX_API_Device_WifiStartLocalTelemProxyRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -6206,7 +7882,7 @@ struct SpaceX_API_Device_WifiStartLocalTelemProxyRequest: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiBackhaulStatsRequest: Sendable {
+nonisolated struct SpaceX_API_Device_WifiBackhaulStatsRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -6216,7 +7892,7 @@ struct SpaceX_API_Device_WifiBackhaulStatsRequest: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiBackhaulStatsResponse: Sendable {
+nonisolated struct SpaceX_API_Device_WifiBackhaulStatsResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -6236,7 +7912,7 @@ struct SpaceX_API_Device_WifiBackhaulStatsResponse: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiToggleUmbilicalModeRequest: Sendable {
+nonisolated struct SpaceX_API_Device_WifiToggleUmbilicalModeRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -6248,15 +7924,94 @@ struct SpaceX_API_Device_WifiToggleUmbilicalModeRequest: Sendable {
   init() {}
 }
 
+nonisolated struct SpaceX_API_Device_WifiUpdateResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var stats: SpaceX_API_Device_WifiSoftwareUpdateStats {
+    get {_stats ?? SpaceX_API_Device_WifiSoftwareUpdateStats()}
+    set {_stats = newValue}
+  }
+  /// Returns true if `stats` has been explicitly set.
+  var hasStats: Bool {self._stats != nil}
+  /// Clears the value of `stats`. Subsequent reads from it will return its default value.
+  mutating func clearStats() {self._stats = nil}
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  fileprivate var _stats: SpaceX_API_Device_WifiSoftwareUpdateStats? = nil
+}
+
+nonisolated struct SpaceX_API_Device_WifiRunDebugNetsysRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+nonisolated struct SpaceX_API_Device_WifiRunDebugNetsysResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+nonisolated struct SpaceX_API_Device_WifiResetEthPhyRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+nonisolated struct SpaceX_API_Device_WifiResetEthPhyResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+nonisolated struct SpaceX_API_Device_WifiFlushHardwareNatRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+nonisolated struct SpaceX_API_Device_WifiFlushHardwareNatResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "SpaceX.API.Device"
+fileprivate nonisolated let _protobuf_package = "SpaceX.API.Device"
 
-extension SpaceX_API_Device_WifiClients: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiClients: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiClients"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "clients"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}clients\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -6284,15 +8039,9 @@ extension SpaceX_API_Device_WifiClients: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension SpaceX_API_Device_ToController: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_ToController: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".ToController"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    4: .standard(proto: "api_version"),
-    1: .same(proto: "clients"),
-    2: .standard(proto: "mesh_join"),
-    3: .same(proto: "status"),
-    5: .same(proto: "speedtest"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}clients\0\u{3}mesh_join\0\u{1}status\0\u{3}api_version\0\u{1}speedtest\0\u{3}ready_for_multiple_networks\0\u{3}api_version_other_side\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -6353,6 +8102,8 @@ extension SpaceX_API_Device_ToController: SwiftProtobuf.Message, SwiftProtobuf._
           self.message = .speedtest(v)
         }
       }()
+      case 6: try { try decoder.decodeSingularBoolField(value: &self.readyForMultipleNetworks) }()
+      case 7: try { try decoder.decodeSingularInt32Field(value: &self.apiVersionOtherSide) }()
       default: break
       }
     }
@@ -6384,25 +8135,28 @@ extension SpaceX_API_Device_ToController: SwiftProtobuf.Message, SwiftProtobuf._
     try { if case .speedtest(let v)? = self.message {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
     } }()
+    if self.readyForMultipleNetworks != false {
+      try visitor.visitSingularBoolField(value: self.readyForMultipleNetworks, fieldNumber: 6)
+    }
+    if self.apiVersionOtherSide != 0 {
+      try visitor.visitSingularInt32Field(value: self.apiVersionOtherSide, fieldNumber: 7)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   static func ==(lhs: SpaceX_API_Device_ToController, rhs: SpaceX_API_Device_ToController) -> Bool {
     if lhs.apiVersion != rhs.apiVersion {return false}
+    if lhs.apiVersionOtherSide != rhs.apiVersionOtherSide {return false}
+    if lhs.readyForMultipleNetworks != rhs.readyForMultipleNetworks {return false}
     if lhs.message != rhs.message {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension SpaceX_API_Device_WifiMeshJoin: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiMeshJoin: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiMeshJoin"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "incarnation"),
-    2: .standard(proto: "hardware_version"),
-    3: .standard(proto: "supports_5ghz_high"),
-    4: .same(proto: "siteSurveyScan"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}incarnation\0\u{3}hardware_version\0\u{3}supports_5ghz_high\0\u{1}siteSurveyScan\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -6445,18 +8199,9 @@ extension SpaceX_API_Device_WifiMeshJoin: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension SpaceX_API_Device_WifiMeshStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiMeshStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiMeshStatus"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    5: .standard(proto: "software_version"),
-    6: .standard(proto: "mac_lan"),
-    7: .standard(proto: "source_mac_addresses"),
-    2: .same(proto: "clients"),
-    3: .standard(proto: "bss_list"),
-    4: .standard(proto: "hardware_version"),
-    8: .standard(proto: "backhaul_bssid"),
-    9: .standard(proto: "backhaul_est_preference"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}events\0\u{1}clients\0\u{3}bss_list\0\u{3}hardware_version\0\u{3}software_version\0\u{3}mac_lan\0\u{3}source_mac_addresses\0\u{3}backhaul_bssid\0\u{3}backhaul_est_preference\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -6464,6 +8209,7 @@ extension SpaceX_API_Device_WifiMeshStatus: SwiftProtobuf.Message, SwiftProtobuf
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.events) }()
       case 2: try { try decoder.decodeRepeatedMessageField(value: &self.clients) }()
       case 3: try { try decoder.decodeRepeatedMessageField(value: &self.bssList) }()
       case 4: try { try decoder.decodeSingularStringField(value: &self.hardwareVersion) }()
@@ -6478,6 +8224,9 @@ extension SpaceX_API_Device_WifiMeshStatus: SwiftProtobuf.Message, SwiftProtobuf
   }
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.events.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.events, fieldNumber: 1)
+    }
     if !self.clients.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.clients, fieldNumber: 2)
     }
@@ -6514,12 +8263,13 @@ extension SpaceX_API_Device_WifiMeshStatus: SwiftProtobuf.Message, SwiftProtobuf
     if lhs.hardwareVersion != rhs.hardwareVersion {return false}
     if lhs.backhaulBssid != rhs.backhaulBssid {return false}
     if lhs.backhaulEstPreference != rhs.backhaulEstPreference {return false}
+    if lhs.events != rhs.events {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension SpaceX_API_Device_MeshSpeedtestRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_MeshSpeedtestRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".MeshSpeedtestRequest"
   static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -6538,14 +8288,9 @@ extension SpaceX_API_Device_MeshSpeedtestRequest: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension SpaceX_API_Device_MeshSpeedtest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_MeshSpeedtest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".MeshSpeedtest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "upload_start_time"),
-    2: .standard(proto: "download_start_time"),
-    3: .standard(proto: "upload_mbps"),
-    4: .standard(proto: "download_mbps"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}upload_start_time\0\u{3}download_start_time\0\u{3}upload_mbps\0\u{3}download_mbps\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -6588,18 +8333,9 @@ extension SpaceX_API_Device_MeshSpeedtest: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension SpaceX_API_Device_WifiSiteSurveyResult: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiSiteSurveyResult: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiSiteSurveyResult"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "rssi"),
-    2: .same(proto: "channel"),
-    3: .same(proto: "ssid"),
-    4: .same(proto: "security"),
-    5: .standard(proto: "wireless_mode"),
-    6: .same(proto: "iface"),
-    7: .standard(proto: "mac_address"),
-    8: .standard(proto: "est_rx_rate"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}rssi\0\u{1}channel\0\u{1}ssid\0\u{1}security\0\u{3}wireless_mode\0\u{1}iface\0\u{3}mac_address\0\u{3}est_rx_rate\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -6662,13 +8398,9 @@ extension SpaceX_API_Device_WifiSiteSurveyResult: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension SpaceX_API_Device_WifiGlobalMeshStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiGlobalMeshStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiGlobalMeshStatus"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "hardware_version"),
-    2: .standard(proto: "software_version"),
-    3: .standard(proto: "bss_list"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}hardware_version\0\u{3}software_version\0\u{3}bss_list\0\u{3}hops_from_controller\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -6679,6 +8411,7 @@ extension SpaceX_API_Device_WifiGlobalMeshStatus: SwiftProtobuf.Message, SwiftPr
       case 1: try { try decoder.decodeSingularStringField(value: &self.hardwareVersion) }()
       case 2: try { try decoder.decodeSingularStringField(value: &self.softwareVersion) }()
       case 3: try { try decoder.decodeRepeatedMessageField(value: &self.bssList) }()
+      case 4: try { try decoder.decodeSingularUInt32Field(value: &self.hopsFromController) }()
       default: break
       }
     }
@@ -6694,6 +8427,9 @@ extension SpaceX_API_Device_WifiGlobalMeshStatus: SwiftProtobuf.Message, SwiftPr
     if !self.bssList.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.bssList, fieldNumber: 3)
     }
+    if self.hopsFromController != 0 {
+      try visitor.visitSingularUInt32Field(value: self.hopsFromController, fieldNumber: 4)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -6701,17 +8437,15 @@ extension SpaceX_API_Device_WifiGlobalMeshStatus: SwiftProtobuf.Message, SwiftPr
     if lhs.hardwareVersion != rhs.hardwareVersion {return false}
     if lhs.softwareVersion != rhs.softwareVersion {return false}
     if lhs.bssList != rhs.bssList {return false}
+    if lhs.hopsFromController != rhs.hopsFromController {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension SpaceX_API_Device_BackhaulRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_BackhaulRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".BackhaulRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "retry_backhaul"),
-    2: .standard(proto: "golden_bss"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}retry_backhaul\0\u{3}golden_bss\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -6748,17 +8482,9 @@ extension SpaceX_API_Device_BackhaulRequest: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension SpaceX_API_Device_FromController: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_FromController: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".FromController"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    3: .standard(proto: "api_version"),
-    1: .standard(proto: "wifi_config"),
-    2: .standard(proto: "steer_client_request"),
-    4: .same(proto: "status"),
-    5: .standard(proto: "backhaul_request"),
-    6: .standard(proto: "start_speedtest"),
-    7: .standard(proto: "wifi_btm_request"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}wifi_config\0\u{3}steer_client_request\0\u{3}api_version\0\u{1}status\0\u{3}backhaul_request\0\u{3}start_speedtest\0\u{3}wifi_btm_request\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -6899,12 +8625,9 @@ extension SpaceX_API_Device_FromController: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension SpaceX_API_Device_SteerClientRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_SteerClientRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".SteerClientRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "client_mac_addr"),
-    2: .same(proto: "targets"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}client_mac_addr\0\u{1}targets\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -6937,12 +8660,9 @@ extension SpaceX_API_Device_SteerClientRequest: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension SpaceX_API_Device_SteerClientRequest.SteerTarget: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_SteerClientRequest.SteerTarget: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = SpaceX_API_Device_SteerClientRequest.protoMessageName + ".SteerTarget"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "bssid"),
-    2: .same(proto: "channel"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}bssid\0\u{1}channel\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -6975,13 +8695,9 @@ extension SpaceX_API_Device_SteerClientRequest.SteerTarget: SwiftProtobuf.Messag
   }
 }
 
-extension SpaceX_API_Device_WifiBtmRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiBtmRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiBtmRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    5: .standard(proto: "bss_termination_duration_m"),
-    1: .standard(proto: "peer_bssid"),
-    4: .standard(proto: "neighbor_report"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}peer_bssid\0\u{4}\u{3}neighbor_report\0\u{3}bss_termination_duration_m\0\u{b}request_mode\0\u{b}termination_duration\0\u{c}\u{2}\u{1}\u{c}\u{3}\u{1}")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -7019,12 +8735,9 @@ extension SpaceX_API_Device_WifiBtmRequest: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension SpaceX_API_Device_WifiBtmRequest.NeighborReport: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiBtmRequest.NeighborReport: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = SpaceX_API_Device_WifiBtmRequest.protoMessageName + ".NeighborReport"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "bssid"),
-    2: .same(proto: "channel"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}bssid\0\u{1}channel\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -7057,15 +8770,9 @@ extension SpaceX_API_Device_WifiBtmRequest.NeighborReport: SwiftProtobuf.Message
   }
 }
 
-extension SpaceX_API_Device_WifiSelfTest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiSelfTest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiSelfTest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "total_success"),
-    2: .same(proto: "fused"),
-    3: .standard(proto: "eth_phys"),
-    4: .same(proto: "pcis"),
-    5: .standard(proto: "bl2_prod"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}total_success\0\u{1}fused\0\u{3}eth_phys\0\u{1}pcis\0\u{3}bl2_prod\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -7117,13 +8824,9 @@ extension SpaceX_API_Device_WifiSelfTest: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension SpaceX_API_Device_WifiSelfTest.TestResult: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiSelfTest.TestResult: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = SpaceX_API_Device_WifiSelfTest.protoMessageName + ".TestResult"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "name"),
-    2: .same(proto: "success"),
-    3: .standard(proto: "failure_reason"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}name\0\u{1}success\0\u{3}failure_reason\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -7161,11 +8864,9 @@ extension SpaceX_API_Device_WifiSelfTest.TestResult: SwiftProtobuf.Message, Swif
   }
 }
 
-extension SpaceX_API_Device_WifiSetConfigRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiSetConfigRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiSetConfigRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "wifi_config"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}wifi_config\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -7197,11 +8898,9 @@ extension SpaceX_API_Device_WifiSetConfigRequest: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension SpaceX_API_Device_WifiSetConfigResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiSetConfigResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiSetConfigResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "updated_wifi_config"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}updated_wifi_config\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -7233,7 +8932,7 @@ extension SpaceX_API_Device_WifiSetConfigResponse: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension SpaceX_API_Device_WifiGetConfigRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiGetConfigRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiGetConfigRequest"
   static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -7252,11 +8951,9 @@ extension SpaceX_API_Device_WifiGetConfigRequest: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension SpaceX_API_Device_WifiGetConfigResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiGetConfigResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiGetConfigResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "wifi_config"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}wifi_config\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -7288,12 +8985,9 @@ extension SpaceX_API_Device_WifiGetConfigResponse: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension SpaceX_API_Device_WifiSetMeshDeviceTrustRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiSetMeshDeviceTrustRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiSetMeshDeviceTrustRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "device_id"),
-    2: .same(proto: "auth"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}device_id\0\u{1}auth\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -7326,7 +9020,7 @@ extension SpaceX_API_Device_WifiSetMeshDeviceTrustRequest: SwiftProtobuf.Message
   }
 }
 
-extension SpaceX_API_Device_WifiSetMeshDeviceTrustResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiSetMeshDeviceTrustResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiSetMeshDeviceTrustResponse"
   static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -7345,12 +9039,9 @@ extension SpaceX_API_Device_WifiSetMeshDeviceTrustResponse: SwiftProtobuf.Messag
   }
 }
 
-extension SpaceX_API_Device_WifiSetMeshConfigRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiSetMeshConfigRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiSetMeshConfigRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "mesh_config"),
-    2: .standard(proto: "device_id"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}mesh_config\0\u{3}device_id\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -7387,7 +9078,7 @@ extension SpaceX_API_Device_WifiSetMeshConfigRequest: SwiftProtobuf.Message, Swi
   }
 }
 
-extension SpaceX_API_Device_WifiSetMeshConfigResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiSetMeshConfigResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiSetMeshConfigResponse"
   static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -7406,7 +9097,7 @@ extension SpaceX_API_Device_WifiSetMeshConfigResponse: SwiftProtobuf.Message, Sw
   }
 }
 
-extension SpaceX_API_Device_WifiGetClientsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiGetClientsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiGetClientsRequest"
   static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -7425,13 +9116,9 @@ extension SpaceX_API_Device_WifiGetClientsRequest: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension SpaceX_API_Device_WifiGetClientsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiGetClientsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiGetClientsResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "clients"),
-    2: .standard(proto: "has_client_index"),
-    3: .standard(proto: "client_index"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}clients\0\u{3}has_client_index\0\u{3}client_index\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -7469,12 +9156,9 @@ extension SpaceX_API_Device_WifiGetClientsResponse: SwiftProtobuf.Message, Swift
   }
 }
 
-extension SpaceX_API_Device_WifiGetClientHistoryRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiGetClientHistoryRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiGetClientHistoryRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "mac_address"),
-    2: .standard(proto: "client_id"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}mac_address\0\u{3}client_id\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -7507,16 +9191,9 @@ extension SpaceX_API_Device_WifiGetClientHistoryRequest: SwiftProtobuf.Message, 
   }
 }
 
-extension SpaceX_API_Device_WifiGetClientHistoryResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiGetClientHistoryResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiGetClientHistoryResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "current"),
-    2: .standard(proto: "tx_throughput_mbps"),
-    3: .standard(proto: "rx_throughput_mbps"),
-    4: .standard(proto: "throughput_limited"),
-    5: .standard(proto: "rx_rate_mbps"),
-    6: .same(proto: "rssi"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}current\0\u{3}tx_throughput_mbps\0\u{3}rx_throughput_mbps\0\u{3}throughput_limited\0\u{3}rx_rate_mbps\0\u{1}rssi\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -7569,16 +9246,11 @@ extension SpaceX_API_Device_WifiGetClientHistoryResponse: SwiftProtobuf.Message,
   }
 }
 
-extension SpaceX_API_Device_WifiGetClientHistoryResponse.WifiLimitedReason: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "LIMIT_UNKNOWN"),
-    1: .same(proto: "LIMIT_NONE"),
-    2: .same(proto: "LIMIT_UNCLASSIFIED"),
-    3: .same(proto: "LIMIT_DROPPED_PACKETS"),
-  ]
+nonisolated extension SpaceX_API_Device_WifiGetClientHistoryResponse.WifiLimitedReason: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0LIMIT_UNKNOWN\0\u{1}LIMIT_NONE\0\u{1}LIMIT_UNCLASSIFIED\0\u{1}LIMIT_DROPPED_PACKETS\0")
 }
 
-extension SpaceX_API_Device_WifiSetAviationConformedRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiSetAviationConformedRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiSetAviationConformedRequest"
   static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -7597,13 +9269,9 @@ extension SpaceX_API_Device_WifiSetAviationConformedRequest: SwiftProtobuf.Messa
   }
 }
 
-extension SpaceX_API_Device_WifiGetHistoryResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiGetHistoryResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiGetHistoryResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "current"),
-    1001: .standard(proto: "ping_drop_rate"),
-    1002: .standard(proto: "ping_latency_ms"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}current\0\u{3}current_index_15s\0\u{4}g\u{f}ping_drop_rate\0\u{3}ping_latency_ms\0\u{3}pop_ipv4_ping_drop_rate_last_15s\0\u{3}pop_ipv6_ping_drop_rate_last_15s\0\u{3}google_ipv4_ping_drop_rate_last_15s\0\u{3}google_ipv6_ping_drop_rate_last_15s\0\u{3}cloudflare_ipv4_ping_drop_rate_last_15s\0\u{3}cloudflare_ipv6_ping_drop_rate_last_15s\0\u{3}dns_resolver_drop_rate\0\u{3}event_log\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -7612,16 +9280,32 @@ extension SpaceX_API_Device_WifiGetHistoryResponse: SwiftProtobuf.Message, Swift
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularUInt64Field(value: &self.current) }()
+      case 2: try { try decoder.decodeSingularUInt64Field(value: &self.currentIndex15S) }()
       case 1001: try { try decoder.decodeRepeatedFloatField(value: &self.pingDropRate) }()
       case 1002: try { try decoder.decodeRepeatedFloatField(value: &self.pingLatencyMs) }()
+      case 1003: try { try decoder.decodeRepeatedFloatField(value: &self.popIpv4PingDropRateLast15S) }()
+      case 1004: try { try decoder.decodeRepeatedFloatField(value: &self.popIpv6PingDropRateLast15S) }()
+      case 1005: try { try decoder.decodeRepeatedFloatField(value: &self.googleIpv4PingDropRateLast15S) }()
+      case 1006: try { try decoder.decodeRepeatedFloatField(value: &self.googleIpv6PingDropRateLast15S) }()
+      case 1007: try { try decoder.decodeRepeatedFloatField(value: &self.cloudflareIpv4PingDropRateLast15S) }()
+      case 1008: try { try decoder.decodeRepeatedFloatField(value: &self.cloudflareIpv6PingDropRateLast15S) }()
+      case 1009: try { try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,SpaceX_API_Device_WifiGetHistoryResponse.DnsResolverHistory>.self, value: &self.dnsResolverDropRate) }()
+      case 1010: try { try decoder.decodeSingularMessageField(value: &self._eventLog) }()
       default: break
       }
     }
   }
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
     if self.current != 0 {
       try visitor.visitSingularUInt64Field(value: self.current, fieldNumber: 1)
+    }
+    if self.currentIndex15S != 0 {
+      try visitor.visitSingularUInt64Field(value: self.currentIndex15S, fieldNumber: 2)
     }
     if !self.pingDropRate.isEmpty {
       try visitor.visitPackedFloatField(value: self.pingDropRate, fieldNumber: 1001)
@@ -7629,6 +9313,30 @@ extension SpaceX_API_Device_WifiGetHistoryResponse: SwiftProtobuf.Message, Swift
     if !self.pingLatencyMs.isEmpty {
       try visitor.visitPackedFloatField(value: self.pingLatencyMs, fieldNumber: 1002)
     }
+    if !self.popIpv4PingDropRateLast15S.isEmpty {
+      try visitor.visitPackedFloatField(value: self.popIpv4PingDropRateLast15S, fieldNumber: 1003)
+    }
+    if !self.popIpv6PingDropRateLast15S.isEmpty {
+      try visitor.visitPackedFloatField(value: self.popIpv6PingDropRateLast15S, fieldNumber: 1004)
+    }
+    if !self.googleIpv4PingDropRateLast15S.isEmpty {
+      try visitor.visitPackedFloatField(value: self.googleIpv4PingDropRateLast15S, fieldNumber: 1005)
+    }
+    if !self.googleIpv6PingDropRateLast15S.isEmpty {
+      try visitor.visitPackedFloatField(value: self.googleIpv6PingDropRateLast15S, fieldNumber: 1006)
+    }
+    if !self.cloudflareIpv4PingDropRateLast15S.isEmpty {
+      try visitor.visitPackedFloatField(value: self.cloudflareIpv4PingDropRateLast15S, fieldNumber: 1007)
+    }
+    if !self.cloudflareIpv6PingDropRateLast15S.isEmpty {
+      try visitor.visitPackedFloatField(value: self.cloudflareIpv6PingDropRateLast15S, fieldNumber: 1008)
+    }
+    if !self.dnsResolverDropRate.isEmpty {
+      try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,SpaceX_API_Device_WifiGetHistoryResponse.DnsResolverHistory>.self, value: self.dnsResolverDropRate, fieldNumber: 1009)
+    }
+    try { if let v = self._eventLog {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1010)
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -7636,16 +9344,53 @@ extension SpaceX_API_Device_WifiGetHistoryResponse: SwiftProtobuf.Message, Swift
     if lhs.current != rhs.current {return false}
     if lhs.pingDropRate != rhs.pingDropRate {return false}
     if lhs.pingLatencyMs != rhs.pingLatencyMs {return false}
+    if lhs.currentIndex15S != rhs.currentIndex15S {return false}
+    if lhs.popIpv4PingDropRateLast15S != rhs.popIpv4PingDropRateLast15S {return false}
+    if lhs.popIpv6PingDropRateLast15S != rhs.popIpv6PingDropRateLast15S {return false}
+    if lhs.googleIpv4PingDropRateLast15S != rhs.googleIpv4PingDropRateLast15S {return false}
+    if lhs.googleIpv6PingDropRateLast15S != rhs.googleIpv6PingDropRateLast15S {return false}
+    if lhs.cloudflareIpv4PingDropRateLast15S != rhs.cloudflareIpv4PingDropRateLast15S {return false}
+    if lhs.cloudflareIpv6PingDropRateLast15S != rhs.cloudflareIpv6PingDropRateLast15S {return false}
+    if lhs.dnsResolverDropRate != rhs.dnsResolverDropRate {return false}
+    if lhs._eventLog != rhs._eventLog {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension SpaceX_API_Device_WifiNewClientConnectedEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiGetHistoryResponse.DnsResolverHistory: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = SpaceX_API_Device_WifiGetHistoryResponse.protoMessageName + ".DnsResolverHistory"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{4}\u{2}drop_rate_last_15s\0")
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 2: try { try decoder.decodeRepeatedFloatField(value: &self.dropRateLast15S) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.dropRateLast15S.isEmpty {
+      try visitor.visitPackedFloatField(value: self.dropRateLast15S, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: SpaceX_API_Device_WifiGetHistoryResponse.DnsResolverHistory, rhs: SpaceX_API_Device_WifiGetHistoryResponse.DnsResolverHistory) -> Bool {
+    if lhs.dropRateLast15S != rhs.dropRateLast15S {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension SpaceX_API_Device_WifiNewClientConnectedEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiNewClientConnectedEvent"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "client"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}client\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -7677,67 +9422,29 @@ extension SpaceX_API_Device_WifiNewClientConnectedEvent: SwiftProtobuf.Message, 
   }
 }
 
-extension SpaceX_API_Device_WifiClient: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiClient: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiClient"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "name"),
-    31: .standard(proto: "given_name"),
-    22: .same(proto: "domain"),
-    2: .standard(proto: "mac_address"),
-    3: .standard(proto: "ip_address"),
-    46: .standard(proto: "dhcp_lease_active"),
-    47: .standard(proto: "dhcp_lease_renewed"),
-    41: .standard(proto: "ipv6_addresses"),
-    4: .standard(proto: "signal_strength"),
-    12: .standard(proto: "channel_width"),
-    5: .standard(proto: "rx_stats"),
-    6: .standard(proto: "tx_stats"),
-    7: .standard(proto: "associated_time_s"),
-    45: .standard(proto: "no_data_idle_s"),
-    8: .standard(proto: "mode_str"),
-    9: .same(proto: "iface"),
-    26: .standard(proto: "iface_name"),
-    10: .same(proto: "snr"),
-    11: .same(proto: "psmode"),
-    13: .standard(proto: "upstream_mac_address"),
-    14: .same(proto: "role"),
-    15: .standard(proto: "device_id"),
-    16: .standard(proto: "swq_checks"),
-    17: .standard(proto: "swq_checks_non_empty"),
-    18: .standard(proto: "mib_steer_state"),
-    19: .standard(proto: "mib_steer_method"),
-    20: .standard(proto: "btm_requests"),
-    21: .standard(proto: "btm_requests_success"),
-    30: .standard(proto: "steer_state"),
-    27: .standard(proto: "steer_req_success_last_1h"),
-    28: .standard(proto: "steer_req_fail_last_1h"),
-    29: .standard(proto: "steer_req_fail_and_dissoc_last_1h"),
-    23: .standard(proto: "dot11v_support"),
-    32: .standard(proto: "hops_from_controller"),
-    33: .standard(proto: "est_tx_rate_mbps_from_controller"),
-    34: .standard(proto: "est_rx_rate_mbps_from_controller"),
-    37: .standard(proto: "hardware_version"),
-    38: .standard(proto: "software_version"),
-    39: .standard(proto: "api_version"),
-    40: .standard(proto: "ping_metrics"),
-    42: .same(proto: "blocked"),
-    43: .standard(proto: "client_id"),
-    44: .standard(proto: "fqcodel_info"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}name\0\u{3}mac_address\0\u{3}ip_address\0\u{3}signal_strength\0\u{3}rx_stats\0\u{3}tx_stats\0\u{3}associated_time_s\0\u{3}mode_str\0\u{1}iface\0\u{1}snr\0\u{1}psmode\0\u{3}channel_width\0\u{3}upstream_mac_address\0\u{1}role\0\u{3}device_id\0\u{3}swq_checks\0\u{3}swq_checks_non_empty\0\u{3}mib_steer_state\0\u{3}mib_steer_method\0\u{3}btm_requests\0\u{3}btm_requests_success\0\u{1}domain\0\u{3}dot11v_support\0\u{4}\u{3}iface_name\0\u{3}steer_req_success_last_1h\0\u{3}steer_req_fail_last_1h\0\u{3}steer_req_fail_and_dissoc_last_1h\0\u{3}steer_state\0\u{3}given_name\0\u{3}hops_from_controller\0\u{3}est_tx_rate_mbps_from_controller\0\u{3}est_rx_rate_mbps_from_controller\0\u{4}\u{3}hardware_version\0\u{3}software_version\0\u{3}api_version\0\u{3}ping_metrics\0\u{3}ipv6_addresses\0\u{1}blocked\0\u{3}client_id\0\u{3}fqcodel_info\0\u{3}no_data_idle_s\0\u{3}dhcp_lease_active\0\u{3}dhcp_lease_renewed\0\u{3}seconds_until_dhcp_lease_expires\0\u{3}dhcp_lease_found\0\u{2}\u{3}alerts\0\u{3}captive_client_id\0\u{3}upload_mb\0\u{3}download_mb\0\u{3}captive_state\0\u{3}sandbox_state\0\u{1}active\0\u{4}\u{2}rx_stats_valid\0\u{3}tx_stats_valid\0\u{2}\u{9}links\0\u{3}using_mlo\0\u{b}authorized\0\u{b}sandbox_client_id\0\u{c}2\u{1}\u{c}3\u{1}")
 
   fileprivate class _StorageClass {
+    var _links: [SpaceX_API_Device_WifiClient.Link] = []
+    var _usingMlo: Bool = false
     var _name: String = String()
     var _givenName: String = String()
     var _domain: String = String()
     var _macAddress: String = String()
     var _ipAddress: String = String()
+    var _dhcpLeaseFound: Bool = false
     var _dhcpLeaseActive: Bool = false
     var _dhcpLeaseRenewed: Bool = false
+    var _secondsUntilDhcpLeaseExpires: Float = 0
     var _ipv6Addresses: [String] = []
     var _signalStrength: Float = 0
     var _channelWidth: UInt32 = 0
     var _rxStats: SpaceX_API_Device_WifiClient.RxStats? = nil
+    var _rxStatsValid: Bool = false
     var _txStats: SpaceX_API_Device_WifiClient.TxStats? = nil
+    var _txStatsValid: Bool = false
     var _associatedTimeS: UInt32 = 0
     var _noDataIdleS: UInt32 = 0
     var _modeStr: String = String()
@@ -7768,33 +9475,42 @@ extension SpaceX_API_Device_WifiClient: SwiftProtobuf.Message, SwiftProtobuf._Me
     var _pingMetrics: SpaceX_API_Device_WifiClient.PingMetrics? = nil
     var _blocked: Bool = false
     var _clientID: UInt32 = 0
+    var _captiveClientID: String = String()
+    var _captiveState: SpaceX_API_Device_WifiClient.CaptiveState = .notConfigured
+    var _sandboxState: SpaceX_API_Device_WifiClient.SandboxState = .notConfigured
     var _fqcodelInfo: SpaceX_API_Device_WifiClient.FqcodelInfo? = nil
+    var _alerts: SpaceX_API_Device_WifiClient.Alerts? = nil
+    var _uploadMb: UInt32 = 0
+    var _downloadMb: UInt32 = 0
+    var _active: Bool = false
 
-    #if swift(>=5.10)
       // This property is used as the initial default value for new instances of the type.
       // The type itself is protecting the reference to its storage via CoW semantics.
       // This will force a copy to be made of this reference when the first mutation occurs;
       // hence, it is safe to mark this as `nonisolated(unsafe)`.
       static nonisolated(unsafe) let defaultInstance = _StorageClass()
-    #else
-      static let defaultInstance = _StorageClass()
-    #endif
 
     private init() {}
 
     init(copying source: _StorageClass) {
+      _links = source._links
+      _usingMlo = source._usingMlo
       _name = source._name
       _givenName = source._givenName
       _domain = source._domain
       _macAddress = source._macAddress
       _ipAddress = source._ipAddress
+      _dhcpLeaseFound = source._dhcpLeaseFound
       _dhcpLeaseActive = source._dhcpLeaseActive
       _dhcpLeaseRenewed = source._dhcpLeaseRenewed
+      _secondsUntilDhcpLeaseExpires = source._secondsUntilDhcpLeaseExpires
       _ipv6Addresses = source._ipv6Addresses
       _signalStrength = source._signalStrength
       _channelWidth = source._channelWidth
       _rxStats = source._rxStats
+      _rxStatsValid = source._rxStatsValid
       _txStats = source._txStats
+      _txStatsValid = source._txStatsValid
       _associatedTimeS = source._associatedTimeS
       _noDataIdleS = source._noDataIdleS
       _modeStr = source._modeStr
@@ -7825,7 +9541,14 @@ extension SpaceX_API_Device_WifiClient: SwiftProtobuf.Message, SwiftProtobuf._Me
       _pingMetrics = source._pingMetrics
       _blocked = source._blocked
       _clientID = source._clientID
+      _captiveClientID = source._captiveClientID
+      _captiveState = source._captiveState
+      _sandboxState = source._sandboxState
       _fqcodelInfo = source._fqcodelInfo
+      _alerts = source._alerts
+      _uploadMb = source._uploadMb
+      _downloadMb = source._downloadMb
+      _active = source._active
     }
   }
 
@@ -7887,6 +9610,19 @@ extension SpaceX_API_Device_WifiClient: SwiftProtobuf.Message, SwiftProtobuf._Me
         case 45: try { try decoder.decodeSingularUInt32Field(value: &_storage._noDataIdleS) }()
         case 46: try { try decoder.decodeSingularBoolField(value: &_storage._dhcpLeaseActive) }()
         case 47: try { try decoder.decodeSingularBoolField(value: &_storage._dhcpLeaseRenewed) }()
+        case 48: try { try decoder.decodeSingularFloatField(value: &_storage._secondsUntilDhcpLeaseExpires) }()
+        case 49: try { try decoder.decodeSingularBoolField(value: &_storage._dhcpLeaseFound) }()
+        case 52: try { try decoder.decodeSingularMessageField(value: &_storage._alerts) }()
+        case 53: try { try decoder.decodeSingularStringField(value: &_storage._captiveClientID) }()
+        case 54: try { try decoder.decodeSingularUInt32Field(value: &_storage._uploadMb) }()
+        case 55: try { try decoder.decodeSingularUInt32Field(value: &_storage._downloadMb) }()
+        case 56: try { try decoder.decodeSingularEnumField(value: &_storage._captiveState) }()
+        case 57: try { try decoder.decodeSingularEnumField(value: &_storage._sandboxState) }()
+        case 58: try { try decoder.decodeSingularBoolField(value: &_storage._active) }()
+        case 60: try { try decoder.decodeSingularBoolField(value: &_storage._rxStatsValid) }()
+        case 61: try { try decoder.decodeSingularBoolField(value: &_storage._txStatsValid) }()
+        case 70: try { try decoder.decodeRepeatedMessageField(value: &_storage._links) }()
+        case 71: try { try decoder.decodeSingularBoolField(value: &_storage._usingMlo) }()
         default: break
         }
       }
@@ -8028,6 +9764,45 @@ extension SpaceX_API_Device_WifiClient: SwiftProtobuf.Message, SwiftProtobuf._Me
       if _storage._dhcpLeaseRenewed != false {
         try visitor.visitSingularBoolField(value: _storage._dhcpLeaseRenewed, fieldNumber: 47)
       }
+      if _storage._secondsUntilDhcpLeaseExpires.bitPattern != 0 {
+        try visitor.visitSingularFloatField(value: _storage._secondsUntilDhcpLeaseExpires, fieldNumber: 48)
+      }
+      if _storage._dhcpLeaseFound != false {
+        try visitor.visitSingularBoolField(value: _storage._dhcpLeaseFound, fieldNumber: 49)
+      }
+      try { if let v = _storage._alerts {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 52)
+      } }()
+      if !_storage._captiveClientID.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._captiveClientID, fieldNumber: 53)
+      }
+      if _storage._uploadMb != 0 {
+        try visitor.visitSingularUInt32Field(value: _storage._uploadMb, fieldNumber: 54)
+      }
+      if _storage._downloadMb != 0 {
+        try visitor.visitSingularUInt32Field(value: _storage._downloadMb, fieldNumber: 55)
+      }
+      if _storage._captiveState != .notConfigured {
+        try visitor.visitSingularEnumField(value: _storage._captiveState, fieldNumber: 56)
+      }
+      if _storage._sandboxState != .notConfigured {
+        try visitor.visitSingularEnumField(value: _storage._sandboxState, fieldNumber: 57)
+      }
+      if _storage._active != false {
+        try visitor.visitSingularBoolField(value: _storage._active, fieldNumber: 58)
+      }
+      if _storage._rxStatsValid != false {
+        try visitor.visitSingularBoolField(value: _storage._rxStatsValid, fieldNumber: 60)
+      }
+      if _storage._txStatsValid != false {
+        try visitor.visitSingularBoolField(value: _storage._txStatsValid, fieldNumber: 61)
+      }
+      if !_storage._links.isEmpty {
+        try visitor.visitRepeatedMessageField(value: _storage._links, fieldNumber: 70)
+      }
+      if _storage._usingMlo != false {
+        try visitor.visitSingularBoolField(value: _storage._usingMlo, fieldNumber: 71)
+      }
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -8037,18 +9812,24 @@ extension SpaceX_API_Device_WifiClient: SwiftProtobuf.Message, SwiftProtobuf._Me
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
         let rhs_storage = _args.1
+        if _storage._links != rhs_storage._links {return false}
+        if _storage._usingMlo != rhs_storage._usingMlo {return false}
         if _storage._name != rhs_storage._name {return false}
         if _storage._givenName != rhs_storage._givenName {return false}
         if _storage._domain != rhs_storage._domain {return false}
         if _storage._macAddress != rhs_storage._macAddress {return false}
         if _storage._ipAddress != rhs_storage._ipAddress {return false}
+        if _storage._dhcpLeaseFound != rhs_storage._dhcpLeaseFound {return false}
         if _storage._dhcpLeaseActive != rhs_storage._dhcpLeaseActive {return false}
         if _storage._dhcpLeaseRenewed != rhs_storage._dhcpLeaseRenewed {return false}
+        if _storage._secondsUntilDhcpLeaseExpires != rhs_storage._secondsUntilDhcpLeaseExpires {return false}
         if _storage._ipv6Addresses != rhs_storage._ipv6Addresses {return false}
         if _storage._signalStrength != rhs_storage._signalStrength {return false}
         if _storage._channelWidth != rhs_storage._channelWidth {return false}
         if _storage._rxStats != rhs_storage._rxStats {return false}
+        if _storage._rxStatsValid != rhs_storage._rxStatsValid {return false}
         if _storage._txStats != rhs_storage._txStats {return false}
+        if _storage._txStatsValid != rhs_storage._txStatsValid {return false}
         if _storage._associatedTimeS != rhs_storage._associatedTimeS {return false}
         if _storage._noDataIdleS != rhs_storage._noDataIdleS {return false}
         if _storage._modeStr != rhs_storage._modeStr {return false}
@@ -8079,7 +9860,14 @@ extension SpaceX_API_Device_WifiClient: SwiftProtobuf.Message, SwiftProtobuf._Me
         if _storage._pingMetrics != rhs_storage._pingMetrics {return false}
         if _storage._blocked != rhs_storage._blocked {return false}
         if _storage._clientID != rhs_storage._clientID {return false}
+        if _storage._captiveClientID != rhs_storage._captiveClientID {return false}
+        if _storage._captiveState != rhs_storage._captiveState {return false}
+        if _storage._sandboxState != rhs_storage._sandboxState {return false}
         if _storage._fqcodelInfo != rhs_storage._fqcodelInfo {return false}
+        if _storage._alerts != rhs_storage._alerts {return false}
+        if _storage._uploadMb != rhs_storage._uploadMb {return false}
+        if _storage._downloadMb != rhs_storage._downloadMb {return false}
+        if _storage._active != rhs_storage._active {return false}
         return true
       }
       if !storagesAreEqual {return false}
@@ -8089,150 +9877,203 @@ extension SpaceX_API_Device_WifiClient: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension SpaceX_API_Device_WifiClient.Interface: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "UNKNOWN"),
-    1: .same(proto: "ETH"),
-    2: .same(proto: "RF_2GHZ"),
-    3: .same(proto: "RF_5GHZ"),
-    4: .same(proto: "RF_5GHZ_HIGH"),
-  ]
+nonisolated extension SpaceX_API_Device_WifiClient.Interface: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0UNKNOWN\0\u{1}ETH\0\u{1}RF_2GHZ\0\u{1}RF_5GHZ\0\u{1}RF_5GHZ_HIGH\0")
 }
 
-extension SpaceX_API_Device_WifiClient.Role: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "ROLE_UNKNOWN"),
-    1: .same(proto: "CLIENT"),
-    2: .same(proto: "REPEATER"),
-    3: .same(proto: "CONTROLLER"),
-  ]
+nonisolated extension SpaceX_API_Device_WifiClient.Role: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0ROLE_UNKNOWN\0\u{1}CLIENT\0\u{1}REPEATER\0\u{1}CONTROLLER\0")
 }
 
-extension SpaceX_API_Device_WifiClient.RxStats: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiClient.CaptiveState: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0CAPTIVE_STATE_NOT_CONFIGURED\0\u{1}CAPTIVE_STATE_UNKNOWN\0\u{1}CAPTIVE_STATE_CAPTIVE\0\u{1}CAPTIVE_STATE_NOT_CAPTIVE\0\u{1}CAPTIVE_STATE_PARTIALLY_CAPTIVE\0")
+}
+
+nonisolated extension SpaceX_API_Device_WifiClient.SandboxState: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SANDBOX_STATE_NOT_CONFIGURED\0\u{1}SANDBOX_STATE_UNKNOWN\0\u{1}SANDBOX_STATE_SANDBOXED\0\u{1}SANDBOX_STATE_UNSANDBOXED\0\u{1}SANDBOX_STATE_PARTIALLY_SANDBOXED\0")
+}
+
+nonisolated extension SpaceX_API_Device_WifiClient.RxStats: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = SpaceX_API_Device_WifiClient.protoMessageName + ".RxStats"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "bytes"),
-    2: .standard(proto: "count_errors"),
-    13: .standard(proto: "phy_mode"),
-    3: .same(proto: "nss"),
-    8: .standard(proto: "rate_mbps"),
-    14: .standard(proto: "rate_mbps_last_30s"),
-    15: .standard(proto: "rate_mbps_last_15s"),
-    5: .same(proto: "mcs"),
-    6: .same(proto: "bandwidth"),
-    7: .standard(proto: "guard_ns"),
-    9: .standard(proto: "airtime_fraction_last_1s"),
-    10: .standard(proto: "sampled_packets"),
-    11: .standard(proto: "sampled_packets_retried"),
-    12: .standard(proto: "sampled_packets_dropped"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}bytes\0\u{3}count_errors\0\u{1}nss\0\u{2}\u{2}mcs\0\u{1}bandwidth\0\u{3}guard_ns\0\u{3}rate_mbps\0\u{3}airtime_fraction_last_1s\0\u{3}sampled_packets\0\u{3}sampled_packets_retried\0\u{3}sampled_packets_dropped\0\u{3}phy_mode\0\u{3}rate_mbps_last_30s\0\u{3}rate_mbps_last_15s\0\u{3}rate_mbps_last_1m_avg\0\u{3}throughput_mbps_last_1m_avg\0\u{3}throughput_mbps_last_15s_avg\0\u{c}\u{4}\u{1}")
+
+  fileprivate class _StorageClass {
+    var _bytes: UInt64 = 0
+    var _countErrors: UInt64 = 0
+    var _phyMode: UInt32 = 0
+    var _nss: Int32 = 0
+    var _rateMbps: UInt32 = 0
+    var _rateMbpsLast30S: Float = 0
+    var _rateMbpsLast15S: Float = 0
+    var _rateMbpsLast1MAvg: Float = 0
+    var _throughputMbpsLast1MAvg: Float = 0
+    var _throughputMbpsLast15SAvg: Float = 0
+    var _mcs: UInt32 = 0
+    var _bandwidth: UInt32 = 0
+    var _guardNs: UInt32 = 0
+    var _airtimeFractionLast1S: Float = 0
+    var _sampledPackets: UInt32 = 0
+    var _sampledPacketsRetried: UInt32 = 0
+    var _sampledPacketsDropped: UInt32 = 0
+
+      // This property is used as the initial default value for new instances of the type.
+      // The type itself is protecting the reference to its storage via CoW semantics.
+      // This will force a copy to be made of this reference when the first mutation occurs;
+      // hence, it is safe to mark this as `nonisolated(unsafe)`.
+      static nonisolated(unsafe) let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _bytes = source._bytes
+      _countErrors = source._countErrors
+      _phyMode = source._phyMode
+      _nss = source._nss
+      _rateMbps = source._rateMbps
+      _rateMbpsLast30S = source._rateMbpsLast30S
+      _rateMbpsLast15S = source._rateMbpsLast15S
+      _rateMbpsLast1MAvg = source._rateMbpsLast1MAvg
+      _throughputMbpsLast1MAvg = source._throughputMbpsLast1MAvg
+      _throughputMbpsLast15SAvg = source._throughputMbpsLast15SAvg
+      _mcs = source._mcs
+      _bandwidth = source._bandwidth
+      _guardNs = source._guardNs
+      _airtimeFractionLast1S = source._airtimeFractionLast1S
+      _sampledPackets = source._sampledPackets
+      _sampledPacketsRetried = source._sampledPacketsRetried
+      _sampledPacketsDropped = source._sampledPacketsDropped
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      // The use of inline closures is to circumvent an issue where the compiler
-      // allocates stack space for every case branch when no optimizations are
-      // enabled. https://github.com/apple/swift-protobuf/issues/1034
-      switch fieldNumber {
-      case 1: try { try decoder.decodeSingularUInt64Field(value: &self.bytes) }()
-      case 2: try { try decoder.decodeSingularUInt64Field(value: &self.countErrors) }()
-      case 3: try { try decoder.decodeSingularInt32Field(value: &self.nss) }()
-      case 5: try { try decoder.decodeSingularUInt32Field(value: &self.mcs) }()
-      case 6: try { try decoder.decodeSingularUInt32Field(value: &self.bandwidth) }()
-      case 7: try { try decoder.decodeSingularUInt32Field(value: &self.guardNs) }()
-      case 8: try { try decoder.decodeSingularUInt32Field(value: &self.rateMbps) }()
-      case 9: try { try decoder.decodeSingularFloatField(value: &self.airtimeFractionLast1S) }()
-      case 10: try { try decoder.decodeSingularUInt32Field(value: &self.sampledPackets) }()
-      case 11: try { try decoder.decodeSingularUInt32Field(value: &self.sampledPacketsRetried) }()
-      case 12: try { try decoder.decodeSingularUInt32Field(value: &self.sampledPacketsDropped) }()
-      case 13: try { try decoder.decodeSingularUInt32Field(value: &self.phyMode) }()
-      case 14: try { try decoder.decodeSingularFloatField(value: &self.rateMbpsLast30S) }()
-      case 15: try { try decoder.decodeSingularFloatField(value: &self.rateMbpsLast15S) }()
-      default: break
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        // The use of inline closures is to circumvent an issue where the compiler
+        // allocates stack space for every case branch when no optimizations are
+        // enabled. https://github.com/apple/swift-protobuf/issues/1034
+        switch fieldNumber {
+        case 1: try { try decoder.decodeSingularUInt64Field(value: &_storage._bytes) }()
+        case 2: try { try decoder.decodeSingularUInt64Field(value: &_storage._countErrors) }()
+        case 3: try { try decoder.decodeSingularInt32Field(value: &_storage._nss) }()
+        case 5: try { try decoder.decodeSingularUInt32Field(value: &_storage._mcs) }()
+        case 6: try { try decoder.decodeSingularUInt32Field(value: &_storage._bandwidth) }()
+        case 7: try { try decoder.decodeSingularUInt32Field(value: &_storage._guardNs) }()
+        case 8: try { try decoder.decodeSingularUInt32Field(value: &_storage._rateMbps) }()
+        case 9: try { try decoder.decodeSingularFloatField(value: &_storage._airtimeFractionLast1S) }()
+        case 10: try { try decoder.decodeSingularUInt32Field(value: &_storage._sampledPackets) }()
+        case 11: try { try decoder.decodeSingularUInt32Field(value: &_storage._sampledPacketsRetried) }()
+        case 12: try { try decoder.decodeSingularUInt32Field(value: &_storage._sampledPacketsDropped) }()
+        case 13: try { try decoder.decodeSingularUInt32Field(value: &_storage._phyMode) }()
+        case 14: try { try decoder.decodeSingularFloatField(value: &_storage._rateMbpsLast30S) }()
+        case 15: try { try decoder.decodeSingularFloatField(value: &_storage._rateMbpsLast15S) }()
+        case 16: try { try decoder.decodeSingularFloatField(value: &_storage._rateMbpsLast1MAvg) }()
+        case 17: try { try decoder.decodeSingularFloatField(value: &_storage._throughputMbpsLast1MAvg) }()
+        case 18: try { try decoder.decodeSingularFloatField(value: &_storage._throughputMbpsLast15SAvg) }()
+        default: break
+        }
       }
     }
   }
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if self.bytes != 0 {
-      try visitor.visitSingularUInt64Field(value: self.bytes, fieldNumber: 1)
-    }
-    if self.countErrors != 0 {
-      try visitor.visitSingularUInt64Field(value: self.countErrors, fieldNumber: 2)
-    }
-    if self.nss != 0 {
-      try visitor.visitSingularInt32Field(value: self.nss, fieldNumber: 3)
-    }
-    if self.mcs != 0 {
-      try visitor.visitSingularUInt32Field(value: self.mcs, fieldNumber: 5)
-    }
-    if self.bandwidth != 0 {
-      try visitor.visitSingularUInt32Field(value: self.bandwidth, fieldNumber: 6)
-    }
-    if self.guardNs != 0 {
-      try visitor.visitSingularUInt32Field(value: self.guardNs, fieldNumber: 7)
-    }
-    if self.rateMbps != 0 {
-      try visitor.visitSingularUInt32Field(value: self.rateMbps, fieldNumber: 8)
-    }
-    if self.airtimeFractionLast1S.bitPattern != 0 {
-      try visitor.visitSingularFloatField(value: self.airtimeFractionLast1S, fieldNumber: 9)
-    }
-    if self.sampledPackets != 0 {
-      try visitor.visitSingularUInt32Field(value: self.sampledPackets, fieldNumber: 10)
-    }
-    if self.sampledPacketsRetried != 0 {
-      try visitor.visitSingularUInt32Field(value: self.sampledPacketsRetried, fieldNumber: 11)
-    }
-    if self.sampledPacketsDropped != 0 {
-      try visitor.visitSingularUInt32Field(value: self.sampledPacketsDropped, fieldNumber: 12)
-    }
-    if self.phyMode != 0 {
-      try visitor.visitSingularUInt32Field(value: self.phyMode, fieldNumber: 13)
-    }
-    if self.rateMbpsLast30S.bitPattern != 0 {
-      try visitor.visitSingularFloatField(value: self.rateMbpsLast30S, fieldNumber: 14)
-    }
-    if self.rateMbpsLast15S.bitPattern != 0 {
-      try visitor.visitSingularFloatField(value: self.rateMbpsLast15S, fieldNumber: 15)
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      if _storage._bytes != 0 {
+        try visitor.visitSingularUInt64Field(value: _storage._bytes, fieldNumber: 1)
+      }
+      if _storage._countErrors != 0 {
+        try visitor.visitSingularUInt64Field(value: _storage._countErrors, fieldNumber: 2)
+      }
+      if _storage._nss != 0 {
+        try visitor.visitSingularInt32Field(value: _storage._nss, fieldNumber: 3)
+      }
+      if _storage._mcs != 0 {
+        try visitor.visitSingularUInt32Field(value: _storage._mcs, fieldNumber: 5)
+      }
+      if _storage._bandwidth != 0 {
+        try visitor.visitSingularUInt32Field(value: _storage._bandwidth, fieldNumber: 6)
+      }
+      if _storage._guardNs != 0 {
+        try visitor.visitSingularUInt32Field(value: _storage._guardNs, fieldNumber: 7)
+      }
+      if _storage._rateMbps != 0 {
+        try visitor.visitSingularUInt32Field(value: _storage._rateMbps, fieldNumber: 8)
+      }
+      if _storage._airtimeFractionLast1S.bitPattern != 0 {
+        try visitor.visitSingularFloatField(value: _storage._airtimeFractionLast1S, fieldNumber: 9)
+      }
+      if _storage._sampledPackets != 0 {
+        try visitor.visitSingularUInt32Field(value: _storage._sampledPackets, fieldNumber: 10)
+      }
+      if _storage._sampledPacketsRetried != 0 {
+        try visitor.visitSingularUInt32Field(value: _storage._sampledPacketsRetried, fieldNumber: 11)
+      }
+      if _storage._sampledPacketsDropped != 0 {
+        try visitor.visitSingularUInt32Field(value: _storage._sampledPacketsDropped, fieldNumber: 12)
+      }
+      if _storage._phyMode != 0 {
+        try visitor.visitSingularUInt32Field(value: _storage._phyMode, fieldNumber: 13)
+      }
+      if _storage._rateMbpsLast30S.bitPattern != 0 {
+        try visitor.visitSingularFloatField(value: _storage._rateMbpsLast30S, fieldNumber: 14)
+      }
+      if _storage._rateMbpsLast15S.bitPattern != 0 {
+        try visitor.visitSingularFloatField(value: _storage._rateMbpsLast15S, fieldNumber: 15)
+      }
+      if _storage._rateMbpsLast1MAvg.bitPattern != 0 {
+        try visitor.visitSingularFloatField(value: _storage._rateMbpsLast1MAvg, fieldNumber: 16)
+      }
+      if _storage._throughputMbpsLast1MAvg.bitPattern != 0 {
+        try visitor.visitSingularFloatField(value: _storage._throughputMbpsLast1MAvg, fieldNumber: 17)
+      }
+      if _storage._throughputMbpsLast15SAvg.bitPattern != 0 {
+        try visitor.visitSingularFloatField(value: _storage._throughputMbpsLast15SAvg, fieldNumber: 18)
+      }
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   static func ==(lhs: SpaceX_API_Device_WifiClient.RxStats, rhs: SpaceX_API_Device_WifiClient.RxStats) -> Bool {
-    if lhs.bytes != rhs.bytes {return false}
-    if lhs.countErrors != rhs.countErrors {return false}
-    if lhs.phyMode != rhs.phyMode {return false}
-    if lhs.nss != rhs.nss {return false}
-    if lhs.rateMbps != rhs.rateMbps {return false}
-    if lhs.rateMbpsLast30S != rhs.rateMbpsLast30S {return false}
-    if lhs.rateMbpsLast15S != rhs.rateMbpsLast15S {return false}
-    if lhs.mcs != rhs.mcs {return false}
-    if lhs.bandwidth != rhs.bandwidth {return false}
-    if lhs.guardNs != rhs.guardNs {return false}
-    if lhs.airtimeFractionLast1S != rhs.airtimeFractionLast1S {return false}
-    if lhs.sampledPackets != rhs.sampledPackets {return false}
-    if lhs.sampledPacketsRetried != rhs.sampledPacketsRetried {return false}
-    if lhs.sampledPacketsDropped != rhs.sampledPacketsDropped {return false}
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._bytes != rhs_storage._bytes {return false}
+        if _storage._countErrors != rhs_storage._countErrors {return false}
+        if _storage._phyMode != rhs_storage._phyMode {return false}
+        if _storage._nss != rhs_storage._nss {return false}
+        if _storage._rateMbps != rhs_storage._rateMbps {return false}
+        if _storage._rateMbpsLast30S != rhs_storage._rateMbpsLast30S {return false}
+        if _storage._rateMbpsLast15S != rhs_storage._rateMbpsLast15S {return false}
+        if _storage._rateMbpsLast1MAvg != rhs_storage._rateMbpsLast1MAvg {return false}
+        if _storage._throughputMbpsLast1MAvg != rhs_storage._throughputMbpsLast1MAvg {return false}
+        if _storage._throughputMbpsLast15SAvg != rhs_storage._throughputMbpsLast15SAvg {return false}
+        if _storage._mcs != rhs_storage._mcs {return false}
+        if _storage._bandwidth != rhs_storage._bandwidth {return false}
+        if _storage._guardNs != rhs_storage._guardNs {return false}
+        if _storage._airtimeFractionLast1S != rhs_storage._airtimeFractionLast1S {return false}
+        if _storage._sampledPackets != rhs_storage._sampledPackets {return false}
+        if _storage._sampledPacketsRetried != rhs_storage._sampledPacketsRetried {return false}
+        if _storage._sampledPacketsDropped != rhs_storage._sampledPacketsDropped {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension SpaceX_API_Device_WifiClient.TxStats: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiClient.TxStats: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = SpaceX_API_Device_WifiClient.protoMessageName + ".TxStats"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "bytes"),
-    2: .standard(proto: "success_bytes"),
-    10: .standard(proto: "phy_mode"),
-    3: .same(proto: "nss"),
-    8: .standard(proto: "rate_mbps"),
-    11: .standard(proto: "rate_mbps_last_30s"),
-    12: .standard(proto: "rate_mbps_last_15s"),
-    5: .same(proto: "mcs"),
-    6: .same(proto: "bandwidth"),
-    7: .standard(proto: "guard_ns"),
-    9: .standard(proto: "airtime_fraction_last_1s"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}bytes\0\u{3}success_bytes\0\u{1}nss\0\u{2}\u{2}mcs\0\u{1}bandwidth\0\u{3}guard_ns\0\u{3}rate_mbps\0\u{3}airtime_fraction_last_1s\0\u{3}phy_mode\0\u{3}rate_mbps_last_30s\0\u{3}rate_mbps_last_15s\0\u{3}throughput_mbps_last_15s_avg\0\u{c}\u{4}\u{1}")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -8251,6 +10092,7 @@ extension SpaceX_API_Device_WifiClient.TxStats: SwiftProtobuf.Message, SwiftProt
       case 10: try { try decoder.decodeSingularUInt32Field(value: &self.phyMode) }()
       case 11: try { try decoder.decodeSingularFloatField(value: &self.rateMbpsLast30S) }()
       case 12: try { try decoder.decodeSingularFloatField(value: &self.rateMbpsLast15S) }()
+      case 13: try { try decoder.decodeSingularFloatField(value: &self.throughputMbpsLast15SAvg) }()
       default: break
       }
     }
@@ -8290,6 +10132,9 @@ extension SpaceX_API_Device_WifiClient.TxStats: SwiftProtobuf.Message, SwiftProt
     if self.rateMbpsLast15S.bitPattern != 0 {
       try visitor.visitSingularFloatField(value: self.rateMbpsLast15S, fieldNumber: 12)
     }
+    if self.throughputMbpsLast15SAvg.bitPattern != 0 {
+      try visitor.visitSingularFloatField(value: self.throughputMbpsLast15SAvg, fieldNumber: 13)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -8305,19 +10150,69 @@ extension SpaceX_API_Device_WifiClient.TxStats: SwiftProtobuf.Message, SwiftProt
     if lhs.bandwidth != rhs.bandwidth {return false}
     if lhs.guardNs != rhs.guardNs {return false}
     if lhs.airtimeFractionLast1S != rhs.airtimeFractionLast1S {return false}
+    if lhs.throughputMbpsLast15SAvg != rhs.throughputMbpsLast15SAvg {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension SpaceX_API_Device_WifiClient.PingMetrics: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiClient.Link: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = SpaceX_API_Device_WifiClient.protoMessageName + ".Link"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}link_address\0\u{1}band\0\u{3}signal_strength\0\u{3}rx_stats\0\u{3}tx_stats\0")
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.linkAddress) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self.band) }()
+      case 3: try { try decoder.decodeSingularFloatField(value: &self.signalStrength) }()
+      case 4: try { try decoder.decodeSingularMessageField(value: &self._rxStats) }()
+      case 5: try { try decoder.decodeSingularMessageField(value: &self._txStats) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.linkAddress.isEmpty {
+      try visitor.visitSingularStringField(value: self.linkAddress, fieldNumber: 1)
+    }
+    if self.band != .unknown {
+      try visitor.visitSingularEnumField(value: self.band, fieldNumber: 2)
+    }
+    if self.signalStrength.bitPattern != 0 {
+      try visitor.visitSingularFloatField(value: self.signalStrength, fieldNumber: 3)
+    }
+    try { if let v = self._rxStats {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
+    } }()
+    try { if let v = self._txStats {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: SpaceX_API_Device_WifiClient.Link, rhs: SpaceX_API_Device_WifiClient.Link) -> Bool {
+    if lhs.linkAddress != rhs.linkAddress {return false}
+    if lhs.band != rhs.band {return false}
+    if lhs.signalStrength != rhs.signalStrength {return false}
+    if lhs._rxStats != rhs._rxStats {return false}
+    if lhs._txStats != rhs._txStats {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension SpaceX_API_Device_WifiClient.PingMetrics: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = SpaceX_API_Device_WifiClient.protoMessageName + ".PingMetrics"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "in_unhappy_hour_2s"),
-    2: .standard(proto: "in_unhappy_hour_5s"),
-    3: .standard(proto: "drop_rate_5m"),
-    4: .standard(proto: "latency_5m"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}in_unhappy_hour_2s\0\u{3}in_unhappy_hour_5s\0\u{3}drop_rate_5m\0\u{3}latency_5m\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -8360,21 +10255,9 @@ extension SpaceX_API_Device_WifiClient.PingMetrics: SwiftProtobuf.Message, Swift
   }
 }
 
-extension SpaceX_API_Device_WifiClient.FqcodelInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiClient.FqcodelInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = SpaceX_API_Device_WifiClient.protoMessageName + ".FqcodelInfo"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "enqs_hi_prio"),
-    2: .standard(proto: "enqs_fqcodel"),
-    3: .standard(proto: "enqs_new"),
-    4: .standard(proto: "enqs_old"),
-    5: .standard(proto: "enqs_dropped"),
-    6: .standard(proto: "deqs_new"),
-    7: .standard(proto: "deqs_old"),
-    8: .standard(proto: "deqs_flow_new"),
-    9: .standard(proto: "deqs_flow_old_deficit"),
-    10: .standard(proto: "deqs_flow_old_starvation"),
-    11: .standard(proto: "deqs_dropped"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}enqs_hi_prio\0\u{3}enqs_fqcodel\0\u{3}enqs_new\0\u{3}enqs_old\0\u{3}enqs_dropped\0\u{3}deqs_new\0\u{3}deqs_old\0\u{3}deqs_flow_new\0\u{3}deqs_flow_old_deficit\0\u{3}deqs_flow_old_starvation\0\u{3}deqs_dropped\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -8452,14 +10335,39 @@ extension SpaceX_API_Device_WifiClient.FqcodelInfo: SwiftProtobuf.Message, Swift
   }
 }
 
-extension SpaceX_API_Device_WifiSetupRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiClient.Alerts: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = SpaceX_API_Device_WifiClient.protoMessageName + ".Alerts"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}throughput_limited\0")
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularBoolField(value: &self.throughputLimited) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.throughputLimited != false {
+      try visitor.visitSingularBoolField(value: self.throughputLimited, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: SpaceX_API_Device_WifiClient.Alerts, rhs: SpaceX_API_Device_WifiClient.Alerts) -> Bool {
+    if lhs.throughputLimited != rhs.throughputLimited {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension SpaceX_API_Device_WifiSetupRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiSetupRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "skip"),
-    2: .standard(proto: "network_name"),
-    3: .standard(proto: "network_password"),
-    4: .same(proto: "bypass"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}skip\0\u{3}network_name\0\u{3}network_password\0\u{1}bypass\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -8502,7 +10410,7 @@ extension SpaceX_API_Device_WifiSetupRequest: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension SpaceX_API_Device_WifiSetupResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiSetupResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiSetupResponse"
   static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -8521,15 +10429,9 @@ extension SpaceX_API_Device_WifiSetupResponse: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension SpaceX_API_Device_WifiBandStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiBandStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiBandStatus"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "chan_busy_time_fraction"),
-    2: .standard(proto: "tx_air_time_fraction"),
-    3: .standard(proto: "rx_air_time_fraction"),
-    4: .standard(proto: "obss_air_time_fraction"),
-    5: .standard(proto: "edcca_air_time_fraction"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}chan_busy_time_fraction\0\u{3}tx_air_time_fraction\0\u{3}rx_air_time_fraction\0\u{3}obss_air_time_fraction\0\u{3}edcca_air_time_fraction\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -8577,161 +10479,215 @@ extension SpaceX_API_Device_WifiBandStatus: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension SpaceX_API_Device_WifiAlerts: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiAlerts: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiAlerts"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "thermal_throttle"),
-    2: .standard(proto: "install_pending"),
-    3: .standard(proto: "freshly_fused"),
-    4: .standard(proto: "lan_eth_slow_link_10"),
-    5: .standard(proto: "lan_eth_slow_link_100"),
-    10: .standard(proto: "wan_eth_poor_connection"),
-    11: .standard(proto: "mesh_topology_changing_often"),
-    12: .standard(proto: "mesh_unreliable_backhaul"),
-    13: .standard(proto: "radius_missing_process"),
-    14: .standard(proto: "eth_switch_error"),
-    15: .standard(proto: "poe_on_dish_unreachable"),
-    16: .standard(proto: "poe_fuse_blown"),
-    17: .standard(proto: "poe_router_overcurrent"),
-    18: .standard(proto: "poe_off_current_nominal"),
-    19: .standard(proto: "poe_vin_overvoltage"),
-    20: .standard(proto: "poe_vin_undervoltage"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}thermal_throttle\0\u{3}install_pending\0\u{3}freshly_fused\0\u{3}lan_eth_slow_link_10\0\u{3}lan_eth_slow_link_100\0\u{4}\u{5}wan_eth_poor_connection\0\u{3}mesh_topology_changing_often\0\u{3}mesh_unreliable_backhaul\0\u{3}radius_missing_process\0\u{3}eth_switch_error\0\u{3}poe_on_dish_unreachable\0\u{3}poe_fuse_blown\0\u{3}poe_router_overcurrent\0\u{3}poe_off_current_nominal\0\u{3}poe_vin_overvoltage\0\u{3}poe_vin_undervoltage\0\u{3}high_cable_ping_drop_rate\0\u{3}sandbox_disabled\0\u{3}only_overflight_blocked\0\u{3}offline_networks_disabled\0\u{3}wired_mesh_not_using_wan_iface\0\u{b}inconsistent_2ghz_antennae_performance_15db\0\u{b}inconsistent_5ghz_antennae_performance_15db\0\u{b}poor_2ghz_antennae_performance_80db\0\u{b}poor_5ghz_antennae_performance_80db\0\u{c}\u{6}\u{1}\u{c}\u{7}\u{1}\u{c}\u{8}\u{1}\u{c}\u{9}\u{1}")
+
+  fileprivate class _StorageClass {
+    var _thermalThrottle: Bool = false
+    var _installPending: Bool = false
+    var _freshlyFused: Bool = false
+    var _lanEthSlowLink10: Bool = false
+    var _lanEthSlowLink100: Bool = false
+    var _highCablePingDropRate: Bool = false
+    var _wanEthPoorConnection: Bool = false
+    var _meshTopologyChangingOften: Bool = false
+    var _meshUnreliableBackhaul: Bool = false
+    var _radiusMissingProcess: Bool = false
+    var _ethSwitchError: Bool = false
+    var _poeOnDishUnreachable: Bool = false
+    var _poeFuseBlown: Bool = false
+    var _poeRouterOvercurrent: Bool = false
+    var _poeOffCurrentNominal: Bool = false
+    var _poeVinOvervoltage: Bool = false
+    var _poeVinUndervoltage: Bool = false
+    var _sandboxDisabled: Bool = false
+    var _onlyOverflightBlocked: Bool = false
+    var _offlineNetworksDisabled: Bool = false
+    var _wiredMeshNotUsingWanIface: Bool = false
+
+      // This property is used as the initial default value for new instances of the type.
+      // The type itself is protecting the reference to its storage via CoW semantics.
+      // This will force a copy to be made of this reference when the first mutation occurs;
+      // hence, it is safe to mark this as `nonisolated(unsafe)`.
+      static nonisolated(unsafe) let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _thermalThrottle = source._thermalThrottle
+      _installPending = source._installPending
+      _freshlyFused = source._freshlyFused
+      _lanEthSlowLink10 = source._lanEthSlowLink10
+      _lanEthSlowLink100 = source._lanEthSlowLink100
+      _highCablePingDropRate = source._highCablePingDropRate
+      _wanEthPoorConnection = source._wanEthPoorConnection
+      _meshTopologyChangingOften = source._meshTopologyChangingOften
+      _meshUnreliableBackhaul = source._meshUnreliableBackhaul
+      _radiusMissingProcess = source._radiusMissingProcess
+      _ethSwitchError = source._ethSwitchError
+      _poeOnDishUnreachable = source._poeOnDishUnreachable
+      _poeFuseBlown = source._poeFuseBlown
+      _poeRouterOvercurrent = source._poeRouterOvercurrent
+      _poeOffCurrentNominal = source._poeOffCurrentNominal
+      _poeVinOvervoltage = source._poeVinOvervoltage
+      _poeVinUndervoltage = source._poeVinUndervoltage
+      _sandboxDisabled = source._sandboxDisabled
+      _onlyOverflightBlocked = source._onlyOverflightBlocked
+      _offlineNetworksDisabled = source._offlineNetworksDisabled
+      _wiredMeshNotUsingWanIface = source._wiredMeshNotUsingWanIface
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      // The use of inline closures is to circumvent an issue where the compiler
-      // allocates stack space for every case branch when no optimizations are
-      // enabled. https://github.com/apple/swift-protobuf/issues/1034
-      switch fieldNumber {
-      case 1: try { try decoder.decodeSingularBoolField(value: &self.thermalThrottle) }()
-      case 2: try { try decoder.decodeSingularBoolField(value: &self.installPending) }()
-      case 3: try { try decoder.decodeSingularBoolField(value: &self.freshlyFused) }()
-      case 4: try { try decoder.decodeSingularBoolField(value: &self.lanEthSlowLink10) }()
-      case 5: try { try decoder.decodeSingularBoolField(value: &self.lanEthSlowLink100) }()
-      case 10: try { try decoder.decodeSingularBoolField(value: &self.wanEthPoorConnection) }()
-      case 11: try { try decoder.decodeSingularBoolField(value: &self.meshTopologyChangingOften) }()
-      case 12: try { try decoder.decodeSingularBoolField(value: &self.meshUnreliableBackhaul) }()
-      case 13: try { try decoder.decodeSingularBoolField(value: &self.radiusMissingProcess) }()
-      case 14: try { try decoder.decodeSingularBoolField(value: &self.ethSwitchError) }()
-      case 15: try { try decoder.decodeSingularBoolField(value: &self.poeOnDishUnreachable) }()
-      case 16: try { try decoder.decodeSingularBoolField(value: &self.poeFuseBlown) }()
-      case 17: try { try decoder.decodeSingularBoolField(value: &self.poeRouterOvercurrent) }()
-      case 18: try { try decoder.decodeSingularBoolField(value: &self.poeOffCurrentNominal) }()
-      case 19: try { try decoder.decodeSingularBoolField(value: &self.poeVinOvervoltage) }()
-      case 20: try { try decoder.decodeSingularBoolField(value: &self.poeVinUndervoltage) }()
-      default: break
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        // The use of inline closures is to circumvent an issue where the compiler
+        // allocates stack space for every case branch when no optimizations are
+        // enabled. https://github.com/apple/swift-protobuf/issues/1034
+        switch fieldNumber {
+        case 1: try { try decoder.decodeSingularBoolField(value: &_storage._thermalThrottle) }()
+        case 2: try { try decoder.decodeSingularBoolField(value: &_storage._installPending) }()
+        case 3: try { try decoder.decodeSingularBoolField(value: &_storage._freshlyFused) }()
+        case 4: try { try decoder.decodeSingularBoolField(value: &_storage._lanEthSlowLink10) }()
+        case 5: try { try decoder.decodeSingularBoolField(value: &_storage._lanEthSlowLink100) }()
+        case 10: try { try decoder.decodeSingularBoolField(value: &_storage._wanEthPoorConnection) }()
+        case 11: try { try decoder.decodeSingularBoolField(value: &_storage._meshTopologyChangingOften) }()
+        case 12: try { try decoder.decodeSingularBoolField(value: &_storage._meshUnreliableBackhaul) }()
+        case 13: try { try decoder.decodeSingularBoolField(value: &_storage._radiusMissingProcess) }()
+        case 14: try { try decoder.decodeSingularBoolField(value: &_storage._ethSwitchError) }()
+        case 15: try { try decoder.decodeSingularBoolField(value: &_storage._poeOnDishUnreachable) }()
+        case 16: try { try decoder.decodeSingularBoolField(value: &_storage._poeFuseBlown) }()
+        case 17: try { try decoder.decodeSingularBoolField(value: &_storage._poeRouterOvercurrent) }()
+        case 18: try { try decoder.decodeSingularBoolField(value: &_storage._poeOffCurrentNominal) }()
+        case 19: try { try decoder.decodeSingularBoolField(value: &_storage._poeVinOvervoltage) }()
+        case 20: try { try decoder.decodeSingularBoolField(value: &_storage._poeVinUndervoltage) }()
+        case 21: try { try decoder.decodeSingularBoolField(value: &_storage._highCablePingDropRate) }()
+        case 22: try { try decoder.decodeSingularBoolField(value: &_storage._sandboxDisabled) }()
+        case 23: try { try decoder.decodeSingularBoolField(value: &_storage._onlyOverflightBlocked) }()
+        case 24: try { try decoder.decodeSingularBoolField(value: &_storage._offlineNetworksDisabled) }()
+        case 25: try { try decoder.decodeSingularBoolField(value: &_storage._wiredMeshNotUsingWanIface) }()
+        default: break
+        }
       }
     }
   }
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if self.thermalThrottle != false {
-      try visitor.visitSingularBoolField(value: self.thermalThrottle, fieldNumber: 1)
-    }
-    if self.installPending != false {
-      try visitor.visitSingularBoolField(value: self.installPending, fieldNumber: 2)
-    }
-    if self.freshlyFused != false {
-      try visitor.visitSingularBoolField(value: self.freshlyFused, fieldNumber: 3)
-    }
-    if self.lanEthSlowLink10 != false {
-      try visitor.visitSingularBoolField(value: self.lanEthSlowLink10, fieldNumber: 4)
-    }
-    if self.lanEthSlowLink100 != false {
-      try visitor.visitSingularBoolField(value: self.lanEthSlowLink100, fieldNumber: 5)
-    }
-    if self.wanEthPoorConnection != false {
-      try visitor.visitSingularBoolField(value: self.wanEthPoorConnection, fieldNumber: 10)
-    }
-    if self.meshTopologyChangingOften != false {
-      try visitor.visitSingularBoolField(value: self.meshTopologyChangingOften, fieldNumber: 11)
-    }
-    if self.meshUnreliableBackhaul != false {
-      try visitor.visitSingularBoolField(value: self.meshUnreliableBackhaul, fieldNumber: 12)
-    }
-    if self.radiusMissingProcess != false {
-      try visitor.visitSingularBoolField(value: self.radiusMissingProcess, fieldNumber: 13)
-    }
-    if self.ethSwitchError != false {
-      try visitor.visitSingularBoolField(value: self.ethSwitchError, fieldNumber: 14)
-    }
-    if self.poeOnDishUnreachable != false {
-      try visitor.visitSingularBoolField(value: self.poeOnDishUnreachable, fieldNumber: 15)
-    }
-    if self.poeFuseBlown != false {
-      try visitor.visitSingularBoolField(value: self.poeFuseBlown, fieldNumber: 16)
-    }
-    if self.poeRouterOvercurrent != false {
-      try visitor.visitSingularBoolField(value: self.poeRouterOvercurrent, fieldNumber: 17)
-    }
-    if self.poeOffCurrentNominal != false {
-      try visitor.visitSingularBoolField(value: self.poeOffCurrentNominal, fieldNumber: 18)
-    }
-    if self.poeVinOvervoltage != false {
-      try visitor.visitSingularBoolField(value: self.poeVinOvervoltage, fieldNumber: 19)
-    }
-    if self.poeVinUndervoltage != false {
-      try visitor.visitSingularBoolField(value: self.poeVinUndervoltage, fieldNumber: 20)
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      if _storage._thermalThrottle != false {
+        try visitor.visitSingularBoolField(value: _storage._thermalThrottle, fieldNumber: 1)
+      }
+      if _storage._installPending != false {
+        try visitor.visitSingularBoolField(value: _storage._installPending, fieldNumber: 2)
+      }
+      if _storage._freshlyFused != false {
+        try visitor.visitSingularBoolField(value: _storage._freshlyFused, fieldNumber: 3)
+      }
+      if _storage._lanEthSlowLink10 != false {
+        try visitor.visitSingularBoolField(value: _storage._lanEthSlowLink10, fieldNumber: 4)
+      }
+      if _storage._lanEthSlowLink100 != false {
+        try visitor.visitSingularBoolField(value: _storage._lanEthSlowLink100, fieldNumber: 5)
+      }
+      if _storage._wanEthPoorConnection != false {
+        try visitor.visitSingularBoolField(value: _storage._wanEthPoorConnection, fieldNumber: 10)
+      }
+      if _storage._meshTopologyChangingOften != false {
+        try visitor.visitSingularBoolField(value: _storage._meshTopologyChangingOften, fieldNumber: 11)
+      }
+      if _storage._meshUnreliableBackhaul != false {
+        try visitor.visitSingularBoolField(value: _storage._meshUnreliableBackhaul, fieldNumber: 12)
+      }
+      if _storage._radiusMissingProcess != false {
+        try visitor.visitSingularBoolField(value: _storage._radiusMissingProcess, fieldNumber: 13)
+      }
+      if _storage._ethSwitchError != false {
+        try visitor.visitSingularBoolField(value: _storage._ethSwitchError, fieldNumber: 14)
+      }
+      if _storage._poeOnDishUnreachable != false {
+        try visitor.visitSingularBoolField(value: _storage._poeOnDishUnreachable, fieldNumber: 15)
+      }
+      if _storage._poeFuseBlown != false {
+        try visitor.visitSingularBoolField(value: _storage._poeFuseBlown, fieldNumber: 16)
+      }
+      if _storage._poeRouterOvercurrent != false {
+        try visitor.visitSingularBoolField(value: _storage._poeRouterOvercurrent, fieldNumber: 17)
+      }
+      if _storage._poeOffCurrentNominal != false {
+        try visitor.visitSingularBoolField(value: _storage._poeOffCurrentNominal, fieldNumber: 18)
+      }
+      if _storage._poeVinOvervoltage != false {
+        try visitor.visitSingularBoolField(value: _storage._poeVinOvervoltage, fieldNumber: 19)
+      }
+      if _storage._poeVinUndervoltage != false {
+        try visitor.visitSingularBoolField(value: _storage._poeVinUndervoltage, fieldNumber: 20)
+      }
+      if _storage._highCablePingDropRate != false {
+        try visitor.visitSingularBoolField(value: _storage._highCablePingDropRate, fieldNumber: 21)
+      }
+      if _storage._sandboxDisabled != false {
+        try visitor.visitSingularBoolField(value: _storage._sandboxDisabled, fieldNumber: 22)
+      }
+      if _storage._onlyOverflightBlocked != false {
+        try visitor.visitSingularBoolField(value: _storage._onlyOverflightBlocked, fieldNumber: 23)
+      }
+      if _storage._offlineNetworksDisabled != false {
+        try visitor.visitSingularBoolField(value: _storage._offlineNetworksDisabled, fieldNumber: 24)
+      }
+      if _storage._wiredMeshNotUsingWanIface != false {
+        try visitor.visitSingularBoolField(value: _storage._wiredMeshNotUsingWanIface, fieldNumber: 25)
+      }
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   static func ==(lhs: SpaceX_API_Device_WifiAlerts, rhs: SpaceX_API_Device_WifiAlerts) -> Bool {
-    if lhs.thermalThrottle != rhs.thermalThrottle {return false}
-    if lhs.installPending != rhs.installPending {return false}
-    if lhs.freshlyFused != rhs.freshlyFused {return false}
-    if lhs.lanEthSlowLink10 != rhs.lanEthSlowLink10 {return false}
-    if lhs.lanEthSlowLink100 != rhs.lanEthSlowLink100 {return false}
-    if lhs.wanEthPoorConnection != rhs.wanEthPoorConnection {return false}
-    if lhs.meshTopologyChangingOften != rhs.meshTopologyChangingOften {return false}
-    if lhs.meshUnreliableBackhaul != rhs.meshUnreliableBackhaul {return false}
-    if lhs.radiusMissingProcess != rhs.radiusMissingProcess {return false}
-    if lhs.ethSwitchError != rhs.ethSwitchError {return false}
-    if lhs.poeOnDishUnreachable != rhs.poeOnDishUnreachable {return false}
-    if lhs.poeFuseBlown != rhs.poeFuseBlown {return false}
-    if lhs.poeRouterOvercurrent != rhs.poeRouterOvercurrent {return false}
-    if lhs.poeOffCurrentNominal != rhs.poeOffCurrentNominal {return false}
-    if lhs.poeVinOvervoltage != rhs.poeVinOvervoltage {return false}
-    if lhs.poeVinUndervoltage != rhs.poeVinUndervoltage {return false}
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._thermalThrottle != rhs_storage._thermalThrottle {return false}
+        if _storage._installPending != rhs_storage._installPending {return false}
+        if _storage._freshlyFused != rhs_storage._freshlyFused {return false}
+        if _storage._lanEthSlowLink10 != rhs_storage._lanEthSlowLink10 {return false}
+        if _storage._lanEthSlowLink100 != rhs_storage._lanEthSlowLink100 {return false}
+        if _storage._highCablePingDropRate != rhs_storage._highCablePingDropRate {return false}
+        if _storage._wanEthPoorConnection != rhs_storage._wanEthPoorConnection {return false}
+        if _storage._meshTopologyChangingOften != rhs_storage._meshTopologyChangingOften {return false}
+        if _storage._meshUnreliableBackhaul != rhs_storage._meshUnreliableBackhaul {return false}
+        if _storage._radiusMissingProcess != rhs_storage._radiusMissingProcess {return false}
+        if _storage._ethSwitchError != rhs_storage._ethSwitchError {return false}
+        if _storage._poeOnDishUnreachable != rhs_storage._poeOnDishUnreachable {return false}
+        if _storage._poeFuseBlown != rhs_storage._poeFuseBlown {return false}
+        if _storage._poeRouterOvercurrent != rhs_storage._poeRouterOvercurrent {return false}
+        if _storage._poeOffCurrentNominal != rhs_storage._poeOffCurrentNominal {return false}
+        if _storage._poeVinOvervoltage != rhs_storage._poeVinOvervoltage {return false}
+        if _storage._poeVinUndervoltage != rhs_storage._poeVinUndervoltage {return false}
+        if _storage._sandboxDisabled != rhs_storage._sandboxDisabled {return false}
+        if _storage._onlyOverflightBlocked != rhs_storage._onlyOverflightBlocked {return false}
+        if _storage._offlineNetworksDisabled != rhs_storage._offlineNetworksDisabled {return false}
+        if _storage._wiredMeshNotUsingWanIface != rhs_storage._wiredMeshNotUsingWanIface {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension SpaceX_API_Device_WifiGetStatusResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiGetStatusResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiGetStatusResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    3: .standard(proto: "device_info"),
-    4: .standard(proto: "device_state"),
-    1: .standard(proto: "captive_portal_enabled"),
-    1003: .standard(proto: "ipv4_wan_address"),
-    1017: .standard(proto: "ipv6_wan_addresses"),
-    1004: .standard(proto: "ping_drop_rate"),
-    1021: .standard(proto: "ping_drop_rate_5m"),
-    1005: .standard(proto: "ping_latency_ms"),
-    1012: .standard(proto: "dish_ping_drop_rate"),
-    1018: .standard(proto: "dish_ping_drop_rate_5m"),
-    1013: .standard(proto: "dish_ping_latency_ms"),
-    1014: .standard(proto: "pop_ping_drop_rate"),
-    1020: .standard(proto: "pop_ping_drop_rate_5m"),
-    1015: .standard(proto: "pop_ping_latency_ms"),
-    1008: .standard(proto: "rf_2ghz_status"),
-    1009: .standard(proto: "rf_5ghz_status"),
-    1010: .same(proto: "alerts"),
-    1011: .standard(proto: "is_aviation"),
-    2000: .same(proto: "config"),
-    3000: .same(proto: "clients"),
-    3001: .standard(proto: "has_client_index"),
-    3002: .standard(proto: "client_index"),
-    1016: .standard(proto: "is_aviation_conformed"),
-    3003: .standard(proto: "radius_stats"),
-    1019: .standard(proto: "dhcp_servers"),
-    1022: .standard(proto: "poe_stats"),
-    1023: .standard(proto: "dish_id"),
-    1024: .standard(proto: "utc_ns"),
-    1025: .standard(proto: "software_update_stats"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}captive_portal_enabled\0\u{4}\u{2}device_info\0\u{3}device_state\0\u{4}g\u{f}ipv4_wan_address\0\u{3}ping_drop_rate\0\u{3}ping_latency_ms\0\u{4}\u{3}rf_2ghz_status\0\u{3}rf_5ghz_status\0\u{1}alerts\0\u{3}is_aviation\0\u{3}dish_ping_drop_rate\0\u{3}dish_ping_latency_ms\0\u{3}pop_ping_drop_rate\0\u{3}pop_ping_latency_ms\0\u{3}is_aviation_conformed\0\u{3}ipv6_wan_addresses\0\u{3}dish_ping_drop_rate_5m\0\u{3}dhcp_servers\0\u{3}pop_ping_drop_rate_5m\0\u{3}ping_drop_rate_5m\0\u{3}poe_stats\0\u{3}dish_id\0\u{3}utc_ns\0\u{3}software_update_stats\0\u{3}setup_requirement\0\u{3}pop_ipv6_ping_drop_rate\0\u{3}pop_ipv6_ping_drop_rate_5m\0\u{3}pop_ipv6_ping_latency_ms\0\u{3}secs_since_last_public_ipv4_change\0\u{3}dish_disablement_code\0\u{3}using_individualized_calibration\0\u{3}calibration_partitions_state\0\u{3}hops_from_controller\0\u{3}no_wan_link\0\u{2}E\u{f}config\0\u{2}h\u{f}clients\0\u{3}has_client_index\0\u{3}client_index\0\u{3}radius_stats\0\u{c}\u{2}\u{1}\u{c}\u{5}\u{1}\u{c}\u{6}\u{1}\u{c}\u{7}\u{1}\u{c}i\u{f}\u{1}\u{c}j\u{f}\u{1}\u{c}n\u{f}\u{1}\u{c}o\u{f}\u{1}")
 
   fileprivate class _StorageClass {
     var _deviceInfo: SpaceX_API_Device_DeviceInfo? = nil
@@ -8739,6 +10695,7 @@ extension SpaceX_API_Device_WifiGetStatusResponse: SwiftProtobuf.Message, SwiftP
     var _captivePortalEnabled: Bool = false
     var _ipv4WanAddress: String = String()
     var _ipv6WanAddresses: [String] = []
+    var _hopsFromController: UInt32 = 0
     var _pingDropRate: Float = 0
     var _pingDropRate5M: Float = 0
     var _pingLatencyMs: Float = 0
@@ -8748,6 +10705,9 @@ extension SpaceX_API_Device_WifiGetStatusResponse: SwiftProtobuf.Message, SwiftP
     var _popPingDropRate: Float = 0
     var _popPingDropRate5M: Float = 0
     var _popPingLatencyMs: Float = 0
+    var _popIpv6PingDropRate: Float = 0
+    var _popIpv6PingDropRate5M: Float = 0
+    var _popIpv6PingLatencyMs: Float = 0
     var _rf2GhzStatus: SpaceX_API_Device_WifiBandStatus? = nil
     var _rf5GhzStatus: SpaceX_API_Device_WifiBandStatus? = nil
     var _alerts: SpaceX_API_Device_WifiAlerts? = nil
@@ -8761,18 +10721,20 @@ extension SpaceX_API_Device_WifiGetStatusResponse: SwiftProtobuf.Message, SwiftP
     var _dhcpServers: [SpaceX_API_Device_DhcpServer] = []
     var _poeStats: SpaceX_API_Device_PoeStats? = nil
     var _dishID: String = String()
+    var _dishDisablementCode: SpaceX_API_Satellites_Network_UtDisablementCode = .unknownState
     var _utcNs: Int64 = 0
     var _softwareUpdateStats: SpaceX_API_Device_WifiSoftwareUpdateStats? = nil
+    var _setupRequirement: SpaceX_API_Device_WifiSetupRequirement? = nil
+    var _secsSinceLastPublicIpv4Change: Float = 0
+    var _usingIndividualizedCalibration: Bool = false
+    var _calibrationPartitionsState: SpaceX_API_Device_CalibrationPartitionsState = .unspecified
+    var _noWanLink: Bool = false
 
-    #if swift(>=5.10)
       // This property is used as the initial default value for new instances of the type.
       // The type itself is protecting the reference to its storage via CoW semantics.
       // This will force a copy to be made of this reference when the first mutation occurs;
       // hence, it is safe to mark this as `nonisolated(unsafe)`.
       static nonisolated(unsafe) let defaultInstance = _StorageClass()
-    #else
-      static let defaultInstance = _StorageClass()
-    #endif
 
     private init() {}
 
@@ -8782,6 +10744,7 @@ extension SpaceX_API_Device_WifiGetStatusResponse: SwiftProtobuf.Message, SwiftP
       _captivePortalEnabled = source._captivePortalEnabled
       _ipv4WanAddress = source._ipv4WanAddress
       _ipv6WanAddresses = source._ipv6WanAddresses
+      _hopsFromController = source._hopsFromController
       _pingDropRate = source._pingDropRate
       _pingDropRate5M = source._pingDropRate5M
       _pingLatencyMs = source._pingLatencyMs
@@ -8791,6 +10754,9 @@ extension SpaceX_API_Device_WifiGetStatusResponse: SwiftProtobuf.Message, SwiftP
       _popPingDropRate = source._popPingDropRate
       _popPingDropRate5M = source._popPingDropRate5M
       _popPingLatencyMs = source._popPingLatencyMs
+      _popIpv6PingDropRate = source._popIpv6PingDropRate
+      _popIpv6PingDropRate5M = source._popIpv6PingDropRate5M
+      _popIpv6PingLatencyMs = source._popIpv6PingLatencyMs
       _rf2GhzStatus = source._rf2GhzStatus
       _rf5GhzStatus = source._rf5GhzStatus
       _alerts = source._alerts
@@ -8804,8 +10770,14 @@ extension SpaceX_API_Device_WifiGetStatusResponse: SwiftProtobuf.Message, SwiftP
       _dhcpServers = source._dhcpServers
       _poeStats = source._poeStats
       _dishID = source._dishID
+      _dishDisablementCode = source._dishDisablementCode
       _utcNs = source._utcNs
       _softwareUpdateStats = source._softwareUpdateStats
+      _setupRequirement = source._setupRequirement
+      _secsSinceLastPublicIpv4Change = source._secsSinceLastPublicIpv4Change
+      _usingIndividualizedCalibration = source._usingIndividualizedCalibration
+      _calibrationPartitionsState = source._calibrationPartitionsState
+      _noWanLink = source._noWanLink
     }
   }
 
@@ -8848,6 +10820,16 @@ extension SpaceX_API_Device_WifiGetStatusResponse: SwiftProtobuf.Message, SwiftP
         case 1023: try { try decoder.decodeSingularStringField(value: &_storage._dishID) }()
         case 1024: try { try decoder.decodeSingularInt64Field(value: &_storage._utcNs) }()
         case 1025: try { try decoder.decodeSingularMessageField(value: &_storage._softwareUpdateStats) }()
+        case 1026: try { try decoder.decodeSingularMessageField(value: &_storage._setupRequirement) }()
+        case 1027: try { try decoder.decodeSingularFloatField(value: &_storage._popIpv6PingDropRate) }()
+        case 1028: try { try decoder.decodeSingularFloatField(value: &_storage._popIpv6PingDropRate5M) }()
+        case 1029: try { try decoder.decodeSingularFloatField(value: &_storage._popIpv6PingLatencyMs) }()
+        case 1030: try { try decoder.decodeSingularFloatField(value: &_storage._secsSinceLastPublicIpv4Change) }()
+        case 1031: try { try decoder.decodeSingularEnumField(value: &_storage._dishDisablementCode) }()
+        case 1032: try { try decoder.decodeSingularBoolField(value: &_storage._usingIndividualizedCalibration) }()
+        case 1033: try { try decoder.decodeSingularEnumField(value: &_storage._calibrationPartitionsState) }()
+        case 1034: try { try decoder.decodeSingularUInt32Field(value: &_storage._hopsFromController) }()
+        case 1035: try { try decoder.decodeSingularBoolField(value: &_storage._noWanLink) }()
         case 2000: try { try decoder.decodeSingularMessageField(value: &_storage._config) }()
         case 3000: try { try decoder.decodeRepeatedMessageField(value: &_storage._clients) }()
         case 3001: try { try decoder.decodeSingularBoolField(value: &_storage._hasClientIndex_p) }()
@@ -8937,6 +10919,36 @@ extension SpaceX_API_Device_WifiGetStatusResponse: SwiftProtobuf.Message, SwiftP
       try { if let v = _storage._softwareUpdateStats {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1025)
       } }()
+      try { if let v = _storage._setupRequirement {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1026)
+      } }()
+      if _storage._popIpv6PingDropRate.bitPattern != 0 {
+        try visitor.visitSingularFloatField(value: _storage._popIpv6PingDropRate, fieldNumber: 1027)
+      }
+      if _storage._popIpv6PingDropRate5M.bitPattern != 0 {
+        try visitor.visitSingularFloatField(value: _storage._popIpv6PingDropRate5M, fieldNumber: 1028)
+      }
+      if _storage._popIpv6PingLatencyMs.bitPattern != 0 {
+        try visitor.visitSingularFloatField(value: _storage._popIpv6PingLatencyMs, fieldNumber: 1029)
+      }
+      if _storage._secsSinceLastPublicIpv4Change.bitPattern != 0 {
+        try visitor.visitSingularFloatField(value: _storage._secsSinceLastPublicIpv4Change, fieldNumber: 1030)
+      }
+      if _storage._dishDisablementCode != .unknownState {
+        try visitor.visitSingularEnumField(value: _storage._dishDisablementCode, fieldNumber: 1031)
+      }
+      if _storage._usingIndividualizedCalibration != false {
+        try visitor.visitSingularBoolField(value: _storage._usingIndividualizedCalibration, fieldNumber: 1032)
+      }
+      if _storage._calibrationPartitionsState != .unspecified {
+        try visitor.visitSingularEnumField(value: _storage._calibrationPartitionsState, fieldNumber: 1033)
+      }
+      if _storage._hopsFromController != 0 {
+        try visitor.visitSingularUInt32Field(value: _storage._hopsFromController, fieldNumber: 1034)
+      }
+      if _storage._noWanLink != false {
+        try visitor.visitSingularBoolField(value: _storage._noWanLink, fieldNumber: 1035)
+      }
       try { if let v = _storage._config {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 2000)
       } }()
@@ -8966,6 +10978,7 @@ extension SpaceX_API_Device_WifiGetStatusResponse: SwiftProtobuf.Message, SwiftP
         if _storage._captivePortalEnabled != rhs_storage._captivePortalEnabled {return false}
         if _storage._ipv4WanAddress != rhs_storage._ipv4WanAddress {return false}
         if _storage._ipv6WanAddresses != rhs_storage._ipv6WanAddresses {return false}
+        if _storage._hopsFromController != rhs_storage._hopsFromController {return false}
         if _storage._pingDropRate != rhs_storage._pingDropRate {return false}
         if _storage._pingDropRate5M != rhs_storage._pingDropRate5M {return false}
         if _storage._pingLatencyMs != rhs_storage._pingLatencyMs {return false}
@@ -8975,6 +10988,9 @@ extension SpaceX_API_Device_WifiGetStatusResponse: SwiftProtobuf.Message, SwiftP
         if _storage._popPingDropRate != rhs_storage._popPingDropRate {return false}
         if _storage._popPingDropRate5M != rhs_storage._popPingDropRate5M {return false}
         if _storage._popPingLatencyMs != rhs_storage._popPingLatencyMs {return false}
+        if _storage._popIpv6PingDropRate != rhs_storage._popIpv6PingDropRate {return false}
+        if _storage._popIpv6PingDropRate5M != rhs_storage._popIpv6PingDropRate5M {return false}
+        if _storage._popIpv6PingLatencyMs != rhs_storage._popIpv6PingLatencyMs {return false}
         if _storage._rf2GhzStatus != rhs_storage._rf2GhzStatus {return false}
         if _storage._rf5GhzStatus != rhs_storage._rf5GhzStatus {return false}
         if _storage._alerts != rhs_storage._alerts {return false}
@@ -8988,8 +11004,14 @@ extension SpaceX_API_Device_WifiGetStatusResponse: SwiftProtobuf.Message, SwiftP
         if _storage._dhcpServers != rhs_storage._dhcpServers {return false}
         if _storage._poeStats != rhs_storage._poeStats {return false}
         if _storage._dishID != rhs_storage._dishID {return false}
+        if _storage._dishDisablementCode != rhs_storage._dishDisablementCode {return false}
         if _storage._utcNs != rhs_storage._utcNs {return false}
         if _storage._softwareUpdateStats != rhs_storage._softwareUpdateStats {return false}
+        if _storage._setupRequirement != rhs_storage._setupRequirement {return false}
+        if _storage._secsSinceLastPublicIpv4Change != rhs_storage._secsSinceLastPublicIpv4Change {return false}
+        if _storage._usingIndividualizedCalibration != rhs_storage._usingIndividualizedCalibration {return false}
+        if _storage._calibrationPartitionsState != rhs_storage._calibrationPartitionsState {return false}
+        if _storage._noWanLink != rhs_storage._noWanLink {return false}
         return true
       }
       if !storagesAreEqual {return false}
@@ -8999,11 +11021,9 @@ extension SpaceX_API_Device_WifiGetStatusResponse: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension SpaceX_API_Device_WifiAuthenticateRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiAuthenticateRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiAuthenticateRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "challenge"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}challenge\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -9035,12 +11055,9 @@ extension SpaceX_API_Device_WifiAuthenticateRequest: SwiftProtobuf.Message, Swif
   }
 }
 
-extension SpaceX_API_Device_WifiAuthenticateResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiAuthenticateResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiAuthenticateResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "wifi"),
-    2: .same(proto: "dish"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}wifi\0\u{1}dish\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -9077,13 +11094,9 @@ extension SpaceX_API_Device_WifiAuthenticateResponse: SwiftProtobuf.Message, Swi
   }
 }
 
-extension SpaceX_API_Device_WifiAccountBondingEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiAccountBondingEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiAccountBondingEvent"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "dish_id"),
-    2: .standard(proto: "is_repeater"),
-    3: .standard(proto: "hardware_version"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}dish_id\0\u{3}is_repeater\0\u{3}hardware_version\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -9121,11 +11134,9 @@ extension SpaceX_API_Device_WifiAccountBondingEvent: SwiftProtobuf.Message, Swif
   }
 }
 
-extension SpaceX_API_Device_WifiNewPeerEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiNewPeerEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiNewPeerEvent"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "peer_id"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}peer_id\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -9153,29 +11164,9 @@ extension SpaceX_API_Device_WifiNewPeerEvent: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension SpaceX_API_Device_PingMetrics: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_PingMetrics: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".PingMetrics"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "latency_mean_ms"),
-    2: .standard(proto: "latency_stddev_ms"),
-    3: .standard(proto: "latency_mean_ms_5m"),
-    4: .standard(proto: "latency_mean_ms_1h"),
-    5: .standard(proto: "latency_mean_ms_1d"),
-    6: .standard(proto: "drop_rate"),
-    7: .standard(proto: "drop_rate_5m"),
-    8: .standard(proto: "drop_rate_1h"),
-    9: .standard(proto: "drop_rate_1d"),
-    10: .standard(proto: "seconds_since_last_success"),
-    11: .standard(proto: "seconds_since_last_1s_outage"),
-    15: .standard(proto: "seconds_since_last_2s_outage"),
-    12: .standard(proto: "seconds_since_last_5s_outage"),
-    18: .standard(proto: "seconds_since_last_15s_outage"),
-    19: .standard(proto: "seconds_since_last_60s_outage"),
-    20: .standard(proto: "seconds_since_last_300s_outage"),
-    13: .standard(proto: "happy_hours_1s_1d"),
-    16: .standard(proto: "happy_hours_2s_1d"),
-    14: .standard(proto: "happy_hours_5s_1d"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}latency_mean_ms\0\u{3}latency_stddev_ms\0\u{3}latency_mean_ms_5m\0\u{3}latency_mean_ms_1h\0\u{3}latency_mean_ms_1d\0\u{3}drop_rate\0\u{3}drop_rate_5m\0\u{3}drop_rate_1h\0\u{3}drop_rate_1d\0\u{3}seconds_since_last_success\0\u{3}seconds_since_last_1s_outage\0\u{3}seconds_since_last_5s_outage\0\u{3}happy_hours_1s_1d\0\u{3}happy_hours_5s_1d\0\u{3}seconds_since_last_2s_outage\0\u{3}happy_hours_2s_1d\0\u{4}\u{2}seconds_since_last_15s_outage\0\u{3}seconds_since_last_60s_outage\0\u{3}seconds_since_last_300s_outage\0")
 
   fileprivate class _StorageClass {
     var _latencyMeanMs: Float = 0
@@ -9198,15 +11189,11 @@ extension SpaceX_API_Device_PingMetrics: SwiftProtobuf.Message, SwiftProtobuf._M
     var _happyHours2S1D: Float = 0
     var _happyHours5S1D: Float = 0
 
-    #if swift(>=5.10)
       // This property is used as the initial default value for new instances of the type.
       // The type itself is protecting the reference to its storage via CoW semantics.
       // This will force a copy to be made of this reference when the first mutation occurs;
       // hence, it is safe to mark this as `nonisolated(unsafe)`.
       static nonisolated(unsafe) let defaultInstance = _StorageClass()
-    #else
-      static let defaultInstance = _StorageClass()
-    #endif
 
     private init() {}
 
@@ -9369,7 +11356,7 @@ extension SpaceX_API_Device_PingMetrics: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension SpaceX_API_Device_WifiGetPingMetricsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiGetPingMetricsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiGetPingMetricsRequest"
   static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -9388,11 +11375,9 @@ extension SpaceX_API_Device_WifiGetPingMetricsRequest: SwiftProtobuf.Message, Sw
   }
 }
 
-extension SpaceX_API_Device_WifiGetPingMetricsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiGetPingMetricsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiGetPingMetricsResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "internet"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}internet\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -9424,14 +11409,9 @@ extension SpaceX_API_Device_WifiGetPingMetricsResponse: SwiftProtobuf.Message, S
   }
 }
 
-extension SpaceX_API_Device_WifiNetwork: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiNetwork: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiNetwork"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "band"),
-    2: .same(proto: "ssid"),
-    3: .same(proto: "channel"),
-    4: .standard(proto: "encryption_type_str"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}band\0\u{1}ssid\0\u{1}channel\0\u{3}encryption_type_str\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -9474,23 +11454,13 @@ extension SpaceX_API_Device_WifiNetwork: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension SpaceX_API_Device_WifiNetwork.Band: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "WIFI_UNKNOWN"),
-    1: .same(proto: "WIFI_2_4GHZ"),
-    2: .same(proto: "WIFI_5GHZ"),
-  ]
+nonisolated extension SpaceX_API_Device_WifiNetwork.Band: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0WIFI_UNKNOWN\0\u{1}WIFI_2_4GHZ\0\u{1}WIFI_5GHZ\0")
 }
 
-extension SpaceX_API_Device_WifiPersistentStats: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiPersistentStats: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiPersistentStats"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "factory_reset_button"),
-    2: .standard(proto: "factory_reset_plug_unplug"),
-    3: .standard(proto: "factory_reset_command"),
-    4: .standard(proto: "factory_reset_failed_load_wifi_config"),
-    5: .standard(proto: "reboot_from_software_update"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}factory_reset_button\0\u{3}factory_reset_plug_unplug\0\u{3}factory_reset_command\0\u{3}factory_reset_failed_load_wifi_config\0\u{3}reboot_from_software_update\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -9542,12 +11512,9 @@ extension SpaceX_API_Device_WifiPersistentStats: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension SpaceX_API_Device_WifiPersistentStats.Event: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiPersistentStats.Event: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = SpaceX_API_Device_WifiPersistentStats.protoMessageName + ".Event"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "count"),
-    2: .standard(proto: "last_occurred_timestamp"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}count\0\u{3}last_occurred_timestamp\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -9580,11 +11547,9 @@ extension SpaceX_API_Device_WifiPersistentStats.Event: SwiftProtobuf.Message, Sw
   }
 }
 
-extension SpaceX_API_Device_WifiGetPersistentStatsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiGetPersistentStatsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiGetPersistentStatsResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "stats"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}stats\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -9616,15 +11581,9 @@ extension SpaceX_API_Device_WifiGetPersistentStatsResponse: SwiftProtobuf.Messag
   }
 }
 
-extension SpaceX_API_Device_RadioStats: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_RadioStats: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".RadioStats"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "band"),
-    2: .standard(proto: "rx_stats"),
-    3: .standard(proto: "tx_stats"),
-    4: .standard(proto: "thermal_status"),
-    5: .standard(proto: "antenna_status"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}band\0\u{3}rx_stats\0\u{3}tx_stats\0\u{3}thermal_status\0\u{3}antenna_status\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -9676,15 +11635,9 @@ extension SpaceX_API_Device_RadioStats: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension SpaceX_API_Device_RadioStats.ThermalStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_RadioStats.ThermalStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = SpaceX_API_Device_RadioStats.protoMessageName + ".ThermalStatus"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "level"),
-    2: .same(proto: "temp"),
-    3: .same(proto: "temp2"),
-    4: .standard(proto: "power_reduction"),
-    5: .standard(proto: "duty_cycle"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}level\0\u{1}temp\0\u{1}temp2\0\u{3}power_reduction\0\u{3}duty_cycle\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -9732,14 +11685,9 @@ extension SpaceX_API_Device_RadioStats.ThermalStatus: SwiftProtobuf.Message, Swi
   }
 }
 
-extension SpaceX_API_Device_RadioStats.AntennaStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_RadioStats.AntennaStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = SpaceX_API_Device_RadioStats.protoMessageName + ".AntennaStatus"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "rssi1"),
-    2: .same(proto: "rssi2"),
-    3: .same(proto: "rssi3"),
-    4: .same(proto: "rssi4"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}rssi1\0\u{1}rssi2\0\u{1}rssi3\0\u{1}rssi4\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -9782,244 +11730,9 @@ extension SpaceX_API_Device_RadioStats.AntennaStatus: SwiftProtobuf.Message, Swi
   }
 }
 
-extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".starlink_routers_hourly_metrics_v2"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "id"),
-    2: .standard(proto: "timestamp_date"),
-    3: .standard(proto: "timestamp_hour"),
-    10000: .same(proto: "timestamp"),
-    4: .standard(proto: "sys_hw_gen"),
-    5: .standard(proto: "sys_sw"),
-    6: .standard(proto: "sys_country"),
-    7: .standard(proto: "sys_is_dev"),
-    8: .standard(proto: "sys_alloc_fds"),
-    9: .standard(proto: "sys_cpu_usage"),
-    10: .standard(proto: "sys_mem_free_kb"),
-    11: .standard(proto: "sys_bootcount"),
-    12: .standard(proto: "sys_partitions_equal"),
-    13: .standard(proto: "sys_uptime_seconds"),
-    14: .standard(proto: "sys_anti_rollback_version"),
-    15: .standard(proto: "sys_is_witl"),
-    16: .standard(proto: "sys_is_aviation_conformed"),
-    17: .standard(proto: "sys_ubi_max_ec"),
-    18: .standard(proto: "sys_ubi_bad_peb"),
-    19: .standard(proto: "sys_board_rev"),
-    100: .standard(proto: "radios_2ghz_channel"),
-    101: .standard(proto: "radios_2ghz_antenna1_rssi"),
-    102: .standard(proto: "radios_2ghz_antenna2_rssi"),
-    103: .standard(proto: "radios_2ghz_antenna3_rssi"),
-    197: .standard(proto: "radios_2ghz_antenna4_rssi"),
-    157: .standard(proto: "radios_2ghz_antenna1_tssi"),
-    158: .standard(proto: "radios_2ghz_antenna2_tssi"),
-    159: .standard(proto: "radios_2ghz_antenna3_tssi"),
-    160: .standard(proto: "radios_2ghz_antenna4_tssi"),
-    104: .standard(proto: "radios_2ghz_iface_count"),
-    105: .standard(proto: "radios_2ghz_chan_busy_fraction"),
-    106: .standard(proto: "radios_2ghz_edcca_fraction"),
-    107: .standard(proto: "radios_2ghz_overlapping_bss_fraction"),
-    108: .standard(proto: "radios_2ghz_rx_bytes"),
-    109: .standard(proto: "radios_2ghz_rx_packets"),
-    110: .standard(proto: "radios_2ghz_rx_errors"),
-    111: .standard(proto: "radios_2ghz_rx_frame_errors"),
-    112: .standard(proto: "radios_2ghz_rx_packet_error_rate"),
-    113: .standard(proto: "radios_2ghz_rx_airtime_fraction"),
-    114: .standard(proto: "radios_2ghz_tx_bytes"),
-    115: .standard(proto: "radios_2ghz_tx_packets"),
-    116: .standard(proto: "radios_2ghz_tx_errors"),
-    117: .standard(proto: "radios_2ghz_tx_packet_error_rate"),
-    118: .standard(proto: "radios_2ghz_tx_airtime_fraction"),
-    119: .standard(proto: "radios_5ghz_channel"),
-    120: .standard(proto: "radios_5ghz_antenna1_rssi"),
-    121: .standard(proto: "radios_5ghz_antenna2_rssi"),
-    122: .standard(proto: "radios_5ghz_antenna3_rssi"),
-    198: .standard(proto: "radios_5ghz_antenna4_rssi"),
-    161: .standard(proto: "radios_5ghz_antenna1_tssi"),
-    162: .standard(proto: "radios_5ghz_antenna2_tssi"),
-    163: .standard(proto: "radios_5ghz_antenna3_tssi"),
-    164: .standard(proto: "radios_5ghz_antenna4_tssi"),
-    123: .standard(proto: "radios_5ghz_iface_count"),
-    124: .standard(proto: "radios_5ghz_chan_busy_fraction"),
-    125: .standard(proto: "radios_5ghz_edcca_fraction"),
-    126: .standard(proto: "radios_5ghz_overlapping_bss_fraction"),
-    127: .standard(proto: "radios_5ghz_rx_bytes"),
-    128: .standard(proto: "radios_5ghz_rx_packets"),
-    129: .standard(proto: "radios_5ghz_rx_errors"),
-    130: .standard(proto: "radios_5ghz_rx_frame_errors"),
-    131: .standard(proto: "radios_5ghz_rx_packet_error_rate"),
-    132: .standard(proto: "radios_5ghz_rx_airtime_fraction"),
-    133: .standard(proto: "radios_5ghz_tx_bytes"),
-    134: .standard(proto: "radios_5ghz_tx_packets"),
-    135: .standard(proto: "radios_5ghz_tx_errors"),
-    136: .standard(proto: "radios_5ghz_tx_packet_error_rate"),
-    137: .standard(proto: "radios_5ghz_tx_airtime_fraction"),
-    138: .standard(proto: "radios_5ghz_high_channel"),
-    139: .standard(proto: "radios_5ghz_high_antenna1_rssi"),
-    140: .standard(proto: "radios_5ghz_high_antenna2_rssi"),
-    141: .standard(proto: "radios_5ghz_high_antenna3_rssi"),
-    199: .standard(proto: "radios_5ghz_high_antenna4_rssi"),
-    165: .standard(proto: "radios_5ghz_high_antenna1_tssi"),
-    166: .standard(proto: "radios_5ghz_high_antenna2_tssi"),
-    167: .standard(proto: "radios_5ghz_high_antenna3_tssi"),
-    168: .standard(proto: "radios_5ghz_high_antenna4_tssi"),
-    142: .standard(proto: "radios_5ghz_high_iface_count"),
-    143: .standard(proto: "radios_5ghz_high_chan_busy_fraction"),
-    144: .standard(proto: "radios_5ghz_high_edcca_fraction"),
-    145: .standard(proto: "radios_5ghz_high_overlapping_bss_fraction"),
-    146: .standard(proto: "radios_5ghz_high_rx_bytes"),
-    147: .standard(proto: "radios_5ghz_high_rx_packets"),
-    148: .standard(proto: "radios_5ghz_high_rx_errors"),
-    149: .standard(proto: "radios_5ghz_high_rx_frame_errors"),
-    150: .standard(proto: "radios_5ghz_high_rx_packet_error_rate"),
-    151: .standard(proto: "radios_5ghz_high_rx_airtime_fraction"),
-    152: .standard(proto: "radios_5ghz_high_tx_bytes"),
-    153: .standard(proto: "radios_5ghz_high_tx_packets"),
-    154: .standard(proto: "radios_5ghz_high_tx_errors"),
-    155: .standard(proto: "radios_5ghz_high_tx_packet_error_rate"),
-    156: .standard(proto: "radios_5ghz_high_tx_airtime_fraction"),
-    200: .standard(proto: "radios_2ghz_thermal_temp"),
-    201: .standard(proto: "radios_5ghz_thermal_temp"),
-    206: .standard(proto: "radios_5ghz_high_thermal_temp"),
-    202: .standard(proto: "radios_2ghz_thermal_duty_cycle"),
-    203: .standard(proto: "radios_5ghz_thermal_duty_cycle"),
-    207: .standard(proto: "radios_5ghz_high_thermal_duty_cycle"),
-    204: .standard(proto: "radios_2ghz_thermal_throttled_seconds"),
-    205: .standard(proto: "radios_5ghz_thermal_throttled_seconds"),
-    208: .standard(proto: "radios_5ghz_high_thermal_throttled_seconds"),
-    210: .standard(proto: "board_temp"),
-    211: .standard(proto: "poe_mcu_die_temp"),
-    300: .standard(proto: "ifaces_lan_eth_rx_bytes"),
-    301: .standard(proto: "ifaces_lan_eth_rx_packets"),
-    302: .standard(proto: "ifaces_lan_eth_rx_errors"),
-    303: .standard(proto: "ifaces_lan_eth_rx_frame_errors"),
-    304: .standard(proto: "ifaces_lan_eth_tx_bytes"),
-    305: .standard(proto: "ifaces_lan_eth_tx_packets"),
-    306: .standard(proto: "ifaces_lan_eth_tx_errors"),
-    314: .standard(proto: "ifaces_lan1_eth_rx_bytes"),
-    315: .standard(proto: "ifaces_lan1_eth_rx_packets"),
-    316: .standard(proto: "ifaces_lan1_eth_rx_errors"),
-    317: .standard(proto: "ifaces_lan1_eth_rx_frame_errors"),
-    318: .standard(proto: "ifaces_lan1_eth_tx_bytes"),
-    319: .standard(proto: "ifaces_lan1_eth_tx_packets"),
-    320: .standard(proto: "ifaces_lan1_eth_tx_errors"),
-    307: .standard(proto: "ifaces_wan_eth_rx_bytes"),
-    308: .standard(proto: "ifaces_wan_eth_rx_packets"),
-    309: .standard(proto: "ifaces_wan_eth_rx_errors"),
-    310: .standard(proto: "ifaces_wan_eth_rx_frame_errors"),
-    311: .standard(proto: "ifaces_wan_eth_tx_bytes"),
-    312: .standard(proto: "ifaces_wan_eth_tx_packets"),
-    313: .standard(proto: "ifaces_wan_eth_tx_errors"),
-    400: .same(proto: "clients"),
-    401: .standard(proto: "clients_2ghz"),
-    402: .standard(proto: "clients_5ghz"),
-    413: .standard(proto: "clients_5ghz_high"),
-    403: .standard(proto: "clients_eth"),
-    429: .standard(proto: "clients_5ghz_rx_bandwidth_20mhz"),
-    430: .standard(proto: "clients_5ghz_rx_bandwidth_40mhz"),
-    431: .standard(proto: "clients_5ghz_rx_bandwidth_80mhz"),
-    404: .standard(proto: "clients_repeater"),
-    405: .standard(proto: "clients_repeater_2ghz"),
-    406: .standard(proto: "clients_repeater_5ghz"),
-    416: .standard(proto: "clients_repeater_5ghz_high"),
-    407: .standard(proto: "clients_repeater_eth"),
-    408: .standard(proto: "mesh_hops"),
-    409: .standard(proto: "mesh_one_hop_rssi_avg_2ghz"),
-    410: .standard(proto: "mesh_one_hop_rssi_avg_5ghz"),
-    414: .standard(proto: "mesh_one_hop_rssi_avg_5ghz_high"),
-    411: .standard(proto: "mesh_two_hop_rssi_avg_2ghz"),
-    412: .standard(proto: "mesh_two_hop_rssi_avg_5ghz"),
-    415: .standard(proto: "mesh_two_hop_rssi_avg_5ghz_high"),
-    418: .standard(proto: "repeater_tx_rate_mbps_min"),
-    419: .standard(proto: "repeater_rx_rate_mbps_min"),
-    420: .standard(proto: "repeater_tx_rate_mbps_avg"),
-    421: .standard(proto: "repeater_rx_rate_mbps_avg"),
-    422: .standard(proto: "repeater_seconds_since_2s_outage_min"),
-    424: .standard(proto: "repeater_seconds_since_5s_outage_min"),
-    423: .standard(proto: "repeater_seconds_since_2s_outage_avg"),
-    425: .standard(proto: "repeater_seconds_since_5s_outage_avg"),
-    426: .standard(proto: "repeater_latency_ms_1h_max"),
-    427: .standard(proto: "repeater_latency_ms_1h_avg"),
-    428: .standard(proto: "mesh_topology_change_count_1d"),
-    600: .standard(proto: "ping_seconds_since_last_1s_outage"),
-    601: .standard(proto: "ping_seconds_since_last_2s_outage"),
-    602: .standard(proto: "ping_seconds_since_last_5s_outage"),
-    603: .standard(proto: "ping_seconds_since_last_60s_outage"),
-    604: .standard(proto: "ping_seconds_since_last_300s_outage"),
-    605: .standard(proto: "ping_drop_rate"),
-    606: .standard(proto: "ping_drop_rate_last_1h"),
-    607: .standard(proto: "ping_latency"),
-    618: .standard(proto: "ping_latency_last_1h"),
-    610: .standard(proto: "ping_dish_seconds_since_last_1s_outage"),
-    611: .standard(proto: "ping_dish_seconds_since_last_2s_outage"),
-    612: .standard(proto: "ping_dish_seconds_since_last_5s_outage"),
-    613: .standard(proto: "ping_dish_seconds_since_last_60s_outage"),
-    614: .standard(proto: "ping_dish_seconds_since_last_300s_outage"),
-    615: .standard(proto: "ping_dish_drop_rate"),
-    616: .standard(proto: "ping_dish_drop_rate_last_1h"),
-    617: .standard(proto: "ping_dish_latency"),
-    619: .standard(proto: "ping_dish_latency_last_1h"),
-    700: .standard(proto: "client_speedtest_router_download_mbps"),
-    701: .standard(proto: "client_speedtest_router_upload_mbps"),
-    702: .standard(proto: "client_speedtest_router_rssi"),
-    703: .standard(proto: "client_speedtest_wifi_download_mbps"),
-    704: .standard(proto: "client_speedtest_wifi_upload_mbps"),
-    705: .standard(proto: "client_speedtest_client_download_mbps"),
-    706: .standard(proto: "client_speedtest_client_upload_mbps"),
-    707: .standard(proto: "client_speedtest_client_rssi"),
-    708: .standard(proto: "client_speedtest_client_iface"),
-    709: .standard(proto: "client_speedtest_client_oui"),
-    710: .standard(proto: "client_speedtest_client_tx_rate"),
-    711: .standard(proto: "client_speedtest_client_rx_rate"),
-    712: .standard(proto: "client_speedtest_client_platform_type"),
-    800: .standard(proto: "speedtest_tcp_8_download_mbps_avg"),
-    801: .standard(proto: "speedtest_tcp_8_download_mbps_max"),
-    802: .standard(proto: "speedtest_tcp_8_upload_mbps_avg"),
-    803: .standard(proto: "speedtest_tcp_8_upload_mbps_max"),
-    804: .standard(proto: "speedtest_tcp_64_download_mbps_avg"),
-    805: .standard(proto: "speedtest_tcp_64_download_mbps_max"),
-    806: .standard(proto: "speedtest_tcp_64_upload_mbps_avg"),
-    807: .standard(proto: "speedtest_tcp_64_upload_mbps_max"),
-    900: .standard(proto: "dish_cell_id"),
-    1000: .standard(proto: "config_setup_complete"),
-    1001: .standard(proto: "config_bands_split"),
-    1002: .standard(proto: "config_is_repeater"),
-    1003: .standard(proto: "config_open_network"),
-    1004: .standard(proto: "config_is_aviation"),
-    1005: .standard(proto: "config_secure_dns"),
-    1006: .standard(proto: "config_legacy"),
-    1007: .standard(proto: "config_ap_mode"),
-    1008: .standard(proto: "config_dfs_enabled"),
-    1009: .standard(proto: "config_network_name_is_default"),
-    1010: .standard(proto: "config_remote_ssh_enabled"),
-    1011: .standard(proto: "config_is_repeater_wired"),
-    1012: .standard(proto: "config_is_repeater_wireless"),
-    1013: .standard(proto: "config_block_schedules_set"),
-    1014: .standard(proto: "config_custom_nameservers"),
-    1015: .standard(proto: "config_disable_mesh_onboarding"),
-    1016: .standard(proto: "config_pin_country_code"),
-    1017: .standard(proto: "config_disable_update_reboot"),
-    1018: .standard(proto: "config_disable_2ghz"),
-    1019: .standard(proto: "config_disable_5ghz"),
-    1029: .standard(proto: "config_disable_5ghz_high"),
-    1020: .standard(proto: "config_channel_2ghz"),
-    1021: .standard(proto: "config_channel_5ghz"),
-    1022: .standard(proto: "config_channel_5ghz_high"),
-    1023: .standard(proto: "config_networks"),
-    1024: .standard(proto: "config_networks_guest"),
-    1025: .standard(proto: "config_networks_hidden"),
-    1026: .standard(proto: "config_networks_client_isolation"),
-    1027: .standard(proto: "config_networks_bands_split"),
-    1101: .standard(proto: "wan_traffic_control_cake_bytes"),
-    1102: .standard(proto: "wan_traffic_control_cake_packets"),
-    1103: .standard(proto: "wan_traffic_control_cake_drops"),
-    1104: .standard(proto: "wan_traffic_control_cake_ack_drops"),
-    1100: .standard(proto: "conntrack_entries"),
-    1105: .standard(proto: "dhcp_secs_eq_0"),
-    1106: .standard(proto: "dhcp_secs_gt_0"),
-    1107: .standard(proto: "dhcp_secs_gt_10"),
-    1108: .standard(proto: "dhcp_secs_gt_30"),
-    1109: .standard(proto: "dhcp_secs_gt_60"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{3}timestamp_date\0\u{3}timestamp_hour\0\u{3}sys_hw_gen\0\u{3}sys_sw\0\u{3}sys_country\0\u{3}sys_is_dev\0\u{3}sys_alloc_fds\0\u{3}sys_cpu_usage\0\u{3}sys_mem_free_kb\0\u{3}sys_bootcount\0\u{3}sys_partitions_equal\0\u{3}sys_uptime_seconds\0\u{3}sys_anti_rollback_version\0\u{3}sys_is_witl\0\u{3}sys_is_aviation_conformed\0\u{3}sys_ubi_max_ec\0\u{3}sys_ubi_bad_peb\0\u{3}sys_board_rev\0\u{3}sys_calibration_state\0\u{3}sys_calibration_partitions_state\0\u{3}sys_hw_index\0\u{4}N\u{1}radios_2ghz_channel\0\u{3}radios_2ghz_antenna1_rssi\0\u{3}radios_2ghz_antenna2_rssi\0\u{3}radios_2ghz_antenna3_rssi\0\u{3}radios_2ghz_iface_count\0\u{3}radios_2ghz_chan_busy_fraction\0\u{3}radios_2ghz_edcca_fraction\0\u{3}radios_2ghz_overlapping_bss_fraction\0\u{3}radios_2ghz_rx_bytes\0\u{3}radios_2ghz_rx_packets\0\u{3}radios_2ghz_rx_errors\0\u{3}radios_2ghz_rx_frame_errors\0\u{3}radios_2ghz_rx_packet_error_rate\0\u{3}radios_2ghz_rx_airtime_fraction\0\u{3}radios_2ghz_tx_bytes\0\u{3}radios_2ghz_tx_packets\0\u{3}radios_2ghz_tx_errors\0\u{3}radios_2ghz_tx_packet_error_rate\0\u{3}radios_2ghz_tx_airtime_fraction\0\u{3}radios_5ghz_channel\0\u{3}radios_5ghz_antenna1_rssi\0\u{3}radios_5ghz_antenna2_rssi\0\u{3}radios_5ghz_antenna3_rssi\0\u{3}radios_5ghz_iface_count\0\u{3}radios_5ghz_chan_busy_fraction\0\u{3}radios_5ghz_edcca_fraction\0\u{3}radios_5ghz_overlapping_bss_fraction\0\u{3}radios_5ghz_rx_bytes\0\u{3}radios_5ghz_rx_packets\0\u{3}radios_5ghz_rx_errors\0\u{3}radios_5ghz_rx_frame_errors\0\u{3}radios_5ghz_rx_packet_error_rate\0\u{3}radios_5ghz_rx_airtime_fraction\0\u{3}radios_5ghz_tx_bytes\0\u{3}radios_5ghz_tx_packets\0\u{3}radios_5ghz_tx_errors\0\u{3}radios_5ghz_tx_packet_error_rate\0\u{3}radios_5ghz_tx_airtime_fraction\0\u{3}radios_5ghz_high_channel\0\u{3}radios_5ghz_high_antenna1_rssi\0\u{3}radios_5ghz_high_antenna2_rssi\0\u{3}radios_5ghz_high_antenna3_rssi\0\u{3}radios_5ghz_high_iface_count\0\u{3}radios_5ghz_high_chan_busy_fraction\0\u{3}radios_5ghz_high_edcca_fraction\0\u{3}radios_5ghz_high_overlapping_bss_fraction\0\u{3}radios_5ghz_high_rx_bytes\0\u{3}radios_5ghz_high_rx_packets\0\u{3}radios_5ghz_high_rx_errors\0\u{3}radios_5ghz_high_rx_frame_errors\0\u{3}radios_5ghz_high_rx_packet_error_rate\0\u{3}radios_5ghz_high_rx_airtime_fraction\0\u{3}radios_5ghz_high_tx_bytes\0\u{3}radios_5ghz_high_tx_packets\0\u{3}radios_5ghz_high_tx_errors\0\u{3}radios_5ghz_high_tx_packet_error_rate\0\u{3}radios_5ghz_high_tx_airtime_fraction\0\u{3}radios_2ghz_antenna1_tssi\0\u{3}radios_2ghz_antenna2_tssi\0\u{3}radios_2ghz_antenna3_tssi\0\u{3}radios_2ghz_antenna4_tssi\0\u{3}radios_5ghz_antenna1_tssi\0\u{3}radios_5ghz_antenna2_tssi\0\u{3}radios_5ghz_antenna3_tssi\0\u{3}radios_5ghz_antenna4_tssi\0\u{3}radios_5ghz_high_antenna1_tssi\0\u{3}radios_5ghz_high_antenna2_tssi\0\u{3}radios_5ghz_high_antenna3_tssi\0\u{3}radios_5ghz_high_antenna4_tssi\0\u{4}\u{1d}radios_2ghz_antenna4_rssi\0\u{3}radios_5ghz_antenna4_rssi\0\u{3}radios_5ghz_high_antenna4_rssi\0\u{3}radios_2ghz_thermal_temp\0\u{3}radios_5ghz_thermal_temp\0\u{3}radios_2ghz_thermal_duty_cycle\0\u{3}radios_5ghz_thermal_duty_cycle\0\u{3}radios_2ghz_thermal_throttled_seconds\0\u{3}radios_5ghz_thermal_throttled_seconds\0\u{3}radios_5ghz_high_thermal_temp\0\u{3}radios_5ghz_high_thermal_duty_cycle\0\u{3}radios_5ghz_high_thermal_throttled_seconds\0\u{4}\u{2}board_temp\0\u{3}poe_mcu_die_temp\0\u{3}poe_percent_water_detect_avg\0\u{3}ambient_temp\0\u{3}cpu_temp\0\u{4}V\u{1}ifaces_lan_eth_rx_bytes\0\u{3}ifaces_lan_eth_rx_packets\0\u{3}ifaces_lan_eth_rx_errors\0\u{3}ifaces_lan_eth_rx_frame_errors\0\u{3}ifaces_lan_eth_tx_bytes\0\u{3}ifaces_lan_eth_tx_packets\0\u{3}ifaces_lan_eth_tx_errors\0\u{3}ifaces_wan_eth_rx_bytes\0\u{3}ifaces_wan_eth_rx_packets\0\u{3}ifaces_wan_eth_rx_errors\0\u{3}ifaces_wan_eth_rx_frame_errors\0\u{3}ifaces_wan_eth_tx_bytes\0\u{3}ifaces_wan_eth_tx_packets\0\u{3}ifaces_wan_eth_tx_errors\0\u{3}ifaces_lan1_eth_rx_bytes\0\u{3}ifaces_lan1_eth_rx_packets\0\u{3}ifaces_lan1_eth_rx_errors\0\u{3}ifaces_lan1_eth_rx_frame_errors\0\u{3}ifaces_lan1_eth_tx_bytes\0\u{3}ifaces_lan1_eth_tx_packets\0\u{3}ifaces_lan1_eth_tx_errors\0\u{3}ifaces_wan_port\0\u{2}O\u{1}clients\0\u{3}clients_2ghz\0\u{3}clients_5ghz\0\u{3}clients_eth\0\u{3}clients_repeater\0\u{3}clients_repeater_2ghz\0\u{3}clients_repeater_5ghz\0\u{3}clients_repeater_eth\0\u{3}mesh_hops\0\u{3}mesh_one_hop_rssi_avg_2ghz\0\u{3}mesh_one_hop_rssi_avg_5ghz\0\u{3}mesh_two_hop_rssi_avg_2ghz\0\u{3}mesh_two_hop_rssi_avg_5ghz\0\u{3}clients_5ghz_high\0\u{3}mesh_one_hop_rssi_avg_5ghz_high\0\u{3}mesh_two_hop_rssi_avg_5ghz_high\0\u{3}clients_repeater_5ghz_high\0\u{4}\u{2}repeater_tx_rate_mbps_min\0\u{3}repeater_rx_rate_mbps_min\0\u{3}repeater_tx_rate_mbps_avg\0\u{3}repeater_rx_rate_mbps_avg\0\u{3}repeater_seconds_since_2s_outage_min\0\u{3}repeater_seconds_since_2s_outage_avg\0\u{3}repeater_seconds_since_5s_outage_min\0\u{3}repeater_seconds_since_5s_outage_avg\0\u{3}repeater_latency_ms_1h_max\0\u{3}repeater_latency_ms_1h_avg\0\u{3}mesh_topology_change_count_1d\0\u{3}clients_5ghz_rx_bandwidth_20mhz\0\u{3}clients_5ghz_rx_bandwidth_40mhz\0\u{3}clients_5ghz_rx_bandwidth_80mhz\0\u{3}mac_exports_successful\0\u{3}mac_exports_server_connect_errors\0\u{3}mac_exports_server_send_errors\0\u{3}clients_5ghz_rx_bandwidth_160mhz\0\u{3}clients_wireless\0\u{3}clients_mlo\0\u{4}c\u{2}ping_seconds_since_last_1s_outage\0\u{3}ping_seconds_since_last_2s_outage\0\u{3}ping_seconds_since_last_5s_outage\0\u{3}ping_seconds_since_last_60s_outage\0\u{3}ping_seconds_since_last_300s_outage\0\u{3}ping_drop_rate\0\u{3}ping_drop_rate_last_1h\0\u{3}ping_latency\0\u{4}\u{3}ping_dish_seconds_since_last_1s_outage\0\u{3}ping_dish_seconds_since_last_2s_outage\0\u{3}ping_dish_seconds_since_last_5s_outage\0\u{3}ping_dish_seconds_since_last_60s_outage\0\u{3}ping_dish_seconds_since_last_300s_outage\0\u{3}ping_dish_drop_rate\0\u{3}ping_dish_drop_rate_last_1h\0\u{3}ping_dish_latency\0\u{3}ping_latency_last_1h\0\u{3}ping_dish_latency_last_1h\0\u{4}\u{2}ping_pop_ipv6_drop_rate_last_1h\0\u{4}\u{2}ping_pop_ipv6_latency_last_1h\0\u{4}M\u{1}client_speedtest_router_download_mbps\0\u{3}client_speedtest_router_upload_mbps\0\u{3}client_speedtest_router_rssi\0\u{3}client_speedtest_wifi_download_mbps\0\u{3}client_speedtest_wifi_upload_mbps\0\u{3}client_speedtest_client_download_mbps\0\u{3}client_speedtest_client_upload_mbps\0\u{3}client_speedtest_client_rssi\0\u{3}client_speedtest_client_iface\0\u{3}client_speedtest_client_oui\0\u{3}client_speedtest_client_tx_rate\0\u{3}client_speedtest_client_rx_rate\0\u{3}client_speedtest_client_platform_type\0\u{3}client_speedtest_router_download_total_bytes_transferred\0\u{3}client_speedtest_router_download_bytes_transferred_duration_s\0\u{3}client_speedtest_router_download_target_ipv6_low\0\u{3}client_speedtest_router_download_target_ipv6_high\0\u{3}client_speedtest_router_upload_total_bytes_transferred\0\u{3}client_speedtest_router_upload_bytes_transferred_duration_s\0\u{3}client_speedtest_router_upload_target_ipv6_low\0\u{3}client_speedtest_router_upload_target_ipv6_high\0\u{4}P\u{1}speedtest_tcp_8_download_mbps_avg\0\u{3}speedtest_tcp_8_download_mbps_max\0\u{3}speedtest_tcp_8_upload_mbps_avg\0\u{3}speedtest_tcp_8_upload_mbps_max\0\u{3}speedtest_tcp_64_download_mbps_avg\0\u{3}speedtest_tcp_64_download_mbps_max\0\u{3}speedtest_tcp_64_upload_mbps_avg\0\u{3}speedtest_tcp_64_upload_mbps_max\0\u{3}speedtest_tcp_1_download_mbps_avg\0\u{3}speedtest_tcp_1_download_mbps_max\0\u{3}speedtest_tcp_1_upload_mbps_avg\0\u{3}speedtest_tcp_1_upload_mbps_max\0\u{3}speedtest_tcp_8_download_mean_tcp_connect_time\0\u{3}speedtest_tcp_8_upload_mean_tcp_connect_time\0\u{3}speedtest_tcp_8_download_cf_ray_headers\0\u{3}speedtest_tcp_8_upload_cf_ray_headers\0\u{3}speedtest_tcp_1_download_mean_tcp_connect_time\0\u{3}speedtest_tcp_1_upload_mean_tcp_connect_time\0\u{3}speedtest_tcp_1_download_cf_ray_headers\0\u{3}speedtest_tcp_1_upload_cf_ray_headers\0\u{4}Q\u{1}dish_cell_id\0\u{4}d\u{1}config_setup_complete\0\u{3}config_bands_split\0\u{3}config_is_repeater\0\u{3}config_open_network\0\u{3}config_is_aviation\0\u{3}config_secure_dns\0\u{3}config_legacy\0\u{3}config_ap_mode\0\u{3}config_dfs_enabled\0\u{3}config_network_name_is_default\0\u{3}config_remote_ssh_enabled\0\u{3}config_is_repeater_wired\0\u{3}config_is_repeater_wireless\0\u{3}config_block_schedules_set\0\u{3}config_custom_nameservers\0\u{3}config_disable_mesh_onboarding\0\u{3}config_pin_country_code\0\u{3}config_disable_update_reboot\0\u{3}config_disable_2ghz\0\u{3}config_disable_5ghz\0\u{3}config_channel_2ghz\0\u{3}config_channel_5ghz\0\u{3}config_channel_5ghz_high\0\u{3}config_networks\0\u{3}config_networks_guest\0\u{3}config_networks_hidden\0\u{3}config_networks_client_isolation\0\u{3}config_networks_bands_split\0\u{4}\u{2}config_disable_5ghz_high\0\u{4}\u{2}config_https_content_hosting_enabled\0\u{3}config_only_overflight_blocking_enabled\0\u{3}config_offline_networks_disablement_enabled\0\u{3}config_custom_dns_disabled\0\u{3}config_networks_user\0\u{3}config_foreflight_enabled\0\u{3}config_outdoor_mode\0\u{4}\u{3}wifi_reload_count\0\u{3}radius_reload_count\0\u{3}openssh_reload_count\0\u{3}iptables_reload_count\0\u{3}ebtables_reload_count\0\u{3}traffic_control_reload_count\0\u{3}dhcp_reload_count\0\u{3}dhcpv6_reload_count\0\u{3}system_reload_count\0\u{3}dns_reload_count\0\u{3}https_reload_count\0\u{3}band_steering_reload_count\0\u{3}commit_count\0\u{3}network_reload_count\0\u{3}foreflight_reload_count\0\u{4}.conntrack_entries\0\u{3}wan_traffic_control_cake_bytes\0\u{3}wan_traffic_control_cake_packets\0\u{3}wan_traffic_control_cake_drops\0\u{3}wan_traffic_control_cake_ack_drops\0\u{3}dhcp_secs_eq_0\0\u{3}dhcp_secs_gt_0\0\u{3}dhcp_secs_gt_10\0\u{3}dhcp_secs_gt_30\0\u{3}dhcp_secs_gt_60\0\u{4}[\u{1}dns_forwards\0\u{3}dns_forwards_success\0\u{3}dns_forwards_server_failure\0\u{3}dns_forwards_no_server_response\0\u{3}dns_forwards_success_on_default_backup\0\u{3}dns_forwards_dropped\0\u{3}dns_forwards_with_backup\0\u{2}ZI\u{2}timestamp\0")
 
   fileprivate class _StorageClass {
     var _id: SwiftProtobuf.Google_Protobuf_StringValue? = nil
@@ -10027,6 +11740,7 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
     var _timestampHour: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _timestamp: SpaceX_API_Telemetron_Public_Common_TimestampInfo? = nil
     var _sysHwGen: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _sysHwIndex: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _sysSw: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _sysCountry: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _sysIsDev: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
@@ -10042,6 +11756,8 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
     var _sysUbiMaxEc: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _sysUbiBadPeb: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _sysBoardRev: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _sysCalibrationState: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _sysCalibrationPartitionsState: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _radios2GhzChannel: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _radios2GhzAntenna1Rssi: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
     var _radios2GhzAntenna2Rssi: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
@@ -10124,7 +11840,10 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
     var _radios5GhzThermalThrottledSeconds: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _radios5GhzHighThermalThrottledSeconds: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _boardTemp: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _ambientTemp: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _cpuTemp: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
     var _poeMcuDieTemp: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _poePercentWaterDetectAvg: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
     var _ifacesLanEthRxBytes: SwiftProtobuf.Google_Protobuf_Int64Value? = nil
     var _ifacesLanEthRxPackets: SwiftProtobuf.Google_Protobuf_Int64Value? = nil
     var _ifacesLanEthRxErrors: SwiftProtobuf.Google_Protobuf_Int64Value? = nil
@@ -10146,14 +11865,18 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
     var _ifacesWanEthTxBytes: SwiftProtobuf.Google_Protobuf_Int64Value? = nil
     var _ifacesWanEthTxPackets: SwiftProtobuf.Google_Protobuf_Int64Value? = nil
     var _ifacesWanEthTxErrors: SwiftProtobuf.Google_Protobuf_Int64Value? = nil
+    var _ifacesWanPort: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _clients: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _clients2Ghz: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _clients5Ghz: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _clients5GhzHigh: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _clientsWireless: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _clientsMlo: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _clientsEth: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _clients5GhzRxBandwidth20Mhz: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _clients5GhzRxBandwidth40Mhz: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _clients5GhzRxBandwidth80Mhz: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _clients5GhzRxBandwidth160Mhz: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _clientsRepeater: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _clientsRepeater2Ghz: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _clientsRepeater5Ghz: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
@@ -10177,6 +11900,9 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
     var _repeaterLatencyMs1HMax: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
     var _repeaterLatencyMs1HAvg: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
     var _meshTopologyChangeCount1D: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _macExportsSuccessful: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _macExportsServerConnectErrors: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _macExportsServerSendErrors: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _pingSecondsSinceLast1SOutage: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
     var _pingSecondsSinceLast2SOutage: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
     var _pingSecondsSinceLast5SOutage: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
@@ -10195,8 +11921,18 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
     var _pingDishDropRateLast1H: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
     var _pingDishLatency: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
     var _pingDishLatencyLast1H: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _pingPopIpv6DropRateLast1H: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _pingPopIpv6LatencyLast1H: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
     var _clientSpeedtestRouterDownloadMbps: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _clientSpeedtestRouterDownloadTotalBytesTransferred: SwiftProtobuf.Google_Protobuf_UInt64Value? = nil
+    var _clientSpeedtestRouterDownloadBytesTransferredDurationS: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _clientSpeedtestRouterDownloadTargetIpv6Low: SwiftProtobuf.Google_Protobuf_UInt64Value? = nil
+    var _clientSpeedtestRouterDownloadTargetIpv6High: SwiftProtobuf.Google_Protobuf_UInt64Value? = nil
     var _clientSpeedtestRouterUploadMbps: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _clientSpeedtestRouterUploadTotalBytesTransferred: SwiftProtobuf.Google_Protobuf_UInt64Value? = nil
+    var _clientSpeedtestRouterUploadBytesTransferredDurationS: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _clientSpeedtestRouterUploadTargetIpv6Low: SwiftProtobuf.Google_Protobuf_UInt64Value? = nil
+    var _clientSpeedtestRouterUploadTargetIpv6High: SwiftProtobuf.Google_Protobuf_UInt64Value? = nil
     var _clientSpeedtestRouterRssi: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
     var _clientSpeedtestWifiDownloadMbps: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
     var _clientSpeedtestWifiUploadMbps: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
@@ -10216,6 +11952,18 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
     var _speedtestTcp64DownloadMbpsMax: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
     var _speedtestTcp64UploadMbpsAvg: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
     var _speedtestTcp64UploadMbpsMax: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _speedtestTcp1DownloadMbpsAvg: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _speedtestTcp1DownloadMbpsMax: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _speedtestTcp1UploadMbpsAvg: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _speedtestTcp1UploadMbpsMax: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _speedtestTcp8DownloadMeanTcpConnectTime: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _speedtestTcp8UploadMeanTcpConnectTime: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _speedtestTcp8DownloadCfRayHeaders: [String] = []
+    var _speedtestTcp8UploadCfRayHeaders: [String] = []
+    var _speedtestTcp1DownloadMeanTcpConnectTime: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _speedtestTcp1UploadMeanTcpConnectTime: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _speedtestTcp1DownloadCfRayHeaders: [String] = []
+    var _speedtestTcp1UploadCfRayHeaders: [String] = []
     var _dishCellID: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _configSetupComplete: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
     var _configBandsSplit: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
@@ -10235,6 +11983,12 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
     var _configDisableMeshOnboarding: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
     var _configPinCountryCode: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
     var _configDisableUpdateReboot: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
+    var _configHTTPSContentHostingEnabled: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
+    var _configOnlyOverflightBlockingEnabled: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
+    var _configOfflineNetworksDisablementEnabled: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
+    var _configCustomDnsDisabled: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
+    var _configForeflightEnabled: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
+    var _configOutdoorMode: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
     var _configDisable2Ghz: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
     var _configDisable5Ghz: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
     var _configDisable5GhzHigh: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
@@ -10246,6 +12000,22 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
     var _configNetworksHidden: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _configNetworksClientIsolation: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _configNetworksBandsSplit: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _configNetworksUser: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _wifiReloadCount: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _radiusReloadCount: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _opensshReloadCount: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _iptablesReloadCount: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _ebtablesReloadCount: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _trafficControlReloadCount: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _dhcpReloadCount: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _dhcpv6ReloadCount: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _systemReloadCount: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _dnsReloadCount: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _httpsReloadCount: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _bandSteeringReloadCount: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _commitCount: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _networkReloadCount: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _foreflightReloadCount: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _wanTrafficControlCakeBytes: SwiftProtobuf.Google_Protobuf_Int64Value? = nil
     var _wanTrafficControlCakePackets: SwiftProtobuf.Google_Protobuf_Int64Value? = nil
     var _wanTrafficControlCakeDrops: SwiftProtobuf.Google_Protobuf_Int64Value? = nil
@@ -10256,16 +12026,19 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
     var _dhcpSecsGt10: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _dhcpSecsGt30: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _dhcpSecsGt60: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _dnsForwards: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _dnsForwardsSuccess: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _dnsForwardsServerFailure: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _dnsForwardsNoServerResponse: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _dnsForwardsSuccessOnDefaultBackup: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _dnsForwardsDropped: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _dnsForwardsWithBackup: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
 
-    #if swift(>=5.10)
       // This property is used as the initial default value for new instances of the type.
       // The type itself is protecting the reference to its storage via CoW semantics.
       // This will force a copy to be made of this reference when the first mutation occurs;
       // hence, it is safe to mark this as `nonisolated(unsafe)`.
       static nonisolated(unsafe) let defaultInstance = _StorageClass()
-    #else
-      static let defaultInstance = _StorageClass()
-    #endif
 
     private init() {}
 
@@ -10275,6 +12048,7 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
       _timestampHour = source._timestampHour
       _timestamp = source._timestamp
       _sysHwGen = source._sysHwGen
+      _sysHwIndex = source._sysHwIndex
       _sysSw = source._sysSw
       _sysCountry = source._sysCountry
       _sysIsDev = source._sysIsDev
@@ -10290,6 +12064,8 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
       _sysUbiMaxEc = source._sysUbiMaxEc
       _sysUbiBadPeb = source._sysUbiBadPeb
       _sysBoardRev = source._sysBoardRev
+      _sysCalibrationState = source._sysCalibrationState
+      _sysCalibrationPartitionsState = source._sysCalibrationPartitionsState
       _radios2GhzChannel = source._radios2GhzChannel
       _radios2GhzAntenna1Rssi = source._radios2GhzAntenna1Rssi
       _radios2GhzAntenna2Rssi = source._radios2GhzAntenna2Rssi
@@ -10372,7 +12148,10 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
       _radios5GhzThermalThrottledSeconds = source._radios5GhzThermalThrottledSeconds
       _radios5GhzHighThermalThrottledSeconds = source._radios5GhzHighThermalThrottledSeconds
       _boardTemp = source._boardTemp
+      _ambientTemp = source._ambientTemp
+      _cpuTemp = source._cpuTemp
       _poeMcuDieTemp = source._poeMcuDieTemp
+      _poePercentWaterDetectAvg = source._poePercentWaterDetectAvg
       _ifacesLanEthRxBytes = source._ifacesLanEthRxBytes
       _ifacesLanEthRxPackets = source._ifacesLanEthRxPackets
       _ifacesLanEthRxErrors = source._ifacesLanEthRxErrors
@@ -10394,14 +12173,18 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
       _ifacesWanEthTxBytes = source._ifacesWanEthTxBytes
       _ifacesWanEthTxPackets = source._ifacesWanEthTxPackets
       _ifacesWanEthTxErrors = source._ifacesWanEthTxErrors
+      _ifacesWanPort = source._ifacesWanPort
       _clients = source._clients
       _clients2Ghz = source._clients2Ghz
       _clients5Ghz = source._clients5Ghz
       _clients5GhzHigh = source._clients5GhzHigh
+      _clientsWireless = source._clientsWireless
+      _clientsMlo = source._clientsMlo
       _clientsEth = source._clientsEth
       _clients5GhzRxBandwidth20Mhz = source._clients5GhzRxBandwidth20Mhz
       _clients5GhzRxBandwidth40Mhz = source._clients5GhzRxBandwidth40Mhz
       _clients5GhzRxBandwidth80Mhz = source._clients5GhzRxBandwidth80Mhz
+      _clients5GhzRxBandwidth160Mhz = source._clients5GhzRxBandwidth160Mhz
       _clientsRepeater = source._clientsRepeater
       _clientsRepeater2Ghz = source._clientsRepeater2Ghz
       _clientsRepeater5Ghz = source._clientsRepeater5Ghz
@@ -10425,6 +12208,9 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
       _repeaterLatencyMs1HMax = source._repeaterLatencyMs1HMax
       _repeaterLatencyMs1HAvg = source._repeaterLatencyMs1HAvg
       _meshTopologyChangeCount1D = source._meshTopologyChangeCount1D
+      _macExportsSuccessful = source._macExportsSuccessful
+      _macExportsServerConnectErrors = source._macExportsServerConnectErrors
+      _macExportsServerSendErrors = source._macExportsServerSendErrors
       _pingSecondsSinceLast1SOutage = source._pingSecondsSinceLast1SOutage
       _pingSecondsSinceLast2SOutage = source._pingSecondsSinceLast2SOutage
       _pingSecondsSinceLast5SOutage = source._pingSecondsSinceLast5SOutage
@@ -10443,8 +12229,18 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
       _pingDishDropRateLast1H = source._pingDishDropRateLast1H
       _pingDishLatency = source._pingDishLatency
       _pingDishLatencyLast1H = source._pingDishLatencyLast1H
+      _pingPopIpv6DropRateLast1H = source._pingPopIpv6DropRateLast1H
+      _pingPopIpv6LatencyLast1H = source._pingPopIpv6LatencyLast1H
       _clientSpeedtestRouterDownloadMbps = source._clientSpeedtestRouterDownloadMbps
+      _clientSpeedtestRouterDownloadTotalBytesTransferred = source._clientSpeedtestRouterDownloadTotalBytesTransferred
+      _clientSpeedtestRouterDownloadBytesTransferredDurationS = source._clientSpeedtestRouterDownloadBytesTransferredDurationS
+      _clientSpeedtestRouterDownloadTargetIpv6Low = source._clientSpeedtestRouterDownloadTargetIpv6Low
+      _clientSpeedtestRouterDownloadTargetIpv6High = source._clientSpeedtestRouterDownloadTargetIpv6High
       _clientSpeedtestRouterUploadMbps = source._clientSpeedtestRouterUploadMbps
+      _clientSpeedtestRouterUploadTotalBytesTransferred = source._clientSpeedtestRouterUploadTotalBytesTransferred
+      _clientSpeedtestRouterUploadBytesTransferredDurationS = source._clientSpeedtestRouterUploadBytesTransferredDurationS
+      _clientSpeedtestRouterUploadTargetIpv6Low = source._clientSpeedtestRouterUploadTargetIpv6Low
+      _clientSpeedtestRouterUploadTargetIpv6High = source._clientSpeedtestRouterUploadTargetIpv6High
       _clientSpeedtestRouterRssi = source._clientSpeedtestRouterRssi
       _clientSpeedtestWifiDownloadMbps = source._clientSpeedtestWifiDownloadMbps
       _clientSpeedtestWifiUploadMbps = source._clientSpeedtestWifiUploadMbps
@@ -10464,6 +12260,18 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
       _speedtestTcp64DownloadMbpsMax = source._speedtestTcp64DownloadMbpsMax
       _speedtestTcp64UploadMbpsAvg = source._speedtestTcp64UploadMbpsAvg
       _speedtestTcp64UploadMbpsMax = source._speedtestTcp64UploadMbpsMax
+      _speedtestTcp1DownloadMbpsAvg = source._speedtestTcp1DownloadMbpsAvg
+      _speedtestTcp1DownloadMbpsMax = source._speedtestTcp1DownloadMbpsMax
+      _speedtestTcp1UploadMbpsAvg = source._speedtestTcp1UploadMbpsAvg
+      _speedtestTcp1UploadMbpsMax = source._speedtestTcp1UploadMbpsMax
+      _speedtestTcp8DownloadMeanTcpConnectTime = source._speedtestTcp8DownloadMeanTcpConnectTime
+      _speedtestTcp8UploadMeanTcpConnectTime = source._speedtestTcp8UploadMeanTcpConnectTime
+      _speedtestTcp8DownloadCfRayHeaders = source._speedtestTcp8DownloadCfRayHeaders
+      _speedtestTcp8UploadCfRayHeaders = source._speedtestTcp8UploadCfRayHeaders
+      _speedtestTcp1DownloadMeanTcpConnectTime = source._speedtestTcp1DownloadMeanTcpConnectTime
+      _speedtestTcp1UploadMeanTcpConnectTime = source._speedtestTcp1UploadMeanTcpConnectTime
+      _speedtestTcp1DownloadCfRayHeaders = source._speedtestTcp1DownloadCfRayHeaders
+      _speedtestTcp1UploadCfRayHeaders = source._speedtestTcp1UploadCfRayHeaders
       _dishCellID = source._dishCellID
       _configSetupComplete = source._configSetupComplete
       _configBandsSplit = source._configBandsSplit
@@ -10483,6 +12291,12 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
       _configDisableMeshOnboarding = source._configDisableMeshOnboarding
       _configPinCountryCode = source._configPinCountryCode
       _configDisableUpdateReboot = source._configDisableUpdateReboot
+      _configHTTPSContentHostingEnabled = source._configHTTPSContentHostingEnabled
+      _configOnlyOverflightBlockingEnabled = source._configOnlyOverflightBlockingEnabled
+      _configOfflineNetworksDisablementEnabled = source._configOfflineNetworksDisablementEnabled
+      _configCustomDnsDisabled = source._configCustomDnsDisabled
+      _configForeflightEnabled = source._configForeflightEnabled
+      _configOutdoorMode = source._configOutdoorMode
       _configDisable2Ghz = source._configDisable2Ghz
       _configDisable5Ghz = source._configDisable5Ghz
       _configDisable5GhzHigh = source._configDisable5GhzHigh
@@ -10494,6 +12308,22 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
       _configNetworksHidden = source._configNetworksHidden
       _configNetworksClientIsolation = source._configNetworksClientIsolation
       _configNetworksBandsSplit = source._configNetworksBandsSplit
+      _configNetworksUser = source._configNetworksUser
+      _wifiReloadCount = source._wifiReloadCount
+      _radiusReloadCount = source._radiusReloadCount
+      _opensshReloadCount = source._opensshReloadCount
+      _iptablesReloadCount = source._iptablesReloadCount
+      _ebtablesReloadCount = source._ebtablesReloadCount
+      _trafficControlReloadCount = source._trafficControlReloadCount
+      _dhcpReloadCount = source._dhcpReloadCount
+      _dhcpv6ReloadCount = source._dhcpv6ReloadCount
+      _systemReloadCount = source._systemReloadCount
+      _dnsReloadCount = source._dnsReloadCount
+      _httpsReloadCount = source._httpsReloadCount
+      _bandSteeringReloadCount = source._bandSteeringReloadCount
+      _commitCount = source._commitCount
+      _networkReloadCount = source._networkReloadCount
+      _foreflightReloadCount = source._foreflightReloadCount
       _wanTrafficControlCakeBytes = source._wanTrafficControlCakeBytes
       _wanTrafficControlCakePackets = source._wanTrafficControlCakePackets
       _wanTrafficControlCakeDrops = source._wanTrafficControlCakeDrops
@@ -10504,6 +12334,13 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
       _dhcpSecsGt10 = source._dhcpSecsGt10
       _dhcpSecsGt30 = source._dhcpSecsGt30
       _dhcpSecsGt60 = source._dhcpSecsGt60
+      _dnsForwards = source._dnsForwards
+      _dnsForwardsSuccess = source._dnsForwardsSuccess
+      _dnsForwardsServerFailure = source._dnsForwardsServerFailure
+      _dnsForwardsNoServerResponse = source._dnsForwardsNoServerResponse
+      _dnsForwardsSuccessOnDefaultBackup = source._dnsForwardsSuccessOnDefaultBackup
+      _dnsForwardsDropped = source._dnsForwardsDropped
+      _dnsForwardsWithBackup = source._dnsForwardsWithBackup
     }
   }
 
@@ -10541,6 +12378,9 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
         case 17: try { try decoder.decodeSingularMessageField(value: &_storage._sysUbiMaxEc) }()
         case 18: try { try decoder.decodeSingularMessageField(value: &_storage._sysUbiBadPeb) }()
         case 19: try { try decoder.decodeSingularMessageField(value: &_storage._sysBoardRev) }()
+        case 20: try { try decoder.decodeSingularMessageField(value: &_storage._sysCalibrationState) }()
+        case 21: try { try decoder.decodeSingularMessageField(value: &_storage._sysCalibrationPartitionsState) }()
+        case 22: try { try decoder.decodeSingularMessageField(value: &_storage._sysHwIndex) }()
         case 100: try { try decoder.decodeSingularMessageField(value: &_storage._radios2GhzChannel) }()
         case 101: try { try decoder.decodeSingularMessageField(value: &_storage._radios2GhzAntenna1Rssi) }()
         case 102: try { try decoder.decodeSingularMessageField(value: &_storage._radios2GhzAntenna2Rssi) }()
@@ -10624,6 +12464,9 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
         case 208: try { try decoder.decodeSingularMessageField(value: &_storage._radios5GhzHighThermalThrottledSeconds) }()
         case 210: try { try decoder.decodeSingularMessageField(value: &_storage._boardTemp) }()
         case 211: try { try decoder.decodeSingularMessageField(value: &_storage._poeMcuDieTemp) }()
+        case 212: try { try decoder.decodeSingularMessageField(value: &_storage._poePercentWaterDetectAvg) }()
+        case 213: try { try decoder.decodeSingularMessageField(value: &_storage._ambientTemp) }()
+        case 214: try { try decoder.decodeSingularMessageField(value: &_storage._cpuTemp) }()
         case 300: try { try decoder.decodeSingularMessageField(value: &_storage._ifacesLanEthRxBytes) }()
         case 301: try { try decoder.decodeSingularMessageField(value: &_storage._ifacesLanEthRxPackets) }()
         case 302: try { try decoder.decodeSingularMessageField(value: &_storage._ifacesLanEthRxErrors) }()
@@ -10645,6 +12488,7 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
         case 318: try { try decoder.decodeSingularMessageField(value: &_storage._ifacesLan1EthTxBytes) }()
         case 319: try { try decoder.decodeSingularMessageField(value: &_storage._ifacesLan1EthTxPackets) }()
         case 320: try { try decoder.decodeSingularMessageField(value: &_storage._ifacesLan1EthTxErrors) }()
+        case 321: try { try decoder.decodeSingularMessageField(value: &_storage._ifacesWanPort) }()
         case 400: try { try decoder.decodeSingularMessageField(value: &_storage._clients) }()
         case 401: try { try decoder.decodeSingularMessageField(value: &_storage._clients2Ghz) }()
         case 402: try { try decoder.decodeSingularMessageField(value: &_storage._clients5Ghz) }()
@@ -10676,6 +12520,12 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
         case 429: try { try decoder.decodeSingularMessageField(value: &_storage._clients5GhzRxBandwidth20Mhz) }()
         case 430: try { try decoder.decodeSingularMessageField(value: &_storage._clients5GhzRxBandwidth40Mhz) }()
         case 431: try { try decoder.decodeSingularMessageField(value: &_storage._clients5GhzRxBandwidth80Mhz) }()
+        case 432: try { try decoder.decodeSingularMessageField(value: &_storage._macExportsSuccessful) }()
+        case 433: try { try decoder.decodeSingularMessageField(value: &_storage._macExportsServerConnectErrors) }()
+        case 434: try { try decoder.decodeSingularMessageField(value: &_storage._macExportsServerSendErrors) }()
+        case 435: try { try decoder.decodeSingularMessageField(value: &_storage._clients5GhzRxBandwidth160Mhz) }()
+        case 436: try { try decoder.decodeSingularMessageField(value: &_storage._clientsWireless) }()
+        case 437: try { try decoder.decodeSingularMessageField(value: &_storage._clientsMlo) }()
         case 600: try { try decoder.decodeSingularMessageField(value: &_storage._pingSecondsSinceLast1SOutage) }()
         case 601: try { try decoder.decodeSingularMessageField(value: &_storage._pingSecondsSinceLast2SOutage) }()
         case 602: try { try decoder.decodeSingularMessageField(value: &_storage._pingSecondsSinceLast5SOutage) }()
@@ -10694,6 +12544,8 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
         case 617: try { try decoder.decodeSingularMessageField(value: &_storage._pingDishLatency) }()
         case 618: try { try decoder.decodeSingularMessageField(value: &_storage._pingLatencyLast1H) }()
         case 619: try { try decoder.decodeSingularMessageField(value: &_storage._pingDishLatencyLast1H) }()
+        case 621: try { try decoder.decodeSingularMessageField(value: &_storage._pingPopIpv6DropRateLast1H) }()
+        case 623: try { try decoder.decodeSingularMessageField(value: &_storage._pingPopIpv6LatencyLast1H) }()
         case 700: try { try decoder.decodeSingularMessageField(value: &_storage._clientSpeedtestRouterDownloadMbps) }()
         case 701: try { try decoder.decodeSingularMessageField(value: &_storage._clientSpeedtestRouterUploadMbps) }()
         case 702: try { try decoder.decodeSingularMessageField(value: &_storage._clientSpeedtestRouterRssi) }()
@@ -10707,6 +12559,14 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
         case 710: try { try decoder.decodeSingularMessageField(value: &_storage._clientSpeedtestClientTxRate) }()
         case 711: try { try decoder.decodeSingularMessageField(value: &_storage._clientSpeedtestClientRxRate) }()
         case 712: try { try decoder.decodeSingularMessageField(value: &_storage._clientSpeedtestClientPlatformType) }()
+        case 713: try { try decoder.decodeSingularMessageField(value: &_storage._clientSpeedtestRouterDownloadTotalBytesTransferred) }()
+        case 714: try { try decoder.decodeSingularMessageField(value: &_storage._clientSpeedtestRouterDownloadBytesTransferredDurationS) }()
+        case 715: try { try decoder.decodeSingularMessageField(value: &_storage._clientSpeedtestRouterDownloadTargetIpv6Low) }()
+        case 716: try { try decoder.decodeSingularMessageField(value: &_storage._clientSpeedtestRouterDownloadTargetIpv6High) }()
+        case 717: try { try decoder.decodeSingularMessageField(value: &_storage._clientSpeedtestRouterUploadTotalBytesTransferred) }()
+        case 718: try { try decoder.decodeSingularMessageField(value: &_storage._clientSpeedtestRouterUploadBytesTransferredDurationS) }()
+        case 719: try { try decoder.decodeSingularMessageField(value: &_storage._clientSpeedtestRouterUploadTargetIpv6Low) }()
+        case 720: try { try decoder.decodeSingularMessageField(value: &_storage._clientSpeedtestRouterUploadTargetIpv6High) }()
         case 800: try { try decoder.decodeSingularMessageField(value: &_storage._speedtestTcp8DownloadMbpsAvg) }()
         case 801: try { try decoder.decodeSingularMessageField(value: &_storage._speedtestTcp8DownloadMbpsMax) }()
         case 802: try { try decoder.decodeSingularMessageField(value: &_storage._speedtestTcp8UploadMbpsAvg) }()
@@ -10715,6 +12575,18 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
         case 805: try { try decoder.decodeSingularMessageField(value: &_storage._speedtestTcp64DownloadMbpsMax) }()
         case 806: try { try decoder.decodeSingularMessageField(value: &_storage._speedtestTcp64UploadMbpsAvg) }()
         case 807: try { try decoder.decodeSingularMessageField(value: &_storage._speedtestTcp64UploadMbpsMax) }()
+        case 808: try { try decoder.decodeSingularMessageField(value: &_storage._speedtestTcp1DownloadMbpsAvg) }()
+        case 809: try { try decoder.decodeSingularMessageField(value: &_storage._speedtestTcp1DownloadMbpsMax) }()
+        case 810: try { try decoder.decodeSingularMessageField(value: &_storage._speedtestTcp1UploadMbpsAvg) }()
+        case 811: try { try decoder.decodeSingularMessageField(value: &_storage._speedtestTcp1UploadMbpsMax) }()
+        case 812: try { try decoder.decodeSingularMessageField(value: &_storage._speedtestTcp8DownloadMeanTcpConnectTime) }()
+        case 813: try { try decoder.decodeSingularMessageField(value: &_storage._speedtestTcp8UploadMeanTcpConnectTime) }()
+        case 814: try { try decoder.decodeRepeatedStringField(value: &_storage._speedtestTcp8DownloadCfRayHeaders) }()
+        case 815: try { try decoder.decodeRepeatedStringField(value: &_storage._speedtestTcp8UploadCfRayHeaders) }()
+        case 816: try { try decoder.decodeSingularMessageField(value: &_storage._speedtestTcp1DownloadMeanTcpConnectTime) }()
+        case 817: try { try decoder.decodeSingularMessageField(value: &_storage._speedtestTcp1UploadMeanTcpConnectTime) }()
+        case 818: try { try decoder.decodeRepeatedStringField(value: &_storage._speedtestTcp1DownloadCfRayHeaders) }()
+        case 819: try { try decoder.decodeRepeatedStringField(value: &_storage._speedtestTcp1UploadCfRayHeaders) }()
         case 900: try { try decoder.decodeSingularMessageField(value: &_storage._dishCellID) }()
         case 1000: try { try decoder.decodeSingularMessageField(value: &_storage._configSetupComplete) }()
         case 1001: try { try decoder.decodeSingularMessageField(value: &_storage._configBandsSplit) }()
@@ -10745,6 +12617,28 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
         case 1026: try { try decoder.decodeSingularMessageField(value: &_storage._configNetworksClientIsolation) }()
         case 1027: try { try decoder.decodeSingularMessageField(value: &_storage._configNetworksBandsSplit) }()
         case 1029: try { try decoder.decodeSingularMessageField(value: &_storage._configDisable5GhzHigh) }()
+        case 1031: try { try decoder.decodeSingularMessageField(value: &_storage._configHTTPSContentHostingEnabled) }()
+        case 1032: try { try decoder.decodeSingularMessageField(value: &_storage._configOnlyOverflightBlockingEnabled) }()
+        case 1033: try { try decoder.decodeSingularMessageField(value: &_storage._configOfflineNetworksDisablementEnabled) }()
+        case 1034: try { try decoder.decodeSingularMessageField(value: &_storage._configCustomDnsDisabled) }()
+        case 1035: try { try decoder.decodeSingularMessageField(value: &_storage._configNetworksUser) }()
+        case 1036: try { try decoder.decodeSingularMessageField(value: &_storage._configForeflightEnabled) }()
+        case 1037: try { try decoder.decodeSingularMessageField(value: &_storage._configOutdoorMode) }()
+        case 1040: try { try decoder.decodeSingularMessageField(value: &_storage._wifiReloadCount) }()
+        case 1041: try { try decoder.decodeSingularMessageField(value: &_storage._radiusReloadCount) }()
+        case 1042: try { try decoder.decodeSingularMessageField(value: &_storage._opensshReloadCount) }()
+        case 1043: try { try decoder.decodeSingularMessageField(value: &_storage._iptablesReloadCount) }()
+        case 1044: try { try decoder.decodeSingularMessageField(value: &_storage._ebtablesReloadCount) }()
+        case 1045: try { try decoder.decodeSingularMessageField(value: &_storage._trafficControlReloadCount) }()
+        case 1046: try { try decoder.decodeSingularMessageField(value: &_storage._dhcpReloadCount) }()
+        case 1047: try { try decoder.decodeSingularMessageField(value: &_storage._dhcpv6ReloadCount) }()
+        case 1048: try { try decoder.decodeSingularMessageField(value: &_storage._systemReloadCount) }()
+        case 1049: try { try decoder.decodeSingularMessageField(value: &_storage._dnsReloadCount) }()
+        case 1050: try { try decoder.decodeSingularMessageField(value: &_storage._httpsReloadCount) }()
+        case 1051: try { try decoder.decodeSingularMessageField(value: &_storage._bandSteeringReloadCount) }()
+        case 1052: try { try decoder.decodeSingularMessageField(value: &_storage._commitCount) }()
+        case 1053: try { try decoder.decodeSingularMessageField(value: &_storage._networkReloadCount) }()
+        case 1054: try { try decoder.decodeSingularMessageField(value: &_storage._foreflightReloadCount) }()
         case 1100: try { try decoder.decodeSingularMessageField(value: &_storage._conntrackEntries) }()
         case 1101: try { try decoder.decodeSingularMessageField(value: &_storage._wanTrafficControlCakeBytes) }()
         case 1102: try { try decoder.decodeSingularMessageField(value: &_storage._wanTrafficControlCakePackets) }()
@@ -10755,6 +12649,13 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
         case 1107: try { try decoder.decodeSingularMessageField(value: &_storage._dhcpSecsGt10) }()
         case 1108: try { try decoder.decodeSingularMessageField(value: &_storage._dhcpSecsGt30) }()
         case 1109: try { try decoder.decodeSingularMessageField(value: &_storage._dhcpSecsGt60) }()
+        case 1200: try { try decoder.decodeSingularMessageField(value: &_storage._dnsForwards) }()
+        case 1201: try { try decoder.decodeSingularMessageField(value: &_storage._dnsForwardsSuccess) }()
+        case 1202: try { try decoder.decodeSingularMessageField(value: &_storage._dnsForwardsServerFailure) }()
+        case 1203: try { try decoder.decodeSingularMessageField(value: &_storage._dnsForwardsNoServerResponse) }()
+        case 1204: try { try decoder.decodeSingularMessageField(value: &_storage._dnsForwardsSuccessOnDefaultBackup) }()
+        case 1205: try { try decoder.decodeSingularMessageField(value: &_storage._dnsForwardsDropped) }()
+        case 1206: try { try decoder.decodeSingularMessageField(value: &_storage._dnsForwardsWithBackup) }()
         case 10000: try { try decoder.decodeSingularMessageField(value: &_storage._timestamp) }()
         default: break
         }
@@ -10824,6 +12725,15 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
       } }()
       try { if let v = _storage._sysBoardRev {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 19)
+      } }()
+      try { if let v = _storage._sysCalibrationState {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 20)
+      } }()
+      try { if let v = _storage._sysCalibrationPartitionsState {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 21)
+      } }()
+      try { if let v = _storage._sysHwIndex {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 22)
       } }()
       try { if let v = _storage._radios2GhzChannel {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 100)
@@ -11074,6 +12984,15 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
       try { if let v = _storage._poeMcuDieTemp {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 211)
       } }()
+      try { if let v = _storage._poePercentWaterDetectAvg {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 212)
+      } }()
+      try { if let v = _storage._ambientTemp {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 213)
+      } }()
+      try { if let v = _storage._cpuTemp {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 214)
+      } }()
       try { if let v = _storage._ifacesLanEthRxBytes {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 300)
       } }()
@@ -11136,6 +13055,9 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
       } }()
       try { if let v = _storage._ifacesLan1EthTxErrors {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 320)
+      } }()
+      try { if let v = _storage._ifacesWanPort {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 321)
       } }()
       try { if let v = _storage._clients {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 400)
@@ -11230,6 +13152,24 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
       try { if let v = _storage._clients5GhzRxBandwidth80Mhz {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 431)
       } }()
+      try { if let v = _storage._macExportsSuccessful {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 432)
+      } }()
+      try { if let v = _storage._macExportsServerConnectErrors {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 433)
+      } }()
+      try { if let v = _storage._macExportsServerSendErrors {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 434)
+      } }()
+      try { if let v = _storage._clients5GhzRxBandwidth160Mhz {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 435)
+      } }()
+      try { if let v = _storage._clientsWireless {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 436)
+      } }()
+      try { if let v = _storage._clientsMlo {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 437)
+      } }()
       try { if let v = _storage._pingSecondsSinceLast1SOutage {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 600)
       } }()
@@ -11284,6 +13224,12 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
       try { if let v = _storage._pingDishLatencyLast1H {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 619)
       } }()
+      try { if let v = _storage._pingPopIpv6DropRateLast1H {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 621)
+      } }()
+      try { if let v = _storage._pingPopIpv6LatencyLast1H {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 623)
+      } }()
       try { if let v = _storage._clientSpeedtestRouterDownloadMbps {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 700)
       } }()
@@ -11323,6 +13269,30 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
       try { if let v = _storage._clientSpeedtestClientPlatformType {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 712)
       } }()
+      try { if let v = _storage._clientSpeedtestRouterDownloadTotalBytesTransferred {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 713)
+      } }()
+      try { if let v = _storage._clientSpeedtestRouterDownloadBytesTransferredDurationS {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 714)
+      } }()
+      try { if let v = _storage._clientSpeedtestRouterDownloadTargetIpv6Low {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 715)
+      } }()
+      try { if let v = _storage._clientSpeedtestRouterDownloadTargetIpv6High {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 716)
+      } }()
+      try { if let v = _storage._clientSpeedtestRouterUploadTotalBytesTransferred {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 717)
+      } }()
+      try { if let v = _storage._clientSpeedtestRouterUploadBytesTransferredDurationS {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 718)
+      } }()
+      try { if let v = _storage._clientSpeedtestRouterUploadTargetIpv6Low {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 719)
+      } }()
+      try { if let v = _storage._clientSpeedtestRouterUploadTargetIpv6High {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 720)
+      } }()
       try { if let v = _storage._speedtestTcp8DownloadMbpsAvg {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 800)
       } }()
@@ -11347,6 +13317,42 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
       try { if let v = _storage._speedtestTcp64UploadMbpsMax {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 807)
       } }()
+      try { if let v = _storage._speedtestTcp1DownloadMbpsAvg {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 808)
+      } }()
+      try { if let v = _storage._speedtestTcp1DownloadMbpsMax {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 809)
+      } }()
+      try { if let v = _storage._speedtestTcp1UploadMbpsAvg {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 810)
+      } }()
+      try { if let v = _storage._speedtestTcp1UploadMbpsMax {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 811)
+      } }()
+      try { if let v = _storage._speedtestTcp8DownloadMeanTcpConnectTime {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 812)
+      } }()
+      try { if let v = _storage._speedtestTcp8UploadMeanTcpConnectTime {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 813)
+      } }()
+      if !_storage._speedtestTcp8DownloadCfRayHeaders.isEmpty {
+        try visitor.visitRepeatedStringField(value: _storage._speedtestTcp8DownloadCfRayHeaders, fieldNumber: 814)
+      }
+      if !_storage._speedtestTcp8UploadCfRayHeaders.isEmpty {
+        try visitor.visitRepeatedStringField(value: _storage._speedtestTcp8UploadCfRayHeaders, fieldNumber: 815)
+      }
+      try { if let v = _storage._speedtestTcp1DownloadMeanTcpConnectTime {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 816)
+      } }()
+      try { if let v = _storage._speedtestTcp1UploadMeanTcpConnectTime {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 817)
+      } }()
+      if !_storage._speedtestTcp1DownloadCfRayHeaders.isEmpty {
+        try visitor.visitRepeatedStringField(value: _storage._speedtestTcp1DownloadCfRayHeaders, fieldNumber: 818)
+      }
+      if !_storage._speedtestTcp1UploadCfRayHeaders.isEmpty {
+        try visitor.visitRepeatedStringField(value: _storage._speedtestTcp1UploadCfRayHeaders, fieldNumber: 819)
+      }
       try { if let v = _storage._dishCellID {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 900)
       } }()
@@ -11437,6 +13443,72 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
       try { if let v = _storage._configDisable5GhzHigh {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1029)
       } }()
+      try { if let v = _storage._configHTTPSContentHostingEnabled {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1031)
+      } }()
+      try { if let v = _storage._configOnlyOverflightBlockingEnabled {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1032)
+      } }()
+      try { if let v = _storage._configOfflineNetworksDisablementEnabled {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1033)
+      } }()
+      try { if let v = _storage._configCustomDnsDisabled {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1034)
+      } }()
+      try { if let v = _storage._configNetworksUser {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1035)
+      } }()
+      try { if let v = _storage._configForeflightEnabled {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1036)
+      } }()
+      try { if let v = _storage._configOutdoorMode {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1037)
+      } }()
+      try { if let v = _storage._wifiReloadCount {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1040)
+      } }()
+      try { if let v = _storage._radiusReloadCount {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1041)
+      } }()
+      try { if let v = _storage._opensshReloadCount {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1042)
+      } }()
+      try { if let v = _storage._iptablesReloadCount {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1043)
+      } }()
+      try { if let v = _storage._ebtablesReloadCount {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1044)
+      } }()
+      try { if let v = _storage._trafficControlReloadCount {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1045)
+      } }()
+      try { if let v = _storage._dhcpReloadCount {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1046)
+      } }()
+      try { if let v = _storage._dhcpv6ReloadCount {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1047)
+      } }()
+      try { if let v = _storage._systemReloadCount {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1048)
+      } }()
+      try { if let v = _storage._dnsReloadCount {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1049)
+      } }()
+      try { if let v = _storage._httpsReloadCount {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1050)
+      } }()
+      try { if let v = _storage._bandSteeringReloadCount {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1051)
+      } }()
+      try { if let v = _storage._commitCount {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1052)
+      } }()
+      try { if let v = _storage._networkReloadCount {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1053)
+      } }()
+      try { if let v = _storage._foreflightReloadCount {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1054)
+      } }()
       try { if let v = _storage._conntrackEntries {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1100)
       } }()
@@ -11467,6 +13539,27 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
       try { if let v = _storage._dhcpSecsGt60 {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1109)
       } }()
+      try { if let v = _storage._dnsForwards {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1200)
+      } }()
+      try { if let v = _storage._dnsForwardsSuccess {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1201)
+      } }()
+      try { if let v = _storage._dnsForwardsServerFailure {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1202)
+      } }()
+      try { if let v = _storage._dnsForwardsNoServerResponse {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1203)
+      } }()
+      try { if let v = _storage._dnsForwardsSuccessOnDefaultBackup {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1204)
+      } }()
+      try { if let v = _storage._dnsForwardsDropped {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1205)
+      } }()
+      try { if let v = _storage._dnsForwardsWithBackup {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1206)
+      } }()
       try { if let v = _storage._timestamp {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 10000)
       } }()
@@ -11484,6 +13577,7 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
         if _storage._timestampHour != rhs_storage._timestampHour {return false}
         if _storage._timestamp != rhs_storage._timestamp {return false}
         if _storage._sysHwGen != rhs_storage._sysHwGen {return false}
+        if _storage._sysHwIndex != rhs_storage._sysHwIndex {return false}
         if _storage._sysSw != rhs_storage._sysSw {return false}
         if _storage._sysCountry != rhs_storage._sysCountry {return false}
         if _storage._sysIsDev != rhs_storage._sysIsDev {return false}
@@ -11499,6 +13593,8 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
         if _storage._sysUbiMaxEc != rhs_storage._sysUbiMaxEc {return false}
         if _storage._sysUbiBadPeb != rhs_storage._sysUbiBadPeb {return false}
         if _storage._sysBoardRev != rhs_storage._sysBoardRev {return false}
+        if _storage._sysCalibrationState != rhs_storage._sysCalibrationState {return false}
+        if _storage._sysCalibrationPartitionsState != rhs_storage._sysCalibrationPartitionsState {return false}
         if _storage._radios2GhzChannel != rhs_storage._radios2GhzChannel {return false}
         if _storage._radios2GhzAntenna1Rssi != rhs_storage._radios2GhzAntenna1Rssi {return false}
         if _storage._radios2GhzAntenna2Rssi != rhs_storage._radios2GhzAntenna2Rssi {return false}
@@ -11581,7 +13677,10 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
         if _storage._radios5GhzThermalThrottledSeconds != rhs_storage._radios5GhzThermalThrottledSeconds {return false}
         if _storage._radios5GhzHighThermalThrottledSeconds != rhs_storage._radios5GhzHighThermalThrottledSeconds {return false}
         if _storage._boardTemp != rhs_storage._boardTemp {return false}
+        if _storage._ambientTemp != rhs_storage._ambientTemp {return false}
+        if _storage._cpuTemp != rhs_storage._cpuTemp {return false}
         if _storage._poeMcuDieTemp != rhs_storage._poeMcuDieTemp {return false}
+        if _storage._poePercentWaterDetectAvg != rhs_storage._poePercentWaterDetectAvg {return false}
         if _storage._ifacesLanEthRxBytes != rhs_storage._ifacesLanEthRxBytes {return false}
         if _storage._ifacesLanEthRxPackets != rhs_storage._ifacesLanEthRxPackets {return false}
         if _storage._ifacesLanEthRxErrors != rhs_storage._ifacesLanEthRxErrors {return false}
@@ -11603,14 +13702,18 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
         if _storage._ifacesWanEthTxBytes != rhs_storage._ifacesWanEthTxBytes {return false}
         if _storage._ifacesWanEthTxPackets != rhs_storage._ifacesWanEthTxPackets {return false}
         if _storage._ifacesWanEthTxErrors != rhs_storage._ifacesWanEthTxErrors {return false}
+        if _storage._ifacesWanPort != rhs_storage._ifacesWanPort {return false}
         if _storage._clients != rhs_storage._clients {return false}
         if _storage._clients2Ghz != rhs_storage._clients2Ghz {return false}
         if _storage._clients5Ghz != rhs_storage._clients5Ghz {return false}
         if _storage._clients5GhzHigh != rhs_storage._clients5GhzHigh {return false}
+        if _storage._clientsWireless != rhs_storage._clientsWireless {return false}
+        if _storage._clientsMlo != rhs_storage._clientsMlo {return false}
         if _storage._clientsEth != rhs_storage._clientsEth {return false}
         if _storage._clients5GhzRxBandwidth20Mhz != rhs_storage._clients5GhzRxBandwidth20Mhz {return false}
         if _storage._clients5GhzRxBandwidth40Mhz != rhs_storage._clients5GhzRxBandwidth40Mhz {return false}
         if _storage._clients5GhzRxBandwidth80Mhz != rhs_storage._clients5GhzRxBandwidth80Mhz {return false}
+        if _storage._clients5GhzRxBandwidth160Mhz != rhs_storage._clients5GhzRxBandwidth160Mhz {return false}
         if _storage._clientsRepeater != rhs_storage._clientsRepeater {return false}
         if _storage._clientsRepeater2Ghz != rhs_storage._clientsRepeater2Ghz {return false}
         if _storage._clientsRepeater5Ghz != rhs_storage._clientsRepeater5Ghz {return false}
@@ -11634,6 +13737,9 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
         if _storage._repeaterLatencyMs1HMax != rhs_storage._repeaterLatencyMs1HMax {return false}
         if _storage._repeaterLatencyMs1HAvg != rhs_storage._repeaterLatencyMs1HAvg {return false}
         if _storage._meshTopologyChangeCount1D != rhs_storage._meshTopologyChangeCount1D {return false}
+        if _storage._macExportsSuccessful != rhs_storage._macExportsSuccessful {return false}
+        if _storage._macExportsServerConnectErrors != rhs_storage._macExportsServerConnectErrors {return false}
+        if _storage._macExportsServerSendErrors != rhs_storage._macExportsServerSendErrors {return false}
         if _storage._pingSecondsSinceLast1SOutage != rhs_storage._pingSecondsSinceLast1SOutage {return false}
         if _storage._pingSecondsSinceLast2SOutage != rhs_storage._pingSecondsSinceLast2SOutage {return false}
         if _storage._pingSecondsSinceLast5SOutage != rhs_storage._pingSecondsSinceLast5SOutage {return false}
@@ -11652,8 +13758,18 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
         if _storage._pingDishDropRateLast1H != rhs_storage._pingDishDropRateLast1H {return false}
         if _storage._pingDishLatency != rhs_storage._pingDishLatency {return false}
         if _storage._pingDishLatencyLast1H != rhs_storage._pingDishLatencyLast1H {return false}
+        if _storage._pingPopIpv6DropRateLast1H != rhs_storage._pingPopIpv6DropRateLast1H {return false}
+        if _storage._pingPopIpv6LatencyLast1H != rhs_storage._pingPopIpv6LatencyLast1H {return false}
         if _storage._clientSpeedtestRouterDownloadMbps != rhs_storage._clientSpeedtestRouterDownloadMbps {return false}
+        if _storage._clientSpeedtestRouterDownloadTotalBytesTransferred != rhs_storage._clientSpeedtestRouterDownloadTotalBytesTransferred {return false}
+        if _storage._clientSpeedtestRouterDownloadBytesTransferredDurationS != rhs_storage._clientSpeedtestRouterDownloadBytesTransferredDurationS {return false}
+        if _storage._clientSpeedtestRouterDownloadTargetIpv6Low != rhs_storage._clientSpeedtestRouterDownloadTargetIpv6Low {return false}
+        if _storage._clientSpeedtestRouterDownloadTargetIpv6High != rhs_storage._clientSpeedtestRouterDownloadTargetIpv6High {return false}
         if _storage._clientSpeedtestRouterUploadMbps != rhs_storage._clientSpeedtestRouterUploadMbps {return false}
+        if _storage._clientSpeedtestRouterUploadTotalBytesTransferred != rhs_storage._clientSpeedtestRouterUploadTotalBytesTransferred {return false}
+        if _storage._clientSpeedtestRouterUploadBytesTransferredDurationS != rhs_storage._clientSpeedtestRouterUploadBytesTransferredDurationS {return false}
+        if _storage._clientSpeedtestRouterUploadTargetIpv6Low != rhs_storage._clientSpeedtestRouterUploadTargetIpv6Low {return false}
+        if _storage._clientSpeedtestRouterUploadTargetIpv6High != rhs_storage._clientSpeedtestRouterUploadTargetIpv6High {return false}
         if _storage._clientSpeedtestRouterRssi != rhs_storage._clientSpeedtestRouterRssi {return false}
         if _storage._clientSpeedtestWifiDownloadMbps != rhs_storage._clientSpeedtestWifiDownloadMbps {return false}
         if _storage._clientSpeedtestWifiUploadMbps != rhs_storage._clientSpeedtestWifiUploadMbps {return false}
@@ -11673,6 +13789,18 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
         if _storage._speedtestTcp64DownloadMbpsMax != rhs_storage._speedtestTcp64DownloadMbpsMax {return false}
         if _storage._speedtestTcp64UploadMbpsAvg != rhs_storage._speedtestTcp64UploadMbpsAvg {return false}
         if _storage._speedtestTcp64UploadMbpsMax != rhs_storage._speedtestTcp64UploadMbpsMax {return false}
+        if _storage._speedtestTcp1DownloadMbpsAvg != rhs_storage._speedtestTcp1DownloadMbpsAvg {return false}
+        if _storage._speedtestTcp1DownloadMbpsMax != rhs_storage._speedtestTcp1DownloadMbpsMax {return false}
+        if _storage._speedtestTcp1UploadMbpsAvg != rhs_storage._speedtestTcp1UploadMbpsAvg {return false}
+        if _storage._speedtestTcp1UploadMbpsMax != rhs_storage._speedtestTcp1UploadMbpsMax {return false}
+        if _storage._speedtestTcp8DownloadMeanTcpConnectTime != rhs_storage._speedtestTcp8DownloadMeanTcpConnectTime {return false}
+        if _storage._speedtestTcp8UploadMeanTcpConnectTime != rhs_storage._speedtestTcp8UploadMeanTcpConnectTime {return false}
+        if _storage._speedtestTcp8DownloadCfRayHeaders != rhs_storage._speedtestTcp8DownloadCfRayHeaders {return false}
+        if _storage._speedtestTcp8UploadCfRayHeaders != rhs_storage._speedtestTcp8UploadCfRayHeaders {return false}
+        if _storage._speedtestTcp1DownloadMeanTcpConnectTime != rhs_storage._speedtestTcp1DownloadMeanTcpConnectTime {return false}
+        if _storage._speedtestTcp1UploadMeanTcpConnectTime != rhs_storage._speedtestTcp1UploadMeanTcpConnectTime {return false}
+        if _storage._speedtestTcp1DownloadCfRayHeaders != rhs_storage._speedtestTcp1DownloadCfRayHeaders {return false}
+        if _storage._speedtestTcp1UploadCfRayHeaders != rhs_storage._speedtestTcp1UploadCfRayHeaders {return false}
         if _storage._dishCellID != rhs_storage._dishCellID {return false}
         if _storage._configSetupComplete != rhs_storage._configSetupComplete {return false}
         if _storage._configBandsSplit != rhs_storage._configBandsSplit {return false}
@@ -11692,6 +13820,12 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
         if _storage._configDisableMeshOnboarding != rhs_storage._configDisableMeshOnboarding {return false}
         if _storage._configPinCountryCode != rhs_storage._configPinCountryCode {return false}
         if _storage._configDisableUpdateReboot != rhs_storage._configDisableUpdateReboot {return false}
+        if _storage._configHTTPSContentHostingEnabled != rhs_storage._configHTTPSContentHostingEnabled {return false}
+        if _storage._configOnlyOverflightBlockingEnabled != rhs_storage._configOnlyOverflightBlockingEnabled {return false}
+        if _storage._configOfflineNetworksDisablementEnabled != rhs_storage._configOfflineNetworksDisablementEnabled {return false}
+        if _storage._configCustomDnsDisabled != rhs_storage._configCustomDnsDisabled {return false}
+        if _storage._configForeflightEnabled != rhs_storage._configForeflightEnabled {return false}
+        if _storage._configOutdoorMode != rhs_storage._configOutdoorMode {return false}
         if _storage._configDisable2Ghz != rhs_storage._configDisable2Ghz {return false}
         if _storage._configDisable5Ghz != rhs_storage._configDisable5Ghz {return false}
         if _storage._configDisable5GhzHigh != rhs_storage._configDisable5GhzHigh {return false}
@@ -11703,6 +13837,22 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
         if _storage._configNetworksHidden != rhs_storage._configNetworksHidden {return false}
         if _storage._configNetworksClientIsolation != rhs_storage._configNetworksClientIsolation {return false}
         if _storage._configNetworksBandsSplit != rhs_storage._configNetworksBandsSplit {return false}
+        if _storage._configNetworksUser != rhs_storage._configNetworksUser {return false}
+        if _storage._wifiReloadCount != rhs_storage._wifiReloadCount {return false}
+        if _storage._radiusReloadCount != rhs_storage._radiusReloadCount {return false}
+        if _storage._opensshReloadCount != rhs_storage._opensshReloadCount {return false}
+        if _storage._iptablesReloadCount != rhs_storage._iptablesReloadCount {return false}
+        if _storage._ebtablesReloadCount != rhs_storage._ebtablesReloadCount {return false}
+        if _storage._trafficControlReloadCount != rhs_storage._trafficControlReloadCount {return false}
+        if _storage._dhcpReloadCount != rhs_storage._dhcpReloadCount {return false}
+        if _storage._dhcpv6ReloadCount != rhs_storage._dhcpv6ReloadCount {return false}
+        if _storage._systemReloadCount != rhs_storage._systemReloadCount {return false}
+        if _storage._dnsReloadCount != rhs_storage._dnsReloadCount {return false}
+        if _storage._httpsReloadCount != rhs_storage._httpsReloadCount {return false}
+        if _storage._bandSteeringReloadCount != rhs_storage._bandSteeringReloadCount {return false}
+        if _storage._commitCount != rhs_storage._commitCount {return false}
+        if _storage._networkReloadCount != rhs_storage._networkReloadCount {return false}
+        if _storage._foreflightReloadCount != rhs_storage._foreflightReloadCount {return false}
         if _storage._wanTrafficControlCakeBytes != rhs_storage._wanTrafficControlCakeBytes {return false}
         if _storage._wanTrafficControlCakePackets != rhs_storage._wanTrafficControlCakePackets {return false}
         if _storage._wanTrafficControlCakeDrops != rhs_storage._wanTrafficControlCakeDrops {return false}
@@ -11713,6 +13863,13 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
         if _storage._dhcpSecsGt10 != rhs_storage._dhcpSecsGt10 {return false}
         if _storage._dhcpSecsGt30 != rhs_storage._dhcpSecsGt30 {return false}
         if _storage._dhcpSecsGt60 != rhs_storage._dhcpSecsGt60 {return false}
+        if _storage._dnsForwards != rhs_storage._dnsForwards {return false}
+        if _storage._dnsForwardsSuccess != rhs_storage._dnsForwardsSuccess {return false}
+        if _storage._dnsForwardsServerFailure != rhs_storage._dnsForwardsServerFailure {return false}
+        if _storage._dnsForwardsNoServerResponse != rhs_storage._dnsForwardsNoServerResponse {return false}
+        if _storage._dnsForwardsSuccessOnDefaultBackup != rhs_storage._dnsForwardsSuccessOnDefaultBackup {return false}
+        if _storage._dnsForwardsDropped != rhs_storage._dnsForwardsDropped {return false}
+        if _storage._dnsForwardsWithBackup != rhs_storage._dnsForwardsWithBackup {return false}
         return true
       }
       if !storagesAreEqual {return false}
@@ -11722,15 +13879,9 @@ extension SpaceX_API_Device_starlink_routers_hourly_metrics_v2: SwiftProtobuf.Me
   }
 }
 
-extension SpaceX_API_Device_starlink_router_alerts: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_starlink_router_alerts: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".starlink_router_alerts"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "name"),
-    2: .same(proto: "source"),
-    3: .same(proto: "active"),
-    4: .same(proto: "start"),
-    5: .same(proto: "end"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}name\0\u{1}source\0\u{1}active\0\u{1}start\0\u{1}end\0\u{1}hardware\0\u{1}software\0\u{1}details\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -11743,6 +13894,9 @@ extension SpaceX_API_Device_starlink_router_alerts: SwiftProtobuf.Message, Swift
       case 3: try { try decoder.decodeSingularBoolField(value: &self.active) }()
       case 4: try { try decoder.decodeSingularMessageField(value: &self._start) }()
       case 5: try { try decoder.decodeSingularMessageField(value: &self._end) }()
+      case 6: try { try decoder.decodeSingularStringField(value: &self.hardware) }()
+      case 7: try { try decoder.decodeSingularStringField(value: &self.software) }()
+      case 8: try { try decoder.decodeSingularStringField(value: &self.details) }()
       default: break
       }
     }
@@ -11768,6 +13922,15 @@ extension SpaceX_API_Device_starlink_router_alerts: SwiftProtobuf.Message, Swift
     try { if let v = self._end {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
     } }()
+    if !self.hardware.isEmpty {
+      try visitor.visitSingularStringField(value: self.hardware, fieldNumber: 6)
+    }
+    if !self.software.isEmpty {
+      try visitor.visitSingularStringField(value: self.software, fieldNumber: 7)
+    }
+    if !self.details.isEmpty {
+      try visitor.visitSingularStringField(value: self.details, fieldNumber: 8)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -11777,47 +13940,17 @@ extension SpaceX_API_Device_starlink_router_alerts: SwiftProtobuf.Message, Swift
     if lhs.active != rhs.active {return false}
     if lhs._start != rhs._start {return false}
     if lhs._end != rhs._end {return false}
+    if lhs.hardware != rhs.hardware {return false}
+    if lhs.software != rhs.software {return false}
+    if lhs.details != rhs.details {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension SpaceX_API_Device_starlink_router_client_speedtests: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_starlink_router_client_speedtests: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".starlink_router_client_speedtests"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "id"),
-    2: .standard(proto: "data_record"),
-    3: .same(proto: "country"),
-    30: .standard(proto: "speedtest_id"),
-    8: .standard(proto: "client_rssi"),
-    9: .standard(proto: "router_rssi"),
-    10: .standard(proto: "client_iface"),
-    11: .standard(proto: "client_oui"),
-    12: .standard(proto: "client_tx_rate"),
-    13: .standard(proto: "client_rx_rate"),
-    27: .standard(proto: "client_platform_type"),
-    34: .standard(proto: "client_app_version"),
-    35: .standard(proto: "client_app_build"),
-    31: .standard(proto: "client_rx_phy_mode"),
-    32: .standard(proto: "client_rx_spatial_streams"),
-    33: .standard(proto: "client_rx_mcs"),
-    4: .standard(proto: "client_download_start_time"),
-    5: .standard(proto: "client_upload_start_time"),
-    6: .standard(proto: "client_download_mbps_avg"),
-    7: .standard(proto: "client_upload_mbps_avg"),
-    28: .standard(proto: "client_target"),
-    16: .standard(proto: "client_tcp_streams"),
-    17: .standard(proto: "router_download_start_time"),
-    18: .standard(proto: "router_upload_start_time"),
-    19: .standard(proto: "router_download_mbps_avg"),
-    20: .standard(proto: "router_upload_mbps_avg"),
-    29: .standard(proto: "router_target"),
-    22: .standard(proto: "router_tcp_streams"),
-    23: .standard(proto: "wifi_download_start_time"),
-    24: .standard(proto: "wifi_upload_start_time"),
-    25: .standard(proto: "wifi_download_mbps_avg"),
-    26: .standard(proto: "wifi_upload_mbps_avg"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{3}data_record\0\u{1}country\0\u{3}client_download_start_time\0\u{3}client_upload_start_time\0\u{3}client_download_mbps_avg\0\u{3}client_upload_mbps_avg\0\u{3}client_rssi\0\u{3}router_rssi\0\u{3}client_iface\0\u{3}client_oui\0\u{3}client_tx_rate\0\u{3}client_rx_rate\0\u{4}\u{3}client_tcp_streams\0\u{3}router_download_start_time\0\u{3}router_upload_start_time\0\u{3}router_download_mbps_avg\0\u{3}router_upload_mbps_avg\0\u{4}\u{2}router_tcp_streams\0\u{3}wifi_download_start_time\0\u{3}wifi_upload_start_time\0\u{3}wifi_download_mbps_avg\0\u{3}wifi_upload_mbps_avg\0\u{3}client_platform_type\0\u{3}client_target\0\u{3}router_target\0\u{3}speedtest_id\0\u{3}client_rx_phy_mode\0\u{3}client_rx_spatial_streams\0\u{3}client_rx_mcs\0\u{3}client_app_version\0\u{3}client_app_build\0\u{4}\u{5}router_download_total_bytes_transferred\0\u{3}router_download_bytes_transferred_duration_s\0\u{3}router_download_target_ipv6_low\0\u{3}router_download_target_ipv6_high\0\u{3}router_upload_total_bytes_transferred\0\u{3}router_upload_bytes_transferred_duration_s\0\u{3}router_upload_target_ipv6_low\0\u{3}router_upload_target_ipv6_high\0\u{c}\u{e}\u{1}\u{c}\u{f}\u{1}\u{c}\u{15}\u{1}")
 
   fileprivate class _StorageClass {
     var _id: String = String()
@@ -11848,20 +13981,24 @@ extension SpaceX_API_Device_starlink_router_client_speedtests: SwiftProtobuf.Mes
     var _routerUploadMbpsAvg: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
     var _routerTarget: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _routerTcpStreams: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _routerDownloadTotalBytesTransferred: SwiftProtobuf.Google_Protobuf_UInt64Value? = nil
+    var _routerDownloadBytesTransferredDurationS: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _routerDownloadTargetIpv6Low: SwiftProtobuf.Google_Protobuf_UInt64Value? = nil
+    var _routerDownloadTargetIpv6High: SwiftProtobuf.Google_Protobuf_UInt64Value? = nil
+    var _routerUploadTotalBytesTransferred: SwiftProtobuf.Google_Protobuf_UInt64Value? = nil
+    var _routerUploadBytesTransferredDurationS: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _routerUploadTargetIpv6Low: SwiftProtobuf.Google_Protobuf_UInt64Value? = nil
+    var _routerUploadTargetIpv6High: SwiftProtobuf.Google_Protobuf_UInt64Value? = nil
     var _wifiDownloadStartTime: SpaceX_API_Telemetron_Public_Common_TimestampInfo? = nil
     var _wifiUploadStartTime: SpaceX_API_Telemetron_Public_Common_TimestampInfo? = nil
     var _wifiDownloadMbpsAvg: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
     var _wifiUploadMbpsAvg: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
 
-    #if swift(>=5.10)
       // This property is used as the initial default value for new instances of the type.
       // The type itself is protecting the reference to its storage via CoW semantics.
       // This will force a copy to be made of this reference when the first mutation occurs;
       // hence, it is safe to mark this as `nonisolated(unsafe)`.
       static nonisolated(unsafe) let defaultInstance = _StorageClass()
-    #else
-      static let defaultInstance = _StorageClass()
-    #endif
 
     private init() {}
 
@@ -11894,6 +14031,14 @@ extension SpaceX_API_Device_starlink_router_client_speedtests: SwiftProtobuf.Mes
       _routerUploadMbpsAvg = source._routerUploadMbpsAvg
       _routerTarget = source._routerTarget
       _routerTcpStreams = source._routerTcpStreams
+      _routerDownloadTotalBytesTransferred = source._routerDownloadTotalBytesTransferred
+      _routerDownloadBytesTransferredDurationS = source._routerDownloadBytesTransferredDurationS
+      _routerDownloadTargetIpv6Low = source._routerDownloadTargetIpv6Low
+      _routerDownloadTargetIpv6High = source._routerDownloadTargetIpv6High
+      _routerUploadTotalBytesTransferred = source._routerUploadTotalBytesTransferred
+      _routerUploadBytesTransferredDurationS = source._routerUploadBytesTransferredDurationS
+      _routerUploadTargetIpv6Low = source._routerUploadTargetIpv6Low
+      _routerUploadTargetIpv6High = source._routerUploadTargetIpv6High
       _wifiDownloadStartTime = source._wifiDownloadStartTime
       _wifiUploadStartTime = source._wifiUploadStartTime
       _wifiDownloadMbpsAvg = source._wifiDownloadMbpsAvg
@@ -11948,6 +14093,14 @@ extension SpaceX_API_Device_starlink_router_client_speedtests: SwiftProtobuf.Mes
         case 33: try { try decoder.decodeSingularMessageField(value: &_storage._clientRxMcs) }()
         case 34: try { try decoder.decodeSingularMessageField(value: &_storage._clientAppVersion) }()
         case 35: try { try decoder.decodeSingularMessageField(value: &_storage._clientAppBuild) }()
+        case 40: try { try decoder.decodeSingularMessageField(value: &_storage._routerDownloadTotalBytesTransferred) }()
+        case 41: try { try decoder.decodeSingularMessageField(value: &_storage._routerDownloadBytesTransferredDurationS) }()
+        case 42: try { try decoder.decodeSingularMessageField(value: &_storage._routerDownloadTargetIpv6Low) }()
+        case 43: try { try decoder.decodeSingularMessageField(value: &_storage._routerDownloadTargetIpv6High) }()
+        case 44: try { try decoder.decodeSingularMessageField(value: &_storage._routerUploadTotalBytesTransferred) }()
+        case 45: try { try decoder.decodeSingularMessageField(value: &_storage._routerUploadBytesTransferredDurationS) }()
+        case 46: try { try decoder.decodeSingularMessageField(value: &_storage._routerUploadTargetIpv6Low) }()
+        case 47: try { try decoder.decodeSingularMessageField(value: &_storage._routerUploadTargetIpv6High) }()
         default: break
         }
       }
@@ -12056,6 +14209,30 @@ extension SpaceX_API_Device_starlink_router_client_speedtests: SwiftProtobuf.Mes
       try { if let v = _storage._clientAppBuild {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 35)
       } }()
+      try { if let v = _storage._routerDownloadTotalBytesTransferred {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 40)
+      } }()
+      try { if let v = _storage._routerDownloadBytesTransferredDurationS {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 41)
+      } }()
+      try { if let v = _storage._routerDownloadTargetIpv6Low {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 42)
+      } }()
+      try { if let v = _storage._routerDownloadTargetIpv6High {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 43)
+      } }()
+      try { if let v = _storage._routerUploadTotalBytesTransferred {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 44)
+      } }()
+      try { if let v = _storage._routerUploadBytesTransferredDurationS {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 45)
+      } }()
+      try { if let v = _storage._routerUploadTargetIpv6Low {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 46)
+      } }()
+      try { if let v = _storage._routerUploadTargetIpv6High {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 47)
+      } }()
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -12093,6 +14270,14 @@ extension SpaceX_API_Device_starlink_router_client_speedtests: SwiftProtobuf.Mes
         if _storage._routerUploadMbpsAvg != rhs_storage._routerUploadMbpsAvg {return false}
         if _storage._routerTarget != rhs_storage._routerTarget {return false}
         if _storage._routerTcpStreams != rhs_storage._routerTcpStreams {return false}
+        if _storage._routerDownloadTotalBytesTransferred != rhs_storage._routerDownloadTotalBytesTransferred {return false}
+        if _storage._routerDownloadBytesTransferredDurationS != rhs_storage._routerDownloadBytesTransferredDurationS {return false}
+        if _storage._routerDownloadTargetIpv6Low != rhs_storage._routerDownloadTargetIpv6Low {return false}
+        if _storage._routerDownloadTargetIpv6High != rhs_storage._routerDownloadTargetIpv6High {return false}
+        if _storage._routerUploadTotalBytesTransferred != rhs_storage._routerUploadTotalBytesTransferred {return false}
+        if _storage._routerUploadBytesTransferredDurationS != rhs_storage._routerUploadBytesTransferredDurationS {return false}
+        if _storage._routerUploadTargetIpv6Low != rhs_storage._routerUploadTargetIpv6Low {return false}
+        if _storage._routerUploadTargetIpv6High != rhs_storage._routerUploadTargetIpv6High {return false}
         if _storage._wifiDownloadStartTime != rhs_storage._wifiDownloadStartTime {return false}
         if _storage._wifiUploadStartTime != rhs_storage._wifiUploadStartTime {return false}
         if _storage._wifiDownloadMbpsAvg != rhs_storage._wifiDownloadMbpsAvg {return false}
@@ -12106,51 +14291,19 @@ extension SpaceX_API_Device_starlink_router_client_speedtests: SwiftProtobuf.Mes
   }
 }
 
-extension SpaceX_API_Device_StarlinkRouterClients: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_StarlinkRouterClients: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".StarlinkRouterClients"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "router_id"),
-    2: .same(proto: "timestamp"),
-    3: .standard(proto: "client_id"),
-    4: .standard(proto: "client_telem_index"),
-    119: .standard(proto: "router_hw"),
-    120: .standard(proto: "router_sw"),
-    121: .standard(proto: "client_router_id"),
-    122: .standard(proto: "client_hw"),
-    123: .standard(proto: "client_sw"),
-    101: .same(proto: "oui"),
-    102: .standard(proto: "upstream_id"),
-    103: .standard(proto: "is_repeater"),
-    104: .standard(proto: "connected_s"),
-    105: .same(proto: "interface"),
-    106: .standard(proto: "radio_channel"),
-    107: .same(proto: "rssi"),
-    108: .standard(proto: "rx_mcs"),
-    109: .standard(proto: "tx_mcs"),
-    110: .standard(proto: "rx_rate"),
-    111: .standard(proto: "tx_rate"),
-    112: .standard(proto: "rx_bandwidth"),
-    113: .standard(proto: "rx_spatial_streams"),
-    114: .standard(proto: "rx_phy_mode"),
-    118: .standard(proto: "mesh_hops"),
-    124: .standard(proto: "speedtest_upload_mbps"),
-    125: .standard(proto: "speedtest_download_mbps"),
-    127: .standard(proto: "site_survey_rssi"),
-    128: .standard(proto: "site_survey_est_rx_rate"),
-    129: .standard(proto: "est_controller_throughput_mbps"),
-    115: .standard(proto: "ping_drop_rate_last_1h"),
-    116: .standard(proto: "ping_latency_last_1h"),
-    117: .standard(proto: "steer_state"),
-    126: .same(proto: "blocked"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}router_id\0\u{1}timestamp\0\u{3}client_id\0\u{3}client_telem_index\0\u{3}using_mlo\0\u{2}`\u{1}oui\0\u{3}upstream_id\0\u{3}is_repeater\0\u{3}connected_s\0\u{1}interface\0\u{3}radio_channel\0\u{1}rssi\0\u{3}rx_mcs\0\u{3}tx_mcs\0\u{3}rx_rate\0\u{3}tx_rate\0\u{3}rx_bandwidth\0\u{3}rx_spatial_streams\0\u{3}rx_phy_mode\0\u{3}ping_drop_rate_last_1h\0\u{3}ping_latency_last_1h\0\u{3}steer_state\0\u{3}mesh_hops\0\u{3}router_hw\0\u{3}router_sw\0\u{3}client_router_id\0\u{3}client_hw\0\u{3}client_sw\0\u{3}speedtest_upload_mbps\0\u{3}speedtest_download_mbps\0\u{1}blocked\0\u{3}site_survey_rssi\0\u{3}site_survey_est_rx_rate\0\u{3}est_controller_throughput_mbps\0\u{3}has_dhcp_v4_lease\0\u{3}ipv4_address\0\u{3}has_hostname\0\u{3}dhcp_v4_lease_is_active\0\u{3}dhcp_v4_lease_was_renewed\0\u{3}seconds_until_dhcp_v4_lease_expires\0\u{4}\u{2}router_uptime_s\0\u{3}dissociations_under_10s\0\u{3}dissociations_under_30s\0\u{3}dissociations_under_60s\0\u{3}dissociations_under_120s\0\u{3}seconds_to_conn_tcp_ipv4\0\u{3}seconds_to_conn_tcp_ipv6\0\u{3}seconds_to_conn_udp_ipv4\0\u{3}seconds_to_conn_udp_ipv6\0\u{3}flows_tcp_ipv4\0\u{3}flows_tcp_ipv6\0\u{3}flows_udp_ipv4\0\u{3}flows_udp_ipv6\0\u{3}throughput_limited_last_fired\0\u{4}\u{a}link_2ghz_radio_channel\0\u{3}link_2ghz_rssi\0\u{3}link_2ghz_rx_mcs\0\u{3}link_2ghz_tx_mcs\0\u{3}link_2ghz_rx_rate\0\u{3}link_2ghz_tx_rate\0\u{3}link_2ghz_rx_bandwidth\0\u{3}link_2ghz_rx_spatial_streams\0\u{3}link_2ghz_rx_phy_mode\0\u{4}\u{2}link_5ghz_radio_channel\0\u{3}link_5ghz_rssi\0\u{3}link_5ghz_rx_mcs\0\u{3}link_5ghz_tx_mcs\0\u{3}link_5ghz_rx_rate\0\u{3}link_5ghz_tx_rate\0\u{3}link_5ghz_rx_bandwidth\0\u{3}link_5ghz_rx_spatial_streams\0\u{3}link_5ghz_rx_phy_mode\0\u{b}authorized\0\u{c}H\u{2}\u{1}")
 
   fileprivate class _StorageClass {
     var _routerID: String = String()
     var _timestamp: SpaceX_API_Telemetron_Public_Common_TimestampInfo? = nil
     var _clientID: UInt32 = 0
     var _clientTelemIndex: String = String()
+    var _usingMlo: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
     var _routerHw: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _routerSw: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _routerUptimeS: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _clientRouterID: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _clientHw: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _clientSw: SwiftProtobuf.Google_Protobuf_StringValue? = nil
@@ -12168,6 +14321,24 @@ extension SpaceX_API_Device_StarlinkRouterClients: SwiftProtobuf.Message, SwiftP
     var _rxBandwidth: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _rxSpatialStreams: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _rxPhyMode: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _link2GhzRadioChannel: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _link2GhzRssi: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _link2GhzRxMcs: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _link2GhzTxMcs: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _link2GhzRxRate: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _link2GhzTxRate: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _link2GhzRxBandwidth: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _link2GhzRxSpatialStreams: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _link2GhzRxPhyMode: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _link5GhzRadioChannel: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _link5GhzRssi: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _link5GhzRxMcs: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _link5GhzTxMcs: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _link5GhzRxRate: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _link5GhzTxRate: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _link5GhzRxBandwidth: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _link5GhzRxSpatialStreams: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _link5GhzRxPhyMode: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _meshHops: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
     var _speedtestUploadMbps: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
     var _speedtestDownloadMbps: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
@@ -12178,16 +14349,31 @@ extension SpaceX_API_Device_StarlinkRouterClients: SwiftProtobuf.Message, SwiftP
     var _pingLatencyLast1H: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
     var _steerState: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _blocked: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
+    var _throughputLimitedLastFired: SpaceX_API_Telemetron_Public_Common_TimestampInfo? = nil
+    var _hasDhcpV4Lease_p: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
+    var _ipv4Address: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _hasHostname_p: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
+    var _dhcpV4LeaseIsActive: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
+    var _dhcpV4LeaseWasRenewed: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
+    var _secondsUntilDhcpV4LeaseExpires: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _dissociationsUnder10S: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _dissociationsUnder30S: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _dissociationsUnder60S: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _dissociationsUnder120S: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _secondsToConnTcpIpv4: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _secondsToConnTcpIpv6: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _secondsToConnUdpIpv4: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _secondsToConnUdpIpv6: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _flowsTcpIpv4: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _flowsTcpIpv6: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _flowsUdpIpv4: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _flowsUdpIpv6: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
 
-    #if swift(>=5.10)
       // This property is used as the initial default value for new instances of the type.
       // The type itself is protecting the reference to its storage via CoW semantics.
       // This will force a copy to be made of this reference when the first mutation occurs;
       // hence, it is safe to mark this as `nonisolated(unsafe)`.
       static nonisolated(unsafe) let defaultInstance = _StorageClass()
-    #else
-      static let defaultInstance = _StorageClass()
-    #endif
 
     private init() {}
 
@@ -12196,8 +14382,10 @@ extension SpaceX_API_Device_StarlinkRouterClients: SwiftProtobuf.Message, SwiftP
       _timestamp = source._timestamp
       _clientID = source._clientID
       _clientTelemIndex = source._clientTelemIndex
+      _usingMlo = source._usingMlo
       _routerHw = source._routerHw
       _routerSw = source._routerSw
+      _routerUptimeS = source._routerUptimeS
       _clientRouterID = source._clientRouterID
       _clientHw = source._clientHw
       _clientSw = source._clientSw
@@ -12215,6 +14403,24 @@ extension SpaceX_API_Device_StarlinkRouterClients: SwiftProtobuf.Message, SwiftP
       _rxBandwidth = source._rxBandwidth
       _rxSpatialStreams = source._rxSpatialStreams
       _rxPhyMode = source._rxPhyMode
+      _link2GhzRadioChannel = source._link2GhzRadioChannel
+      _link2GhzRssi = source._link2GhzRssi
+      _link2GhzRxMcs = source._link2GhzRxMcs
+      _link2GhzTxMcs = source._link2GhzTxMcs
+      _link2GhzRxRate = source._link2GhzRxRate
+      _link2GhzTxRate = source._link2GhzTxRate
+      _link2GhzRxBandwidth = source._link2GhzRxBandwidth
+      _link2GhzRxSpatialStreams = source._link2GhzRxSpatialStreams
+      _link2GhzRxPhyMode = source._link2GhzRxPhyMode
+      _link5GhzRadioChannel = source._link5GhzRadioChannel
+      _link5GhzRssi = source._link5GhzRssi
+      _link5GhzRxMcs = source._link5GhzRxMcs
+      _link5GhzTxMcs = source._link5GhzTxMcs
+      _link5GhzRxRate = source._link5GhzRxRate
+      _link5GhzTxRate = source._link5GhzTxRate
+      _link5GhzRxBandwidth = source._link5GhzRxBandwidth
+      _link5GhzRxSpatialStreams = source._link5GhzRxSpatialStreams
+      _link5GhzRxPhyMode = source._link5GhzRxPhyMode
       _meshHops = source._meshHops
       _speedtestUploadMbps = source._speedtestUploadMbps
       _speedtestDownloadMbps = source._speedtestDownloadMbps
@@ -12225,6 +14431,25 @@ extension SpaceX_API_Device_StarlinkRouterClients: SwiftProtobuf.Message, SwiftP
       _pingLatencyLast1H = source._pingLatencyLast1H
       _steerState = source._steerState
       _blocked = source._blocked
+      _throughputLimitedLastFired = source._throughputLimitedLastFired
+      _hasDhcpV4Lease_p = source._hasDhcpV4Lease_p
+      _ipv4Address = source._ipv4Address
+      _hasHostname_p = source._hasHostname_p
+      _dhcpV4LeaseIsActive = source._dhcpV4LeaseIsActive
+      _dhcpV4LeaseWasRenewed = source._dhcpV4LeaseWasRenewed
+      _secondsUntilDhcpV4LeaseExpires = source._secondsUntilDhcpV4LeaseExpires
+      _dissociationsUnder10S = source._dissociationsUnder10S
+      _dissociationsUnder30S = source._dissociationsUnder30S
+      _dissociationsUnder60S = source._dissociationsUnder60S
+      _dissociationsUnder120S = source._dissociationsUnder120S
+      _secondsToConnTcpIpv4 = source._secondsToConnTcpIpv4
+      _secondsToConnTcpIpv6 = source._secondsToConnTcpIpv6
+      _secondsToConnUdpIpv4 = source._secondsToConnUdpIpv4
+      _secondsToConnUdpIpv6 = source._secondsToConnUdpIpv6
+      _flowsTcpIpv4 = source._flowsTcpIpv4
+      _flowsTcpIpv6 = source._flowsTcpIpv6
+      _flowsUdpIpv4 = source._flowsUdpIpv4
+      _flowsUdpIpv6 = source._flowsUdpIpv6
     }
   }
 
@@ -12247,6 +14472,7 @@ extension SpaceX_API_Device_StarlinkRouterClients: SwiftProtobuf.Message, SwiftP
         case 2: try { try decoder.decodeSingularMessageField(value: &_storage._timestamp) }()
         case 3: try { try decoder.decodeSingularUInt32Field(value: &_storage._clientID) }()
         case 4: try { try decoder.decodeSingularStringField(value: &_storage._clientTelemIndex) }()
+        case 5: try { try decoder.decodeSingularMessageField(value: &_storage._usingMlo) }()
         case 101: try { try decoder.decodeSingularMessageField(value: &_storage._oui) }()
         case 102: try { try decoder.decodeSingularMessageField(value: &_storage._upstreamID) }()
         case 103: try { try decoder.decodeSingularMessageField(value: &_storage._isRepeater) }()
@@ -12276,6 +14502,44 @@ extension SpaceX_API_Device_StarlinkRouterClients: SwiftProtobuf.Message, SwiftP
         case 127: try { try decoder.decodeSingularMessageField(value: &_storage._siteSurveyRssi) }()
         case 128: try { try decoder.decodeSingularMessageField(value: &_storage._siteSurveyEstRxRate) }()
         case 129: try { try decoder.decodeSingularMessageField(value: &_storage._estControllerThroughputMbps) }()
+        case 130: try { try decoder.decodeSingularMessageField(value: &_storage._hasDhcpV4Lease_p) }()
+        case 131: try { try decoder.decodeSingularMessageField(value: &_storage._ipv4Address) }()
+        case 132: try { try decoder.decodeSingularMessageField(value: &_storage._hasHostname_p) }()
+        case 133: try { try decoder.decodeSingularMessageField(value: &_storage._dhcpV4LeaseIsActive) }()
+        case 134: try { try decoder.decodeSingularMessageField(value: &_storage._dhcpV4LeaseWasRenewed) }()
+        case 135: try { try decoder.decodeSingularMessageField(value: &_storage._secondsUntilDhcpV4LeaseExpires) }()
+        case 137: try { try decoder.decodeSingularMessageField(value: &_storage._routerUptimeS) }()
+        case 138: try { try decoder.decodeSingularMessageField(value: &_storage._dissociationsUnder10S) }()
+        case 139: try { try decoder.decodeSingularMessageField(value: &_storage._dissociationsUnder30S) }()
+        case 140: try { try decoder.decodeSingularMessageField(value: &_storage._dissociationsUnder60S) }()
+        case 141: try { try decoder.decodeSingularMessageField(value: &_storage._dissociationsUnder120S) }()
+        case 142: try { try decoder.decodeSingularMessageField(value: &_storage._secondsToConnTcpIpv4) }()
+        case 143: try { try decoder.decodeSingularMessageField(value: &_storage._secondsToConnTcpIpv6) }()
+        case 144: try { try decoder.decodeSingularMessageField(value: &_storage._secondsToConnUdpIpv4) }()
+        case 145: try { try decoder.decodeSingularMessageField(value: &_storage._secondsToConnUdpIpv6) }()
+        case 146: try { try decoder.decodeSingularMessageField(value: &_storage._flowsTcpIpv4) }()
+        case 147: try { try decoder.decodeSingularMessageField(value: &_storage._flowsTcpIpv6) }()
+        case 148: try { try decoder.decodeSingularMessageField(value: &_storage._flowsUdpIpv4) }()
+        case 149: try { try decoder.decodeSingularMessageField(value: &_storage._flowsUdpIpv6) }()
+        case 150: try { try decoder.decodeSingularMessageField(value: &_storage._throughputLimitedLastFired) }()
+        case 160: try { try decoder.decodeSingularMessageField(value: &_storage._link2GhzRadioChannel) }()
+        case 161: try { try decoder.decodeSingularMessageField(value: &_storage._link2GhzRssi) }()
+        case 162: try { try decoder.decodeSingularMessageField(value: &_storage._link2GhzRxMcs) }()
+        case 163: try { try decoder.decodeSingularMessageField(value: &_storage._link2GhzTxMcs) }()
+        case 164: try { try decoder.decodeSingularMessageField(value: &_storage._link2GhzRxRate) }()
+        case 165: try { try decoder.decodeSingularMessageField(value: &_storage._link2GhzTxRate) }()
+        case 166: try { try decoder.decodeSingularMessageField(value: &_storage._link2GhzRxBandwidth) }()
+        case 167: try { try decoder.decodeSingularMessageField(value: &_storage._link2GhzRxSpatialStreams) }()
+        case 168: try { try decoder.decodeSingularMessageField(value: &_storage._link2GhzRxPhyMode) }()
+        case 170: try { try decoder.decodeSingularMessageField(value: &_storage._link5GhzRadioChannel) }()
+        case 171: try { try decoder.decodeSingularMessageField(value: &_storage._link5GhzRssi) }()
+        case 172: try { try decoder.decodeSingularMessageField(value: &_storage._link5GhzRxMcs) }()
+        case 173: try { try decoder.decodeSingularMessageField(value: &_storage._link5GhzTxMcs) }()
+        case 174: try { try decoder.decodeSingularMessageField(value: &_storage._link5GhzRxRate) }()
+        case 175: try { try decoder.decodeSingularMessageField(value: &_storage._link5GhzTxRate) }()
+        case 176: try { try decoder.decodeSingularMessageField(value: &_storage._link5GhzRxBandwidth) }()
+        case 177: try { try decoder.decodeSingularMessageField(value: &_storage._link5GhzRxSpatialStreams) }()
+        case 178: try { try decoder.decodeSingularMessageField(value: &_storage._link5GhzRxPhyMode) }()
         default: break
         }
       }
@@ -12300,6 +14564,9 @@ extension SpaceX_API_Device_StarlinkRouterClients: SwiftProtobuf.Message, SwiftP
       if !_storage._clientTelemIndex.isEmpty {
         try visitor.visitSingularStringField(value: _storage._clientTelemIndex, fieldNumber: 4)
       }
+      try { if let v = _storage._usingMlo {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
+      } }()
       try { if let v = _storage._oui {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 101)
       } }()
@@ -12387,6 +14654,120 @@ extension SpaceX_API_Device_StarlinkRouterClients: SwiftProtobuf.Message, SwiftP
       try { if let v = _storage._estControllerThroughputMbps {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 129)
       } }()
+      try { if let v = _storage._hasDhcpV4Lease_p {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 130)
+      } }()
+      try { if let v = _storage._ipv4Address {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 131)
+      } }()
+      try { if let v = _storage._hasHostname_p {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 132)
+      } }()
+      try { if let v = _storage._dhcpV4LeaseIsActive {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 133)
+      } }()
+      try { if let v = _storage._dhcpV4LeaseWasRenewed {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 134)
+      } }()
+      try { if let v = _storage._secondsUntilDhcpV4LeaseExpires {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 135)
+      } }()
+      try { if let v = _storage._routerUptimeS {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 137)
+      } }()
+      try { if let v = _storage._dissociationsUnder10S {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 138)
+      } }()
+      try { if let v = _storage._dissociationsUnder30S {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 139)
+      } }()
+      try { if let v = _storage._dissociationsUnder60S {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 140)
+      } }()
+      try { if let v = _storage._dissociationsUnder120S {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 141)
+      } }()
+      try { if let v = _storage._secondsToConnTcpIpv4 {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 142)
+      } }()
+      try { if let v = _storage._secondsToConnTcpIpv6 {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 143)
+      } }()
+      try { if let v = _storage._secondsToConnUdpIpv4 {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 144)
+      } }()
+      try { if let v = _storage._secondsToConnUdpIpv6 {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 145)
+      } }()
+      try { if let v = _storage._flowsTcpIpv4 {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 146)
+      } }()
+      try { if let v = _storage._flowsTcpIpv6 {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 147)
+      } }()
+      try { if let v = _storage._flowsUdpIpv4 {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 148)
+      } }()
+      try { if let v = _storage._flowsUdpIpv6 {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 149)
+      } }()
+      try { if let v = _storage._throughputLimitedLastFired {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 150)
+      } }()
+      try { if let v = _storage._link2GhzRadioChannel {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 160)
+      } }()
+      try { if let v = _storage._link2GhzRssi {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 161)
+      } }()
+      try { if let v = _storage._link2GhzRxMcs {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 162)
+      } }()
+      try { if let v = _storage._link2GhzTxMcs {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 163)
+      } }()
+      try { if let v = _storage._link2GhzRxRate {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 164)
+      } }()
+      try { if let v = _storage._link2GhzTxRate {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 165)
+      } }()
+      try { if let v = _storage._link2GhzRxBandwidth {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 166)
+      } }()
+      try { if let v = _storage._link2GhzRxSpatialStreams {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 167)
+      } }()
+      try { if let v = _storage._link2GhzRxPhyMode {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 168)
+      } }()
+      try { if let v = _storage._link5GhzRadioChannel {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 170)
+      } }()
+      try { if let v = _storage._link5GhzRssi {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 171)
+      } }()
+      try { if let v = _storage._link5GhzRxMcs {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 172)
+      } }()
+      try { if let v = _storage._link5GhzTxMcs {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 173)
+      } }()
+      try { if let v = _storage._link5GhzRxRate {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 174)
+      } }()
+      try { if let v = _storage._link5GhzTxRate {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 175)
+      } }()
+      try { if let v = _storage._link5GhzRxBandwidth {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 176)
+      } }()
+      try { if let v = _storage._link5GhzRxSpatialStreams {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 177)
+      } }()
+      try { if let v = _storage._link5GhzRxPhyMode {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 178)
+      } }()
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -12400,8 +14781,10 @@ extension SpaceX_API_Device_StarlinkRouterClients: SwiftProtobuf.Message, SwiftP
         if _storage._timestamp != rhs_storage._timestamp {return false}
         if _storage._clientID != rhs_storage._clientID {return false}
         if _storage._clientTelemIndex != rhs_storage._clientTelemIndex {return false}
+        if _storage._usingMlo != rhs_storage._usingMlo {return false}
         if _storage._routerHw != rhs_storage._routerHw {return false}
         if _storage._routerSw != rhs_storage._routerSw {return false}
+        if _storage._routerUptimeS != rhs_storage._routerUptimeS {return false}
         if _storage._clientRouterID != rhs_storage._clientRouterID {return false}
         if _storage._clientHw != rhs_storage._clientHw {return false}
         if _storage._clientSw != rhs_storage._clientSw {return false}
@@ -12419,6 +14802,24 @@ extension SpaceX_API_Device_StarlinkRouterClients: SwiftProtobuf.Message, SwiftP
         if _storage._rxBandwidth != rhs_storage._rxBandwidth {return false}
         if _storage._rxSpatialStreams != rhs_storage._rxSpatialStreams {return false}
         if _storage._rxPhyMode != rhs_storage._rxPhyMode {return false}
+        if _storage._link2GhzRadioChannel != rhs_storage._link2GhzRadioChannel {return false}
+        if _storage._link2GhzRssi != rhs_storage._link2GhzRssi {return false}
+        if _storage._link2GhzRxMcs != rhs_storage._link2GhzRxMcs {return false}
+        if _storage._link2GhzTxMcs != rhs_storage._link2GhzTxMcs {return false}
+        if _storage._link2GhzRxRate != rhs_storage._link2GhzRxRate {return false}
+        if _storage._link2GhzTxRate != rhs_storage._link2GhzTxRate {return false}
+        if _storage._link2GhzRxBandwidth != rhs_storage._link2GhzRxBandwidth {return false}
+        if _storage._link2GhzRxSpatialStreams != rhs_storage._link2GhzRxSpatialStreams {return false}
+        if _storage._link2GhzRxPhyMode != rhs_storage._link2GhzRxPhyMode {return false}
+        if _storage._link5GhzRadioChannel != rhs_storage._link5GhzRadioChannel {return false}
+        if _storage._link5GhzRssi != rhs_storage._link5GhzRssi {return false}
+        if _storage._link5GhzRxMcs != rhs_storage._link5GhzRxMcs {return false}
+        if _storage._link5GhzTxMcs != rhs_storage._link5GhzTxMcs {return false}
+        if _storage._link5GhzRxRate != rhs_storage._link5GhzRxRate {return false}
+        if _storage._link5GhzTxRate != rhs_storage._link5GhzTxRate {return false}
+        if _storage._link5GhzRxBandwidth != rhs_storage._link5GhzRxBandwidth {return false}
+        if _storage._link5GhzRxSpatialStreams != rhs_storage._link5GhzRxSpatialStreams {return false}
+        if _storage._link5GhzRxPhyMode != rhs_storage._link5GhzRxPhyMode {return false}
         if _storage._meshHops != rhs_storage._meshHops {return false}
         if _storage._speedtestUploadMbps != rhs_storage._speedtestUploadMbps {return false}
         if _storage._speedtestDownloadMbps != rhs_storage._speedtestDownloadMbps {return false}
@@ -12429,6 +14830,25 @@ extension SpaceX_API_Device_StarlinkRouterClients: SwiftProtobuf.Message, SwiftP
         if _storage._pingLatencyLast1H != rhs_storage._pingLatencyLast1H {return false}
         if _storage._steerState != rhs_storage._steerState {return false}
         if _storage._blocked != rhs_storage._blocked {return false}
+        if _storage._throughputLimitedLastFired != rhs_storage._throughputLimitedLastFired {return false}
+        if _storage._hasDhcpV4Lease_p != rhs_storage._hasDhcpV4Lease_p {return false}
+        if _storage._ipv4Address != rhs_storage._ipv4Address {return false}
+        if _storage._hasHostname_p != rhs_storage._hasHostname_p {return false}
+        if _storage._dhcpV4LeaseIsActive != rhs_storage._dhcpV4LeaseIsActive {return false}
+        if _storage._dhcpV4LeaseWasRenewed != rhs_storage._dhcpV4LeaseWasRenewed {return false}
+        if _storage._secondsUntilDhcpV4LeaseExpires != rhs_storage._secondsUntilDhcpV4LeaseExpires {return false}
+        if _storage._dissociationsUnder10S != rhs_storage._dissociationsUnder10S {return false}
+        if _storage._dissociationsUnder30S != rhs_storage._dissociationsUnder30S {return false}
+        if _storage._dissociationsUnder60S != rhs_storage._dissociationsUnder60S {return false}
+        if _storage._dissociationsUnder120S != rhs_storage._dissociationsUnder120S {return false}
+        if _storage._secondsToConnTcpIpv4 != rhs_storage._secondsToConnTcpIpv4 {return false}
+        if _storage._secondsToConnTcpIpv6 != rhs_storage._secondsToConnTcpIpv6 {return false}
+        if _storage._secondsToConnUdpIpv4 != rhs_storage._secondsToConnUdpIpv4 {return false}
+        if _storage._secondsToConnUdpIpv6 != rhs_storage._secondsToConnUdpIpv6 {return false}
+        if _storage._flowsTcpIpv4 != rhs_storage._flowsTcpIpv4 {return false}
+        if _storage._flowsTcpIpv6 != rhs_storage._flowsTcpIpv6 {return false}
+        if _storage._flowsUdpIpv4 != rhs_storage._flowsUdpIpv4 {return false}
+        if _storage._flowsUdpIpv6 != rhs_storage._flowsUdpIpv6 {return false}
         return true
       }
       if !storagesAreEqual {return false}
@@ -12438,12 +14858,247 @@ extension SpaceX_API_Device_StarlinkRouterClients: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension SpaceX_API_Device_WifiSetClientGivenNameRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_StarlinkRouterClientTesterRun: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".StarlinkRouterClientTesterRun"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}client_tester_router_id\0\u{1}timestamp\0\u{3}client_iface_name\0\u{3}target_ssid\0\u{3}target_has_password\0\u{3}target_auth\0\u{3}target_encryption\0\u{3}target_bssid\0\u{1}iteration\0\u{3}error_code\0\u{3}seconds_to_associate\0\u{3}seconds_to_lease\0\u{3}seconds_to_resolve_router\0\u{3}seconds_to_resolve_internet\0\u{3}seconds_to_ping_dish\0\u{3}v4_irtt_test_duration_s\0\u{3}v4_irtt_rtt_latency_min_ms\0\u{3}v4_irtt_rtt_latency_mean_ms\0\u{3}v4_irtt_rtt_latency_median_ms\0\u{3}v4_irtt_rtt_latency_max_ms\0\u{3}v4_irtt_rtt_latency_std_dev_ms\0\u{3}v4_irtt_pkts_sent\0\u{3}v4_irtt_pkts_recv\0\u{3}v4_irtt_loss_percent\0\u{3}target_irtt_server\0")
+
+  fileprivate class _StorageClass {
+    var _clientTesterRouterID: String = String()
+    var _timestamp: SpaceX_API_Telemetron_Public_Common_TimestampInfo? = nil
+    var _clientIfaceName: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _targetSsid: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _targetHasPassword: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
+    var _targetAuth: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _targetEncryption: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _targetBssid: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _targetIrttServer: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _iteration: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _errorCode: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _secondsToAssociate: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _secondsToLease: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _secondsToResolveRouter: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _secondsToResolveInternet: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _secondsToPingDish: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _v4IrttTestDurationS: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _v4IrttRttLatencyMinMs: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _v4IrttRttLatencyMeanMs: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _v4IrttRttLatencyMedianMs: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _v4IrttRttLatencyMaxMs: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _v4IrttRttLatencyStdDevMs: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _v4IrttPktsSent: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _v4IrttPktsRecv: SwiftProtobuf.Google_Protobuf_UInt32Value? = nil
+    var _v4IrttLossPercent: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+
+      // This property is used as the initial default value for new instances of the type.
+      // The type itself is protecting the reference to its storage via CoW semantics.
+      // This will force a copy to be made of this reference when the first mutation occurs;
+      // hence, it is safe to mark this as `nonisolated(unsafe)`.
+      static nonisolated(unsafe) let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _clientTesterRouterID = source._clientTesterRouterID
+      _timestamp = source._timestamp
+      _clientIfaceName = source._clientIfaceName
+      _targetSsid = source._targetSsid
+      _targetHasPassword = source._targetHasPassword
+      _targetAuth = source._targetAuth
+      _targetEncryption = source._targetEncryption
+      _targetBssid = source._targetBssid
+      _targetIrttServer = source._targetIrttServer
+      _iteration = source._iteration
+      _errorCode = source._errorCode
+      _secondsToAssociate = source._secondsToAssociate
+      _secondsToLease = source._secondsToLease
+      _secondsToResolveRouter = source._secondsToResolveRouter
+      _secondsToResolveInternet = source._secondsToResolveInternet
+      _secondsToPingDish = source._secondsToPingDish
+      _v4IrttTestDurationS = source._v4IrttTestDurationS
+      _v4IrttRttLatencyMinMs = source._v4IrttRttLatencyMinMs
+      _v4IrttRttLatencyMeanMs = source._v4IrttRttLatencyMeanMs
+      _v4IrttRttLatencyMedianMs = source._v4IrttRttLatencyMedianMs
+      _v4IrttRttLatencyMaxMs = source._v4IrttRttLatencyMaxMs
+      _v4IrttRttLatencyStdDevMs = source._v4IrttRttLatencyStdDevMs
+      _v4IrttPktsSent = source._v4IrttPktsSent
+      _v4IrttPktsRecv = source._v4IrttPktsRecv
+      _v4IrttLossPercent = source._v4IrttLossPercent
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        // The use of inline closures is to circumvent an issue where the compiler
+        // allocates stack space for every case branch when no optimizations are
+        // enabled. https://github.com/apple/swift-protobuf/issues/1034
+        switch fieldNumber {
+        case 1: try { try decoder.decodeSingularStringField(value: &_storage._clientTesterRouterID) }()
+        case 2: try { try decoder.decodeSingularMessageField(value: &_storage._timestamp) }()
+        case 3: try { try decoder.decodeSingularMessageField(value: &_storage._clientIfaceName) }()
+        case 4: try { try decoder.decodeSingularMessageField(value: &_storage._targetSsid) }()
+        case 5: try { try decoder.decodeSingularMessageField(value: &_storage._targetHasPassword) }()
+        case 6: try { try decoder.decodeSingularMessageField(value: &_storage._targetAuth) }()
+        case 7: try { try decoder.decodeSingularMessageField(value: &_storage._targetEncryption) }()
+        case 8: try { try decoder.decodeSingularMessageField(value: &_storage._targetBssid) }()
+        case 9: try { try decoder.decodeSingularMessageField(value: &_storage._iteration) }()
+        case 10: try { try decoder.decodeSingularMessageField(value: &_storage._errorCode) }()
+        case 11: try { try decoder.decodeSingularMessageField(value: &_storage._secondsToAssociate) }()
+        case 12: try { try decoder.decodeSingularMessageField(value: &_storage._secondsToLease) }()
+        case 13: try { try decoder.decodeSingularMessageField(value: &_storage._secondsToResolveRouter) }()
+        case 14: try { try decoder.decodeSingularMessageField(value: &_storage._secondsToResolveInternet) }()
+        case 15: try { try decoder.decodeSingularMessageField(value: &_storage._secondsToPingDish) }()
+        case 16: try { try decoder.decodeSingularMessageField(value: &_storage._v4IrttTestDurationS) }()
+        case 17: try { try decoder.decodeSingularMessageField(value: &_storage._v4IrttRttLatencyMinMs) }()
+        case 18: try { try decoder.decodeSingularMessageField(value: &_storage._v4IrttRttLatencyMeanMs) }()
+        case 19: try { try decoder.decodeSingularMessageField(value: &_storage._v4IrttRttLatencyMedianMs) }()
+        case 20: try { try decoder.decodeSingularMessageField(value: &_storage._v4IrttRttLatencyMaxMs) }()
+        case 21: try { try decoder.decodeSingularMessageField(value: &_storage._v4IrttRttLatencyStdDevMs) }()
+        case 22: try { try decoder.decodeSingularMessageField(value: &_storage._v4IrttPktsSent) }()
+        case 23: try { try decoder.decodeSingularMessageField(value: &_storage._v4IrttPktsRecv) }()
+        case 24: try { try decoder.decodeSingularMessageField(value: &_storage._v4IrttLossPercent) }()
+        case 25: try { try decoder.decodeSingularMessageField(value: &_storage._targetIrttServer) }()
+        default: break
+        }
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every if/case branch local when no optimizations
+      // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+      // https://github.com/apple/swift-protobuf/issues/1182
+      if !_storage._clientTesterRouterID.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._clientTesterRouterID, fieldNumber: 1)
+      }
+      try { if let v = _storage._timestamp {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+      } }()
+      try { if let v = _storage._clientIfaceName {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+      } }()
+      try { if let v = _storage._targetSsid {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
+      } }()
+      try { if let v = _storage._targetHasPassword {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
+      } }()
+      try { if let v = _storage._targetAuth {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
+      } }()
+      try { if let v = _storage._targetEncryption {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
+      } }()
+      try { if let v = _storage._targetBssid {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 8)
+      } }()
+      try { if let v = _storage._iteration {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 9)
+      } }()
+      try { if let v = _storage._errorCode {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 10)
+      } }()
+      try { if let v = _storage._secondsToAssociate {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 11)
+      } }()
+      try { if let v = _storage._secondsToLease {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 12)
+      } }()
+      try { if let v = _storage._secondsToResolveRouter {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 13)
+      } }()
+      try { if let v = _storage._secondsToResolveInternet {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 14)
+      } }()
+      try { if let v = _storage._secondsToPingDish {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 15)
+      } }()
+      try { if let v = _storage._v4IrttTestDurationS {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 16)
+      } }()
+      try { if let v = _storage._v4IrttRttLatencyMinMs {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 17)
+      } }()
+      try { if let v = _storage._v4IrttRttLatencyMeanMs {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 18)
+      } }()
+      try { if let v = _storage._v4IrttRttLatencyMedianMs {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 19)
+      } }()
+      try { if let v = _storage._v4IrttRttLatencyMaxMs {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 20)
+      } }()
+      try { if let v = _storage._v4IrttRttLatencyStdDevMs {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 21)
+      } }()
+      try { if let v = _storage._v4IrttPktsSent {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 22)
+      } }()
+      try { if let v = _storage._v4IrttPktsRecv {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 23)
+      } }()
+      try { if let v = _storage._v4IrttLossPercent {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 24)
+      } }()
+      try { if let v = _storage._targetIrttServer {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 25)
+      } }()
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: SpaceX_API_Device_StarlinkRouterClientTesterRun, rhs: SpaceX_API_Device_StarlinkRouterClientTesterRun) -> Bool {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._clientTesterRouterID != rhs_storage._clientTesterRouterID {return false}
+        if _storage._timestamp != rhs_storage._timestamp {return false}
+        if _storage._clientIfaceName != rhs_storage._clientIfaceName {return false}
+        if _storage._targetSsid != rhs_storage._targetSsid {return false}
+        if _storage._targetHasPassword != rhs_storage._targetHasPassword {return false}
+        if _storage._targetAuth != rhs_storage._targetAuth {return false}
+        if _storage._targetEncryption != rhs_storage._targetEncryption {return false}
+        if _storage._targetBssid != rhs_storage._targetBssid {return false}
+        if _storage._targetIrttServer != rhs_storage._targetIrttServer {return false}
+        if _storage._iteration != rhs_storage._iteration {return false}
+        if _storage._errorCode != rhs_storage._errorCode {return false}
+        if _storage._secondsToAssociate != rhs_storage._secondsToAssociate {return false}
+        if _storage._secondsToLease != rhs_storage._secondsToLease {return false}
+        if _storage._secondsToResolveRouter != rhs_storage._secondsToResolveRouter {return false}
+        if _storage._secondsToResolveInternet != rhs_storage._secondsToResolveInternet {return false}
+        if _storage._secondsToPingDish != rhs_storage._secondsToPingDish {return false}
+        if _storage._v4IrttTestDurationS != rhs_storage._v4IrttTestDurationS {return false}
+        if _storage._v4IrttRttLatencyMinMs != rhs_storage._v4IrttRttLatencyMinMs {return false}
+        if _storage._v4IrttRttLatencyMeanMs != rhs_storage._v4IrttRttLatencyMeanMs {return false}
+        if _storage._v4IrttRttLatencyMedianMs != rhs_storage._v4IrttRttLatencyMedianMs {return false}
+        if _storage._v4IrttRttLatencyMaxMs != rhs_storage._v4IrttRttLatencyMaxMs {return false}
+        if _storage._v4IrttRttLatencyStdDevMs != rhs_storage._v4IrttRttLatencyStdDevMs {return false}
+        if _storage._v4IrttPktsSent != rhs_storage._v4IrttPktsSent {return false}
+        if _storage._v4IrttPktsRecv != rhs_storage._v4IrttPktsRecv {return false}
+        if _storage._v4IrttLossPercent != rhs_storage._v4IrttLossPercent {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension SpaceX_API_Device_WifiSetClientGivenNameRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiSetClientGivenNameRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "client_name"),
-    2: .standard(proto: "client_config"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}client_name\0\u{3}client_config\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -12480,7 +15135,7 @@ extension SpaceX_API_Device_WifiSetClientGivenNameRequest: SwiftProtobuf.Message
   }
 }
 
-extension SpaceX_API_Device_WifiSelfTestRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiSelfTestRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiSelfTestRequest"
   static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -12499,12 +15154,9 @@ extension SpaceX_API_Device_WifiSelfTestRequest: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension SpaceX_API_Device_WifiSelfTestResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiSelfTestResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiSelfTestResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "self_test"),
-    2: .same(proto: "json"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}self_test\0\u{1}json\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -12541,7 +15193,7 @@ extension SpaceX_API_Device_WifiSelfTestResponse: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension SpaceX_API_Device_WifiRunSelfTestRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiRunSelfTestRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiRunSelfTestRequest"
   static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -12560,20 +15212,9 @@ extension SpaceX_API_Device_WifiRunSelfTestRequest: SwiftProtobuf.Message, Swift
   }
 }
 
-extension SpaceX_API_Device_WifiRfTestRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiRfTestRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiRfTestRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "num_measurements"),
-    2: .standard(proto: "channel_2ghz"),
-    3: .standard(proto: "channel_5ghz"),
-    4: .standard(proto: "channel_5ghz_high"),
-    5: .standard(proto: "mcs_2ghz"),
-    6: .standard(proto: "mcs_5ghz"),
-    7: .standard(proto: "mcs_5ghz_high"),
-    8: .standard(proto: "phy_mode_2ghz"),
-    9: .standard(proto: "phy_mode_5ghz"),
-    10: .standard(proto: "phy_mode_5ghz_high"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}num_measurements\0\u{3}channel_2ghz\0\u{3}channel_5ghz\0\u{3}channel_5ghz_high\0\u{3}mcs_2ghz\0\u{3}mcs_5ghz\0\u{3}mcs_5ghz_high\0\u{3}phy_mode_2ghz\0\u{3}phy_mode_5ghz\0\u{3}phy_mode_5ghz_high\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -12646,11 +15287,9 @@ extension SpaceX_API_Device_WifiRfTestRequest: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension SpaceX_API_Device_WifiRfTestResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiRfTestResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiRfTestResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "report"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}report\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -12678,7 +15317,7 @@ extension SpaceX_API_Device_WifiRfTestResponse: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension SpaceX_API_Device_WifiGetFirewallRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiGetFirewallRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiGetFirewallRequest"
   static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -12697,12 +15336,9 @@ extension SpaceX_API_Device_WifiGetFirewallRequest: SwiftProtobuf.Message, Swift
   }
 }
 
-extension SpaceX_API_Device_WifiGetFirewallResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiGetFirewallResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiGetFirewallResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "iptables"),
-    2: .standard(proto: "iptables_6"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}iptables\0\u{3}iptables_6\0\u{1}ipset\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -12712,6 +15348,7 @@ extension SpaceX_API_Device_WifiGetFirewallResponse: SwiftProtobuf.Message, Swif
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularStringField(value: &self.iptables) }()
       case 2: try { try decoder.decodeSingularStringField(value: &self.iptables6) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.ipset) }()
       default: break
       }
     }
@@ -12724,22 +15361,24 @@ extension SpaceX_API_Device_WifiGetFirewallResponse: SwiftProtobuf.Message, Swif
     if !self.iptables6.isEmpty {
       try visitor.visitSingularStringField(value: self.iptables6, fieldNumber: 2)
     }
+    if !self.ipset.isEmpty {
+      try visitor.visitSingularStringField(value: self.ipset, fieldNumber: 3)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   static func ==(lhs: SpaceX_API_Device_WifiGetFirewallResponse, rhs: SpaceX_API_Device_WifiGetFirewallResponse) -> Bool {
     if lhs.iptables != rhs.iptables {return false}
     if lhs.iptables6 != rhs.iptables6 {return false}
+    if lhs.ipset != rhs.ipset {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension SpaceX_API_Device_WifiTogglePoeNegotiationRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiTogglePoeNegotiationRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiTogglePoeNegotiationRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "enable"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}enable\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -12767,7 +15406,7 @@ extension SpaceX_API_Device_WifiTogglePoeNegotiationRequest: SwiftProtobuf.Messa
   }
 }
 
-extension SpaceX_API_Device_WifiCalibrationModeRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiCalibrationModeRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiCalibrationModeRequest"
   static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -12786,144 +15425,9 @@ extension SpaceX_API_Device_WifiCalibrationModeRequest: SwiftProtobuf.Message, S
   }
 }
 
-extension SpaceX_API_Device_starlink_router_hourly_metrics_v2: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_starlink_router_hourly_metrics_v2: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".starlink_router_hourly_metrics_v2"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "id"),
-    2: .standard(proto: "timestamp_date"),
-    3: .standard(proto: "timestamp_hour"),
-    4: .standard(proto: "sys_hw_gen"),
-    5: .standard(proto: "sys_sw"),
-    6: .standard(proto: "sys_country"),
-    7: .standard(proto: "sys_is_dev"),
-    8: .standard(proto: "sys_alloc_fds"),
-    9: .standard(proto: "sys_cpu_usage"),
-    10: .standard(proto: "sys_mem_free_kb"),
-    11: .standard(proto: "sys_bootcount"),
-    12: .standard(proto: "sys_partitions_equal"),
-    13: .standard(proto: "sys_uptime_seconds"),
-    14: .standard(proto: "sys_anti_rollback_version"),
-    100: .standard(proto: "radios_2ghz_channel"),
-    101: .standard(proto: "radios_2ghz_antenna1_rssi"),
-    102: .standard(proto: "radios_2ghz_antenna2_rssi"),
-    103: .standard(proto: "radios_2ghz_antenna3_rssi"),
-    104: .standard(proto: "radios_2ghz_iface_count"),
-    105: .standard(proto: "radios_2ghz_chan_busy_fraction"),
-    106: .standard(proto: "radios_2ghz_edcca_fraction"),
-    107: .standard(proto: "radios_2ghz_overlapping_bss_fraction"),
-    108: .standard(proto: "radios_2ghz_rx_bytes"),
-    109: .standard(proto: "radios_2ghz_rx_packets"),
-    110: .standard(proto: "radios_2ghz_rx_errors"),
-    111: .standard(proto: "radios_2ghz_rx_frame_errors"),
-    112: .standard(proto: "radios_2ghz_rx_packet_error_rate"),
-    113: .standard(proto: "radios_2ghz_rx_airtime_fraction"),
-    114: .standard(proto: "radios_2ghz_tx_bytes"),
-    115: .standard(proto: "radios_2ghz_tx_packets"),
-    116: .standard(proto: "radios_2ghz_tx_errors"),
-    117: .standard(proto: "radios_2ghz_tx_packet_error_rate"),
-    118: .standard(proto: "radios_2ghz_tx_airtime_fraction"),
-    119: .standard(proto: "radios_5ghz_channel"),
-    120: .standard(proto: "radios_5ghz_antenna1_rssi"),
-    121: .standard(proto: "radios_5ghz_antenna2_rssi"),
-    122: .standard(proto: "radios_5ghz_antenna3_rssi"),
-    123: .standard(proto: "radios_5ghz_iface_count"),
-    124: .standard(proto: "radios_5ghz_chan_busy_fraction"),
-    125: .standard(proto: "radios_5ghz_edcca_fraction"),
-    126: .standard(proto: "radios_5ghz_overlapping_bss_fraction"),
-    127: .standard(proto: "radios_5ghz_rx_bytes"),
-    128: .standard(proto: "radios_5ghz_rx_packets"),
-    129: .standard(proto: "radios_5ghz_rx_errors"),
-    130: .standard(proto: "radios_5ghz_rx_frame_errors"),
-    131: .standard(proto: "radios_5ghz_rx_packet_error_rate"),
-    132: .standard(proto: "radios_5ghz_rx_airtime_fraction"),
-    133: .standard(proto: "radios_5ghz_tx_bytes"),
-    134: .standard(proto: "radios_5ghz_tx_packets"),
-    135: .standard(proto: "radios_5ghz_tx_errors"),
-    136: .standard(proto: "radios_5ghz_tx_packet_error_rate"),
-    137: .standard(proto: "radios_5ghz_tx_airtime_fraction"),
-    200: .standard(proto: "radios_2ghz_thermal_temp"),
-    201: .standard(proto: "radios_5ghz_thermal_temp"),
-    202: .standard(proto: "radios_2ghz_thermal_duty_cycle"),
-    203: .standard(proto: "radios_5ghz_thermal_duty_cycle"),
-    204: .standard(proto: "radios_2ghz_thermal_throttled_seconds"),
-    205: .standard(proto: "radios_5ghz_thermal_throttled_seconds"),
-    300: .standard(proto: "ifaces_lan_eth_rx_bytes"),
-    301: .standard(proto: "ifaces_lan_eth_rx_packets"),
-    302: .standard(proto: "ifaces_lan_eth_rx_errors"),
-    303: .standard(proto: "ifaces_lan_eth_rx_frame_errors"),
-    304: .standard(proto: "ifaces_lan_eth_tx_bytes"),
-    305: .standard(proto: "ifaces_lan_eth_tx_packets"),
-    306: .standard(proto: "ifaces_lan_eth_tx_errors"),
-    307: .standard(proto: "ifaces_wan_eth_rx_bytes"),
-    308: .standard(proto: "ifaces_wan_eth_rx_packets"),
-    309: .standard(proto: "ifaces_wan_eth_rx_errors"),
-    310: .standard(proto: "ifaces_wan_eth_rx_frame_errors"),
-    311: .standard(proto: "ifaces_wan_eth_tx_bytes"),
-    312: .standard(proto: "ifaces_wan_eth_tx_packets"),
-    313: .standard(proto: "ifaces_wan_eth_tx_errors"),
-    400: .same(proto: "clients"),
-    401: .standard(proto: "clients_2ghz"),
-    402: .standard(proto: "clients_5ghz"),
-    403: .standard(proto: "clients_eth"),
-    404: .standard(proto: "clients_repeater"),
-    405: .standard(proto: "clients_repeater_2ghz"),
-    406: .standard(proto: "clients_repeater_5ghz"),
-    407: .standard(proto: "clients_repeater_eth"),
-    408: .standard(proto: "mesh_hops"),
-    409: .standard(proto: "mesh_one_hop_rssi_avg_2ghz"),
-    410: .standard(proto: "mesh_one_hop_rssi_avg_5ghz"),
-    411: .standard(proto: "mesh_two_hop_rssi_avg_2ghz"),
-    412: .standard(proto: "mesh_two_hop_rssi_avg_5ghz"),
-    600: .standard(proto: "ping_seconds_since_last_1s_outage"),
-    601: .standard(proto: "ping_seconds_since_last_2s_outage"),
-    602: .standard(proto: "ping_seconds_since_last_5s_outage"),
-    603: .standard(proto: "ping_seconds_since_last_60s_outage"),
-    604: .standard(proto: "ping_seconds_since_last_300s_outage"),
-    605: .standard(proto: "ping_drop_rate"),
-    606: .standard(proto: "ping_drop_rate_last_1h"),
-    607: .standard(proto: "ping_latency"),
-    610: .standard(proto: "ping_dish_seconds_since_last_1s_outage"),
-    611: .standard(proto: "ping_dish_seconds_since_last_2s_outage"),
-    612: .standard(proto: "ping_dish_seconds_since_last_5s_outage"),
-    613: .standard(proto: "ping_dish_seconds_since_last_60s_outage"),
-    614: .standard(proto: "ping_dish_seconds_since_last_300s_outage"),
-    615: .standard(proto: "ping_dish_drop_rate"),
-    616: .standard(proto: "ping_dish_drop_rate_last_1h"),
-    617: .standard(proto: "ping_dish_latency"),
-    700: .standard(proto: "client_speedtest_router_download_mbps"),
-    701: .standard(proto: "client_speedtest_router_upload_mbps"),
-    702: .standard(proto: "client_speedtest_router_rssi"),
-    703: .standard(proto: "client_speedtest_wifi_download_mbps"),
-    704: .standard(proto: "client_speedtest_wifi_upload_mbps"),
-    705: .standard(proto: "client_speedtest_client_download_mbps"),
-    706: .standard(proto: "client_speedtest_client_upload_mbps"),
-    707: .standard(proto: "client_speedtest_client_rssi"),
-    708: .standard(proto: "client_speedtest_client_iface"),
-    709: .standard(proto: "client_speedtest_client_oui"),
-    710: .standard(proto: "client_speedtest_client_tx_rate"),
-    711: .standard(proto: "client_speedtest_client_rx_rate"),
-    712: .standard(proto: "client_speedtest_client_platform_type"),
-    800: .standard(proto: "speedtest_tcp_8_download_mbps_avg"),
-    801: .standard(proto: "speedtest_tcp_8_download_mbps_max"),
-    802: .standard(proto: "speedtest_tcp_8_upload_mbps_avg"),
-    803: .standard(proto: "speedtest_tcp_8_upload_mbps_max"),
-    804: .standard(proto: "speedtest_tcp_64_download_mbps_avg"),
-    805: .standard(proto: "speedtest_tcp_64_download_mbps_max"),
-    806: .standard(proto: "speedtest_tcp_64_upload_mbps_avg"),
-    807: .standard(proto: "speedtest_tcp_64_upload_mbps_max"),
-    900: .standard(proto: "dish_cell_id"),
-    1000: .standard(proto: "config_setup_complete"),
-    1001: .standard(proto: "config_bands_split"),
-    1002: .standard(proto: "config_is_repeater"),
-    1003: .standard(proto: "config_open_network"),
-    1004: .standard(proto: "config_is_aviation"),
-    1005: .standard(proto: "config_secure_dns"),
-    1006: .standard(proto: "config_legacy"),
-    1007: .standard(proto: "config_ap_mode"),
-    1008: .standard(proto: "config_dfs_enabled"),
-    1009: .standard(proto: "config_network_name_is_default"),
-    1010: .standard(proto: "config_remote_ssh_enabled"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{3}timestamp_date\0\u{3}timestamp_hour\0\u{3}sys_hw_gen\0\u{3}sys_sw\0\u{3}sys_country\0\u{3}sys_is_dev\0\u{3}sys_alloc_fds\0\u{3}sys_cpu_usage\0\u{3}sys_mem_free_kb\0\u{3}sys_bootcount\0\u{3}sys_partitions_equal\0\u{3}sys_uptime_seconds\0\u{3}sys_anti_rollback_version\0\u{4}V\u{1}radios_2ghz_channel\0\u{3}radios_2ghz_antenna1_rssi\0\u{3}radios_2ghz_antenna2_rssi\0\u{3}radios_2ghz_antenna3_rssi\0\u{3}radios_2ghz_iface_count\0\u{3}radios_2ghz_chan_busy_fraction\0\u{3}radios_2ghz_edcca_fraction\0\u{3}radios_2ghz_overlapping_bss_fraction\0\u{3}radios_2ghz_rx_bytes\0\u{3}radios_2ghz_rx_packets\0\u{3}radios_2ghz_rx_errors\0\u{3}radios_2ghz_rx_frame_errors\0\u{3}radios_2ghz_rx_packet_error_rate\0\u{3}radios_2ghz_rx_airtime_fraction\0\u{3}radios_2ghz_tx_bytes\0\u{3}radios_2ghz_tx_packets\0\u{3}radios_2ghz_tx_errors\0\u{3}radios_2ghz_tx_packet_error_rate\0\u{3}radios_2ghz_tx_airtime_fraction\0\u{3}radios_5ghz_channel\0\u{3}radios_5ghz_antenna1_rssi\0\u{3}radios_5ghz_antenna2_rssi\0\u{3}radios_5ghz_antenna3_rssi\0\u{3}radios_5ghz_iface_count\0\u{3}radios_5ghz_chan_busy_fraction\0\u{3}radios_5ghz_edcca_fraction\0\u{3}radios_5ghz_overlapping_bss_fraction\0\u{3}radios_5ghz_rx_bytes\0\u{3}radios_5ghz_rx_packets\0\u{3}radios_5ghz_rx_errors\0\u{3}radios_5ghz_rx_frame_errors\0\u{3}radios_5ghz_rx_packet_error_rate\0\u{3}radios_5ghz_rx_airtime_fraction\0\u{3}radios_5ghz_tx_bytes\0\u{3}radios_5ghz_tx_packets\0\u{3}radios_5ghz_tx_errors\0\u{3}radios_5ghz_tx_packet_error_rate\0\u{3}radios_5ghz_tx_airtime_fraction\0\u{4}?radios_2ghz_thermal_temp\0\u{3}radios_5ghz_thermal_temp\0\u{3}radios_2ghz_thermal_duty_cycle\0\u{3}radios_5ghz_thermal_duty_cycle\0\u{3}radios_2ghz_thermal_throttled_seconds\0\u{3}radios_5ghz_thermal_throttled_seconds\0\u{4}_\u{1}ifaces_lan_eth_rx_bytes\0\u{3}ifaces_lan_eth_rx_packets\0\u{3}ifaces_lan_eth_rx_errors\0\u{3}ifaces_lan_eth_rx_frame_errors\0\u{3}ifaces_lan_eth_tx_bytes\0\u{3}ifaces_lan_eth_tx_packets\0\u{3}ifaces_lan_eth_tx_errors\0\u{3}ifaces_wan_eth_rx_bytes\0\u{3}ifaces_wan_eth_rx_packets\0\u{3}ifaces_wan_eth_rx_errors\0\u{3}ifaces_wan_eth_rx_frame_errors\0\u{3}ifaces_wan_eth_tx_bytes\0\u{3}ifaces_wan_eth_tx_packets\0\u{3}ifaces_wan_eth_tx_errors\0\u{2}W\u{1}clients\0\u{3}clients_2ghz\0\u{3}clients_5ghz\0\u{3}clients_eth\0\u{3}clients_repeater\0\u{3}clients_repeater_2ghz\0\u{3}clients_repeater_5ghz\0\u{3}clients_repeater_eth\0\u{3}mesh_hops\0\u{3}mesh_one_hop_rssi_avg_2ghz\0\u{3}mesh_one_hop_rssi_avg_5ghz\0\u{3}mesh_two_hop_rssi_avg_2ghz\0\u{3}mesh_two_hop_rssi_avg_5ghz\0\u{4}|\u{2}ping_seconds_since_last_1s_outage\0\u{3}ping_seconds_since_last_2s_outage\0\u{3}ping_seconds_since_last_5s_outage\0\u{3}ping_seconds_since_last_60s_outage\0\u{3}ping_seconds_since_last_300s_outage\0\u{3}ping_drop_rate\0\u{3}ping_drop_rate_last_1h\0\u{3}ping_latency\0\u{4}\u{3}ping_dish_seconds_since_last_1s_outage\0\u{3}ping_dish_seconds_since_last_2s_outage\0\u{3}ping_dish_seconds_since_last_5s_outage\0\u{3}ping_dish_seconds_since_last_60s_outage\0\u{3}ping_dish_seconds_since_last_300s_outage\0\u{3}ping_dish_drop_rate\0\u{3}ping_dish_drop_rate_last_1h\0\u{3}ping_dish_latency\0\u{4}S\u{1}client_speedtest_router_download_mbps\0\u{3}client_speedtest_router_upload_mbps\0\u{3}client_speedtest_router_rssi\0\u{3}client_speedtest_wifi_download_mbps\0\u{3}client_speedtest_wifi_upload_mbps\0\u{3}client_speedtest_client_download_mbps\0\u{3}client_speedtest_client_upload_mbps\0\u{3}client_speedtest_client_rssi\0\u{3}client_speedtest_client_iface\0\u{3}client_speedtest_client_oui\0\u{3}client_speedtest_client_tx_rate\0\u{3}client_speedtest_client_rx_rate\0\u{3}client_speedtest_client_platform_type\0\u{4}X\u{1}speedtest_tcp_8_download_mbps_avg\0\u{3}speedtest_tcp_8_download_mbps_max\0\u{3}speedtest_tcp_8_upload_mbps_avg\0\u{3}speedtest_tcp_8_upload_mbps_max\0\u{3}speedtest_tcp_64_download_mbps_avg\0\u{3}speedtest_tcp_64_download_mbps_max\0\u{3}speedtest_tcp_64_upload_mbps_avg\0\u{3}speedtest_tcp_64_upload_mbps_max\0\u{4}]\u{1}dish_cell_id\0\u{4}d\u{1}config_setup_complete\0\u{3}config_bands_split\0\u{3}config_is_repeater\0\u{3}config_open_network\0\u{3}config_is_aviation\0\u{3}config_secure_dns\0\u{3}config_legacy\0\u{3}config_ap_mode\0\u{3}config_dfs_enabled\0\u{3}config_network_name_is_default\0\u{3}config_remote_ssh_enabled\0")
 
   fileprivate class _StorageClass {
     var _id: SwiftProtobuf.Google_Protobuf_StringValue? = nil
@@ -13061,15 +15565,11 @@ extension SpaceX_API_Device_starlink_router_hourly_metrics_v2: SwiftProtobuf.Mes
     var _configNetworkNameIsDefault: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
     var _configRemoteSshEnabled: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
 
-    #if swift(>=5.10)
       // This property is used as the initial default value for new instances of the type.
       // The type itself is protecting the reference to its storage via CoW semantics.
       // This will force a copy to be made of this reference when the first mutation occurs;
       // hence, it is safe to mark this as `nonisolated(unsafe)`.
       static nonisolated(unsafe) let defaultInstance = _StorageClass()
-    #else
-      static let defaultInstance = _StorageClass()
-    #endif
 
     private init() {}
 
@@ -13926,7 +16426,7 @@ extension SpaceX_API_Device_starlink_router_hourly_metrics_v2: SwiftProtobuf.Mes
   }
 }
 
-extension SpaceX_API_Device_WifiGuestInfoRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiGuestInfoRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiGuestInfoRequest"
   static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -13945,15 +16445,9 @@ extension SpaceX_API_Device_WifiGuestInfoRequest: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension SpaceX_API_Device_WifiGuestInfoResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiGuestInfoResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiGuestInfoResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "is_guest"),
-    2: .standard(proto: "is_online"),
-    3: .standard(proto: "router_hardware_version"),
-    4: .standard(proto: "dish_hardware_version"),
-    5: .standard(proto: "is_router_aviation_conformed"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}is_guest\0\u{3}is_online\0\u{3}router_hardware_version\0\u{3}dish_hardware_version\0\u{3}is_router_aviation_conformed\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -14001,13 +16495,9 @@ extension SpaceX_API_Device_WifiGuestInfoResponse: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension SpaceX_API_Device_WifiFactoryTestCommandRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiFactoryTestCommandRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiFactoryTestCommandRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "iwpriv_command"),
-    2: .standard(proto: "ip_link_set_command"),
-    3: .standard(proto: "ip_addr_set_command"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}iwpriv_command\0\u{3}ip_link_set_command\0\u{3}ip_addr_set_command\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -14089,11 +16579,9 @@ extension SpaceX_API_Device_WifiFactoryTestCommandRequest: SwiftProtobuf.Message
   }
 }
 
-extension SpaceX_API_Device_WifiFactoryTestCommandResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiFactoryTestCommandResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiFactoryTestCommandResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "response"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}response\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -14121,13 +16609,9 @@ extension SpaceX_API_Device_WifiFactoryTestCommandResponse: SwiftProtobuf.Messag
   }
 }
 
-extension SpaceX_API_Device_IwprivCommand: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_IwprivCommand: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".IwprivCommand"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "iface"),
-    2: .same(proto: "arg"),
-    3: .same(proto: "ioctl"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}iface\0\u{1}arg\0\u{1}ioctl\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -14165,21 +16649,13 @@ extension SpaceX_API_Device_IwprivCommand: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension SpaceX_API_Device_IwprivCommand.Ioctl: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "IOCTL_SET"),
-    1: .same(proto: "IOCTL_E2P"),
-    3: .same(proto: "IOCTL_MAC"),
-    4: .same(proto: "IOCTL_SX_ALLOW_5GHZ_HIGH"),
-  ]
+nonisolated extension SpaceX_API_Device_IwprivCommand.Ioctl: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0IOCTL_SET\0\u{1}IOCTL_E2P\0\u{2}\u{2}IOCTL_MAC\0\u{1}IOCTL_SX_ALLOW_5GHZ_HIGH\0")
 }
 
-extension SpaceX_API_Device_IpLinkSetCommand: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_IpLinkSetCommand: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".IpLinkSetCommand"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "iface"),
-    2: .same(proto: "up"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}iface\0\u{1}up\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -14212,13 +16688,9 @@ extension SpaceX_API_Device_IpLinkSetCommand: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension SpaceX_API_Device_IpAddrSetCommand: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_IpAddrSetCommand: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".IpAddrSetCommand"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "iface"),
-    2: .same(proto: "add"),
-    3: .same(proto: "cidr"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}iface\0\u{1}add\0\u{1}cidr\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -14256,11 +16728,9 @@ extension SpaceX_API_Device_IpAddrSetCommand: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension SpaceX_API_Device_WifiStartLocalTelemProxyRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiStartLocalTelemProxyRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiStartLocalTelemProxyRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "port"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}port\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -14288,7 +16758,7 @@ extension SpaceX_API_Device_WifiStartLocalTelemProxyRequest: SwiftProtobuf.Messa
   }
 }
 
-extension SpaceX_API_Device_WifiBackhaulStatsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiBackhaulStatsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiBackhaulStatsRequest"
   static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -14307,15 +16777,9 @@ extension SpaceX_API_Device_WifiBackhaulStatsRequest: SwiftProtobuf.Message, Swi
   }
 }
 
-extension SpaceX_API_Device_WifiBackhaulStatsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiBackhaulStatsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiBackhaulStatsResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "success"),
-    2: .same(proto: "bssid"),
-    3: .same(proto: "iface"),
-    4: .same(proto: "preference"),
-    5: .same(proto: "siteSurveyScan"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}success\0\u{1}bssid\0\u{1}iface\0\u{1}preference\0\u{1}siteSurveyScan\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -14363,11 +16827,9 @@ extension SpaceX_API_Device_WifiBackhaulStatsResponse: SwiftProtobuf.Message, Sw
   }
 }
 
-extension SpaceX_API_Device_WifiToggleUmbilicalModeRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiToggleUmbilicalModeRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiToggleUmbilicalModeRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "enable"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}enable\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -14390,6 +16852,154 @@ extension SpaceX_API_Device_WifiToggleUmbilicalModeRequest: SwiftProtobuf.Messag
 
   static func ==(lhs: SpaceX_API_Device_WifiToggleUmbilicalModeRequest, rhs: SpaceX_API_Device_WifiToggleUmbilicalModeRequest) -> Bool {
     if lhs.enable != rhs.enable {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension SpaceX_API_Device_WifiUpdateResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".WifiUpdateResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}stats\0")
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._stats) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._stats {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: SpaceX_API_Device_WifiUpdateResponse, rhs: SpaceX_API_Device_WifiUpdateResponse) -> Bool {
+    if lhs._stats != rhs._stats {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension SpaceX_API_Device_WifiRunDebugNetsysRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".WifiRunDebugNetsysRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: SpaceX_API_Device_WifiRunDebugNetsysRequest, rhs: SpaceX_API_Device_WifiRunDebugNetsysRequest) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension SpaceX_API_Device_WifiRunDebugNetsysResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".WifiRunDebugNetsysResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: SpaceX_API_Device_WifiRunDebugNetsysResponse, rhs: SpaceX_API_Device_WifiRunDebugNetsysResponse) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension SpaceX_API_Device_WifiResetEthPhyRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".WifiResetEthPhyRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: SpaceX_API_Device_WifiResetEthPhyRequest, rhs: SpaceX_API_Device_WifiResetEthPhyRequest) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension SpaceX_API_Device_WifiResetEthPhyResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".WifiResetEthPhyResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: SpaceX_API_Device_WifiResetEthPhyResponse, rhs: SpaceX_API_Device_WifiResetEthPhyResponse) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension SpaceX_API_Device_WifiFlushHardwareNatRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".WifiFlushHardwareNatRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: SpaceX_API_Device_WifiFlushHardwareNatRequest, rhs: SpaceX_API_Device_WifiFlushHardwareNatRequest) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension SpaceX_API_Device_WifiFlushHardwareNatResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".WifiFlushHardwareNatResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: SpaceX_API_Device_WifiFlushHardwareNatResponse, rhs: SpaceX_API_Device_WifiFlushHardwareNatResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

@@ -60,8 +60,42 @@ class MeshConfig(_message.Message):
     supports_5ghz_high: bool
     def __init__(self, display_name: _Optional[str] = ..., apply_display_name: bool = ..., auth: _Optional[_Union[MeshAuth, str]] = ..., apply_auth: bool = ..., last_connected: _Optional[int] = ..., incarnation: _Optional[int] = ..., hardware_version: _Optional[str] = ..., supports_5ghz_high: bool = ...) -> None: ...
 
+class TlsConfig(_message.Message):
+    __slots__ = ("key", "cert", "client_ca_cert", "server_ca_cert")
+    KEY_FIELD_NUMBER: _ClassVar[int]
+    CERT_FIELD_NUMBER: _ClassVar[int]
+    CLIENT_CA_CERT_FIELD_NUMBER: _ClassVar[int]
+    SERVER_CA_CERT_FIELD_NUMBER: _ClassVar[int]
+    key: str
+    cert: str
+    client_ca_cert: str
+    server_ca_cert: str
+    def __init__(self, key: _Optional[str] = ..., cert: _Optional[str] = ..., client_ca_cert: _Optional[str] = ..., server_ca_cert: _Optional[str] = ...) -> None: ...
+
+class HttpServer(_message.Message):
+    __slots__ = ("domain_name", "tls", "file_content_id", "file_content_hash", "access_control_allow_origins")
+    DOMAIN_NAME_FIELD_NUMBER: _ClassVar[int]
+    TLS_FIELD_NUMBER: _ClassVar[int]
+    FILE_CONTENT_ID_FIELD_NUMBER: _ClassVar[int]
+    FILE_CONTENT_HASH_FIELD_NUMBER: _ClassVar[int]
+    ACCESS_CONTROL_ALLOW_ORIGINS_FIELD_NUMBER: _ClassVar[int]
+    domain_name: str
+    tls: TlsConfig
+    file_content_id: str
+    file_content_hash: str
+    access_control_allow_origins: _containers.RepeatedScalarFieldContainer[str]
+    def __init__(self, domain_name: _Optional[str] = ..., tls: _Optional[_Union[TlsConfig, _Mapping]] = ..., file_content_id: _Optional[str] = ..., file_content_hash: _Optional[str] = ..., access_control_allow_origins: _Optional[_Iterable[str]] = ...) -> None: ...
+
+class CaptivePortal(_message.Message):
+    __slots__ = ("url", "display_in_captive_browser")
+    URL_FIELD_NUMBER: _ClassVar[int]
+    DISPLAY_IN_CAPTIVE_BROWSER_FIELD_NUMBER: _ClassVar[int]
+    url: str
+    display_in_captive_browser: bool
+    def __init__(self, url: _Optional[str] = ..., display_in_captive_browser: bool = ...) -> None: ...
+
 class WifiConfig(_message.Message):
-    __slots__ = ("country_code", "apply_country_code", "pin_country_code", "apply_pin_country_code", "custom_power_table", "apply_custom_power_table", "setup_complete", "apply_setup_complete", "version", "mac_wan", "mac_lan", "channel_2ghz", "apply_channel_2ghz", "channel_5ghz", "apply_channel_5ghz", "channel_5ghz_high", "apply_channel_5ghz_high", "mesh_configs", "mesh_configs_updates", "apply_mesh_configs", "dynamic_keys", "apply_dynamic_keys", "is_repeater", "apply_is_repeater", "ap_mode", "apply_ap_mode", "is_aviation", "apply_is_aviation", "boot_count", "boot", "nameservers", "apply_nameservers", "secure_dns", "apply_secure_dns", "bypass_mode", "apply_bypass_mode", "dfs_enabled", "apply_dfs_enabled", "disable_mesh_onboarding", "apply_disable_mesh_onboarding", "networks", "apply_networks", "incarnation", "wireless_mode_2ghz", "apply_wireless_mode_2ghz", "wireless_mode_5ghz", "apply_wireless_mode_5ghz", "wireless_mode_5ghz_high", "apply_wireless_mode_5ghz_high", "ht_bandwidth_2ghz", "apply_ht_bandwidth_2ghz", "ht_bandwidth_5ghz", "apply_ht_bandwidth_5ghz", "ht_bandwidth_5ghz_high", "apply_ht_bandwidth_5ghz_high", "vht_bandwidth", "apply_vht_bandwidth", "vht_bandwidth_5ghz_high", "apply_vht_bandwidth_5ghz_high", "use_public_services", "apply_use_public_services", "disable_automated_speedtests", "apply_disable_automated_speedtests", "enable_umbilical_vlan", "apply_enable_umbilical_vlan", "client_names", "apply_client_names", "outdoor_mode", "apply_outdoor_mode", "disable_2ghz", "apply_disable_2ghz", "disable_5ghz", "apply_disable_5ghz", "disable_5ghz_high", "apply_disable_5ghz_high", "disable_x_mesh_backhaul", "apply_disable_x_mesh_backhaul", "golden_bssid", "apply_golden_bssid", "golden_iface_type", "apply_golden_iface_type", "tx_power_level_2ghz", "apply_tx_power_level_2ghz", "tx_power_level_5ghz", "apply_tx_power_level_5ghz", "tx_power_level_5ghz_high", "apply_tx_power_level_5ghz_high", "disable_pending_update_reboot", "apply_disable_pending_update_reboot", "client_configs", "apply_client_configs", "disable_set_wifi_config_from_controller", "apply_disable_set_wifi_config_from_controller", "client_key", "apply_client_key", "wan_no_traffic_control", "wan_ack_suppression", "wan_cake_rate_limit", "apply_wan_traffic_control", "wan_host_dscp_mark", "apply_wan_host_dscp_mark", "debug_pop_pings", "apply_debug_pop_pings", "client_tester", "apply_client_tester", "tag")
+    __slots__ = ("country_code", "apply_country_code", "pin_country_code", "apply_pin_country_code", "custom_power_table", "apply_custom_power_table", "setup_complete", "apply_setup_complete", "version", "mac_wan", "mac_lan", "channel_2ghz", "apply_channel_2ghz", "channel_5ghz", "apply_channel_5ghz", "channel_5ghz_high", "apply_channel_5ghz_high", "mesh_configs", "mesh_configs_updates", "apply_mesh_configs", "dynamic_keys", "apply_dynamic_keys", "is_repeater", "apply_is_repeater", "ap_mode", "apply_ap_mode", "is_aviation", "apply_is_aviation", "boot_count", "boot", "nameservers", "apply_nameservers", "secure_dns", "apply_secure_dns", "bypass_mode", "apply_bypass_mode", "dfs_enabled", "apply_dfs_enabled", "disable_mesh_onboarding", "apply_disable_mesh_onboarding", "disable_wireless_mesh_onboarding", "apply_disable_wireless_mesh_onboarding", "apply_http_server", "http_server", "networks", "apply_networks", "incarnation", "wireless_mode_2ghz", "apply_wireless_mode_2ghz", "wireless_mode_5ghz", "apply_wireless_mode_5ghz", "wireless_mode_5ghz_high", "apply_wireless_mode_5ghz_high", "ht_bandwidth_2ghz", "apply_ht_bandwidth_2ghz", "ht_bandwidth_5ghz", "apply_ht_bandwidth_5ghz", "ht_bandwidth_5ghz_high", "apply_ht_bandwidth_5ghz_high", "vht_bandwidth", "apply_vht_bandwidth", "vht_bandwidth_5ghz_high", "apply_vht_bandwidth_5ghz_high", "use_public_services", "apply_use_public_services", "disable_automated_speedtests", "apply_disable_automated_speedtests", "enable_umbilical_vlan", "apply_enable_umbilical_vlan", "client_names", "apply_client_names", "outdoor_mode", "apply_outdoor_mode", "disable_2ghz", "apply_disable_2ghz", "disable_5ghz", "apply_disable_5ghz", "disable_5ghz_high", "apply_disable_5ghz_high", "disable_x_mesh_backhaul", "apply_disable_x_mesh_backhaul", "golden_bssid", "apply_golden_bssid", "golden_iface_type", "apply_golden_iface_type", "tx_power_level_2ghz", "apply_tx_power_level_2ghz", "tx_power_level_5ghz", "apply_tx_power_level_5ghz", "tx_power_level_5ghz_high", "apply_tx_power_level_5ghz_high", "disable_pending_update_reboot", "apply_disable_pending_update_reboot", "client_configs", "apply_client_configs", "disable_set_wifi_config_from_controller", "apply_disable_set_wifi_config_from_controller", "client_key", "apply_client_key", "wan_no_traffic_control", "wan_ack_suppression", "wan_cake_rate_limit", "apply_wan_traffic_control", "wan_host_dscp_mark", "apply_wan_host_dscp_mark", "debug_pop_pings", "apply_debug_pop_pings", "debug_pings", "apply_debug_pings", "client_tester", "apply_client_tester", "asset_class", "apply_asset_class", "disable_band_steering", "apply_disable_band_steering", "only_overflight_countries", "apply_only_overflight_countries", "only_overflight_countries_using_default", "unbridged_eth_ports", "apply_unbridged_eth_ports", "disable_sandbox_fail_open", "apply_disable_sandbox_fail_open", "tag", "custom_dns_disabled", "apply_custom_dns_disabled", "foreflight_enabled", "apply_foreflight_enabled")
     class Security(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
         __slots__ = ()
         UNKNOWN: _ClassVar[WifiConfig.Security]
@@ -145,7 +179,7 @@ class WifiConfig(_message.Message):
         value: MeshConfig
         def __init__(self, key: _Optional[str] = ..., value: _Optional[_Union[MeshConfig, _Mapping]] = ...) -> None: ...
     class BasicServiceSet(_message.Message):
-        __slots__ = ("bssid", "ssid", "auth_open", "auth_wpa2", "auth_wpa3", "auth_wpa2_wpa3", "auth_radius", "band", "iface_name", "disable", "hidden")
+        __slots__ = ("bssid", "ssid", "auth_open", "auth_wpa2", "auth_wpa3", "auth_wpa2_wpa3", "auth_radius", "auth_open_encrypted", "auth_onboard_radius", "band", "iface_name", "disable", "hidden")
         BSSID_FIELD_NUMBER: _ClassVar[int]
         SSID_FIELD_NUMBER: _ClassVar[int]
         AUTH_OPEN_FIELD_NUMBER: _ClassVar[int]
@@ -153,6 +187,8 @@ class WifiConfig(_message.Message):
         AUTH_WPA3_FIELD_NUMBER: _ClassVar[int]
         AUTH_WPA2_WPA3_FIELD_NUMBER: _ClassVar[int]
         AUTH_RADIUS_FIELD_NUMBER: _ClassVar[int]
+        AUTH_OPEN_ENCRYPTED_FIELD_NUMBER: _ClassVar[int]
+        AUTH_ONBOARD_RADIUS_FIELD_NUMBER: _ClassVar[int]
         BAND_FIELD_NUMBER: _ClassVar[int]
         IFACE_NAME_FIELD_NUMBER: _ClassVar[int]
         DISABLE_FIELD_NUMBER: _ClassVar[int]
@@ -164,16 +200,49 @@ class WifiConfig(_message.Message):
         auth_wpa3: AuthWpa3
         auth_wpa2_wpa3: AuthWpa2Wpa3
         auth_radius: AuthRadius
+        auth_open_encrypted: AuthOpenEncrypted
+        auth_onboard_radius: AuthOnboardRadius
         band: WifiConfig.Band
         iface_name: str
         disable: bool
         hidden: bool
-        def __init__(self, bssid: _Optional[str] = ..., ssid: _Optional[str] = ..., auth_open: _Optional[_Union[AuthOpen, _Mapping]] = ..., auth_wpa2: _Optional[_Union[AuthWpa2, _Mapping]] = ..., auth_wpa3: _Optional[_Union[AuthWpa3, _Mapping]] = ..., auth_wpa2_wpa3: _Optional[_Union[AuthWpa2Wpa3, _Mapping]] = ..., auth_radius: _Optional[_Union[AuthRadius, _Mapping]] = ..., band: _Optional[_Union[WifiConfig.Band, str]] = ..., iface_name: _Optional[str] = ..., disable: bool = ..., hidden: bool = ...) -> None: ...
+        def __init__(self, bssid: _Optional[str] = ..., ssid: _Optional[str] = ..., auth_open: _Optional[_Union[AuthOpen, _Mapping]] = ..., auth_wpa2: _Optional[_Union[AuthWpa2, _Mapping]] = ..., auth_wpa3: _Optional[_Union[AuthWpa3, _Mapping]] = ..., auth_wpa2_wpa3: _Optional[_Union[AuthWpa2Wpa3, _Mapping]] = ..., auth_radius: _Optional[_Union[AuthRadius, _Mapping]] = ..., auth_open_encrypted: _Optional[_Union[AuthOpenEncrypted, _Mapping]] = ..., auth_onboard_radius: _Optional[_Union[AuthOnboardRadius, _Mapping]] = ..., band: _Optional[_Union[WifiConfig.Band, str]] = ..., iface_name: _Optional[str] = ..., disable: bool = ..., hidden: bool = ...) -> None: ...
+    class DnsStaticEntry(_message.Message):
+        __slots__ = ("domains", "addresses")
+        DOMAINS_FIELD_NUMBER: _ClassVar[int]
+        ADDRESSES_FIELD_NUMBER: _ClassVar[int]
+        domains: _containers.RepeatedScalarFieldContainer[str]
+        addresses: _containers.RepeatedScalarFieldContainer[str]
+        def __init__(self, domains: _Optional[_Iterable[str]] = ..., addresses: _Optional[_Iterable[str]] = ...) -> None: ...
+    class DnsForwardRule(_message.Message):
+        __slots__ = ("domains", "server_addresses")
+        DOMAINS_FIELD_NUMBER: _ClassVar[int]
+        SERVER_ADDRESSES_FIELD_NUMBER: _ClassVar[int]
+        domains: _containers.RepeatedScalarFieldContainer[str]
+        server_addresses: _containers.RepeatedScalarFieldContainer[str]
+        def __init__(self, domains: _Optional[_Iterable[str]] = ..., server_addresses: _Optional[_Iterable[str]] = ...) -> None: ...
+    class StaticRoute(_message.Message):
+        __slots__ = ("subnet", "gateway")
+        SUBNET_FIELD_NUMBER: _ClassVar[int]
+        GATEWAY_FIELD_NUMBER: _ClassVar[int]
+        subnet: str
+        gateway: str
+        def __init__(self, subnet: _Optional[str] = ..., gateway: _Optional[str] = ...) -> None: ...
     class Network(_message.Message):
-        __slots__ = ("ipv4", "dhcpv4_start", "dhcp_disabled", "dhcpv4_lease_duration_s", "domain", "basic_service_sets", "client_isolation", "guest", "landing", "landing_page_v2", "internal", "vlan")
+        __slots__ = ("ipv4", "dhcpv4_start", "dhcpv4_end", "dhcp_disabled", "dns_disabled", "dhcpv4_lease_duration_s", "domain", "basic_service_sets", "client_isolation", "guest", "landing", "landing_page_v2", "sandbox_enabled", "sandbox_domain_allow_list", "sandbox_id", "internal", "vlan", "captive_portal", "network_groups", "dns_static_entries", "dns_forward_rules", "disable_when_offline_old", "static_routes", "disable_when_offline", "geofence_action", "onboard_radius_tls_config_old", "onboard_radius_tls_config", "get_lease_dhcp", "default_route_disabled")
+        class GeofenceAction(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+            __slots__ = ()
+            NONE: _ClassVar[WifiConfig.Network.GeofenceAction]
+            DISABLE_RADIOS_AND_BLOCK_TRAFFIC: _ClassVar[WifiConfig.Network.GeofenceAction]
+            BLOCK_TRAFFIC: _ClassVar[WifiConfig.Network.GeofenceAction]
+        NONE: WifiConfig.Network.GeofenceAction
+        DISABLE_RADIOS_AND_BLOCK_TRAFFIC: WifiConfig.Network.GeofenceAction
+        BLOCK_TRAFFIC: WifiConfig.Network.GeofenceAction
         IPV4_FIELD_NUMBER: _ClassVar[int]
         DHCPV4_START_FIELD_NUMBER: _ClassVar[int]
+        DHCPV4_END_FIELD_NUMBER: _ClassVar[int]
         DHCP_DISABLED_FIELD_NUMBER: _ClassVar[int]
+        DNS_DISABLED_FIELD_NUMBER: _ClassVar[int]
         DHCPV4_LEASE_DURATION_S_FIELD_NUMBER: _ClassVar[int]
         DOMAIN_FIELD_NUMBER: _ClassVar[int]
         BASIC_SERVICE_SETS_FIELD_NUMBER: _ClassVar[int]
@@ -181,11 +250,28 @@ class WifiConfig(_message.Message):
         GUEST_FIELD_NUMBER: _ClassVar[int]
         LANDING_FIELD_NUMBER: _ClassVar[int]
         LANDING_PAGE_V2_FIELD_NUMBER: _ClassVar[int]
+        SANDBOX_ENABLED_FIELD_NUMBER: _ClassVar[int]
+        SANDBOX_DOMAIN_ALLOW_LIST_FIELD_NUMBER: _ClassVar[int]
+        SANDBOX_ID_FIELD_NUMBER: _ClassVar[int]
         INTERNAL_FIELD_NUMBER: _ClassVar[int]
         VLAN_FIELD_NUMBER: _ClassVar[int]
+        CAPTIVE_PORTAL_FIELD_NUMBER: _ClassVar[int]
+        NETWORK_GROUPS_FIELD_NUMBER: _ClassVar[int]
+        DNS_STATIC_ENTRIES_FIELD_NUMBER: _ClassVar[int]
+        DNS_FORWARD_RULES_FIELD_NUMBER: _ClassVar[int]
+        DISABLE_WHEN_OFFLINE_OLD_FIELD_NUMBER: _ClassVar[int]
+        STATIC_ROUTES_FIELD_NUMBER: _ClassVar[int]
+        DISABLE_WHEN_OFFLINE_FIELD_NUMBER: _ClassVar[int]
+        GEOFENCE_ACTION_FIELD_NUMBER: _ClassVar[int]
+        ONBOARD_RADIUS_TLS_CONFIG_OLD_FIELD_NUMBER: _ClassVar[int]
+        ONBOARD_RADIUS_TLS_CONFIG_FIELD_NUMBER: _ClassVar[int]
+        GET_LEASE_DHCP_FIELD_NUMBER: _ClassVar[int]
+        DEFAULT_ROUTE_DISABLED_FIELD_NUMBER: _ClassVar[int]
         ipv4: str
         dhcpv4_start: int
+        dhcpv4_end: int
         dhcp_disabled: bool
+        dns_disabled: bool
         dhcpv4_lease_duration_s: int
         domain: str
         basic_service_sets: _containers.RepeatedCompositeFieldContainer[WifiConfig.BasicServiceSet]
@@ -193,9 +279,48 @@ class WifiConfig(_message.Message):
         guest: bool
         landing: str
         landing_page_v2: bool
+        sandbox_enabled: bool
+        sandbox_domain_allow_list: _containers.RepeatedScalarFieldContainer[str]
+        sandbox_id: int
         internal: bool
         vlan: int
-        def __init__(self, ipv4: _Optional[str] = ..., dhcpv4_start: _Optional[int] = ..., dhcp_disabled: bool = ..., dhcpv4_lease_duration_s: _Optional[int] = ..., domain: _Optional[str] = ..., basic_service_sets: _Optional[_Iterable[_Union[WifiConfig.BasicServiceSet, _Mapping]]] = ..., client_isolation: bool = ..., guest: bool = ..., landing: _Optional[str] = ..., landing_page_v2: bool = ..., internal: bool = ..., vlan: _Optional[int] = ...) -> None: ...
+        captive_portal: CaptivePortal
+        network_groups: int
+        dns_static_entries: _containers.RepeatedCompositeFieldContainer[WifiConfig.DnsStaticEntry]
+        dns_forward_rules: _containers.RepeatedCompositeFieldContainer[WifiConfig.DnsForwardRule]
+        disable_when_offline_old: bool
+        static_routes: _containers.RepeatedCompositeFieldContainer[WifiConfig.StaticRoute]
+        disable_when_offline: bool
+        geofence_action: WifiConfig.Network.GeofenceAction
+        onboard_radius_tls_config_old: TlsConfig
+        onboard_radius_tls_config: TlsConfig
+        get_lease_dhcp: bool
+        default_route_disabled: bool
+        def __init__(self, ipv4: _Optional[str] = ..., dhcpv4_start: _Optional[int] = ..., dhcpv4_end: _Optional[int] = ..., dhcp_disabled: bool = ..., dns_disabled: bool = ..., dhcpv4_lease_duration_s: _Optional[int] = ..., domain: _Optional[str] = ..., basic_service_sets: _Optional[_Iterable[_Union[WifiConfig.BasicServiceSet, _Mapping]]] = ..., client_isolation: bool = ..., guest: bool = ..., landing: _Optional[str] = ..., landing_page_v2: bool = ..., sandbox_enabled: bool = ..., sandbox_domain_allow_list: _Optional[_Iterable[str]] = ..., sandbox_id: _Optional[int] = ..., internal: bool = ..., vlan: _Optional[int] = ..., captive_portal: _Optional[_Union[CaptivePortal, _Mapping]] = ..., network_groups: _Optional[int] = ..., dns_static_entries: _Optional[_Iterable[_Union[WifiConfig.DnsStaticEntry, _Mapping]]] = ..., dns_forward_rules: _Optional[_Iterable[_Union[WifiConfig.DnsForwardRule, _Mapping]]] = ..., disable_when_offline_old: bool = ..., static_routes: _Optional[_Iterable[_Union[WifiConfig.StaticRoute, _Mapping]]] = ..., disable_when_offline: bool = ..., geofence_action: _Optional[_Union[WifiConfig.Network.GeofenceAction, str]] = ..., onboard_radius_tls_config_old: _Optional[_Union[TlsConfig, _Mapping]] = ..., onboard_radius_tls_config: _Optional[_Union[TlsConfig, _Mapping]] = ..., get_lease_dhcp: bool = ..., default_route_disabled: bool = ...) -> None: ...
+    class UnbridgedEthPort(_message.Message):
+        __slots__ = ("lan_port_index", "ip", "gateway", "static_routes", "wan_none", "wan_starlink_router_pair", "bridged_network_group_override")
+        class StaticRoute(_message.Message):
+            __slots__ = ("subnet", "network_groups")
+            SUBNET_FIELD_NUMBER: _ClassVar[int]
+            NETWORK_GROUPS_FIELD_NUMBER: _ClassVar[int]
+            subnet: str
+            network_groups: int
+            def __init__(self, subnet: _Optional[str] = ..., network_groups: _Optional[int] = ...) -> None: ...
+        LAN_PORT_INDEX_FIELD_NUMBER: _ClassVar[int]
+        IP_FIELD_NUMBER: _ClassVar[int]
+        GATEWAY_FIELD_NUMBER: _ClassVar[int]
+        STATIC_ROUTES_FIELD_NUMBER: _ClassVar[int]
+        WAN_NONE_FIELD_NUMBER: _ClassVar[int]
+        WAN_STARLINK_ROUTER_PAIR_FIELD_NUMBER: _ClassVar[int]
+        BRIDGED_NETWORK_GROUP_OVERRIDE_FIELD_NUMBER: _ClassVar[int]
+        lan_port_index: int
+        ip: str
+        gateway: str
+        static_routes: _containers.RepeatedCompositeFieldContainer[WifiConfig.UnbridgedEthPort.StaticRoute]
+        wan_none: WanNone
+        wan_starlink_router_pair: WanStarlinkRouterPair
+        bridged_network_group_override: int
+        def __init__(self, lan_port_index: _Optional[int] = ..., ip: _Optional[str] = ..., gateway: _Optional[str] = ..., static_routes: _Optional[_Iterable[_Union[WifiConfig.UnbridgedEthPort.StaticRoute, _Mapping]]] = ..., wan_none: _Optional[_Union[WanNone, _Mapping]] = ..., wan_starlink_router_pair: _Optional[_Union[WanStarlinkRouterPair, _Mapping]] = ..., bridged_network_group_override: _Optional[int] = ...) -> None: ...
     COUNTRY_CODE_FIELD_NUMBER: _ClassVar[int]
     APPLY_COUNTRY_CODE_FIELD_NUMBER: _ClassVar[int]
     PIN_COUNTRY_CODE_FIELD_NUMBER: _ClassVar[int]
@@ -236,6 +361,10 @@ class WifiConfig(_message.Message):
     APPLY_DFS_ENABLED_FIELD_NUMBER: _ClassVar[int]
     DISABLE_MESH_ONBOARDING_FIELD_NUMBER: _ClassVar[int]
     APPLY_DISABLE_MESH_ONBOARDING_FIELD_NUMBER: _ClassVar[int]
+    DISABLE_WIRELESS_MESH_ONBOARDING_FIELD_NUMBER: _ClassVar[int]
+    APPLY_DISABLE_WIRELESS_MESH_ONBOARDING_FIELD_NUMBER: _ClassVar[int]
+    APPLY_HTTP_SERVER_FIELD_NUMBER: _ClassVar[int]
+    HTTP_SERVER_FIELD_NUMBER: _ClassVar[int]
     NETWORKS_FIELD_NUMBER: _ClassVar[int]
     APPLY_NETWORKS_FIELD_NUMBER: _ClassVar[int]
     INCARNATION_FIELD_NUMBER: _ClassVar[int]
@@ -299,9 +428,26 @@ class WifiConfig(_message.Message):
     APPLY_WAN_HOST_DSCP_MARK_FIELD_NUMBER: _ClassVar[int]
     DEBUG_POP_PINGS_FIELD_NUMBER: _ClassVar[int]
     APPLY_DEBUG_POP_PINGS_FIELD_NUMBER: _ClassVar[int]
+    DEBUG_PINGS_FIELD_NUMBER: _ClassVar[int]
+    APPLY_DEBUG_PINGS_FIELD_NUMBER: _ClassVar[int]
     CLIENT_TESTER_FIELD_NUMBER: _ClassVar[int]
     APPLY_CLIENT_TESTER_FIELD_NUMBER: _ClassVar[int]
+    ASSET_CLASS_FIELD_NUMBER: _ClassVar[int]
+    APPLY_ASSET_CLASS_FIELD_NUMBER: _ClassVar[int]
+    DISABLE_BAND_STEERING_FIELD_NUMBER: _ClassVar[int]
+    APPLY_DISABLE_BAND_STEERING_FIELD_NUMBER: _ClassVar[int]
+    ONLY_OVERFLIGHT_COUNTRIES_FIELD_NUMBER: _ClassVar[int]
+    APPLY_ONLY_OVERFLIGHT_COUNTRIES_FIELD_NUMBER: _ClassVar[int]
+    ONLY_OVERFLIGHT_COUNTRIES_USING_DEFAULT_FIELD_NUMBER: _ClassVar[int]
+    UNBRIDGED_ETH_PORTS_FIELD_NUMBER: _ClassVar[int]
+    APPLY_UNBRIDGED_ETH_PORTS_FIELD_NUMBER: _ClassVar[int]
+    DISABLE_SANDBOX_FAIL_OPEN_FIELD_NUMBER: _ClassVar[int]
+    APPLY_DISABLE_SANDBOX_FAIL_OPEN_FIELD_NUMBER: _ClassVar[int]
     TAG_FIELD_NUMBER: _ClassVar[int]
+    CUSTOM_DNS_DISABLED_FIELD_NUMBER: _ClassVar[int]
+    APPLY_CUSTOM_DNS_DISABLED_FIELD_NUMBER: _ClassVar[int]
+    FOREFLIGHT_ENABLED_FIELD_NUMBER: _ClassVar[int]
+    APPLY_FOREFLIGHT_ENABLED_FIELD_NUMBER: _ClassVar[int]
     country_code: str
     apply_country_code: bool
     pin_country_code: bool
@@ -342,6 +488,10 @@ class WifiConfig(_message.Message):
     apply_dfs_enabled: bool
     disable_mesh_onboarding: bool
     apply_disable_mesh_onboarding: bool
+    disable_wireless_mesh_onboarding: bool
+    apply_disable_wireless_mesh_onboarding: bool
+    apply_http_server: bool
+    http_server: HttpServer
     networks: _containers.RepeatedCompositeFieldContainer[WifiConfig.Network]
     apply_networks: bool
     incarnation: int
@@ -405,10 +555,37 @@ class WifiConfig(_message.Message):
     apply_wan_host_dscp_mark: bool
     debug_pop_pings: bool
     apply_debug_pop_pings: bool
+    debug_pings: bool
+    apply_debug_pings: bool
     client_tester: bool
     apply_client_tester: bool
+    asset_class: int
+    apply_asset_class: bool
+    disable_band_steering: bool
+    apply_disable_band_steering: bool
+    only_overflight_countries: _containers.RepeatedScalarFieldContainer[str]
+    apply_only_overflight_countries: bool
+    only_overflight_countries_using_default: bool
+    unbridged_eth_ports: _containers.RepeatedCompositeFieldContainer[WifiConfig.UnbridgedEthPort]
+    apply_unbridged_eth_ports: bool
+    disable_sandbox_fail_open: bool
+    apply_disable_sandbox_fail_open: bool
     tag: int
-    def __init__(self, country_code: _Optional[str] = ..., apply_country_code: bool = ..., pin_country_code: bool = ..., apply_pin_country_code: bool = ..., custom_power_table: bool = ..., apply_custom_power_table: bool = ..., setup_complete: bool = ..., apply_setup_complete: bool = ..., version: _Optional[int] = ..., mac_wan: _Optional[str] = ..., mac_lan: _Optional[str] = ..., channel_2ghz: _Optional[int] = ..., apply_channel_2ghz: bool = ..., channel_5ghz: _Optional[int] = ..., apply_channel_5ghz: bool = ..., channel_5ghz_high: _Optional[int] = ..., apply_channel_5ghz_high: bool = ..., mesh_configs: _Optional[_Mapping[str, MeshConfig]] = ..., mesh_configs_updates: _Optional[_Mapping[str, MeshConfig]] = ..., apply_mesh_configs: bool = ..., dynamic_keys: _Optional[_Iterable[_Union[_command_pb2.PublicKey, _Mapping]]] = ..., apply_dynamic_keys: bool = ..., is_repeater: bool = ..., apply_is_repeater: bool = ..., ap_mode: bool = ..., apply_ap_mode: bool = ..., is_aviation: bool = ..., apply_is_aviation: bool = ..., boot_count: _Optional[int] = ..., boot: _Optional[_Union[_common_pb2.BootInfo, _Mapping]] = ..., nameservers: _Optional[_Iterable[str]] = ..., apply_nameservers: bool = ..., secure_dns: bool = ..., apply_secure_dns: bool = ..., bypass_mode: bool = ..., apply_bypass_mode: bool = ..., dfs_enabled: bool = ..., apply_dfs_enabled: bool = ..., disable_mesh_onboarding: bool = ..., apply_disable_mesh_onboarding: bool = ..., networks: _Optional[_Iterable[_Union[WifiConfig.Network, _Mapping]]] = ..., apply_networks: bool = ..., incarnation: _Optional[int] = ..., wireless_mode_2ghz: _Optional[_Union[WifiConfig.WirelessMode, str]] = ..., apply_wireless_mode_2ghz: bool = ..., wireless_mode_5ghz: _Optional[_Union[WifiConfig.WirelessMode, str]] = ..., apply_wireless_mode_5ghz: bool = ..., wireless_mode_5ghz_high: _Optional[_Union[WifiConfig.WirelessMode, str]] = ..., apply_wireless_mode_5ghz_high: bool = ..., ht_bandwidth_2ghz: _Optional[_Union[WifiConfig.HTBandwidth, str]] = ..., apply_ht_bandwidth_2ghz: bool = ..., ht_bandwidth_5ghz: _Optional[_Union[WifiConfig.HTBandwidth, str]] = ..., apply_ht_bandwidth_5ghz: bool = ..., ht_bandwidth_5ghz_high: _Optional[_Union[WifiConfig.HTBandwidth, str]] = ..., apply_ht_bandwidth_5ghz_high: bool = ..., vht_bandwidth: _Optional[_Union[WifiConfig.VHTBandwidth, str]] = ..., apply_vht_bandwidth: bool = ..., vht_bandwidth_5ghz_high: _Optional[_Union[WifiConfig.VHTBandwidth, str]] = ..., apply_vht_bandwidth_5ghz_high: bool = ..., use_public_services: bool = ..., apply_use_public_services: bool = ..., disable_automated_speedtests: bool = ..., apply_disable_automated_speedtests: bool = ..., enable_umbilical_vlan: bool = ..., apply_enable_umbilical_vlan: bool = ..., client_names: _Optional[_Iterable[_Union[ClientName, _Mapping]]] = ..., apply_client_names: bool = ..., outdoor_mode: bool = ..., apply_outdoor_mode: bool = ..., disable_2ghz: bool = ..., apply_disable_2ghz: bool = ..., disable_5ghz: bool = ..., apply_disable_5ghz: bool = ..., disable_5ghz_high: bool = ..., apply_disable_5ghz_high: bool = ..., disable_x_mesh_backhaul: bool = ..., apply_disable_x_mesh_backhaul: bool = ..., golden_bssid: _Optional[str] = ..., apply_golden_bssid: bool = ..., golden_iface_type: _Optional[_Union[_wifi_util_pb2.IfaceType, str]] = ..., apply_golden_iface_type: bool = ..., tx_power_level_2ghz: _Optional[_Union[_wifi_util_pb2.TxPowerLevel, str]] = ..., apply_tx_power_level_2ghz: bool = ..., tx_power_level_5ghz: _Optional[_Union[_wifi_util_pb2.TxPowerLevel, str]] = ..., apply_tx_power_level_5ghz: bool = ..., tx_power_level_5ghz_high: _Optional[_Union[_wifi_util_pb2.TxPowerLevel, str]] = ..., apply_tx_power_level_5ghz_high: bool = ..., disable_pending_update_reboot: bool = ..., apply_disable_pending_update_reboot: bool = ..., client_configs: _Optional[_Iterable[_Union[ClientConfig, _Mapping]]] = ..., apply_client_configs: bool = ..., disable_set_wifi_config_from_controller: bool = ..., apply_disable_set_wifi_config_from_controller: bool = ..., client_key: _Optional[bytes] = ..., apply_client_key: bool = ..., wan_no_traffic_control: _Optional[_Union[NoTrafficControl, _Mapping]] = ..., wan_ack_suppression: _Optional[_Union[AckSuppression, _Mapping]] = ..., wan_cake_rate_limit: _Optional[_Union[CakeRateLimit, _Mapping]] = ..., apply_wan_traffic_control: bool = ..., wan_host_dscp_mark: _Optional[int] = ..., apply_wan_host_dscp_mark: bool = ..., debug_pop_pings: bool = ..., apply_debug_pop_pings: bool = ..., client_tester: bool = ..., apply_client_tester: bool = ..., tag: _Optional[int] = ...) -> None: ...
+    custom_dns_disabled: bool
+    apply_custom_dns_disabled: bool
+    foreflight_enabled: bool
+    apply_foreflight_enabled: bool
+    def __init__(self, country_code: _Optional[str] = ..., apply_country_code: bool = ..., pin_country_code: bool = ..., apply_pin_country_code: bool = ..., custom_power_table: bool = ..., apply_custom_power_table: bool = ..., setup_complete: bool = ..., apply_setup_complete: bool = ..., version: _Optional[int] = ..., mac_wan: _Optional[str] = ..., mac_lan: _Optional[str] = ..., channel_2ghz: _Optional[int] = ..., apply_channel_2ghz: bool = ..., channel_5ghz: _Optional[int] = ..., apply_channel_5ghz: bool = ..., channel_5ghz_high: _Optional[int] = ..., apply_channel_5ghz_high: bool = ..., mesh_configs: _Optional[_Mapping[str, MeshConfig]] = ..., mesh_configs_updates: _Optional[_Mapping[str, MeshConfig]] = ..., apply_mesh_configs: bool = ..., dynamic_keys: _Optional[_Iterable[_Union[_command_pb2.PublicKey, _Mapping]]] = ..., apply_dynamic_keys: bool = ..., is_repeater: bool = ..., apply_is_repeater: bool = ..., ap_mode: bool = ..., apply_ap_mode: bool = ..., is_aviation: bool = ..., apply_is_aviation: bool = ..., boot_count: _Optional[int] = ..., boot: _Optional[_Union[_common_pb2.BootInfo, _Mapping]] = ..., nameservers: _Optional[_Iterable[str]] = ..., apply_nameservers: bool = ..., secure_dns: bool = ..., apply_secure_dns: bool = ..., bypass_mode: bool = ..., apply_bypass_mode: bool = ..., dfs_enabled: bool = ..., apply_dfs_enabled: bool = ..., disable_mesh_onboarding: bool = ..., apply_disable_mesh_onboarding: bool = ..., disable_wireless_mesh_onboarding: bool = ..., apply_disable_wireless_mesh_onboarding: bool = ..., apply_http_server: bool = ..., http_server: _Optional[_Union[HttpServer, _Mapping]] = ..., networks: _Optional[_Iterable[_Union[WifiConfig.Network, _Mapping]]] = ..., apply_networks: bool = ..., incarnation: _Optional[int] = ..., wireless_mode_2ghz: _Optional[_Union[WifiConfig.WirelessMode, str]] = ..., apply_wireless_mode_2ghz: bool = ..., wireless_mode_5ghz: _Optional[_Union[WifiConfig.WirelessMode, str]] = ..., apply_wireless_mode_5ghz: bool = ..., wireless_mode_5ghz_high: _Optional[_Union[WifiConfig.WirelessMode, str]] = ..., apply_wireless_mode_5ghz_high: bool = ..., ht_bandwidth_2ghz: _Optional[_Union[WifiConfig.HTBandwidth, str]] = ..., apply_ht_bandwidth_2ghz: bool = ..., ht_bandwidth_5ghz: _Optional[_Union[WifiConfig.HTBandwidth, str]] = ..., apply_ht_bandwidth_5ghz: bool = ..., ht_bandwidth_5ghz_high: _Optional[_Union[WifiConfig.HTBandwidth, str]] = ..., apply_ht_bandwidth_5ghz_high: bool = ..., vht_bandwidth: _Optional[_Union[WifiConfig.VHTBandwidth, str]] = ..., apply_vht_bandwidth: bool = ..., vht_bandwidth_5ghz_high: _Optional[_Union[WifiConfig.VHTBandwidth, str]] = ..., apply_vht_bandwidth_5ghz_high: bool = ..., use_public_services: bool = ..., apply_use_public_services: bool = ..., disable_automated_speedtests: bool = ..., apply_disable_automated_speedtests: bool = ..., enable_umbilical_vlan: bool = ..., apply_enable_umbilical_vlan: bool = ..., client_names: _Optional[_Iterable[_Union[ClientName, _Mapping]]] = ..., apply_client_names: bool = ..., outdoor_mode: bool = ..., apply_outdoor_mode: bool = ..., disable_2ghz: bool = ..., apply_disable_2ghz: bool = ..., disable_5ghz: bool = ..., apply_disable_5ghz: bool = ..., disable_5ghz_high: bool = ..., apply_disable_5ghz_high: bool = ..., disable_x_mesh_backhaul: bool = ..., apply_disable_x_mesh_backhaul: bool = ..., golden_bssid: _Optional[str] = ..., apply_golden_bssid: bool = ..., golden_iface_type: _Optional[_Union[_wifi_util_pb2.IfaceType, str]] = ..., apply_golden_iface_type: bool = ..., tx_power_level_2ghz: _Optional[_Union[_wifi_util_pb2.TxPowerLevel, str]] = ..., apply_tx_power_level_2ghz: bool = ..., tx_power_level_5ghz: _Optional[_Union[_wifi_util_pb2.TxPowerLevel, str]] = ..., apply_tx_power_level_5ghz: bool = ..., tx_power_level_5ghz_high: _Optional[_Union[_wifi_util_pb2.TxPowerLevel, str]] = ..., apply_tx_power_level_5ghz_high: bool = ..., disable_pending_update_reboot: bool = ..., apply_disable_pending_update_reboot: bool = ..., client_configs: _Optional[_Iterable[_Union[ClientConfig, _Mapping]]] = ..., apply_client_configs: bool = ..., disable_set_wifi_config_from_controller: bool = ..., apply_disable_set_wifi_config_from_controller: bool = ..., client_key: _Optional[bytes] = ..., apply_client_key: bool = ..., wan_no_traffic_control: _Optional[_Union[NoTrafficControl, _Mapping]] = ..., wan_ack_suppression: _Optional[_Union[AckSuppression, _Mapping]] = ..., wan_cake_rate_limit: _Optional[_Union[CakeRateLimit, _Mapping]] = ..., apply_wan_traffic_control: bool = ..., wan_host_dscp_mark: _Optional[int] = ..., apply_wan_host_dscp_mark: bool = ..., debug_pop_pings: bool = ..., apply_debug_pop_pings: bool = ..., debug_pings: bool = ..., apply_debug_pings: bool = ..., client_tester: bool = ..., apply_client_tester: bool = ..., asset_class: _Optional[int] = ..., apply_asset_class: bool = ..., disable_band_steering: bool = ..., apply_disable_band_steering: bool = ..., only_overflight_countries: _Optional[_Iterable[str]] = ..., apply_only_overflight_countries: bool = ..., only_overflight_countries_using_default: bool = ..., unbridged_eth_ports: _Optional[_Iterable[_Union[WifiConfig.UnbridgedEthPort, _Mapping]]] = ..., apply_unbridged_eth_ports: bool = ..., disable_sandbox_fail_open: bool = ..., apply_disable_sandbox_fail_open: bool = ..., tag: _Optional[int] = ..., custom_dns_disabled: bool = ..., apply_custom_dns_disabled: bool = ..., foreflight_enabled: bool = ..., apply_foreflight_enabled: bool = ...) -> None: ...
+
+class WanNone(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...
+
+class WanStarlinkRouterPair(_message.Message):
+    __slots__ = ("client_vlan_first",)
+    CLIENT_VLAN_FIRST_FIELD_NUMBER: _ClassVar[int]
+    client_vlan_first: bool
+    def __init__(self, client_vlan_first: bool = ...) -> None: ...
 
 class WeeklyBlockSchedule(_message.Message):
     __slots__ = ("block_ranges", "group_id")
@@ -469,6 +646,10 @@ class AuthWpa2Wpa3(_message.Message):
     password: str
     def __init__(self, password: _Optional[str] = ...) -> None: ...
 
+class AuthOpenEncrypted(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...
+
 class AuthRadius(_message.Message):
     __slots__ = ("server", "server_ca", "server_ca_base_64", "password", "transport")
     SERVER_FIELD_NUMBER: _ClassVar[int]
@@ -482,6 +663,10 @@ class AuthRadius(_message.Message):
     password: str
     transport: _wifi_util_pb2.Protocol
     def __init__(self, server: _Optional[str] = ..., server_ca: _Optional[str] = ..., server_ca_base_64: _Optional[str] = ..., password: _Optional[str] = ..., transport: _Optional[_Union[_wifi_util_pb2.Protocol, str]] = ...) -> None: ...
+
+class AuthOnboardRadius(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...
 
 class NoTrafficControl(_message.Message):
     __slots__ = ()

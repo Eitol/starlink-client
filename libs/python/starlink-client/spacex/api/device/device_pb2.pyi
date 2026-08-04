@@ -2,6 +2,7 @@ from spacex.api.common.status import status_pb2 as _status_pb2
 from spacex.api.device import command_pb2 as _command_pb2
 from spacex.api.device import common_pb2 as _common_pb2
 from spacex.api.device import dish_pb2 as _dish_pb2
+from spacex.api.device import gnss_pb2 as _gnss_pb2
 from spacex.api.device import transceiver_pb2 as _transceiver_pb2
 from spacex.api.device import wifi_pb2 as _wifi_pb2
 from spacex.api.device.services.unlock import service_pb2 as _service_pb2
@@ -14,6 +15,13 @@ from typing import ClassVar as _ClassVar, Iterable as _Iterable, Mapping as _Map
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
+class WifiClientSandboxAlert(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = ()
+    SANDBOX_ALERT_UNKNOWN: _ClassVar[WifiClientSandboxAlert]
+    SANDBOX_ALERT_PORTAL: _ClassVar[WifiClientSandboxAlert]
+    SANDBOX_ALERT_GROUND_API: _ClassVar[WifiClientSandboxAlert]
+    SANDBOX_ALERT_STARLINK_API: _ClassVar[WifiClientSandboxAlert]
+
 class PositionSource(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     __slots__ = ()
     AUTO: _ClassVar[PositionSource]
@@ -22,10 +30,11 @@ class PositionSource(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     EXTERNAL: _ClassVar[PositionSource]
     GPS: _ClassVar[PositionSource]
     STARLINK: _ClassVar[PositionSource]
+    GNC_FUSED: _ClassVar[PositionSource]
+    GNC_BAD_SAT: _ClassVar[PositionSource]
     GNC_GPS: _ClassVar[PositionSource]
     GNC_PNT: _ClassVar[PositionSource]
-    GNC_FUSED: _ClassVar[PositionSource]
-    GNC_RAW: _ClassVar[PositionSource]
+    GNC_STATIC: _ClassVar[PositionSource]
 
 class SpeedtestError(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     __slots__ = ()
@@ -35,16 +44,21 @@ class SpeedtestError(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     SPEEDTEST_ERROR_API: _ClassVar[SpeedtestError]
     SPEEDTEST_ERROR_NO_RESULT: _ClassVar[SpeedtestError]
     SPEEDTEST_ERROR_OFFLINE: _ClassVar[SpeedtestError]
+SANDBOX_ALERT_UNKNOWN: WifiClientSandboxAlert
+SANDBOX_ALERT_PORTAL: WifiClientSandboxAlert
+SANDBOX_ALERT_GROUND_API: WifiClientSandboxAlert
+SANDBOX_ALERT_STARLINK_API: WifiClientSandboxAlert
 AUTO: PositionSource
 NONE: PositionSource
 UT_INFO: PositionSource
 EXTERNAL: PositionSource
 GPS: PositionSource
 STARLINK: PositionSource
+GNC_FUSED: PositionSource
+GNC_BAD_SAT: PositionSource
 GNC_GPS: PositionSource
 GNC_PNT: PositionSource
-GNC_FUSED: PositionSource
-GNC_RAW: PositionSource
+GNC_STATIC: PositionSource
 SPEEDTEST_ERROR_NONE: SpeedtestError
 SPEEDTEST_ERROR_UNKNOWN: SpeedtestError
 SPEEDTEST_ERROR_TOKEN: SpeedtestError
@@ -85,7 +99,7 @@ class HealthCheck(_message.Message):
     def __init__(self) -> None: ...
 
 class Request(_message.Message):
-    __slots__ = ("id", "epoch_id", "target_id", "signed_request", "get_next_id", "sensitive_request", "authenticate", "enable_debug_telem", "factory_reset", "get_device_info", "get_history", "get_log", "get_network_interfaces", "get_ping", "ping_host", "get_status", "reboot", "set_sku", "set_trusted_keys", "speed_test", "update", "get_location", "get_heap_dump", "restart_control", "fuse", "get_persistent_stats", "get_connections", "start_speedtest", "get_speedtest_status", "report_client_speedtest", "initiate_remote_ssh", "self_test", "set_test_mode", "software_update", "iq_capture", "get_radio_stats", "time", "run_iperf_server", "tcp_connectivity_test", "udp_connectivity_test", "dish_stow", "start_dish_self_test", "dish_get_context", "dish_get_obstruction_map", "dish_set_emc", "dish_get_emc", "dish_set_config", "dish_get_config", "dish_power_save", "dish_inhibit_gps", "dish_get_data", "dish_clear_obstruction_map", "dish_set_max_power_test_mode", "dish_activate_rssi_scan", "dish_get_rssi_scan_result", "dish_factory_reset", "reset_button", "wifi_get_clients", "wifi_get_ping_metrics", "wifi_set_config", "wifi_get_config", "wifi_setup", "wifi_set_mesh_device_trust", "wifi_set_mesh_config", "wifi_get_client_history", "wifi_set_client_given_name", "wifi_set_aviation_conformed", "wifi_self_test", "wifi_run_self_test", "wifi_calibration_mode", "wifi_guest_info", "wifi_rf_test", "wifi_get_firewall", "wifi_toggle_poe_negotiation", "wifi_factory_test_command", "wifi_start_local_telem_proxy", "wifi_backhaul_stats", "wifi_toggle_umbilical_mode", "transceiver_if_loopback_test", "transceiver_get_status", "transceiver_get_telemetry", "start_unlock", "finish_unlock", "get_diagnostics")
+    __slots__ = ("id", "epoch_id", "target_id", "signed_request", "get_next_id", "sensitive_request", "authenticate", "enable_debug_telem", "factory_reset", "get_device_info", "get_history", "get_log", "get_network_interfaces", "get_ping", "ping_host", "get_status", "reboot", "set_sku", "set_trusted_keys", "speed_test", "update", "get_location", "get_heap_dump", "restart_control", "fuse", "get_persistent_stats", "get_connections", "start_speedtest", "get_speedtest_status", "report_client_speedtest", "initiate_remote_ssh", "self_test", "set_test_mode", "software_update", "iq_capture", "get_radio_stats", "time", "run_iperf_server", "tcp_connectivity_test", "udp_connectivity_test", "get_goroutine_stack_traces", "dish_stow", "dish_get_context", "dish_get_obstruction_map", "dish_set_emc", "dish_get_emc", "dish_set_config", "dish_get_config", "dish_power_save", "dish_inhibit_gps", "dish_get_data", "dish_clear_obstruction_map", "dish_set_max_power_test_mode", "dish_activate_rssi_scan", "dish_get_rssi_scan_result", "dish_factory_reset", "reset_button", "set_per_vehicle_config", "dish_aviation_test", "dish_inhibit_rf", "ztlm_query", "dish_start_test_mode_server", "wifi_get_clients", "wifi_get_ping_metrics", "wifi_set_config", "wifi_get_config", "wifi_setup", "wifi_set_mesh_device_trust", "wifi_set_mesh_config", "wifi_get_client_history", "wifi_set_client_given_name", "wifi_set_aviation_conformed", "wifi_self_test", "wifi_run_self_test", "wifi_calibration_mode", "wifi_guest_info", "wifi_rf_test", "wifi_get_firewall", "wifi_toggle_poe_negotiation", "wifi_factory_test_command", "wifi_start_local_telem_proxy", "wifi_backhaul_stats", "wifi_toggle_umbilical_mode", "wifi_client_sandbox", "wifi_run_debug_netsys", "wifi_reset_eth_phy", "wifi_flush_hardware_nat", "wifi_write_calibration", "transceiver_if_loopback_test", "transceiver_get_status", "transceiver_get_telemetry", "start_unlock", "finish_unlock", "get_diagnostics", "get_gnss_measurement")
     ID_FIELD_NUMBER: _ClassVar[int]
     EPOCH_ID_FIELD_NUMBER: _ClassVar[int]
     TARGET_ID_FIELD_NUMBER: _ClassVar[int]
@@ -126,8 +140,8 @@ class Request(_message.Message):
     RUN_IPERF_SERVER_FIELD_NUMBER: _ClassVar[int]
     TCP_CONNECTIVITY_TEST_FIELD_NUMBER: _ClassVar[int]
     UDP_CONNECTIVITY_TEST_FIELD_NUMBER: _ClassVar[int]
+    GET_GOROUTINE_STACK_TRACES_FIELD_NUMBER: _ClassVar[int]
     DISH_STOW_FIELD_NUMBER: _ClassVar[int]
-    START_DISH_SELF_TEST_FIELD_NUMBER: _ClassVar[int]
     DISH_GET_CONTEXT_FIELD_NUMBER: _ClassVar[int]
     DISH_GET_OBSTRUCTION_MAP_FIELD_NUMBER: _ClassVar[int]
     DISH_SET_EMC_FIELD_NUMBER: _ClassVar[int]
@@ -143,6 +157,11 @@ class Request(_message.Message):
     DISH_GET_RSSI_SCAN_RESULT_FIELD_NUMBER: _ClassVar[int]
     DISH_FACTORY_RESET_FIELD_NUMBER: _ClassVar[int]
     RESET_BUTTON_FIELD_NUMBER: _ClassVar[int]
+    SET_PER_VEHICLE_CONFIG_FIELD_NUMBER: _ClassVar[int]
+    DISH_AVIATION_TEST_FIELD_NUMBER: _ClassVar[int]
+    DISH_INHIBIT_RF_FIELD_NUMBER: _ClassVar[int]
+    ZTLM_QUERY_FIELD_NUMBER: _ClassVar[int]
+    DISH_START_TEST_MODE_SERVER_FIELD_NUMBER: _ClassVar[int]
     WIFI_GET_CLIENTS_FIELD_NUMBER: _ClassVar[int]
     WIFI_GET_PING_METRICS_FIELD_NUMBER: _ClassVar[int]
     WIFI_SET_CONFIG_FIELD_NUMBER: _ClassVar[int]
@@ -164,12 +183,18 @@ class Request(_message.Message):
     WIFI_START_LOCAL_TELEM_PROXY_FIELD_NUMBER: _ClassVar[int]
     WIFI_BACKHAUL_STATS_FIELD_NUMBER: _ClassVar[int]
     WIFI_TOGGLE_UMBILICAL_MODE_FIELD_NUMBER: _ClassVar[int]
+    WIFI_CLIENT_SANDBOX_FIELD_NUMBER: _ClassVar[int]
+    WIFI_RUN_DEBUG_NETSYS_FIELD_NUMBER: _ClassVar[int]
+    WIFI_RESET_ETH_PHY_FIELD_NUMBER: _ClassVar[int]
+    WIFI_FLUSH_HARDWARE_NAT_FIELD_NUMBER: _ClassVar[int]
+    WIFI_WRITE_CALIBRATION_FIELD_NUMBER: _ClassVar[int]
     TRANSCEIVER_IF_LOOPBACK_TEST_FIELD_NUMBER: _ClassVar[int]
     TRANSCEIVER_GET_STATUS_FIELD_NUMBER: _ClassVar[int]
     TRANSCEIVER_GET_TELEMETRY_FIELD_NUMBER: _ClassVar[int]
     START_UNLOCK_FIELD_NUMBER: _ClassVar[int]
     FINISH_UNLOCK_FIELD_NUMBER: _ClassVar[int]
     GET_DIAGNOSTICS_FIELD_NUMBER: _ClassVar[int]
+    GET_GNSS_MEASUREMENT_FIELD_NUMBER: _ClassVar[int]
     id: int
     epoch_id: int
     target_id: str
@@ -210,8 +235,8 @@ class Request(_message.Message):
     run_iperf_server: RunIperfServerRequest
     tcp_connectivity_test: TcpConnectivityTestRequest
     udp_connectivity_test: UdpConnectivityTestRequest
+    get_goroutine_stack_traces: GetGoroutineStackTracesRequest
     dish_stow: _dish_pb2.DishStowRequest
-    start_dish_self_test: _dish_pb2.StartDishSelfTestRequest
     dish_get_context: _dish_pb2.DishGetContextRequest
     dish_get_obstruction_map: _dish_pb2.DishGetObstructionMapRequest
     dish_set_emc: DishSetEmcRequest
@@ -227,6 +252,11 @@ class Request(_message.Message):
     dish_get_rssi_scan_result: _dish_pb2.DishGetRssiScanResultRequest
     dish_factory_reset: _dish_pb2.DishFactoryResetRequest
     reset_button: _dish_pb2.ResetButtonRequest
+    set_per_vehicle_config: _common_pb2.SoftwareUpdateRequest
+    dish_aviation_test: _dish_pb2.DishAviationTestRequest
+    dish_inhibit_rf: _dish_pb2.DishInhibitRfRequest
+    ztlm_query: _dish_pb2.ZtlmQueryRequest
+    dish_start_test_mode_server: _dish_pb2.DishStartTestModeServerRequest
     wifi_get_clients: _wifi_pb2.WifiGetClientsRequest
     wifi_get_ping_metrics: _wifi_pb2.WifiGetPingMetricsRequest
     wifi_set_config: _wifi_pb2.WifiSetConfigRequest
@@ -248,16 +278,22 @@ class Request(_message.Message):
     wifi_start_local_telem_proxy: _wifi_pb2.WifiStartLocalTelemProxyRequest
     wifi_backhaul_stats: _wifi_pb2.WifiBackhaulStatsRequest
     wifi_toggle_umbilical_mode: _wifi_pb2.WifiToggleUmbilicalModeRequest
+    wifi_client_sandbox: WifiClientSandboxRequest
+    wifi_run_debug_netsys: _wifi_pb2.WifiRunDebugNetsysRequest
+    wifi_reset_eth_phy: _wifi_pb2.WifiResetEthPhyRequest
+    wifi_flush_hardware_nat: _wifi_pb2.WifiFlushHardwareNatRequest
+    wifi_write_calibration: WifiWriteCalibrationRequest
     transceiver_if_loopback_test: _transceiver_pb2.TransceiverIFLoopbackTestRequest
     transceiver_get_status: _transceiver_pb2.TransceiverGetStatusRequest
     transceiver_get_telemetry: _transceiver_pb2.TransceiverGetTelemetryRequest
     start_unlock: _service_pb2.StartUnlockRequest
     finish_unlock: _service_pb2.FinishUnlockRequest
     get_diagnostics: GetDiagnosticsRequest
-    def __init__(self, id: _Optional[int] = ..., epoch_id: _Optional[int] = ..., target_id: _Optional[str] = ..., signed_request: _Optional[_Union[_common_pb2.SignedData, _Mapping]] = ..., get_next_id: _Optional[_Union[_common_pb2.GetNextIdRequest, _Mapping]] = ..., sensitive_request: _Optional[_Union[_common_pb2.SignedData, _Mapping]] = ..., authenticate: _Optional[_Union[_common_pb2.AuthenticateRequest, _Mapping]] = ..., enable_debug_telem: _Optional[_Union[EnableDebugTelemRequest, _Mapping]] = ..., factory_reset: _Optional[_Union[FactoryResetRequest, _Mapping]] = ..., get_device_info: _Optional[_Union[GetDeviceInfoRequest, _Mapping]] = ..., get_history: _Optional[_Union[GetHistoryRequest, _Mapping]] = ..., get_log: _Optional[_Union[GetLogRequest, _Mapping]] = ..., get_network_interfaces: _Optional[_Union[GetNetworkInterfacesRequest, _Mapping]] = ..., get_ping: _Optional[_Union[GetPingRequest, _Mapping]] = ..., ping_host: _Optional[_Union[PingHostRequest, _Mapping]] = ..., get_status: _Optional[_Union[GetStatusRequest, _Mapping]] = ..., reboot: _Optional[_Union[RebootRequest, _Mapping]] = ..., set_sku: _Optional[_Union[SetSkuRequest, _Mapping]] = ..., set_trusted_keys: _Optional[_Union[SetTrustedKeysRequest, _Mapping]] = ..., speed_test: _Optional[_Union[SpeedTestRequest, _Mapping]] = ..., update: _Optional[_Union[UpdateRequest, _Mapping]] = ..., get_location: _Optional[_Union[GetLocationRequest, _Mapping]] = ..., get_heap_dump: _Optional[_Union[GetHeapDumpRequest, _Mapping]] = ..., restart_control: _Optional[_Union[RestartControlRequest, _Mapping]] = ..., fuse: _Optional[_Union[FuseRequest, _Mapping]] = ..., get_persistent_stats: _Optional[_Union[GetPersistentStatsRequest, _Mapping]] = ..., get_connections: _Optional[_Union[GetConnectionsRequest, _Mapping]] = ..., start_speedtest: _Optional[_Union[StartSpeedtestRequest, _Mapping]] = ..., get_speedtest_status: _Optional[_Union[GetSpeedtestStatusRequest, _Mapping]] = ..., report_client_speedtest: _Optional[_Union[ReportClientSpeedtestRequest, _Mapping]] = ..., initiate_remote_ssh: _Optional[_Union[_common_pb2.InitiateRemoteSshRequest, _Mapping]] = ..., self_test: _Optional[_Union[_dish_pb2.SelfTestRequest, _Mapping]] = ..., set_test_mode: _Optional[_Union[_dish_pb2.SetTestModeRequest, _Mapping]] = ..., software_update: _Optional[_Union[_common_pb2.SoftwareUpdateRequest, _Mapping]] = ..., iq_capture: _Optional[_Union[IQCaptureRequest, _Mapping]] = ..., get_radio_stats: _Optional[_Union[GetRadioStatsRequest, _Mapping]] = ..., time: _Optional[_Union[GetTimeRequest, _Mapping]] = ..., run_iperf_server: _Optional[_Union[RunIperfServerRequest, _Mapping]] = ..., tcp_connectivity_test: _Optional[_Union[TcpConnectivityTestRequest, _Mapping]] = ..., udp_connectivity_test: _Optional[_Union[UdpConnectivityTestRequest, _Mapping]] = ..., dish_stow: _Optional[_Union[_dish_pb2.DishStowRequest, _Mapping]] = ..., start_dish_self_test: _Optional[_Union[_dish_pb2.StartDishSelfTestRequest, _Mapping]] = ..., dish_get_context: _Optional[_Union[_dish_pb2.DishGetContextRequest, _Mapping]] = ..., dish_get_obstruction_map: _Optional[_Union[_dish_pb2.DishGetObstructionMapRequest, _Mapping]] = ..., dish_set_emc: _Optional[_Union[DishSetEmcRequest, _Mapping]] = ..., dish_get_emc: _Optional[_Union[DishGetEmcRequest, _Mapping]] = ..., dish_set_config: _Optional[_Union[_dish_pb2.DishSetConfigRequest, _Mapping]] = ..., dish_get_config: _Optional[_Union[_dish_pb2.DishGetConfigRequest, _Mapping]] = ..., dish_power_save: _Optional[_Union[DishPowerSaveRequest, _Mapping]] = ..., dish_inhibit_gps: _Optional[_Union[_dish_pb2.DishInhibitGpsRequest, _Mapping]] = ..., dish_get_data: _Optional[_Union[_dish_pb2.DishGetDataRequest, _Mapping]] = ..., dish_clear_obstruction_map: _Optional[_Union[_dish_pb2.DishClearObstructionMapRequest, _Mapping]] = ..., dish_set_max_power_test_mode: _Optional[_Union[DishSetMaxPowerTestModeRequest, _Mapping]] = ..., dish_activate_rssi_scan: _Optional[_Union[_dish_pb2.DishActivateRssiScanRequest, _Mapping]] = ..., dish_get_rssi_scan_result: _Optional[_Union[_dish_pb2.DishGetRssiScanResultRequest, _Mapping]] = ..., dish_factory_reset: _Optional[_Union[_dish_pb2.DishFactoryResetRequest, _Mapping]] = ..., reset_button: _Optional[_Union[_dish_pb2.ResetButtonRequest, _Mapping]] = ..., wifi_get_clients: _Optional[_Union[_wifi_pb2.WifiGetClientsRequest, _Mapping]] = ..., wifi_get_ping_metrics: _Optional[_Union[_wifi_pb2.WifiGetPingMetricsRequest, _Mapping]] = ..., wifi_set_config: _Optional[_Union[_wifi_pb2.WifiSetConfigRequest, _Mapping]] = ..., wifi_get_config: _Optional[_Union[_wifi_pb2.WifiGetConfigRequest, _Mapping]] = ..., wifi_setup: _Optional[_Union[_wifi_pb2.WifiSetupRequest, _Mapping]] = ..., wifi_set_mesh_device_trust: _Optional[_Union[_wifi_pb2.WifiSetMeshDeviceTrustRequest, _Mapping]] = ..., wifi_set_mesh_config: _Optional[_Union[_wifi_pb2.WifiSetMeshConfigRequest, _Mapping]] = ..., wifi_get_client_history: _Optional[_Union[_wifi_pb2.WifiGetClientHistoryRequest, _Mapping]] = ..., wifi_set_client_given_name: _Optional[_Union[_wifi_pb2.WifiSetClientGivenNameRequest, _Mapping]] = ..., wifi_set_aviation_conformed: _Optional[_Union[_wifi_pb2.WifiSetAviationConformedRequest, _Mapping]] = ..., wifi_self_test: _Optional[_Union[_wifi_pb2.WifiSelfTestRequest, _Mapping]] = ..., wifi_run_self_test: _Optional[_Union[_wifi_pb2.WifiRunSelfTestRequest, _Mapping]] = ..., wifi_calibration_mode: _Optional[_Union[_wifi_pb2.WifiCalibrationModeRequest, _Mapping]] = ..., wifi_guest_info: _Optional[_Union[_wifi_pb2.WifiGuestInfoRequest, _Mapping]] = ..., wifi_rf_test: _Optional[_Union[_wifi_pb2.WifiRfTestRequest, _Mapping]] = ..., wifi_get_firewall: _Optional[_Union[_wifi_pb2.WifiGetFirewallRequest, _Mapping]] = ..., wifi_toggle_poe_negotiation: _Optional[_Union[_wifi_pb2.WifiTogglePoeNegotiationRequest, _Mapping]] = ..., wifi_factory_test_command: _Optional[_Union[_wifi_pb2.WifiFactoryTestCommandRequest, _Mapping]] = ..., wifi_start_local_telem_proxy: _Optional[_Union[_wifi_pb2.WifiStartLocalTelemProxyRequest, _Mapping]] = ..., wifi_backhaul_stats: _Optional[_Union[_wifi_pb2.WifiBackhaulStatsRequest, _Mapping]] = ..., wifi_toggle_umbilical_mode: _Optional[_Union[_wifi_pb2.WifiToggleUmbilicalModeRequest, _Mapping]] = ..., transceiver_if_loopback_test: _Optional[_Union[_transceiver_pb2.TransceiverIFLoopbackTestRequest, _Mapping]] = ..., transceiver_get_status: _Optional[_Union[_transceiver_pb2.TransceiverGetStatusRequest, _Mapping]] = ..., transceiver_get_telemetry: _Optional[_Union[_transceiver_pb2.TransceiverGetTelemetryRequest, _Mapping]] = ..., start_unlock: _Optional[_Union[_service_pb2.StartUnlockRequest, _Mapping]] = ..., finish_unlock: _Optional[_Union[_service_pb2.FinishUnlockRequest, _Mapping]] = ..., get_diagnostics: _Optional[_Union[GetDiagnosticsRequest, _Mapping]] = ...) -> None: ...
+    get_gnss_measurement: GetGnssMeasurementRequest
+    def __init__(self, id: _Optional[int] = ..., epoch_id: _Optional[int] = ..., target_id: _Optional[str] = ..., signed_request: _Optional[_Union[_common_pb2.SignedData, _Mapping]] = ..., get_next_id: _Optional[_Union[_common_pb2.GetNextIdRequest, _Mapping]] = ..., sensitive_request: _Optional[_Union[_common_pb2.SignedData, _Mapping]] = ..., authenticate: _Optional[_Union[_common_pb2.AuthenticateRequest, _Mapping]] = ..., enable_debug_telem: _Optional[_Union[EnableDebugTelemRequest, _Mapping]] = ..., factory_reset: _Optional[_Union[FactoryResetRequest, _Mapping]] = ..., get_device_info: _Optional[_Union[GetDeviceInfoRequest, _Mapping]] = ..., get_history: _Optional[_Union[GetHistoryRequest, _Mapping]] = ..., get_log: _Optional[_Union[GetLogRequest, _Mapping]] = ..., get_network_interfaces: _Optional[_Union[GetNetworkInterfacesRequest, _Mapping]] = ..., get_ping: _Optional[_Union[GetPingRequest, _Mapping]] = ..., ping_host: _Optional[_Union[PingHostRequest, _Mapping]] = ..., get_status: _Optional[_Union[GetStatusRequest, _Mapping]] = ..., reboot: _Optional[_Union[RebootRequest, _Mapping]] = ..., set_sku: _Optional[_Union[SetSkuRequest, _Mapping]] = ..., set_trusted_keys: _Optional[_Union[SetTrustedKeysRequest, _Mapping]] = ..., speed_test: _Optional[_Union[SpeedTestRequest, _Mapping]] = ..., update: _Optional[_Union[UpdateRequest, _Mapping]] = ..., get_location: _Optional[_Union[GetLocationRequest, _Mapping]] = ..., get_heap_dump: _Optional[_Union[GetHeapDumpRequest, _Mapping]] = ..., restart_control: _Optional[_Union[RestartControlRequest, _Mapping]] = ..., fuse: _Optional[_Union[FuseRequest, _Mapping]] = ..., get_persistent_stats: _Optional[_Union[GetPersistentStatsRequest, _Mapping]] = ..., get_connections: _Optional[_Union[GetConnectionsRequest, _Mapping]] = ..., start_speedtest: _Optional[_Union[StartSpeedtestRequest, _Mapping]] = ..., get_speedtest_status: _Optional[_Union[GetSpeedtestStatusRequest, _Mapping]] = ..., report_client_speedtest: _Optional[_Union[ReportClientSpeedtestRequest, _Mapping]] = ..., initiate_remote_ssh: _Optional[_Union[_common_pb2.InitiateRemoteSshRequest, _Mapping]] = ..., self_test: _Optional[_Union[_dish_pb2.SelfTestRequest, _Mapping]] = ..., set_test_mode: _Optional[_Union[_dish_pb2.SetTestModeRequest, _Mapping]] = ..., software_update: _Optional[_Union[_common_pb2.SoftwareUpdateRequest, _Mapping]] = ..., iq_capture: _Optional[_Union[IQCaptureRequest, _Mapping]] = ..., get_radio_stats: _Optional[_Union[GetRadioStatsRequest, _Mapping]] = ..., time: _Optional[_Union[GetTimeRequest, _Mapping]] = ..., run_iperf_server: _Optional[_Union[RunIperfServerRequest, _Mapping]] = ..., tcp_connectivity_test: _Optional[_Union[TcpConnectivityTestRequest, _Mapping]] = ..., udp_connectivity_test: _Optional[_Union[UdpConnectivityTestRequest, _Mapping]] = ..., get_goroutine_stack_traces: _Optional[_Union[GetGoroutineStackTracesRequest, _Mapping]] = ..., dish_stow: _Optional[_Union[_dish_pb2.DishStowRequest, _Mapping]] = ..., dish_get_context: _Optional[_Union[_dish_pb2.DishGetContextRequest, _Mapping]] = ..., dish_get_obstruction_map: _Optional[_Union[_dish_pb2.DishGetObstructionMapRequest, _Mapping]] = ..., dish_set_emc: _Optional[_Union[DishSetEmcRequest, _Mapping]] = ..., dish_get_emc: _Optional[_Union[DishGetEmcRequest, _Mapping]] = ..., dish_set_config: _Optional[_Union[_dish_pb2.DishSetConfigRequest, _Mapping]] = ..., dish_get_config: _Optional[_Union[_dish_pb2.DishGetConfigRequest, _Mapping]] = ..., dish_power_save: _Optional[_Union[DishPowerSaveRequest, _Mapping]] = ..., dish_inhibit_gps: _Optional[_Union[_dish_pb2.DishInhibitGpsRequest, _Mapping]] = ..., dish_get_data: _Optional[_Union[_dish_pb2.DishGetDataRequest, _Mapping]] = ..., dish_clear_obstruction_map: _Optional[_Union[_dish_pb2.DishClearObstructionMapRequest, _Mapping]] = ..., dish_set_max_power_test_mode: _Optional[_Union[DishSetMaxPowerTestModeRequest, _Mapping]] = ..., dish_activate_rssi_scan: _Optional[_Union[_dish_pb2.DishActivateRssiScanRequest, _Mapping]] = ..., dish_get_rssi_scan_result: _Optional[_Union[_dish_pb2.DishGetRssiScanResultRequest, _Mapping]] = ..., dish_factory_reset: _Optional[_Union[_dish_pb2.DishFactoryResetRequest, _Mapping]] = ..., reset_button: _Optional[_Union[_dish_pb2.ResetButtonRequest, _Mapping]] = ..., set_per_vehicle_config: _Optional[_Union[_common_pb2.SoftwareUpdateRequest, _Mapping]] = ..., dish_aviation_test: _Optional[_Union[_dish_pb2.DishAviationTestRequest, _Mapping]] = ..., dish_inhibit_rf: _Optional[_Union[_dish_pb2.DishInhibitRfRequest, _Mapping]] = ..., ztlm_query: _Optional[_Union[_dish_pb2.ZtlmQueryRequest, _Mapping]] = ..., dish_start_test_mode_server: _Optional[_Union[_dish_pb2.DishStartTestModeServerRequest, _Mapping]] = ..., wifi_get_clients: _Optional[_Union[_wifi_pb2.WifiGetClientsRequest, _Mapping]] = ..., wifi_get_ping_metrics: _Optional[_Union[_wifi_pb2.WifiGetPingMetricsRequest, _Mapping]] = ..., wifi_set_config: _Optional[_Union[_wifi_pb2.WifiSetConfigRequest, _Mapping]] = ..., wifi_get_config: _Optional[_Union[_wifi_pb2.WifiGetConfigRequest, _Mapping]] = ..., wifi_setup: _Optional[_Union[_wifi_pb2.WifiSetupRequest, _Mapping]] = ..., wifi_set_mesh_device_trust: _Optional[_Union[_wifi_pb2.WifiSetMeshDeviceTrustRequest, _Mapping]] = ..., wifi_set_mesh_config: _Optional[_Union[_wifi_pb2.WifiSetMeshConfigRequest, _Mapping]] = ..., wifi_get_client_history: _Optional[_Union[_wifi_pb2.WifiGetClientHistoryRequest, _Mapping]] = ..., wifi_set_client_given_name: _Optional[_Union[_wifi_pb2.WifiSetClientGivenNameRequest, _Mapping]] = ..., wifi_set_aviation_conformed: _Optional[_Union[_wifi_pb2.WifiSetAviationConformedRequest, _Mapping]] = ..., wifi_self_test: _Optional[_Union[_wifi_pb2.WifiSelfTestRequest, _Mapping]] = ..., wifi_run_self_test: _Optional[_Union[_wifi_pb2.WifiRunSelfTestRequest, _Mapping]] = ..., wifi_calibration_mode: _Optional[_Union[_wifi_pb2.WifiCalibrationModeRequest, _Mapping]] = ..., wifi_guest_info: _Optional[_Union[_wifi_pb2.WifiGuestInfoRequest, _Mapping]] = ..., wifi_rf_test: _Optional[_Union[_wifi_pb2.WifiRfTestRequest, _Mapping]] = ..., wifi_get_firewall: _Optional[_Union[_wifi_pb2.WifiGetFirewallRequest, _Mapping]] = ..., wifi_toggle_poe_negotiation: _Optional[_Union[_wifi_pb2.WifiTogglePoeNegotiationRequest, _Mapping]] = ..., wifi_factory_test_command: _Optional[_Union[_wifi_pb2.WifiFactoryTestCommandRequest, _Mapping]] = ..., wifi_start_local_telem_proxy: _Optional[_Union[_wifi_pb2.WifiStartLocalTelemProxyRequest, _Mapping]] = ..., wifi_backhaul_stats: _Optional[_Union[_wifi_pb2.WifiBackhaulStatsRequest, _Mapping]] = ..., wifi_toggle_umbilical_mode: _Optional[_Union[_wifi_pb2.WifiToggleUmbilicalModeRequest, _Mapping]] = ..., wifi_client_sandbox: _Optional[_Union[WifiClientSandboxRequest, _Mapping]] = ..., wifi_run_debug_netsys: _Optional[_Union[_wifi_pb2.WifiRunDebugNetsysRequest, _Mapping]] = ..., wifi_reset_eth_phy: _Optional[_Union[_wifi_pb2.WifiResetEthPhyRequest, _Mapping]] = ..., wifi_flush_hardware_nat: _Optional[_Union[_wifi_pb2.WifiFlushHardwareNatRequest, _Mapping]] = ..., wifi_write_calibration: _Optional[_Union[WifiWriteCalibrationRequest, _Mapping]] = ..., transceiver_if_loopback_test: _Optional[_Union[_transceiver_pb2.TransceiverIFLoopbackTestRequest, _Mapping]] = ..., transceiver_get_status: _Optional[_Union[_transceiver_pb2.TransceiverGetStatusRequest, _Mapping]] = ..., transceiver_get_telemetry: _Optional[_Union[_transceiver_pb2.TransceiverGetTelemetryRequest, _Mapping]] = ..., start_unlock: _Optional[_Union[_service_pb2.StartUnlockRequest, _Mapping]] = ..., finish_unlock: _Optional[_Union[_service_pb2.FinishUnlockRequest, _Mapping]] = ..., get_diagnostics: _Optional[_Union[GetDiagnosticsRequest, _Mapping]] = ..., get_gnss_measurement: _Optional[_Union[GetGnssMeasurementRequest, _Mapping]] = ...) -> None: ...
 
 class Response(_message.Message):
-    __slots__ = ("id", "status", "api_version", "get_next_id", "enable_debug_telem", "factory_reset", "get_device_info", "get_log", "get_network_interfaces", "get_ping", "ping_host", "reboot", "speed_test", "set_sku", "set_trusted_keys", "update", "get_location", "get_heap_dump", "restart_control", "fuse", "get_connections", "start_speedtest", "get_speedtest_status", "report_client_speedtest", "initiate_remote_ssh", "self_test", "set_test_mode", "software_update", "get_radio_stats", "time", "run_iperf_server", "dish_authenticate", "dish_get_context", "dish_get_history", "dish_get_status", "dish_get_obstruction_map", "dish_stow", "start_dish_self_test", "dish_set_emc", "dish_get_emc", "dish_set_config", "dish_get_config", "dish_inhibit_gps", "dish_clear_obstruction_map", "dish_set_max_power_test_mode", "dish_activate_rssi_scan", "dish_get_rssi_scan_result", "dish_factory_reset", "reset_button", "wifi_authenticate", "wifi_get_clients", "wifi_get_history", "wifi_get_ping_metrics", "wifi_get_status", "wifi_set_config", "wifi_get_config", "wifi_setup", "wifi_get_persistent_stats", "wifi_set_mesh_device_trust", "wifi_set_mesh_config", "wifi_get_client_history", "wifi_self_test", "wifi_guest_info", "wifi_rf_test", "wifi_get_firewall", "wifi_factory_test_command", "wifi_backhaul_stats", "transceiver_if_loopback_test", "transceiver_get_status", "transceiver_get_telemetry", "start_unlock", "finish_unlock", "wifi_get_diagnostics", "dish_get_diagnostics")
+    __slots__ = ("id", "status", "api_version", "get_next_id", "enable_debug_telem", "factory_reset", "get_device_info", "get_log", "get_network_interfaces", "get_ping", "ping_host", "reboot", "speed_test", "set_sku", "set_trusted_keys", "update", "get_location", "get_heap_dump", "restart_control", "fuse", "get_connections", "start_speedtest", "get_speedtest_status", "report_client_speedtest", "initiate_remote_ssh", "self_test", "set_test_mode", "software_update", "get_radio_stats", "time", "run_iperf_server", "get_goroutine_stack_traces", "dish_authenticate", "dish_get_context", "dish_get_history", "dish_get_status", "dish_get_obstruction_map", "dish_stow", "dish_set_emc", "dish_get_emc", "dish_set_config", "dish_get_config", "dish_inhibit_gps", "dish_clear_obstruction_map", "dish_set_max_power_test_mode", "dish_activate_rssi_scan", "dish_get_rssi_scan_result", "dish_factory_reset", "reset_button", "set_per_vehicle_config", "dish_aviation_test", "dish_inhibit_rf", "ztlm_query", "dish_start_test_mode_server", "wifi_authenticate", "wifi_get_clients", "wifi_get_history", "wifi_get_ping_metrics", "wifi_get_status", "wifi_set_config", "wifi_get_config", "wifi_setup", "wifi_get_persistent_stats", "wifi_set_mesh_device_trust", "wifi_set_mesh_config", "wifi_get_client_history", "wifi_self_test", "wifi_guest_info", "wifi_rf_test", "wifi_get_firewall", "wifi_factory_test_command", "wifi_backhaul_stats", "wifi_client_sandbox", "wifi_update", "wifi_run_debug_netsys", "wifi_reset_eth_phy", "wifi_flush_hardware_nat", "transceiver_if_loopback_test", "transceiver_get_status", "transceiver_get_telemetry", "start_unlock", "finish_unlock", "wifi_get_diagnostics", "dish_get_diagnostics", "get_gnss_measurement")
     ID_FIELD_NUMBER: _ClassVar[int]
     STATUS_FIELD_NUMBER: _ClassVar[int]
     API_VERSION_FIELD_NUMBER: _ClassVar[int]
@@ -289,13 +325,13 @@ class Response(_message.Message):
     GET_RADIO_STATS_FIELD_NUMBER: _ClassVar[int]
     TIME_FIELD_NUMBER: _ClassVar[int]
     RUN_IPERF_SERVER_FIELD_NUMBER: _ClassVar[int]
+    GET_GOROUTINE_STACK_TRACES_FIELD_NUMBER: _ClassVar[int]
     DISH_AUTHENTICATE_FIELD_NUMBER: _ClassVar[int]
     DISH_GET_CONTEXT_FIELD_NUMBER: _ClassVar[int]
     DISH_GET_HISTORY_FIELD_NUMBER: _ClassVar[int]
     DISH_GET_STATUS_FIELD_NUMBER: _ClassVar[int]
     DISH_GET_OBSTRUCTION_MAP_FIELD_NUMBER: _ClassVar[int]
     DISH_STOW_FIELD_NUMBER: _ClassVar[int]
-    START_DISH_SELF_TEST_FIELD_NUMBER: _ClassVar[int]
     DISH_SET_EMC_FIELD_NUMBER: _ClassVar[int]
     DISH_GET_EMC_FIELD_NUMBER: _ClassVar[int]
     DISH_SET_CONFIG_FIELD_NUMBER: _ClassVar[int]
@@ -307,6 +343,11 @@ class Response(_message.Message):
     DISH_GET_RSSI_SCAN_RESULT_FIELD_NUMBER: _ClassVar[int]
     DISH_FACTORY_RESET_FIELD_NUMBER: _ClassVar[int]
     RESET_BUTTON_FIELD_NUMBER: _ClassVar[int]
+    SET_PER_VEHICLE_CONFIG_FIELD_NUMBER: _ClassVar[int]
+    DISH_AVIATION_TEST_FIELD_NUMBER: _ClassVar[int]
+    DISH_INHIBIT_RF_FIELD_NUMBER: _ClassVar[int]
+    ZTLM_QUERY_FIELD_NUMBER: _ClassVar[int]
+    DISH_START_TEST_MODE_SERVER_FIELD_NUMBER: _ClassVar[int]
     WIFI_AUTHENTICATE_FIELD_NUMBER: _ClassVar[int]
     WIFI_GET_CLIENTS_FIELD_NUMBER: _ClassVar[int]
     WIFI_GET_HISTORY_FIELD_NUMBER: _ClassVar[int]
@@ -325,6 +366,11 @@ class Response(_message.Message):
     WIFI_GET_FIREWALL_FIELD_NUMBER: _ClassVar[int]
     WIFI_FACTORY_TEST_COMMAND_FIELD_NUMBER: _ClassVar[int]
     WIFI_BACKHAUL_STATS_FIELD_NUMBER: _ClassVar[int]
+    WIFI_CLIENT_SANDBOX_FIELD_NUMBER: _ClassVar[int]
+    WIFI_UPDATE_FIELD_NUMBER: _ClassVar[int]
+    WIFI_RUN_DEBUG_NETSYS_FIELD_NUMBER: _ClassVar[int]
+    WIFI_RESET_ETH_PHY_FIELD_NUMBER: _ClassVar[int]
+    WIFI_FLUSH_HARDWARE_NAT_FIELD_NUMBER: _ClassVar[int]
     TRANSCEIVER_IF_LOOPBACK_TEST_FIELD_NUMBER: _ClassVar[int]
     TRANSCEIVER_GET_STATUS_FIELD_NUMBER: _ClassVar[int]
     TRANSCEIVER_GET_TELEMETRY_FIELD_NUMBER: _ClassVar[int]
@@ -332,6 +378,7 @@ class Response(_message.Message):
     FINISH_UNLOCK_FIELD_NUMBER: _ClassVar[int]
     WIFI_GET_DIAGNOSTICS_FIELD_NUMBER: _ClassVar[int]
     DISH_GET_DIAGNOSTICS_FIELD_NUMBER: _ClassVar[int]
+    GET_GNSS_MEASUREMENT_FIELD_NUMBER: _ClassVar[int]
     id: int
     status: _status_pb2.Status
     api_version: int
@@ -363,13 +410,13 @@ class Response(_message.Message):
     get_radio_stats: GetRadioStatsResponse
     time: GetTimeResponse
     run_iperf_server: RunIperfServerResponse
+    get_goroutine_stack_traces: GetGoroutineStackTracesResponse
     dish_authenticate: _dish_pb2.DishAuthenticateResponse
     dish_get_context: _dish_pb2.DishGetContextResponse
     dish_get_history: _dish_pb2.DishGetHistoryResponse
     dish_get_status: _dish_pb2.DishGetStatusResponse
     dish_get_obstruction_map: _dish_pb2.DishGetObstructionMapResponse
     dish_stow: _dish_pb2.DishStowResponse
-    start_dish_self_test: _dish_pb2.StartDishSelfTestResponse
     dish_set_emc: DishSetEmcResponse
     dish_get_emc: DishGetEmcResponse
     dish_set_config: _dish_pb2.DishSetConfigResponse
@@ -381,6 +428,11 @@ class Response(_message.Message):
     dish_get_rssi_scan_result: _dish_pb2.DishGetRssiScanResultResponse
     dish_factory_reset: _dish_pb2.DishFactoryResetResponse
     reset_button: _dish_pb2.ResetButtonResponse
+    set_per_vehicle_config: SetPerVehicleConfigResponse
+    dish_aviation_test: _dish_pb2.DishAviationTestResponse
+    dish_inhibit_rf: _dish_pb2.DishInhibitRfResponse
+    ztlm_query: _dish_pb2.ZtlmQueryResponse
+    dish_start_test_mode_server: _dish_pb2.DishStartTestModeServerResponse
     wifi_authenticate: _wifi_pb2.WifiAuthenticateResponse
     wifi_get_clients: _wifi_pb2.WifiGetClientsResponse
     wifi_get_history: _wifi_pb2.WifiGetHistoryResponse
@@ -399,6 +451,11 @@ class Response(_message.Message):
     wifi_get_firewall: _wifi_pb2.WifiGetFirewallResponse
     wifi_factory_test_command: _wifi_pb2.WifiFactoryTestCommandResponse
     wifi_backhaul_stats: _wifi_pb2.WifiBackhaulStatsResponse
+    wifi_client_sandbox: WifiClientSandboxResponse
+    wifi_update: _wifi_pb2.WifiUpdateResponse
+    wifi_run_debug_netsys: _wifi_pb2.WifiRunDebugNetsysResponse
+    wifi_reset_eth_phy: _wifi_pb2.WifiResetEthPhyResponse
+    wifi_flush_hardware_nat: _wifi_pb2.WifiFlushHardwareNatResponse
     transceiver_if_loopback_test: _transceiver_pb2.TransceiverIFLoopbackTestResponse
     transceiver_get_status: _transceiver_pb2.TransceiverGetStatusResponse
     transceiver_get_telemetry: _transceiver_pb2.TransceiverGetTelemetryResponse
@@ -406,19 +463,22 @@ class Response(_message.Message):
     finish_unlock: _service_pb2.FinishUnlockResponse
     wifi_get_diagnostics: WifiGetDiagnosticsResponse
     dish_get_diagnostics: DishGetDiagnosticsResponse
-    def __init__(self, id: _Optional[int] = ..., status: _Optional[_Union[_status_pb2.Status, _Mapping]] = ..., api_version: _Optional[int] = ..., get_next_id: _Optional[_Union[_common_pb2.GetNextIdResponse, _Mapping]] = ..., enable_debug_telem: _Optional[_Union[EnableDebugTelemResponse, _Mapping]] = ..., factory_reset: _Optional[_Union[FactoryResetResponse, _Mapping]] = ..., get_device_info: _Optional[_Union[GetDeviceInfoResponse, _Mapping]] = ..., get_log: _Optional[_Union[GetLogResponse, _Mapping]] = ..., get_network_interfaces: _Optional[_Union[GetNetworkInterfacesResponse, _Mapping]] = ..., get_ping: _Optional[_Union[GetPingResponse, _Mapping]] = ..., ping_host: _Optional[_Union[PingHostResponse, _Mapping]] = ..., reboot: _Optional[_Union[RebootResponse, _Mapping]] = ..., speed_test: _Optional[_Union[SpeedTestResponse, _Mapping]] = ..., set_sku: _Optional[_Union[SetSkuResponse, _Mapping]] = ..., set_trusted_keys: _Optional[_Union[SetTrustedKeysResponse, _Mapping]] = ..., update: _Optional[_Union[UpdateResponse, _Mapping]] = ..., get_location: _Optional[_Union[GetLocationResponse, _Mapping]] = ..., get_heap_dump: _Optional[_Union[GetHeapDumpResponse, _Mapping]] = ..., restart_control: _Optional[_Union[RestartControlResponse, _Mapping]] = ..., fuse: _Optional[_Union[FuseResponse, _Mapping]] = ..., get_connections: _Optional[_Union[GetConnectionsResponse, _Mapping]] = ..., start_speedtest: _Optional[_Union[StartSpeedtestResponse, _Mapping]] = ..., get_speedtest_status: _Optional[_Union[GetSpeedtestStatusResponse, _Mapping]] = ..., report_client_speedtest: _Optional[_Union[ReportClientSpeedtestResponse, _Mapping]] = ..., initiate_remote_ssh: _Optional[_Union[_common_pb2.InitiateRemoteSshResponse, _Mapping]] = ..., self_test: _Optional[_Union[_dish_pb2.SelfTestResponse, _Mapping]] = ..., set_test_mode: _Optional[_Union[_dish_pb2.SetTestModeResponse, _Mapping]] = ..., software_update: _Optional[_Union[_common_pb2.SoftwareUpdateResponse, _Mapping]] = ..., get_radio_stats: _Optional[_Union[GetRadioStatsResponse, _Mapping]] = ..., time: _Optional[_Union[GetTimeResponse, _Mapping]] = ..., run_iperf_server: _Optional[_Union[RunIperfServerResponse, _Mapping]] = ..., dish_authenticate: _Optional[_Union[_dish_pb2.DishAuthenticateResponse, _Mapping]] = ..., dish_get_context: _Optional[_Union[_dish_pb2.DishGetContextResponse, _Mapping]] = ..., dish_get_history: _Optional[_Union[_dish_pb2.DishGetHistoryResponse, _Mapping]] = ..., dish_get_status: _Optional[_Union[_dish_pb2.DishGetStatusResponse, _Mapping]] = ..., dish_get_obstruction_map: _Optional[_Union[_dish_pb2.DishGetObstructionMapResponse, _Mapping]] = ..., dish_stow: _Optional[_Union[_dish_pb2.DishStowResponse, _Mapping]] = ..., start_dish_self_test: _Optional[_Union[_dish_pb2.StartDishSelfTestResponse, _Mapping]] = ..., dish_set_emc: _Optional[_Union[DishSetEmcResponse, _Mapping]] = ..., dish_get_emc: _Optional[_Union[DishGetEmcResponse, _Mapping]] = ..., dish_set_config: _Optional[_Union[_dish_pb2.DishSetConfigResponse, _Mapping]] = ..., dish_get_config: _Optional[_Union[_dish_pb2.DishGetConfigResponse, _Mapping]] = ..., dish_inhibit_gps: _Optional[_Union[_dish_pb2.DishInhibitGpsResponse, _Mapping]] = ..., dish_clear_obstruction_map: _Optional[_Union[_dish_pb2.DishClearObstructionMapResponse, _Mapping]] = ..., dish_set_max_power_test_mode: _Optional[_Union[DishSetMaxPowerTestModeResponse, _Mapping]] = ..., dish_activate_rssi_scan: _Optional[_Union[_dish_pb2.DishActivateRssiScanResponse, _Mapping]] = ..., dish_get_rssi_scan_result: _Optional[_Union[_dish_pb2.DishGetRssiScanResultResponse, _Mapping]] = ..., dish_factory_reset: _Optional[_Union[_dish_pb2.DishFactoryResetResponse, _Mapping]] = ..., reset_button: _Optional[_Union[_dish_pb2.ResetButtonResponse, _Mapping]] = ..., wifi_authenticate: _Optional[_Union[_wifi_pb2.WifiAuthenticateResponse, _Mapping]] = ..., wifi_get_clients: _Optional[_Union[_wifi_pb2.WifiGetClientsResponse, _Mapping]] = ..., wifi_get_history: _Optional[_Union[_wifi_pb2.WifiGetHistoryResponse, _Mapping]] = ..., wifi_get_ping_metrics: _Optional[_Union[_wifi_pb2.WifiGetPingMetricsResponse, _Mapping]] = ..., wifi_get_status: _Optional[_Union[_wifi_pb2.WifiGetStatusResponse, _Mapping]] = ..., wifi_set_config: _Optional[_Union[_wifi_pb2.WifiSetConfigResponse, _Mapping]] = ..., wifi_get_config: _Optional[_Union[_wifi_pb2.WifiGetConfigResponse, _Mapping]] = ..., wifi_setup: _Optional[_Union[_wifi_pb2.WifiSetupResponse, _Mapping]] = ..., wifi_get_persistent_stats: _Optional[_Union[_wifi_pb2.WifiGetPersistentStatsResponse, _Mapping]] = ..., wifi_set_mesh_device_trust: _Optional[_Union[_wifi_pb2.WifiSetMeshDeviceTrustResponse, _Mapping]] = ..., wifi_set_mesh_config: _Optional[_Union[_wifi_pb2.WifiSetMeshConfigResponse, _Mapping]] = ..., wifi_get_client_history: _Optional[_Union[_wifi_pb2.WifiGetClientHistoryResponse, _Mapping]] = ..., wifi_self_test: _Optional[_Union[_wifi_pb2.WifiSelfTestResponse, _Mapping]] = ..., wifi_guest_info: _Optional[_Union[_wifi_pb2.WifiGuestInfoResponse, _Mapping]] = ..., wifi_rf_test: _Optional[_Union[_wifi_pb2.WifiRfTestResponse, _Mapping]] = ..., wifi_get_firewall: _Optional[_Union[_wifi_pb2.WifiGetFirewallResponse, _Mapping]] = ..., wifi_factory_test_command: _Optional[_Union[_wifi_pb2.WifiFactoryTestCommandResponse, _Mapping]] = ..., wifi_backhaul_stats: _Optional[_Union[_wifi_pb2.WifiBackhaulStatsResponse, _Mapping]] = ..., transceiver_if_loopback_test: _Optional[_Union[_transceiver_pb2.TransceiverIFLoopbackTestResponse, _Mapping]] = ..., transceiver_get_status: _Optional[_Union[_transceiver_pb2.TransceiverGetStatusResponse, _Mapping]] = ..., transceiver_get_telemetry: _Optional[_Union[_transceiver_pb2.TransceiverGetTelemetryResponse, _Mapping]] = ..., start_unlock: _Optional[_Union[_service_pb2.StartUnlockResponse, _Mapping]] = ..., finish_unlock: _Optional[_Union[_service_pb2.FinishUnlockResponse, _Mapping]] = ..., wifi_get_diagnostics: _Optional[_Union[WifiGetDiagnosticsResponse, _Mapping]] = ..., dish_get_diagnostics: _Optional[_Union[DishGetDiagnosticsResponse, _Mapping]] = ...) -> None: ...
+    get_gnss_measurement: GetGnssMeasurementResponse
+    def __init__(self, id: _Optional[int] = ..., status: _Optional[_Union[_status_pb2.Status, _Mapping]] = ..., api_version: _Optional[int] = ..., get_next_id: _Optional[_Union[_common_pb2.GetNextIdResponse, _Mapping]] = ..., enable_debug_telem: _Optional[_Union[EnableDebugTelemResponse, _Mapping]] = ..., factory_reset: _Optional[_Union[FactoryResetResponse, _Mapping]] = ..., get_device_info: _Optional[_Union[GetDeviceInfoResponse, _Mapping]] = ..., get_log: _Optional[_Union[GetLogResponse, _Mapping]] = ..., get_network_interfaces: _Optional[_Union[GetNetworkInterfacesResponse, _Mapping]] = ..., get_ping: _Optional[_Union[GetPingResponse, _Mapping]] = ..., ping_host: _Optional[_Union[PingHostResponse, _Mapping]] = ..., reboot: _Optional[_Union[RebootResponse, _Mapping]] = ..., speed_test: _Optional[_Union[SpeedTestResponse, _Mapping]] = ..., set_sku: _Optional[_Union[SetSkuResponse, _Mapping]] = ..., set_trusted_keys: _Optional[_Union[SetTrustedKeysResponse, _Mapping]] = ..., update: _Optional[_Union[UpdateResponse, _Mapping]] = ..., get_location: _Optional[_Union[GetLocationResponse, _Mapping]] = ..., get_heap_dump: _Optional[_Union[GetHeapDumpResponse, _Mapping]] = ..., restart_control: _Optional[_Union[RestartControlResponse, _Mapping]] = ..., fuse: _Optional[_Union[FuseResponse, _Mapping]] = ..., get_connections: _Optional[_Union[GetConnectionsResponse, _Mapping]] = ..., start_speedtest: _Optional[_Union[StartSpeedtestResponse, _Mapping]] = ..., get_speedtest_status: _Optional[_Union[GetSpeedtestStatusResponse, _Mapping]] = ..., report_client_speedtest: _Optional[_Union[ReportClientSpeedtestResponse, _Mapping]] = ..., initiate_remote_ssh: _Optional[_Union[_common_pb2.InitiateRemoteSshResponse, _Mapping]] = ..., self_test: _Optional[_Union[_dish_pb2.SelfTestResponse, _Mapping]] = ..., set_test_mode: _Optional[_Union[_dish_pb2.SetTestModeResponse, _Mapping]] = ..., software_update: _Optional[_Union[_common_pb2.SoftwareUpdateResponse, _Mapping]] = ..., get_radio_stats: _Optional[_Union[GetRadioStatsResponse, _Mapping]] = ..., time: _Optional[_Union[GetTimeResponse, _Mapping]] = ..., run_iperf_server: _Optional[_Union[RunIperfServerResponse, _Mapping]] = ..., get_goroutine_stack_traces: _Optional[_Union[GetGoroutineStackTracesResponse, _Mapping]] = ..., dish_authenticate: _Optional[_Union[_dish_pb2.DishAuthenticateResponse, _Mapping]] = ..., dish_get_context: _Optional[_Union[_dish_pb2.DishGetContextResponse, _Mapping]] = ..., dish_get_history: _Optional[_Union[_dish_pb2.DishGetHistoryResponse, _Mapping]] = ..., dish_get_status: _Optional[_Union[_dish_pb2.DishGetStatusResponse, _Mapping]] = ..., dish_get_obstruction_map: _Optional[_Union[_dish_pb2.DishGetObstructionMapResponse, _Mapping]] = ..., dish_stow: _Optional[_Union[_dish_pb2.DishStowResponse, _Mapping]] = ..., dish_set_emc: _Optional[_Union[DishSetEmcResponse, _Mapping]] = ..., dish_get_emc: _Optional[_Union[DishGetEmcResponse, _Mapping]] = ..., dish_set_config: _Optional[_Union[_dish_pb2.DishSetConfigResponse, _Mapping]] = ..., dish_get_config: _Optional[_Union[_dish_pb2.DishGetConfigResponse, _Mapping]] = ..., dish_inhibit_gps: _Optional[_Union[_dish_pb2.DishInhibitGpsResponse, _Mapping]] = ..., dish_clear_obstruction_map: _Optional[_Union[_dish_pb2.DishClearObstructionMapResponse, _Mapping]] = ..., dish_set_max_power_test_mode: _Optional[_Union[DishSetMaxPowerTestModeResponse, _Mapping]] = ..., dish_activate_rssi_scan: _Optional[_Union[_dish_pb2.DishActivateRssiScanResponse, _Mapping]] = ..., dish_get_rssi_scan_result: _Optional[_Union[_dish_pb2.DishGetRssiScanResultResponse, _Mapping]] = ..., dish_factory_reset: _Optional[_Union[_dish_pb2.DishFactoryResetResponse, _Mapping]] = ..., reset_button: _Optional[_Union[_dish_pb2.ResetButtonResponse, _Mapping]] = ..., set_per_vehicle_config: _Optional[_Union[SetPerVehicleConfigResponse, _Mapping]] = ..., dish_aviation_test: _Optional[_Union[_dish_pb2.DishAviationTestResponse, _Mapping]] = ..., dish_inhibit_rf: _Optional[_Union[_dish_pb2.DishInhibitRfResponse, _Mapping]] = ..., ztlm_query: _Optional[_Union[_dish_pb2.ZtlmQueryResponse, _Mapping]] = ..., dish_start_test_mode_server: _Optional[_Union[_dish_pb2.DishStartTestModeServerResponse, _Mapping]] = ..., wifi_authenticate: _Optional[_Union[_wifi_pb2.WifiAuthenticateResponse, _Mapping]] = ..., wifi_get_clients: _Optional[_Union[_wifi_pb2.WifiGetClientsResponse, _Mapping]] = ..., wifi_get_history: _Optional[_Union[_wifi_pb2.WifiGetHistoryResponse, _Mapping]] = ..., wifi_get_ping_metrics: _Optional[_Union[_wifi_pb2.WifiGetPingMetricsResponse, _Mapping]] = ..., wifi_get_status: _Optional[_Union[_wifi_pb2.WifiGetStatusResponse, _Mapping]] = ..., wifi_set_config: _Optional[_Union[_wifi_pb2.WifiSetConfigResponse, _Mapping]] = ..., wifi_get_config: _Optional[_Union[_wifi_pb2.WifiGetConfigResponse, _Mapping]] = ..., wifi_setup: _Optional[_Union[_wifi_pb2.WifiSetupResponse, _Mapping]] = ..., wifi_get_persistent_stats: _Optional[_Union[_wifi_pb2.WifiGetPersistentStatsResponse, _Mapping]] = ..., wifi_set_mesh_device_trust: _Optional[_Union[_wifi_pb2.WifiSetMeshDeviceTrustResponse, _Mapping]] = ..., wifi_set_mesh_config: _Optional[_Union[_wifi_pb2.WifiSetMeshConfigResponse, _Mapping]] = ..., wifi_get_client_history: _Optional[_Union[_wifi_pb2.WifiGetClientHistoryResponse, _Mapping]] = ..., wifi_self_test: _Optional[_Union[_wifi_pb2.WifiSelfTestResponse, _Mapping]] = ..., wifi_guest_info: _Optional[_Union[_wifi_pb2.WifiGuestInfoResponse, _Mapping]] = ..., wifi_rf_test: _Optional[_Union[_wifi_pb2.WifiRfTestResponse, _Mapping]] = ..., wifi_get_firewall: _Optional[_Union[_wifi_pb2.WifiGetFirewallResponse, _Mapping]] = ..., wifi_factory_test_command: _Optional[_Union[_wifi_pb2.WifiFactoryTestCommandResponse, _Mapping]] = ..., wifi_backhaul_stats: _Optional[_Union[_wifi_pb2.WifiBackhaulStatsResponse, _Mapping]] = ..., wifi_client_sandbox: _Optional[_Union[WifiClientSandboxResponse, _Mapping]] = ..., wifi_update: _Optional[_Union[_wifi_pb2.WifiUpdateResponse, _Mapping]] = ..., wifi_run_debug_netsys: _Optional[_Union[_wifi_pb2.WifiRunDebugNetsysResponse, _Mapping]] = ..., wifi_reset_eth_phy: _Optional[_Union[_wifi_pb2.WifiResetEthPhyResponse, _Mapping]] = ..., wifi_flush_hardware_nat: _Optional[_Union[_wifi_pb2.WifiFlushHardwareNatResponse, _Mapping]] = ..., transceiver_if_loopback_test: _Optional[_Union[_transceiver_pb2.TransceiverIFLoopbackTestResponse, _Mapping]] = ..., transceiver_get_status: _Optional[_Union[_transceiver_pb2.TransceiverGetStatusResponse, _Mapping]] = ..., transceiver_get_telemetry: _Optional[_Union[_transceiver_pb2.TransceiverGetTelemetryResponse, _Mapping]] = ..., start_unlock: _Optional[_Union[_service_pb2.StartUnlockResponse, _Mapping]] = ..., finish_unlock: _Optional[_Union[_service_pb2.FinishUnlockResponse, _Mapping]] = ..., wifi_get_diagnostics: _Optional[_Union[WifiGetDiagnosticsResponse, _Mapping]] = ..., dish_get_diagnostics: _Optional[_Union[DishGetDiagnosticsResponse, _Mapping]] = ..., get_gnss_measurement: _Optional[_Union[GetGnssMeasurementResponse, _Mapping]] = ...) -> None: ...
 
 class Event(_message.Message):
-    __slots__ = ("wifi_new_client_connected", "wifi_account_bonding", "wifi_new_peer", "wifi_cloud_status")
+    __slots__ = ("wifi_new_client_connected", "wifi_account_bonding", "wifi_new_peer", "wifi_cloud_status", "wifi_client_sandbox")
     WIFI_NEW_CLIENT_CONNECTED_FIELD_NUMBER: _ClassVar[int]
     WIFI_ACCOUNT_BONDING_FIELD_NUMBER: _ClassVar[int]
     WIFI_NEW_PEER_FIELD_NUMBER: _ClassVar[int]
     WIFI_CLOUD_STATUS_FIELD_NUMBER: _ClassVar[int]
+    WIFI_CLIENT_SANDBOX_FIELD_NUMBER: _ClassVar[int]
     wifi_new_client_connected: _wifi_pb2.WifiNewClientConnectedEvent
     wifi_account_bonding: _wifi_pb2.WifiAccountBondingEvent
     wifi_new_peer: _wifi_pb2.WifiNewPeerEvent
     wifi_cloud_status: WifiCloudStatusEvent
-    def __init__(self, wifi_new_client_connected: _Optional[_Union[_wifi_pb2.WifiNewClientConnectedEvent, _Mapping]] = ..., wifi_account_bonding: _Optional[_Union[_wifi_pb2.WifiAccountBondingEvent, _Mapping]] = ..., wifi_new_peer: _Optional[_Union[_wifi_pb2.WifiNewPeerEvent, _Mapping]] = ..., wifi_cloud_status: _Optional[_Union[WifiCloudStatusEvent, _Mapping]] = ...) -> None: ...
+    wifi_client_sandbox: WifiClientSandboxRequest
+    def __init__(self, wifi_new_client_connected: _Optional[_Union[_wifi_pb2.WifiNewClientConnectedEvent, _Mapping]] = ..., wifi_account_bonding: _Optional[_Union[_wifi_pb2.WifiAccountBondingEvent, _Mapping]] = ..., wifi_new_peer: _Optional[_Union[_wifi_pb2.WifiNewPeerEvent, _Mapping]] = ..., wifi_cloud_status: _Optional[_Union[WifiCloudStatusEvent, _Mapping]] = ..., wifi_client_sandbox: _Optional[_Union[WifiClientSandboxRequest, _Mapping]] = ...) -> None: ...
 
 class WifiCloudStatusEvent(_message.Message):
     __slots__ = ("api_version", "direct_link_to_dish", "hardware_version", "is_bypassed")
@@ -431,6 +491,36 @@ class WifiCloudStatusEvent(_message.Message):
     hardware_version: str
     is_bypassed: bool
     def __init__(self, api_version: _Optional[int] = ..., direct_link_to_dish: bool = ..., hardware_version: _Optional[str] = ..., is_bypassed: bool = ...) -> None: ...
+
+class WifiClientSandboxRequest(_message.Message):
+    __slots__ = ("client_sandbox_status", "alerts", "unix_timestamp_ns")
+    CLIENT_SANDBOX_STATUS_FIELD_NUMBER: _ClassVar[int]
+    ALERTS_FIELD_NUMBER: _ClassVar[int]
+    UNIX_TIMESTAMP_NS_FIELD_NUMBER: _ClassVar[int]
+    client_sandbox_status: _containers.RepeatedCompositeFieldContainer[WifiClientSandboxStatus]
+    alerts: _containers.RepeatedScalarFieldContainer[WifiClientSandboxAlert]
+    unix_timestamp_ns: int
+    def __init__(self, client_sandbox_status: _Optional[_Iterable[_Union[WifiClientSandboxStatus, _Mapping]]] = ..., alerts: _Optional[_Iterable[_Union[WifiClientSandboxAlert, str]]] = ..., unix_timestamp_ns: _Optional[int] = ...) -> None: ...
+
+class WifiClientSandboxResponse(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...
+
+class WifiWriteCalibrationRequest(_message.Message):
+    __slots__ = ("calibration_image",)
+    CALIBRATION_IMAGE_FIELD_NUMBER: _ClassVar[int]
+    calibration_image: bytes
+    def __init__(self, calibration_image: _Optional[bytes] = ...) -> None: ...
+
+class WifiClientSandboxStatus(_message.Message):
+    __slots__ = ("client", "sandbox", "sandboxed")
+    CLIENT_FIELD_NUMBER: _ClassVar[int]
+    SANDBOX_FIELD_NUMBER: _ClassVar[int]
+    SANDBOXED_FIELD_NUMBER: _ClassVar[int]
+    client: str
+    sandbox: int
+    sandboxed: bool
+    def __init__(self, client: _Optional[str] = ..., sandbox: _Optional[int] = ..., sandboxed: bool = ...) -> None: ...
 
 class EnableDebugTelemRequest(_message.Message):
     __slots__ = ("duration_m",)
@@ -481,16 +571,20 @@ class GetLogRequest(_message.Message):
 class GetLogResponse(_message.Message):
     __slots__ = ("current", "saved", "syslog", "offline_log", "persistent_log")
     class Logs(_message.Message):
-        __slots__ = ("syslog", "dmesg", "kernel_panic", "mtk_eth_procs")
+        __slots__ = ("syslog", "dmesg", "kernel_panic", "mtk_eth_procs", "debug_netsys_0sec", "debug_netsys_2sec")
         SYSLOG_FIELD_NUMBER: _ClassVar[int]
         DMESG_FIELD_NUMBER: _ClassVar[int]
         KERNEL_PANIC_FIELD_NUMBER: _ClassVar[int]
         MTK_ETH_PROCS_FIELD_NUMBER: _ClassVar[int]
+        DEBUG_NETSYS_0SEC_FIELD_NUMBER: _ClassVar[int]
+        DEBUG_NETSYS_2SEC_FIELD_NUMBER: _ClassVar[int]
         syslog: str
         dmesg: str
         kernel_panic: str
         mtk_eth_procs: str
-        def __init__(self, syslog: _Optional[str] = ..., dmesg: _Optional[str] = ..., kernel_panic: _Optional[str] = ..., mtk_eth_procs: _Optional[str] = ...) -> None: ...
+        debug_netsys_0sec: str
+        debug_netsys_2sec: str
+        def __init__(self, syslog: _Optional[str] = ..., dmesg: _Optional[str] = ..., kernel_panic: _Optional[str] = ..., mtk_eth_procs: _Optional[str] = ..., debug_netsys_0sec: _Optional[str] = ..., debug_netsys_2sec: _Optional[str] = ...) -> None: ...
     CURRENT_FIELD_NUMBER: _ClassVar[int]
     SAVED_FIELD_NUMBER: _ClassVar[int]
     SYSLOG_FIELD_NUMBER: _ClassVar[int]
@@ -535,8 +629,10 @@ class PingHostResponse(_message.Message):
     def __init__(self, result: _Optional[_Union[_common_pb2.PingResult, _Mapping]] = ...) -> None: ...
 
 class GetStatusRequest(_message.Message):
-    __slots__ = ()
-    def __init__(self) -> None: ...
+    __slots__ = ("router_role",)
+    ROUTER_ROLE_FIELD_NUMBER: _ClassVar[int]
+    router_role: _dish_pb2.RouterRole
+    def __init__(self, router_role: _Optional[_Union[_dish_pb2.RouterRole, str]] = ...) -> None: ...
 
 class RebootRequest(_message.Message):
     __slots__ = ()
@@ -547,7 +643,7 @@ class RebootResponse(_message.Message):
     def __init__(self) -> None: ...
 
 class SpeedTestStats(_message.Message):
-    __slots__ = ("latency_ms", "start_time", "upload_start_time", "download_start_time", "upload_mbps", "download_mbps", "target", "tcp_streams")
+    __slots__ = ("latency_ms", "start_time", "upload_start_time", "download_start_time", "upload_mbps", "download_mbps", "target", "tcp_streams", "upload_bytes_processed", "download_bytes_processed", "duration_s")
     class Target(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
         __slots__ = ()
         UNKNOWN: _ClassVar[SpeedTestStats.Target]
@@ -564,6 +660,9 @@ class SpeedTestStats(_message.Message):
     DOWNLOAD_MBPS_FIELD_NUMBER: _ClassVar[int]
     TARGET_FIELD_NUMBER: _ClassVar[int]
     TCP_STREAMS_FIELD_NUMBER: _ClassVar[int]
+    UPLOAD_BYTES_PROCESSED_FIELD_NUMBER: _ClassVar[int]
+    DOWNLOAD_BYTES_PROCESSED_FIELD_NUMBER: _ClassVar[int]
+    DURATION_S_FIELD_NUMBER: _ClassVar[int]
     latency_ms: float
     start_time: int
     upload_start_time: int
@@ -572,7 +671,10 @@ class SpeedTestStats(_message.Message):
     download_mbps: float
     target: SpeedTestStats.Target
     tcp_streams: int
-    def __init__(self, latency_ms: _Optional[float] = ..., start_time: _Optional[int] = ..., upload_start_time: _Optional[int] = ..., download_start_time: _Optional[int] = ..., upload_mbps: _Optional[float] = ..., download_mbps: _Optional[float] = ..., target: _Optional[_Union[SpeedTestStats.Target, str]] = ..., tcp_streams: _Optional[int] = ...) -> None: ...
+    upload_bytes_processed: int
+    download_bytes_processed: int
+    duration_s: int
+    def __init__(self, latency_ms: _Optional[float] = ..., start_time: _Optional[int] = ..., upload_start_time: _Optional[int] = ..., download_start_time: _Optional[int] = ..., upload_mbps: _Optional[float] = ..., download_mbps: _Optional[float] = ..., target: _Optional[_Union[SpeedTestStats.Target, str]] = ..., tcp_streams: _Optional[int] = ..., upload_bytes_processed: _Optional[int] = ..., download_bytes_processed: _Optional[int] = ..., duration_s: _Optional[int] = ...) -> None: ...
 
 class ClientPlatform(_message.Message):
     __slots__ = ("platform", "major_version", "minor_version")
@@ -715,8 +817,10 @@ class SetSkuResponse(_message.Message):
     def __init__(self) -> None: ...
 
 class UpdateRequest(_message.Message):
-    __slots__ = ()
-    def __init__(self) -> None: ...
+    __slots__ = ("schedule_reboot",)
+    SCHEDULE_REBOOT_FIELD_NUMBER: _ClassVar[int]
+    schedule_reboot: bool
+    def __init__(self, schedule_reboot: bool = ...) -> None: ...
 
 class UpdateResponse(_message.Message):
     __slots__ = ()
@@ -767,17 +871,21 @@ class GetLocationRequest(_message.Message):
     def __init__(self, source: _Optional[_Union[PositionSource, str]] = ...) -> None: ...
 
 class GetLocationResponse(_message.Message):
-    __slots__ = ("lla", "sigma_m", "source")
+    __slots__ = ("lla", "sigma_m", "source", "horizontal_speed_mps", "vertical_speed_mps")
     LLA_FIELD_NUMBER: _ClassVar[int]
     SIGMA_M_FIELD_NUMBER: _ClassVar[int]
     SOURCE_FIELD_NUMBER: _ClassVar[int]
+    HORIZONTAL_SPEED_MPS_FIELD_NUMBER: _ClassVar[int]
+    VERTICAL_SPEED_MPS_FIELD_NUMBER: _ClassVar[int]
     lla: _common_pb2.LLAPosition
     sigma_m: float
     source: PositionSource
-    def __init__(self, lla: _Optional[_Union[_common_pb2.LLAPosition, _Mapping]] = ..., sigma_m: _Optional[float] = ..., source: _Optional[_Union[PositionSource, str]] = ...) -> None: ...
+    horizontal_speed_mps: float
+    vertical_speed_mps: float
+    def __init__(self, lla: _Optional[_Union[_common_pb2.LLAPosition, _Mapping]] = ..., sigma_m: _Optional[float] = ..., source: _Optional[_Union[PositionSource, str]] = ..., horizontal_speed_mps: _Optional[float] = ..., vertical_speed_mps: _Optional[float] = ...) -> None: ...
 
 class DishSetEmcRequest(_message.Message):
-    __slots__ = ("theta", "phi", "rx_chan", "tx_chan", "modulation", "desired_tilt_angle", "chan_override", "theta_enabled", "phi_enabled", "idle", "fast_switching", "sky_search", "force_pll_unlock", "force_eirp_failure", "snow_active_override", "manual_tilting", "tilt_to_stowed", "reboot", "continuous_motor_test", "distance_override_meters", "amplitude_taper_override", "country_code_override", "tx_duty_cycle_override", "rx_duty_cycle_override", "eirp_legal_limit_dbw_override", "eirp_adjustment_db")
+    __slots__ = ("theta", "phi", "rx_chan", "tx_chan", "modulation", "desired_tilt_angle", "chan_override", "theta_enabled", "phi_enabled", "idle", "fast_switching", "sky_search", "force_pll_unlock", "force_eirp_failure", "snow_active_override", "manual_tilting", "tilt_to_stowed", "reboot", "continuous_motor_test", "distance_override_meters", "country_code_override", "tx_duty_cycle_override", "rx_duty_cycle_override", "eirp_legal_limit_dbw_override", "eirp_adjustment_db")
     THETA_FIELD_NUMBER: _ClassVar[int]
     PHI_FIELD_NUMBER: _ClassVar[int]
     RX_CHAN_FIELD_NUMBER: _ClassVar[int]
@@ -798,7 +906,6 @@ class DishSetEmcRequest(_message.Message):
     REBOOT_FIELD_NUMBER: _ClassVar[int]
     CONTINUOUS_MOTOR_TEST_FIELD_NUMBER: _ClassVar[int]
     DISTANCE_OVERRIDE_METERS_FIELD_NUMBER: _ClassVar[int]
-    AMPLITUDE_TAPER_OVERRIDE_FIELD_NUMBER: _ClassVar[int]
     COUNTRY_CODE_OVERRIDE_FIELD_NUMBER: _ClassVar[int]
     TX_DUTY_CYCLE_OVERRIDE_FIELD_NUMBER: _ClassVar[int]
     RX_DUTY_CYCLE_OVERRIDE_FIELD_NUMBER: _ClassVar[int]
@@ -824,13 +931,12 @@ class DishSetEmcRequest(_message.Message):
     reboot: bool
     continuous_motor_test: bool
     distance_override_meters: float
-    amplitude_taper_override: int
     country_code_override: int
     tx_duty_cycle_override: int
     rx_duty_cycle_override: int
     eirp_legal_limit_dbw_override: float
     eirp_adjustment_db: float
-    def __init__(self, theta: _Optional[float] = ..., phi: _Optional[float] = ..., rx_chan: _Optional[int] = ..., tx_chan: _Optional[int] = ..., modulation: _Optional[int] = ..., desired_tilt_angle: _Optional[float] = ..., chan_override: bool = ..., theta_enabled: bool = ..., phi_enabled: bool = ..., idle: bool = ..., fast_switching: bool = ..., sky_search: bool = ..., force_pll_unlock: bool = ..., force_eirp_failure: bool = ..., snow_active_override: bool = ..., manual_tilting: bool = ..., tilt_to_stowed: bool = ..., reboot: bool = ..., continuous_motor_test: bool = ..., distance_override_meters: _Optional[float] = ..., amplitude_taper_override: _Optional[int] = ..., country_code_override: _Optional[int] = ..., tx_duty_cycle_override: _Optional[int] = ..., rx_duty_cycle_override: _Optional[int] = ..., eirp_legal_limit_dbw_override: _Optional[float] = ..., eirp_adjustment_db: _Optional[float] = ...) -> None: ...
+    def __init__(self, theta: _Optional[float] = ..., phi: _Optional[float] = ..., rx_chan: _Optional[int] = ..., tx_chan: _Optional[int] = ..., modulation: _Optional[int] = ..., desired_tilt_angle: _Optional[float] = ..., chan_override: bool = ..., theta_enabled: bool = ..., phi_enabled: bool = ..., idle: bool = ..., fast_switching: bool = ..., sky_search: bool = ..., force_pll_unlock: bool = ..., force_eirp_failure: bool = ..., snow_active_override: bool = ..., manual_tilting: bool = ..., tilt_to_stowed: bool = ..., reboot: bool = ..., continuous_motor_test: bool = ..., distance_override_meters: _Optional[float] = ..., country_code_override: _Optional[int] = ..., tx_duty_cycle_override: _Optional[int] = ..., rx_duty_cycle_override: _Optional[int] = ..., eirp_legal_limit_dbw_override: _Optional[float] = ..., eirp_adjustment_db: _Optional[float] = ...) -> None: ...
 
 class DishSetEmcResponse(_message.Message):
     __slots__ = ()
@@ -853,7 +959,7 @@ class DishGetEmcRequest(_message.Message):
     def __init__(self) -> None: ...
 
 class DishGetEmcResponse(_message.Message):
-    __slots__ = ("uuid", "timestamp", "cplane_updates", "gps_latitude", "gps_longitude", "gps_pdop", "rf_mode", "phi", "theta", "rx_channel", "tx_channel", "t_dbf_max", "t_center", "auto_power_snow_melt_enabled", "voltage", "rx_beam_state", "tx_beam_state", "half_duplex_state", "manual_tilt_enabled", "tilt_angle", "pll_tx_lock_detected", "eirp_exceeded_threshold", "idle_override_enabled", "theta_override_enabled", "theta_override_value", "phi_override_enabled", "phi_override_value", "rx_chan_override_value", "tx_chan_override_value", "sky_search_override_enabled", "fast_switching_enabled", "modulation_override_value", "force_eirp_failure", "force_pll_unlock", "ut_ine_success", "rf_ready", "tilt_to_stowed", "reboot", "continuous_motor_test", "distance_override_meters", "amplitude_taper_override", "amplitude_taper_enabled", "amplitude_taper_scale", "country_code_override", "max_pointing_distance", "distance_scaling_factor", "tx_duty_cycle_override", "rx_duty_cycle_override", "tx_time_ms", "rx_time_ms", "eirp_legal_limit_dbw", "eirp_legal_limit_dbw_override", "eirp_adjustment_db", "eirp_predicted_dbw")
+    __slots__ = ("uuid", "timestamp", "cplane_updates", "gps_latitude", "gps_longitude", "gps_pdop", "rf_mode", "phi", "theta", "rx_channel", "tx_channel", "t_dbf_max", "t_center", "auto_power_snow_melt_enabled", "voltage", "rx_beam_state", "tx_beam_state", "half_duplex_state", "manual_tilt_enabled", "tilt_angle", "pll_tx_lock_detected", "eirp_exceeded_threshold", "idle_override_enabled", "theta_override_enabled", "theta_override_value", "phi_override_enabled", "phi_override_value", "rx_chan_override_value", "tx_chan_override_value", "sky_search_override_enabled", "fast_switching_enabled", "modulation_override_value", "force_eirp_failure", "force_pll_unlock", "ut_ine_success", "rf_ready", "tilt_to_stowed", "reboot", "continuous_motor_test", "distance_override_meters", "country_code_override", "max_pointing_distance", "distance_scaling_factor", "tx_duty_cycle_override", "rx_duty_cycle_override", "tx_time_ms", "rx_time_ms", "eirp_legal_limit_dbw", "eirp_legal_limit_dbw_override", "eirp_adjustment_db", "eirp_predicted_dbw")
     UUID_FIELD_NUMBER: _ClassVar[int]
     TIMESTAMP_FIELD_NUMBER: _ClassVar[int]
     CPLANE_UPDATES_FIELD_NUMBER: _ClassVar[int]
@@ -894,9 +1000,6 @@ class DishGetEmcResponse(_message.Message):
     REBOOT_FIELD_NUMBER: _ClassVar[int]
     CONTINUOUS_MOTOR_TEST_FIELD_NUMBER: _ClassVar[int]
     DISTANCE_OVERRIDE_METERS_FIELD_NUMBER: _ClassVar[int]
-    AMPLITUDE_TAPER_OVERRIDE_FIELD_NUMBER: _ClassVar[int]
-    AMPLITUDE_TAPER_ENABLED_FIELD_NUMBER: _ClassVar[int]
-    AMPLITUDE_TAPER_SCALE_FIELD_NUMBER: _ClassVar[int]
     COUNTRY_CODE_OVERRIDE_FIELD_NUMBER: _ClassVar[int]
     MAX_POINTING_DISTANCE_FIELD_NUMBER: _ClassVar[int]
     DISTANCE_SCALING_FACTOR_FIELD_NUMBER: _ClassVar[int]
@@ -948,9 +1051,6 @@ class DishGetEmcResponse(_message.Message):
     reboot: bool
     continuous_motor_test: bool
     distance_override_meters: float
-    amplitude_taper_override: int
-    amplitude_taper_enabled: bool
-    amplitude_taper_scale: float
     country_code_override: int
     max_pointing_distance: float
     distance_scaling_factor: float
@@ -962,15 +1062,19 @@ class DishGetEmcResponse(_message.Message):
     eirp_legal_limit_dbw_override: float
     eirp_adjustment_db: float
     eirp_predicted_dbw: float
-    def __init__(self, uuid: _Optional[str] = ..., timestamp: _Optional[int] = ..., cplane_updates: _Optional[int] = ..., gps_latitude: _Optional[float] = ..., gps_longitude: _Optional[float] = ..., gps_pdop: _Optional[float] = ..., rf_mode: _Optional[int] = ..., phi: _Optional[float] = ..., theta: _Optional[float] = ..., rx_channel: _Optional[int] = ..., tx_channel: _Optional[int] = ..., t_dbf_max: _Optional[float] = ..., t_center: _Optional[float] = ..., auto_power_snow_melt_enabled: bool = ..., voltage: _Optional[float] = ..., rx_beam_state: _Optional[int] = ..., tx_beam_state: _Optional[int] = ..., half_duplex_state: _Optional[int] = ..., manual_tilt_enabled: bool = ..., tilt_angle: _Optional[float] = ..., pll_tx_lock_detected: _Optional[int] = ..., eirp_exceeded_threshold: bool = ..., idle_override_enabled: bool = ..., theta_override_enabled: bool = ..., theta_override_value: _Optional[float] = ..., phi_override_enabled: bool = ..., phi_override_value: _Optional[float] = ..., rx_chan_override_value: _Optional[int] = ..., tx_chan_override_value: _Optional[int] = ..., sky_search_override_enabled: bool = ..., fast_switching_enabled: bool = ..., modulation_override_value: _Optional[int] = ..., force_eirp_failure: bool = ..., force_pll_unlock: bool = ..., ut_ine_success: _Optional[int] = ..., rf_ready: bool = ..., tilt_to_stowed: bool = ..., reboot: bool = ..., continuous_motor_test: bool = ..., distance_override_meters: _Optional[float] = ..., amplitude_taper_override: _Optional[int] = ..., amplitude_taper_enabled: bool = ..., amplitude_taper_scale: _Optional[float] = ..., country_code_override: _Optional[int] = ..., max_pointing_distance: _Optional[float] = ..., distance_scaling_factor: _Optional[float] = ..., tx_duty_cycle_override: _Optional[int] = ..., rx_duty_cycle_override: _Optional[int] = ..., tx_time_ms: _Optional[float] = ..., rx_time_ms: _Optional[float] = ..., eirp_legal_limit_dbw: _Optional[float] = ..., eirp_legal_limit_dbw_override: _Optional[float] = ..., eirp_adjustment_db: _Optional[float] = ..., eirp_predicted_dbw: _Optional[float] = ...) -> None: ...
+    def __init__(self, uuid: _Optional[str] = ..., timestamp: _Optional[int] = ..., cplane_updates: _Optional[int] = ..., gps_latitude: _Optional[float] = ..., gps_longitude: _Optional[float] = ..., gps_pdop: _Optional[float] = ..., rf_mode: _Optional[int] = ..., phi: _Optional[float] = ..., theta: _Optional[float] = ..., rx_channel: _Optional[int] = ..., tx_channel: _Optional[int] = ..., t_dbf_max: _Optional[float] = ..., t_center: _Optional[float] = ..., auto_power_snow_melt_enabled: bool = ..., voltage: _Optional[float] = ..., rx_beam_state: _Optional[int] = ..., tx_beam_state: _Optional[int] = ..., half_duplex_state: _Optional[int] = ..., manual_tilt_enabled: bool = ..., tilt_angle: _Optional[float] = ..., pll_tx_lock_detected: _Optional[int] = ..., eirp_exceeded_threshold: bool = ..., idle_override_enabled: bool = ..., theta_override_enabled: bool = ..., theta_override_value: _Optional[float] = ..., phi_override_enabled: bool = ..., phi_override_value: _Optional[float] = ..., rx_chan_override_value: _Optional[int] = ..., tx_chan_override_value: _Optional[int] = ..., sky_search_override_enabled: bool = ..., fast_switching_enabled: bool = ..., modulation_override_value: _Optional[int] = ..., force_eirp_failure: bool = ..., force_pll_unlock: bool = ..., ut_ine_success: _Optional[int] = ..., rf_ready: bool = ..., tilt_to_stowed: bool = ..., reboot: bool = ..., continuous_motor_test: bool = ..., distance_override_meters: _Optional[float] = ..., country_code_override: _Optional[int] = ..., max_pointing_distance: _Optional[float] = ..., distance_scaling_factor: _Optional[float] = ..., tx_duty_cycle_override: _Optional[int] = ..., rx_duty_cycle_override: _Optional[int] = ..., tx_time_ms: _Optional[float] = ..., rx_time_ms: _Optional[float] = ..., eirp_legal_limit_dbw: _Optional[float] = ..., eirp_legal_limit_dbw_override: _Optional[float] = ..., eirp_adjustment_db: _Optional[float] = ..., eirp_predicted_dbw: _Optional[float] = ...) -> None: ...
 
 class GetPersistentStatsRequest(_message.Message):
     __slots__ = ()
     def __init__(self) -> None: ...
 
 class StartSpeedtestRequest(_message.Message):
-    __slots__ = ()
-    def __init__(self) -> None: ...
+    __slots__ = ("duration_s", "send_telemetry")
+    DURATION_S_FIELD_NUMBER: _ClassVar[int]
+    SEND_TELEMETRY_FIELD_NUMBER: _ClassVar[int]
+    duration_s: int
+    send_telemetry: bool
+    def __init__(self, duration_s: _Optional[int] = ..., send_telemetry: bool = ...) -> None: ...
 
 class StartSpeedtestResponse(_message.Message):
     __slots__ = ()
@@ -1027,6 +1131,10 @@ class ReportClientSpeedtestResponse(_message.Message):
     __slots__ = ()
     def __init__(self) -> None: ...
 
+class SetPerVehicleConfigResponse(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...
+
 class DishPowerSaveRequest(_message.Message):
     __slots__ = ("power_save_start_minutes", "power_save_duration_minutes", "enable_power_save")
     POWER_SAVE_START_MINUTES_FIELD_NUMBER: _ClassVar[int]
@@ -1073,7 +1181,7 @@ class WifiGetDiagnosticsResponse(_message.Message):
     def __init__(self, id: _Optional[str] = ..., hardware_version: _Optional[str] = ..., software_version: _Optional[str] = ..., networks: _Optional[_Iterable[_Union[WifiGetDiagnosticsResponse.Network, _Mapping]]] = ...) -> None: ...
 
 class DishGetDiagnosticsResponse(_message.Message):
-    __slots__ = ("id", "hardware_version", "software_version", "utc_offset_s", "hardware_self_test", "alerts", "disablement_code", "location")
+    __slots__ = ("id", "hardware_version", "software_version", "utc_offset_s", "hardware_self_test", "hardware_self_test_codes", "alerts", "disablement_code", "location", "alignment_stats", "stowed", "overage_rate_limited")
     class TestResult(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
         __slots__ = ()
         NO_RESULT: _ClassVar[DishGetDiagnosticsResponse.TestResult]
@@ -1082,6 +1190,48 @@ class DishGetDiagnosticsResponse(_message.Message):
     NO_RESULT: DishGetDiagnosticsResponse.TestResult
     PASSED: DishGetDiagnosticsResponse.TestResult
     FAILED: DishGetDiagnosticsResponse.TestResult
+    class TestResultCode(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+        __slots__ = ()
+        GENERAL: _ClassVar[DishGetDiagnosticsResponse.TestResultCode]
+        BOOT_UP: _ClassVar[DishGetDiagnosticsResponse.TestResultCode]
+        CPU_VOLTAGE: _ClassVar[DishGetDiagnosticsResponse.TestResultCode]
+        DBF_AAP_CS: _ClassVar[DishGetDiagnosticsResponse.TestResultCode]
+        DBF_NUM_FEMS: _ClassVar[DishGetDiagnosticsResponse.TestResultCode]
+        DBF_READ_ERRORS: _ClassVar[DishGetDiagnosticsResponse.TestResultCode]
+        DBF_T_DIE_0: _ClassVar[DishGetDiagnosticsResponse.TestResultCode]
+        DBF_T_DIE_1: _ClassVar[DishGetDiagnosticsResponse.TestResultCode]
+        DBF_T_DIE_0_VALID: _ClassVar[DishGetDiagnosticsResponse.TestResultCode]
+        DBF_T_DIE_1_VALID: _ClassVar[DishGetDiagnosticsResponse.TestResultCode]
+        ETH_PRIME: _ClassVar[DishGetDiagnosticsResponse.TestResultCode]
+        EIRP: _ClassVar[DishGetDiagnosticsResponse.TestResultCode]
+        FEM_CUT: _ClassVar[DishGetDiagnosticsResponse.TestResultCode]
+        FUSE_AVS: _ClassVar[DishGetDiagnosticsResponse.TestResultCode]
+        GPS: _ClassVar[DishGetDiagnosticsResponse.TestResultCode]
+        IMU: _ClassVar[DishGetDiagnosticsResponse.TestResultCode]
+        PHY: _ClassVar[DishGetDiagnosticsResponse.TestResultCode]
+        SCP_ERROR: _ClassVar[DishGetDiagnosticsResponse.TestResultCode]
+        TEMPERATURE: _ClassVar[DishGetDiagnosticsResponse.TestResultCode]
+        VTSENS: _ClassVar[DishGetDiagnosticsResponse.TestResultCode]
+    GENERAL: DishGetDiagnosticsResponse.TestResultCode
+    BOOT_UP: DishGetDiagnosticsResponse.TestResultCode
+    CPU_VOLTAGE: DishGetDiagnosticsResponse.TestResultCode
+    DBF_AAP_CS: DishGetDiagnosticsResponse.TestResultCode
+    DBF_NUM_FEMS: DishGetDiagnosticsResponse.TestResultCode
+    DBF_READ_ERRORS: DishGetDiagnosticsResponse.TestResultCode
+    DBF_T_DIE_0: DishGetDiagnosticsResponse.TestResultCode
+    DBF_T_DIE_1: DishGetDiagnosticsResponse.TestResultCode
+    DBF_T_DIE_0_VALID: DishGetDiagnosticsResponse.TestResultCode
+    DBF_T_DIE_1_VALID: DishGetDiagnosticsResponse.TestResultCode
+    ETH_PRIME: DishGetDiagnosticsResponse.TestResultCode
+    EIRP: DishGetDiagnosticsResponse.TestResultCode
+    FEM_CUT: DishGetDiagnosticsResponse.TestResultCode
+    FUSE_AVS: DishGetDiagnosticsResponse.TestResultCode
+    GPS: DishGetDiagnosticsResponse.TestResultCode
+    IMU: DishGetDiagnosticsResponse.TestResultCode
+    PHY: DishGetDiagnosticsResponse.TestResultCode
+    SCP_ERROR: DishGetDiagnosticsResponse.TestResultCode
+    TEMPERATURE: DishGetDiagnosticsResponse.TestResultCode
+    VTSENS: DishGetDiagnosticsResponse.TestResultCode
     class DisablementCode(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
         __slots__ = ()
         UNKNOWN: _ClassVar[DishGetDiagnosticsResponse.DisablementCode]
@@ -1089,23 +1239,33 @@ class DishGetDiagnosticsResponse(_message.Message):
         NO_ACTIVE_ACCOUNT: _ClassVar[DishGetDiagnosticsResponse.DisablementCode]
         TOO_FAR_FROM_SERVICE_ADDRESS: _ClassVar[DishGetDiagnosticsResponse.DisablementCode]
         IN_OCEAN: _ClassVar[DishGetDiagnosticsResponse.DisablementCode]
-        INVALID_COUNTRY: _ClassVar[DishGetDiagnosticsResponse.DisablementCode]
         BLOCKED_COUNTRY: _ClassVar[DishGetDiagnosticsResponse.DisablementCode]
         DATA_OVERAGE_SANDBOX_POLICY: _ClassVar[DishGetDiagnosticsResponse.DisablementCode]
         CELL_IS_DISABLED: _ClassVar[DishGetDiagnosticsResponse.DisablementCode]
-        UNLICENSED_COUNTRY: _ClassVar[DishGetDiagnosticsResponse.DisablementCode]
+        ROAM_RESTRICTED: _ClassVar[DishGetDiagnosticsResponse.DisablementCode]
+        UNKNOWN_LOCATION: _ClassVar[DishGetDiagnosticsResponse.DisablementCode]
+        ACCOUNT_DISABLED: _ClassVar[DishGetDiagnosticsResponse.DisablementCode]
+        UNSUPPORTED_VERSION: _ClassVar[DishGetDiagnosticsResponse.DisablementCode]
+        MOVING_TOO_FAST_FOR_POLICY: _ClassVar[DishGetDiagnosticsResponse.DisablementCode]
+        UNDER_AVIATION_FLYOVER_LIMITS: _ClassVar[DishGetDiagnosticsResponse.DisablementCode]
+        BLOCKED_AREA: _ClassVar[DishGetDiagnosticsResponse.DisablementCode]
     UNKNOWN: DishGetDiagnosticsResponse.DisablementCode
     OKAY: DishGetDiagnosticsResponse.DisablementCode
     NO_ACTIVE_ACCOUNT: DishGetDiagnosticsResponse.DisablementCode
     TOO_FAR_FROM_SERVICE_ADDRESS: DishGetDiagnosticsResponse.DisablementCode
     IN_OCEAN: DishGetDiagnosticsResponse.DisablementCode
-    INVALID_COUNTRY: DishGetDiagnosticsResponse.DisablementCode
     BLOCKED_COUNTRY: DishGetDiagnosticsResponse.DisablementCode
     DATA_OVERAGE_SANDBOX_POLICY: DishGetDiagnosticsResponse.DisablementCode
     CELL_IS_DISABLED: DishGetDiagnosticsResponse.DisablementCode
-    UNLICENSED_COUNTRY: DishGetDiagnosticsResponse.DisablementCode
+    ROAM_RESTRICTED: DishGetDiagnosticsResponse.DisablementCode
+    UNKNOWN_LOCATION: DishGetDiagnosticsResponse.DisablementCode
+    ACCOUNT_DISABLED: DishGetDiagnosticsResponse.DisablementCode
+    UNSUPPORTED_VERSION: DishGetDiagnosticsResponse.DisablementCode
+    MOVING_TOO_FAST_FOR_POLICY: DishGetDiagnosticsResponse.DisablementCode
+    UNDER_AVIATION_FLYOVER_LIMITS: DishGetDiagnosticsResponse.DisablementCode
+    BLOCKED_AREA: DishGetDiagnosticsResponse.DisablementCode
     class Alerts(_message.Message):
-        __slots__ = ("dish_is_heating", "dish_thermal_throttle", "dish_thermal_shutdown", "power_supply_thermal_throttle", "motors_stuck", "mast_not_near_vertical", "slow_ethernet_speeds", "software_install_pending", "moving_too_fast_for_policy", "obstructed")
+        __slots__ = ("dish_is_heating", "dish_thermal_throttle", "dish_thermal_shutdown", "power_supply_thermal_throttle", "motors_stuck", "mast_not_near_vertical", "slow_ethernet_speeds", "software_install_pending", "obstructed")
         DISH_IS_HEATING_FIELD_NUMBER: _ClassVar[int]
         DISH_THERMAL_THROTTLE_FIELD_NUMBER: _ClassVar[int]
         DISH_THERMAL_SHUTDOWN_FIELD_NUMBER: _ClassVar[int]
@@ -1114,7 +1274,6 @@ class DishGetDiagnosticsResponse(_message.Message):
         MAST_NOT_NEAR_VERTICAL_FIELD_NUMBER: _ClassVar[int]
         SLOW_ETHERNET_SPEEDS_FIELD_NUMBER: _ClassVar[int]
         SOFTWARE_INSTALL_PENDING_FIELD_NUMBER: _ClassVar[int]
-        MOVING_TOO_FAST_FOR_POLICY_FIELD_NUMBER: _ClassVar[int]
         OBSTRUCTED_FIELD_NUMBER: _ClassVar[int]
         dish_is_heating: bool
         dish_thermal_throttle: bool
@@ -1124,37 +1283,61 @@ class DishGetDiagnosticsResponse(_message.Message):
         mast_not_near_vertical: bool
         slow_ethernet_speeds: bool
         software_install_pending: bool
-        moving_too_fast_for_policy: bool
         obstructed: bool
-        def __init__(self, dish_is_heating: bool = ..., dish_thermal_throttle: bool = ..., dish_thermal_shutdown: bool = ..., power_supply_thermal_throttle: bool = ..., motors_stuck: bool = ..., mast_not_near_vertical: bool = ..., slow_ethernet_speeds: bool = ..., software_install_pending: bool = ..., moving_too_fast_for_policy: bool = ..., obstructed: bool = ...) -> None: ...
+        def __init__(self, dish_is_heating: bool = ..., dish_thermal_throttle: bool = ..., dish_thermal_shutdown: bool = ..., power_supply_thermal_throttle: bool = ..., motors_stuck: bool = ..., mast_not_near_vertical: bool = ..., slow_ethernet_speeds: bool = ..., software_install_pending: bool = ..., obstructed: bool = ...) -> None: ...
     class Location(_message.Message):
-        __slots__ = ("enabled", "latitude", "longitude", "altitude_meters")
+        __slots__ = ("enabled", "latitude", "longitude", "altitude_meters", "uncertainty_meters_valid", "uncertainty_meters", "gps_time_s")
         ENABLED_FIELD_NUMBER: _ClassVar[int]
         LATITUDE_FIELD_NUMBER: _ClassVar[int]
         LONGITUDE_FIELD_NUMBER: _ClassVar[int]
         ALTITUDE_METERS_FIELD_NUMBER: _ClassVar[int]
+        UNCERTAINTY_METERS_VALID_FIELD_NUMBER: _ClassVar[int]
+        UNCERTAINTY_METERS_FIELD_NUMBER: _ClassVar[int]
+        GPS_TIME_S_FIELD_NUMBER: _ClassVar[int]
         enabled: bool
         latitude: float
         longitude: float
         altitude_meters: float
-        def __init__(self, enabled: bool = ..., latitude: _Optional[float] = ..., longitude: _Optional[float] = ..., altitude_meters: _Optional[float] = ...) -> None: ...
+        uncertainty_meters_valid: bool
+        uncertainty_meters: float
+        gps_time_s: float
+        def __init__(self, enabled: bool = ..., latitude: _Optional[float] = ..., longitude: _Optional[float] = ..., altitude_meters: _Optional[float] = ..., uncertainty_meters_valid: bool = ..., uncertainty_meters: _Optional[float] = ..., gps_time_s: _Optional[float] = ...) -> None: ...
+    class AlignmentStats(_message.Message):
+        __slots__ = ("boresight_azimuth_deg", "boresight_elevation_deg", "desired_boresight_azimuth_deg", "desired_boresight_elevation_deg")
+        BORESIGHT_AZIMUTH_DEG_FIELD_NUMBER: _ClassVar[int]
+        BORESIGHT_ELEVATION_DEG_FIELD_NUMBER: _ClassVar[int]
+        DESIRED_BORESIGHT_AZIMUTH_DEG_FIELD_NUMBER: _ClassVar[int]
+        DESIRED_BORESIGHT_ELEVATION_DEG_FIELD_NUMBER: _ClassVar[int]
+        boresight_azimuth_deg: float
+        boresight_elevation_deg: float
+        desired_boresight_azimuth_deg: float
+        desired_boresight_elevation_deg: float
+        def __init__(self, boresight_azimuth_deg: _Optional[float] = ..., boresight_elevation_deg: _Optional[float] = ..., desired_boresight_azimuth_deg: _Optional[float] = ..., desired_boresight_elevation_deg: _Optional[float] = ...) -> None: ...
     ID_FIELD_NUMBER: _ClassVar[int]
     HARDWARE_VERSION_FIELD_NUMBER: _ClassVar[int]
     SOFTWARE_VERSION_FIELD_NUMBER: _ClassVar[int]
     UTC_OFFSET_S_FIELD_NUMBER: _ClassVar[int]
     HARDWARE_SELF_TEST_FIELD_NUMBER: _ClassVar[int]
+    HARDWARE_SELF_TEST_CODES_FIELD_NUMBER: _ClassVar[int]
     ALERTS_FIELD_NUMBER: _ClassVar[int]
     DISABLEMENT_CODE_FIELD_NUMBER: _ClassVar[int]
     LOCATION_FIELD_NUMBER: _ClassVar[int]
+    ALIGNMENT_STATS_FIELD_NUMBER: _ClassVar[int]
+    STOWED_FIELD_NUMBER: _ClassVar[int]
+    OVERAGE_RATE_LIMITED_FIELD_NUMBER: _ClassVar[int]
     id: str
     hardware_version: str
     software_version: str
     utc_offset_s: int
     hardware_self_test: DishGetDiagnosticsResponse.TestResult
+    hardware_self_test_codes: _containers.RepeatedScalarFieldContainer[DishGetDiagnosticsResponse.TestResultCode]
     alerts: DishGetDiagnosticsResponse.Alerts
     disablement_code: DishGetDiagnosticsResponse.DisablementCode
     location: DishGetDiagnosticsResponse.Location
-    def __init__(self, id: _Optional[str] = ..., hardware_version: _Optional[str] = ..., software_version: _Optional[str] = ..., utc_offset_s: _Optional[int] = ..., hardware_self_test: _Optional[_Union[DishGetDiagnosticsResponse.TestResult, str]] = ..., alerts: _Optional[_Union[DishGetDiagnosticsResponse.Alerts, _Mapping]] = ..., disablement_code: _Optional[_Union[DishGetDiagnosticsResponse.DisablementCode, str]] = ..., location: _Optional[_Union[DishGetDiagnosticsResponse.Location, _Mapping]] = ...) -> None: ...
+    alignment_stats: DishGetDiagnosticsResponse.AlignmentStats
+    stowed: bool
+    overage_rate_limited: bool
+    def __init__(self, id: _Optional[str] = ..., hardware_version: _Optional[str] = ..., software_version: _Optional[str] = ..., utc_offset_s: _Optional[int] = ..., hardware_self_test: _Optional[_Union[DishGetDiagnosticsResponse.TestResult, str]] = ..., hardware_self_test_codes: _Optional[_Iterable[_Union[DishGetDiagnosticsResponse.TestResultCode, str]]] = ..., alerts: _Optional[_Union[DishGetDiagnosticsResponse.Alerts, _Mapping]] = ..., disablement_code: _Optional[_Union[DishGetDiagnosticsResponse.DisablementCode, str]] = ..., location: _Optional[_Union[DishGetDiagnosticsResponse.Location, _Mapping]] = ..., alignment_stats: _Optional[_Union[DishGetDiagnosticsResponse.AlignmentStats, _Mapping]] = ..., stowed: bool = ..., overage_rate_limited: bool = ...) -> None: ...
 
 class TcpConnectivityTestRequest(_message.Message):
     __slots__ = ("target", "port")
@@ -1219,3 +1402,25 @@ class UdpConnectivityTestRequest(_message.Message):
     port: int
     probe_data: UdpConnectivityTestRequest.UDPProbeDataType
     def __init__(self, target: _Optional[str] = ..., port: _Optional[int] = ..., probe_data: _Optional[_Union[UdpConnectivityTestRequest.UDPProbeDataType, str]] = ...) -> None: ...
+
+class GetGoroutineStackTracesRequest(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...
+
+class GetGoroutineStackTracesResponse(_message.Message):
+    __slots__ = ("stack_traces",)
+    STACK_TRACES_FIELD_NUMBER: _ClassVar[int]
+    stack_traces: str
+    def __init__(self, stack_traces: _Optional[str] = ...) -> None: ...
+
+class GetGnssMeasurementRequest(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...
+
+class GetGnssMeasurementResponse(_message.Message):
+    __slots__ = ("device_id", "measurements")
+    DEVICE_ID_FIELD_NUMBER: _ClassVar[int]
+    MEASUREMENTS_FIELD_NUMBER: _ClassVar[int]
+    device_id: str
+    measurements: _containers.RepeatedCompositeFieldContainer[_gnss_pb2.Measurement]
+    def __init__(self, device_id: _Optional[str] = ..., measurements: _Optional[_Iterable[_Union[_gnss_pb2.Measurement, _Mapping]]] = ...) -> None: ...

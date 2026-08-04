@@ -30,10 +30,42 @@ message MeshConfig {
   bool supports_5ghz_high = 10;
 }
 
-message WifiConfig {
-  reserved 1, 2, 4, 5, 6, 8, 10, 11, 14, 15, 16, 17, 18, 21, 24, 25, 27, 28, 29, 32, 34, 35, 36, 37, 38, 40, 41, 1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1011, 1012, 1015, 1021, 1041, 1051, 1052, 1053, 1056, 1057, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008;
+message TlsConfig {
+  string key = 1;
 
-  reserved "apply_enable_remote_ssh", "apply_lan_ipv4", "apply_network_name", "apply_network_name_5ghz", "apply_network_password", "apply_wifi_security", "enable_remote_ssh", "lan_ipv4", "last_remote_ssh_access", "network_name", "network_name_5ghz", "network_password", "wifi_security";
+  string cert = 2;
+
+  string client_ca_cert = 3;
+
+  string server_ca_cert = 4 [deprecated = true];
+}
+
+message HttpServer {
+  reserved 101;
+
+  reserved "pages_bundle_url";
+
+  string domain_name = 1;
+
+  TlsConfig tls = 2;
+
+  string file_content_id = 3;
+
+  string file_content_hash = 4;
+
+  repeated string access_control_allow_origins = 5;
+}
+
+message CaptivePortal {
+  string url = 1;
+
+  bool display_in_captive_browser = 2;
+}
+
+message WifiConfig {
+  reserved 1, 2, 4, 5, 6, 8, 10, 11, 14, 15, 16, 17, 18, 21, 24, 25, 27, 28, 29, 32, 34, 35, 36, 37, 38, 40, 41, 1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1011, 1012, 1015, 1021, 1041, 1051, 1052, 1053, 1056, 1057, 1102, 1103, 1104, 1105, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008;
+
+  reserved "apply_enable_remote_ssh", "apply_lan_ipv4", "apply_network_name", "apply_network_name_5ghz", "apply_network_password", "apply_wifi_security", "enable_remote_ssh", "lan_ipv4", "last_remote_ssh_access", "network_name", "network_name_5ghz", "network_password", "wifi_security", "local_landing_domain", "apply_local_landing_domain", "local_landing", "apply_local_landing";
 
   string country_code = 3;
 
@@ -114,6 +146,14 @@ message WifiConfig {
   bool disable_mesh_onboarding = 52;
 
   bool apply_disable_mesh_onboarding = 1067;
+
+  bool disable_wireless_mesh_onboarding = 1097;
+
+  bool apply_disable_wireless_mesh_onboarding = 1098;
+
+  bool apply_http_server = 1107;
+
+  HttpServer http_server = 1108;
 
   repeated Network networks = 1100;
 
@@ -243,11 +283,45 @@ message WifiConfig {
 
   bool apply_debug_pop_pings = 1095;
 
+  bool debug_pings = 94;
+
+  bool apply_debug_pings = 1106;
+
   bool client_tester = 80;
 
   bool apply_client_tester = 1096;
 
+  uint32 asset_class = 81;
+
+  bool apply_asset_class = 1099;
+
+  bool disable_band_steering = 95;
+
+  bool apply_disable_band_steering = 1109;
+
+  repeated string only_overflight_countries = 1110;
+
+  bool apply_only_overflight_countries = 1111;
+
+  bool only_overflight_countries_using_default = 1114;
+
+  repeated UnbridgedEthPort unbridged_eth_ports = 1112;
+
+  bool apply_unbridged_eth_ports = 1113;
+
+  bool disable_sandbox_fail_open = 1115;
+
+  bool apply_disable_sandbox_fail_open = 1116;
+
   uint32 tag = 78;
+
+  bool custom_dns_disabled = 1117;
+
+  bool apply_custom_dns_disabled = 1118 [deprecated = true];
+
+  bool foreflight_enabled = 1119;
+
+  bool apply_foreflight_enabled = 1120;
 
   message BasicServiceSet {
     reserved 1000, 1001, 1002, 1004, 1006, 2000, 1012, 1014, 1016;
@@ -266,6 +340,10 @@ message WifiConfig {
       AuthWpa2Wpa3 auth_wpa2_wpa3 = 2004;
 
       AuthRadius auth_radius = 2005;
+
+      AuthOpenEncrypted auth_open_encrypted = 2006;
+
+      AuthOnboardRadius auth_onboard_radius = 2007;
     }
 
     Band band = 1011;
@@ -277,14 +355,38 @@ message WifiConfig {
     bool hidden = 1015;
   }
 
+  message DnsStaticEntry {
+    repeated string domains = 1000;
+
+    repeated string addresses = 1001;
+  }
+
+  message DnsForwardRule {
+    repeated string domains = 1000;
+
+    repeated string server_addresses = 1001;
+  }
+
+  message StaticRoute {
+    string subnet = 1;
+
+    string gateway = 2;
+  }
+
   message Network {
-    reserved 1000, 1001, 1002, 1004, 1005, 1006;
+    reserved 1000, 1001, 1002, 1004, 1005, 1006, 1018, 1019;
+
+    reserved "client_authorization_required", "unauthorized_client_domain_allow_list";
 
     string ipv4 = 1003;
 
     uint32 dhcpv4_start = 1012;
 
+    uint32 dhcpv4_end = 1025;
+
     bool dhcp_disabled = 1015;
+
+    bool dns_disabled = 1034;
 
     uint32 dhcpv4_lease_duration_s = 1016;
 
@@ -300,9 +402,71 @@ message WifiConfig {
 
     bool landing_page_v2 = 1017;
 
+    bool sandbox_enabled = 1020;
+
+    repeated string sandbox_domain_allow_list = 1022;
+
+    uint32 sandbox_id = 1023;
+
     bool internal = 1013;
 
     uint32 vlan = 1014;
+
+    CaptivePortal captive_portal = 1024;
+
+    uint32 network_groups = 1026;
+
+    repeated DnsStaticEntry dns_static_entries = 1027;
+
+    repeated DnsForwardRule dns_forward_rules = 1028;
+
+    bool disable_when_offline_old = 1029 [deprecated = true];
+
+    repeated StaticRoute static_routes = 1030;
+
+    bool disable_when_offline = 1031;
+
+    GeofenceAction geofence_action = 1038;
+
+    TlsConfig onboard_radius_tls_config_old = 1032 [deprecated = true];
+
+    TlsConfig onboard_radius_tls_config = 1033;
+
+    bool get_lease_dhcp = 1035;
+
+    bool default_route_disabled = 1036;
+
+    enum GeofenceAction {
+      NONE = 0;
+
+      DISABLE_RADIOS_AND_BLOCK_TRAFFIC = 1;
+
+      BLOCK_TRAFFIC = 2;
+    }
+  }
+
+  message UnbridgedEthPort {
+    uint32 lan_port_index = 1;
+
+    string ip = 2;
+
+    string gateway = 3;
+
+    repeated StaticRoute static_routes = 4;
+
+    oneof wan {
+      WanNone wan_none = 5;
+
+      WanStarlinkRouterPair wan_starlink_router_pair = 6;
+    }
+
+    uint32 bridged_network_group_override = 7;
+
+    message StaticRoute {
+      string subnet = 1;
+
+      uint32 network_groups = 2;
+    }
   }
 
   enum Security {
@@ -374,6 +538,13 @@ message WifiConfig {
   }
 }
 
+message WanNone {
+}
+
+message WanStarlinkRouterPair {
+  bool client_vlan_first = 1;
+}
+
 message WeeklyBlockSchedule {
   repeated BlockRange block_ranges = 1;
 
@@ -423,6 +594,9 @@ message AuthWpa2Wpa3 {
   string password = 1;
 }
 
+message AuthOpenEncrypted {
+}
+
 message AuthRadius {
   string server = 1;
 
@@ -435,11 +609,14 @@ message AuthRadius {
   Protocol transport = 5;
 }
 
+message AuthOnboardRadius {
+}
+
 message NoTrafficControl {
 }
 
 message AckSuppression {
-  uint32 ack_mark = 1;
+  uint32 ack_mark = 1 [deprecated = true];
 
   float htb_ack_queue_rate = 2;
 
@@ -453,7 +630,7 @@ message AckSuppression {
 }
 
 message CakeRateLimit {
-  uint32 host_mark = 1;
+  uint32 host_mark = 1 [deprecated = true];
 
   float bandwidth = 2;
 

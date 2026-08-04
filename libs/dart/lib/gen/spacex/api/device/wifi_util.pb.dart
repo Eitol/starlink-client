@@ -12,6 +12,7 @@
 
 import 'dart:core' as $core;
 
+import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'wifi_util.pbenum.dart';
@@ -29,6 +30,7 @@ class InflatedBasicServiceSet extends $pb.GeneratedMessage {
     IfaceType? ifaceType,
     $core.int? channel,
     $core.int? preference,
+    $core.String? domain,
   }) {
     final result = create();
     if (bssid != null) result.bssid = bssid;
@@ -38,6 +40,7 @@ class InflatedBasicServiceSet extends $pb.GeneratedMessage {
     if (ifaceType != null) result.ifaceType = ifaceType;
     if (channel != null) result.channel = channel;
     if (preference != null) result.preference = preference;
+    if (domain != null) result.domain = domain;
     return result;
   }
 
@@ -63,6 +66,7 @@ class InflatedBasicServiceSet extends $pb.GeneratedMessage {
         enumValues: IfaceType.values)
     ..aI(6, _omitFieldNames ? '' : 'channel', fieldType: $pb.PbFieldType.OU3)
     ..aI(7, _omitFieldNames ? '' : 'preference', fieldType: $pb.PbFieldType.OU3)
+    ..aOS(8, _omitFieldNames ? '' : 'domain')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -147,6 +151,15 @@ class InflatedBasicServiceSet extends $pb.GeneratedMessage {
   $core.bool hasPreference() => $_has(6);
   @$pb.TagNumber(7)
   void clearPreference() => $_clearField(7);
+
+  @$pb.TagNumber(8)
+  $core.String get domain => $_getSZ(7);
+  @$pb.TagNumber(8)
+  set domain($core.String value) => $_setString(7, value);
+  @$pb.TagNumber(8)
+  $core.bool hasDomain() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearDomain() => $_clearField(8);
 }
 
 class DhcpLease extends $pb.GeneratedMessage {
@@ -268,11 +281,13 @@ class DhcpServer extends $pb.GeneratedMessage {
     $core.String? domain,
     $core.String? subnet,
     $core.Iterable<DhcpLease>? leases,
+    $core.bool? ipExhausted,
   }) {
     final result = create();
     if (domain != null) result.domain = domain;
     if (subnet != null) result.subnet = subnet;
     if (leases != null) result.leases.addAll(leases);
+    if (ipExhausted != null) result.ipExhausted = ipExhausted;
     return result;
   }
 
@@ -294,6 +309,7 @@ class DhcpServer extends $pb.GeneratedMessage {
     ..aOS(2, _omitFieldNames ? '' : 'subnet')
     ..pPM<DhcpLease>(3, _omitFieldNames ? '' : 'leases',
         subBuilder: DhcpLease.create)
+    ..aOB(4, _omitFieldNames ? '' : 'ipExhausted')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -334,6 +350,15 @@ class DhcpServer extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(3)
   $pb.PbList<DhcpLease> get leases => $_getList(2);
+
+  @$pb.TagNumber(4)
+  $core.bool get ipExhausted => $_getBF(3);
+  @$pb.TagNumber(4)
+  set ipExhausted($core.bool value) => $_setBool(3, value);
+  @$pb.TagNumber(4)
+  $core.bool hasIpExhausted() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearIpExhausted() => $_clearField(4);
 }
 
 class RadiusStatsMap_RadiusStats extends $pb.GeneratedMessage {
@@ -554,6 +579,7 @@ class PoeStats extends $pb.GeneratedMessage {
     $core.int? poeFaultsSlowOvercurrent,
     $core.int? poeFaultsOvervoltage,
     $core.int? poeFaultsUndervoltage,
+    $core.double? vsnsVin,
   }) {
     final result = create();
     if (poeState != null) result.poeState = poeState;
@@ -566,6 +592,7 @@ class PoeStats extends $pb.GeneratedMessage {
       result.poeFaultsOvervoltage = poeFaultsOvervoltage;
     if (poeFaultsUndervoltage != null)
       result.poeFaultsUndervoltage = poeFaultsUndervoltage;
+    if (vsnsVin != null) result.vsnsVin = vsnsVin;
     return result;
   }
 
@@ -594,6 +621,7 @@ class PoeStats extends $pb.GeneratedMessage {
         fieldType: $pb.PbFieldType.OU3)
     ..aI(6, _omitFieldNames ? '' : 'poeFaultsUndervoltage',
         fieldType: $pb.PbFieldType.OU3)
+    ..aD(7, _omitFieldNames ? '' : 'vsnsVin', fieldType: $pb.PbFieldType.OF)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -667,6 +695,15 @@ class PoeStats extends $pb.GeneratedMessage {
   $core.bool hasPoeFaultsUndervoltage() => $_has(5);
   @$pb.TagNumber(6)
   void clearPoeFaultsUndervoltage() => $_clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.double get vsnsVin => $_getN(6);
+  @$pb.TagNumber(7)
+  set vsnsVin($core.double value) => $_setFloat(6, value);
+  @$pb.TagNumber(7)
+  $core.bool hasVsnsVin() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearVsnsVin() => $_clearField(7);
 }
 
 class WifiSoftwareUpdateStats extends $pb.GeneratedMessage {
@@ -674,6 +711,8 @@ class WifiSoftwareUpdateStats extends $pb.GeneratedMessage {
     WifiSoftwareUpdateState? state,
     $core.double? softwareDownloadProgress,
     $core.double? secondsSinceGetTargetVersions,
+    $core.String? runningVersion,
+    $core.String? versionInProgress,
   }) {
     final result = create();
     if (state != null) result.state = state;
@@ -681,6 +720,8 @@ class WifiSoftwareUpdateStats extends $pb.GeneratedMessage {
       result.softwareDownloadProgress = softwareDownloadProgress;
     if (secondsSinceGetTargetVersions != null)
       result.secondsSinceGetTargetVersions = secondsSinceGetTargetVersions;
+    if (runningVersion != null) result.runningVersion = runningVersion;
+    if (versionInProgress != null) result.versionInProgress = versionInProgress;
     return result;
   }
 
@@ -704,6 +745,8 @@ class WifiSoftwareUpdateStats extends $pb.GeneratedMessage {
         fieldType: $pb.PbFieldType.OF)
     ..aD(3, _omitFieldNames ? '' : 'secondsSinceGetTargetVersions',
         fieldType: $pb.PbFieldType.OF)
+    ..aOS(4, _omitFieldNames ? '' : 'runningVersion')
+    ..aOS(5, _omitFieldNames ? '' : 'versionInProgress')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -752,6 +795,95 @@ class WifiSoftwareUpdateStats extends $pb.GeneratedMessage {
   $core.bool hasSecondsSinceGetTargetVersions() => $_has(2);
   @$pb.TagNumber(3)
   void clearSecondsSinceGetTargetVersions() => $_clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get runningVersion => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set runningVersion($core.String value) => $_setString(3, value);
+  @$pb.TagNumber(4)
+  $core.bool hasRunningVersion() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearRunningVersion() => $_clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get versionInProgress => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set versionInProgress($core.String value) => $_setString(4, value);
+  @$pb.TagNumber(5)
+  $core.bool hasVersionInProgress() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearVersionInProgress() => $_clearField(5);
+}
+
+class WifiSetupRequirement extends $pb.GeneratedMessage {
+  factory WifiSetupRequirement({
+    WifiSetupRequirementState? state,
+    $fixnum.Int64? pauseCountdownSeconds,
+  }) {
+    final result = create();
+    if (state != null) result.state = state;
+    if (pauseCountdownSeconds != null)
+      result.pauseCountdownSeconds = pauseCountdownSeconds;
+    return result;
+  }
+
+  WifiSetupRequirement._();
+
+  factory WifiSetupRequirement.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory WifiSetupRequirement.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'WifiSetupRequirement',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
+      createEmptyInstance: create)
+    ..aE<WifiSetupRequirementState>(1, _omitFieldNames ? '' : 'state',
+        enumValues: WifiSetupRequirementState.values)
+    ..a<$fixnum.Int64>(
+        2, _omitFieldNames ? '' : 'pauseCountdownSeconds', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  WifiSetupRequirement clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  WifiSetupRequirement copyWith(void Function(WifiSetupRequirement) updates) =>
+      super.copyWith((message) => updates(message as WifiSetupRequirement))
+          as WifiSetupRequirement;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static WifiSetupRequirement create() => WifiSetupRequirement._();
+  @$core.override
+  WifiSetupRequirement createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static WifiSetupRequirement getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<WifiSetupRequirement>(create);
+  static WifiSetupRequirement? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  WifiSetupRequirementState get state => $_getN(0);
+  @$pb.TagNumber(1)
+  set state(WifiSetupRequirementState value) => $_setField(1, value);
+  @$pb.TagNumber(1)
+  $core.bool hasState() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearState() => $_clearField(1);
+
+  @$pb.TagNumber(2)
+  $fixnum.Int64 get pauseCountdownSeconds => $_getI64(1);
+  @$pb.TagNumber(2)
+  set pauseCountdownSeconds($fixnum.Int64 value) => $_setInt64(1, value);
+  @$pb.TagNumber(2)
+  $core.bool hasPauseCountdownSeconds() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPauseCountdownSeconds() => $_clearField(2);
 }
 
 const $core.bool _omitFieldNames =

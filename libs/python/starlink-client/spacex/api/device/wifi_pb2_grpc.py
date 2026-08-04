@@ -5,7 +5,7 @@ import grpc
 from spacex.api.device import wifi_pb2 as spacex_dot_api_dot_device_dot_wifi__pb2
 
 
-class MeshStub(object):
+class MeshStub:
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
@@ -21,7 +21,7 @@ class MeshStub(object):
                 _registered_method=True)
 
 
-class MeshServicer(object):
+class MeshServicer:
     """Missing associated documentation comment in .proto file."""
 
     def MeshStream(self, request_iterator, context):
@@ -46,7 +46,7 @@ def add_MeshServicer_to_server(servicer, server):
 
 
  # This class is part of an EXPERIMENTAL API.
-class Mesh(object):
+class Mesh:
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod

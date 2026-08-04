@@ -182,6 +182,44 @@ final $typed_data.Uint8List wifiSoftwareUpdateStateDescriptor = $convert.base64D
     '9XTkxPQURJTkdfVVBEQVRFX0lNQUdFX0ZBSUxFRBAKEiYKIkRPV05MT0FESU5HX1VQREFURV9J'
     'TUFHRV9FWEhBVVNURUQQCxITCg9GTEFTSElOR19GQUlMRUQQDA==');
 
+@$core.Deprecated('Use wifiSetupRequirementStateDescriptor instead')
+const WifiSetupRequirementState$json = {
+  '1': 'WifiSetupRequirementState',
+  '2': [
+    {'1': 'NOT_REQUIRED', '2': 0},
+    {'1': 'REQUIRED_COUNTDOWN', '2': 1},
+    {'1': 'REQUIRED_PAUSED', '2': 2},
+    {'1': 'REQUIRED_COMPLETE', '2': 3},
+  ],
+};
+
+/// Descriptor for `WifiSetupRequirementState`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List wifiSetupRequirementStateDescriptor = $convert.base64Decode(
+    'ChlXaWZpU2V0dXBSZXF1aXJlbWVudFN0YXRlEhAKDE5PVF9SRVFVSVJFRBAAEhYKElJFUVVJUk'
+    'VEX0NPVU5URE9XThABEhMKD1JFUVVJUkVEX1BBVVNFRBACEhUKEVJFUVVJUkVEX0NPTVBMRVRF'
+    'EAM=');
+
+@$core.Deprecated('Use calibrationPartitionsStateDescriptor instead')
+const CalibrationPartitionsState$json = {
+  '1': 'CalibrationPartitionsState',
+  '2': [
+    {'1': 'CALIBRATION_PARTITIONS_STATE_UNSPECIFIED', '2': 0},
+    {'1': 'CALIBRATION_PARTITIONS_STATE_ABSENT_BOTH_SIDES', '2': 1},
+    {'1': 'CALIBRATION_PARTITIONS_STATE_CONTENTS_EQUAL', '2': 2},
+    {'1': 'CALIBRATION_PARTITIONS_STATE_CONTENTS_NOT_EQUAL', '2': 3},
+    {'1': 'CALIBRATION_PARTITIONS_STATE_COMPARISON_FAILED', '2': 4},
+  ],
+};
+
+/// Descriptor for `CalibrationPartitionsState`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List calibrationPartitionsStateDescriptor = $convert.base64Decode(
+    'ChpDYWxpYnJhdGlvblBhcnRpdGlvbnNTdGF0ZRIsCihDQUxJQlJBVElPTl9QQVJUSVRJT05TX1'
+    'NUQVRFX1VOU1BFQ0lGSUVEEAASMgouQ0FMSUJSQVRJT05fUEFSVElUSU9OU19TVEFURV9BQlNF'
+    'TlRfQk9USF9TSURFUxABEi8KK0NBTElCUkFUSU9OX1BBUlRJVElPTlNfU1RBVEVfQ09OVEVOVF'
+    'NfRVFVQUwQAhIzCi9DQUxJQlJBVElPTl9QQVJUSVRJT05TX1NUQVRFX0NPTlRFTlRTX05PVF9F'
+    'UVVBTBADEjIKLkNBTElCUkFUSU9OX1BBUlRJVElPTlNfU1RBVEVfQ09NUEFSSVNPTl9GQUlMRU'
+    'QQBA==');
+
 @$core.Deprecated('Use inflatedBasicServiceSetDescriptor instead')
 const InflatedBasicServiceSet$json = {
   '1': 'InflatedBasicServiceSet',
@@ -200,6 +238,7 @@ const InflatedBasicServiceSet$json = {
     },
     {'1': 'channel', '3': 6, '4': 1, '5': 13, '10': 'channel'},
     {'1': 'preference', '3': 7, '4': 1, '5': 13, '10': 'preference'},
+    {'1': 'domain', '3': 8, '4': 1, '5': 9, '10': 'domain'},
   ],
 };
 
@@ -209,7 +248,7 @@ final $typed_data.Uint8List inflatedBasicServiceSetDescriptor = $convert.base64D
     'gCIAEoCVIEc3NpZBIXCgdtYWNfbGFuGAMgASgJUgZtYWNMYW4SHQoKaWZhY2VfbmFtZRgEIAEo'
     'CVIJaWZhY2VOYW1lEjsKCmlmYWNlX3R5cGUYBSABKA4yHC5TcGFjZVguQVBJLkRldmljZS5JZm'
     'FjZVR5cGVSCWlmYWNlVHlwZRIYCgdjaGFubmVsGAYgASgNUgdjaGFubmVsEh4KCnByZWZlcmVu'
-    'Y2UYByABKA1SCnByZWZlcmVuY2U=');
+    'Y2UYByABKA1SCnByZWZlcmVuY2USFgoGZG9tYWluGAggASgJUgZkb21haW4=');
 
 @$core.Deprecated('Use dhcpLeaseDescriptor instead')
 const DhcpLease$json = {
@@ -245,6 +284,7 @@ const DhcpServer$json = {
       '6': '.SpaceX.API.Device.DhcpLease',
       '10': 'leases'
     },
+    {'1': 'ip_exhausted', '3': 4, '4': 1, '5': 8, '10': 'ipExhausted'},
   ],
 };
 
@@ -252,7 +292,7 @@ const DhcpServer$json = {
 final $typed_data.Uint8List dhcpServerDescriptor = $convert.base64Decode(
     'CgpEaGNwU2VydmVyEhYKBmRvbWFpbhgBIAEoCVIGZG9tYWluEhYKBnN1Ym5ldBgCIAEoCVIGc3'
     'VibmV0EjQKBmxlYXNlcxgDIAMoCzIcLlNwYWNlWC5BUEkuRGV2aWNlLkRoY3BMZWFzZVIGbGVh'
-    'c2Vz');
+    'c2VzEiEKDGlwX2V4aGF1c3RlZBgEIAEoCFILaXBFeGhhdXN0ZWQ=');
 
 @$core.Deprecated('Use radiusStatsMapDescriptor instead')
 const RadiusStatsMap$json = {
@@ -394,6 +434,7 @@ const PoeStats$json = {
       '5': 13,
       '10': 'poeFaultsUndervoltage'
     },
+    {'1': 'vsns_vin', '3': 7, '4': 1, '5': 2, '10': 'vsnsVin'},
   ],
 };
 
@@ -404,7 +445,8 @@ final $typed_data.Uint8List poeStatsDescriptor = $convert.base64Decode(
     'X2Zhc3Rfb3ZlcmN1cnJlbnQYAyABKA1SGHBvZUZhdWx0c0Zhc3RPdmVyY3VycmVudBI9Chtwb2'
     'VfZmF1bHRzX3Nsb3dfb3ZlcmN1cnJlbnQYBCABKA1SGHBvZUZhdWx0c1Nsb3dPdmVyY3VycmVu'
     'dBI0ChZwb2VfZmF1bHRzX292ZXJ2b2x0YWdlGAUgASgNUhRwb2VGYXVsdHNPdmVydm9sdGFnZR'
-    'I2Chdwb2VfZmF1bHRzX3VuZGVydm9sdGFnZRgGIAEoDVIVcG9lRmF1bHRzVW5kZXJ2b2x0YWdl');
+    'I2Chdwb2VfZmF1bHRzX3VuZGVydm9sdGFnZRgGIAEoDVIVcG9lRmF1bHRzVW5kZXJ2b2x0YWdl'
+    'EhkKCHZzbnNfdmluGAcgASgCUgd2c25zVmlu');
 
 @$core.Deprecated('Use wifiSoftwareUpdateStatsDescriptor instead')
 const WifiSoftwareUpdateStats$json = {
@@ -432,6 +474,14 @@ const WifiSoftwareUpdateStats$json = {
       '5': 2,
       '10': 'secondsSinceGetTargetVersions'
     },
+    {'1': 'running_version', '3': 4, '4': 1, '5': 9, '10': 'runningVersion'},
+    {
+      '1': 'version_in_progress',
+      '3': 5,
+      '4': 1,
+      '5': 9,
+      '10': 'versionInProgress'
+    },
   ],
 };
 
@@ -441,4 +491,33 @@ final $typed_data.Uint8List wifiSoftwareUpdateStatsDescriptor = $convert.base64D
     'V2aWNlLldpZmlTb2Z0d2FyZVVwZGF0ZVN0YXRlUgVzdGF0ZRI8Chpzb2Z0d2FyZV9kb3dubG9h'
     'ZF9wcm9ncmVzcxgCIAEoAlIYc29mdHdhcmVEb3dubG9hZFByb2dyZXNzEkgKIXNlY29uZHNfc2'
     'luY2VfZ2V0X3RhcmdldF92ZXJzaW9ucxgDIAEoAlIdc2Vjb25kc1NpbmNlR2V0VGFyZ2V0VmVy'
-    'c2lvbnM=');
+    'c2lvbnMSJwoPcnVubmluZ192ZXJzaW9uGAQgASgJUg5ydW5uaW5nVmVyc2lvbhIuChN2ZXJzaW'
+    '9uX2luX3Byb2dyZXNzGAUgASgJUhF2ZXJzaW9uSW5Qcm9ncmVzcw==');
+
+@$core.Deprecated('Use wifiSetupRequirementDescriptor instead')
+const WifiSetupRequirement$json = {
+  '1': 'WifiSetupRequirement',
+  '2': [
+    {
+      '1': 'state',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.WifiSetupRequirementState',
+      '10': 'state'
+    },
+    {
+      '1': 'pause_countdown_seconds',
+      '3': 2,
+      '4': 1,
+      '5': 4,
+      '10': 'pauseCountdownSeconds'
+    },
+  ],
+};
+
+/// Descriptor for `WifiSetupRequirement`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List wifiSetupRequirementDescriptor = $convert.base64Decode(
+    'ChRXaWZpU2V0dXBSZXF1aXJlbWVudBJCCgVzdGF0ZRgBIAEoDjIsLlNwYWNlWC5BUEkuRGV2aW'
+    'NlLldpZmlTZXR1cFJlcXVpcmVtZW50U3RhdGVSBXN0YXRlEjYKF3BhdXNlX2NvdW50ZG93bl9z'
+    'ZWNvbmRzGAIgASgEUhVwYXVzZUNvdW50ZG93blNlY29uZHM=');

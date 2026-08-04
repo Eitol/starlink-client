@@ -8,7 +8,11 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -16,12 +20,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-struct SpaceX_API_Device_Services_Unlock_UnlockChallenge: @unchecked Sendable {
+nonisolated struct SpaceX_API_Device_Services_Unlock_UnlockChallenge: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -43,7 +47,7 @@ struct SpaceX_API_Device_Services_Unlock_UnlockChallenge: @unchecked Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_Services_Unlock_StartUnlockRequest: Sendable {
+nonisolated struct SpaceX_API_Device_Services_Unlock_StartUnlockRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -53,7 +57,7 @@ struct SpaceX_API_Device_Services_Unlock_StartUnlockRequest: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_Services_Unlock_StartUnlockResponse: @unchecked Sendable {
+nonisolated struct SpaceX_API_Device_Services_Unlock_StartUnlockResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -69,7 +73,7 @@ struct SpaceX_API_Device_Services_Unlock_StartUnlockResponse: @unchecked Sendabl
   init() {}
 }
 
-struct SpaceX_API_Device_Services_Unlock_FinishUnlockRequest: @unchecked Sendable {
+nonisolated struct SpaceX_API_Device_Services_Unlock_FinishUnlockRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -83,7 +87,7 @@ struct SpaceX_API_Device_Services_Unlock_FinishUnlockRequest: @unchecked Sendabl
   init() {}
 }
 
-struct SpaceX_API_Device_Services_Unlock_FinishUnlockResponse: Sendable {
+nonisolated struct SpaceX_API_Device_Services_Unlock_FinishUnlockResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -97,18 +101,11 @@ struct SpaceX_API_Device_Services_Unlock_FinishUnlockResponse: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "SpaceX.API.Device.Services.Unlock"
+fileprivate nonisolated let _protobuf_package = "SpaceX.API.Device.Services.Unlock"
 
-extension SpaceX_API_Device_Services_Unlock_UnlockChallenge: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_Services_Unlock_UnlockChallenge: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".UnlockChallenge"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "device_id"),
-    2: .same(proto: "nonce"),
-    4: .standard(proto: "sign_spki"),
-    5: .standard(proto: "grant_keydata"),
-    6: .standard(proto: "service_keydata"),
-    7: .standard(proto: "authority_grants"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}device_id\0\u{1}nonce\0\u{4}\u{2}sign_spki\0\u{3}grant_keydata\0\u{3}service_keydata\0\u{3}authority_grants\0\u{b}grant_spki\0\u{c}\u{3}\u{1}")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -161,7 +158,7 @@ extension SpaceX_API_Device_Services_Unlock_UnlockChallenge: SwiftProtobuf.Messa
   }
 }
 
-extension SpaceX_API_Device_Services_Unlock_StartUnlockRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_Services_Unlock_StartUnlockRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".StartUnlockRequest"
   static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -180,13 +177,9 @@ extension SpaceX_API_Device_Services_Unlock_StartUnlockRequest: SwiftProtobuf.Me
   }
 }
 
-extension SpaceX_API_Device_Services_Unlock_StartUnlockResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_Services_Unlock_StartUnlockResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".StartUnlockResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "device_id"),
-    2: .same(proto: "nonce"),
-    3: .standard(proto: "sign_spki"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}device_id\0\u{1}nonce\0\u{3}sign_spki\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -224,12 +217,9 @@ extension SpaceX_API_Device_Services_Unlock_StartUnlockResponse: SwiftProtobuf.M
   }
 }
 
-extension SpaceX_API_Device_Services_Unlock_FinishUnlockRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_Services_Unlock_FinishUnlockRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".FinishUnlockRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "challenge"),
-    2: .same(proto: "signature"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}challenge\0\u{1}signature\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -262,11 +252,9 @@ extension SpaceX_API_Device_Services_Unlock_FinishUnlockRequest: SwiftProtobuf.M
   }
 }
 
-extension SpaceX_API_Device_Services_Unlock_FinishUnlockResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_Services_Unlock_FinishUnlockResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".FinishUnlockResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "status"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}status\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {

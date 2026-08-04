@@ -2,6 +2,10 @@ syntax = "proto3";
 
 package SpaceX.API.Device;
 
+import "google/protobuf/timestamp.proto";
+
+import "spacex/api/device/account_shard.proto";
+
 import "spacex/api/device/common.proto";
 
 import "spacex/api/device/dish_config.proto";
@@ -10,6 +14,8 @@ import "spacex/api/device/rssi_scan.proto";
 
 import "spacex/api/satellites/network/ut_disablement_codes.proto";
 
+import "spacex/api/telemetron/public/integrations/rate_limit_reason.proto";
+
 option go_package = "spacex.com/api/device";
 
 message DishStowRequest {
@@ -17,6 +23,38 @@ message DishStowRequest {
 }
 
 message DishStowResponse {
+}
+
+message DishAviationTestRequest {
+  float thermal_demand_fraction = 1;
+
+  bool apply_thermal_demand_fraction = 2;
+
+  EthSpeed eth_speed = 3;
+
+  bool apply_eth_speed = 4;
+
+  uint32 eth_amplitude_registers = 5;
+
+  bool apply_eth_amplitude_registers = 6;
+
+  enum EthSpeed {
+    ETH_SPEED_100_MBPS = 0;
+
+    ETH_SPEED_1000_MBPS = 1;
+  }
+}
+
+message DishAviationTestResponse {
+}
+
+message ZtlmQueryRequest {
+  google.protobuf.Timestamp query_start_time = 1;
+
+  google.protobuf.Timestamp query_end_time = 2;
+}
+
+message ZtlmQueryResponse {
 }
 
 message DishGetContextRequest {
@@ -63,6 +101,12 @@ message DishGetContextResponse {
 
   float seconds_since_last_60s_outage = 19;
 
+  bool outage_1s_within_1h = 23;
+
+  bool outage_2s_within_1h = 24;
+
+  bool outage_5s_within_1h = 25;
+
   SpaceX.API.Satellites.Network.UtDisablementCode disablement_code = 21;
 
   float ku_mac_active_ratio = 22;
@@ -102,7 +146,13 @@ message DishOutage {
 
     SLEEPING = 11;
 
-    MOVING_WHILE_NOT_ALLOWED = 12;
+    SKY_SEARCH = 13;
+
+    INHIBIT_RF = 14;
+
+    reserved 12;
+
+    reserved "MOVING_WHILE_NOT_ALLOWED";
   }
 }
 
@@ -120,10 +170,22 @@ message DishGetHistoryResponse {
   repeated float uplink_throughput_bps = 1004;
 
   repeated DishOutage outages = 1009;
+
+  repeated float power_in = 1010;
+
+  EventLog event_log = 1011;
+}
+
+message RouterInfo {
+  RouterRole role = 1;
+
+  int64 last_seen = 2;
 }
 
 message DishGetStatusResponse {
-  reserved 1001, 1006, 1013;
+  reserved 1001, 1006, 1013, 1046, 1047;
+
+  reserved "phy_rx_beam_snr_avg", "t_center";
 
   DeviceInfo device_info = 1;
 
@@ -167,6 +229,8 @@ message DishGetStatusResponse {
 
   bool swupdate_reboot_ready = 1030;
 
+  RebootReason reboot_reason = 1032;
+
   SoftwareUpdateStats software_update_stats = 1026;
 
   AlignmentStats alignment_stats = 1027;
@@ -176,6 +240,10 @@ message DishGetStatusResponse {
   HasActuators has_actuators = 1023;
 
   SpaceX.API.Satellites.Network.UtDisablementCode disablement_code = 1024;
+
+  SpaceX.API.Telemetron.Public.Integrations.RateLimitReason dl_bandwidth_restricted_reason = 1044;
+
+  SpaceX.API.Telemetron.Public.Integrations.RateLimitReason ul_bandwidth_restricted_reason = 1045;
 
   bool has_signed_cals = 1025;
 
@@ -187,7 +255,29 @@ message DishGetStatusResponse {
 
   int32 seconds_until_swupdate_reboot_possible = 1031;
 
+  bool high_power_test_mode = 1033;
+
   repeated string connected_routers = 1040;
+
+  PLCStats plc_stats = 1041;
+
+  bool is_moving_fast_persisted = 1042;
+
+  DishUpsuStats upsu_stats = 1043;
+
+  DishApsStats aps_stats = 1048;
+
+  Quaternion ned2dish_quaternion = 1049;
+
+  map<string, RouterInfo> downstream_routers = 1050;
+
+  AccountShard account_shard = 1051;
+
+  bool mac_flag = 1052;
+
+  NatFlag nat_flag = 1053;
+
+  DishBatteryStats battery_stats = 1054;
 }
 
 message DishGetObstructionMapRequest {
@@ -203,12 +293,14 @@ message DishGetObstructionMapResponse {
   float min_elevation_deg = 4 [deprecated = true];
 
   float max_theta_deg = 5;
+
+  ObstructionMapReferenceFrame map_reference_frame = 6;
 }
 
 message DishAlerts {
-  reserved 13;
+  reserved 12, 13, 15;
 
-  reserved "moving_fast_while_not_aviation";
+  reserved "moving_fast_while_not_aviation", "moving_while_not_mobile", "moving_too_fast_for_policy";
 
   bool motors_stuck = 1;
 
@@ -234,15 +326,21 @@ message DishAlerts {
 
   bool is_power_save_idle = 11;
 
-  bool moving_while_not_mobile = 12;
-
-  bool moving_too_fast_for_policy = 15;
-
   bool dbf_telem_stale = 14;
 
   bool low_motor_current = 16;
 
   bool lower_signal_than_predicted = 17;
+
+  bool obstruction_map_reset = 19;
+
+  bool dish_water_detected = 20;
+
+  bool router_water_detected = 21;
+
+  bool upsu_router_port_slow = 22;
+
+  bool no_ethernet_link = 23;
 }
 
 message DishReadyStates {
@@ -273,6 +371,10 @@ message SoftwareUpdateStats {
   SoftwareUpdateState software_update_state = 1;
 
   float software_update_progress = 2;
+
+  bool update_requires_reboot = 3;
+
+  int64 reboot_scheduled_utc_time = 4;
 }
 
 message AlignmentStats {
@@ -317,6 +419,62 @@ message DishObstructionStats {
   bool avg_prolonged_obstruction_valid = 8;
 }
 
+message DishUpsuStats {
+  uint64 app_version = 2;
+
+  uint64 boot_version = 3;
+
+  uint64 rom_version = 4;
+
+  int64 uptime = 5;
+
+  float dish_power = 6;
+
+  float router_power = 7;
+
+  bool force_dev_signed_allowed = 8;
+
+  bool debug_port_locked = 9;
+
+  bool stsafe_certs_locked = 10;
+
+  bool stsafe_keys_locked = 11;
+
+  uint32 g0_locked = 12;
+
+  uint32 g0_firmware_version = 13;
+
+  int32 board_rev = 14;
+
+  uint32 g0_board_id = 15;
+}
+
+message DishApsStats {
+  uint64 app_version = 2;
+
+  uint64 boot_version = 3;
+
+  uint64 rom_version = 4;
+
+  int64 uptime = 5;
+
+  float dish_power = 6;
+
+  bool force_dev_signed_allowed = 7;
+
+  bool debug_port_locked = 8;
+
+  int32 board_rev = 9;
+}
+
+message DishBatteryStats {
+  uint32 state_of_charge = 1;
+
+  bool is_charging = 2;
+
+  PowerSource power_source = 3;
+}
+
 message InitializationDurationSeconds {
   int32 attitude_initialization = 1;
 
@@ -353,12 +511,6 @@ message SelfTestResponse {
   string report = 2;
 }
 
-message StartDishSelfTestRequest {
-}
-
-message StartDishSelfTestResponse {
-}
-
 message SetTestModeRequest {
   RfMode rf_mode = 1;
 
@@ -390,6 +542,8 @@ message DishSetConfigRequest {
 
 message DishSetConfigResponse {
   DishConfig updated_dish_config = 1;
+
+  string error = 2;
 }
 
 message DishGetConfigRequest {
@@ -397,6 +551,14 @@ message DishGetConfigRequest {
 
 message DishGetConfigResponse {
   DishConfig dish_config = 1;
+}
+
+message DishInhibitRfRequest {
+  bool inhibit_rf = 1;
+}
+
+message DishInhibitRfResponse {
+  bool inhibit_rf = 1;
 }
 
 message DishInhibitGpsRequest {
@@ -433,6 +595,7 @@ message DishGetRssiScanResultResponse {
 }
 
 message DishFactoryResetRequest {
+  bool app_reset = 1;
 }
 
 message DishFactoryResetResponse {
@@ -445,12 +608,75 @@ message ResetButtonRequest {
 message ResetButtonResponse {
 }
 
+message DishStartTestModeServerRequest {
+  bool set_enabled = 1;
+}
+
+message DishStartTestModeServerResponse {
+}
+
+message PLCStats {
+  bool receiving_plc = 1;
+
+  uint32 average_time_to_empty = 2;
+
+  uint32 average_time_to_full = 3;
+
+  uint32 battery_health = 4;
+
+  uint32 hardware_revision_id = 5;
+
+  bool permanent_failure = 6;
+
+  PLCPortStats port_1_stats = 7;
+
+  PLCPortStats port_2_stats = 8;
+
+  PLCPortStats port_3_stats = 9;
+
+  ProtocolRevision plc_revision = 10;
+
+  bool safety_mode_active = 11;
+
+  uint32 state_of_charge = 12;
+
+  uint32 thermal_throttle_level = 13;
+
+  enum ProtocolRevision {
+    REV_D = 0;
+  }
+}
+
+message PLCPortStats {
+  uint32 power = 1;
+
+  PortStatus status = 2;
+
+  enum PortStatus {
+    INACTIVE = 0;
+
+    CHARGING = 1;
+
+    DISCHARGING = 2;
+
+    MOISTURE_DETECTED = 3;
+  }
+}
+
 enum UserMobilityClass {
   STATIONARY = 0;
 
   NOMADIC = 1;
 
   MOBILE = 2;
+}
+
+enum ObstructionMapReferenceFrame {
+  FRAME_UNKNOWN = 0;
+
+  FRAME_EARTH = 1;
+
+  FRAME_UT = 2;
 }
 
 enum SoftwareUpdateState {
@@ -527,6 +753,72 @@ enum AttitudeEstimationState {
   FILTER_FAULTED = 3;
 
   FILTER_INVALID = 4;
+}
+
+enum RebootReason {
+  REBOOT_REASON_NONE = 0;
+
+  REBOOT_REASON_MANUAL = 1;
+
+  REBOOT_REASON_LOSS_OF_COMM = 2;
+
+  REBOOT_REASON_SWUPDATE_NOW = 3;
+
+  REBOOT_REASON_SWUPDATE_SCHEDULED = 4;
+
+  REBOOT_REASON_APP = 5;
+
+  REBOOT_REASON_EMC = 6;
+
+  REBOOT_REASON_FACTORY_RESET = 7;
+
+  REBOOT_REASON_TEST_CASE = 8;
+
+  REBOOT_REASON_THERMAL_POWER_CUT = 9;
+
+  REBOOT_REASON_CRITICAL_PROCESS_DIED = 10;
+
+  REBOOT_REASON_NO_RF_READY = 11;
+
+  REBOOT_REASON_POSTPONED_LOSS_OF_COMM = 12;
+
+  REBOOT_REASON_SWUPDATE_STATIONARY = 13;
+
+  REBOOT_REASON_AAP_CRASH = 14;
+
+  REBOOT_REASON_XP70_SACS = 15;
+
+  REBOOT_REASON_INE_FAILED = 16;
+
+  REBOOT_REASON_KERNEL_TAINTED = 17;
+}
+
+enum RouterRole {
+  UNSPECIFIED = 0;
+
+  CONTROLLER = 1;
+
+  REPEATER = 2;
+
+  BYPASSED = 3;
+}
+
+enum PowerSource {
+  POWER_SOURCE_UNKNOWN = 0;
+
+  USBC = 1;
+
+  BATTERY = 2;
+
+  USBC_AND_BATTERY = 3;
+}
+
+enum NatFlag {
+  NAT_UNKNOWN = 0;
+
+  NAT_DISABLED = 1;
+
+  NAT_ENABLED = 2;
 }
 
 enum DishState {

@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-enum SpaceX_API_Device_Capability: SwiftProtobuf.Enum, Swift.CaseIterable {
+nonisolated enum SpaceX_API_Device_Capability: SwiftProtobuf.Enum, Swift.CaseIterable {
   typealias RawValue = Int
   case read // = 0
   case readInternal // = 13
@@ -110,7 +110,7 @@ enum SpaceX_API_Device_Capability: SwiftProtobuf.Enum, Swift.CaseIterable {
 
 }
 
-enum SpaceX_API_Device_User: SwiftProtobuf.Enum, Swift.CaseIterable {
+nonisolated enum SpaceX_API_Device_User: SwiftProtobuf.Enum, Swift.CaseIterable {
   typealias RawValue = Int
   case noUser // = 0
   case god // = 1
@@ -120,6 +120,10 @@ enum SpaceX_API_Device_User: SwiftProtobuf.Enum, Swift.CaseIterable {
   case router // = 5
   case guestLan // = 6
   case sensitiveCommanding // = 7
+  case lanTls // = 8
+
+  /// NOTE: This enum value was marked as deprecated in the .proto file
+  case cloudIndia // = 9
   case UNRECOGNIZED(Int)
 
   init() {
@@ -136,6 +140,8 @@ enum SpaceX_API_Device_User: SwiftProtobuf.Enum, Swift.CaseIterable {
     case 5: self = .router
     case 6: self = .guestLan
     case 7: self = .sensitiveCommanding
+    case 8: self = .lanTls
+    case 9: self = .cloudIndia
     default: self = .UNRECOGNIZED(rawValue)
     }
   }
@@ -150,6 +156,8 @@ enum SpaceX_API_Device_User: SwiftProtobuf.Enum, Swift.CaseIterable {
     case .router: return 5
     case .guestLan: return 6
     case .sensitiveCommanding: return 7
+    case .lanTls: return 8
+    case .cloudIndia: return 9
     case .UNRECOGNIZED(let i): return i
     }
   }
@@ -164,11 +172,13 @@ enum SpaceX_API_Device_User: SwiftProtobuf.Enum, Swift.CaseIterable {
     .router,
     .guestLan,
     .sensitiveCommanding,
+    .lanTls,
+    .cloudIndia,
   ]
 
 }
 
-struct SpaceX_API_Device_PublicKey: Sendable {
+nonisolated struct SpaceX_API_Device_PublicKey: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -187,49 +197,19 @@ struct SpaceX_API_Device_PublicKey: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "SpaceX.API.Device"
+fileprivate nonisolated let _protobuf_package = "SpaceX.API.Device"
 
-extension SpaceX_API_Device_Capability: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "READ"),
-    1: .same(proto: "WRITE"),
-    2: .same(proto: "DEBUG"),
-    3: .same(proto: "ADMIN"),
-    4: .same(proto: "SETUP"),
-    5: .same(proto: "SET_SKU"),
-    6: .same(proto: "REFRESH"),
-    7: .same(proto: "READ_PRIVATE"),
-    8: .same(proto: "FUSE"),
-    9: .same(proto: "RESET"),
-    10: .same(proto: "TEST"),
-    11: .same(proto: "WRITE_PERSISTENT"),
-    12: .same(proto: "SSH"),
-    13: .same(proto: "READ_INTERNAL"),
-    14: .same(proto: "LOCAL"),
-    15: .same(proto: "GUEST"),
-  ]
+nonisolated extension SpaceX_API_Device_Capability: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0READ\0\u{1}WRITE\0\u{1}DEBUG\0\u{1}ADMIN\0\u{1}SETUP\0\u{1}SET_SKU\0\u{1}REFRESH\0\u{1}READ_PRIVATE\0\u{1}FUSE\0\u{1}RESET\0\u{1}TEST\0\u{1}WRITE_PERSISTENT\0\u{1}SSH\0\u{1}READ_INTERNAL\0\u{1}LOCAL\0\u{1}GUEST\0")
 }
 
-extension SpaceX_API_Device_User: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "NO_USER"),
-    1: .same(proto: "GOD"),
-    2: .same(proto: "LAN"),
-    3: .same(proto: "CLOUD"),
-    4: .same(proto: "FACTORY"),
-    5: .same(proto: "ROUTER"),
-    6: .same(proto: "GUEST_LAN"),
-    7: .same(proto: "SENSITIVE_COMMANDING"),
-  ]
+nonisolated extension SpaceX_API_Device_User: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0NO_USER\0\u{1}GOD\0\u{1}LAN\0\u{1}CLOUD\0\u{1}FACTORY\0\u{1}ROUTER\0\u{1}GUEST_LAN\0\u{1}SENSITIVE_COMMANDING\0\u{1}LAN_TLS\0\u{1}CLOUD_INDIA\0")
 }
 
-extension SpaceX_API_Device_PublicKey: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_PublicKey: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".PublicKey"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "key"),
-    2: .same(proto: "capabilities"),
-    3: .same(proto: "user"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}key\0\u{1}capabilities\0\u{1}user\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {

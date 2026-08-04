@@ -9,6 +9,8 @@ message DeviceInfo {
 
   string hardware_version = 2;
 
+  HardwareIndex hardware_index = 16;
+
   int32 board_rev = 14;
 
   string software_version = 3;
@@ -34,6 +36,8 @@ message DeviceInfo {
   BootInfo boot = 1001;
 
   bool dish_cohoused = 13;
+
+  string build_id = 15;
 }
 
 message DeviceState {
@@ -67,6 +71,14 @@ message BootInfo {
   bool crash_boot = 5;
 
   int32 crash_boot_count = 6;
+
+  string even_side_software_version = 7;
+
+  string odd_side_software_version = 8;
+
+  int32 api_version_odd_side = 9;
+
+  int32 api_version_even_side = 10;
 }
 
 message PingTarget {
@@ -209,6 +221,16 @@ message ECEFPosition {
   double z = 3;
 }
 
+message Quaternion {
+  float q_scalar = 1;
+
+  float q_x = 2;
+
+  float q_y = 3;
+
+  float q_z = 4;
+}
+
 message InitiateRemoteSshRequest {
 }
 
@@ -231,6 +253,82 @@ message SoftwareUpdateRequest {
 }
 
 message SoftwareUpdateResponse {
+}
+
+message EventLog {
+  repeated UXEvent events = 1;
+
+  int64 start_timestamp_ns = 2;
+
+  int64 current_timestamp_ns = 3;
+}
+
+message UXEvent {
+  EventSeverity severity = 1;
+
+  EventReason reason = 2;
+
+  int64 start_timestamp_ns = 3;
+
+  uint64 duration_ns = 4;
+
+  string device_id = 12;
+
+  oneof metadata {
+    ClientReconnectingOftenMetadata client_reconnecting_often_metadata = 5;
+
+    ClientSwitchingBandMetadata client_switching_band_metadata = 6;
+
+    ClientSwitchingUpstreamMacMetadata client_switching_upstream_mac_metadata = 7;
+
+    MeshConnectionChangingMetadata mesh_connection_changing_metadata = 8 [deprecated = true];
+
+    MeshBackhaulLowPhyMetadata mesh_backhaul_low_phy_metadata = 9;
+
+    HighOverlappingBssMetadata high_overlapping_bss_metadata = 10;
+
+    ClientExcessiveNetworkConnectionsMetadata client_excessive_network_connections_metadata = 11;
+  }
+}
+
+message ClientReconnectingOftenMetadata {
+  uint32 clientId = 1;
+}
+
+message ClientExcessiveNetworkConnectionsMetadata {
+  uint32 clientId = 1;
+}
+
+message ClientSwitchingBandMetadata {
+  uint32 clientId = 1;
+
+  string fromBand = 2;
+
+  string toBand = 3;
+}
+
+message ClientSwitchingUpstreamMacMetadata {
+  uint32 clientId = 1;
+}
+
+message MeshConnectionChangingMetadata {
+  string repeaterId = 1 [deprecated = true];
+
+  MeshConnectionChange change = 2 [deprecated = true];
+}
+
+message MeshBackhaulLowPhyMetadata {
+  repeated string repeaterIds = 1;
+}
+
+message HighOverlappingBssStats {
+  string iface = 1;
+
+  uint32 average_overlapping_bss_percentage = 2;
+}
+
+message HighOverlappingBssMetadata {
+  repeated HighOverlappingBssStats high_overlapping_bss_stats = 1;
 }
 
 enum BootReason {
@@ -262,7 +360,157 @@ enum BootReason {
 
   SOFTWARE_WATCHDOG = 13;
 
+  HARDWARE_WATCHDOG = 15;
+
+  REPEATER_UNTRUSTED_FDIR = 16;
+
   reserved 10;
 
   reserved "AVIATION_5M_OUTAGE_FDIR";
+}
+
+enum EventSeverity {
+  EVENT_SEVERITY_UNKNOWN = 0;
+
+  EVENT_SEVERITY_WARNING = 1;
+
+  EVENT_SEVERITY_CAUTION = 2;
+
+  EVENT_SEVERITY_ADVISORY = 3;
+}
+
+enum EventReason {
+  EVENT_REASON_UNKNOWN = 0;
+
+  EVENT_REASON_OUTAGE_UNKNOWN = 1;
+
+  EVENT_REASON_OUTAGE_BOOTING = 2;
+
+  EVENT_REASON_OUTAGE_STOWED = 3;
+
+  EVENT_REASON_OUTAGE_INHIBIT_RF = 50;
+
+  EVENT_REASON_OUTAGE_THERMAL_SHUTDOWN = 4;
+
+  EVENT_REASON_OUTAGE_NO_SCHEDULE = 5;
+
+  EVENT_REASON_OUTAGE_NO_SATS = 6;
+
+  EVENT_REASON_OUTAGE_OBSTRUCTED = 7;
+
+  EVENT_REASON_OUTAGE_NO_DOWNLINK = 8;
+
+  EVENT_REASON_OUTAGE_NO_PINGS = 9;
+
+  EVENT_REASON_OUTAGE_SLEEPING = 10;
+
+  EVENT_REASON_OUTAGE_MOVING_WHILE_NOT_ALLOWED = 11;
+
+  EVENT_REASON_OUTAGE_SKY_SEARCH = 19;
+
+  EVENT_REASON_UT_ALERT_RAIN_SNR_PERSISTENTLY_LOW = 22;
+
+  EVENT_REASON_UT_ALERT_ETH_NO_LINK = 23;
+
+  EVENT_REASON_UT_ALERT_ETH_SLOW_LINK = 24;
+
+  EVENT_REASON_UT_ALERT_ETH_SLOW_LINK_100 = 25;
+
+  EVENT_REASON_HIGH_DOWNLINK_PACKET_LOSS = 12;
+
+  EVENT_REASON_ROUTER_FACTORY_RESET = 13;
+
+  EVENT_REASON_ROUTER_REBOOT = 14;
+
+  EVENT_REASON_ROUTER_POWER_CYCLE = 15;
+
+  EVENT_REASON_ROUTER_CONFIG_UPDATE = 16;
+
+  EVENT_REASON_ROUTER_SOFTWARE_UPDATE = 17;
+
+  EVENT_REASON_ROUTER_THERMAL_THROTTLED = 18;
+
+  EVENT_REASON_ROUTER_REBOOT_CONFIG_UPDATE = 20;
+
+  EVENT_REASON_ROUTER_PUBLIC_IPV4_CHANGE = 21;
+
+  EVENT_REASON_ROUTER_POP_IPV4_PING_DROP = 26;
+
+  EVENT_REASON_ROUTER_POP_IPV6_PING_DROP = 27;
+
+  EVENT_REASON_ROUTER_LAN_ETH_HIGH_PACKET_LOSS = 28;
+
+  EVENT_REASON_ROUTER_WAN_ETH_HIGH_PACKET_LOSS = 29;
+
+  EVENT_REASON_ROUTER_DHCP_SERVER_FAIL_TO_START = 30;
+
+  EVENT_REASON_ROUTER_DHCP_SERVER_EXHAUSTED = 31;
+
+  EVENT_REASON_ROUTER_DNS_IPV4_SERVER_FAIL_TO_START = 32;
+
+  EVENT_REASON_ROUTER_DNS_IPV6_SERVER_FAIL_TO_START = 33;
+
+  EVENT_REASON_ROUTER_SET_CUSTOM_DNS_DISALLOWED = 34 [deprecated = true];
+
+  EVENT_REASON_ROUTER_SET_CUSTOM_DNS_ALLOWED = 35 [deprecated = true];
+
+  EVENT_REASON_ROUTER_MAX_WIRELESS_CLIENTS = 36;
+
+  EVENT_REASON_ROUTER_MAX_5GHIGH_WIRELESS_CLIENTS = 37;
+
+  EVENT_REASON_ROUTER_MESH_TOPOLOGY_CHANGING_OFTEN = 38;
+
+  EVENT_REASON_ROUTER_CONNTRACK_FULL = 39;
+
+  EVENT_REASON_ROUTER_DISH_PING_DROP = 40;
+
+  EVENT_REASON_ROUTER_UT_CONNECTED_TO_LAN = 41;
+
+  EVENT_REASON_CLIENT_RECONNECTING_OFTEN = 42;
+
+  EVENT_REASON_CLIENT_SWITCHING_BAND = 43;
+
+  EVENT_REASON_CLIENT_SWITCHING_UPSTREAM_MAC = 44;
+
+  EVENT_REASON_ROUTER_MESH_CONNECTION_CHANGING = 45 [deprecated = true];
+
+  EVENT_REASON_MESH_BACKHAUL_LOW_PHY = 46;
+
+  EVENT_REASON_ROUTER_HIGH_OVERLAPPING_BSS = 47;
+
+  EVENT_REASON_CLIENT_EXCESSIVE_NETWORK_CONNECTIONS = 48;
+
+  EVENT_REASON_ROUTER_LAN_ETH_LOW_SPEED = 49;
+
+  EVENT_REASON_ROUTER_MESH_BACKHAUL_FLAPPING = 51;
+}
+
+enum MeshConnectionChange {
+  REPEATER_CHANGE_UNKNOWN = 0 [deprecated = true];
+
+  REPEATER_CHANGE_DISCONNECTED = 1 [deprecated = true];
+}
+
+enum HardwareIndex {
+  UNKNOWN_HARDWARE_INDEX = 0;
+
+  ROUTER_GEN_1 = 1010;
+
+  ROUTER_GEN_2 = 1020;
+
+  ROUTER_MINI_COHOUSED_1 = 1021;
+
+  ROUTER_BLOCK_2_OR_3 = 1022;
+
+  ROUTER_GEN_3 = 1030;
+
+  ROUTER_BLOCK_4 = 1031;
+
+  ROUTER_BLOCK_4P1 = 1032;
+
+  ROUTER_MINI_1 = 1040;
+
+  ROUTER_MINI_COHOUSED_2 = 1041;
+
+  ROUTER_GEN_4 = 1050;
 }

@@ -294,5 +294,79 @@ class WifiSoftwareUpdateState extends $pb.ProtobufEnum {
   const WifiSoftwareUpdateState._(super.value, super.name);
 }
 
+class WifiSetupRequirementState extends $pb.ProtobufEnum {
+  static const WifiSetupRequirementState NOT_REQUIRED =
+      WifiSetupRequirementState._(0, _omitEnumNames ? '' : 'NOT_REQUIRED');
+  static const WifiSetupRequirementState REQUIRED_COUNTDOWN =
+      WifiSetupRequirementState._(
+          1, _omitEnumNames ? '' : 'REQUIRED_COUNTDOWN');
+  static const WifiSetupRequirementState REQUIRED_PAUSED =
+      WifiSetupRequirementState._(2, _omitEnumNames ? '' : 'REQUIRED_PAUSED');
+  static const WifiSetupRequirementState REQUIRED_COMPLETE =
+      WifiSetupRequirementState._(3, _omitEnumNames ? '' : 'REQUIRED_COMPLETE');
+
+  static const $core.List<WifiSetupRequirementState> values =
+      <WifiSetupRequirementState>[
+    NOT_REQUIRED,
+    REQUIRED_COUNTDOWN,
+    REQUIRED_PAUSED,
+    REQUIRED_COMPLETE,
+  ];
+
+  static final $core.List<WifiSetupRequirementState?> _byValue =
+      $pb.ProtobufEnum.$_initByValueList(values, 3);
+  static WifiSetupRequirementState? valueOf($core.int value) =>
+      value < 0 || value >= _byValue.length ? null : _byValue[value];
+
+  const WifiSetupRequirementState._(super.value, super.name);
+}
+
+class CalibrationPartitionsState extends $pb.ProtobufEnum {
+  static const CalibrationPartitionsState
+      CALIBRATION_PARTITIONS_STATE_UNSPECIFIED = CalibrationPartitionsState._(
+          0, _omitEnumNames ? '' : 'CALIBRATION_PARTITIONS_STATE_UNSPECIFIED');
+  static const CalibrationPartitionsState
+      CALIBRATION_PARTITIONS_STATE_ABSENT_BOTH_SIDES =
+      CalibrationPartitionsState._(
+          1,
+          _omitEnumNames
+              ? ''
+              : 'CALIBRATION_PARTITIONS_STATE_ABSENT_BOTH_SIDES');
+  static const CalibrationPartitionsState
+      CALIBRATION_PARTITIONS_STATE_CONTENTS_EQUAL =
+      CalibrationPartitionsState._(2,
+          _omitEnumNames ? '' : 'CALIBRATION_PARTITIONS_STATE_CONTENTS_EQUAL');
+  static const CalibrationPartitionsState
+      CALIBRATION_PARTITIONS_STATE_CONTENTS_NOT_EQUAL =
+      CalibrationPartitionsState._(
+          3,
+          _omitEnumNames
+              ? ''
+              : 'CALIBRATION_PARTITIONS_STATE_CONTENTS_NOT_EQUAL');
+  static const CalibrationPartitionsState
+      CALIBRATION_PARTITIONS_STATE_COMPARISON_FAILED =
+      CalibrationPartitionsState._(
+          4,
+          _omitEnumNames
+              ? ''
+              : 'CALIBRATION_PARTITIONS_STATE_COMPARISON_FAILED');
+
+  static const $core.List<CalibrationPartitionsState> values =
+      <CalibrationPartitionsState>[
+    CALIBRATION_PARTITIONS_STATE_UNSPECIFIED,
+    CALIBRATION_PARTITIONS_STATE_ABSENT_BOTH_SIDES,
+    CALIBRATION_PARTITIONS_STATE_CONTENTS_EQUAL,
+    CALIBRATION_PARTITIONS_STATE_CONTENTS_NOT_EQUAL,
+    CALIBRATION_PARTITIONS_STATE_COMPARISON_FAILED,
+  ];
+
+  static final $core.List<CalibrationPartitionsState?> _byValue =
+      $pb.ProtobufEnum.$_initByValueList(values, 4);
+  static CalibrationPartitionsState? valueOf($core.int value) =>
+      value < 0 || value >= _byValue.length ? null : _byValue[value];
+
+  const CalibrationPartitionsState._(super.value, super.name);
+}
+
 const $core.bool _omitEnumNames =
     $core.bool.fromEnvironment('protobuf.omit_enum_names');

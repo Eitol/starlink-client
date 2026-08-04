@@ -62,4 +62,8 @@ enum User {
   GUEST_LAN = 6;
 
   SENSITIVE_COMMANDING = 7;
+
+  LAN_TLS = 8;
+
+  CLOUD_INDIA = 9 [deprecated = true];
 }

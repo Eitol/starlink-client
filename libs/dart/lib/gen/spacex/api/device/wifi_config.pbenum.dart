@@ -248,5 +248,30 @@ class WifiConfig_VHTBandwidth extends $pb.ProtobufEnum {
   const WifiConfig_VHTBandwidth._(super.value, super.name);
 }
 
+class WifiConfig_Network_GeofenceAction extends $pb.ProtobufEnum {
+  static const WifiConfig_Network_GeofenceAction NONE =
+      WifiConfig_Network_GeofenceAction._(0, _omitEnumNames ? '' : 'NONE');
+  static const WifiConfig_Network_GeofenceAction
+      DISABLE_RADIOS_AND_BLOCK_TRAFFIC = WifiConfig_Network_GeofenceAction._(
+          1, _omitEnumNames ? '' : 'DISABLE_RADIOS_AND_BLOCK_TRAFFIC');
+  static const WifiConfig_Network_GeofenceAction BLOCK_TRAFFIC =
+      WifiConfig_Network_GeofenceAction._(
+          2, _omitEnumNames ? '' : 'BLOCK_TRAFFIC');
+
+  static const $core.List<WifiConfig_Network_GeofenceAction> values =
+      <WifiConfig_Network_GeofenceAction>[
+    NONE,
+    DISABLE_RADIOS_AND_BLOCK_TRAFFIC,
+    BLOCK_TRAFFIC,
+  ];
+
+  static final $core.List<WifiConfig_Network_GeofenceAction?> _byValue =
+      $pb.ProtobufEnum.$_initByValueList(values, 2);
+  static WifiConfig_Network_GeofenceAction? valueOf($core.int value) =>
+      value < 0 || value >= _byValue.length ? null : _byValue[value];
+
+  const WifiConfig_Network_GeofenceAction._(super.value, super.name);
+}
+
 const $core.bool _omitEnumNames =
     $core.bool.fromEnvironment('protobuf.omit_enum_names');

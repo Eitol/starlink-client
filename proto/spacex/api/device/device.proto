@@ -10,6 +10,8 @@ import "spacex/api/device/common.proto";
 
 import "spacex/api/device/dish.proto";
 
+import "spacex/api/device/gnss.proto";
+
 import "spacex/api/device/transceiver.proto";
 
 import "spacex/api/device/wifi.proto";
@@ -52,7 +54,9 @@ message HealthCheck {
 }
 
 message Request {
-  reserved 1018, 1025, 1026, 2016, 3011, 3014, 3202;
+  reserved 1018, 1025, 1026, 2012, 2016, 3011, 3014, 3202;
+
+  reserved "start_dish_self_test";
 
   uint64 id = 1;
 
@@ -135,9 +139,9 @@ message Request {
 
     UdpConnectivityTestRequest udp_connectivity_test = 1040;
 
-    DishStowRequest dish_stow = 2002;
+    GetGoroutineStackTracesRequest get_goroutine_stack_traces = 1041;
 
-    StartDishSelfTestRequest start_dish_self_test = 2012;
+    DishStowRequest dish_stow = 2002;
 
     DishGetContextRequest dish_get_context = 2003;
 
@@ -168,6 +172,16 @@ message Request {
     DishFactoryResetRequest dish_factory_reset = 2021;
 
     ResetButtonRequest reset_button = 2022;
+
+    SoftwareUpdateRequest set_per_vehicle_config = 2023;
+
+    DishAviationTestRequest dish_aviation_test = 2024;
+
+    DishInhibitRfRequest dish_inhibit_rf = 2026;
+
+    ZtlmQueryRequest ztlm_query = 2027;
+
+    DishStartTestModeServerRequest dish_start_test_mode_server = 2028;
 
     WifiGetClientsRequest wifi_get_clients = 3002;
 
@@ -211,6 +225,16 @@ message Request {
 
     WifiToggleUmbilicalModeRequest wifi_toggle_umbilical_mode = 3030;
 
+    WifiClientSandboxRequest wifi_client_sandbox = 3031;
+
+    WifiRunDebugNetsysRequest wifi_run_debug_netsys = 3032;
+
+    WifiResetEthPhyRequest wifi_reset_eth_phy = 3033;
+
+    WifiFlushHardwareNatRequest wifi_flush_hardware_nat = 3034;
+
+    WifiWriteCalibrationRequest wifi_write_calibration = 3035;
+
     TransceiverIFLoopbackTestRequest transceiver_if_loopback_test = 4001;
 
     TransceiverGetStatusRequest transceiver_get_status = 4003;
@@ -222,11 +246,15 @@ message Request {
     Services.Unlock.FinishUnlockRequest finish_unlock = 5001;
 
     GetDiagnosticsRequest get_diagnostics = 6000;
+
+    GetGnssMeasurementRequest get_gnss_measurement = 7000;
   }
 }
 
 message Response {
-  reserved 1018, 1026, 2014, 2025, 3008, 3011, 3014, 3203;
+  reserved 1018, 1026, 2014, 2012, 2025, 3008, 3011, 3014, 3203;
+
+  reserved "start_dish_self_test";
 
   uint64 id = 1;
 
@@ -291,6 +319,8 @@ message Response {
 
     RunIperfServerResponse run_iperf_server = 1038;
 
+    GetGoroutineStackTracesResponse get_goroutine_stack_traces = 1041;
+
     DishAuthenticateResponse dish_authenticate = 2005;
 
     DishGetContextResponse dish_get_context = 2003;
@@ -302,8 +332,6 @@ message Response {
     DishGetObstructionMapResponse dish_get_obstruction_map = 2008;
 
     DishStowResponse dish_stow = 2002;
-
-    StartDishSelfTestResponse start_dish_self_test = 2012;
 
     DishSetEmcResponse dish_set_emc = 2007;
 
@@ -326,6 +354,16 @@ message Response {
     DishFactoryResetResponse dish_factory_reset = 2021;
 
     ResetButtonResponse reset_button = 2022;
+
+    SetPerVehicleConfigResponse set_per_vehicle_config = 2023;
+
+    DishAviationTestResponse dish_aviation_test = 2024;
+
+    DishInhibitRfResponse dish_inhibit_rf = 2026;
+
+    ZtlmQueryResponse ztlm_query = 2027;
+
+    DishStartTestModeServerResponse dish_start_test_mode_server = 2028;
 
     WifiAuthenticateResponse wifi_authenticate = 3005;
 
@@ -363,6 +401,16 @@ message Response {
 
     WifiBackhaulStatsResponse wifi_backhaul_stats = 3026;
 
+    WifiClientSandboxResponse wifi_client_sandbox = 3027;
+
+    WifiUpdateResponse wifi_update = 3028;
+
+    WifiRunDebugNetsysResponse wifi_run_debug_netsys = 3029;
+
+    WifiResetEthPhyResponse wifi_reset_eth_phy = 3030;
+
+    WifiFlushHardwareNatResponse wifi_flush_hardware_nat = 3031;
+
     TransceiverIFLoopbackTestResponse transceiver_if_loopback_test = 4001;
 
     TransceiverGetStatusResponse transceiver_get_status = 4003;
@@ -376,6 +424,8 @@ message Response {
     WifiGetDiagnosticsResponse wifi_get_diagnostics = 6000;
 
     DishGetDiagnosticsResponse dish_get_diagnostics = 6001;
+
+    GetGnssMeasurementResponse get_gnss_measurement = 7000;
   }
 }
 
@@ -388,6 +438,8 @@ message Event {
     WifiNewPeerEvent wifi_new_peer = 3003;
 
     WifiCloudStatusEvent wifi_cloud_status = 3004;
+
+    WifiClientSandboxRequest wifi_client_sandbox = 3005;
   }
 }
 
@@ -399,6 +451,29 @@ message WifiCloudStatusEvent {
   string hardware_version = 2;
 
   bool is_bypassed = 3;
+}
+
+message WifiClientSandboxRequest {
+  repeated WifiClientSandboxStatus client_sandbox_status = 1;
+
+  repeated WifiClientSandboxAlert alerts = 2;
+
+  uint64 unix_timestamp_ns = 3;
+}
+
+message WifiClientSandboxResponse {
+}
+
+message WifiWriteCalibrationRequest {
+  bytes calibration_image = 1;
+}
+
+message WifiClientSandboxStatus {
+  string client = 1;
+
+  uint32 sandbox = 2;
+
+  bool sandboxed = 3;
 }
 
 message EnableDebugTelemRequest {
@@ -452,7 +527,11 @@ message GetLogResponse {
 
     string kernel_panic = 3;
 
-    string mtk_eth_procs = 4;
+    string mtk_eth_procs = 4 [deprecated = true];
+
+    string debug_netsys_0sec = 5;
+
+    string debug_netsys_2sec = 6 [deprecated = true];
   }
 }
 
@@ -474,6 +553,7 @@ message PingHostResponse {
 }
 
 message GetStatusRequest {
+  RouterRole router_role = 1;
 }
 
 message RebootRequest {
@@ -498,6 +578,12 @@ message SpeedTestStats {
   Target target = 7;
 
   uint32 tcp_streams = 8;
+
+  uint64 upload_bytes_processed = 9;
+
+  uint64 download_bytes_processed = 10;
+
+  uint64 duration_s = 11;
 
   enum Target {
     UNKNOWN = 0;
@@ -619,6 +705,7 @@ message SetSkuResponse {
 }
 
 message UpdateRequest {
+  optional bool schedule_reboot = 1;
 }
 
 message UpdateResponse {
@@ -665,9 +752,17 @@ message GetLocationResponse {
   double sigma_m = 4;
 
   PositionSource source = 3;
+
+  double horizontal_speed_mps = 5;
+
+  double vertical_speed_mps = 6;
 }
 
 message DishSetEmcRequest {
+  reserved 23;
+
+  reserved "amplitude_taper_override";
+
   double theta = 1;
 
   double phi = 2;
@@ -708,8 +803,6 @@ message DishSetEmcRequest {
 
   double distance_override_meters = 22;
 
-  uint32 amplitude_taper_override = 23;
-
   uint32 country_code_override = 24;
 
   int32 tx_duty_cycle_override = 25;
@@ -736,9 +829,9 @@ message DishGetEmcRequest {
 }
 
 message DishGetEmcResponse {
-  reserved 26 to 29, 40;
+  reserved 26 to 29, 40, 59, 60, 61;
 
-  reserved "baseline_heating", "additional_heating", "total_heating", "target_total_heating", "eirp_scale_override";
+  reserved "baseline_heating", "additional_heating", "total_heating", "target_total_heating", "eirp_scale_override", "amplitude_taper_override", "amplitude_taper_enabled", "amplitude_taper_scale";
 
   string uuid = 2;
 
@@ -820,12 +913,6 @@ message DishGetEmcResponse {
 
   double distance_override_meters = 58;
 
-  uint32 amplitude_taper_override = 59;
-
-  bool amplitude_taper_enabled = 60;
-
-  double amplitude_taper_scale = 61;
-
   uint32 country_code_override = 62;
 
   double max_pointing_distance = 63;
@@ -853,6 +940,9 @@ message GetPersistentStatsRequest {
 }
 
 message StartSpeedtestRequest {
+  int32 duration_s = 1;
+
+  bool send_telemetry = 2;
 }
 
 message StartSpeedtestResponse {
@@ -900,6 +990,9 @@ message ReportClientSpeedtestRequest {
 message ReportClientSpeedtestResponse {
 }
 
+message SetPerVehicleConfigResponse {
+}
+
 message DishPowerSaveRequest {
   uint32 power_save_start_minutes = 1;
 
@@ -939,6 +1032,10 @@ message WifiGetDiagnosticsResponse {
 }
 
 message DishGetDiagnosticsResponse {
+  reserved 12, 13;
+
+  reserved "dl_bandwidth_restricted_reason", "ul_bandwidth_restricted_reason";
+
   string id = 1;
 
   string hardware_version = 2;
@@ -949,13 +1046,25 @@ message DishGetDiagnosticsResponse {
 
   TestResult hardware_self_test = 7;
 
+  repeated TestResultCode hardware_self_test_codes = 11;
+
   Alerts alerts = 5;
 
   DisablementCode disablement_code = 6;
 
   Location location = 8;
 
+  AlignmentStats alignment_stats = 9;
+
+  bool stowed = 10;
+
+  bool overage_rate_limited = 14;
+
   message Alerts {
+    reserved 9;
+
+    reserved "moving_too_fast_for_policy";
+
     bool dish_is_heating = 1;
 
     bool dish_thermal_throttle = 2;
@@ -972,8 +1081,6 @@ message DishGetDiagnosticsResponse {
 
     bool software_install_pending = 8;
 
-    bool moving_too_fast_for_policy = 9;
-
     bool obstructed = 10;
   }
 
@@ -985,6 +1092,22 @@ message DishGetDiagnosticsResponse {
     double longitude = 3;
 
     double altitude_meters = 4;
+
+    bool uncertainty_meters_valid = 5;
+
+    double uncertainty_meters = 6;
+
+    double gps_time_s = 7;
+  }
+
+  message AlignmentStats {
+    float boresight_azimuth_deg = 1;
+
+    float boresight_elevation_deg = 2;
+
+    float desired_boresight_azimuth_deg = 3;
+
+    float desired_boresight_elevation_deg = 4;
   }
 
   enum TestResult {
@@ -993,6 +1116,48 @@ message DishGetDiagnosticsResponse {
     PASSED = 1;
 
     FAILED = 2;
+  }
+
+  enum TestResultCode {
+    GENERAL = 0;
+
+    BOOT_UP = 1;
+
+    CPU_VOLTAGE = 2;
+
+    DBF_AAP_CS = 3;
+
+    DBF_NUM_FEMS = 4;
+
+    DBF_READ_ERRORS = 5;
+
+    DBF_T_DIE_0 = 6;
+
+    DBF_T_DIE_1 = 7;
+
+    DBF_T_DIE_0_VALID = 8;
+
+    DBF_T_DIE_1_VALID = 9;
+
+    ETH_PRIME = 10;
+
+    EIRP = 11;
+
+    FEM_CUT = 12;
+
+    FUSE_AVS = 13;
+
+    GPS = 14;
+
+    IMU = 15;
+
+    PHY = 16;
+
+    SCP_ERROR = 17;
+
+    TEMPERATURE = 18;
+
+    VTSENS = 19;
   }
 
   enum DisablementCode {
@@ -1006,15 +1171,29 @@ message DishGetDiagnosticsResponse {
 
     IN_OCEAN = 4;
 
-    INVALID_COUNTRY = 5;
-
     BLOCKED_COUNTRY = 6;
 
     DATA_OVERAGE_SANDBOX_POLICY = 7;
 
     CELL_IS_DISABLED = 8;
 
-    UNLICENSED_COUNTRY = 9;
+    ROAM_RESTRICTED = 10;
+
+    UNKNOWN_LOCATION = 11;
+
+    ACCOUNT_DISABLED = 12;
+
+    UNSUPPORTED_VERSION = 13;
+
+    MOVING_TOO_FAST_FOR_POLICY = 14;
+
+    UNDER_AVIATION_FLYOVER_LIMITS = 15;
+
+    BLOCKED_AREA = 16;
+
+    reserved 5, 9;
+
+    reserved "INVALID_COUNTRY", "UNLICENSED_COUNTRY";
   }
 }
 
@@ -1078,6 +1257,32 @@ message UdpConnectivityTestRequest {
   }
 }
 
+message GetGoroutineStackTracesRequest {
+}
+
+message GetGoroutineStackTracesResponse {
+  string stack_traces = 1;
+}
+
+message GetGnssMeasurementRequest {
+}
+
+message GetGnssMeasurementResponse {
+  string device_id = 1;
+
+  repeated Gnss.Measurement measurements = 2;
+}
+
+enum WifiClientSandboxAlert {
+  SANDBOX_ALERT_UNKNOWN = 0;
+
+  SANDBOX_ALERT_PORTAL = 1;
+
+  SANDBOX_ALERT_GROUND_API = 2;
+
+  SANDBOX_ALERT_STARLINK_API = 3;
+}
+
 enum PositionSource {
   AUTO = 0;
 
@@ -1091,13 +1296,15 @@ enum PositionSource {
 
   STARLINK = 5;
 
-  GNC_GPS = 6;
+  GNC_FUSED = 6;
 
-  GNC_PNT = 7;
+  GNC_BAD_SAT = 7;
 
-  GNC_FUSED = 8;
+  GNC_GPS = 8;
 
-  GNC_RAW = 9;
+  GNC_PNT = 9;
+
+  GNC_STATIC = 10;
 }
 
 enum SpeedtestError {

@@ -29,9 +29,17 @@ message DishConfig {
 
   bool apply_power_save_mode = 6001;
 
+  uint32 swupdate_reboot_hour = 9;
+
+  bool apply_swupdate_reboot_hour = 9001;
+
   bool swupdate_three_day_deferral_enabled = 7;
 
   bool apply_swupdate_three_day_deferral_enabled = 7001;
+
+  uint32 asset_class = 8;
+
+  bool apply_asset_class = 8001;
 
   enum SnowMeltMode {
     AUTO = 0;

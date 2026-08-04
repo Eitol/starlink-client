@@ -101,6 +101,20 @@ const DishConfig$json = {
       '10': 'applyPowerSaveMode'
     },
     {
+      '1': 'swupdate_reboot_hour',
+      '3': 9,
+      '4': 1,
+      '5': 13,
+      '10': 'swupdateRebootHour'
+    },
+    {
+      '1': 'apply_swupdate_reboot_hour',
+      '3': 9001,
+      '4': 1,
+      '5': 8,
+      '10': 'applySwupdateRebootHour'
+    },
+    {
       '1': 'swupdate_three_day_deferral_enabled',
       '3': 7,
       '4': 1,
@@ -113,6 +127,14 @@ const DishConfig$json = {
       '4': 1,
       '5': 8,
       '10': 'applySwupdateThreeDayDeferralEnabled'
+    },
+    {'1': 'asset_class', '3': 8, '4': 1, '5': 13, '10': 'assetClass'},
+    {
+      '1': 'apply_asset_class',
+      '3': 8001,
+      '4': 1,
+      '5': 8,
+      '10': 'applyAssetClass'
     },
   ],
   '4': [
@@ -166,10 +188,13 @@ final $typed_data.Uint8List dishConfigDescriptor = $convert.base64Decode(
     '1SGHBvd2VyU2F2ZUR1cmF0aW9uTWludXRlcxJJCiFhcHBseV9wb3dlcl9zYXZlX2R1cmF0aW9u'
     'X21pbnV0ZXMYiScgASgIUh1hcHBseVBvd2VyU2F2ZUR1cmF0aW9uTWludXRlcxImCg9wb3dlcl'
     '9zYXZlX21vZGUYBiABKAhSDXBvd2VyU2F2ZU1vZGUSMgoVYXBwbHlfcG93ZXJfc2F2ZV9tb2Rl'
-    'GPEuIAEoCFISYXBwbHlQb3dlclNhdmVNb2RlEkwKI3N3dXBkYXRlX3RocmVlX2RheV9kZWZlcn'
-    'JhbF9lbmFibGVkGAcgASgIUh9zd3VwZGF0ZVRocmVlRGF5RGVmZXJyYWxFbmFibGVkElgKKWFw'
-    'cGx5X3N3dXBkYXRlX3RocmVlX2RheV9kZWZlcnJhbF9lbmFibGVkGNk2IAEoCFIkYXBwbHlTd3'
-    'VwZGF0ZVRocmVlRGF5RGVmZXJyYWxFbmFibGVkIjcKDFNub3dNZWx0TW9kZRIICgRBVVRPEAAS'
-    'DQoJQUxXQVlTX09OEAESDgoKQUxXQVlTX09GRhACIioKE0xvY2F0aW9uUmVxdWVzdE1vZGUSCA'
-    'oETk9ORRAAEgkKBUxPQ0FMEAEiNgoNTGV2ZWxEaXNoTW9kZRIUChBUSUxUX0xJS0VfTk9STUFM'
-    'EAASDwoLRk9SQ0VfTEVWRUwQAQ==');
+    'GPEuIAEoCFISYXBwbHlQb3dlclNhdmVNb2RlEjAKFHN3dXBkYXRlX3JlYm9vdF9ob3VyGAkgAS'
+    'gNUhJzd3VwZGF0ZVJlYm9vdEhvdXISPAoaYXBwbHlfc3d1cGRhdGVfcmVib290X2hvdXIYqUYg'
+    'ASgIUhdhcHBseVN3dXBkYXRlUmVib290SG91chJMCiNzd3VwZGF0ZV90aHJlZV9kYXlfZGVmZX'
+    'JyYWxfZW5hYmxlZBgHIAEoCFIfc3d1cGRhdGVUaHJlZURheURlZmVycmFsRW5hYmxlZBJYCilh'
+    'cHBseV9zd3VwZGF0ZV90aHJlZV9kYXlfZGVmZXJyYWxfZW5hYmxlZBjZNiABKAhSJGFwcGx5U3'
+    'd1cGRhdGVUaHJlZURheURlZmVycmFsRW5hYmxlZBIfCgthc3NldF9jbGFzcxgIIAEoDVIKYXNz'
+    'ZXRDbGFzcxIrChFhcHBseV9hc3NldF9jbGFzcxjBPiABKAhSD2FwcGx5QXNzZXRDbGFzcyI3Cg'
+    'xTbm93TWVsdE1vZGUSCAoEQVVUTxAAEg0KCUFMV0FZU19PThABEg4KCkFMV0FZU19PRkYQAiIq'
+    'ChNMb2NhdGlvblJlcXVlc3RNb2RlEggKBE5PTkUQABIJCgVMT0NBTBABIjYKDUxldmVsRGlzaE'
+    '1vZGUSFAoQVElMVF9MSUtFX05PUk1BTBAAEg8KC0ZPUkNFX0xFVkVMEAE=');

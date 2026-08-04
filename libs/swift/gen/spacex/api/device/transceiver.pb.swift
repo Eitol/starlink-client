@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-enum SpaceX_API_Device_TransceiverModulatorState: SwiftProtobuf.Enum, Swift.CaseIterable {
+nonisolated enum SpaceX_API_Device_TransceiverModulatorState: SwiftProtobuf.Enum, Swift.CaseIterable {
   typealias RawValue = Int
   case modstateUnknown // = 0
   case modstateEnabled // = 1
@@ -58,7 +58,7 @@ enum SpaceX_API_Device_TransceiverModulatorState: SwiftProtobuf.Enum, Swift.Case
 
 }
 
-enum SpaceX_API_Device_TransceiverTxRxState: SwiftProtobuf.Enum, Swift.CaseIterable {
+nonisolated enum SpaceX_API_Device_TransceiverTxRxState: SwiftProtobuf.Enum, Swift.CaseIterable {
   typealias RawValue = Int
   case txrxUnknown // = 0
   case txrxEnabled // = 1
@@ -96,7 +96,7 @@ enum SpaceX_API_Device_TransceiverTxRxState: SwiftProtobuf.Enum, Swift.CaseItera
 
 }
 
-enum SpaceX_API_Device_TransceiverTransmitBlankingState: SwiftProtobuf.Enum, Swift.CaseIterable {
+nonisolated enum SpaceX_API_Device_TransceiverTransmitBlankingState: SwiftProtobuf.Enum, Swift.CaseIterable {
   typealias RawValue = Int
   case tbUnknown // = 0
   case tbEnabled // = 1
@@ -134,7 +134,7 @@ enum SpaceX_API_Device_TransceiverTransmitBlankingState: SwiftProtobuf.Enum, Swi
 
 }
 
-struct SpaceX_API_Device_TransceiverIFLoopbackTestRequest: Sendable {
+nonisolated struct SpaceX_API_Device_TransceiverIFLoopbackTestRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -146,7 +146,7 @@ struct SpaceX_API_Device_TransceiverIFLoopbackTestRequest: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_TransceiverIFLoopbackTestResponse: Sendable {
+nonisolated struct SpaceX_API_Device_TransceiverIFLoopbackTestResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -164,7 +164,7 @@ struct SpaceX_API_Device_TransceiverIFLoopbackTestResponse: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_TransceiverGetStatusRequest: Sendable {
+nonisolated struct SpaceX_API_Device_TransceiverGetStatusRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -174,7 +174,7 @@ struct SpaceX_API_Device_TransceiverGetStatusRequest: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_TransceiverGetStatusResponse: Sendable {
+nonisolated struct SpaceX_API_Device_TransceiverGetStatusResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -190,11 +190,11 @@ struct SpaceX_API_Device_TransceiverGetStatusResponse: Sendable {
   var state: SpaceX_API_Device_DishState = .unknown
 
   var faults: SpaceX_API_Device_TransceiverFaults {
-    get {return _faults ?? SpaceX_API_Device_TransceiverFaults()}
+    get {_faults ?? SpaceX_API_Device_TransceiverFaults()}
     set {_faults = newValue}
   }
   /// Returns true if `faults` has been explicitly set.
-  var hasFaults: Bool {return self._faults != nil}
+  var hasFaults: Bool {self._faults != nil}
   /// Clears the value of `faults`. Subsequent reads from it will return its default value.
   mutating func clearFaults() {self._faults = nil}
 
@@ -211,7 +211,7 @@ struct SpaceX_API_Device_TransceiverGetStatusResponse: Sendable {
   fileprivate var _faults: SpaceX_API_Device_TransceiverFaults? = nil
 }
 
-struct SpaceX_API_Device_TransceiverFaults: Sendable {
+nonisolated struct SpaceX_API_Device_TransceiverFaults: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -227,7 +227,7 @@ struct SpaceX_API_Device_TransceiverFaults: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_TransceiverGetTelemetryRequest: Sendable {
+nonisolated struct SpaceX_API_Device_TransceiverGetTelemetryRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -237,158 +237,158 @@ struct SpaceX_API_Device_TransceiverGetTelemetryRequest: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_TransceiverGetTelemetryResponse: @unchecked Sendable {
+nonisolated struct SpaceX_API_Device_TransceiverGetTelemetryResponse: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   var antennaPointingMode: UInt32 {
-    get {return _storage._antennaPointingMode}
+    get {_storage._antennaPointingMode}
     set {_uniqueStorage()._antennaPointingMode = newValue}
   }
 
   var antennaPitch: Float {
-    get {return _storage._antennaPitch}
+    get {_storage._antennaPitch}
     set {_uniqueStorage()._antennaPitch = newValue}
   }
 
   var antennaRoll: Float {
-    get {return _storage._antennaRoll}
+    get {_storage._antennaRoll}
     set {_uniqueStorage()._antennaRoll = newValue}
   }
 
   var antennaRxTheta: Float {
-    get {return _storage._antennaRxTheta}
+    get {_storage._antennaRxTheta}
     set {_uniqueStorage()._antennaRxTheta = newValue}
   }
 
   var antennaTrueHeading: Float {
-    get {return _storage._antennaTrueHeading}
+    get {_storage._antennaTrueHeading}
     set {_uniqueStorage()._antennaTrueHeading = newValue}
   }
 
   var rxChannel: UInt32 {
-    get {return _storage._rxChannel}
+    get {_storage._rxChannel}
     set {_uniqueStorage()._rxChannel = newValue}
   }
 
   var currentCellID: UInt32 {
-    get {return _storage._currentCellID}
+    get {_storage._currentCellID}
     set {_uniqueStorage()._currentCellID = newValue}
   }
 
   var secondsUntilSlotEnd: Float {
-    get {return _storage._secondsUntilSlotEnd}
+    get {_storage._secondsUntilSlotEnd}
     set {_uniqueStorage()._secondsUntilSlotEnd = newValue}
   }
 
   var wbRssiPeakMagDb: Float {
-    get {return _storage._wbRssiPeakMagDb}
+    get {_storage._wbRssiPeakMagDb}
     set {_uniqueStorage()._wbRssiPeakMagDb = newValue}
   }
 
   var popPingDropRate: Float {
-    get {return _storage._popPingDropRate}
+    get {_storage._popPingDropRate}
     set {_uniqueStorage()._popPingDropRate = newValue}
   }
 
   var snrDb: Float {
-    get {return _storage._snrDb}
+    get {_storage._snrDb}
     set {_uniqueStorage()._snrDb = newValue}
   }
 
   var l1SnrAvgDb: Float {
-    get {return _storage._l1SnrAvgDb}
+    get {_storage._l1SnrAvgDb}
     set {_uniqueStorage()._l1SnrAvgDb = newValue}
   }
 
   var l1SnrMinDb: Float {
-    get {return _storage._l1SnrMinDb}
+    get {_storage._l1SnrMinDb}
     set {_uniqueStorage()._l1SnrMinDb = newValue}
   }
 
   var l1SnrMaxDb: Float {
-    get {return _storage._l1SnrMaxDb}
+    get {_storage._l1SnrMaxDb}
     set {_uniqueStorage()._l1SnrMaxDb = newValue}
   }
 
   var lmacSatelliteID: UInt32 {
-    get {return _storage._lmacSatelliteID}
+    get {_storage._lmacSatelliteID}
     set {_uniqueStorage()._lmacSatelliteID = newValue}
   }
 
   var targetSatelliteID: UInt32 {
-    get {return _storage._targetSatelliteID}
+    get {_storage._targetSatelliteID}
     set {_uniqueStorage()._targetSatelliteID = newValue}
   }
 
   var grantMcs: UInt32 {
-    get {return _storage._grantMcs}
+    get {_storage._grantMcs}
     set {_uniqueStorage()._grantMcs = newValue}
   }
 
   var grantSymbolsAvg: Float {
-    get {return _storage._grantSymbolsAvg}
+    get {_storage._grantSymbolsAvg}
     set {_uniqueStorage()._grantSymbolsAvg = newValue}
   }
 
   var dedGrant: UInt32 {
-    get {return _storage._dedGrant}
+    get {_storage._dedGrant}
     set {_uniqueStorage()._dedGrant = newValue}
   }
 
   var mobilityProactiveSlotChange: UInt32 {
-    get {return _storage._mobilityProactiveSlotChange}
+    get {_storage._mobilityProactiveSlotChange}
     set {_uniqueStorage()._mobilityProactiveSlotChange = newValue}
   }
 
   var mobilityReactiveSlotChange: UInt32 {
-    get {return _storage._mobilityReactiveSlotChange}
+    get {_storage._mobilityReactiveSlotChange}
     set {_uniqueStorage()._mobilityReactiveSlotChange = newValue}
   }
 
   var rfpTotalSynFailed: UInt32 {
-    get {return _storage._rfpTotalSynFailed}
+    get {_storage._rfpTotalSynFailed}
     set {_uniqueStorage()._rfpTotalSynFailed = newValue}
   }
 
   var numOutOfSeq: UInt32 {
-    get {return _storage._numOutOfSeq}
+    get {_storage._numOutOfSeq}
     set {_uniqueStorage()._numOutOfSeq = newValue}
   }
 
   var numUlmapDrop: UInt32 {
-    get {return _storage._numUlmapDrop}
+    get {_storage._numUlmapDrop}
     set {_uniqueStorage()._numUlmapDrop = newValue}
   }
 
   var currentSecondsOfSchedule: Float {
-    get {return _storage._currentSecondsOfSchedule}
+    get {_storage._currentSecondsOfSchedule}
     set {_uniqueStorage()._currentSecondsOfSchedule = newValue}
   }
 
   var sendLabelSwitchToGroundFailedCalls: UInt32 {
-    get {return _storage._sendLabelSwitchToGroundFailedCalls}
+    get {_storage._sendLabelSwitchToGroundFailedCalls}
     set {_uniqueStorage()._sendLabelSwitchToGroundFailedCalls = newValue}
   }
 
   var emaVelocityX: Double {
-    get {return _storage._emaVelocityX}
+    get {_storage._emaVelocityX}
     set {_uniqueStorage()._emaVelocityX = newValue}
   }
 
   var emaVelocityY: Double {
-    get {return _storage._emaVelocityY}
+    get {_storage._emaVelocityY}
     set {_uniqueStorage()._emaVelocityY = newValue}
   }
 
   var emaVelocityZ: Double {
-    get {return _storage._emaVelocityZ}
+    get {_storage._emaVelocityZ}
     set {_uniqueStorage()._emaVelocityZ = newValue}
   }
 
   var ceRssiDb: Float {
-    get {return _storage._ceRssiDb}
+    get {_storage._ceRssiDb}
     set {_uniqueStorage()._ceRssiDb = newValue}
   }
 
@@ -401,37 +401,23 @@ struct SpaceX_API_Device_TransceiverGetTelemetryResponse: @unchecked Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "SpaceX.API.Device"
+fileprivate nonisolated let _protobuf_package = "SpaceX.API.Device"
 
-extension SpaceX_API_Device_TransceiverModulatorState: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "MODSTATE_UNKNOWN"),
-    1: .same(proto: "MODSTATE_ENABLED"),
-    2: .same(proto: "MODSTATE_DISABLED"),
-  ]
+nonisolated extension SpaceX_API_Device_TransceiverModulatorState: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0MODSTATE_UNKNOWN\0\u{1}MODSTATE_ENABLED\0\u{1}MODSTATE_DISABLED\0")
 }
 
-extension SpaceX_API_Device_TransceiverTxRxState: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "TXRX_UNKNOWN"),
-    1: .same(proto: "TXRX_ENABLED"),
-    2: .same(proto: "TXRX_DISABLED"),
-  ]
+nonisolated extension SpaceX_API_Device_TransceiverTxRxState: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0TXRX_UNKNOWN\0\u{1}TXRX_ENABLED\0\u{1}TXRX_DISABLED\0")
 }
 
-extension SpaceX_API_Device_TransceiverTransmitBlankingState: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "TB_UNKNOWN"),
-    1: .same(proto: "TB_ENABLED"),
-    2: .same(proto: "TB_DISABLED"),
-  ]
+nonisolated extension SpaceX_API_Device_TransceiverTransmitBlankingState: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0TB_UNKNOWN\0\u{1}TB_ENABLED\0\u{1}TB_DISABLED\0")
 }
 
-extension SpaceX_API_Device_TransceiverIFLoopbackTestRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_TransceiverIFLoopbackTestRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".TransceiverIFLoopbackTestRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "enable_if_loopback"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}enable_if_loopback\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -459,14 +445,9 @@ extension SpaceX_API_Device_TransceiverIFLoopbackTestRequest: SwiftProtobuf.Mess
   }
 }
 
-extension SpaceX_API_Device_TransceiverIFLoopbackTestResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_TransceiverIFLoopbackTestResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".TransceiverIFLoopbackTestResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "ber_loopback_test"),
-    2: .standard(proto: "snr_loopback_test"),
-    3: .standard(proto: "rssi_loopback_test"),
-    4: .standard(proto: "pll_lock"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}ber_loopback_test\0\u{3}snr_loopback_test\0\u{3}rssi_loopback_test\0\u{3}pll_lock\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -509,7 +490,7 @@ extension SpaceX_API_Device_TransceiverIFLoopbackTestResponse: SwiftProtobuf.Mes
   }
 }
 
-extension SpaceX_API_Device_TransceiverGetStatusRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_TransceiverGetStatusRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".TransceiverGetStatusRequest"
   static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -528,19 +509,9 @@ extension SpaceX_API_Device_TransceiverGetStatusRequest: SwiftProtobuf.Message, 
   }
 }
 
-extension SpaceX_API_Device_TransceiverGetStatusResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_TransceiverGetStatusResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".TransceiverGetStatusResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "mod_state"),
-    2: .standard(proto: "demod_state"),
-    3: .standard(proto: "tx_state"),
-    4: .standard(proto: "rx_state"),
-    1006: .same(proto: "state"),
-    1007: .same(proto: "faults"),
-    1008: .standard(proto: "transmit_blanking_state"),
-    1009: .standard(proto: "modem_asic_temp"),
-    1010: .standard(proto: "tx_if_temp"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}mod_state\0\u{3}demod_state\0\u{3}tx_state\0\u{3}rx_state\0\u{2}j\u{f}state\0\u{1}faults\0\u{3}transmit_blanking_state\0\u{3}modem_asic_temp\0\u{3}tx_if_temp\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -612,13 +583,9 @@ extension SpaceX_API_Device_TransceiverGetStatusResponse: SwiftProtobuf.Message,
   }
 }
 
-extension SpaceX_API_Device_TransceiverFaults: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_TransceiverFaults: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".TransceiverFaults"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "over_temp_modem_asic_fault"),
-    2: .standard(proto: "over_temp_pcba_fault"),
-    3: .standard(proto: "dc_voltage_fault"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}over_temp_modem_asic_fault\0\u{3}over_temp_pcba_fault\0\u{3}dc_voltage_fault\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -656,7 +623,7 @@ extension SpaceX_API_Device_TransceiverFaults: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension SpaceX_API_Device_TransceiverGetTelemetryRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_TransceiverGetTelemetryRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".TransceiverGetTelemetryRequest"
   static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -675,40 +642,9 @@ extension SpaceX_API_Device_TransceiverGetTelemetryRequest: SwiftProtobuf.Messag
   }
 }
 
-extension SpaceX_API_Device_TransceiverGetTelemetryResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_TransceiverGetTelemetryResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".TransceiverGetTelemetryResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1001: .standard(proto: "antenna_pointing_mode"),
-    1002: .standard(proto: "antenna_pitch"),
-    1003: .standard(proto: "antenna_roll"),
-    1004: .standard(proto: "antenna_rx_theta"),
-    1005: .standard(proto: "antenna_true_heading"),
-    1006: .standard(proto: "rx_channel"),
-    1007: .standard(proto: "current_cell_id"),
-    1008: .standard(proto: "seconds_until_slot_end"),
-    1009: .standard(proto: "wb_rssi_peak_mag_db"),
-    1010: .standard(proto: "pop_ping_drop_rate"),
-    1011: .standard(proto: "snr_db"),
-    1012: .standard(proto: "l1_snr_avg_db"),
-    1013: .standard(proto: "l1_snr_min_db"),
-    1014: .standard(proto: "l1_snr_max_db"),
-    1015: .standard(proto: "lmac_satellite_id"),
-    1016: .standard(proto: "target_satellite_id"),
-    1017: .standard(proto: "grant_mcs"),
-    1018: .standard(proto: "grant_symbols_avg"),
-    1019: .standard(proto: "ded_grant"),
-    1020: .standard(proto: "mobility_proactive_slot_change"),
-    1021: .standard(proto: "mobility_reactive_slot_change"),
-    1022: .standard(proto: "rfp_total_syn_failed"),
-    1023: .standard(proto: "num_out_of_seq"),
-    1024: .standard(proto: "num_ulmap_drop"),
-    1025: .standard(proto: "current_seconds_of_schedule"),
-    1026: .standard(proto: "send_label_switch_to_ground_failed_calls"),
-    1027: .standard(proto: "ema_velocity_x"),
-    1028: .standard(proto: "ema_velocity_y"),
-    1029: .standard(proto: "ema_velocity_z"),
-    1030: .standard(proto: "ce_rssi_db"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{4}i\u{f}antenna_pointing_mode\0\u{3}antenna_pitch\0\u{3}antenna_roll\0\u{3}antenna_rx_theta\0\u{3}antenna_true_heading\0\u{3}rx_channel\0\u{3}current_cell_id\0\u{3}seconds_until_slot_end\0\u{3}wb_rssi_peak_mag_db\0\u{3}pop_ping_drop_rate\0\u{3}snr_db\0\u{3}l1_snr_avg_db\0\u{3}l1_snr_min_db\0\u{3}l1_snr_max_db\0\u{3}lmac_satellite_id\0\u{3}target_satellite_id\0\u{3}grant_mcs\0\u{3}grant_symbols_avg\0\u{3}ded_grant\0\u{3}mobility_proactive_slot_change\0\u{3}mobility_reactive_slot_change\0\u{3}rfp_total_syn_failed\0\u{3}num_out_of_seq\0\u{3}num_ulmap_drop\0\u{3}current_seconds_of_schedule\0\u{3}send_label_switch_to_ground_failed_calls\0\u{3}ema_velocity_x\0\u{3}ema_velocity_y\0\u{3}ema_velocity_z\0\u{3}ce_rssi_db\0")
 
   fileprivate class _StorageClass {
     var _antennaPointingMode: UInt32 = 0
@@ -742,15 +678,11 @@ extension SpaceX_API_Device_TransceiverGetTelemetryResponse: SwiftProtobuf.Messa
     var _emaVelocityZ: Double = 0
     var _ceRssiDb: Float = 0
 
-    #if swift(>=5.10)
       // This property is used as the initial default value for new instances of the type.
       // The type itself is protecting the reference to its storage via CoW semantics.
       // This will force a copy to be made of this reference when the first mutation occurs;
       // hence, it is safe to mark this as `nonisolated(unsafe)`.
       static nonisolated(unsafe) let defaultInstance = _StorageClass()
-    #else
-      static let defaultInstance = _StorageClass()
-    #endif
 
     private init() {}
 

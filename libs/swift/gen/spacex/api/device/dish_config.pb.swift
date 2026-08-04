@@ -15,47 +15,109 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-struct SpaceX_API_Device_DishConfig: Sendable {
+nonisolated struct SpaceX_API_Device_DishConfig: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var snowMeltMode: SpaceX_API_Device_DishConfig.SnowMeltMode = .auto
+  var snowMeltMode: SpaceX_API_Device_DishConfig.SnowMeltMode {
+    get {_storage._snowMeltMode}
+    set {_uniqueStorage()._snowMeltMode = newValue}
+  }
 
-  var applySnowMeltMode: Bool = false
+  var applySnowMeltMode: Bool {
+    get {_storage._applySnowMeltMode}
+    set {_uniqueStorage()._applySnowMeltMode = newValue}
+  }
 
-  var locationRequestMode: SpaceX_API_Device_DishConfig.LocationRequestMode = .none
+  var locationRequestMode: SpaceX_API_Device_DishConfig.LocationRequestMode {
+    get {_storage._locationRequestMode}
+    set {_uniqueStorage()._locationRequestMode = newValue}
+  }
 
-  var applyLocationRequestMode: Bool = false
+  var applyLocationRequestMode: Bool {
+    get {_storage._applyLocationRequestMode}
+    set {_uniqueStorage()._applyLocationRequestMode = newValue}
+  }
 
-  var levelDishMode: SpaceX_API_Device_DishConfig.LevelDishMode = .tiltLikeNormal
+  var levelDishMode: SpaceX_API_Device_DishConfig.LevelDishMode {
+    get {_storage._levelDishMode}
+    set {_uniqueStorage()._levelDishMode = newValue}
+  }
 
-  var applyLevelDishMode: Bool = false
+  var applyLevelDishMode: Bool {
+    get {_storage._applyLevelDishMode}
+    set {_uniqueStorage()._applyLevelDishMode = newValue}
+  }
 
-  var powerSaveStartMinutes: UInt32 = 0
+  var powerSaveStartMinutes: UInt32 {
+    get {_storage._powerSaveStartMinutes}
+    set {_uniqueStorage()._powerSaveStartMinutes = newValue}
+  }
 
-  var applyPowerSaveStartMinutes: Bool = false
+  var applyPowerSaveStartMinutes: Bool {
+    get {_storage._applyPowerSaveStartMinutes}
+    set {_uniqueStorage()._applyPowerSaveStartMinutes = newValue}
+  }
 
-  var powerSaveDurationMinutes: UInt32 = 0
+  var powerSaveDurationMinutes: UInt32 {
+    get {_storage._powerSaveDurationMinutes}
+    set {_uniqueStorage()._powerSaveDurationMinutes = newValue}
+  }
 
-  var applyPowerSaveDurationMinutes: Bool = false
+  var applyPowerSaveDurationMinutes: Bool {
+    get {_storage._applyPowerSaveDurationMinutes}
+    set {_uniqueStorage()._applyPowerSaveDurationMinutes = newValue}
+  }
 
-  var powerSaveMode: Bool = false
+  var powerSaveMode: Bool {
+    get {_storage._powerSaveMode}
+    set {_uniqueStorage()._powerSaveMode = newValue}
+  }
 
-  var applyPowerSaveMode: Bool = false
+  var applyPowerSaveMode: Bool {
+    get {_storage._applyPowerSaveMode}
+    set {_uniqueStorage()._applyPowerSaveMode = newValue}
+  }
 
-  var swupdateThreeDayDeferralEnabled: Bool = false
+  var swupdateRebootHour: UInt32 {
+    get {_storage._swupdateRebootHour}
+    set {_uniqueStorage()._swupdateRebootHour = newValue}
+  }
 
-  var applySwupdateThreeDayDeferralEnabled: Bool = false
+  var applySwupdateRebootHour: Bool {
+    get {_storage._applySwupdateRebootHour}
+    set {_uniqueStorage()._applySwupdateRebootHour = newValue}
+  }
+
+  var swupdateThreeDayDeferralEnabled: Bool {
+    get {_storage._swupdateThreeDayDeferralEnabled}
+    set {_uniqueStorage()._swupdateThreeDayDeferralEnabled = newValue}
+  }
+
+  var applySwupdateThreeDayDeferralEnabled: Bool {
+    get {_storage._applySwupdateThreeDayDeferralEnabled}
+    set {_uniqueStorage()._applySwupdateThreeDayDeferralEnabled = newValue}
+  }
+
+  var assetClass: UInt32 {
+    get {_storage._assetClass}
+    set {_uniqueStorage()._assetClass = newValue}
+  }
+
+  var applyAssetClass: Bool {
+    get {_storage._applyAssetClass}
+    set {_uniqueStorage()._applyAssetClass = newValue}
+  }
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  enum SnowMeltMode: SwiftProtobuf.Enum, Swift.CaseIterable {
+  nonisolated enum SnowMeltMode: SwiftProtobuf.Enum, Swift.CaseIterable {
     typealias RawValue = Int
     case auto // = 0
     case alwaysOn // = 1
@@ -93,7 +155,7 @@ struct SpaceX_API_Device_DishConfig: Sendable {
 
   }
 
-  enum LocationRequestMode: SwiftProtobuf.Enum, Swift.CaseIterable {
+  nonisolated enum LocationRequestMode: SwiftProtobuf.Enum, Swift.CaseIterable {
     typealias RawValue = Int
     case none // = 0
     case local // = 1
@@ -127,7 +189,7 @@ struct SpaceX_API_Device_DishConfig: Sendable {
 
   }
 
-  enum LevelDishMode: SwiftProtobuf.Enum, Swift.CaseIterable {
+  nonisolated enum LevelDishMode: SwiftProtobuf.Enum, Swift.CaseIterable {
     typealias RawValue = Int
     case tiltLikeNormal // = 0
     case forceLevel // = 1
@@ -162,140 +224,207 @@ struct SpaceX_API_Device_DishConfig: Sendable {
   }
 
   init() {}
+
+  fileprivate var _storage = _StorageClass.defaultInstance
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "SpaceX.API.Device"
+fileprivate nonisolated let _protobuf_package = "SpaceX.API.Device"
 
-extension SpaceX_API_Device_DishConfig: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_DishConfig: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".DishConfig"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "snow_melt_mode"),
-    1001: .standard(proto: "apply_snow_melt_mode"),
-    2: .standard(proto: "location_request_mode"),
-    2001: .standard(proto: "apply_location_request_mode"),
-    3: .standard(proto: "level_dish_mode"),
-    3001: .standard(proto: "apply_level_dish_mode"),
-    4: .standard(proto: "power_save_start_minutes"),
-    4001: .standard(proto: "apply_power_save_start_minutes"),
-    5: .standard(proto: "power_save_duration_minutes"),
-    5001: .standard(proto: "apply_power_save_duration_minutes"),
-    6: .standard(proto: "power_save_mode"),
-    6001: .standard(proto: "apply_power_save_mode"),
-    7: .standard(proto: "swupdate_three_day_deferral_enabled"),
-    7001: .standard(proto: "apply_swupdate_three_day_deferral_enabled"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}snow_melt_mode\0\u{3}location_request_mode\0\u{3}level_dish_mode\0\u{3}power_save_start_minutes\0\u{3}power_save_duration_minutes\0\u{3}power_save_mode\0\u{3}swupdate_three_day_deferral_enabled\0\u{3}asset_class\0\u{3}swupdate_reboot_hour\0\u{4}`\u{f}apply_snow_melt_mode\0\u{4}h\u{f}apply_location_request_mode\0\u{4}h\u{f}apply_level_dish_mode\0\u{4}h\u{f}apply_power_save_start_minutes\0\u{4}h\u{f}apply_power_save_duration_minutes\0\u{4}h\u{f}apply_power_save_mode\0\u{4}h\u{f}apply_swupdate_three_day_deferral_enabled\0\u{4}h\u{f}apply_asset_class\0\u{4}h\u{f}apply_swupdate_reboot_hour\0")
+
+  fileprivate class _StorageClass {
+    var _snowMeltMode: SpaceX_API_Device_DishConfig.SnowMeltMode = .auto
+    var _applySnowMeltMode: Bool = false
+    var _locationRequestMode: SpaceX_API_Device_DishConfig.LocationRequestMode = .none
+    var _applyLocationRequestMode: Bool = false
+    var _levelDishMode: SpaceX_API_Device_DishConfig.LevelDishMode = .tiltLikeNormal
+    var _applyLevelDishMode: Bool = false
+    var _powerSaveStartMinutes: UInt32 = 0
+    var _applyPowerSaveStartMinutes: Bool = false
+    var _powerSaveDurationMinutes: UInt32 = 0
+    var _applyPowerSaveDurationMinutes: Bool = false
+    var _powerSaveMode: Bool = false
+    var _applyPowerSaveMode: Bool = false
+    var _swupdateRebootHour: UInt32 = 0
+    var _applySwupdateRebootHour: Bool = false
+    var _swupdateThreeDayDeferralEnabled: Bool = false
+    var _applySwupdateThreeDayDeferralEnabled: Bool = false
+    var _assetClass: UInt32 = 0
+    var _applyAssetClass: Bool = false
+
+      // This property is used as the initial default value for new instances of the type.
+      // The type itself is protecting the reference to its storage via CoW semantics.
+      // This will force a copy to be made of this reference when the first mutation occurs;
+      // hence, it is safe to mark this as `nonisolated(unsafe)`.
+      static nonisolated(unsafe) let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _snowMeltMode = source._snowMeltMode
+      _applySnowMeltMode = source._applySnowMeltMode
+      _locationRequestMode = source._locationRequestMode
+      _applyLocationRequestMode = source._applyLocationRequestMode
+      _levelDishMode = source._levelDishMode
+      _applyLevelDishMode = source._applyLevelDishMode
+      _powerSaveStartMinutes = source._powerSaveStartMinutes
+      _applyPowerSaveStartMinutes = source._applyPowerSaveStartMinutes
+      _powerSaveDurationMinutes = source._powerSaveDurationMinutes
+      _applyPowerSaveDurationMinutes = source._applyPowerSaveDurationMinutes
+      _powerSaveMode = source._powerSaveMode
+      _applyPowerSaveMode = source._applyPowerSaveMode
+      _swupdateRebootHour = source._swupdateRebootHour
+      _applySwupdateRebootHour = source._applySwupdateRebootHour
+      _swupdateThreeDayDeferralEnabled = source._swupdateThreeDayDeferralEnabled
+      _applySwupdateThreeDayDeferralEnabled = source._applySwupdateThreeDayDeferralEnabled
+      _assetClass = source._assetClass
+      _applyAssetClass = source._applyAssetClass
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      // The use of inline closures is to circumvent an issue where the compiler
-      // allocates stack space for every case branch when no optimizations are
-      // enabled. https://github.com/apple/swift-protobuf/issues/1034
-      switch fieldNumber {
-      case 1: try { try decoder.decodeSingularEnumField(value: &self.snowMeltMode) }()
-      case 2: try { try decoder.decodeSingularEnumField(value: &self.locationRequestMode) }()
-      case 3: try { try decoder.decodeSingularEnumField(value: &self.levelDishMode) }()
-      case 4: try { try decoder.decodeSingularUInt32Field(value: &self.powerSaveStartMinutes) }()
-      case 5: try { try decoder.decodeSingularUInt32Field(value: &self.powerSaveDurationMinutes) }()
-      case 6: try { try decoder.decodeSingularBoolField(value: &self.powerSaveMode) }()
-      case 7: try { try decoder.decodeSingularBoolField(value: &self.swupdateThreeDayDeferralEnabled) }()
-      case 1001: try { try decoder.decodeSingularBoolField(value: &self.applySnowMeltMode) }()
-      case 2001: try { try decoder.decodeSingularBoolField(value: &self.applyLocationRequestMode) }()
-      case 3001: try { try decoder.decodeSingularBoolField(value: &self.applyLevelDishMode) }()
-      case 4001: try { try decoder.decodeSingularBoolField(value: &self.applyPowerSaveStartMinutes) }()
-      case 5001: try { try decoder.decodeSingularBoolField(value: &self.applyPowerSaveDurationMinutes) }()
-      case 6001: try { try decoder.decodeSingularBoolField(value: &self.applyPowerSaveMode) }()
-      case 7001: try { try decoder.decodeSingularBoolField(value: &self.applySwupdateThreeDayDeferralEnabled) }()
-      default: break
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        // The use of inline closures is to circumvent an issue where the compiler
+        // allocates stack space for every case branch when no optimizations are
+        // enabled. https://github.com/apple/swift-protobuf/issues/1034
+        switch fieldNumber {
+        case 1: try { try decoder.decodeSingularEnumField(value: &_storage._snowMeltMode) }()
+        case 2: try { try decoder.decodeSingularEnumField(value: &_storage._locationRequestMode) }()
+        case 3: try { try decoder.decodeSingularEnumField(value: &_storage._levelDishMode) }()
+        case 4: try { try decoder.decodeSingularUInt32Field(value: &_storage._powerSaveStartMinutes) }()
+        case 5: try { try decoder.decodeSingularUInt32Field(value: &_storage._powerSaveDurationMinutes) }()
+        case 6: try { try decoder.decodeSingularBoolField(value: &_storage._powerSaveMode) }()
+        case 7: try { try decoder.decodeSingularBoolField(value: &_storage._swupdateThreeDayDeferralEnabled) }()
+        case 8: try { try decoder.decodeSingularUInt32Field(value: &_storage._assetClass) }()
+        case 9: try { try decoder.decodeSingularUInt32Field(value: &_storage._swupdateRebootHour) }()
+        case 1001: try { try decoder.decodeSingularBoolField(value: &_storage._applySnowMeltMode) }()
+        case 2001: try { try decoder.decodeSingularBoolField(value: &_storage._applyLocationRequestMode) }()
+        case 3001: try { try decoder.decodeSingularBoolField(value: &_storage._applyLevelDishMode) }()
+        case 4001: try { try decoder.decodeSingularBoolField(value: &_storage._applyPowerSaveStartMinutes) }()
+        case 5001: try { try decoder.decodeSingularBoolField(value: &_storage._applyPowerSaveDurationMinutes) }()
+        case 6001: try { try decoder.decodeSingularBoolField(value: &_storage._applyPowerSaveMode) }()
+        case 7001: try { try decoder.decodeSingularBoolField(value: &_storage._applySwupdateThreeDayDeferralEnabled) }()
+        case 8001: try { try decoder.decodeSingularBoolField(value: &_storage._applyAssetClass) }()
+        case 9001: try { try decoder.decodeSingularBoolField(value: &_storage._applySwupdateRebootHour) }()
+        default: break
+        }
       }
     }
   }
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if self.snowMeltMode != .auto {
-      try visitor.visitSingularEnumField(value: self.snowMeltMode, fieldNumber: 1)
-    }
-    if self.locationRequestMode != .none {
-      try visitor.visitSingularEnumField(value: self.locationRequestMode, fieldNumber: 2)
-    }
-    if self.levelDishMode != .tiltLikeNormal {
-      try visitor.visitSingularEnumField(value: self.levelDishMode, fieldNumber: 3)
-    }
-    if self.powerSaveStartMinutes != 0 {
-      try visitor.visitSingularUInt32Field(value: self.powerSaveStartMinutes, fieldNumber: 4)
-    }
-    if self.powerSaveDurationMinutes != 0 {
-      try visitor.visitSingularUInt32Field(value: self.powerSaveDurationMinutes, fieldNumber: 5)
-    }
-    if self.powerSaveMode != false {
-      try visitor.visitSingularBoolField(value: self.powerSaveMode, fieldNumber: 6)
-    }
-    if self.swupdateThreeDayDeferralEnabled != false {
-      try visitor.visitSingularBoolField(value: self.swupdateThreeDayDeferralEnabled, fieldNumber: 7)
-    }
-    if self.applySnowMeltMode != false {
-      try visitor.visitSingularBoolField(value: self.applySnowMeltMode, fieldNumber: 1001)
-    }
-    if self.applyLocationRequestMode != false {
-      try visitor.visitSingularBoolField(value: self.applyLocationRequestMode, fieldNumber: 2001)
-    }
-    if self.applyLevelDishMode != false {
-      try visitor.visitSingularBoolField(value: self.applyLevelDishMode, fieldNumber: 3001)
-    }
-    if self.applyPowerSaveStartMinutes != false {
-      try visitor.visitSingularBoolField(value: self.applyPowerSaveStartMinutes, fieldNumber: 4001)
-    }
-    if self.applyPowerSaveDurationMinutes != false {
-      try visitor.visitSingularBoolField(value: self.applyPowerSaveDurationMinutes, fieldNumber: 5001)
-    }
-    if self.applyPowerSaveMode != false {
-      try visitor.visitSingularBoolField(value: self.applyPowerSaveMode, fieldNumber: 6001)
-    }
-    if self.applySwupdateThreeDayDeferralEnabled != false {
-      try visitor.visitSingularBoolField(value: self.applySwupdateThreeDayDeferralEnabled, fieldNumber: 7001)
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      if _storage._snowMeltMode != .auto {
+        try visitor.visitSingularEnumField(value: _storage._snowMeltMode, fieldNumber: 1)
+      }
+      if _storage._locationRequestMode != .none {
+        try visitor.visitSingularEnumField(value: _storage._locationRequestMode, fieldNumber: 2)
+      }
+      if _storage._levelDishMode != .tiltLikeNormal {
+        try visitor.visitSingularEnumField(value: _storage._levelDishMode, fieldNumber: 3)
+      }
+      if _storage._powerSaveStartMinutes != 0 {
+        try visitor.visitSingularUInt32Field(value: _storage._powerSaveStartMinutes, fieldNumber: 4)
+      }
+      if _storage._powerSaveDurationMinutes != 0 {
+        try visitor.visitSingularUInt32Field(value: _storage._powerSaveDurationMinutes, fieldNumber: 5)
+      }
+      if _storage._powerSaveMode != false {
+        try visitor.visitSingularBoolField(value: _storage._powerSaveMode, fieldNumber: 6)
+      }
+      if _storage._swupdateThreeDayDeferralEnabled != false {
+        try visitor.visitSingularBoolField(value: _storage._swupdateThreeDayDeferralEnabled, fieldNumber: 7)
+      }
+      if _storage._assetClass != 0 {
+        try visitor.visitSingularUInt32Field(value: _storage._assetClass, fieldNumber: 8)
+      }
+      if _storage._swupdateRebootHour != 0 {
+        try visitor.visitSingularUInt32Field(value: _storage._swupdateRebootHour, fieldNumber: 9)
+      }
+      if _storage._applySnowMeltMode != false {
+        try visitor.visitSingularBoolField(value: _storage._applySnowMeltMode, fieldNumber: 1001)
+      }
+      if _storage._applyLocationRequestMode != false {
+        try visitor.visitSingularBoolField(value: _storage._applyLocationRequestMode, fieldNumber: 2001)
+      }
+      if _storage._applyLevelDishMode != false {
+        try visitor.visitSingularBoolField(value: _storage._applyLevelDishMode, fieldNumber: 3001)
+      }
+      if _storage._applyPowerSaveStartMinutes != false {
+        try visitor.visitSingularBoolField(value: _storage._applyPowerSaveStartMinutes, fieldNumber: 4001)
+      }
+      if _storage._applyPowerSaveDurationMinutes != false {
+        try visitor.visitSingularBoolField(value: _storage._applyPowerSaveDurationMinutes, fieldNumber: 5001)
+      }
+      if _storage._applyPowerSaveMode != false {
+        try visitor.visitSingularBoolField(value: _storage._applyPowerSaveMode, fieldNumber: 6001)
+      }
+      if _storage._applySwupdateThreeDayDeferralEnabled != false {
+        try visitor.visitSingularBoolField(value: _storage._applySwupdateThreeDayDeferralEnabled, fieldNumber: 7001)
+      }
+      if _storage._applyAssetClass != false {
+        try visitor.visitSingularBoolField(value: _storage._applyAssetClass, fieldNumber: 8001)
+      }
+      if _storage._applySwupdateRebootHour != false {
+        try visitor.visitSingularBoolField(value: _storage._applySwupdateRebootHour, fieldNumber: 9001)
+      }
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   static func ==(lhs: SpaceX_API_Device_DishConfig, rhs: SpaceX_API_Device_DishConfig) -> Bool {
-    if lhs.snowMeltMode != rhs.snowMeltMode {return false}
-    if lhs.applySnowMeltMode != rhs.applySnowMeltMode {return false}
-    if lhs.locationRequestMode != rhs.locationRequestMode {return false}
-    if lhs.applyLocationRequestMode != rhs.applyLocationRequestMode {return false}
-    if lhs.levelDishMode != rhs.levelDishMode {return false}
-    if lhs.applyLevelDishMode != rhs.applyLevelDishMode {return false}
-    if lhs.powerSaveStartMinutes != rhs.powerSaveStartMinutes {return false}
-    if lhs.applyPowerSaveStartMinutes != rhs.applyPowerSaveStartMinutes {return false}
-    if lhs.powerSaveDurationMinutes != rhs.powerSaveDurationMinutes {return false}
-    if lhs.applyPowerSaveDurationMinutes != rhs.applyPowerSaveDurationMinutes {return false}
-    if lhs.powerSaveMode != rhs.powerSaveMode {return false}
-    if lhs.applyPowerSaveMode != rhs.applyPowerSaveMode {return false}
-    if lhs.swupdateThreeDayDeferralEnabled != rhs.swupdateThreeDayDeferralEnabled {return false}
-    if lhs.applySwupdateThreeDayDeferralEnabled != rhs.applySwupdateThreeDayDeferralEnabled {return false}
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._snowMeltMode != rhs_storage._snowMeltMode {return false}
+        if _storage._applySnowMeltMode != rhs_storage._applySnowMeltMode {return false}
+        if _storage._locationRequestMode != rhs_storage._locationRequestMode {return false}
+        if _storage._applyLocationRequestMode != rhs_storage._applyLocationRequestMode {return false}
+        if _storage._levelDishMode != rhs_storage._levelDishMode {return false}
+        if _storage._applyLevelDishMode != rhs_storage._applyLevelDishMode {return false}
+        if _storage._powerSaveStartMinutes != rhs_storage._powerSaveStartMinutes {return false}
+        if _storage._applyPowerSaveStartMinutes != rhs_storage._applyPowerSaveStartMinutes {return false}
+        if _storage._powerSaveDurationMinutes != rhs_storage._powerSaveDurationMinutes {return false}
+        if _storage._applyPowerSaveDurationMinutes != rhs_storage._applyPowerSaveDurationMinutes {return false}
+        if _storage._powerSaveMode != rhs_storage._powerSaveMode {return false}
+        if _storage._applyPowerSaveMode != rhs_storage._applyPowerSaveMode {return false}
+        if _storage._swupdateRebootHour != rhs_storage._swupdateRebootHour {return false}
+        if _storage._applySwupdateRebootHour != rhs_storage._applySwupdateRebootHour {return false}
+        if _storage._swupdateThreeDayDeferralEnabled != rhs_storage._swupdateThreeDayDeferralEnabled {return false}
+        if _storage._applySwupdateThreeDayDeferralEnabled != rhs_storage._applySwupdateThreeDayDeferralEnabled {return false}
+        if _storage._assetClass != rhs_storage._assetClass {return false}
+        if _storage._applyAssetClass != rhs_storage._applyAssetClass {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension SpaceX_API_Device_DishConfig.SnowMeltMode: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "AUTO"),
-    1: .same(proto: "ALWAYS_ON"),
-    2: .same(proto: "ALWAYS_OFF"),
-  ]
+nonisolated extension SpaceX_API_Device_DishConfig.SnowMeltMode: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0AUTO\0\u{1}ALWAYS_ON\0\u{1}ALWAYS_OFF\0")
 }
 
-extension SpaceX_API_Device_DishConfig.LocationRequestMode: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "NONE"),
-    1: .same(proto: "LOCAL"),
-  ]
+nonisolated extension SpaceX_API_Device_DishConfig.LocationRequestMode: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0NONE\0\u{1}LOCAL\0")
 }
 
-extension SpaceX_API_Device_DishConfig.LevelDishMode: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "TILT_LIKE_NORMAL"),
-    1: .same(proto: "FORCE_LEVEL"),
-  ]
+nonisolated extension SpaceX_API_Device_DishConfig.LevelDishMode: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0TILT_LIKE_NORMAL\0\u{1}FORCE_LEVEL\0")
 }

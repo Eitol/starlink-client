@@ -30,6 +30,22 @@ final $typed_data.Uint8List userMobilityClassDescriptor = $convert.base64Decode(
     'ChFVc2VyTW9iaWxpdHlDbGFzcxIOCgpTVEFUSU9OQVJZEAASCwoHTk9NQURJQxABEgoKBk1PQk'
     'lMRRAC');
 
+@$core.Deprecated('Use obstructionMapReferenceFrameDescriptor instead')
+const ObstructionMapReferenceFrame$json = {
+  '1': 'ObstructionMapReferenceFrame',
+  '2': [
+    {'1': 'FRAME_UNKNOWN', '2': 0},
+    {'1': 'FRAME_EARTH', '2': 1},
+    {'1': 'FRAME_UT', '2': 2},
+  ],
+};
+
+/// Descriptor for `ObstructionMapReferenceFrame`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List obstructionMapReferenceFrameDescriptor =
+    $convert.base64Decode(
+        'ChxPYnN0cnVjdGlvbk1hcFJlZmVyZW5jZUZyYW1lEhEKDUZSQU1FX1VOS05PV04QABIPCgtGUk'
+        'FNRV9FQVJUSBABEgwKCEZSQU1FX1VUEAI=');
+
 @$core.Deprecated('Use softwareUpdateStateDescriptor instead')
 const SoftwareUpdateState$json = {
   '1': 'SoftwareUpdateState',
@@ -132,6 +148,92 @@ final $typed_data.Uint8List attitudeEstimationStateDescriptor = $convert.base64D
     '5DT05WRVJHRUQQARIUChBGSUxURVJfQ09OVkVSR0VEEAISEgoORklMVEVSX0ZBVUxURUQQAxIS'
     'Cg5GSUxURVJfSU5WQUxJRBAE');
 
+@$core.Deprecated('Use rebootReasonDescriptor instead')
+const RebootReason$json = {
+  '1': 'RebootReason',
+  '2': [
+    {'1': 'REBOOT_REASON_NONE', '2': 0},
+    {'1': 'REBOOT_REASON_MANUAL', '2': 1},
+    {'1': 'REBOOT_REASON_LOSS_OF_COMM', '2': 2},
+    {'1': 'REBOOT_REASON_SWUPDATE_NOW', '2': 3},
+    {'1': 'REBOOT_REASON_SWUPDATE_SCHEDULED', '2': 4},
+    {'1': 'REBOOT_REASON_APP', '2': 5},
+    {'1': 'REBOOT_REASON_EMC', '2': 6},
+    {'1': 'REBOOT_REASON_FACTORY_RESET', '2': 7},
+    {'1': 'REBOOT_REASON_TEST_CASE', '2': 8},
+    {'1': 'REBOOT_REASON_THERMAL_POWER_CUT', '2': 9},
+    {'1': 'REBOOT_REASON_CRITICAL_PROCESS_DIED', '2': 10},
+    {'1': 'REBOOT_REASON_NO_RF_READY', '2': 11},
+    {'1': 'REBOOT_REASON_POSTPONED_LOSS_OF_COMM', '2': 12},
+    {'1': 'REBOOT_REASON_SWUPDATE_STATIONARY', '2': 13},
+    {'1': 'REBOOT_REASON_AAP_CRASH', '2': 14},
+    {'1': 'REBOOT_REASON_XP70_SACS', '2': 15},
+    {'1': 'REBOOT_REASON_INE_FAILED', '2': 16},
+    {'1': 'REBOOT_REASON_KERNEL_TAINTED', '2': 17},
+  ],
+};
+
+/// Descriptor for `RebootReason`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List rebootReasonDescriptor = $convert.base64Decode(
+    'CgxSZWJvb3RSZWFzb24SFgoSUkVCT09UX1JFQVNPTl9OT05FEAASGAoUUkVCT09UX1JFQVNPTl'
+    '9NQU5VQUwQARIeChpSRUJPT1RfUkVBU09OX0xPU1NfT0ZfQ09NTRACEh4KGlJFQk9PVF9SRUFT'
+    'T05fU1dVUERBVEVfTk9XEAMSJAogUkVCT09UX1JFQVNPTl9TV1VQREFURV9TQ0hFRFVMRUQQBB'
+    'IVChFSRUJPT1RfUkVBU09OX0FQUBAFEhUKEVJFQk9PVF9SRUFTT05fRU1DEAYSHwobUkVCT09U'
+    'X1JFQVNPTl9GQUNUT1JZX1JFU0VUEAcSGwoXUkVCT09UX1JFQVNPTl9URVNUX0NBU0UQCBIjCh'
+    '9SRUJPT1RfUkVBU09OX1RIRVJNQUxfUE9XRVJfQ1VUEAkSJwojUkVCT09UX1JFQVNPTl9DUklU'
+    'SUNBTF9QUk9DRVNTX0RJRUQQChIdChlSRUJPT1RfUkVBU09OX05PX1JGX1JFQURZEAsSKAokUk'
+    'VCT09UX1JFQVNPTl9QT1NUUE9ORURfTE9TU19PRl9DT01NEAwSJQohUkVCT09UX1JFQVNPTl9T'
+    'V1VQREFURV9TVEFUSU9OQVJZEA0SGwoXUkVCT09UX1JFQVNPTl9BQVBfQ1JBU0gQDhIbChdSRU'
+    'JPT1RfUkVBU09OX1hQNzBfU0FDUxAPEhwKGFJFQk9PVF9SRUFTT05fSU5FX0ZBSUxFRBAQEiAK'
+    'HFJFQk9PVF9SRUFTT05fS0VSTkVMX1RBSU5URUQQEQ==');
+
+@$core.Deprecated('Use routerRoleDescriptor instead')
+const RouterRole$json = {
+  '1': 'RouterRole',
+  '2': [
+    {'1': 'UNSPECIFIED', '2': 0},
+    {'1': 'CONTROLLER', '2': 1},
+    {'1': 'REPEATER', '2': 2},
+    {'1': 'BYPASSED', '2': 3},
+  ],
+};
+
+/// Descriptor for `RouterRole`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List routerRoleDescriptor = $convert.base64Decode(
+    'CgpSb3V0ZXJSb2xlEg8KC1VOU1BFQ0lGSUVEEAASDgoKQ09OVFJPTExFUhABEgwKCFJFUEVBVE'
+    'VSEAISDAoIQllQQVNTRUQQAw==');
+
+@$core.Deprecated('Use powerSourceDescriptor instead')
+const PowerSource$json = {
+  '1': 'PowerSource',
+  '2': [
+    {'1': 'POWER_SOURCE_UNKNOWN', '2': 0},
+    {'1': 'USBC', '2': 1},
+    {'1': 'BATTERY', '2': 2},
+    {'1': 'USBC_AND_BATTERY', '2': 3},
+  ],
+};
+
+/// Descriptor for `PowerSource`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List powerSourceDescriptor = $convert.base64Decode(
+    'CgtQb3dlclNvdXJjZRIYChRQT1dFUl9TT1VSQ0VfVU5LTk9XThAAEggKBFVTQkMQARILCgdCQV'
+    'RURVJZEAISFAoQVVNCQ19BTkRfQkFUVEVSWRAD');
+
+@$core.Deprecated('Use natFlagDescriptor instead')
+const NatFlag$json = {
+  '1': 'NatFlag',
+  '2': [
+    {'1': 'NAT_UNKNOWN', '2': 0},
+    {'1': 'NAT_DISABLED', '2': 1},
+    {'1': 'NAT_ENABLED', '2': 2},
+  ],
+};
+
+/// Descriptor for `NatFlag`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List natFlagDescriptor = $convert.base64Decode(
+    'CgdOYXRGbGFnEg8KC05BVF9VTktOT1dOEAASEAoMTkFUX0RJU0FCTEVEEAESDwoLTkFUX0VOQU'
+    'JMRUQQAg==');
+
 @$core.Deprecated('Use dishStateDescriptor instead')
 const DishState$json = {
   '1': 'DishState',
@@ -168,6 +270,119 @@ const DishStowResponse$json = {
 /// Descriptor for `DishStowResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List dishStowResponseDescriptor =
     $convert.base64Decode('ChBEaXNoU3Rvd1Jlc3BvbnNl');
+
+@$core.Deprecated('Use dishAviationTestRequestDescriptor instead')
+const DishAviationTestRequest$json = {
+  '1': 'DishAviationTestRequest',
+  '2': [
+    {
+      '1': 'thermal_demand_fraction',
+      '3': 1,
+      '4': 1,
+      '5': 2,
+      '10': 'thermalDemandFraction'
+    },
+    {
+      '1': 'apply_thermal_demand_fraction',
+      '3': 2,
+      '4': 1,
+      '5': 8,
+      '10': 'applyThermalDemandFraction'
+    },
+    {
+      '1': 'eth_speed',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.DishAviationTestRequest.EthSpeed',
+      '10': 'ethSpeed'
+    },
+    {'1': 'apply_eth_speed', '3': 4, '4': 1, '5': 8, '10': 'applyEthSpeed'},
+    {
+      '1': 'eth_amplitude_registers',
+      '3': 5,
+      '4': 1,
+      '5': 13,
+      '10': 'ethAmplitudeRegisters'
+    },
+    {
+      '1': 'apply_eth_amplitude_registers',
+      '3': 6,
+      '4': 1,
+      '5': 8,
+      '10': 'applyEthAmplitudeRegisters'
+    },
+  ],
+  '4': [DishAviationTestRequest_EthSpeed$json],
+};
+
+@$core.Deprecated('Use dishAviationTestRequestDescriptor instead')
+const DishAviationTestRequest_EthSpeed$json = {
+  '1': 'EthSpeed',
+  '2': [
+    {'1': 'ETH_SPEED_100_MBPS', '2': 0},
+    {'1': 'ETH_SPEED_1000_MBPS', '2': 1},
+  ],
+};
+
+/// Descriptor for `DishAviationTestRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List dishAviationTestRequestDescriptor = $convert.base64Decode(
+    'ChdEaXNoQXZpYXRpb25UZXN0UmVxdWVzdBI2Chd0aGVybWFsX2RlbWFuZF9mcmFjdGlvbhgBIA'
+    'EoAlIVdGhlcm1hbERlbWFuZEZyYWN0aW9uEkEKHWFwcGx5X3RoZXJtYWxfZGVtYW5kX2ZyYWN0'
+    'aW9uGAIgASgIUhphcHBseVRoZXJtYWxEZW1hbmRGcmFjdGlvbhJQCglldGhfc3BlZWQYAyABKA'
+    '4yMy5TcGFjZVguQVBJLkRldmljZS5EaXNoQXZpYXRpb25UZXN0UmVxdWVzdC5FdGhTcGVlZFII'
+    'ZXRoU3BlZWQSJgoPYXBwbHlfZXRoX3NwZWVkGAQgASgIUg1hcHBseUV0aFNwZWVkEjYKF2V0aF'
+    '9hbXBsaXR1ZGVfcmVnaXN0ZXJzGAUgASgNUhVldGhBbXBsaXR1ZGVSZWdpc3RlcnMSQQodYXBw'
+    'bHlfZXRoX2FtcGxpdHVkZV9yZWdpc3RlcnMYBiABKAhSGmFwcGx5RXRoQW1wbGl0dWRlUmVnaX'
+    'N0ZXJzIjsKCEV0aFNwZWVkEhYKEkVUSF9TUEVFRF8xMDBfTUJQUxAAEhcKE0VUSF9TUEVFRF8x'
+    'MDAwX01CUFMQAQ==');
+
+@$core.Deprecated('Use dishAviationTestResponseDescriptor instead')
+const DishAviationTestResponse$json = {
+  '1': 'DishAviationTestResponse',
+};
+
+/// Descriptor for `DishAviationTestResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List dishAviationTestResponseDescriptor =
+    $convert.base64Decode('ChhEaXNoQXZpYXRpb25UZXN0UmVzcG9uc2U=');
+
+@$core.Deprecated('Use ztlmQueryRequestDescriptor instead')
+const ZtlmQueryRequest$json = {
+  '1': 'ZtlmQueryRequest',
+  '2': [
+    {
+      '1': 'query_start_time',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Timestamp',
+      '10': 'queryStartTime'
+    },
+    {
+      '1': 'query_end_time',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Timestamp',
+      '10': 'queryEndTime'
+    },
+  ],
+};
+
+/// Descriptor for `ZtlmQueryRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List ztlmQueryRequestDescriptor = $convert.base64Decode(
+    'ChBadGxtUXVlcnlSZXF1ZXN0EkQKEHF1ZXJ5X3N0YXJ0X3RpbWUYASABKAsyGi5nb29nbGUucH'
+    'JvdG9idWYuVGltZXN0YW1wUg5xdWVyeVN0YXJ0VGltZRJACg5xdWVyeV9lbmRfdGltZRgCIAEo'
+    'CzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSDHF1ZXJ5RW5kVGltZQ==');
+
+@$core.Deprecated('Use ztlmQueryResponseDescriptor instead')
+const ZtlmQueryResponse$json = {
+  '1': 'ZtlmQueryResponse',
+};
+
+/// Descriptor for `ZtlmQueryResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List ztlmQueryResponseDescriptor =
+    $convert.base64Decode('ChFadGxtUXVlcnlSZXNwb25zZQ==');
 
 @$core.Deprecated('Use dishGetContextRequestDescriptor instead')
 const DishGetContextRequest$json = {
@@ -301,6 +516,27 @@ const DishGetContextResponse$json = {
       '10': 'secondsSinceLast60sOutage'
     },
     {
+      '1': 'outage_1s_within_1h',
+      '3': 23,
+      '4': 1,
+      '5': 8,
+      '10': 'outage1sWithin1h'
+    },
+    {
+      '1': 'outage_2s_within_1h',
+      '3': 24,
+      '4': 1,
+      '5': 8,
+      '10': 'outage2sWithin1h'
+    },
+    {
+      '1': 'outage_5s_within_1h',
+      '3': 25,
+      '4': 1,
+      '5': 8,
+      '10': 'outage5sWithin1h'
+    },
+    {
       '1': 'disablement_code',
       '3': 21,
       '4': 1,
@@ -339,10 +575,12 @@ final $typed_data.Uint8List dishGetContextResponseDescriptor = $convert.base64De
     'dGFnZRI+ChxzZWNvbmRzX3NpbmNlX2xhc3RfNXNfb3V0YWdlGBEgASgCUhhzZWNvbmRzU2luY2'
     'VMYXN0NXNPdXRhZ2USQAodc2Vjb25kc19zaW5jZV9sYXN0XzE1c19vdXRhZ2UYEiABKAJSGXNl'
     'Y29uZHNTaW5jZUxhc3QxNXNPdXRhZ2USQAodc2Vjb25kc19zaW5jZV9sYXN0XzYwc19vdXRhZ2'
-    'UYEyABKAJSGXNlY29uZHNTaW5jZUxhc3Q2MHNPdXRhZ2USWwoQZGlzYWJsZW1lbnRfY29kZRgV'
-    'IAEoDjIwLlNwYWNlWC5BUEkuU2F0ZWxsaXRlcy5OZXR3b3JrLlV0RGlzYWJsZW1lbnRDb2RlUg'
-    '9kaXNhYmxlbWVudENvZGUSLQoTa3VfbWFjX2FjdGl2ZV9yYXRpbxgWIAEoAlIQa3VNYWNBY3Rp'
-    'dmVSYXRpbw==');
+    'UYEyABKAJSGXNlY29uZHNTaW5jZUxhc3Q2MHNPdXRhZ2USLQoTb3V0YWdlXzFzX3dpdGhpbl8x'
+    'aBgXIAEoCFIQb3V0YWdlMXNXaXRoaW4xaBItChNvdXRhZ2VfMnNfd2l0aGluXzFoGBggASgIUh'
+    'BvdXRhZ2Uyc1dpdGhpbjFoEi0KE291dGFnZV81c193aXRoaW5fMWgYGSABKAhSEG91dGFnZTVz'
+    'V2l0aGluMWgSWwoQZGlzYWJsZW1lbnRfY29kZRgVIAEoDjIwLlNwYWNlWC5BUEkuU2F0ZWxsaX'
+    'Rlcy5OZXR3b3JrLlV0RGlzYWJsZW1lbnRDb2RlUg9kaXNhYmxlbWVudENvZGUSLQoTa3VfbWFj'
+    'X2FjdGl2ZV9yYXRpbxgWIAEoAlIQa3VNYWNBY3RpdmVSYXRpbw==');
 
 @$core.Deprecated('Use dishOutageDescriptor instead')
 const DishOutage$json = {
@@ -385,8 +623,13 @@ const DishOutage_Cause$json = {
     {'1': 'ACTUATOR_ACTIVITY', '2': 9},
     {'1': 'CABLE_TEST', '2': 10},
     {'1': 'SLEEPING', '2': 11},
-    {'1': 'MOVING_WHILE_NOT_ALLOWED', '2': 12},
+    {'1': 'SKY_SEARCH', '2': 13},
+    {'1': 'INHIBIT_RF', '2': 14},
   ],
+  '4': [
+    {'1': 12, '2': 12},
+  ],
+  '5': ['MOVING_WHILE_NOT_ALLOWED'],
 };
 
 /// Descriptor for `DishOutage`. Decode as a `google.protobuf.DescriptorProto`.
@@ -394,11 +637,12 @@ final $typed_data.Uint8List dishOutageDescriptor = $convert.base64Decode(
     'CgpEaXNoT3V0YWdlEjkKBWNhdXNlGAEgASgOMiMuU3BhY2VYLkFQSS5EZXZpY2UuRGlzaE91dG'
     'FnZS5DYXVzZVIFY2F1c2USLAoSc3RhcnRfdGltZXN0YW1wX25zGAIgASgDUhBzdGFydFRpbWVz'
     'dGFtcE5zEh8KC2R1cmF0aW9uX25zGAMgASgEUgpkdXJhdGlvbk5zEh0KCmRpZF9zd2l0Y2gYBC'
-    'ABKAhSCWRpZFN3aXRjaCLjAQoFQ2F1c2USCwoHVU5LTk9XThAAEgsKB0JPT1RJTkcQARIKCgZT'
+    'ABKAhSCWRpZFN3aXRjaCKFAgoFQ2F1c2USCwoHVU5LTk9XThAAEgsKB0JPT1RJTkcQARIKCgZT'
     'VE9XRUQQAhIUChBUSEVSTUFMX1NIVVRET1dOEAMSDwoLTk9fU0NIRURVTEUQBBILCgdOT19TQV'
     'RTEAUSDgoKT0JTVFJVQ1RFRBAGEg8KC05PX0RPV05MSU5LEAcSDAoITk9fUElOR1MQCBIVChFB'
-    'Q1RVQVRPUl9BQ1RJVklUWRAJEg4KCkNBQkxFX1RFU1QQChIMCghTTEVFUElORxALEhwKGE1PVk'
-    'lOR19XSElMRV9OT1RfQUxMT1dFRBAM');
+    'Q1RVQVRPUl9BQ1RJVklUWRAJEg4KCkNBQkxFX1RFU1QQChIMCghTTEVFUElORxALEg4KClNLWV'
+    '9TRUFSQ0gQDRIOCgpJTkhJQklUX1JGEA4iBAgMEAwqGE1PVklOR19XSElMRV9OT1RfQUxMT1dF'
+    'RA==');
 
 @$core.Deprecated('Use dishGetHistoryResponseDescriptor instead')
 const DishGetHistoryResponse$json = {
@@ -441,6 +685,15 @@ const DishGetHistoryResponse$json = {
       '6': '.SpaceX.API.Device.DishOutage',
       '10': 'outages'
     },
+    {'1': 'power_in', '3': 1010, '4': 3, '5': 2, '10': 'powerIn'},
+    {
+      '1': 'event_log',
+      '3': 1011,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.EventLog',
+      '10': 'eventLog'
+    },
   ],
   '9': [
     {'1': 1005, '2': 1006},
@@ -457,8 +710,30 @@ final $typed_data.Uint8List dishGetHistoryResponseDescriptor = $convert.base64De
     'dGVuY3lfbXMY6gcgAygCUhBwb3BQaW5nTGF0ZW5jeU1zEjcKF2Rvd25saW5rX3Rocm91Z2hwdX'
     'RfYnBzGOsHIAMoAlIVZG93bmxpbmtUaHJvdWdocHV0QnBzEjMKFXVwbGlua190aHJvdWdocHV0'
     'X2JwcxjsByADKAJSE3VwbGlua1Rocm91Z2hwdXRCcHMSOAoHb3V0YWdlcxjxByADKAsyHS5TcG'
-    'FjZVguQVBJLkRldmljZS5EaXNoT3V0YWdlUgdvdXRhZ2VzSgYI7QcQ7gdKBgjuBxDvB0oGCO8H'
-    'EPAHSgYI8AcQ8Qc=');
+    'FjZVguQVBJLkRldmljZS5EaXNoT3V0YWdlUgdvdXRhZ2VzEhoKCHBvd2VyX2luGPIHIAMoAlIH'
+    'cG93ZXJJbhI5CglldmVudF9sb2cY8wcgASgLMhsuU3BhY2VYLkFQSS5EZXZpY2UuRXZlbnRMb2'
+    'dSCGV2ZW50TG9nSgYI7QcQ7gdKBgjuBxDvB0oGCO8HEPAHSgYI8AcQ8Qc=');
+
+@$core.Deprecated('Use routerInfoDescriptor instead')
+const RouterInfo$json = {
+  '1': 'RouterInfo',
+  '2': [
+    {
+      '1': 'role',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.RouterRole',
+      '10': 'role'
+    },
+    {'1': 'last_seen', '3': 2, '4': 1, '5': 3, '10': 'lastSeen'},
+  ],
+};
+
+/// Descriptor for `RouterInfo`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List routerInfoDescriptor = $convert.base64Decode(
+    'CgpSb3V0ZXJJbmZvEjEKBHJvbGUYASABKA4yHS5TcGFjZVguQVBJLkRldmljZS5Sb3V0ZXJSb2'
+    'xlUgRyb2xlEhsKCWxhc3Rfc2VlbhgCIAEoA1IIbGFzdFNlZW4=');
 
 @$core.Deprecated('Use dishGetStatusResponseDescriptor instead')
 const DishGetStatusResponse$json = {
@@ -610,6 +885,14 @@ const DishGetStatusResponse$json = {
       '10': 'swupdateRebootReady'
     },
     {
+      '1': 'reboot_reason',
+      '3': 1032,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.RebootReason',
+      '10': 'rebootReason'
+    },
+    {
       '1': 'software_update_stats',
       '3': 1026,
       '4': 1,
@@ -648,6 +931,22 @@ const DishGetStatusResponse$json = {
       '6': '.SpaceX.API.Satellites.Network.UtDisablementCode',
       '10': 'disablementCode'
     },
+    {
+      '1': 'dl_bandwidth_restricted_reason',
+      '3': 1044,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Telemetron.Public.Integrations.RateLimitReason',
+      '10': 'dlBandwidthRestrictedReason'
+    },
+    {
+      '1': 'ul_bandwidth_restricted_reason',
+      '3': 1045,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Telemetron.Public.Integrations.RateLimitReason',
+      '10': 'ulBandwidthRestrictedReason'
+    },
     {'1': 'has_signed_cals', '3': 1025, '4': 1, '5': 8, '10': 'hasSignedCals'},
     {
       '1': 'config',
@@ -680,18 +979,118 @@ const DishGetStatusResponse$json = {
       '10': 'secondsUntilSwupdateRebootPossible'
     },
     {
+      '1': 'high_power_test_mode',
+      '3': 1033,
+      '4': 1,
+      '5': 8,
+      '10': 'highPowerTestMode'
+    },
+    {
       '1': 'connected_routers',
       '3': 1040,
       '4': 3,
       '5': 9,
       '10': 'connectedRouters'
     },
+    {
+      '1': 'plc_stats',
+      '3': 1041,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.PLCStats',
+      '10': 'plcStats'
+    },
+    {
+      '1': 'is_moving_fast_persisted',
+      '3': 1042,
+      '4': 1,
+      '5': 8,
+      '10': 'isMovingFastPersisted'
+    },
+    {
+      '1': 'upsu_stats',
+      '3': 1043,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.DishUpsuStats',
+      '10': 'upsuStats'
+    },
+    {
+      '1': 'aps_stats',
+      '3': 1048,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.DishApsStats',
+      '10': 'apsStats'
+    },
+    {
+      '1': 'ned2dish_quaternion',
+      '3': 1049,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.Quaternion',
+      '10': 'ned2dishQuaternion'
+    },
+    {
+      '1': 'downstream_routers',
+      '3': 1050,
+      '4': 3,
+      '5': 11,
+      '6': '.SpaceX.API.Device.DishGetStatusResponse.DownstreamRoutersEntry',
+      '10': 'downstreamRouters'
+    },
+    {
+      '1': 'account_shard',
+      '3': 1051,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.AccountShard',
+      '10': 'accountShard'
+    },
+    {'1': 'mac_flag', '3': 1052, '4': 1, '5': 8, '10': 'macFlag'},
+    {
+      '1': 'nat_flag',
+      '3': 1053,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.NatFlag',
+      '10': 'natFlag'
+    },
+    {
+      '1': 'battery_stats',
+      '3': 1054,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.DishBatteryStats',
+      '10': 'batteryStats'
+    },
   ],
+  '3': [DishGetStatusResponse_DownstreamRoutersEntry$json],
   '9': [
     {'1': 1001, '2': 1002},
     {'1': 1006, '2': 1007},
     {'1': 1013, '2': 1014},
+    {'1': 1046, '2': 1047},
+    {'1': 1047, '2': 1048},
   ],
+  '10': ['phy_rx_beam_snr_avg', 't_center'],
+};
+
+@$core.Deprecated('Use dishGetStatusResponseDescriptor instead')
+const DishGetStatusResponse_DownstreamRoutersEntry$json = {
+  '1': 'DownstreamRoutersEntry',
+  '2': [
+    {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    {
+      '1': 'value',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.RouterInfo',
+      '10': 'value'
+    },
+  ],
+  '7': {'7': true},
 };
 
 /// Descriptor for `DishGetStatusResponse`. Decode as a `google.protobuf.DescriptorProto`.
@@ -719,22 +1118,43 @@ final $typed_data.Uint8List dishGetStatusResponseDescriptor = $convert.base64Dec
     'KA4yJS5TcGFjZVguQVBJLkRldmljZS5Vc2VyQ2xhc3NPZlNlcnZpY2VSDmNsYXNzT2ZTZXJ2aW'
     'NlElsKFXNvZnR3YXJlX3VwZGF0ZV9zdGF0ZRj9ByABKA4yJi5TcGFjZVguQVBJLkRldmljZS5T'
     'b2Z0d2FyZVVwZGF0ZVN0YXRlUhNzb2Z0d2FyZVVwZGF0ZVN0YXRlEjMKFXN3dXBkYXRlX3JlYm'
-    '9vdF9yZWFkeRiGCCABKAhSE3N3dXBkYXRlUmVib290UmVhZHkSWwoVc29mdHdhcmVfdXBkYXRl'
-    'X3N0YXRzGIIIIAEoCzImLlNwYWNlWC5BUEkuRGV2aWNlLlNvZnR3YXJlVXBkYXRlU3RhdHNSE3'
-    'NvZnR3YXJlVXBkYXRlU3RhdHMSSwoPYWxpZ25tZW50X3N0YXRzGIMIIAEoCzIhLlNwYWNlWC5B'
-    'UEkuRGV2aWNlLkFsaWdubWVudFN0YXRzUg5hbGlnbm1lbnRTdGF0cxI2Chdpc19zbnJfcGVyc2'
-    'lzdGVudGx5X2xvdxj+ByABKAhSFGlzU25yUGVyc2lzdGVudGx5TG93EkUKDWhhc19hY3R1YXRv'
-    'cnMY/wcgASgOMh8uU3BhY2VYLkFQSS5EZXZpY2UuSGFzQWN0dWF0b3JzUgxoYXNBY3R1YXRvcn'
-    'MSXAoQZGlzYWJsZW1lbnRfY29kZRiACCABKA4yMC5TcGFjZVguQVBJLlNhdGVsbGl0ZXMuTmV0'
-    'd29yay5VdERpc2FibGVtZW50Q29kZVIPZGlzYWJsZW1lbnRDb2RlEicKD2hhc19zaWduZWRfY2'
+    '9vdF9yZWFkeRiGCCABKAhSE3N3dXBkYXRlUmVib290UmVhZHkSRQoNcmVib290X3JlYXNvbhiI'
+    'CCABKA4yHy5TcGFjZVguQVBJLkRldmljZS5SZWJvb3RSZWFzb25SDHJlYm9vdFJlYXNvbhJbCh'
+    'Vzb2Z0d2FyZV91cGRhdGVfc3RhdHMYggggASgLMiYuU3BhY2VYLkFQSS5EZXZpY2UuU29mdHdh'
+    'cmVVcGRhdGVTdGF0c1ITc29mdHdhcmVVcGRhdGVTdGF0cxJLCg9hbGlnbm1lbnRfc3RhdHMYgw'
+    'ggASgLMiEuU3BhY2VYLkFQSS5EZXZpY2UuQWxpZ25tZW50U3RhdHNSDmFsaWdubWVudFN0YXRz'
+    'EjYKF2lzX3Nucl9wZXJzaXN0ZW50bHlfbG93GP4HIAEoCFIUaXNTbnJQZXJzaXN0ZW50bHlMb3'
+    'cSRQoNaGFzX2FjdHVhdG9ycxj/ByABKA4yHy5TcGFjZVguQVBJLkRldmljZS5IYXNBY3R1YXRv'
+    'cnNSDGhhc0FjdHVhdG9ycxJcChBkaXNhYmxlbWVudF9jb2RlGIAIIAEoDjIwLlNwYWNlWC5BUE'
+    'kuU2F0ZWxsaXRlcy5OZXR3b3JrLlV0RGlzYWJsZW1lbnRDb2RlUg9kaXNhYmxlbWVudENvZGUS'
+    'gAEKHmRsX2JhbmR3aWR0aF9yZXN0cmljdGVkX3JlYXNvbhiUCCABKA4yOi5TcGFjZVguQVBJLl'
+    'RlbGVtZXRyb24uUHVibGljLkludGVncmF0aW9ucy5SYXRlTGltaXRSZWFzb25SG2RsQmFuZHdp'
+    'ZHRoUmVzdHJpY3RlZFJlYXNvbhKAAQoedWxfYmFuZHdpZHRoX3Jlc3RyaWN0ZWRfcmVhc29uGJ'
+    'UIIAEoDjI6LlNwYWNlWC5BUEkuVGVsZW1ldHJvbi5QdWJsaWMuSW50ZWdyYXRpb25zLlJhdGVM'
+    'aW1pdFJlYXNvblIbdWxCYW5kd2lkdGhSZXN0cmljdGVkUmVhc29uEicKD2hhc19zaWduZWRfY2'
     'FscxiBCCABKAhSDWhhc1NpZ25lZENhbHMSNgoGY29uZmlnGNAPIAEoCzIdLlNwYWNlWC5BUEku'
     'RGV2aWNlLkRpc2hDb25maWdSBmNvbmZpZxJ5Ch9pbml0aWFsaXphdGlvbl9kdXJhdGlvbl9zZW'
     'NvbmRzGIQIIAEoCzIwLlNwYWNlWC5BUEkuRGV2aWNlLkluaXRpYWxpemF0aW9uRHVyYXRpb25T'
     'ZWNvbmRzUh1pbml0aWFsaXphdGlvbkR1cmF0aW9uU2Vjb25kcxIpChBpc19jZWxsX2Rpc2FibG'
     'VkGIUIIAEoCFIOaXNDZWxsRGlzYWJsZWQSUwomc2Vjb25kc191bnRpbF9zd3VwZGF0ZV9yZWJv'
-    'b3RfcG9zc2libGUYhwggASgFUiJzZWNvbmRzVW50aWxTd3VwZGF0ZVJlYm9vdFBvc3NpYmxlEi'
-    'wKEWNvbm5lY3RlZF9yb3V0ZXJzGJAIIAMoCVIQY29ubmVjdGVkUm91dGVyc0oGCOkHEOoHSgYI'
-    '7gcQ7wdKBgj1BxD2Bw==');
+    'b3RfcG9zc2libGUYhwggASgFUiJzZWNvbmRzVW50aWxTd3VwZGF0ZVJlYm9vdFBvc3NpYmxlEj'
+    'AKFGhpZ2hfcG93ZXJfdGVzdF9tb2RlGIkIIAEoCFIRaGlnaFBvd2VyVGVzdE1vZGUSLAoRY29u'
+    'bmVjdGVkX3JvdXRlcnMYkAggAygJUhBjb25uZWN0ZWRSb3V0ZXJzEjkKCXBsY19zdGF0cxiRCC'
+    'ABKAsyGy5TcGFjZVguQVBJLkRldmljZS5QTENTdGF0c1IIcGxjU3RhdHMSOAoYaXNfbW92aW5n'
+    'X2Zhc3RfcGVyc2lzdGVkGJIIIAEoCFIVaXNNb3ZpbmdGYXN0UGVyc2lzdGVkEkAKCnVwc3Vfc3'
+    'RhdHMYkwggASgLMiAuU3BhY2VYLkFQSS5EZXZpY2UuRGlzaFVwc3VTdGF0c1IJdXBzdVN0YXRz'
+    'Ej0KCWFwc19zdGF0cxiYCCABKAsyHy5TcGFjZVguQVBJLkRldmljZS5EaXNoQXBzU3RhdHNSCG'
+    'Fwc1N0YXRzEk8KE25lZDJkaXNoX3F1YXRlcm5pb24YmQggASgLMh0uU3BhY2VYLkFQSS5EZXZp'
+    'Y2UuUXVhdGVybmlvblISbmVkMmRpc2hRdWF0ZXJuaW9uEm8KEmRvd25zdHJlYW1fcm91dGVycx'
+    'iaCCADKAsyPy5TcGFjZVguQVBJLkRldmljZS5EaXNoR2V0U3RhdHVzUmVzcG9uc2UuRG93bnN0'
+    'cmVhbVJvdXRlcnNFbnRyeVIRZG93bnN0cmVhbVJvdXRlcnMSRQoNYWNjb3VudF9zaGFyZBibCC'
+    'ABKA4yHy5TcGFjZVguQVBJLkRldmljZS5BY2NvdW50U2hhcmRSDGFjY291bnRTaGFyZBIaCght'
+    'YWNfZmxhZxicCCABKAhSB21hY0ZsYWcSNgoIbmF0X2ZsYWcYnQggASgOMhouU3BhY2VYLkFQSS'
+    '5EZXZpY2UuTmF0RmxhZ1IHbmF0RmxhZxJJCg1iYXR0ZXJ5X3N0YXRzGJ4IIAEoCzIjLlNwYWNl'
+    'WC5BUEkuRGV2aWNlLkRpc2hCYXR0ZXJ5U3RhdHNSDGJhdHRlcnlTdGF0cxpjChZEb3duc3RyZW'
+    'FtUm91dGVyc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EjMKBXZhbHVlGAIgASgLMh0uU3BhY2VY'
+    'LkFQSS5EZXZpY2UuUm91dGVySW5mb1IFdmFsdWU6AjgBSgYI6QcQ6gdKBgjuBxDvB0oGCPUHEP'
+    'YHSgYIlggQlwhKBgiXCBCYCFITcGh5X3J4X2JlYW1fc25yX2F2Z1IIdF9jZW50ZXI=');
 
 @$core.Deprecated('Use dishGetObstructionMapRequestDescriptor instead')
 const DishGetObstructionMapRequest$json = {
@@ -761,6 +1181,14 @@ const DishGetObstructionMapResponse$json = {
       '10': 'minElevationDeg',
     },
     {'1': 'max_theta_deg', '3': 5, '4': 1, '5': 2, '10': 'maxThetaDeg'},
+    {
+      '1': 'map_reference_frame',
+      '3': 6,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.ObstructionMapReferenceFrame',
+      '10': 'mapReferenceFrame'
+    },
   ],
 };
 
@@ -769,7 +1197,9 @@ final $typed_data.Uint8List dishGetObstructionMapResponseDescriptor = $convert.b
     'Ch1EaXNoR2V0T2JzdHJ1Y3Rpb25NYXBSZXNwb25zZRIZCghudW1fcm93cxgBIAEoDVIHbnVtUm'
     '93cxIZCghudW1fY29scxgCIAEoDVIHbnVtQ29scxIQCgNzbnIYAyADKAJSA3NuchIuChFtaW5f'
     'ZWxldmF0aW9uX2RlZxgEIAEoAkICGAFSD21pbkVsZXZhdGlvbkRlZxIiCg1tYXhfdGhldGFfZG'
-    'VnGAUgASgCUgttYXhUaGV0YURlZw==');
+    'VnGAUgASgCUgttYXhUaGV0YURlZxJfChNtYXBfcmVmZXJlbmNlX2ZyYW1lGAYgASgOMi8uU3Bh'
+    'Y2VYLkFQSS5EZXZpY2UuT2JzdHJ1Y3Rpb25NYXBSZWZlcmVuY2VGcmFtZVIRbWFwUmVmZXJlbm'
+    'NlRnJhbWU=');
 
 @$core.Deprecated('Use dishAlertsDescriptor instead')
 const DishAlerts$json = {
@@ -823,20 +1253,6 @@ const DishAlerts$json = {
       '5': 8,
       '10': 'isPowerSaveIdle'
     },
-    {
-      '1': 'moving_while_not_mobile',
-      '3': 12,
-      '4': 1,
-      '5': 8,
-      '10': 'movingWhileNotMobile'
-    },
-    {
-      '1': 'moving_too_fast_for_policy',
-      '3': 15,
-      '4': 1,
-      '5': 8,
-      '10': 'movingTooFastForPolicy'
-    },
     {'1': 'dbf_telem_stale', '3': 14, '4': 1, '5': 8, '10': 'dbfTelemStale'},
     {
       '1': 'low_motor_current',
@@ -852,11 +1268,46 @@ const DishAlerts$json = {
       '5': 8,
       '10': 'lowerSignalThanPredicted'
     },
+    {
+      '1': 'obstruction_map_reset',
+      '3': 19,
+      '4': 1,
+      '5': 8,
+      '10': 'obstructionMapReset'
+    },
+    {
+      '1': 'dish_water_detected',
+      '3': 20,
+      '4': 1,
+      '5': 8,
+      '10': 'dishWaterDetected'
+    },
+    {
+      '1': 'router_water_detected',
+      '3': 21,
+      '4': 1,
+      '5': 8,
+      '10': 'routerWaterDetected'
+    },
+    {
+      '1': 'upsu_router_port_slow',
+      '3': 22,
+      '4': 1,
+      '5': 8,
+      '10': 'upsuRouterPortSlow'
+    },
+    {'1': 'no_ethernet_link', '3': 23, '4': 1, '5': 8, '10': 'noEthernetLink'},
   ],
   '9': [
+    {'1': 12, '2': 13},
     {'1': 13, '2': 14},
+    {'1': 15, '2': 16},
   ],
-  '10': ['moving_fast_while_not_aviation'],
+  '10': [
+    'moving_fast_while_not_aviation',
+    'moving_while_not_mobile',
+    'moving_too_fast_for_policy'
+  ],
 };
 
 /// Descriptor for `DishAlerts`. Decode as a `google.protobuf.DescriptorProto`.
@@ -870,13 +1321,16 @@ final $typed_data.Uint8List dishAlertsDescriptor = $convert.base64Decode(
     'U3BlZWRzMTAwEhgKB3JvYW1pbmcYByABKAhSB3JvYW1pbmcSJwoPaW5zdGFsbF9wZW5kaW5nGA'
     'ggASgIUg5pbnN0YWxsUGVuZGluZxIdCgppc19oZWF0aW5nGAkgASgIUglpc0hlYXRpbmcSQQod'
     'cG93ZXJfc3VwcGx5X3RoZXJtYWxfdGhyb3R0bGUYCiABKAhSGnBvd2VyU3VwcGx5VGhlcm1hbF'
-    'Rocm90dGxlEisKEmlzX3Bvd2VyX3NhdmVfaWRsZRgLIAEoCFIPaXNQb3dlclNhdmVJZGxlEjUK'
-    'F21vdmluZ193aGlsZV9ub3RfbW9iaWxlGAwgASgIUhRtb3ZpbmdXaGlsZU5vdE1vYmlsZRI6Ch'
-    'ptb3ZpbmdfdG9vX2Zhc3RfZm9yX3BvbGljeRgPIAEoCFIWbW92aW5nVG9vRmFzdEZvclBvbGlj'
-    'eRImCg9kYmZfdGVsZW1fc3RhbGUYDiABKAhSDWRiZlRlbGVtU3RhbGUSKgoRbG93X21vdG9yX2'
-    'N1cnJlbnQYECABKAhSD2xvd01vdG9yQ3VycmVudBI9Chtsb3dlcl9zaWduYWxfdGhhbl9wcmVk'
-    'aWN0ZWQYESABKAhSGGxvd2VyU2lnbmFsVGhhblByZWRpY3RlZEoECA0QDlIebW92aW5nX2Zhc3'
-    'Rfd2hpbGVfbm90X2F2aWF0aW9u');
+    'Rocm90dGxlEisKEmlzX3Bvd2VyX3NhdmVfaWRsZRgLIAEoCFIPaXNQb3dlclNhdmVJZGxlEiYK'
+    'D2RiZl90ZWxlbV9zdGFsZRgOIAEoCFINZGJmVGVsZW1TdGFsZRIqChFsb3dfbW90b3JfY3Vycm'
+    'VudBgQIAEoCFIPbG93TW90b3JDdXJyZW50Ej0KG2xvd2VyX3NpZ25hbF90aGFuX3ByZWRpY3Rl'
+    'ZBgRIAEoCFIYbG93ZXJTaWduYWxUaGFuUHJlZGljdGVkEjIKFW9ic3RydWN0aW9uX21hcF9yZX'
+    'NldBgTIAEoCFITb2JzdHJ1Y3Rpb25NYXBSZXNldBIuChNkaXNoX3dhdGVyX2RldGVjdGVkGBQg'
+    'ASgIUhFkaXNoV2F0ZXJEZXRlY3RlZBIyChVyb3V0ZXJfd2F0ZXJfZGV0ZWN0ZWQYFSABKAhSE3'
+    'JvdXRlcldhdGVyRGV0ZWN0ZWQSMQoVdXBzdV9yb3V0ZXJfcG9ydF9zbG93GBYgASgIUhJ1cHN1'
+    'Um91dGVyUG9ydFNsb3cSKAoQbm9fZXRoZXJuZXRfbGluaxgXIAEoCFIObm9FdGhlcm5ldExpbm'
+    'tKBAgMEA1KBAgNEA5KBAgPEBBSHm1vdmluZ19mYXN0X3doaWxlX25vdF9hdmlhdGlvblIXbW92'
+    'aW5nX3doaWxlX25vdF9tb2JpbGVSGm1vdmluZ190b29fZmFzdF9mb3JfcG9saWN5');
 
 @$core.Deprecated('Use dishReadyStatesDescriptor instead')
 const DishReadyStates$json = {
@@ -939,6 +1393,20 @@ const SoftwareUpdateStats$json = {
       '5': 2,
       '10': 'softwareUpdateProgress'
     },
+    {
+      '1': 'update_requires_reboot',
+      '3': 3,
+      '4': 1,
+      '5': 8,
+      '10': 'updateRequiresReboot'
+    },
+    {
+      '1': 'reboot_scheduled_utc_time',
+      '3': 4,
+      '4': 1,
+      '5': 3,
+      '10': 'rebootScheduledUtcTime'
+    },
   ],
 };
 
@@ -947,7 +1415,9 @@ final $typed_data.Uint8List softwareUpdateStatsDescriptor = $convert.base64Decod
     'ChNTb2Z0d2FyZVVwZGF0ZVN0YXRzEloKFXNvZnR3YXJlX3VwZGF0ZV9zdGF0ZRgBIAEoDjImLl'
     'NwYWNlWC5BUEkuRGV2aWNlLlNvZnR3YXJlVXBkYXRlU3RhdGVSE3NvZnR3YXJlVXBkYXRlU3Rh'
     'dGUSOAoYc29mdHdhcmVfdXBkYXRlX3Byb2dyZXNzGAIgASgCUhZzb2Z0d2FyZVVwZGF0ZVByb2'
-    'dyZXNz');
+    'dyZXNzEjQKFnVwZGF0ZV9yZXF1aXJlc19yZWJvb3QYAyABKAhSFHVwZGF0ZVJlcXVpcmVzUmVi'
+    'b290EjkKGXJlYm9vdF9zY2hlZHVsZWRfdXRjX3RpbWUYBCABKANSFnJlYm9vdFNjaGVkdWxlZF'
+    'V0Y1RpbWU=');
 
 @$core.Deprecated('Use alignmentStatsDescriptor instead')
 const AlignmentStats$json = {
@@ -1094,6 +1564,117 @@ final $typed_data.Uint8List dishObstructionStatsDescriptor = $convert.base64Deco
     'cnVjdGlvblZhbGlkSgQIAhADSgQIAxAESgYI7gcQ7wdSGXdlZGdlX2ZyYWN0aW9uX29ic3RydW'
     'N0ZWRSHXdlZGdlX2Fic19mcmFjdGlvbl9vYnN0cnVjdGVk');
 
+@$core.Deprecated('Use dishUpsuStatsDescriptor instead')
+const DishUpsuStats$json = {
+  '1': 'DishUpsuStats',
+  '2': [
+    {'1': 'app_version', '3': 2, '4': 1, '5': 4, '10': 'appVersion'},
+    {'1': 'boot_version', '3': 3, '4': 1, '5': 4, '10': 'bootVersion'},
+    {'1': 'rom_version', '3': 4, '4': 1, '5': 4, '10': 'romVersion'},
+    {'1': 'uptime', '3': 5, '4': 1, '5': 3, '10': 'uptime'},
+    {'1': 'dish_power', '3': 6, '4': 1, '5': 2, '10': 'dishPower'},
+    {'1': 'router_power', '3': 7, '4': 1, '5': 2, '10': 'routerPower'},
+    {
+      '1': 'force_dev_signed_allowed',
+      '3': 8,
+      '4': 1,
+      '5': 8,
+      '10': 'forceDevSignedAllowed'
+    },
+    {'1': 'debug_port_locked', '3': 9, '4': 1, '5': 8, '10': 'debugPortLocked'},
+    {
+      '1': 'stsafe_certs_locked',
+      '3': 10,
+      '4': 1,
+      '5': 8,
+      '10': 'stsafeCertsLocked'
+    },
+    {
+      '1': 'stsafe_keys_locked',
+      '3': 11,
+      '4': 1,
+      '5': 8,
+      '10': 'stsafeKeysLocked'
+    },
+    {'1': 'g0_locked', '3': 12, '4': 1, '5': 13, '10': 'g0Locked'},
+    {
+      '1': 'g0_firmware_version',
+      '3': 13,
+      '4': 1,
+      '5': 13,
+      '10': 'g0FirmwareVersion'
+    },
+    {'1': 'board_rev', '3': 14, '4': 1, '5': 5, '10': 'boardRev'},
+    {'1': 'g0_board_id', '3': 15, '4': 1, '5': 13, '10': 'g0BoardId'},
+  ],
+};
+
+/// Descriptor for `DishUpsuStats`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List dishUpsuStatsDescriptor = $convert.base64Decode(
+    'Cg1EaXNoVXBzdVN0YXRzEh8KC2FwcF92ZXJzaW9uGAIgASgEUgphcHBWZXJzaW9uEiEKDGJvb3'
+    'RfdmVyc2lvbhgDIAEoBFILYm9vdFZlcnNpb24SHwoLcm9tX3ZlcnNpb24YBCABKARSCnJvbVZl'
+    'cnNpb24SFgoGdXB0aW1lGAUgASgDUgZ1cHRpbWUSHQoKZGlzaF9wb3dlchgGIAEoAlIJZGlzaF'
+    'Bvd2VyEiEKDHJvdXRlcl9wb3dlchgHIAEoAlILcm91dGVyUG93ZXISNwoYZm9yY2VfZGV2X3Np'
+    'Z25lZF9hbGxvd2VkGAggASgIUhVmb3JjZURldlNpZ25lZEFsbG93ZWQSKgoRZGVidWdfcG9ydF'
+    '9sb2NrZWQYCSABKAhSD2RlYnVnUG9ydExvY2tlZBIuChNzdHNhZmVfY2VydHNfbG9ja2VkGAog'
+    'ASgIUhFzdHNhZmVDZXJ0c0xvY2tlZBIsChJzdHNhZmVfa2V5c19sb2NrZWQYCyABKAhSEHN0c2'
+    'FmZUtleXNMb2NrZWQSGwoJZzBfbG9ja2VkGAwgASgNUghnMExvY2tlZBIuChNnMF9maXJtd2Fy'
+    'ZV92ZXJzaW9uGA0gASgNUhFnMEZpcm13YXJlVmVyc2lvbhIbCglib2FyZF9yZXYYDiABKAVSCG'
+    'JvYXJkUmV2Eh4KC2cwX2JvYXJkX2lkGA8gASgNUglnMEJvYXJkSWQ=');
+
+@$core.Deprecated('Use dishApsStatsDescriptor instead')
+const DishApsStats$json = {
+  '1': 'DishApsStats',
+  '2': [
+    {'1': 'app_version', '3': 2, '4': 1, '5': 4, '10': 'appVersion'},
+    {'1': 'boot_version', '3': 3, '4': 1, '5': 4, '10': 'bootVersion'},
+    {'1': 'rom_version', '3': 4, '4': 1, '5': 4, '10': 'romVersion'},
+    {'1': 'uptime', '3': 5, '4': 1, '5': 3, '10': 'uptime'},
+    {'1': 'dish_power', '3': 6, '4': 1, '5': 2, '10': 'dishPower'},
+    {
+      '1': 'force_dev_signed_allowed',
+      '3': 7,
+      '4': 1,
+      '5': 8,
+      '10': 'forceDevSignedAllowed'
+    },
+    {'1': 'debug_port_locked', '3': 8, '4': 1, '5': 8, '10': 'debugPortLocked'},
+    {'1': 'board_rev', '3': 9, '4': 1, '5': 5, '10': 'boardRev'},
+  ],
+};
+
+/// Descriptor for `DishApsStats`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List dishApsStatsDescriptor = $convert.base64Decode(
+    'CgxEaXNoQXBzU3RhdHMSHwoLYXBwX3ZlcnNpb24YAiABKARSCmFwcFZlcnNpb24SIQoMYm9vdF'
+    '92ZXJzaW9uGAMgASgEUgtib290VmVyc2lvbhIfCgtyb21fdmVyc2lvbhgEIAEoBFIKcm9tVmVy'
+    'c2lvbhIWCgZ1cHRpbWUYBSABKANSBnVwdGltZRIdCgpkaXNoX3Bvd2VyGAYgASgCUglkaXNoUG'
+    '93ZXISNwoYZm9yY2VfZGV2X3NpZ25lZF9hbGxvd2VkGAcgASgIUhVmb3JjZURldlNpZ25lZEFs'
+    'bG93ZWQSKgoRZGVidWdfcG9ydF9sb2NrZWQYCCABKAhSD2RlYnVnUG9ydExvY2tlZBIbCglib2'
+    'FyZF9yZXYYCSABKAVSCGJvYXJkUmV2');
+
+@$core.Deprecated('Use dishBatteryStatsDescriptor instead')
+const DishBatteryStats$json = {
+  '1': 'DishBatteryStats',
+  '2': [
+    {'1': 'state_of_charge', '3': 1, '4': 1, '5': 13, '10': 'stateOfCharge'},
+    {'1': 'is_charging', '3': 2, '4': 1, '5': 8, '10': 'isCharging'},
+    {
+      '1': 'power_source',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.PowerSource',
+      '10': 'powerSource'
+    },
+  ],
+};
+
+/// Descriptor for `DishBatteryStats`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List dishBatteryStatsDescriptor = $convert.base64Decode(
+    'ChBEaXNoQmF0dGVyeVN0YXRzEiYKD3N0YXRlX29mX2NoYXJnZRgBIAEoDVINc3RhdGVPZkNoYX'
+    'JnZRIfCgtpc19jaGFyZ2luZxgCIAEoCFIKaXNDaGFyZ2luZxJBCgxwb3dlcl9zb3VyY2UYAyAB'
+    'KA4yHi5TcGFjZVguQVBJLkRldmljZS5Qb3dlclNvdXJjZVILcG93ZXJTb3VyY2U=');
+
 @$core.Deprecated('Use initializationDurationSecondsDescriptor instead')
 const InitializationDurationSeconds$json = {
   '1': 'InitializationDurationSeconds',
@@ -1187,24 +1768,6 @@ final $typed_data.Uint8List selfTestResponseDescriptor = $convert.base64Decode(
     'ChBTZWxmVGVzdFJlc3BvbnNlEhYKBnBhc3NlZBgBIAEoCFIGcGFzc2VkEhYKBnJlcG9ydBgCIA'
     'EoCVIGcmVwb3J0');
 
-@$core.Deprecated('Use startDishSelfTestRequestDescriptor instead')
-const StartDishSelfTestRequest$json = {
-  '1': 'StartDishSelfTestRequest',
-};
-
-/// Descriptor for `StartDishSelfTestRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List startDishSelfTestRequestDescriptor =
-    $convert.base64Decode('ChhTdGFydERpc2hTZWxmVGVzdFJlcXVlc3Q=');
-
-@$core.Deprecated('Use startDishSelfTestResponseDescriptor instead')
-const StartDishSelfTestResponse$json = {
-  '1': 'StartDishSelfTestResponse',
-};
-
-/// Descriptor for `StartDishSelfTestResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List startDishSelfTestResponseDescriptor =
-    $convert.base64Decode('ChlTdGFydERpc2hTZWxmVGVzdFJlc3BvbnNl');
-
 @$core.Deprecated('Use setTestModeRequestDescriptor instead')
 const SetTestModeRequest$json = {
   '1': 'SetTestModeRequest',
@@ -1297,13 +1860,15 @@ const DishSetConfigResponse$json = {
       '6': '.SpaceX.API.Device.DishConfig',
       '10': 'updatedDishConfig'
     },
+    {'1': 'error', '3': 2, '4': 1, '5': 9, '10': 'error'},
   ],
 };
 
 /// Descriptor for `DishSetConfigResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List dishSetConfigResponseDescriptor = $convert.base64Decode(
     'ChVEaXNoU2V0Q29uZmlnUmVzcG9uc2USTQoTdXBkYXRlZF9kaXNoX2NvbmZpZxgBIAEoCzIdLl'
-    'NwYWNlWC5BUEkuRGV2aWNlLkRpc2hDb25maWdSEXVwZGF0ZWREaXNoQ29uZmln');
+    'NwYWNlWC5BUEkuRGV2aWNlLkRpc2hDb25maWdSEXVwZGF0ZWREaXNoQ29uZmlnEhQKBWVycm9y'
+    'GAIgASgJUgVlcnJvcg==');
 
 @$core.Deprecated('Use dishGetConfigRequestDescriptor instead')
 const DishGetConfigRequest$json = {
@@ -1333,6 +1898,30 @@ const DishGetConfigResponse$json = {
 final $typed_data.Uint8List dishGetConfigResponseDescriptor = $convert.base64Decode(
     'ChVEaXNoR2V0Q29uZmlnUmVzcG9uc2USPgoLZGlzaF9jb25maWcYASABKAsyHS5TcGFjZVguQV'
     'BJLkRldmljZS5EaXNoQ29uZmlnUgpkaXNoQ29uZmln');
+
+@$core.Deprecated('Use dishInhibitRfRequestDescriptor instead')
+const DishInhibitRfRequest$json = {
+  '1': 'DishInhibitRfRequest',
+  '2': [
+    {'1': 'inhibit_rf', '3': 1, '4': 1, '5': 8, '10': 'inhibitRf'},
+  ],
+};
+
+/// Descriptor for `DishInhibitRfRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List dishInhibitRfRequestDescriptor = $convert.base64Decode(
+    'ChREaXNoSW5oaWJpdFJmUmVxdWVzdBIdCgppbmhpYml0X3JmGAEgASgIUglpbmhpYml0UmY=');
+
+@$core.Deprecated('Use dishInhibitRfResponseDescriptor instead')
+const DishInhibitRfResponse$json = {
+  '1': 'DishInhibitRfResponse',
+  '2': [
+    {'1': 'inhibit_rf', '3': 1, '4': 1, '5': 8, '10': 'inhibitRf'},
+  ],
+};
+
+/// Descriptor for `DishInhibitRfResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List dishInhibitRfResponseDescriptor = $convert.base64Decode(
+    'ChVEaXNoSW5oaWJpdFJmUmVzcG9uc2USHQoKaW5oaWJpdF9yZhgBIAEoCFIJaW5oaWJpdFJm');
 
 @$core.Deprecated('Use dishInhibitGpsRequestDescriptor instead')
 const DishInhibitGpsRequest$json = {
@@ -1459,11 +2048,15 @@ final $typed_data.Uint8List dishGetRssiScanResultResponseDescriptor =
 @$core.Deprecated('Use dishFactoryResetRequestDescriptor instead')
 const DishFactoryResetRequest$json = {
   '1': 'DishFactoryResetRequest',
+  '2': [
+    {'1': 'app_reset', '3': 1, '4': 1, '5': 8, '10': 'appReset'},
+  ],
 };
 
 /// Descriptor for `DishFactoryResetRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List dishFactoryResetRequestDescriptor =
-    $convert.base64Decode('ChdEaXNoRmFjdG9yeVJlc2V0UmVxdWVzdA==');
+    $convert.base64Decode(
+        'ChdEaXNoRmFjdG9yeVJlc2V0UmVxdWVzdBIbCglhcHBfcmVzZXQYASABKAhSCGFwcFJlc2V0');
 
 @$core.Deprecated('Use dishFactoryResetResponseDescriptor instead')
 const DishFactoryResetResponse$json = {
@@ -1495,3 +2088,171 @@ const ResetButtonResponse$json = {
 /// Descriptor for `ResetButtonResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List resetButtonResponseDescriptor =
     $convert.base64Decode('ChNSZXNldEJ1dHRvblJlc3BvbnNl');
+
+@$core.Deprecated('Use dishStartTestModeServerRequestDescriptor instead')
+const DishStartTestModeServerRequest$json = {
+  '1': 'DishStartTestModeServerRequest',
+  '2': [
+    {'1': 'set_enabled', '3': 1, '4': 1, '5': 8, '10': 'setEnabled'},
+  ],
+};
+
+/// Descriptor for `DishStartTestModeServerRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List dishStartTestModeServerRequestDescriptor =
+    $convert.base64Decode(
+        'Ch5EaXNoU3RhcnRUZXN0TW9kZVNlcnZlclJlcXVlc3QSHwoLc2V0X2VuYWJsZWQYASABKAhSCn'
+        'NldEVuYWJsZWQ=');
+
+@$core.Deprecated('Use dishStartTestModeServerResponseDescriptor instead')
+const DishStartTestModeServerResponse$json = {
+  '1': 'DishStartTestModeServerResponse',
+};
+
+/// Descriptor for `DishStartTestModeServerResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List dishStartTestModeServerResponseDescriptor =
+    $convert.base64Decode('Ch9EaXNoU3RhcnRUZXN0TW9kZVNlcnZlclJlc3BvbnNl');
+
+@$core.Deprecated('Use pLCStatsDescriptor instead')
+const PLCStats$json = {
+  '1': 'PLCStats',
+  '2': [
+    {'1': 'receiving_plc', '3': 1, '4': 1, '5': 8, '10': 'receivingPlc'},
+    {
+      '1': 'average_time_to_empty',
+      '3': 2,
+      '4': 1,
+      '5': 13,
+      '10': 'averageTimeToEmpty'
+    },
+    {
+      '1': 'average_time_to_full',
+      '3': 3,
+      '4': 1,
+      '5': 13,
+      '10': 'averageTimeToFull'
+    },
+    {'1': 'battery_health', '3': 4, '4': 1, '5': 13, '10': 'batteryHealth'},
+    {
+      '1': 'hardware_revision_id',
+      '3': 5,
+      '4': 1,
+      '5': 13,
+      '10': 'hardwareRevisionId'
+    },
+    {
+      '1': 'permanent_failure',
+      '3': 6,
+      '4': 1,
+      '5': 8,
+      '10': 'permanentFailure'
+    },
+    {
+      '1': 'port_1_stats',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.PLCPortStats',
+      '10': 'port1Stats'
+    },
+    {
+      '1': 'port_2_stats',
+      '3': 8,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.PLCPortStats',
+      '10': 'port2Stats'
+    },
+    {
+      '1': 'port_3_stats',
+      '3': 9,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.PLCPortStats',
+      '10': 'port3Stats'
+    },
+    {
+      '1': 'plc_revision',
+      '3': 10,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.PLCStats.ProtocolRevision',
+      '10': 'plcRevision'
+    },
+    {
+      '1': 'safety_mode_active',
+      '3': 11,
+      '4': 1,
+      '5': 8,
+      '10': 'safetyModeActive'
+    },
+    {'1': 'state_of_charge', '3': 12, '4': 1, '5': 13, '10': 'stateOfCharge'},
+    {
+      '1': 'thermal_throttle_level',
+      '3': 13,
+      '4': 1,
+      '5': 13,
+      '10': 'thermalThrottleLevel'
+    },
+  ],
+  '4': [PLCStats_ProtocolRevision$json],
+};
+
+@$core.Deprecated('Use pLCStatsDescriptor instead')
+const PLCStats_ProtocolRevision$json = {
+  '1': 'ProtocolRevision',
+  '2': [
+    {'1': 'REV_D', '2': 0},
+  ],
+};
+
+/// Descriptor for `PLCStats`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List pLCStatsDescriptor = $convert.base64Decode(
+    'CghQTENTdGF0cxIjCg1yZWNlaXZpbmdfcGxjGAEgASgIUgxyZWNlaXZpbmdQbGMSMQoVYXZlcm'
+    'FnZV90aW1lX3RvX2VtcHR5GAIgASgNUhJhdmVyYWdlVGltZVRvRW1wdHkSLwoUYXZlcmFnZV90'
+    'aW1lX3RvX2Z1bGwYAyABKA1SEWF2ZXJhZ2VUaW1lVG9GdWxsEiUKDmJhdHRlcnlfaGVhbHRoGA'
+    'QgASgNUg1iYXR0ZXJ5SGVhbHRoEjAKFGhhcmR3YXJlX3JldmlzaW9uX2lkGAUgASgNUhJoYXJk'
+    'd2FyZVJldmlzaW9uSWQSKwoRcGVybWFuZW50X2ZhaWx1cmUYBiABKAhSEHBlcm1hbmVudEZhaW'
+    'x1cmUSQQoMcG9ydF8xX3N0YXRzGAcgASgLMh8uU3BhY2VYLkFQSS5EZXZpY2UuUExDUG9ydFN0'
+    'YXRzUgpwb3J0MVN0YXRzEkEKDHBvcnRfMl9zdGF0cxgIIAEoCzIfLlNwYWNlWC5BUEkuRGV2aW'
+    'NlLlBMQ1BvcnRTdGF0c1IKcG9ydDJTdGF0cxJBCgxwb3J0XzNfc3RhdHMYCSABKAsyHy5TcGFj'
+    'ZVguQVBJLkRldmljZS5QTENQb3J0U3RhdHNSCnBvcnQzU3RhdHMSTwoMcGxjX3JldmlzaW9uGA'
+    'ogASgOMiwuU3BhY2VYLkFQSS5EZXZpY2UuUExDU3RhdHMuUHJvdG9jb2xSZXZpc2lvblILcGxj'
+    'UmV2aXNpb24SLAoSc2FmZXR5X21vZGVfYWN0aXZlGAsgASgIUhBzYWZldHlNb2RlQWN0aXZlEi'
+    'YKD3N0YXRlX29mX2NoYXJnZRgMIAEoDVINc3RhdGVPZkNoYXJnZRI0ChZ0aGVybWFsX3Rocm90'
+    'dGxlX2xldmVsGA0gASgNUhR0aGVybWFsVGhyb3R0bGVMZXZlbCIdChBQcm90b2NvbFJldmlzaW'
+    '9uEgkKBVJFVl9EEAA=');
+
+@$core.Deprecated('Use pLCPortStatsDescriptor instead')
+const PLCPortStats$json = {
+  '1': 'PLCPortStats',
+  '2': [
+    {'1': 'power', '3': 1, '4': 1, '5': 13, '10': 'power'},
+    {
+      '1': 'status',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.PLCPortStats.PortStatus',
+      '10': 'status'
+    },
+  ],
+  '4': [PLCPortStats_PortStatus$json],
+};
+
+@$core.Deprecated('Use pLCPortStatsDescriptor instead')
+const PLCPortStats_PortStatus$json = {
+  '1': 'PortStatus',
+  '2': [
+    {'1': 'INACTIVE', '2': 0},
+    {'1': 'CHARGING', '2': 1},
+    {'1': 'DISCHARGING', '2': 2},
+    {'1': 'MOISTURE_DETECTED', '2': 3},
+  ],
+};
+
+/// Descriptor for `PLCPortStats`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List pLCPortStatsDescriptor = $convert.base64Decode(
+    'CgxQTENQb3J0U3RhdHMSFAoFcG93ZXIYASABKA1SBXBvd2VyEkIKBnN0YXR1cxgCIAEoDjIqLl'
+    'NwYWNlWC5BUEkuRGV2aWNlLlBMQ1BvcnRTdGF0cy5Qb3J0U3RhdHVzUgZzdGF0dXMiUAoKUG9y'
+    'dFN0YXR1cxIMCghJTkFDVElWRRAAEgwKCENIQVJHSU5HEAESDwoLRElTQ0hBUkdJTkcQAhIVCh'
+    'FNT0lTVFVSRV9ERVRFQ1RFRBAD');

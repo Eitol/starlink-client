@@ -26,8 +26,6 @@ class UtDisablementCode extends $pb.ProtobufEnum {
           3, _omitEnumNames ? '' : 'TOO_FAR_FROM_SERVICE_ADDRESS');
   static const UtDisablementCode IN_OCEAN =
       UtDisablementCode._(4, _omitEnumNames ? '' : 'IN_OCEAN');
-  static const UtDisablementCode INVALID_COUNTRY =
-      UtDisablementCode._(5, _omitEnumNames ? '' : 'INVALID_COUNTRY');
   static const UtDisablementCode BLOCKED_COUNTRY =
       UtDisablementCode._(6, _omitEnumNames ? '' : 'BLOCKED_COUNTRY');
   static const UtDisablementCode DATA_OVERAGE_SANDBOX_POLICY =
@@ -35,8 +33,22 @@ class UtDisablementCode extends $pb.ProtobufEnum {
           7, _omitEnumNames ? '' : 'DATA_OVERAGE_SANDBOX_POLICY');
   static const UtDisablementCode CELL_IS_DISABLED =
       UtDisablementCode._(8, _omitEnumNames ? '' : 'CELL_IS_DISABLED');
-  static const UtDisablementCode UNLICENSED_COUNTRY =
-      UtDisablementCode._(9, _omitEnumNames ? '' : 'UNLICENSED_COUNTRY');
+  static const UtDisablementCode ROAM_RESTRICTED =
+      UtDisablementCode._(10, _omitEnumNames ? '' : 'ROAM_RESTRICTED');
+  static const UtDisablementCode UNKNOWN_LOCATION =
+      UtDisablementCode._(11, _omitEnumNames ? '' : 'UNKNOWN_LOCATION');
+  static const UtDisablementCode ACCOUNT_DISABLED =
+      UtDisablementCode._(12, _omitEnumNames ? '' : 'ACCOUNT_DISABLED');
+  static const UtDisablementCode UNSUPPORTED_VERSION =
+      UtDisablementCode._(13, _omitEnumNames ? '' : 'UNSUPPORTED_VERSION');
+  static const UtDisablementCode MOVING_TOO_FAST_FOR_POLICY =
+      UtDisablementCode._(
+          14, _omitEnumNames ? '' : 'MOVING_TOO_FAST_FOR_POLICY');
+  static const UtDisablementCode UNDER_AVIATION_FLYOVER_LIMITS =
+      UtDisablementCode._(
+          15, _omitEnumNames ? '' : 'UNDER_AVIATION_FLYOVER_LIMITS');
+  static const UtDisablementCode BLOCKED_AREA =
+      UtDisablementCode._(16, _omitEnumNames ? '' : 'BLOCKED_AREA');
 
   static const $core.List<UtDisablementCode> values = <UtDisablementCode>[
     UNKNOWN_STATE,
@@ -44,19 +56,45 @@ class UtDisablementCode extends $pb.ProtobufEnum {
     NO_ACTIVE_ACCOUNT,
     TOO_FAR_FROM_SERVICE_ADDRESS,
     IN_OCEAN,
-    INVALID_COUNTRY,
     BLOCKED_COUNTRY,
     DATA_OVERAGE_SANDBOX_POLICY,
     CELL_IS_DISABLED,
-    UNLICENSED_COUNTRY,
+    ROAM_RESTRICTED,
+    UNKNOWN_LOCATION,
+    ACCOUNT_DISABLED,
+    UNSUPPORTED_VERSION,
+    MOVING_TOO_FAST_FOR_POLICY,
+    UNDER_AVIATION_FLYOVER_LIMITS,
+    BLOCKED_AREA,
   ];
 
   static final $core.List<UtDisablementCode?> _byValue =
-      $pb.ProtobufEnum.$_initByValueList(values, 9);
+      $pb.ProtobufEnum.$_initByValueList(values, 16);
   static UtDisablementCode? valueOf($core.int value) =>
       value < 0 || value >= _byValue.length ? null : _byValue[value];
 
   const UtDisablementCode._(super.value, super.name);
+}
+
+class AccountDisablementReason extends $pb.ProtobufEnum {
+  static const AccountDisablementReason NO_RESTRICTION =
+      AccountDisablementReason._(0, _omitEnumNames ? '' : 'NO_RESTRICTION');
+  static const AccountDisablementReason KNOW_YOUR_CUSTOMER_REQUIRED =
+      AccountDisablementReason._(
+          1, _omitEnumNames ? '' : 'KNOW_YOUR_CUSTOMER_REQUIRED');
+
+  static const $core.List<AccountDisablementReason> values =
+      <AccountDisablementReason>[
+    NO_RESTRICTION,
+    KNOW_YOUR_CUSTOMER_REQUIRED,
+  ];
+
+  static final $core.List<AccountDisablementReason?> _byValue =
+      $pb.ProtobufEnum.$_initByValueList(values, 1);
+  static AccountDisablementReason? valueOf($core.int value) =>
+      value < 0 || value >= _byValue.length ? null : _byValue[value];
+
+  const AccountDisablementReason._(super.value, super.name);
 }
 
 const $core.bool _omitEnumNames =

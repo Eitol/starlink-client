@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-struct SpaceX_API_Device_RssiEntry: Sendable {
+nonisolated struct SpaceX_API_Device_RssiEntry: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -38,7 +38,7 @@ struct SpaceX_API_Device_RssiEntry: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_DishActivateRssiScan: Sendable {
+nonisolated struct SpaceX_API_Device_DishActivateRssiScan: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -50,7 +50,7 @@ struct SpaceX_API_Device_DishActivateRssiScan: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_DishGetRssiScanResult: Sendable {
+nonisolated struct SpaceX_API_Device_DishGetRssiScanResult: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -72,16 +72,11 @@ struct SpaceX_API_Device_DishGetRssiScanResult: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "SpaceX.API.Device"
+fileprivate nonisolated let _protobuf_package = "SpaceX.API.Device"
 
-extension SpaceX_API_Device_RssiEntry: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_RssiEntry: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".RssiEntry"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "theta_degree"),
-    2: .standard(proto: "phi_degree"),
-    3: .standard(proto: "rssi_dbf"),
-    4: .standard(proto: "scan_timestamp_ms"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}theta_degree\0\u{3}phi_degree\0\u{3}rssi_dbf\0\u{3}scan_timestamp_ms\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -124,11 +119,9 @@ extension SpaceX_API_Device_RssiEntry: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension SpaceX_API_Device_DishActivateRssiScan: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_DishActivateRssiScan: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".DishActivateRssiScan"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "channel"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}channel\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -156,15 +149,9 @@ extension SpaceX_API_Device_DishActivateRssiScan: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension SpaceX_API_Device_DishGetRssiScanResult: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_DishGetRssiScanResult: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".DishGetRssiScanResult"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "success"),
-    2: .same(proto: "channel"),
-    3: .standard(proto: "request_timestamp"),
-    4: .standard(proto: "number_samples"),
-    5: .standard(proto: "rssi_scan_points"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}success\0\u{1}channel\0\u{3}request_timestamp\0\u{3}number_samples\0\u{3}rssi_scan_points\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {

@@ -41,6 +41,20 @@ const ToController$json = {
   '2': [
     {'1': 'api_version', '3': 4, '4': 1, '5': 5, '10': 'apiVersion'},
     {
+      '1': 'api_version_other_side',
+      '3': 7,
+      '4': 1,
+      '5': 5,
+      '10': 'apiVersionOtherSide'
+    },
+    {
+      '1': 'ready_for_multiple_networks',
+      '3': 6,
+      '4': 1,
+      '5': 8,
+      '10': 'readyForMultipleNetworks'
+    },
+    {
       '1': 'clients',
       '3': 1,
       '4': 1,
@@ -84,12 +98,14 @@ const ToController$json = {
 
 /// Descriptor for `ToController`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List toControllerDescriptor = $convert.base64Decode(
-    'CgxUb0NvbnRyb2xsZXISHwoLYXBpX3ZlcnNpb24YBCABKAVSCmFwaVZlcnNpb24SOgoHY2xpZW'
-    '50cxgBIAEoCzIeLlNwYWNlWC5BUEkuRGV2aWNlLldpZmlDbGllbnRzSABSB2NsaWVudHMSPgoJ'
-    'bWVzaF9qb2luGAIgASgLMh8uU3BhY2VYLkFQSS5EZXZpY2UuV2lmaU1lc2hKb2luSABSCG1lc2'
-    'hKb2luEjsKBnN0YXR1cxgDIAEoCzIhLlNwYWNlWC5BUEkuRGV2aWNlLldpZmlNZXNoU3RhdHVz'
-    'SABSBnN0YXR1cxJACglzcGVlZHRlc3QYBSABKAsyIC5TcGFjZVguQVBJLkRldmljZS5NZXNoU3'
-    'BlZWR0ZXN0SABSCXNwZWVkdGVzdEIJCgdtZXNzYWdl');
+    'CgxUb0NvbnRyb2xsZXISHwoLYXBpX3ZlcnNpb24YBCABKAVSCmFwaVZlcnNpb24SMwoWYXBpX3'
+    'ZlcnNpb25fb3RoZXJfc2lkZRgHIAEoBVITYXBpVmVyc2lvbk90aGVyU2lkZRI9ChtyZWFkeV9m'
+    'b3JfbXVsdGlwbGVfbmV0d29ya3MYBiABKAhSGHJlYWR5Rm9yTXVsdGlwbGVOZXR3b3JrcxI6Cg'
+    'djbGllbnRzGAEgASgLMh4uU3BhY2VYLkFQSS5EZXZpY2UuV2lmaUNsaWVudHNIAFIHY2xpZW50'
+    'cxI+CgltZXNoX2pvaW4YAiABKAsyHy5TcGFjZVguQVBJLkRldmljZS5XaWZpTWVzaEpvaW5IAF'
+    'IIbWVzaEpvaW4SOwoGc3RhdHVzGAMgASgLMiEuU3BhY2VYLkFQSS5EZXZpY2UuV2lmaU1lc2hT'
+    'dGF0dXNIAFIGc3RhdHVzEkAKCXNwZWVkdGVzdBgFIAEoCzIgLlNwYWNlWC5BUEkuRGV2aWNlLk'
+    '1lc2hTcGVlZHRlc3RIAFIJc3BlZWR0ZXN0QgkKB21lc3NhZ2U=');
 
 @$core.Deprecated('Use wifiMeshJoinDescriptor instead')
 const WifiMeshJoin$json = {
@@ -160,6 +176,14 @@ const WifiMeshStatus$json = {
       '5': 13,
       '10': 'backhaulEstPreference'
     },
+    {
+      '1': 'events',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.SpaceX.API.Device.UXEvent',
+      '10': 'events'
+    },
   ],
 };
 
@@ -172,7 +196,8 @@ final $typed_data.Uint8List wifiMeshStatusDescriptor = $convert.base64Decode(
     'LkRldmljZS5JbmZsYXRlZEJhc2ljU2VydmljZVNldFIHYnNzTGlzdBIpChBoYXJkd2FyZV92ZX'
     'JzaW9uGAQgASgJUg9oYXJkd2FyZVZlcnNpb24SJQoOYmFja2hhdWxfYnNzaWQYCCABKAlSDWJh'
     'Y2toYXVsQnNzaWQSNgoXYmFja2hhdWxfZXN0X3ByZWZlcmVuY2UYCSABKA1SFWJhY2toYXVsRX'
-    'N0UHJlZmVyZW5jZQ==');
+    'N0UHJlZmVyZW5jZRIyCgZldmVudHMYASADKAsyGi5TcGFjZVguQVBJLkRldmljZS5VWEV2ZW50'
+    'UgZldmVudHM=');
 
 @$core.Deprecated('Use meshSpeedtestRequestDescriptor instead')
 const MeshSpeedtestRequest$json = {
@@ -266,6 +291,13 @@ const WifiGlobalMeshStatus$json = {
       '6': '.SpaceX.API.Device.InflatedBasicServiceSet',
       '10': 'bssList'
     },
+    {
+      '1': 'hops_from_controller',
+      '3': 4,
+      '4': 1,
+      '5': 13,
+      '10': 'hopsFromController'
+    },
   ],
 };
 
@@ -274,7 +306,8 @@ final $typed_data.Uint8List wifiGlobalMeshStatusDescriptor = $convert.base64Deco
     'ChRXaWZpR2xvYmFsTWVzaFN0YXR1cxIpChBoYXJkd2FyZV92ZXJzaW9uGAEgASgJUg9oYXJkd2'
     'FyZVZlcnNpb24SKQoQc29mdHdhcmVfdmVyc2lvbhgCIAEoCVIPc29mdHdhcmVWZXJzaW9uEkUK'
     'CGJzc19saXN0GAMgAygLMiouU3BhY2VYLkFQSS5EZXZpY2UuSW5mbGF0ZWRCYXNpY1NlcnZpY2'
-    'VTZXRSB2Jzc0xpc3Q=');
+    'VTZXRSB2Jzc0xpc3QSMAoUaG9wc19mcm9tX2NvbnRyb2xsZXIYBCABKA1SEmhvcHNGcm9tQ29u'
+    'dHJvbGxlcg==');
 
 @$core.Deprecated('Use backhaulRequestDescriptor instead')
 const BackhaulRequest$json = {
@@ -798,6 +831,100 @@ const WifiGetHistoryResponse$json = {
     {'1': 'current', '3': 1, '4': 1, '5': 4, '10': 'current'},
     {'1': 'ping_drop_rate', '3': 1001, '4': 3, '5': 2, '10': 'pingDropRate'},
     {'1': 'ping_latency_ms', '3': 1002, '4': 3, '5': 2, '10': 'pingLatencyMs'},
+    {'1': 'current_index_15s', '3': 2, '4': 1, '5': 4, '10': 'currentIndex15s'},
+    {
+      '1': 'pop_ipv4_ping_drop_rate_last_15s',
+      '3': 1003,
+      '4': 3,
+      '5': 2,
+      '10': 'popIpv4PingDropRateLast15s'
+    },
+    {
+      '1': 'pop_ipv6_ping_drop_rate_last_15s',
+      '3': 1004,
+      '4': 3,
+      '5': 2,
+      '10': 'popIpv6PingDropRateLast15s'
+    },
+    {
+      '1': 'google_ipv4_ping_drop_rate_last_15s',
+      '3': 1005,
+      '4': 3,
+      '5': 2,
+      '10': 'googleIpv4PingDropRateLast15s'
+    },
+    {
+      '1': 'google_ipv6_ping_drop_rate_last_15s',
+      '3': 1006,
+      '4': 3,
+      '5': 2,
+      '10': 'googleIpv6PingDropRateLast15s'
+    },
+    {
+      '1': 'cloudflare_ipv4_ping_drop_rate_last_15s',
+      '3': 1007,
+      '4': 3,
+      '5': 2,
+      '10': 'cloudflareIpv4PingDropRateLast15s'
+    },
+    {
+      '1': 'cloudflare_ipv6_ping_drop_rate_last_15s',
+      '3': 1008,
+      '4': 3,
+      '5': 2,
+      '10': 'cloudflareIpv6PingDropRateLast15s'
+    },
+    {
+      '1': 'dns_resolver_drop_rate',
+      '3': 1009,
+      '4': 3,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiGetHistoryResponse.DnsResolverDropRateEntry',
+      '10': 'dnsResolverDropRate'
+    },
+    {
+      '1': 'event_log',
+      '3': 1010,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.EventLog',
+      '10': 'eventLog'
+    },
+  ],
+  '3': [
+    WifiGetHistoryResponse_DnsResolverDropRateEntry$json,
+    WifiGetHistoryResponse_DnsResolverHistory$json
+  ],
+};
+
+@$core.Deprecated('Use wifiGetHistoryResponseDescriptor instead')
+const WifiGetHistoryResponse_DnsResolverDropRateEntry$json = {
+  '1': 'DnsResolverDropRateEntry',
+  '2': [
+    {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    {
+      '1': 'value',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiGetHistoryResponse.DnsResolverHistory',
+      '10': 'value'
+    },
+  ],
+  '7': {'7': true},
+};
+
+@$core.Deprecated('Use wifiGetHistoryResponseDescriptor instead')
+const WifiGetHistoryResponse_DnsResolverHistory$json = {
+  '1': 'DnsResolverHistory',
+  '2': [
+    {
+      '1': 'drop_rate_last_15s',
+      '3': 2,
+      '4': 3,
+      '5': 2,
+      '10': 'dropRateLast15s'
+    },
   ],
 };
 
@@ -805,7 +932,23 @@ const WifiGetHistoryResponse$json = {
 final $typed_data.Uint8List wifiGetHistoryResponseDescriptor = $convert.base64Decode(
     'ChZXaWZpR2V0SGlzdG9yeVJlc3BvbnNlEhgKB2N1cnJlbnQYASABKARSB2N1cnJlbnQSJQoOcG'
     'luZ19kcm9wX3JhdGUY6QcgAygCUgxwaW5nRHJvcFJhdGUSJwoPcGluZ19sYXRlbmN5X21zGOoH'
-    'IAMoAlINcGluZ0xhdGVuY3lNcw==');
+    'IAMoAlINcGluZ0xhdGVuY3lNcxIqChFjdXJyZW50X2luZGV4XzE1cxgCIAEoBFIPY3VycmVudE'
+    'luZGV4MTVzEkUKIHBvcF9pcHY0X3BpbmdfZHJvcF9yYXRlX2xhc3RfMTVzGOsHIAMoAlIacG9w'
+    'SXB2NFBpbmdEcm9wUmF0ZUxhc3QxNXMSRQogcG9wX2lwdjZfcGluZ19kcm9wX3JhdGVfbGFzdF'
+    '8xNXMY7AcgAygCUhpwb3BJcHY2UGluZ0Ryb3BSYXRlTGFzdDE1cxJLCiNnb29nbGVfaXB2NF9w'
+    'aW5nX2Ryb3BfcmF0ZV9sYXN0XzE1cxjtByADKAJSHWdvb2dsZUlwdjRQaW5nRHJvcFJhdGVMYX'
+    'N0MTVzEksKI2dvb2dsZV9pcHY2X3BpbmdfZHJvcF9yYXRlX2xhc3RfMTVzGO4HIAMoAlIdZ29v'
+    'Z2xlSXB2NlBpbmdEcm9wUmF0ZUxhc3QxNXMSUwonY2xvdWRmbGFyZV9pcHY0X3BpbmdfZHJvcF'
+    '9yYXRlX2xhc3RfMTVzGO8HIAMoAlIhY2xvdWRmbGFyZUlwdjRQaW5nRHJvcFJhdGVMYXN0MTVz'
+    'ElMKJ2Nsb3VkZmxhcmVfaXB2Nl9waW5nX2Ryb3BfcmF0ZV9sYXN0XzE1cxjwByADKAJSIWNsb3'
+    'VkZmxhcmVJcHY2UGluZ0Ryb3BSYXRlTGFzdDE1cxJ4ChZkbnNfcmVzb2x2ZXJfZHJvcF9yYXRl'
+    'GPEHIAMoCzJCLlNwYWNlWC5BUEkuRGV2aWNlLldpZmlHZXRIaXN0b3J5UmVzcG9uc2UuRG5zUm'
+    'Vzb2x2ZXJEcm9wUmF0ZUVudHJ5UhNkbnNSZXNvbHZlckRyb3BSYXRlEjkKCWV2ZW50X2xvZxjy'
+    'ByABKAsyGy5TcGFjZVguQVBJLkRldmljZS5FdmVudExvZ1IIZXZlbnRMb2cahAEKGERuc1Jlc2'
+    '9sdmVyRHJvcFJhdGVFbnRyeRIQCgNrZXkYASABKAlSA2tleRJSCgV2YWx1ZRgCIAEoCzI8LlNw'
+    'YWNlWC5BUEkuRGV2aWNlLldpZmlHZXRIaXN0b3J5UmVzcG9uc2UuRG5zUmVzb2x2ZXJIaXN0b3'
+    'J5UgV2YWx1ZToCOAEaQQoSRG5zUmVzb2x2ZXJIaXN0b3J5EisKEmRyb3BfcmF0ZV9sYXN0XzE1'
+    'cxgCIAMoAlIPZHJvcFJhdGVMYXN0MTVz');
 
 @$core.Deprecated('Use wifiNewClientConnectedEventDescriptor instead')
 const WifiNewClientConnectedEvent$json = {
@@ -832,11 +975,21 @@ final $typed_data.Uint8List wifiNewClientConnectedEventDescriptor =
 const WifiClient$json = {
   '1': 'WifiClient',
   '2': [
+    {
+      '1': 'links',
+      '3': 70,
+      '4': 3,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiClient.Link',
+      '10': 'links'
+    },
+    {'1': 'using_mlo', '3': 71, '4': 1, '5': 8, '10': 'usingMlo'},
     {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
     {'1': 'given_name', '3': 31, '4': 1, '5': 9, '10': 'givenName'},
     {'1': 'domain', '3': 22, '4': 1, '5': 9, '10': 'domain'},
     {'1': 'mac_address', '3': 2, '4': 1, '5': 9, '10': 'macAddress'},
     {'1': 'ip_address', '3': 3, '4': 1, '5': 9, '10': 'ipAddress'},
+    {'1': 'dhcp_lease_found', '3': 49, '4': 1, '5': 8, '10': 'dhcpLeaseFound'},
     {
       '1': 'dhcp_lease_active',
       '3': 46,
@@ -851,6 +1004,13 @@ const WifiClient$json = {
       '5': 8,
       '10': 'dhcpLeaseRenewed'
     },
+    {
+      '1': 'seconds_until_dhcp_lease_expires',
+      '3': 48,
+      '4': 1,
+      '5': 2,
+      '10': 'secondsUntilDhcpLeaseExpires'
+    },
     {'1': 'ipv6_addresses', '3': 41, '4': 3, '5': 9, '10': 'ipv6Addresses'},
     {'1': 'signal_strength', '3': 4, '4': 1, '5': 2, '10': 'signalStrength'},
     {'1': 'channel_width', '3': 12, '4': 1, '5': 13, '10': 'channelWidth'},
@@ -862,6 +1022,7 @@ const WifiClient$json = {
       '6': '.SpaceX.API.Device.WifiClient.RxStats',
       '10': 'rxStats'
     },
+    {'1': 'rx_stats_valid', '3': 60, '4': 1, '5': 8, '10': 'rxStatsValid'},
     {
       '1': 'tx_stats',
       '3': 6,
@@ -870,6 +1031,7 @@ const WifiClient$json = {
       '6': '.SpaceX.API.Device.WifiClient.TxStats',
       '10': 'txStats'
     },
+    {'1': 'tx_stats_valid', '3': 61, '4': 1, '5': 8, '10': 'txStatsValid'},
     {
       '1': 'associated_time_s',
       '3': 7,
@@ -982,6 +1144,29 @@ const WifiClient$json = {
     {'1': 'blocked', '3': 42, '4': 1, '5': 8, '10': 'blocked'},
     {'1': 'client_id', '3': 43, '4': 1, '5': 13, '10': 'clientId'},
     {
+      '1': 'captive_client_id',
+      '3': 53,
+      '4': 1,
+      '5': 9,
+      '10': 'captiveClientId'
+    },
+    {
+      '1': 'captive_state',
+      '3': 56,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.WifiClient.CaptiveState',
+      '10': 'captiveState'
+    },
+    {
+      '1': 'sandbox_state',
+      '3': 57,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.WifiClient.SandboxState',
+      '10': 'sandboxState'
+    },
+    {
       '1': 'fqcodel_info',
       '3': 44,
       '4': 1,
@@ -989,14 +1174,37 @@ const WifiClient$json = {
       '6': '.SpaceX.API.Device.WifiClient.FqcodelInfo',
       '10': 'fqcodelInfo'
     },
+    {
+      '1': 'alerts',
+      '3': 52,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiClient.Alerts',
+      '10': 'alerts'
+    },
+    {'1': 'upload_mb', '3': 54, '4': 1, '5': 13, '10': 'uploadMb'},
+    {'1': 'download_mb', '3': 55, '4': 1, '5': 13, '10': 'downloadMb'},
+    {'1': 'active', '3': 58, '4': 1, '5': 8, '10': 'active'},
   ],
   '3': [
     WifiClient_RxStats$json,
     WifiClient_TxStats$json,
+    WifiClient_Link$json,
     WifiClient_PingMetrics$json,
-    WifiClient_FqcodelInfo$json
+    WifiClient_FqcodelInfo$json,
+    WifiClient_Alerts$json
   ],
-  '4': [WifiClient_Interface$json, WifiClient_Role$json],
+  '4': [
+    WifiClient_Interface$json,
+    WifiClient_Role$json,
+    WifiClient_CaptiveState$json,
+    WifiClient_SandboxState$json
+  ],
+  '9': [
+    {'1': 50, '2': 51},
+    {'1': 51, '2': 52},
+  ],
+  '10': ['authorized', 'sandbox_client_id'],
 };
 
 @$core.Deprecated('Use wifiClientDescriptor instead')
@@ -1021,6 +1229,27 @@ const WifiClient_RxStats$json = {
       '4': 1,
       '5': 2,
       '10': 'rateMbpsLast15s'
+    },
+    {
+      '1': 'rate_mbps_last_1m_avg',
+      '3': 16,
+      '4': 1,
+      '5': 2,
+      '10': 'rateMbpsLast1mAvg'
+    },
+    {
+      '1': 'throughput_mbps_last_1m_avg',
+      '3': 17,
+      '4': 1,
+      '5': 2,
+      '10': 'throughputMbpsLast1mAvg'
+    },
+    {
+      '1': 'throughput_mbps_last_15s_avg',
+      '3': 18,
+      '4': 1,
+      '5': 2,
+      '10': 'throughputMbpsLast15sAvg'
     },
     {'1': 'mcs', '3': 5, '4': 1, '5': 13, '10': 'mcs'},
     {'1': 'bandwidth', '3': 6, '4': 1, '5': 13, '10': 'bandwidth'},
@@ -1086,9 +1315,49 @@ const WifiClient_TxStats$json = {
       '5': 2,
       '10': 'airtimeFractionLast1s'
     },
+    {
+      '1': 'throughput_mbps_last_15s_avg',
+      '3': 13,
+      '4': 1,
+      '5': 2,
+      '10': 'throughputMbpsLast15sAvg'
+    },
   ],
   '9': [
     {'1': 4, '2': 5},
+  ],
+};
+
+@$core.Deprecated('Use wifiClientDescriptor instead')
+const WifiClient_Link$json = {
+  '1': 'Link',
+  '2': [
+    {'1': 'link_address', '3': 1, '4': 1, '5': 9, '10': 'linkAddress'},
+    {
+      '1': 'band',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.WifiClient.Interface',
+      '10': 'band'
+    },
+    {'1': 'signal_strength', '3': 3, '4': 1, '5': 2, '10': 'signalStrength'},
+    {
+      '1': 'rx_stats',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiClient.RxStats',
+      '10': 'rxStats'
+    },
+    {
+      '1': 'tx_stats',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiClient.TxStats',
+      '10': 'txStats'
+    },
   ],
 };
 
@@ -1146,6 +1415,20 @@ const WifiClient_FqcodelInfo$json = {
 };
 
 @$core.Deprecated('Use wifiClientDescriptor instead')
+const WifiClient_Alerts$json = {
+  '1': 'Alerts',
+  '2': [
+    {
+      '1': 'throughput_limited',
+      '3': 1,
+      '4': 1,
+      '5': 8,
+      '10': 'throughputLimited'
+    },
+  ],
+};
+
+@$core.Deprecated('Use wifiClientDescriptor instead')
 const WifiClient_Interface$json = {
   '1': 'Interface',
   '2': [
@@ -1168,72 +1451,125 @@ const WifiClient_Role$json = {
   ],
 };
 
+@$core.Deprecated('Use wifiClientDescriptor instead')
+const WifiClient_CaptiveState$json = {
+  '1': 'CaptiveState',
+  '2': [
+    {'1': 'CAPTIVE_STATE_NOT_CONFIGURED', '2': 0},
+    {'1': 'CAPTIVE_STATE_UNKNOWN', '2': 1},
+    {'1': 'CAPTIVE_STATE_CAPTIVE', '2': 2},
+    {'1': 'CAPTIVE_STATE_NOT_CAPTIVE', '2': 3},
+    {'1': 'CAPTIVE_STATE_PARTIALLY_CAPTIVE', '2': 4},
+  ],
+};
+
+@$core.Deprecated('Use wifiClientDescriptor instead')
+const WifiClient_SandboxState$json = {
+  '1': 'SandboxState',
+  '2': [
+    {'1': 'SANDBOX_STATE_NOT_CONFIGURED', '2': 0},
+    {'1': 'SANDBOX_STATE_UNKNOWN', '2': 1},
+    {'1': 'SANDBOX_STATE_SANDBOXED', '2': 2},
+    {'1': 'SANDBOX_STATE_UNSANDBOXED', '2': 3},
+    {'1': 'SANDBOX_STATE_PARTIALLY_SANDBOXED', '2': 4},
+  ],
+};
+
 /// Descriptor for `WifiClient`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List wifiClientDescriptor = $convert.base64Decode(
-    'CgpXaWZpQ2xpZW50EhIKBG5hbWUYASABKAlSBG5hbWUSHQoKZ2l2ZW5fbmFtZRgfIAEoCVIJZ2'
-    'l2ZW5OYW1lEhYKBmRvbWFpbhgWIAEoCVIGZG9tYWluEh8KC21hY19hZGRyZXNzGAIgASgJUgpt'
-    'YWNBZGRyZXNzEh0KCmlwX2FkZHJlc3MYAyABKAlSCWlwQWRkcmVzcxIqChFkaGNwX2xlYXNlX2'
-    'FjdGl2ZRguIAEoCFIPZGhjcExlYXNlQWN0aXZlEiwKEmRoY3BfbGVhc2VfcmVuZXdlZBgvIAEo'
-    'CFIQZGhjcExlYXNlUmVuZXdlZBIlCg5pcHY2X2FkZHJlc3NlcxgpIAMoCVINaXB2NkFkZHJlc3'
-    'NlcxInCg9zaWduYWxfc3RyZW5ndGgYBCABKAJSDnNpZ25hbFN0cmVuZ3RoEiMKDWNoYW5uZWxf'
-    'd2lkdGgYDCABKA1SDGNoYW5uZWxXaWR0aBJACghyeF9zdGF0cxgFIAEoCzIlLlNwYWNlWC5BUE'
-    'kuRGV2aWNlLldpZmlDbGllbnQuUnhTdGF0c1IHcnhTdGF0cxJACgh0eF9zdGF0cxgGIAEoCzIl'
-    'LlNwYWNlWC5BUEkuRGV2aWNlLldpZmlDbGllbnQuVHhTdGF0c1IHdHhTdGF0cxIqChFhc3NvY2'
-    'lhdGVkX3RpbWVfcxgHIAEoDVIPYXNzb2NpYXRlZFRpbWVTEiMKDm5vX2RhdGFfaWRsZV9zGC0g'
-    'ASgNUgtub0RhdGFJZGxlUxIZCghtb2RlX3N0chgIIAEoCVIHbW9kZVN0chI9CgVpZmFjZRgJIA'
-    'EoDjInLlNwYWNlWC5BUEkuRGV2aWNlLldpZmlDbGllbnQuSW50ZXJmYWNlUgVpZmFjZRIdCgpp'
-    'ZmFjZV9uYW1lGBogASgJUglpZmFjZU5hbWUSEAoDc25yGAogASgCUgNzbnISFgoGcHNtb2RlGA'
-    'sgASgFUgZwc21vZGUSMAoUdXBzdHJlYW1fbWFjX2FkZHJlc3MYDSABKAlSEnVwc3RyZWFtTWFj'
-    'QWRkcmVzcxI2CgRyb2xlGA4gASgOMiIuU3BhY2VYLkFQSS5EZXZpY2UuV2lmaUNsaWVudC5Sb2'
-    'xlUgRyb2xlEhsKCWRldmljZV9pZBgPIAEoCVIIZGV2aWNlSWQSHQoKc3dxX2NoZWNrcxgQIAEo'
-    'DVIJc3dxQ2hlY2tzEi8KFHN3cV9jaGVja3Nfbm9uX2VtcHR5GBEgASgNUhFzd3FDaGVja3NOb2'
-    '5FbXB0eRImCg9taWJfc3RlZXJfc3RhdGUYEiABKA1SDW1pYlN0ZWVyU3RhdGUSKAoQbWliX3N0'
-    'ZWVyX21ldGhvZBgTIAEoDVIObWliU3RlZXJNZXRob2QSIQoMYnRtX3JlcXVlc3RzGBQgASgNUg'
-    'tidG1SZXF1ZXN0cxIwChRidG1fcmVxdWVzdHNfc3VjY2VzcxgVIAEoDVISYnRtUmVxdWVzdHNT'
-    'dWNjZXNzEh8KC3N0ZWVyX3N0YXRlGB4gASgNUgpzdGVlclN0YXRlEjgKGXN0ZWVyX3JlcV9zdW'
-    'NjZXNzX2xhc3RfMWgYGyABKA1SFXN0ZWVyUmVxU3VjY2Vzc0xhc3QxaBIyChZzdGVlcl9yZXFf'
-    'ZmFpbF9sYXN0XzFoGBwgASgNUhJzdGVlclJlcUZhaWxMYXN0MWgSRgohc3RlZXJfcmVxX2ZhaW'
-    'xfYW5kX2Rpc3NvY19sYXN0XzFoGB0gASgNUhtzdGVlclJlcUZhaWxBbmREaXNzb2NMYXN0MWgS'
-    'JQoOZG90MTF2X3N1cHBvcnQYFyABKAhSDWRvdDExdlN1cHBvcnQSMAoUaG9wc19mcm9tX2Nvbn'
-    'Ryb2xsZXIYICABKA1SEmhvcHNGcm9tQ29udHJvbGxlchJFCiBlc3RfdHhfcmF0ZV9tYnBzX2Zy'
-    'b21fY29udHJvbGxlchghIAEoAlIbZXN0VHhSYXRlTWJwc0Zyb21Db250cm9sbGVyEkUKIGVzdF'
-    '9yeF9yYXRlX21icHNfZnJvbV9jb250cm9sbGVyGCIgASgCUhtlc3RSeFJhdGVNYnBzRnJvbUNv'
-    'bnRyb2xsZXISKQoQaGFyZHdhcmVfdmVyc2lvbhglIAEoCVIPaGFyZHdhcmVWZXJzaW9uEikKEH'
-    'NvZnR3YXJlX3ZlcnNpb24YJiABKAlSD3NvZnR3YXJlVmVyc2lvbhIfCgthcGlfdmVyc2lvbhgn'
-    'IAEoDVIKYXBpVmVyc2lvbhJMCgxwaW5nX21ldHJpY3MYKCABKAsyKS5TcGFjZVguQVBJLkRldm'
-    'ljZS5XaWZpQ2xpZW50LlBpbmdNZXRyaWNzUgtwaW5nTWV0cmljcxIYCgdibG9ja2VkGCogASgI'
-    'UgdibG9ja2VkEhsKCWNsaWVudF9pZBgrIAEoDVIIY2xpZW50SWQSTAoMZnFjb2RlbF9pbmZvGC'
-    'wgASgLMikuU3BhY2VYLkFQSS5EZXZpY2UuV2lmaUNsaWVudC5GcWNvZGVsSW5mb1ILZnFjb2Rl'
-    'bEluZm8aiQQKB1J4U3RhdHMSFAoFYnl0ZXMYASABKARSBWJ5dGVzEiEKDGNvdW50X2Vycm9ycx'
-    'gCIAEoBFILY291bnRFcnJvcnMSGQoIcGh5X21vZGUYDSABKA1SB3BoeU1vZGUSEAoDbnNzGAMg'
-    'ASgFUgNuc3MSGwoJcmF0ZV9tYnBzGAggASgNUghyYXRlTWJwcxIrChJyYXRlX21icHNfbGFzdF'
-    '8zMHMYDiABKAJSD3JhdGVNYnBzTGFzdDMwcxIrChJyYXRlX21icHNfbGFzdF8xNXMYDyABKAJS'
-    'D3JhdGVNYnBzTGFzdDE1cxIQCgNtY3MYBSABKA1SA21jcxIcCgliYW5kd2lkdGgYBiABKA1SCW'
-    'JhbmR3aWR0aBIZCghndWFyZF9ucxgHIAEoDVIHZ3VhcmROcxI3ChhhaXJ0aW1lX2ZyYWN0aW9u'
-    'X2xhc3RfMXMYCSABKAJSFWFpcnRpbWVGcmFjdGlvbkxhc3QxcxInCg9zYW1wbGVkX3BhY2tldH'
-    'MYCiABKA1SDnNhbXBsZWRQYWNrZXRzEjYKF3NhbXBsZWRfcGFja2V0c19yZXRyaWVkGAsgASgN'
-    'UhVzYW1wbGVkUGFja2V0c1JldHJpZWQSNgoXc2FtcGxlZF9wYWNrZXRzX2Ryb3BwZWQYDCABKA'
-    '1SFXNhbXBsZWRQYWNrZXRzRHJvcHBlZEoECAQQBRryAgoHVHhTdGF0cxIUCgVieXRlcxgBIAEo'
-    'BFIFYnl0ZXMSIwoNc3VjY2Vzc19ieXRlcxgCIAEoBFIMc3VjY2Vzc0J5dGVzEhkKCHBoeV9tb2'
-    'RlGAogASgNUgdwaHlNb2RlEhAKA25zcxgDIAEoBVIDbnNzEhsKCXJhdGVfbWJwcxgIIAEoDVII'
-    'cmF0ZU1icHMSKwoScmF0ZV9tYnBzX2xhc3RfMzBzGAsgASgCUg9yYXRlTWJwc0xhc3QzMHMSKw'
-    'oScmF0ZV9tYnBzX2xhc3RfMTVzGAwgASgCUg9yYXRlTWJwc0xhc3QxNXMSEAoDbWNzGAUgASgN'
-    'UgNtY3MSHAoJYmFuZHdpZHRoGAYgASgNUgliYW5kd2lkdGgSGQoIZ3VhcmRfbnMYByABKA1SB2'
-    'd1YXJkTnMSNwoYYWlydGltZV9mcmFjdGlvbl9sYXN0XzFzGAkgASgCUhVhaXJ0aW1lRnJhY3Rp'
-    'b25MYXN0MXNKBAgEEAUaqAEKC1BpbmdNZXRyaWNzEisKEmluX3VuaGFwcHlfaG91cl8ycxgBIA'
-    'EoCFIPaW5VbmhhcHB5SG91cjJzEisKEmluX3VuaGFwcHlfaG91cl81cxgCIAEoCFIPaW5Vbmhh'
-    'cHB5SG91cjVzEiAKDGRyb3BfcmF0ZV81bRgDIAEoAlIKZHJvcFJhdGU1bRIdCgpsYXRlbmN5Xz'
-    'VtGAQgASgCUglsYXRlbmN5NW0alAMKC0ZxY29kZWxJbmZvEiAKDGVucXNfaGlfcHJpbxgBIAEo'
-    'BFIKZW5xc0hpUHJpbxIhCgxlbnFzX2ZxY29kZWwYAiABKARSC2VucXNGcWNvZGVsEhkKCGVucX'
-    'NfbmV3GAMgASgEUgdlbnFzTmV3EhkKCGVucXNfb2xkGAQgASgEUgdlbnFzT2xkEiEKDGVucXNf'
-    'ZHJvcHBlZBgFIAEoBFILZW5xc0Ryb3BwZWQSGQoIZGVxc19uZXcYBiABKARSB2RlcXNOZXcSGQ'
-    'oIZGVxc19vbGQYByABKARSB2RlcXNPbGQSIgoNZGVxc19mbG93X25ldxgIIAEoBFILZGVxc0Zs'
-    'b3dOZXcSMQoVZGVxc19mbG93X29sZF9kZWZpY2l0GAkgASgEUhJkZXFzRmxvd09sZERlZmljaX'
-    'QSNwoYZGVxc19mbG93X29sZF9zdGFydmF0aW9uGAogASgEUhVkZXFzRmxvd09sZFN0YXJ2YXRp'
-    'b24SIQoMZGVxc19kcm9wcGVkGAsgASgEUgtkZXFzRHJvcHBlZCJNCglJbnRlcmZhY2USCwoHVU'
-    '5LTk9XThAAEgcKA0VUSBABEgsKB1JGXzJHSFoQAhILCgdSRl81R0haEAMSEAoMUkZfNUdIWl9I'
-    'SUdIEAQiQgoEUm9sZRIQCgxST0xFX1VOS05PV04QABIKCgZDTElFTlQQARIMCghSRVBFQVRFUh'
-    'ACEg4KCkNPTlRST0xMRVIQAw==');
+    'CgpXaWZpQ2xpZW50EjgKBWxpbmtzGEYgAygLMiIuU3BhY2VYLkFQSS5EZXZpY2UuV2lmaUNsaW'
+    'VudC5MaW5rUgVsaW5rcxIbCgl1c2luZ19tbG8YRyABKAhSCHVzaW5nTWxvEhIKBG5hbWUYASAB'
+    'KAlSBG5hbWUSHQoKZ2l2ZW5fbmFtZRgfIAEoCVIJZ2l2ZW5OYW1lEhYKBmRvbWFpbhgWIAEoCV'
+    'IGZG9tYWluEh8KC21hY19hZGRyZXNzGAIgASgJUgptYWNBZGRyZXNzEh0KCmlwX2FkZHJlc3MY'
+    'AyABKAlSCWlwQWRkcmVzcxIoChBkaGNwX2xlYXNlX2ZvdW5kGDEgASgIUg5kaGNwTGVhc2VGb3'
+    'VuZBIqChFkaGNwX2xlYXNlX2FjdGl2ZRguIAEoCFIPZGhjcExlYXNlQWN0aXZlEiwKEmRoY3Bf'
+    'bGVhc2VfcmVuZXdlZBgvIAEoCFIQZGhjcExlYXNlUmVuZXdlZBJGCiBzZWNvbmRzX3VudGlsX2'
+    'RoY3BfbGVhc2VfZXhwaXJlcxgwIAEoAlIcc2Vjb25kc1VudGlsRGhjcExlYXNlRXhwaXJlcxIl'
+    'Cg5pcHY2X2FkZHJlc3NlcxgpIAMoCVINaXB2NkFkZHJlc3NlcxInCg9zaWduYWxfc3RyZW5ndG'
+    'gYBCABKAJSDnNpZ25hbFN0cmVuZ3RoEiMKDWNoYW5uZWxfd2lkdGgYDCABKA1SDGNoYW5uZWxX'
+    'aWR0aBJACghyeF9zdGF0cxgFIAEoCzIlLlNwYWNlWC5BUEkuRGV2aWNlLldpZmlDbGllbnQuUn'
+    'hTdGF0c1IHcnhTdGF0cxIkCg5yeF9zdGF0c192YWxpZBg8IAEoCFIMcnhTdGF0c1ZhbGlkEkAK'
+    'CHR4X3N0YXRzGAYgASgLMiUuU3BhY2VYLkFQSS5EZXZpY2UuV2lmaUNsaWVudC5UeFN0YXRzUg'
+    'd0eFN0YXRzEiQKDnR4X3N0YXRzX3ZhbGlkGD0gASgIUgx0eFN0YXRzVmFsaWQSKgoRYXNzb2Np'
+    'YXRlZF90aW1lX3MYByABKA1SD2Fzc29jaWF0ZWRUaW1lUxIjCg5ub19kYXRhX2lkbGVfcxgtIA'
+    'EoDVILbm9EYXRhSWRsZVMSGQoIbW9kZV9zdHIYCCABKAlSB21vZGVTdHISPQoFaWZhY2UYCSAB'
+    'KA4yJy5TcGFjZVguQVBJLkRldmljZS5XaWZpQ2xpZW50LkludGVyZmFjZVIFaWZhY2USHQoKaW'
+    'ZhY2VfbmFtZRgaIAEoCVIJaWZhY2VOYW1lEhAKA3NuchgKIAEoAlIDc25yEhYKBnBzbW9kZRgL'
+    'IAEoBVIGcHNtb2RlEjAKFHVwc3RyZWFtX21hY19hZGRyZXNzGA0gASgJUhJ1cHN0cmVhbU1hY0'
+    'FkZHJlc3MSNgoEcm9sZRgOIAEoDjIiLlNwYWNlWC5BUEkuRGV2aWNlLldpZmlDbGllbnQuUm9s'
+    'ZVIEcm9sZRIbCglkZXZpY2VfaWQYDyABKAlSCGRldmljZUlkEh0KCnN3cV9jaGVja3MYECABKA'
+    '1SCXN3cUNoZWNrcxIvChRzd3FfY2hlY2tzX25vbl9lbXB0eRgRIAEoDVIRc3dxQ2hlY2tzTm9u'
+    'RW1wdHkSJgoPbWliX3N0ZWVyX3N0YXRlGBIgASgNUg1taWJTdGVlclN0YXRlEigKEG1pYl9zdG'
+    'Vlcl9tZXRob2QYEyABKA1SDm1pYlN0ZWVyTWV0aG9kEiEKDGJ0bV9yZXF1ZXN0cxgUIAEoDVIL'
+    'YnRtUmVxdWVzdHMSMAoUYnRtX3JlcXVlc3RzX3N1Y2Nlc3MYFSABKA1SEmJ0bVJlcXVlc3RzU3'
+    'VjY2VzcxIfCgtzdGVlcl9zdGF0ZRgeIAEoDVIKc3RlZXJTdGF0ZRI4ChlzdGVlcl9yZXFfc3Vj'
+    'Y2Vzc19sYXN0XzFoGBsgASgNUhVzdGVlclJlcVN1Y2Nlc3NMYXN0MWgSMgoWc3RlZXJfcmVxX2'
+    'ZhaWxfbGFzdF8xaBgcIAEoDVISc3RlZXJSZXFGYWlsTGFzdDFoEkYKIXN0ZWVyX3JlcV9mYWls'
+    'X2FuZF9kaXNzb2NfbGFzdF8xaBgdIAEoDVIbc3RlZXJSZXFGYWlsQW5kRGlzc29jTGFzdDFoEi'
+    'UKDmRvdDExdl9zdXBwb3J0GBcgASgIUg1kb3QxMXZTdXBwb3J0EjAKFGhvcHNfZnJvbV9jb250'
+    'cm9sbGVyGCAgASgNUhJob3BzRnJvbUNvbnRyb2xsZXISRQogZXN0X3R4X3JhdGVfbWJwc19mcm'
+    '9tX2NvbnRyb2xsZXIYISABKAJSG2VzdFR4UmF0ZU1icHNGcm9tQ29udHJvbGxlchJFCiBlc3Rf'
+    'cnhfcmF0ZV9tYnBzX2Zyb21fY29udHJvbGxlchgiIAEoAlIbZXN0UnhSYXRlTWJwc0Zyb21Db2'
+    '50cm9sbGVyEikKEGhhcmR3YXJlX3ZlcnNpb24YJSABKAlSD2hhcmR3YXJlVmVyc2lvbhIpChBz'
+    'b2Z0d2FyZV92ZXJzaW9uGCYgASgJUg9zb2Z0d2FyZVZlcnNpb24SHwoLYXBpX3ZlcnNpb24YJy'
+    'ABKA1SCmFwaVZlcnNpb24STAoMcGluZ19tZXRyaWNzGCggASgLMikuU3BhY2VYLkFQSS5EZXZp'
+    'Y2UuV2lmaUNsaWVudC5QaW5nTWV0cmljc1ILcGluZ01ldHJpY3MSGAoHYmxvY2tlZBgqIAEoCF'
+    'IHYmxvY2tlZBIbCgljbGllbnRfaWQYKyABKA1SCGNsaWVudElkEioKEWNhcHRpdmVfY2xpZW50'
+    'X2lkGDUgASgJUg9jYXB0aXZlQ2xpZW50SWQSTwoNY2FwdGl2ZV9zdGF0ZRg4IAEoDjIqLlNwYW'
+    'NlWC5BUEkuRGV2aWNlLldpZmlDbGllbnQuQ2FwdGl2ZVN0YXRlUgxjYXB0aXZlU3RhdGUSTwoN'
+    'c2FuZGJveF9zdGF0ZRg5IAEoDjIqLlNwYWNlWC5BUEkuRGV2aWNlLldpZmlDbGllbnQuU2FuZG'
+    'JveFN0YXRlUgxzYW5kYm94U3RhdGUSTAoMZnFjb2RlbF9pbmZvGCwgASgLMikuU3BhY2VYLkFQ'
+    'SS5EZXZpY2UuV2lmaUNsaWVudC5GcWNvZGVsSW5mb1ILZnFjb2RlbEluZm8SPAoGYWxlcnRzGD'
+    'QgASgLMiQuU3BhY2VYLkFQSS5EZXZpY2UuV2lmaUNsaWVudC5BbGVydHNSBmFsZXJ0cxIbCgl1'
+    'cGxvYWRfbWIYNiABKA1SCHVwbG9hZE1iEh8KC2Rvd25sb2FkX21iGDcgASgNUgpkb3dubG9hZE'
+    '1iEhYKBmFjdGl2ZRg6IAEoCFIGYWN0aXZlGrkFCgdSeFN0YXRzEhQKBWJ5dGVzGAEgASgEUgVi'
+    'eXRlcxIhCgxjb3VudF9lcnJvcnMYAiABKARSC2NvdW50RXJyb3JzEhkKCHBoeV9tb2RlGA0gAS'
+    'gNUgdwaHlNb2RlEhAKA25zcxgDIAEoBVIDbnNzEhsKCXJhdGVfbWJwcxgIIAEoDVIIcmF0ZU1i'
+    'cHMSKwoScmF0ZV9tYnBzX2xhc3RfMzBzGA4gASgCUg9yYXRlTWJwc0xhc3QzMHMSKwoScmF0ZV'
+    '9tYnBzX2xhc3RfMTVzGA8gASgCUg9yYXRlTWJwc0xhc3QxNXMSMAoVcmF0ZV9tYnBzX2xhc3Rf'
+    'MW1fYXZnGBAgASgCUhFyYXRlTWJwc0xhc3QxbUF2ZxI8Cht0aHJvdWdocHV0X21icHNfbGFzdF'
+    '8xbV9hdmcYESABKAJSF3Rocm91Z2hwdXRNYnBzTGFzdDFtQXZnEj4KHHRocm91Z2hwdXRfbWJw'
+    'c19sYXN0XzE1c19hdmcYEiABKAJSGHRocm91Z2hwdXRNYnBzTGFzdDE1c0F2ZxIQCgNtY3MYBS'
+    'ABKA1SA21jcxIcCgliYW5kd2lkdGgYBiABKA1SCWJhbmR3aWR0aBIZCghndWFyZF9ucxgHIAEo'
+    'DVIHZ3VhcmROcxI3ChhhaXJ0aW1lX2ZyYWN0aW9uX2xhc3RfMXMYCSABKAJSFWFpcnRpbWVGcm'
+    'FjdGlvbkxhc3QxcxInCg9zYW1wbGVkX3BhY2tldHMYCiABKA1SDnNhbXBsZWRQYWNrZXRzEjYK'
+    'F3NhbXBsZWRfcGFja2V0c19yZXRyaWVkGAsgASgNUhVzYW1wbGVkUGFja2V0c1JldHJpZWQSNg'
+    'oXc2FtcGxlZF9wYWNrZXRzX2Ryb3BwZWQYDCABKA1SFXNhbXBsZWRQYWNrZXRzRHJvcHBlZEoE'
+    'CAQQBRqyAwoHVHhTdGF0cxIUCgVieXRlcxgBIAEoBFIFYnl0ZXMSIwoNc3VjY2Vzc19ieXRlcx'
+    'gCIAEoBFIMc3VjY2Vzc0J5dGVzEhkKCHBoeV9tb2RlGAogASgNUgdwaHlNb2RlEhAKA25zcxgD'
+    'IAEoBVIDbnNzEhsKCXJhdGVfbWJwcxgIIAEoDVIIcmF0ZU1icHMSKwoScmF0ZV9tYnBzX2xhc3'
+    'RfMzBzGAsgASgCUg9yYXRlTWJwc0xhc3QzMHMSKwoScmF0ZV9tYnBzX2xhc3RfMTVzGAwgASgC'
+    'Ug9yYXRlTWJwc0xhc3QxNXMSEAoDbWNzGAUgASgNUgNtY3MSHAoJYmFuZHdpZHRoGAYgASgNUg'
+    'liYW5kd2lkdGgSGQoIZ3VhcmRfbnMYByABKA1SB2d1YXJkTnMSNwoYYWlydGltZV9mcmFjdGlv'
+    'bl9sYXN0XzFzGAkgASgCUhVhaXJ0aW1lRnJhY3Rpb25MYXN0MXMSPgocdGhyb3VnaHB1dF9tYn'
+    'BzX2xhc3RfMTVzX2F2ZxgNIAEoAlIYdGhyb3VnaHB1dE1icHNMYXN0MTVzQXZnSgQIBBAFGpMC'
+    'CgRMaW5rEiEKDGxpbmtfYWRkcmVzcxgBIAEoCVILbGlua0FkZHJlc3MSOwoEYmFuZBgCIAEoDj'
+    'InLlNwYWNlWC5BUEkuRGV2aWNlLldpZmlDbGllbnQuSW50ZXJmYWNlUgRiYW5kEicKD3NpZ25h'
+    'bF9zdHJlbmd0aBgDIAEoAlIOc2lnbmFsU3RyZW5ndGgSQAoIcnhfc3RhdHMYBCABKAsyJS5TcG'
+    'FjZVguQVBJLkRldmljZS5XaWZpQ2xpZW50LlJ4U3RhdHNSB3J4U3RhdHMSQAoIdHhfc3RhdHMY'
+    'BSABKAsyJS5TcGFjZVguQVBJLkRldmljZS5XaWZpQ2xpZW50LlR4U3RhdHNSB3R4U3RhdHMaqA'
+    'EKC1BpbmdNZXRyaWNzEisKEmluX3VuaGFwcHlfaG91cl8ycxgBIAEoCFIPaW5VbmhhcHB5SG91'
+    'cjJzEisKEmluX3VuaGFwcHlfaG91cl81cxgCIAEoCFIPaW5VbmhhcHB5SG91cjVzEiAKDGRyb3'
+    'BfcmF0ZV81bRgDIAEoAlIKZHJvcFJhdGU1bRIdCgpsYXRlbmN5XzVtGAQgASgCUglsYXRlbmN5'
+    'NW0alAMKC0ZxY29kZWxJbmZvEiAKDGVucXNfaGlfcHJpbxgBIAEoBFIKZW5xc0hpUHJpbxIhCg'
+    'xlbnFzX2ZxY29kZWwYAiABKARSC2VucXNGcWNvZGVsEhkKCGVucXNfbmV3GAMgASgEUgdlbnFz'
+    'TmV3EhkKCGVucXNfb2xkGAQgASgEUgdlbnFzT2xkEiEKDGVucXNfZHJvcHBlZBgFIAEoBFILZW'
+    '5xc0Ryb3BwZWQSGQoIZGVxc19uZXcYBiABKARSB2RlcXNOZXcSGQoIZGVxc19vbGQYByABKARS'
+    'B2RlcXNPbGQSIgoNZGVxc19mbG93X25ldxgIIAEoBFILZGVxc0Zsb3dOZXcSMQoVZGVxc19mbG'
+    '93X29sZF9kZWZpY2l0GAkgASgEUhJkZXFzRmxvd09sZERlZmljaXQSNwoYZGVxc19mbG93X29s'
+    'ZF9zdGFydmF0aW9uGAogASgEUhVkZXFzRmxvd09sZFN0YXJ2YXRpb24SIQoMZGVxc19kcm9wcG'
+    'VkGAsgASgEUgtkZXFzRHJvcHBlZBo3CgZBbGVydHMSLQoSdGhyb3VnaHB1dF9saW1pdGVkGAEg'
+    'ASgIUhF0aHJvdWdocHV0TGltaXRlZCJNCglJbnRlcmZhY2USCwoHVU5LTk9XThAAEgcKA0VUSB'
+    'ABEgsKB1JGXzJHSFoQAhILCgdSRl81R0haEAMSEAoMUkZfNUdIWl9ISUdIEAQiQgoEUm9sZRIQ'
+    'CgxST0xFX1VOS05PV04QABIKCgZDTElFTlQQARIMCghSRVBFQVRFUhACEg4KCkNPTlRST0xMRV'
+    'IQAyKqAQoMQ2FwdGl2ZVN0YXRlEiAKHENBUFRJVkVfU1RBVEVfTk9UX0NPTkZJR1VSRUQQABIZ'
+    'ChVDQVBUSVZFX1NUQVRFX1VOS05PV04QARIZChVDQVBUSVZFX1NUQVRFX0NBUFRJVkUQAhIdCh'
+    'lDQVBUSVZFX1NUQVRFX05PVF9DQVBUSVZFEAMSIwofQ0FQVElWRV9TVEFURV9QQVJUSUFMTFlf'
+    'Q0FQVElWRRAEIq4BCgxTYW5kYm94U3RhdGUSIAocU0FOREJPWF9TVEFURV9OT1RfQ09ORklHVV'
+    'JFRBAAEhkKFVNBTkRCT1hfU1RBVEVfVU5LTk9XThABEhsKF1NBTkRCT1hfU1RBVEVfU0FOREJP'
+    'WEVEEAISHQoZU0FOREJPWF9TVEFURV9VTlNBTkRCT1hFRBADEiUKIVNBTkRCT1hfU1RBVEVfUE'
+    'FSVElBTExZX1NBTkRCT1hFRBAESgQIMhAzSgQIMxA0UgphdXRob3JpemVkUhFzYW5kYm94X2Ns'
+    'aWVudF9pZA==');
 
 @$core.Deprecated('Use wifiSetupRequestDescriptor instead')
 const WifiSetupRequest$json = {
@@ -1334,6 +1670,13 @@ const WifiAlerts$json = {
       '10': 'lanEthSlowLink100'
     },
     {
+      '1': 'high_cable_ping_drop_rate',
+      '3': 21,
+      '4': 1,
+      '5': 8,
+      '10': 'highCablePingDropRate'
+    },
+    {
       '1': 'wan_eth_poor_connection',
       '3': 10,
       '4': 1,
@@ -1398,6 +1741,28 @@ const WifiAlerts$json = {
       '5': 8,
       '10': 'poeVinUndervoltage'
     },
+    {'1': 'sandbox_disabled', '3': 22, '4': 1, '5': 8, '10': 'sandboxDisabled'},
+    {
+      '1': 'only_overflight_blocked',
+      '3': 23,
+      '4': 1,
+      '5': 8,
+      '10': 'onlyOverflightBlocked'
+    },
+    {
+      '1': 'offline_networks_disabled',
+      '3': 24,
+      '4': 1,
+      '5': 8,
+      '10': 'offlineNetworksDisabled'
+    },
+    {
+      '1': 'wired_mesh_not_using_wan_iface',
+      '3': 25,
+      '4': 1,
+      '5': 8,
+      '10': 'wiredMeshNotUsingWanIface'
+    },
   ],
   '9': [
     {'1': 6, '2': 7},
@@ -1419,20 +1784,26 @@ final $typed_data.Uint8List wifiAlertsDescriptor = $convert.base64Decode(
     'InCg9pbnN0YWxsX3BlbmRpbmcYAiABKAhSDmluc3RhbGxQZW5kaW5nEiMKDWZyZXNobHlfZnVz'
     'ZWQYAyABKAhSDGZyZXNobHlGdXNlZBIuChRsYW5fZXRoX3Nsb3dfbGlua18xMBgEIAEoCFIQbG'
     'FuRXRoU2xvd0xpbmsxMBIwChVsYW5fZXRoX3Nsb3dfbGlua18xMDAYBSABKAhSEWxhbkV0aFNs'
-    'b3dMaW5rMTAwEjUKF3dhbl9ldGhfcG9vcl9jb25uZWN0aW9uGAogASgIUhR3YW5FdGhQb29yQ2'
-    '9ubmVjdGlvbhI/ChxtZXNoX3RvcG9sb2d5X2NoYW5naW5nX29mdGVuGAsgASgIUhltZXNoVG9w'
-    'b2xvZ3lDaGFuZ2luZ09mdGVuEjgKGG1lc2hfdW5yZWxpYWJsZV9iYWNraGF1bBgMIAEoCFIWbW'
-    'VzaFVucmVsaWFibGVCYWNraGF1bBI0ChZyYWRpdXNfbWlzc2luZ19wcm9jZXNzGA0gASgIUhRy'
-    'YWRpdXNNaXNzaW5nUHJvY2VzcxIoChBldGhfc3dpdGNoX2Vycm9yGA4gASgIUg5ldGhTd2l0Y2'
-    'hFcnJvchI1Chdwb2Vfb25fZGlzaF91bnJlYWNoYWJsZRgPIAEoCFIUcG9lT25EaXNoVW5yZWFj'
-    'aGFibGUSJAoOcG9lX2Z1c2VfYmxvd24YECABKAhSDHBvZUZ1c2VCbG93bhI0ChZwb2Vfcm91dG'
-    'VyX292ZXJjdXJyZW50GBEgASgIUhRwb2VSb3V0ZXJPdmVyY3VycmVudBI1Chdwb2Vfb2ZmX2N1'
-    'cnJlbnRfbm9taW5hbBgSIAEoCFIUcG9lT2ZmQ3VycmVudE5vbWluYWwSLgoTcG9lX3Zpbl9vdm'
-    'Vydm9sdGFnZRgTIAEoCFIRcG9lVmluT3ZlcnZvbHRhZ2USMAoUcG9lX3Zpbl91bmRlcnZvbHRh'
-    'Z2UYFCABKAhSEnBvZVZpblVuZGVydm9sdGFnZUoECAYQB0oECAcQCEoECAgQCUoECAkQClIraW'
-    '5jb25zaXN0ZW50XzJnaHpfYW50ZW5uYWVfcGVyZm9ybWFuY2VfMTVkYlIraW5jb25zaXN0ZW50'
-    'XzVnaHpfYW50ZW5uYWVfcGVyZm9ybWFuY2VfMTVkYlIjcG9vcl8yZ2h6X2FudGVubmFlX3Blcm'
-    'Zvcm1hbmNlXzgwZGJSI3Bvb3JfNWdoel9hbnRlbm5hZV9wZXJmb3JtYW5jZV84MGRi');
+    'b3dMaW5rMTAwEjgKGWhpZ2hfY2FibGVfcGluZ19kcm9wX3JhdGUYFSABKAhSFWhpZ2hDYWJsZV'
+    'BpbmdEcm9wUmF0ZRI1Chd3YW5fZXRoX3Bvb3JfY29ubmVjdGlvbhgKIAEoCFIUd2FuRXRoUG9v'
+    'ckNvbm5lY3Rpb24SPwocbWVzaF90b3BvbG9neV9jaGFuZ2luZ19vZnRlbhgLIAEoCFIZbWVzaF'
+    'RvcG9sb2d5Q2hhbmdpbmdPZnRlbhI4ChhtZXNoX3VucmVsaWFibGVfYmFja2hhdWwYDCABKAhS'
+    'Fm1lc2hVbnJlbGlhYmxlQmFja2hhdWwSNAoWcmFkaXVzX21pc3NpbmdfcHJvY2VzcxgNIAEoCF'
+    'IUcmFkaXVzTWlzc2luZ1Byb2Nlc3MSKAoQZXRoX3N3aXRjaF9lcnJvchgOIAEoCFIOZXRoU3dp'
+    'dGNoRXJyb3ISNQoXcG9lX29uX2Rpc2hfdW5yZWFjaGFibGUYDyABKAhSFHBvZU9uRGlzaFVucm'
+    'VhY2hhYmxlEiQKDnBvZV9mdXNlX2Jsb3duGBAgASgIUgxwb2VGdXNlQmxvd24SNAoWcG9lX3Jv'
+    'dXRlcl9vdmVyY3VycmVudBgRIAEoCFIUcG9lUm91dGVyT3ZlcmN1cnJlbnQSNQoXcG9lX29mZl'
+    '9jdXJyZW50X25vbWluYWwYEiABKAhSFHBvZU9mZkN1cnJlbnROb21pbmFsEi4KE3BvZV92aW5f'
+    'b3ZlcnZvbHRhZ2UYEyABKAhSEXBvZVZpbk92ZXJ2b2x0YWdlEjAKFHBvZV92aW5fdW5kZXJ2b2'
+    'x0YWdlGBQgASgIUhJwb2VWaW5VbmRlcnZvbHRhZ2USKQoQc2FuZGJveF9kaXNhYmxlZBgWIAEo'
+    'CFIPc2FuZGJveERpc2FibGVkEjYKF29ubHlfb3ZlcmZsaWdodF9ibG9ja2VkGBcgASgIUhVvbm'
+    'x5T3ZlcmZsaWdodEJsb2NrZWQSOgoZb2ZmbGluZV9uZXR3b3Jrc19kaXNhYmxlZBgYIAEoCFIX'
+    'b2ZmbGluZU5ldHdvcmtzRGlzYWJsZWQSQQoed2lyZWRfbWVzaF9ub3RfdXNpbmdfd2FuX2lmYW'
+    'NlGBkgASgIUhl3aXJlZE1lc2hOb3RVc2luZ1dhbklmYWNlSgQIBhAHSgQIBxAISgQICBAJSgQI'
+    'CRAKUitpbmNvbnNpc3RlbnRfMmdoel9hbnRlbm5hZV9wZXJmb3JtYW5jZV8xNWRiUitpbmNvbn'
+    'Npc3RlbnRfNWdoel9hbnRlbm5hZV9wZXJmb3JtYW5jZV8xNWRiUiNwb29yXzJnaHpfYW50ZW5u'
+    'YWVfcGVyZm9ybWFuY2VfODBkYlIjcG9vcl81Z2h6X2FudGVubmFlX3BlcmZvcm1hbmNlXzgwZG'
+    'I=');
 
 @$core.Deprecated('Use wifiGetStatusResponseDescriptor instead')
 const WifiGetStatusResponse$json = {
@@ -1459,7 +1830,8 @@ const WifiGetStatusResponse$json = {
       '3': 1,
       '4': 1,
       '5': 8,
-      '10': 'captivePortalEnabled'
+      '8': {'3': true},
+      '10': 'captivePortalEnabled',
     },
     {
       '1': 'ipv4_wan_address',
@@ -1474,6 +1846,13 @@ const WifiGetStatusResponse$json = {
       '4': 3,
       '5': 9,
       '10': 'ipv6WanAddresses'
+    },
+    {
+      '1': 'hops_from_controller',
+      '3': 1034,
+      '4': 1,
+      '5': 13,
+      '10': 'hopsFromController'
     },
     {'1': 'ping_drop_rate', '3': 1004, '4': 1, '5': 2, '10': 'pingDropRate'},
     {
@@ -1525,6 +1904,27 @@ const WifiGetStatusResponse$json = {
       '4': 1,
       '5': 2,
       '10': 'popPingLatencyMs'
+    },
+    {
+      '1': 'pop_ipv6_ping_drop_rate',
+      '3': 1027,
+      '4': 1,
+      '5': 2,
+      '10': 'popIpv6PingDropRate'
+    },
+    {
+      '1': 'pop_ipv6_ping_drop_rate_5m',
+      '3': 1028,
+      '4': 1,
+      '5': 2,
+      '10': 'popIpv6PingDropRate5m'
+    },
+    {
+      '1': 'pop_ipv6_ping_latency_ms',
+      '3': 1029,
+      '4': 1,
+      '5': 2,
+      '10': 'popIpv6PingLatencyMs'
     },
     {
       '1': 'rf_2ghz_status',
@@ -1609,6 +2009,14 @@ const WifiGetStatusResponse$json = {
       '10': 'poeStats'
     },
     {'1': 'dish_id', '3': 1023, '4': 1, '5': 9, '10': 'dishId'},
+    {
+      '1': 'dish_disablement_code',
+      '3': 1031,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Satellites.Network.UtDisablementCode',
+      '10': 'dishDisablementCode'
+    },
     {'1': 'utc_ns', '3': 1024, '4': 1, '5': 3, '10': 'utcNs'},
     {
       '1': 'software_update_stats',
@@ -1618,6 +2026,37 @@ const WifiGetStatusResponse$json = {
       '6': '.SpaceX.API.Device.WifiSoftwareUpdateStats',
       '10': 'softwareUpdateStats'
     },
+    {
+      '1': 'setup_requirement',
+      '3': 1026,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiSetupRequirement',
+      '10': 'setupRequirement'
+    },
+    {
+      '1': 'secs_since_last_public_ipv4_change',
+      '3': 1030,
+      '4': 1,
+      '5': 2,
+      '10': 'secsSinceLastPublicIpv4Change'
+    },
+    {
+      '1': 'using_individualized_calibration',
+      '3': 1032,
+      '4': 1,
+      '5': 8,
+      '10': 'usingIndividualizedCalibration'
+    },
+    {
+      '1': 'calibration_partitions_state',
+      '3': 1033,
+      '4': 1,
+      '5': 14,
+      '6': '.SpaceX.API.Device.CalibrationPartitionsState',
+      '10': 'calibrationPartitionsState'
+    },
+    {'1': 'no_wan_link', '3': 1035, '4': 1, '5': 8, '10': 'noWanLink'},
   ],
   '9': [
     {'1': 2, '2': 3},
@@ -1635,34 +2074,46 @@ const WifiGetStatusResponse$json = {
 final $typed_data.Uint8List wifiGetStatusResponseDescriptor = $convert.base64Decode(
     'ChVXaWZpR2V0U3RhdHVzUmVzcG9uc2USPgoLZGV2aWNlX2luZm8YAyABKAsyHS5TcGFjZVguQV'
     'BJLkRldmljZS5EZXZpY2VJbmZvUgpkZXZpY2VJbmZvEkEKDGRldmljZV9zdGF0ZRgEIAEoCzIe'
-    'LlNwYWNlWC5BUEkuRGV2aWNlLkRldmljZVN0YXRlUgtkZXZpY2VTdGF0ZRI0ChZjYXB0aXZlX3'
-    'BvcnRhbF9lbmFibGVkGAEgASgIUhRjYXB0aXZlUG9ydGFsRW5hYmxlZBIpChBpcHY0X3dhbl9h'
-    'ZGRyZXNzGOsHIAEoCVIOaXB2NFdhbkFkZHJlc3MSLQoSaXB2Nl93YW5fYWRkcmVzc2VzGPkHIA'
-    'MoCVIQaXB2NldhbkFkZHJlc3NlcxIlCg5waW5nX2Ryb3BfcmF0ZRjsByABKAJSDHBpbmdEcm9w'
-    'UmF0ZRIqChFwaW5nX2Ryb3BfcmF0ZV81bRj9ByABKAJSDnBpbmdEcm9wUmF0ZTVtEicKD3Bpbm'
-    'dfbGF0ZW5jeV9tcxjtByABKAJSDXBpbmdMYXRlbmN5TXMSLgoTZGlzaF9waW5nX2Ryb3BfcmF0'
-    'ZRj0ByABKAJSEGRpc2hQaW5nRHJvcFJhdGUSMwoWZGlzaF9waW5nX2Ryb3BfcmF0ZV81bRj6By'
-    'ABKAJSEmRpc2hQaW5nRHJvcFJhdGU1bRIwChRkaXNoX3BpbmdfbGF0ZW5jeV9tcxj1ByABKAJS'
-    'EWRpc2hQaW5nTGF0ZW5jeU1zEiwKEnBvcF9waW5nX2Ryb3BfcmF0ZRj2ByABKAJSD3BvcFBpbm'
-    'dEcm9wUmF0ZRIxChVwb3BfcGluZ19kcm9wX3JhdGVfNW0Y/AcgASgCUhFwb3BQaW5nRHJvcFJh'
-    'dGU1bRIuChNwb3BfcGluZ19sYXRlbmN5X21zGPcHIAEoAlIQcG9wUGluZ0xhdGVuY3lNcxJMCg'
-    '5yZl8yZ2h6X3N0YXR1cxjwByABKAsyIS5TcGFjZVguQVBJLkRldmljZS5XaWZpQmFuZFN0YXR1'
-    'c0ICGAFSDHJmMmdoelN0YXR1cxJMCg5yZl81Z2h6X3N0YXR1cxjxByABKAsyIS5TcGFjZVguQV'
-    'BJLkRldmljZS5XaWZpQmFuZFN0YXR1c0ICGAFSDHJmNWdoelN0YXR1cxI2CgZhbGVydHMY8gcg'
-    'ASgLMh0uU3BhY2VYLkFQSS5EZXZpY2UuV2lmaUFsZXJ0c1IGYWxlcnRzEiAKC2lzX2F2aWF0aW'
-    '9uGPMHIAEoCFIKaXNBdmlhdGlvbhI2CgZjb25maWcY0A8gASgLMh0uU3BhY2VYLkFQSS5EZXZp'
-    'Y2UuV2lmaUNvbmZpZ1IGY29uZmlnEjgKB2NsaWVudHMYuBcgAygLMh0uU3BhY2VYLkFQSS5EZX'
-    'ZpY2UuV2lmaUNsaWVudFIHY2xpZW50cxIpChBoYXNfY2xpZW50X2luZGV4GLkXIAEoCFIOaGFz'
-    'Q2xpZW50SW5kZXgSIgoMY2xpZW50X2luZGV4GLoXIAEoBVILY2xpZW50SW5kZXgSMwoVaXNfYX'
-    'ZpYXRpb25fY29uZm9ybWVkGPgHIAEoCFITaXNBdmlhdGlvbkNvbmZvcm1lZBJFCgxyYWRpdXNf'
-    'c3RhdHMYuxcgASgLMiEuU3BhY2VYLkFQSS5EZXZpY2UuUmFkaXVzU3RhdHNNYXBSC3JhZGl1c1'
-    'N0YXRzEkEKDGRoY3Bfc2VydmVycxj7ByADKAsyHS5TcGFjZVguQVBJLkRldmljZS5EaGNwU2Vy'
-    'dmVyUgtkaGNwU2VydmVycxI5Cglwb2Vfc3RhdHMY/gcgASgLMhsuU3BhY2VYLkFQSS5EZXZpY2'
-    'UuUG9lU3RhdHNSCHBvZVN0YXRzEhgKB2Rpc2hfaWQY/wcgASgJUgZkaXNoSWQSFgoGdXRjX25z'
-    'GIAIIAEoA1IFdXRjTnMSXwoVc29mdHdhcmVfdXBkYXRlX3N0YXRzGIEIIAEoCzIqLlNwYWNlWC'
-    '5BUEkuRGV2aWNlLldpZmlTb2Z0d2FyZVVwZGF0ZVN0YXRzUhNzb2Z0d2FyZVVwZGF0ZVN0YXRz'
-    'SgQIAhADSgQIBRAGSgQIBhAHSgQIBxAISgYI6QcQ6gdKBgjqBxDrB0oGCO4HEO8HSgYI7wcQ8A'
-    'c=');
+    'LlNwYWNlWC5BUEkuRGV2aWNlLkRldmljZVN0YXRlUgtkZXZpY2VTdGF0ZRI4ChZjYXB0aXZlX3'
+    'BvcnRhbF9lbmFibGVkGAEgASgIQgIYAVIUY2FwdGl2ZVBvcnRhbEVuYWJsZWQSKQoQaXB2NF93'
+    'YW5fYWRkcmVzcxjrByABKAlSDmlwdjRXYW5BZGRyZXNzEi0KEmlwdjZfd2FuX2FkZHJlc3Nlcx'
+    'j5ByADKAlSEGlwdjZXYW5BZGRyZXNzZXMSMQoUaG9wc19mcm9tX2NvbnRyb2xsZXIYigggASgN'
+    'UhJob3BzRnJvbUNvbnRyb2xsZXISJQoOcGluZ19kcm9wX3JhdGUY7AcgASgCUgxwaW5nRHJvcF'
+    'JhdGUSKgoRcGluZ19kcm9wX3JhdGVfNW0Y/QcgASgCUg5waW5nRHJvcFJhdGU1bRInCg9waW5n'
+    'X2xhdGVuY3lfbXMY7QcgASgCUg1waW5nTGF0ZW5jeU1zEi4KE2Rpc2hfcGluZ19kcm9wX3JhdG'
+    'UY9AcgASgCUhBkaXNoUGluZ0Ryb3BSYXRlEjMKFmRpc2hfcGluZ19kcm9wX3JhdGVfNW0Y+gcg'
+    'ASgCUhJkaXNoUGluZ0Ryb3BSYXRlNW0SMAoUZGlzaF9waW5nX2xhdGVuY3lfbXMY9QcgASgCUh'
+    'FkaXNoUGluZ0xhdGVuY3lNcxIsChJwb3BfcGluZ19kcm9wX3JhdGUY9gcgASgCUg9wb3BQaW5n'
+    'RHJvcFJhdGUSMQoVcG9wX3BpbmdfZHJvcF9yYXRlXzVtGPwHIAEoAlIRcG9wUGluZ0Ryb3BSYX'
+    'RlNW0SLgoTcG9wX3BpbmdfbGF0ZW5jeV9tcxj3ByABKAJSEHBvcFBpbmdMYXRlbmN5TXMSNQoX'
+    'cG9wX2lwdjZfcGluZ19kcm9wX3JhdGUYgwggASgCUhNwb3BJcHY2UGluZ0Ryb3BSYXRlEjoKGn'
+    'BvcF9pcHY2X3BpbmdfZHJvcF9yYXRlXzVtGIQIIAEoAlIVcG9wSXB2NlBpbmdEcm9wUmF0ZTVt'
+    'EjcKGHBvcF9pcHY2X3BpbmdfbGF0ZW5jeV9tcxiFCCABKAJSFHBvcElwdjZQaW5nTGF0ZW5jeU'
+    '1zEkwKDnJmXzJnaHpfc3RhdHVzGPAHIAEoCzIhLlNwYWNlWC5BUEkuRGV2aWNlLldpZmlCYW5k'
+    'U3RhdHVzQgIYAVIMcmYyZ2h6U3RhdHVzEkwKDnJmXzVnaHpfc3RhdHVzGPEHIAEoCzIhLlNwYW'
+    'NlWC5BUEkuRGV2aWNlLldpZmlCYW5kU3RhdHVzQgIYAVIMcmY1Z2h6U3RhdHVzEjYKBmFsZXJ0'
+    'cxjyByABKAsyHS5TcGFjZVguQVBJLkRldmljZS5XaWZpQWxlcnRzUgZhbGVydHMSIAoLaXNfYX'
+    'ZpYXRpb24Y8wcgASgIUgppc0F2aWF0aW9uEjYKBmNvbmZpZxjQDyABKAsyHS5TcGFjZVguQVBJ'
+    'LkRldmljZS5XaWZpQ29uZmlnUgZjb25maWcSOAoHY2xpZW50cxi4FyADKAsyHS5TcGFjZVguQV'
+    'BJLkRldmljZS5XaWZpQ2xpZW50UgdjbGllbnRzEikKEGhhc19jbGllbnRfaW5kZXgYuRcgASgI'
+    'Ug5oYXNDbGllbnRJbmRleBIiCgxjbGllbnRfaW5kZXgYuhcgASgFUgtjbGllbnRJbmRleBIzCh'
+    'Vpc19hdmlhdGlvbl9jb25mb3JtZWQY+AcgASgIUhNpc0F2aWF0aW9uQ29uZm9ybWVkEkUKDHJh'
+    'ZGl1c19zdGF0cxi7FyABKAsyIS5TcGFjZVguQVBJLkRldmljZS5SYWRpdXNTdGF0c01hcFILcm'
+    'FkaXVzU3RhdHMSQQoMZGhjcF9zZXJ2ZXJzGPsHIAMoCzIdLlNwYWNlWC5BUEkuRGV2aWNlLkRo'
+    'Y3BTZXJ2ZXJSC2RoY3BTZXJ2ZXJzEjkKCXBvZV9zdGF0cxj+ByABKAsyGy5TcGFjZVguQVBJLk'
+    'RldmljZS5Qb2VTdGF0c1IIcG9lU3RhdHMSGAoHZGlzaF9pZBj/ByABKAlSBmRpc2hJZBJlChVk'
+    'aXNoX2Rpc2FibGVtZW50X2NvZGUYhwggASgOMjAuU3BhY2VYLkFQSS5TYXRlbGxpdGVzLk5ldH'
+    'dvcmsuVXREaXNhYmxlbWVudENvZGVSE2Rpc2hEaXNhYmxlbWVudENvZGUSFgoGdXRjX25zGIAI'
+    'IAEoA1IFdXRjTnMSXwoVc29mdHdhcmVfdXBkYXRlX3N0YXRzGIEIIAEoCzIqLlNwYWNlWC5BUE'
+    'kuRGV2aWNlLldpZmlTb2Z0d2FyZVVwZGF0ZVN0YXRzUhNzb2Z0d2FyZVVwZGF0ZVN0YXRzElUK'
+    'EXNldHVwX3JlcXVpcmVtZW50GIIIIAEoCzInLlNwYWNlWC5BUEkuRGV2aWNlLldpZmlTZXR1cF'
+    'JlcXVpcmVtZW50UhBzZXR1cFJlcXVpcmVtZW50EkoKInNlY3Nfc2luY2VfbGFzdF9wdWJsaWNf'
+    'aXB2NF9jaGFuZ2UYhgggASgCUh1zZWNzU2luY2VMYXN0UHVibGljSXB2NENoYW5nZRJJCiB1c2'
+    'luZ19pbmRpdmlkdWFsaXplZF9jYWxpYnJhdGlvbhiICCABKAhSHnVzaW5nSW5kaXZpZHVhbGl6'
+    'ZWRDYWxpYnJhdGlvbhJwChxjYWxpYnJhdGlvbl9wYXJ0aXRpb25zX3N0YXRlGIkIIAEoDjItLl'
+    'NwYWNlWC5BUEkuRGV2aWNlLkNhbGlicmF0aW9uUGFydGl0aW9uc1N0YXRlUhpjYWxpYnJhdGlv'
+    'blBhcnRpdGlvbnNTdGF0ZRIfCgtub193YW5fbGluaxiLCCABKAhSCW5vV2FuTGlua0oECAIQA0'
+    'oECAUQBkoECAYQB0oECAcQCEoGCOkHEOoHSgYI6gcQ6wdKBgjuBxDvB0oGCO8HEPAH');
 
 @$core.Deprecated('Use wifiAuthenticateRequestDescriptor instead')
 const WifiAuthenticateRequest$json = {
@@ -2159,6 +2610,14 @@ const starlink_routers_hourly_metrics_v2$json = {
       '10': 'sysHwGen'
     },
     {
+      '1': 'sys_hw_index',
+      '3': 22,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'sysHwIndex'
+    },
+    {
       '1': 'sys_sw',
       '3': 5,
       '4': 1,
@@ -2277,6 +2736,22 @@ const starlink_routers_hourly_metrics_v2$json = {
       '5': 11,
       '6': '.google.protobuf.UInt32Value',
       '10': 'sysBoardRev'
+    },
+    {
+      '1': 'sys_calibration_state',
+      '3': 20,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'sysCalibrationState'
+    },
+    {
+      '1': 'sys_calibration_partitions_state',
+      '3': 21,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'sysCalibrationPartitionsState'
     },
     {
       '1': 'radios_2ghz_channel',
@@ -2935,12 +3410,36 @@ const starlink_routers_hourly_metrics_v2$json = {
       '10': 'boardTemp'
     },
     {
+      '1': 'ambient_temp',
+      '3': 213,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'ambientTemp'
+    },
+    {
+      '1': 'cpu_temp',
+      '3': 214,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'cpuTemp'
+    },
+    {
       '1': 'poe_mcu_die_temp',
       '3': 211,
       '4': 1,
       '5': 11,
       '6': '.google.protobuf.FloatValue',
       '10': 'poeMcuDieTemp'
+    },
+    {
+      '1': 'poe_percent_water_detect_avg',
+      '3': 212,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'poePercentWaterDetectAvg'
     },
     {
       '1': 'ifaces_lan_eth_rx_bytes',
@@ -3111,6 +3610,14 @@ const starlink_routers_hourly_metrics_v2$json = {
       '10': 'ifacesWanEthTxErrors'
     },
     {
+      '1': 'ifaces_wan_port',
+      '3': 321,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'ifacesWanPort'
+    },
+    {
       '1': 'clients',
       '3': 400,
       '4': 1,
@@ -3143,6 +3650,22 @@ const starlink_routers_hourly_metrics_v2$json = {
       '10': 'clients5ghzHigh'
     },
     {
+      '1': 'clients_wireless',
+      '3': 436,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientsWireless'
+    },
+    {
+      '1': 'clients_mlo',
+      '3': 437,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientsMlo'
+    },
+    {
       '1': 'clients_eth',
       '3': 403,
       '4': 1,
@@ -3173,6 +3696,14 @@ const starlink_routers_hourly_metrics_v2$json = {
       '5': 11,
       '6': '.google.protobuf.UInt32Value',
       '10': 'clients5ghzRxBandwidth80mhz'
+    },
+    {
+      '1': 'clients_5ghz_rx_bandwidth_160mhz',
+      '3': 435,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clients5ghzRxBandwidth160mhz'
     },
     {
       '1': 'clients_repeater',
@@ -3359,6 +3890,30 @@ const starlink_routers_hourly_metrics_v2$json = {
       '10': 'meshTopologyChangeCount1d'
     },
     {
+      '1': 'mac_exports_successful',
+      '3': 432,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'macExportsSuccessful'
+    },
+    {
+      '1': 'mac_exports_server_connect_errors',
+      '3': 433,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'macExportsServerConnectErrors'
+    },
+    {
+      '1': 'mac_exports_server_send_errors',
+      '3': 434,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'macExportsServerSendErrors'
+    },
+    {
       '1': 'ping_seconds_since_last_1s_outage',
       '3': 600,
       '4': 1,
@@ -3503,6 +4058,22 @@ const starlink_routers_hourly_metrics_v2$json = {
       '10': 'pingDishLatencyLast1h'
     },
     {
+      '1': 'ping_pop_ipv6_drop_rate_last_1h',
+      '3': 621,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingPopIpv6DropRateLast1h'
+    },
+    {
+      '1': 'ping_pop_ipv6_latency_last_1h',
+      '3': 623,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'pingPopIpv6LatencyLast1h'
+    },
+    {
       '1': 'client_speedtest_router_download_mbps',
       '3': 700,
       '4': 1,
@@ -3511,12 +4082,76 @@ const starlink_routers_hourly_metrics_v2$json = {
       '10': 'clientSpeedtestRouterDownloadMbps'
     },
     {
+      '1': 'client_speedtest_router_download_total_bytes_transferred',
+      '3': 713,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt64Value',
+      '10': 'clientSpeedtestRouterDownloadTotalBytesTransferred'
+    },
+    {
+      '1': 'client_speedtest_router_download_bytes_transferred_duration_s',
+      '3': 714,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientSpeedtestRouterDownloadBytesTransferredDurationS'
+    },
+    {
+      '1': 'client_speedtest_router_download_target_ipv6_low',
+      '3': 715,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt64Value',
+      '10': 'clientSpeedtestRouterDownloadTargetIpv6Low'
+    },
+    {
+      '1': 'client_speedtest_router_download_target_ipv6_high',
+      '3': 716,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt64Value',
+      '10': 'clientSpeedtestRouterDownloadTargetIpv6High'
+    },
+    {
       '1': 'client_speedtest_router_upload_mbps',
       '3': 701,
       '4': 1,
       '5': 11,
       '6': '.google.protobuf.FloatValue',
       '10': 'clientSpeedtestRouterUploadMbps'
+    },
+    {
+      '1': 'client_speedtest_router_upload_total_bytes_transferred',
+      '3': 717,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt64Value',
+      '10': 'clientSpeedtestRouterUploadTotalBytesTransferred'
+    },
+    {
+      '1': 'client_speedtest_router_upload_bytes_transferred_duration_s',
+      '3': 718,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'clientSpeedtestRouterUploadBytesTransferredDurationS'
+    },
+    {
+      '1': 'client_speedtest_router_upload_target_ipv6_low',
+      '3': 719,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt64Value',
+      '10': 'clientSpeedtestRouterUploadTargetIpv6Low'
+    },
+    {
+      '1': 'client_speedtest_router_upload_target_ipv6_high',
+      '3': 720,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt64Value',
+      '10': 'clientSpeedtestRouterUploadTargetIpv6High'
     },
     {
       '1': 'client_speedtest_router_rssi',
@@ -3671,6 +4306,98 @@ const starlink_routers_hourly_metrics_v2$json = {
       '10': 'speedtestTcp64UploadMbpsMax'
     },
     {
+      '1': 'speedtest_tcp_1_download_mbps_avg',
+      '3': 808,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'speedtestTcp1DownloadMbpsAvg'
+    },
+    {
+      '1': 'speedtest_tcp_1_download_mbps_max',
+      '3': 809,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'speedtestTcp1DownloadMbpsMax'
+    },
+    {
+      '1': 'speedtest_tcp_1_upload_mbps_avg',
+      '3': 810,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'speedtestTcp1UploadMbpsAvg'
+    },
+    {
+      '1': 'speedtest_tcp_1_upload_mbps_max',
+      '3': 811,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'speedtestTcp1UploadMbpsMax'
+    },
+    {
+      '1': 'speedtest_tcp_8_download_mean_tcp_connect_time',
+      '3': 812,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'speedtestTcp8DownloadMeanTcpConnectTime'
+    },
+    {
+      '1': 'speedtest_tcp_8_upload_mean_tcp_connect_time',
+      '3': 813,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'speedtestTcp8UploadMeanTcpConnectTime'
+    },
+    {
+      '1': 'speedtest_tcp_8_download_cf_ray_headers',
+      '3': 814,
+      '4': 3,
+      '5': 9,
+      '10': 'speedtestTcp8DownloadCfRayHeaders'
+    },
+    {
+      '1': 'speedtest_tcp_8_upload_cf_ray_headers',
+      '3': 815,
+      '4': 3,
+      '5': 9,
+      '10': 'speedtestTcp8UploadCfRayHeaders'
+    },
+    {
+      '1': 'speedtest_tcp_1_download_mean_tcp_connect_time',
+      '3': 816,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'speedtestTcp1DownloadMeanTcpConnectTime'
+    },
+    {
+      '1': 'speedtest_tcp_1_upload_mean_tcp_connect_time',
+      '3': 817,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'speedtestTcp1UploadMeanTcpConnectTime'
+    },
+    {
+      '1': 'speedtest_tcp_1_download_cf_ray_headers',
+      '3': 818,
+      '4': 3,
+      '5': 9,
+      '10': 'speedtestTcp1DownloadCfRayHeaders'
+    },
+    {
+      '1': 'speedtest_tcp_1_upload_cf_ray_headers',
+      '3': 819,
+      '4': 3,
+      '5': 9,
+      '10': 'speedtestTcp1UploadCfRayHeaders'
+    },
+    {
       '1': 'dish_cell_id',
       '3': 900,
       '4': 1,
@@ -3823,6 +4550,54 @@ const starlink_routers_hourly_metrics_v2$json = {
       '10': 'configDisableUpdateReboot'
     },
     {
+      '1': 'config_https_content_hosting_enabled',
+      '3': 1031,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configHttpsContentHostingEnabled'
+    },
+    {
+      '1': 'config_only_overflight_blocking_enabled',
+      '3': 1032,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configOnlyOverflightBlockingEnabled'
+    },
+    {
+      '1': 'config_offline_networks_disablement_enabled',
+      '3': 1033,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configOfflineNetworksDisablementEnabled'
+    },
+    {
+      '1': 'config_custom_dns_disabled',
+      '3': 1034,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configCustomDnsDisabled'
+    },
+    {
+      '1': 'config_foreflight_enabled',
+      '3': 1036,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configForeflightEnabled'
+    },
+    {
+      '1': 'config_outdoor_mode',
+      '3': 1037,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'configOutdoorMode'
+    },
+    {
       '1': 'config_disable_2ghz',
       '3': 1018,
       '4': 1,
@@ -3911,6 +4686,134 @@ const starlink_routers_hourly_metrics_v2$json = {
       '10': 'configNetworksBandsSplit'
     },
     {
+      '1': 'config_networks_user',
+      '3': 1035,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'configNetworksUser'
+    },
+    {
+      '1': 'wifi_reload_count',
+      '3': 1040,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'wifiReloadCount'
+    },
+    {
+      '1': 'radius_reload_count',
+      '3': 1041,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'radiusReloadCount'
+    },
+    {
+      '1': 'openssh_reload_count',
+      '3': 1042,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'opensshReloadCount'
+    },
+    {
+      '1': 'iptables_reload_count',
+      '3': 1043,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'iptablesReloadCount'
+    },
+    {
+      '1': 'ebtables_reload_count',
+      '3': 1044,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'ebtablesReloadCount'
+    },
+    {
+      '1': 'traffic_control_reload_count',
+      '3': 1045,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'trafficControlReloadCount'
+    },
+    {
+      '1': 'dhcp_reload_count',
+      '3': 1046,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'dhcpReloadCount'
+    },
+    {
+      '1': 'dhcpv6_reload_count',
+      '3': 1047,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'dhcpv6ReloadCount'
+    },
+    {
+      '1': 'system_reload_count',
+      '3': 1048,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'systemReloadCount'
+    },
+    {
+      '1': 'dns_reload_count',
+      '3': 1049,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'dnsReloadCount'
+    },
+    {
+      '1': 'https_reload_count',
+      '3': 1050,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'httpsReloadCount'
+    },
+    {
+      '1': 'band_steering_reload_count',
+      '3': 1051,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'bandSteeringReloadCount'
+    },
+    {
+      '1': 'commit_count',
+      '3': 1052,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'commitCount'
+    },
+    {
+      '1': 'network_reload_count',
+      '3': 1053,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'networkReloadCount'
+    },
+    {
+      '1': 'foreflight_reload_count',
+      '3': 1054,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'foreflightReloadCount'
+    },
+    {
       '1': 'wan_traffic_control_cake_bytes',
       '3': 1101,
       '4': 1,
@@ -3990,6 +4893,62 @@ const starlink_routers_hourly_metrics_v2$json = {
       '6': '.google.protobuf.UInt32Value',
       '10': 'dhcpSecsGt60'
     },
+    {
+      '1': 'dns_forwards',
+      '3': 1200,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'dnsForwards'
+    },
+    {
+      '1': 'dns_forwards_success',
+      '3': 1201,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'dnsForwardsSuccess'
+    },
+    {
+      '1': 'dns_forwards_server_failure',
+      '3': 1202,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'dnsForwardsServerFailure'
+    },
+    {
+      '1': 'dns_forwards_no_server_response',
+      '3': 1203,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'dnsForwardsNoServerResponse'
+    },
+    {
+      '1': 'dns_forwards_success_on_default_backup',
+      '3': 1204,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'dnsForwardsSuccessOnDefaultBackup'
+    },
+    {
+      '1': 'dns_forwards_dropped',
+      '3': 1205,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'dnsForwardsDropped'
+    },
+    {
+      '1': 'dns_forwards_with_backup',
+      '3': 1206,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'dnsForwardsWithBackup'
+    },
   ],
 };
 
@@ -4001,209 +4960,223 @@ final $typed_data.Uint8List starlink_routers_hourly_metrics_v2Descriptor = $conv
     '91chgDIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVINdGltZXN0YW1wSG91chJR'
     'Cgl0aW1lc3RhbXAYkE4gASgLMjIuU3BhY2VYLkFQSS5UZWxlbWV0cm9uLlB1YmxpYy5Db21tb2'
     '4uVGltZXN0YW1wSW5mb1IJdGltZXN0YW1wEjoKCnN5c19od19nZW4YBCABKAsyHC5nb29nbGUu'
-    'cHJvdG9idWYuVUludDMyVmFsdWVSCHN5c0h3R2VuEjMKBnN5c19zdxgFIAEoCzIcLmdvb2dsZS'
-    '5wcm90b2J1Zi5TdHJpbmdWYWx1ZVIFc3lzU3cSPQoLc3lzX2NvdW50cnkYBiABKAsyHC5nb29n'
-    'bGUucHJvdG9idWYuU3RyaW5nVmFsdWVSCnN5c0NvdW50cnkSOAoKc3lzX2lzX2RldhgHIAEoCz'
-    'IaLmdvb2dsZS5wcm90b2J1Zi5Cb29sVmFsdWVSCHN5c0lzRGV2EkAKDXN5c19hbGxvY19mZHMY'
-    'CCABKAsyHC5nb29nbGUucHJvdG9idWYuVUludDMyVmFsdWVSC3N5c0FsbG9jRmRzEj8KDXN5c1'
-    '9jcHVfdXNhZ2UYCSABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVILc3lzQ3B1VXNh'
-    'Z2USQgoPc3lzX21lbV9mcmVlX2tiGAogASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdW'
-    'VSDHN5c01lbUZyZWVLYhJACg1zeXNfYm9vdGNvdW50GAsgASgLMhsuZ29vZ2xlLnByb3RvYnVm'
-    'LkludDMyVmFsdWVSDHN5c0Jvb3Rjb3VudBJMChRzeXNfcGFydGl0aW9uc19lcXVhbBgMIAEoCz'
-    'IaLmdvb2dsZS5wcm90b2J1Zi5Cb29sVmFsdWVSEnN5c1BhcnRpdGlvbnNFcXVhbBJKChJzeXNf'
-    'dXB0aW1lX3NlY29uZHMYDSABKAsyHC5nb29nbGUucHJvdG9idWYuVUludDMyVmFsdWVSEHN5c1'
-    'VwdGltZVNlY29uZHMSVgoZc3lzX2FudGlfcm9sbGJhY2tfdmVyc2lvbhgOIAEoCzIbLmdvb2ds'
-    'ZS5wcm90b2J1Zi5JbnQzMlZhbHVlUhZzeXNBbnRpUm9sbGJhY2tWZXJzaW9uEjoKC3N5c19pc1'
-    '93aXRsGA8gASgLMhouZ29vZ2xlLnByb3RvYnVmLkJvb2xWYWx1ZVIJc3lzSXNXaXRsElUKGXN5'
-    'c19pc19hdmlhdGlvbl9jb25mb3JtZWQYECABKAsyGi5nb29nbGUucHJvdG9idWYuQm9vbFZhbH'
-    'VlUhZzeXNJc0F2aWF0aW9uQ29uZm9ybWVkEkEKDnN5c191YmlfbWF4X2VjGBEgASgLMhwuZ29v'
-    'Z2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUgtzeXNVYmlNYXhFYxJDCg9zeXNfdWJpX2JhZF9wZW'
-    'IYEiABKAsyHC5nb29nbGUucHJvdG9idWYuVUludDMyVmFsdWVSDHN5c1ViaUJhZFBlYhJACg1z'
-    'eXNfYm9hcmRfcmV2GBMgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUgtzeXNCb2'
-    'FyZFJldhJMChNyYWRpb3NfMmdoel9jaGFubmVsGGQgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJ'
-    'bnQzMlZhbHVlUhFyYWRpb3MyZ2h6Q2hhbm5lbBJWChlyYWRpb3NfMmdoel9hbnRlbm5hMV9yc3'
-    'NpGGUgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSFnJhZGlvczJnaHpBbnRlbm5h'
-    'MVJzc2kSVgoZcmFkaW9zXzJnaHpfYW50ZW5uYTJfcnNzaRhmIAEoCzIbLmdvb2dsZS5wcm90b2'
-    'J1Zi5GbG9hdFZhbHVlUhZyYWRpb3MyZ2h6QW50ZW5uYTJSc3NpElYKGXJhZGlvc18yZ2h6X2Fu'
-    'dGVubmEzX3Jzc2kYZyABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIWcmFkaW9zMm'
-    'doekFudGVubmEzUnNzaRJXChlyYWRpb3NfMmdoel9hbnRlbm5hNF9yc3NpGMUBIAEoCzIbLmdv'
-    'b2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhZyYWRpb3MyZ2h6QW50ZW5uYTRSc3NpElcKGXJhZG'
-    'lvc18yZ2h6X2FudGVubmExX3Rzc2kYnQEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFs'
-    'dWVSFnJhZGlvczJnaHpBbnRlbm5hMVRzc2kSVwoZcmFkaW9zXzJnaHpfYW50ZW5uYTJfdHNzaR'
-    'ieASABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIWcmFkaW9zMmdoekFudGVubmEy'
-    'VHNzaRJXChlyYWRpb3NfMmdoel9hbnRlbm5hM190c3NpGJ8BIAEoCzIbLmdvb2dsZS5wcm90b2'
-    'J1Zi5GbG9hdFZhbHVlUhZyYWRpb3MyZ2h6QW50ZW5uYTNUc3NpElcKGXJhZGlvc18yZ2h6X2Fu'
-    'dGVubmE0X3Rzc2kYoAEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSFnJhZGlvcz'
-    'JnaHpBbnRlbm5hNFRzc2kSUwoXcmFkaW9zXzJnaHpfaWZhY2VfY291bnQYaCABKAsyHC5nb29n'
-    'bGUucHJvdG9idWYuVUludDMyVmFsdWVSFHJhZGlvczJnaHpJZmFjZUNvdW50El8KHnJhZGlvc1'
-    '8yZ2h6X2NoYW5fYnVzeV9mcmFjdGlvbhhpIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZh'
-    'bHVlUhpyYWRpb3MyZ2h6Q2hhbkJ1c3lGcmFjdGlvbhJYChpyYWRpb3NfMmdoel9lZGNjYV9mcm'
-    'FjdGlvbhhqIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhdyYWRpb3MyZ2h6RWRj'
-    'Y2FGcmFjdGlvbhJrCiRyYWRpb3NfMmdoel9vdmVybGFwcGluZ19ic3NfZnJhY3Rpb24YayABKA'
-    'syGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIgcmFkaW9zMmdoek92ZXJsYXBwaW5nQnNz'
-    'RnJhY3Rpb24STAoUcmFkaW9zXzJnaHpfcnhfYnl0ZXMYbCABKAsyGy5nb29nbGUucHJvdG9idW'
-    'YuSW50NjRWYWx1ZVIRcmFkaW9zMmdoelJ4Qnl0ZXMSUAoWcmFkaW9zXzJnaHpfcnhfcGFja2V0'
-    'cxhtIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQ2NFZhbHVlUhNyYWRpb3MyZ2h6UnhQYWNrZX'
-    'RzEk4KFXJhZGlvc18yZ2h6X3J4X2Vycm9ycxhuIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQ2'
-    'NFZhbHVlUhJyYWRpb3MyZ2h6UnhFcnJvcnMSWQobcmFkaW9zXzJnaHpfcnhfZnJhbWVfZXJyb3'
-    'JzGG8gASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDY0VmFsdWVSF3JhZGlvczJnaHpSeEZyYW1l'
-    'RXJyb3JzEmIKIHJhZGlvc18yZ2h6X3J4X3BhY2tldF9lcnJvcl9yYXRlGHAgASgLMhsuZ29vZ2'
-    'xlLnByb3RvYnVmLkZsb2F0VmFsdWVSG3JhZGlvczJnaHpSeFBhY2tldEVycm9yUmF0ZRJhCh9y'
-    'YWRpb3NfMmdoel9yeF9haXJ0aW1lX2ZyYWN0aW9uGHEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLk'
-    'Zsb2F0VmFsdWVSG3JhZGlvczJnaHpSeEFpcnRpbWVGcmFjdGlvbhJMChRyYWRpb3NfMmdoel90'
-    'eF9ieXRlcxhyIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQ2NFZhbHVlUhFyYWRpb3MyZ2h6VH'
-    'hCeXRlcxJQChZyYWRpb3NfMmdoel90eF9wYWNrZXRzGHMgASgLMhsuZ29vZ2xlLnByb3RvYnVm'
-    'LkludDY0VmFsdWVSE3JhZGlvczJnaHpUeFBhY2tldHMSTgoVcmFkaW9zXzJnaHpfdHhfZXJyb3'
-    'JzGHQgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDY0VmFsdWVSEnJhZGlvczJnaHpUeEVycm9y'
-    'cxJiCiByYWRpb3NfMmdoel90eF9wYWNrZXRfZXJyb3JfcmF0ZRh1IAEoCzIbLmdvb2dsZS5wcm'
-    '90b2J1Zi5GbG9hdFZhbHVlUhtyYWRpb3MyZ2h6VHhQYWNrZXRFcnJvclJhdGUSYQofcmFkaW9z'
-    'XzJnaHpfdHhfYWlydGltZV9mcmFjdGlvbhh2IAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdF'
-    'ZhbHVlUhtyYWRpb3MyZ2h6VHhBaXJ0aW1lRnJhY3Rpb24STAoTcmFkaW9zXzVnaHpfY2hhbm5l'
-    'bBh3IAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVIRcmFkaW9zNWdoekNoYW5uZW'
-    'wSVgoZcmFkaW9zXzVnaHpfYW50ZW5uYTFfcnNzaRh4IAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5G'
-    'bG9hdFZhbHVlUhZyYWRpb3M1Z2h6QW50ZW5uYTFSc3NpElYKGXJhZGlvc181Z2h6X2FudGVubm'
-    'EyX3Jzc2kYeSABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIWcmFkaW9zNWdoekFu'
-    'dGVubmEyUnNzaRJWChlyYWRpb3NfNWdoel9hbnRlbm5hM19yc3NpGHogASgLMhsuZ29vZ2xlLn'
-    'Byb3RvYnVmLkZsb2F0VmFsdWVSFnJhZGlvczVnaHpBbnRlbm5hM1Jzc2kSVwoZcmFkaW9zXzVn'
-    'aHpfYW50ZW5uYTRfcnNzaRjGASABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIWcm'
-    'FkaW9zNWdoekFudGVubmE0UnNzaRJXChlyYWRpb3NfNWdoel9hbnRlbm5hMV90c3NpGKEBIAEo'
-    'CzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhZyYWRpb3M1Z2h6QW50ZW5uYTFUc3NpEl'
-    'cKGXJhZGlvc181Z2h6X2FudGVubmEyX3Rzc2kYogEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZs'
-    'b2F0VmFsdWVSFnJhZGlvczVnaHpBbnRlbm5hMlRzc2kSVwoZcmFkaW9zXzVnaHpfYW50ZW5uYT'
-    'NfdHNzaRijASABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIWcmFkaW9zNWdoekFu'
-    'dGVubmEzVHNzaRJXChlyYWRpb3NfNWdoel9hbnRlbm5hNF90c3NpGKQBIAEoCzIbLmdvb2dsZS'
-    '5wcm90b2J1Zi5GbG9hdFZhbHVlUhZyYWRpb3M1Z2h6QW50ZW5uYTRUc3NpElMKF3JhZGlvc181'
-    'Z2h6X2lmYWNlX2NvdW50GHsgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUhRyYW'
-    'Rpb3M1Z2h6SWZhY2VDb3VudBJfCh5yYWRpb3NfNWdoel9jaGFuX2J1c3lfZnJhY3Rpb24YfCAB'
-    'KAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIacmFkaW9zNWdoekNoYW5CdXN5RnJhY3'
-    'Rpb24SWAoacmFkaW9zXzVnaHpfZWRjY2FfZnJhY3Rpb24YfSABKAsyGy5nb29nbGUucHJvdG9i'
-    'dWYuRmxvYXRWYWx1ZVIXcmFkaW9zNWdoekVkY2NhRnJhY3Rpb24SawokcmFkaW9zXzVnaHpfb3'
-    'ZlcmxhcHBpbmdfYnNzX2ZyYWN0aW9uGH4gASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFs'
-    'dWVSIHJhZGlvczVnaHpPdmVybGFwcGluZ0Jzc0ZyYWN0aW9uEkwKFHJhZGlvc181Z2h6X3J4X2'
-    'J5dGVzGH8gASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDY0VmFsdWVSEXJhZGlvczVnaHpSeEJ5'
-    'dGVzElEKFnJhZGlvc181Z2h6X3J4X3BhY2tldHMYgAEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLk'
-    'ludDY0VmFsdWVSE3JhZGlvczVnaHpSeFBhY2tldHMSTwoVcmFkaW9zXzVnaHpfcnhfZXJyb3Jz'
-    'GIEBIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQ2NFZhbHVlUhJyYWRpb3M1Z2h6UnhFcnJvcn'
-    'MSWgobcmFkaW9zXzVnaHpfcnhfZnJhbWVfZXJyb3JzGIIBIAEoCzIbLmdvb2dsZS5wcm90b2J1'
-    'Zi5JbnQ2NFZhbHVlUhdyYWRpb3M1Z2h6UnhGcmFtZUVycm9ycxJjCiByYWRpb3NfNWdoel9yeF'
-    '9wYWNrZXRfZXJyb3JfcmF0ZRiDASABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIb'
-    'cmFkaW9zNWdoelJ4UGFja2V0RXJyb3JSYXRlEmIKH3JhZGlvc181Z2h6X3J4X2FpcnRpbWVfZn'
-    'JhY3Rpb24YhAEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSG3JhZGlvczVnaHpS'
-    'eEFpcnRpbWVGcmFjdGlvbhJNChRyYWRpb3NfNWdoel90eF9ieXRlcxiFASABKAsyGy5nb29nbG'
-    'UucHJvdG9idWYuSW50NjRWYWx1ZVIRcmFkaW9zNWdoelR4Qnl0ZXMSUQoWcmFkaW9zXzVnaHpf'
-    'dHhfcGFja2V0cxiGASABKAsyGy5nb29nbGUucHJvdG9idWYuSW50NjRWYWx1ZVITcmFkaW9zNW'
-    'doelR4UGFja2V0cxJPChVyYWRpb3NfNWdoel90eF9lcnJvcnMYhwEgASgLMhsuZ29vZ2xlLnBy'
-    'b3RvYnVmLkludDY0VmFsdWVSEnJhZGlvczVnaHpUeEVycm9ycxJjCiByYWRpb3NfNWdoel90eF'
-    '9wYWNrZXRfZXJyb3JfcmF0ZRiIASABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIb'
-    'cmFkaW9zNWdoelR4UGFja2V0RXJyb3JSYXRlEmIKH3JhZGlvc181Z2h6X3R4X2FpcnRpbWVfZn'
-    'JhY3Rpb24YiQEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSG3JhZGlvczVnaHpU'
-    'eEFpcnRpbWVGcmFjdGlvbhJWChhyYWRpb3NfNWdoel9oaWdoX2NoYW5uZWwYigEgASgLMhwuZ2'
-    '9vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUhVyYWRpb3M1Z2h6SGlnaENoYW5uZWwSYAoecmFk'
-    'aW9zXzVnaHpfaGlnaF9hbnRlbm5hMV9yc3NpGIsBIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG'
-    '9hdFZhbHVlUhpyYWRpb3M1Z2h6SGlnaEFudGVubmExUnNzaRJgCh5yYWRpb3NfNWdoel9oaWdo'
-    'X2FudGVubmEyX3Jzc2kYjAEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSGnJhZG'
-    'lvczVnaHpIaWdoQW50ZW5uYTJSc3NpEmAKHnJhZGlvc181Z2h6X2hpZ2hfYW50ZW5uYTNfcnNz'
-    'aRiNASABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIacmFkaW9zNWdoekhpZ2hBbn'
-    'Rlbm5hM1Jzc2kSYAoecmFkaW9zXzVnaHpfaGlnaF9hbnRlbm5hNF9yc3NpGMcBIAEoCzIbLmdv'
-    'b2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhpyYWRpb3M1Z2h6SGlnaEFudGVubmE0UnNzaRJgCh'
-    '5yYWRpb3NfNWdoel9oaWdoX2FudGVubmExX3Rzc2kYpQEgASgLMhsuZ29vZ2xlLnByb3RvYnVm'
-    'LkZsb2F0VmFsdWVSGnJhZGlvczVnaHpIaWdoQW50ZW5uYTFUc3NpEmAKHnJhZGlvc181Z2h6X2'
-    'hpZ2hfYW50ZW5uYTJfdHNzaRimASABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIa'
-    'cmFkaW9zNWdoekhpZ2hBbnRlbm5hMlRzc2kSYAoecmFkaW9zXzVnaHpfaGlnaF9hbnRlbm5hM1'
-    '90c3NpGKcBIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhpyYWRpb3M1Z2h6SGln'
-    'aEFudGVubmEzVHNzaRJgCh5yYWRpb3NfNWdoel9oaWdoX2FudGVubmE0X3Rzc2kYqAEgASgLMh'
-    'suZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSGnJhZGlvczVnaHpIaWdoQW50ZW5uYTRUc3Np'
-    'El0KHHJhZGlvc181Z2h6X2hpZ2hfaWZhY2VfY291bnQYjgEgASgLMhwuZ29vZ2xlLnByb3RvYn'
-    'VmLlVJbnQzMlZhbHVlUhhyYWRpb3M1Z2h6SGlnaElmYWNlQ291bnQSaQojcmFkaW9zXzVnaHpf'
-    'aGlnaF9jaGFuX2J1c3lfZnJhY3Rpb24YjwEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0Vm'
-    'FsdWVSHnJhZGlvczVnaHpIaWdoQ2hhbkJ1c3lGcmFjdGlvbhJiCh9yYWRpb3NfNWdoel9oaWdo'
-    'X2VkY2NhX2ZyYWN0aW9uGJABIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhtyYW'
-    'Rpb3M1Z2h6SGlnaEVkY2NhRnJhY3Rpb24SdQopcmFkaW9zXzVnaHpfaGlnaF9vdmVybGFwcGlu'
-    'Z19ic3NfZnJhY3Rpb24YkQEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSJHJhZG'
-    'lvczVnaHpIaWdoT3ZlcmxhcHBpbmdCc3NGcmFjdGlvbhJWChlyYWRpb3NfNWdoel9oaWdoX3J4'
-    'X2J5dGVzGJIBIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQ2NFZhbHVlUhVyYWRpb3M1Z2h6SG'
-    'lnaFJ4Qnl0ZXMSWgobcmFkaW9zXzVnaHpfaGlnaF9yeF9wYWNrZXRzGJMBIAEoCzIbLmdvb2ds'
-    'ZS5wcm90b2J1Zi5JbnQ2NFZhbHVlUhdyYWRpb3M1Z2h6SGlnaFJ4UGFja2V0cxJYChpyYWRpb3'
-    'NfNWdoel9oaWdoX3J4X2Vycm9ycxiUASABKAsyGy5nb29nbGUucHJvdG9idWYuSW50NjRWYWx1'
-    'ZVIWcmFkaW9zNWdoekhpZ2hSeEVycm9ycxJjCiByYWRpb3NfNWdoel9oaWdoX3J4X2ZyYW1lX2'
-    'Vycm9ycxiVASABKAsyGy5nb29nbGUucHJvdG9idWYuSW50NjRWYWx1ZVIbcmFkaW9zNWdoekhp'
-    'Z2hSeEZyYW1lRXJyb3JzEmwKJXJhZGlvc181Z2h6X2hpZ2hfcnhfcGFja2V0X2Vycm9yX3JhdG'
-    'UYlgEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSH3JhZGlvczVnaHpIaWdoUnhQ'
-    'YWNrZXRFcnJvclJhdGUSawokcmFkaW9zXzVnaHpfaGlnaF9yeF9haXJ0aW1lX2ZyYWN0aW9uGJ'
-    'cBIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUh9yYWRpb3M1Z2h6SGlnaFJ4QWly'
-    'dGltZUZyYWN0aW9uElYKGXJhZGlvc181Z2h6X2hpZ2hfdHhfYnl0ZXMYmAEgASgLMhsuZ29vZ2'
-    'xlLnByb3RvYnVmLkludDY0VmFsdWVSFXJhZGlvczVnaHpIaWdoVHhCeXRlcxJaChtyYWRpb3Nf'
-    'NWdoel9oaWdoX3R4X3BhY2tldHMYmQEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDY0VmFsdW'
-    'VSF3JhZGlvczVnaHpIaWdoVHhQYWNrZXRzElgKGnJhZGlvc181Z2h6X2hpZ2hfdHhfZXJyb3Jz'
-    'GJoBIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQ2NFZhbHVlUhZyYWRpb3M1Z2h6SGlnaFR4RX'
-    'Jyb3JzEmwKJXJhZGlvc181Z2h6X2hpZ2hfdHhfcGFja2V0X2Vycm9yX3JhdGUYmwEgASgLMhsu'
-    'Z29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSH3JhZGlvczVnaHpIaWdoVHhQYWNrZXRFcnJvcl'
-    'JhdGUSawokcmFkaW9zXzVnaHpfaGlnaF90eF9haXJ0aW1lX2ZyYWN0aW9uGJwBIAEoCzIbLmdv'
-    'b2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUh9yYWRpb3M1Z2h6SGlnaFR4QWlydGltZUZyYWN0aW'
-    '9uElUKGHJhZGlvc18yZ2h6X3RoZXJtYWxfdGVtcBjIASABKAsyGy5nb29nbGUucHJvdG9idWYu'
-    'RmxvYXRWYWx1ZVIVcmFkaW9zMmdoelRoZXJtYWxUZW1wElUKGHJhZGlvc181Z2h6X3RoZXJtYW'
-    'xfdGVtcBjJASABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIVcmFkaW9zNWdoelRo'
-    'ZXJtYWxUZW1wEl4KHXJhZGlvc181Z2h6X2hpZ2hfdGhlcm1hbF90ZW1wGM4BIAEoCzIbLmdvb2'
-    'dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhlyYWRpb3M1Z2h6SGlnaFRoZXJtYWxUZW1wEmAKHnJh'
-    'ZGlvc18yZ2h6X3RoZXJtYWxfZHV0eV9jeWNsZRjKASABKAsyGy5nb29nbGUucHJvdG9idWYuRm'
-    'xvYXRWYWx1ZVIacmFkaW9zMmdoelRoZXJtYWxEdXR5Q3ljbGUSYAoecmFkaW9zXzVnaHpfdGhl'
-    'cm1hbF9kdXR5X2N5Y2xlGMsBIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhpyYW'
-    'Rpb3M1Z2h6VGhlcm1hbER1dHlDeWNsZRJpCiNyYWRpb3NfNWdoel9oaWdoX3RoZXJtYWxfZHV0'
-    'eV9jeWNsZRjPASABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIecmFkaW9zNWdoek'
-    'hpZ2hUaGVybWFsRHV0eUN5Y2xlEm8KJXJhZGlvc18yZ2h6X3RoZXJtYWxfdGhyb3R0bGVkX3Nl'
-    'Y29uZHMYzAEgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUiFyYWRpb3MyZ2h6VG'
-    'hlcm1hbFRocm90dGxlZFNlY29uZHMSbwolcmFkaW9zXzVnaHpfdGhlcm1hbF90aHJvdHRsZWRf'
-    'c2Vjb25kcxjNASABKAsyHC5nb29nbGUucHJvdG9idWYuVUludDMyVmFsdWVSIXJhZGlvczVnaH'
-    'pUaGVybWFsVGhyb3R0bGVkU2Vjb25kcxJ4CipyYWRpb3NfNWdoel9oaWdoX3RoZXJtYWxfdGhy'
-    'b3R0bGVkX3NlY29uZHMY0AEgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUiVyYW'
-    'Rpb3M1Z2h6SGlnaFRoZXJtYWxUaHJvdHRsZWRTZWNvbmRzEjsKCmJvYXJkX3RlbXAY0gEgASgL'
-    'MhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSCWJvYXJkVGVtcBJFChBwb2VfbWN1X2RpZV'
-    '90ZW1wGNMBIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUg1wb2VNY3VEaWVUZW1w'
-    'ElIKF2lmYWNlc19sYW5fZXRoX3J4X2J5dGVzGKwCIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5Jbn'
-    'Q2NFZhbHVlUhNpZmFjZXNMYW5FdGhSeEJ5dGVzElYKGWlmYWNlc19sYW5fZXRoX3J4X3BhY2tl'
-    'dHMYrQIgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDY0VmFsdWVSFWlmYWNlc0xhbkV0aFJ4UG'
-    'Fja2V0cxJUChhpZmFjZXNfbGFuX2V0aF9yeF9lcnJvcnMYrgIgASgLMhsuZ29vZ2xlLnByb3Rv'
-    'YnVmLkludDY0VmFsdWVSFGlmYWNlc0xhbkV0aFJ4RXJyb3JzEl8KHmlmYWNlc19sYW5fZXRoX3'
-    'J4X2ZyYW1lX2Vycm9ycxivAiABKAsyGy5nb29nbGUucHJvdG9idWYuSW50NjRWYWx1ZVIZaWZh'
-    'Y2VzTGFuRXRoUnhGcmFtZUVycm9ycxJSChdpZmFjZXNfbGFuX2V0aF90eF9ieXRlcxiwAiABKA'
-    'syGy5nb29nbGUucHJvdG9idWYuSW50NjRWYWx1ZVITaWZhY2VzTGFuRXRoVHhCeXRlcxJWChlp'
-    'ZmFjZXNfbGFuX2V0aF90eF9wYWNrZXRzGLECIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQ2NF'
-    'ZhbHVlUhVpZmFjZXNMYW5FdGhUeFBhY2tldHMSVAoYaWZhY2VzX2xhbl9ldGhfdHhfZXJyb3Jz'
-    'GLICIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQ2NFZhbHVlUhRpZmFjZXNMYW5FdGhUeEVycm'
-    '9ycxJUChhpZmFjZXNfbGFuMV9ldGhfcnhfYnl0ZXMYugIgASgLMhsuZ29vZ2xlLnByb3RvYnVm'
-    'LkludDY0VmFsdWVSFGlmYWNlc0xhbjFFdGhSeEJ5dGVzElgKGmlmYWNlc19sYW4xX2V0aF9yeF'
-    '9wYWNrZXRzGLsCIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQ2NFZhbHVlUhZpZmFjZXNMYW4x'
-    'RXRoUnhQYWNrZXRzElYKGWlmYWNlc19sYW4xX2V0aF9yeF9lcnJvcnMYvAIgASgLMhsuZ29vZ2'
-    'xlLnByb3RvYnVmLkludDY0VmFsdWVSFWlmYWNlc0xhbjFFdGhSeEVycm9ycxJhCh9pZmFjZXNf'
-    'bGFuMV9ldGhfcnhfZnJhbWVfZXJyb3JzGL0CIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQ2NF'
-    'ZhbHVlUhppZmFjZXNMYW4xRXRoUnhGcmFtZUVycm9ycxJUChhpZmFjZXNfbGFuMV9ldGhfdHhf'
-    'Ynl0ZXMYvgIgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDY0VmFsdWVSFGlmYWNlc0xhbjFFdG'
-    'hUeEJ5dGVzElgKGmlmYWNlc19sYW4xX2V0aF90eF9wYWNrZXRzGL8CIAEoCzIbLmdvb2dsZS5w'
-    'cm90b2J1Zi5JbnQ2NFZhbHVlUhZpZmFjZXNMYW4xRXRoVHhQYWNrZXRzElYKGWlmYWNlc19sYW'
-    '4xX2V0aF90eF9lcnJvcnMYwAIgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDY0VmFsdWVSFWlm'
-    'YWNlc0xhbjFFdGhUeEVycm9ycxJSChdpZmFjZXNfd2FuX2V0aF9yeF9ieXRlcxizAiABKAsyGy'
-    '5nb29nbGUucHJvdG9idWYuSW50NjRWYWx1ZVITaWZhY2VzV2FuRXRoUnhCeXRlcxJWChlpZmFj'
-    'ZXNfd2FuX2V0aF9yeF9wYWNrZXRzGLQCIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQ2NFZhbH'
-    'VlUhVpZmFjZXNXYW5FdGhSeFBhY2tldHMSVAoYaWZhY2VzX3dhbl9ldGhfcnhfZXJyb3JzGLUC'
-    'IAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQ2NFZhbHVlUhRpZmFjZXNXYW5FdGhSeEVycm9ycx'
-    'JfCh5pZmFjZXNfd2FuX2V0aF9yeF9mcmFtZV9lcnJvcnMYtgIgASgLMhsuZ29vZ2xlLnByb3Rv'
-    'YnVmLkludDY0VmFsdWVSGWlmYWNlc1dhbkV0aFJ4RnJhbWVFcnJvcnMSUgoXaWZhY2VzX3dhbl'
-    '9ldGhfdHhfYnl0ZXMYtwIgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDY0VmFsdWVSE2lmYWNl'
-    'c1dhbkV0aFR4Qnl0ZXMSVgoZaWZhY2VzX3dhbl9ldGhfdHhfcGFja2V0cxi4AiABKAsyGy5nb2'
-    '9nbGUucHJvdG9idWYuSW50NjRWYWx1ZVIVaWZhY2VzV2FuRXRoVHhQYWNrZXRzElQKGGlmYWNl'
-    'c193YW5fZXRoX3R4X2Vycm9ycxi5AiABKAsyGy5nb29nbGUucHJvdG9idWYuSW50NjRWYWx1ZV'
-    'IUaWZhY2VzV2FuRXRoVHhFcnJvcnMSNwoHY2xpZW50cxiQAyABKAsyHC5nb29nbGUucHJvdG9i'
-    'dWYuVUludDMyVmFsdWVSB2NsaWVudHMSQAoMY2xpZW50c18yZ2h6GJEDIAEoCzIcLmdvb2dsZS'
-    '5wcm90b2J1Zi5VSW50MzJWYWx1ZVILY2xpZW50czJnaHoSQAoMY2xpZW50c181Z2h6GJIDIAEo'
-    'CzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVILY2xpZW50czVnaHoSSQoRY2xpZW50c1'
-    '81Z2h6X2hpZ2gYnQMgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUg9jbGllbnRz'
-    'NWdoekhpZ2gSPgoLY2xpZW50c19ldGgYkwMgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMl'
-    'ZhbHVlUgpjbGllbnRzRXRoEmMKH2NsaWVudHNfNWdoel9yeF9iYW5kd2lkdGhfMjBtaHoYrQMg'
-    'ASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUhtjbGllbnRzNWdoelJ4QmFuZHdpZH'
-    'RoMjBtaHoSYwofY2xpZW50c181Z2h6X3J4X2JhbmR3aWR0aF80MG1oehiuAyABKAsyHC5nb29n'
-    'bGUucHJvdG9idWYuVUludDMyVmFsdWVSG2NsaWVudHM1Z2h6UnhCYW5kd2lkdGg0MG1oehJjCh'
-    '9jbGllbnRzXzVnaHpfcnhfYmFuZHdpZHRoXzgwbWh6GK8DIAEoCzIcLmdvb2dsZS5wcm90b2J1'
-    'Zi5VSW50MzJWYWx1ZVIbY2xpZW50czVnaHpSeEJhbmR3aWR0aDgwbWh6EkgKEGNsaWVudHNfcm'
+    'cHJvdG9idWYuVUludDMyVmFsdWVSCHN5c0h3R2VuEj4KDHN5c19od19pbmRleBgWIAEoCzIcLm'
+    'dvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVIKc3lzSHdJbmRleBIzCgZzeXNfc3cYBSABKAsy'
+    'HC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWVSBXN5c1N3Ej0KC3N5c19jb3VudHJ5GAYgAS'
+    'gLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlUgpzeXNDb3VudHJ5EjgKCnN5c19pc19k'
+    'ZXYYByABKAsyGi5nb29nbGUucHJvdG9idWYuQm9vbFZhbHVlUghzeXNJc0RldhJACg1zeXNfYW'
+    'xsb2NfZmRzGAggASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUgtzeXNBbGxvY0Zk'
+    'cxI/Cg1zeXNfY3B1X3VzYWdlGAkgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSC3'
+    'N5c0NwdVVzYWdlEkIKD3N5c19tZW1fZnJlZV9rYhgKIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5G'
+    'bG9hdFZhbHVlUgxzeXNNZW1GcmVlS2ISQAoNc3lzX2Jvb3Rjb3VudBgLIAEoCzIbLmdvb2dsZS'
+    '5wcm90b2J1Zi5JbnQzMlZhbHVlUgxzeXNCb290Y291bnQSTAoUc3lzX3BhcnRpdGlvbnNfZXF1'
+    'YWwYDCABKAsyGi5nb29nbGUucHJvdG9idWYuQm9vbFZhbHVlUhJzeXNQYXJ0aXRpb25zRXF1YW'
+    'wSSgoSc3lzX3VwdGltZV9zZWNvbmRzGA0gASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZh'
+    'bHVlUhBzeXNVcHRpbWVTZWNvbmRzElYKGXN5c19hbnRpX3JvbGxiYWNrX3ZlcnNpb24YDiABKA'
+    'syGy5nb29nbGUucHJvdG9idWYuSW50MzJWYWx1ZVIWc3lzQW50aVJvbGxiYWNrVmVyc2lvbhI6'
+    'CgtzeXNfaXNfd2l0bBgPIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5Cb29sVmFsdWVSCXN5c0lzV2'
+    'l0bBJVChlzeXNfaXNfYXZpYXRpb25fY29uZm9ybWVkGBAgASgLMhouZ29vZ2xlLnByb3RvYnVm'
+    'LkJvb2xWYWx1ZVIWc3lzSXNBdmlhdGlvbkNvbmZvcm1lZBJBCg5zeXNfdWJpX21heF9lYxgRIA'
+    'EoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVILc3lzVWJpTWF4RWMSQwoPc3lzX3Vi'
+    'aV9iYWRfcGViGBIgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUgxzeXNVYmlCYW'
+    'RQZWISQAoNc3lzX2JvYXJkX3JldhgTIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1'
+    'ZVILc3lzQm9hcmRSZXYSUAoVc3lzX2NhbGlicmF0aW9uX3N0YXRlGBQgASgLMhwuZ29vZ2xlLn'
+    'Byb3RvYnVmLlVJbnQzMlZhbHVlUhNzeXNDYWxpYnJhdGlvblN0YXRlEmUKIHN5c19jYWxpYnJh'
+    'dGlvbl9wYXJ0aXRpb25zX3N0YXRlGBUgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbH'
+    'VlUh1zeXNDYWxpYnJhdGlvblBhcnRpdGlvbnNTdGF0ZRJMChNyYWRpb3NfMmdoel9jaGFubmVs'
+    'GGQgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUhFyYWRpb3MyZ2h6Q2hhbm5lbB'
+    'JWChlyYWRpb3NfMmdoel9hbnRlbm5hMV9yc3NpGGUgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZs'
+    'b2F0VmFsdWVSFnJhZGlvczJnaHpBbnRlbm5hMVJzc2kSVgoZcmFkaW9zXzJnaHpfYW50ZW5uYT'
+    'JfcnNzaRhmIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhZyYWRpb3MyZ2h6QW50'
+    'ZW5uYTJSc3NpElYKGXJhZGlvc18yZ2h6X2FudGVubmEzX3Jzc2kYZyABKAsyGy5nb29nbGUucH'
+    'JvdG9idWYuRmxvYXRWYWx1ZVIWcmFkaW9zMmdoekFudGVubmEzUnNzaRJXChlyYWRpb3NfMmdo'
+    'el9hbnRlbm5hNF9yc3NpGMUBIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhZyYW'
+    'Rpb3MyZ2h6QW50ZW5uYTRSc3NpElcKGXJhZGlvc18yZ2h6X2FudGVubmExX3Rzc2kYnQEgASgL'
+    'MhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSFnJhZGlvczJnaHpBbnRlbm5hMVRzc2kSVw'
+    'oZcmFkaW9zXzJnaHpfYW50ZW5uYTJfdHNzaRieASABKAsyGy5nb29nbGUucHJvdG9idWYuRmxv'
+    'YXRWYWx1ZVIWcmFkaW9zMmdoekFudGVubmEyVHNzaRJXChlyYWRpb3NfMmdoel9hbnRlbm5hM1'
+    '90c3NpGJ8BIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhZyYWRpb3MyZ2h6QW50'
+    'ZW5uYTNUc3NpElcKGXJhZGlvc18yZ2h6X2FudGVubmE0X3Rzc2kYoAEgASgLMhsuZ29vZ2xlLn'
+    'Byb3RvYnVmLkZsb2F0VmFsdWVSFnJhZGlvczJnaHpBbnRlbm5hNFRzc2kSUwoXcmFkaW9zXzJn'
+    'aHpfaWZhY2VfY291bnQYaCABKAsyHC5nb29nbGUucHJvdG9idWYuVUludDMyVmFsdWVSFHJhZG'
+    'lvczJnaHpJZmFjZUNvdW50El8KHnJhZGlvc18yZ2h6X2NoYW5fYnVzeV9mcmFjdGlvbhhpIAEo'
+    'CzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhpyYWRpb3MyZ2h6Q2hhbkJ1c3lGcmFjdG'
+    'lvbhJYChpyYWRpb3NfMmdoel9lZGNjYV9mcmFjdGlvbhhqIAEoCzIbLmdvb2dsZS5wcm90b2J1'
+    'Zi5GbG9hdFZhbHVlUhdyYWRpb3MyZ2h6RWRjY2FGcmFjdGlvbhJrCiRyYWRpb3NfMmdoel9vdm'
+    'VybGFwcGluZ19ic3NfZnJhY3Rpb24YayABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1'
+    'ZVIgcmFkaW9zMmdoek92ZXJsYXBwaW5nQnNzRnJhY3Rpb24STAoUcmFkaW9zXzJnaHpfcnhfYn'
+    'l0ZXMYbCABKAsyGy5nb29nbGUucHJvdG9idWYuSW50NjRWYWx1ZVIRcmFkaW9zMmdoelJ4Qnl0'
+    'ZXMSUAoWcmFkaW9zXzJnaHpfcnhfcGFja2V0cxhtIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5Jbn'
+    'Q2NFZhbHVlUhNyYWRpb3MyZ2h6UnhQYWNrZXRzEk4KFXJhZGlvc18yZ2h6X3J4X2Vycm9ycxhu'
+    'IAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQ2NFZhbHVlUhJyYWRpb3MyZ2h6UnhFcnJvcnMSWQ'
+    'obcmFkaW9zXzJnaHpfcnhfZnJhbWVfZXJyb3JzGG8gASgLMhsuZ29vZ2xlLnByb3RvYnVmLklu'
+    'dDY0VmFsdWVSF3JhZGlvczJnaHpSeEZyYW1lRXJyb3JzEmIKIHJhZGlvc18yZ2h6X3J4X3BhY2'
+    'tldF9lcnJvcl9yYXRlGHAgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSG3JhZGlv'
+    'czJnaHpSeFBhY2tldEVycm9yUmF0ZRJhCh9yYWRpb3NfMmdoel9yeF9haXJ0aW1lX2ZyYWN0aW'
+    '9uGHEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSG3JhZGlvczJnaHpSeEFpcnRp'
+    'bWVGcmFjdGlvbhJMChRyYWRpb3NfMmdoel90eF9ieXRlcxhyIAEoCzIbLmdvb2dsZS5wcm90b2'
+    'J1Zi5JbnQ2NFZhbHVlUhFyYWRpb3MyZ2h6VHhCeXRlcxJQChZyYWRpb3NfMmdoel90eF9wYWNr'
+    'ZXRzGHMgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDY0VmFsdWVSE3JhZGlvczJnaHpUeFBhY2'
+    'tldHMSTgoVcmFkaW9zXzJnaHpfdHhfZXJyb3JzGHQgASgLMhsuZ29vZ2xlLnByb3RvYnVmLklu'
+    'dDY0VmFsdWVSEnJhZGlvczJnaHpUeEVycm9ycxJiCiByYWRpb3NfMmdoel90eF9wYWNrZXRfZX'
+    'Jyb3JfcmF0ZRh1IAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhtyYWRpb3MyZ2h6'
+    'VHhQYWNrZXRFcnJvclJhdGUSYQofcmFkaW9zXzJnaHpfdHhfYWlydGltZV9mcmFjdGlvbhh2IA'
+    'EoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhtyYWRpb3MyZ2h6VHhBaXJ0aW1lRnJh'
+    'Y3Rpb24STAoTcmFkaW9zXzVnaHpfY2hhbm5lbBh3IAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW'
+    '50MzJWYWx1ZVIRcmFkaW9zNWdoekNoYW5uZWwSVgoZcmFkaW9zXzVnaHpfYW50ZW5uYTFfcnNz'
+    'aRh4IAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhZyYWRpb3M1Z2h6QW50ZW5uYT'
+    'FSc3NpElYKGXJhZGlvc181Z2h6X2FudGVubmEyX3Jzc2kYeSABKAsyGy5nb29nbGUucHJvdG9i'
+    'dWYuRmxvYXRWYWx1ZVIWcmFkaW9zNWdoekFudGVubmEyUnNzaRJWChlyYWRpb3NfNWdoel9hbn'
+    'Rlbm5hM19yc3NpGHogASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSFnJhZGlvczVn'
+    'aHpBbnRlbm5hM1Jzc2kSVwoZcmFkaW9zXzVnaHpfYW50ZW5uYTRfcnNzaRjGASABKAsyGy5nb2'
+    '9nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIWcmFkaW9zNWdoekFudGVubmE0UnNzaRJXChlyYWRp'
+    'b3NfNWdoel9hbnRlbm5hMV90c3NpGKEBIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbH'
+    'VlUhZyYWRpb3M1Z2h6QW50ZW5uYTFUc3NpElcKGXJhZGlvc181Z2h6X2FudGVubmEyX3Rzc2kY'
+    'ogEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSFnJhZGlvczVnaHpBbnRlbm5hMl'
+    'Rzc2kSVwoZcmFkaW9zXzVnaHpfYW50ZW5uYTNfdHNzaRijASABKAsyGy5nb29nbGUucHJvdG9i'
+    'dWYuRmxvYXRWYWx1ZVIWcmFkaW9zNWdoekFudGVubmEzVHNzaRJXChlyYWRpb3NfNWdoel9hbn'
+    'Rlbm5hNF90c3NpGKQBIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhZyYWRpb3M1'
+    'Z2h6QW50ZW5uYTRUc3NpElMKF3JhZGlvc181Z2h6X2lmYWNlX2NvdW50GHsgASgLMhwuZ29vZ2'
+    'xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUhRyYWRpb3M1Z2h6SWZhY2VDb3VudBJfCh5yYWRpb3Nf'
+    'NWdoel9jaGFuX2J1c3lfZnJhY3Rpb24YfCABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYW'
+    'x1ZVIacmFkaW9zNWdoekNoYW5CdXN5RnJhY3Rpb24SWAoacmFkaW9zXzVnaHpfZWRjY2FfZnJh'
+    'Y3Rpb24YfSABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIXcmFkaW9zNWdoekVkY2'
+    'NhRnJhY3Rpb24SawokcmFkaW9zXzVnaHpfb3ZlcmxhcHBpbmdfYnNzX2ZyYWN0aW9uGH4gASgL'
+    'MhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSIHJhZGlvczVnaHpPdmVybGFwcGluZ0Jzc0'
+    'ZyYWN0aW9uEkwKFHJhZGlvc181Z2h6X3J4X2J5dGVzGH8gASgLMhsuZ29vZ2xlLnByb3RvYnVm'
+    'LkludDY0VmFsdWVSEXJhZGlvczVnaHpSeEJ5dGVzElEKFnJhZGlvc181Z2h6X3J4X3BhY2tldH'
+    'MYgAEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDY0VmFsdWVSE3JhZGlvczVnaHpSeFBhY2tl'
+    'dHMSTwoVcmFkaW9zXzVnaHpfcnhfZXJyb3JzGIEBIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5Jbn'
+    'Q2NFZhbHVlUhJyYWRpb3M1Z2h6UnhFcnJvcnMSWgobcmFkaW9zXzVnaHpfcnhfZnJhbWVfZXJy'
+    'b3JzGIIBIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQ2NFZhbHVlUhdyYWRpb3M1Z2h6UnhGcm'
+    'FtZUVycm9ycxJjCiByYWRpb3NfNWdoel9yeF9wYWNrZXRfZXJyb3JfcmF0ZRiDASABKAsyGy5n'
+    'b29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIbcmFkaW9zNWdoelJ4UGFja2V0RXJyb3JSYXRlEm'
+    'IKH3JhZGlvc181Z2h6X3J4X2FpcnRpbWVfZnJhY3Rpb24YhAEgASgLMhsuZ29vZ2xlLnByb3Rv'
+    'YnVmLkZsb2F0VmFsdWVSG3JhZGlvczVnaHpSeEFpcnRpbWVGcmFjdGlvbhJNChRyYWRpb3NfNW'
+    'doel90eF9ieXRlcxiFASABKAsyGy5nb29nbGUucHJvdG9idWYuSW50NjRWYWx1ZVIRcmFkaW9z'
+    'NWdoelR4Qnl0ZXMSUQoWcmFkaW9zXzVnaHpfdHhfcGFja2V0cxiGASABKAsyGy5nb29nbGUucH'
+    'JvdG9idWYuSW50NjRWYWx1ZVITcmFkaW9zNWdoelR4UGFja2V0cxJPChVyYWRpb3NfNWdoel90'
+    'eF9lcnJvcnMYhwEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDY0VmFsdWVSEnJhZGlvczVnaH'
+    'pUeEVycm9ycxJjCiByYWRpb3NfNWdoel90eF9wYWNrZXRfZXJyb3JfcmF0ZRiIASABKAsyGy5n'
+    'b29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIbcmFkaW9zNWdoelR4UGFja2V0RXJyb3JSYXRlEm'
+    'IKH3JhZGlvc181Z2h6X3R4X2FpcnRpbWVfZnJhY3Rpb24YiQEgASgLMhsuZ29vZ2xlLnByb3Rv'
+    'YnVmLkZsb2F0VmFsdWVSG3JhZGlvczVnaHpUeEFpcnRpbWVGcmFjdGlvbhJWChhyYWRpb3NfNW'
+    'doel9oaWdoX2NoYW5uZWwYigEgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUhVy'
+    'YWRpb3M1Z2h6SGlnaENoYW5uZWwSYAoecmFkaW9zXzVnaHpfaGlnaF9hbnRlbm5hMV9yc3NpGI'
+    'sBIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhpyYWRpb3M1Z2h6SGlnaEFudGVu'
+    'bmExUnNzaRJgCh5yYWRpb3NfNWdoel9oaWdoX2FudGVubmEyX3Jzc2kYjAEgASgLMhsuZ29vZ2'
+    'xlLnByb3RvYnVmLkZsb2F0VmFsdWVSGnJhZGlvczVnaHpIaWdoQW50ZW5uYTJSc3NpEmAKHnJh'
+    'ZGlvc181Z2h6X2hpZ2hfYW50ZW5uYTNfcnNzaRiNASABKAsyGy5nb29nbGUucHJvdG9idWYuRm'
+    'xvYXRWYWx1ZVIacmFkaW9zNWdoekhpZ2hBbnRlbm5hM1Jzc2kSYAoecmFkaW9zXzVnaHpfaGln'
+    'aF9hbnRlbm5hNF9yc3NpGMcBIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhpyYW'
+    'Rpb3M1Z2h6SGlnaEFudGVubmE0UnNzaRJgCh5yYWRpb3NfNWdoel9oaWdoX2FudGVubmExX3Rz'
+    'c2kYpQEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSGnJhZGlvczVnaHpIaWdoQW'
+    '50ZW5uYTFUc3NpEmAKHnJhZGlvc181Z2h6X2hpZ2hfYW50ZW5uYTJfdHNzaRimASABKAsyGy5n'
+    'b29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIacmFkaW9zNWdoekhpZ2hBbnRlbm5hMlRzc2kSYA'
+    'oecmFkaW9zXzVnaHpfaGlnaF9hbnRlbm5hM190c3NpGKcBIAEoCzIbLmdvb2dsZS5wcm90b2J1'
+    'Zi5GbG9hdFZhbHVlUhpyYWRpb3M1Z2h6SGlnaEFudGVubmEzVHNzaRJgCh5yYWRpb3NfNWdoel'
+    '9oaWdoX2FudGVubmE0X3Rzc2kYqAEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVS'
+    'GnJhZGlvczVnaHpIaWdoQW50ZW5uYTRUc3NpEl0KHHJhZGlvc181Z2h6X2hpZ2hfaWZhY2VfY2'
+    '91bnQYjgEgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUhhyYWRpb3M1Z2h6SGln'
+    'aElmYWNlQ291bnQSaQojcmFkaW9zXzVnaHpfaGlnaF9jaGFuX2J1c3lfZnJhY3Rpb24YjwEgAS'
+    'gLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSHnJhZGlvczVnaHpIaWdoQ2hhbkJ1c3lG'
+    'cmFjdGlvbhJiCh9yYWRpb3NfNWdoel9oaWdoX2VkY2NhX2ZyYWN0aW9uGJABIAEoCzIbLmdvb2'
+    'dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhtyYWRpb3M1Z2h6SGlnaEVkY2NhRnJhY3Rpb24SdQop'
+    'cmFkaW9zXzVnaHpfaGlnaF9vdmVybGFwcGluZ19ic3NfZnJhY3Rpb24YkQEgASgLMhsuZ29vZ2'
+    'xlLnByb3RvYnVmLkZsb2F0VmFsdWVSJHJhZGlvczVnaHpIaWdoT3ZlcmxhcHBpbmdCc3NGcmFj'
+    'dGlvbhJWChlyYWRpb3NfNWdoel9oaWdoX3J4X2J5dGVzGJIBIAEoCzIbLmdvb2dsZS5wcm90b2'
+    'J1Zi5JbnQ2NFZhbHVlUhVyYWRpb3M1Z2h6SGlnaFJ4Qnl0ZXMSWgobcmFkaW9zXzVnaHpfaGln'
+    'aF9yeF9wYWNrZXRzGJMBIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQ2NFZhbHVlUhdyYWRpb3'
+    'M1Z2h6SGlnaFJ4UGFja2V0cxJYChpyYWRpb3NfNWdoel9oaWdoX3J4X2Vycm9ycxiUASABKAsy'
+    'Gy5nb29nbGUucHJvdG9idWYuSW50NjRWYWx1ZVIWcmFkaW9zNWdoekhpZ2hSeEVycm9ycxJjCi'
+    'ByYWRpb3NfNWdoel9oaWdoX3J4X2ZyYW1lX2Vycm9ycxiVASABKAsyGy5nb29nbGUucHJvdG9i'
+    'dWYuSW50NjRWYWx1ZVIbcmFkaW9zNWdoekhpZ2hSeEZyYW1lRXJyb3JzEmwKJXJhZGlvc181Z2'
+    'h6X2hpZ2hfcnhfcGFja2V0X2Vycm9yX3JhdGUYlgEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZs'
+    'b2F0VmFsdWVSH3JhZGlvczVnaHpIaWdoUnhQYWNrZXRFcnJvclJhdGUSawokcmFkaW9zXzVnaH'
+    'pfaGlnaF9yeF9haXJ0aW1lX2ZyYWN0aW9uGJcBIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9h'
+    'dFZhbHVlUh9yYWRpb3M1Z2h6SGlnaFJ4QWlydGltZUZyYWN0aW9uElYKGXJhZGlvc181Z2h6X2'
+    'hpZ2hfdHhfYnl0ZXMYmAEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDY0VmFsdWVSFXJhZGlv'
+    'czVnaHpIaWdoVHhCeXRlcxJaChtyYWRpb3NfNWdoel9oaWdoX3R4X3BhY2tldHMYmQEgASgLMh'
+    'suZ29vZ2xlLnByb3RvYnVmLkludDY0VmFsdWVSF3JhZGlvczVnaHpIaWdoVHhQYWNrZXRzElgK'
+    'GnJhZGlvc181Z2h6X2hpZ2hfdHhfZXJyb3JzGJoBIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5Jbn'
+    'Q2NFZhbHVlUhZyYWRpb3M1Z2h6SGlnaFR4RXJyb3JzEmwKJXJhZGlvc181Z2h6X2hpZ2hfdHhf'
+    'cGFja2V0X2Vycm9yX3JhdGUYmwEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSH3'
+    'JhZGlvczVnaHpIaWdoVHhQYWNrZXRFcnJvclJhdGUSawokcmFkaW9zXzVnaHpfaGlnaF90eF9h'
+    'aXJ0aW1lX2ZyYWN0aW9uGJwBIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUh9yYW'
+    'Rpb3M1Z2h6SGlnaFR4QWlydGltZUZyYWN0aW9uElUKGHJhZGlvc18yZ2h6X3RoZXJtYWxfdGVt'
+    'cBjIASABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIVcmFkaW9zMmdoelRoZXJtYW'
+    'xUZW1wElUKGHJhZGlvc181Z2h6X3RoZXJtYWxfdGVtcBjJASABKAsyGy5nb29nbGUucHJvdG9i'
+    'dWYuRmxvYXRWYWx1ZVIVcmFkaW9zNWdoelRoZXJtYWxUZW1wEl4KHXJhZGlvc181Z2h6X2hpZ2'
+    'hfdGhlcm1hbF90ZW1wGM4BIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhlyYWRp'
+    'b3M1Z2h6SGlnaFRoZXJtYWxUZW1wEmAKHnJhZGlvc18yZ2h6X3RoZXJtYWxfZHV0eV9jeWNsZR'
+    'jKASABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIacmFkaW9zMmdoelRoZXJtYWxE'
+    'dXR5Q3ljbGUSYAoecmFkaW9zXzVnaHpfdGhlcm1hbF9kdXR5X2N5Y2xlGMsBIAEoCzIbLmdvb2'
+    'dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhpyYWRpb3M1Z2h6VGhlcm1hbER1dHlDeWNsZRJpCiNy'
+    'YWRpb3NfNWdoel9oaWdoX3RoZXJtYWxfZHV0eV9jeWNsZRjPASABKAsyGy5nb29nbGUucHJvdG'
+    '9idWYuRmxvYXRWYWx1ZVIecmFkaW9zNWdoekhpZ2hUaGVybWFsRHV0eUN5Y2xlEm8KJXJhZGlv'
+    'c18yZ2h6X3RoZXJtYWxfdGhyb3R0bGVkX3NlY29uZHMYzAEgASgLMhwuZ29vZ2xlLnByb3RvYn'
+    'VmLlVJbnQzMlZhbHVlUiFyYWRpb3MyZ2h6VGhlcm1hbFRocm90dGxlZFNlY29uZHMSbwolcmFk'
+    'aW9zXzVnaHpfdGhlcm1hbF90aHJvdHRsZWRfc2Vjb25kcxjNASABKAsyHC5nb29nbGUucHJvdG'
+    '9idWYuVUludDMyVmFsdWVSIXJhZGlvczVnaHpUaGVybWFsVGhyb3R0bGVkU2Vjb25kcxJ4Cipy'
+    'YWRpb3NfNWdoel9oaWdoX3RoZXJtYWxfdGhyb3R0bGVkX3NlY29uZHMY0AEgASgLMhwuZ29vZ2'
+    'xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUiVyYWRpb3M1Z2h6SGlnaFRoZXJtYWxUaHJvdHRsZWRT'
+    'ZWNvbmRzEjsKCmJvYXJkX3RlbXAY0gEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdW'
+    'VSCWJvYXJkVGVtcBI/CgxhbWJpZW50X3RlbXAY1QEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZs'
+    'b2F0VmFsdWVSC2FtYmllbnRUZW1wEjcKCGNwdV90ZW1wGNYBIAEoCzIbLmdvb2dsZS5wcm90b2'
+    'J1Zi5GbG9hdFZhbHVlUgdjcHVUZW1wEkUKEHBvZV9tY3VfZGllX3RlbXAY0wEgASgLMhsuZ29v'
+    'Z2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSDXBvZU1jdURpZVRlbXASXAoccG9lX3BlcmNlbnRfd2'
+    'F0ZXJfZGV0ZWN0X2F2ZxjUASABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIYcG9l'
+    'UGVyY2VudFdhdGVyRGV0ZWN0QXZnElIKF2lmYWNlc19sYW5fZXRoX3J4X2J5dGVzGKwCIAEoCz'
+    'IbLmdvb2dsZS5wcm90b2J1Zi5JbnQ2NFZhbHVlUhNpZmFjZXNMYW5FdGhSeEJ5dGVzElYKGWlm'
+    'YWNlc19sYW5fZXRoX3J4X3BhY2tldHMYrQIgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDY0Vm'
+    'FsdWVSFWlmYWNlc0xhbkV0aFJ4UGFja2V0cxJUChhpZmFjZXNfbGFuX2V0aF9yeF9lcnJvcnMY'
+    'rgIgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDY0VmFsdWVSFGlmYWNlc0xhbkV0aFJ4RXJyb3'
+    'JzEl8KHmlmYWNlc19sYW5fZXRoX3J4X2ZyYW1lX2Vycm9ycxivAiABKAsyGy5nb29nbGUucHJv'
+    'dG9idWYuSW50NjRWYWx1ZVIZaWZhY2VzTGFuRXRoUnhGcmFtZUVycm9ycxJSChdpZmFjZXNfbG'
+    'FuX2V0aF90eF9ieXRlcxiwAiABKAsyGy5nb29nbGUucHJvdG9idWYuSW50NjRWYWx1ZVITaWZh'
+    'Y2VzTGFuRXRoVHhCeXRlcxJWChlpZmFjZXNfbGFuX2V0aF90eF9wYWNrZXRzGLECIAEoCzIbLm'
+    'dvb2dsZS5wcm90b2J1Zi5JbnQ2NFZhbHVlUhVpZmFjZXNMYW5FdGhUeFBhY2tldHMSVAoYaWZh'
+    'Y2VzX2xhbl9ldGhfdHhfZXJyb3JzGLICIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQ2NFZhbH'
+    'VlUhRpZmFjZXNMYW5FdGhUeEVycm9ycxJUChhpZmFjZXNfbGFuMV9ldGhfcnhfYnl0ZXMYugIg'
+    'ASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDY0VmFsdWVSFGlmYWNlc0xhbjFFdGhSeEJ5dGVzEl'
+    'gKGmlmYWNlc19sYW4xX2V0aF9yeF9wYWNrZXRzGLsCIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5J'
+    'bnQ2NFZhbHVlUhZpZmFjZXNMYW4xRXRoUnhQYWNrZXRzElYKGWlmYWNlc19sYW4xX2V0aF9yeF'
+    '9lcnJvcnMYvAIgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDY0VmFsdWVSFWlmYWNlc0xhbjFF'
+    'dGhSeEVycm9ycxJhCh9pZmFjZXNfbGFuMV9ldGhfcnhfZnJhbWVfZXJyb3JzGL0CIAEoCzIbLm'
+    'dvb2dsZS5wcm90b2J1Zi5JbnQ2NFZhbHVlUhppZmFjZXNMYW4xRXRoUnhGcmFtZUVycm9ycxJU'
+    'ChhpZmFjZXNfbGFuMV9ldGhfdHhfYnl0ZXMYvgIgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludD'
+    'Y0VmFsdWVSFGlmYWNlc0xhbjFFdGhUeEJ5dGVzElgKGmlmYWNlc19sYW4xX2V0aF90eF9wYWNr'
+    'ZXRzGL8CIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQ2NFZhbHVlUhZpZmFjZXNMYW4xRXRoVH'
+    'hQYWNrZXRzElYKGWlmYWNlc19sYW4xX2V0aF90eF9lcnJvcnMYwAIgASgLMhsuZ29vZ2xlLnBy'
+    'b3RvYnVmLkludDY0VmFsdWVSFWlmYWNlc0xhbjFFdGhUeEVycm9ycxJSChdpZmFjZXNfd2FuX2'
+    'V0aF9yeF9ieXRlcxizAiABKAsyGy5nb29nbGUucHJvdG9idWYuSW50NjRWYWx1ZVITaWZhY2Vz'
+    'V2FuRXRoUnhCeXRlcxJWChlpZmFjZXNfd2FuX2V0aF9yeF9wYWNrZXRzGLQCIAEoCzIbLmdvb2'
+    'dsZS5wcm90b2J1Zi5JbnQ2NFZhbHVlUhVpZmFjZXNXYW5FdGhSeFBhY2tldHMSVAoYaWZhY2Vz'
+    'X3dhbl9ldGhfcnhfZXJyb3JzGLUCIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQ2NFZhbHVlUh'
+    'RpZmFjZXNXYW5FdGhSeEVycm9ycxJfCh5pZmFjZXNfd2FuX2V0aF9yeF9mcmFtZV9lcnJvcnMY'
+    'tgIgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDY0VmFsdWVSGWlmYWNlc1dhbkV0aFJ4RnJhbW'
+    'VFcnJvcnMSUgoXaWZhY2VzX3dhbl9ldGhfdHhfYnl0ZXMYtwIgASgLMhsuZ29vZ2xlLnByb3Rv'
+    'YnVmLkludDY0VmFsdWVSE2lmYWNlc1dhbkV0aFR4Qnl0ZXMSVgoZaWZhY2VzX3dhbl9ldGhfdH'
+    'hfcGFja2V0cxi4AiABKAsyGy5nb29nbGUucHJvdG9idWYuSW50NjRWYWx1ZVIVaWZhY2VzV2Fu'
+    'RXRoVHhQYWNrZXRzElQKGGlmYWNlc193YW5fZXRoX3R4X2Vycm9ycxi5AiABKAsyGy5nb29nbG'
+    'UucHJvdG9idWYuSW50NjRWYWx1ZVIUaWZhY2VzV2FuRXRoVHhFcnJvcnMSRQoPaWZhY2VzX3dh'
+    'bl9wb3J0GMECIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZVINaWZhY2VzV2FuUG'
+    '9ydBI3CgdjbGllbnRzGJADIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVIHY2xp'
+    'ZW50cxJACgxjbGllbnRzXzJnaHoYkQMgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbH'
+    'VlUgtjbGllbnRzMmdoehJACgxjbGllbnRzXzVnaHoYkgMgASgLMhwuZ29vZ2xlLnByb3RvYnVm'
+    'LlVJbnQzMlZhbHVlUgtjbGllbnRzNWdoehJJChFjbGllbnRzXzVnaHpfaGlnaBidAyABKAsyHC'
+    '5nb29nbGUucHJvdG9idWYuVUludDMyVmFsdWVSD2NsaWVudHM1Z2h6SGlnaBJIChBjbGllbnRz'
+    'X3dpcmVsZXNzGLQDIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVIPY2xpZW50c1'
+    'dpcmVsZXNzEj4KC2NsaWVudHNfbWxvGLUDIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJW'
+    'YWx1ZVIKY2xpZW50c01sbxI+CgtjbGllbnRzX2V0aBiTAyABKAsyHC5nb29nbGUucHJvdG9idW'
+    'YuVUludDMyVmFsdWVSCmNsaWVudHNFdGgSYwofY2xpZW50c181Z2h6X3J4X2JhbmR3aWR0aF8y'
+    'MG1oehitAyABKAsyHC5nb29nbGUucHJvdG9idWYuVUludDMyVmFsdWVSG2NsaWVudHM1Z2h6Un'
+    'hCYW5kd2lkdGgyMG1oehJjCh9jbGllbnRzXzVnaHpfcnhfYmFuZHdpZHRoXzQwbWh6GK4DIAEo'
+    'CzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVIbY2xpZW50czVnaHpSeEJhbmR3aWR0aD'
+    'QwbWh6EmMKH2NsaWVudHNfNWdoel9yeF9iYW5kd2lkdGhfODBtaHoYrwMgASgLMhwuZ29vZ2xl'
+    'LnByb3RvYnVmLlVJbnQzMlZhbHVlUhtjbGllbnRzNWdoelJ4QmFuZHdpZHRoODBtaHoSZQogY2'
+    'xpZW50c181Z2h6X3J4X2JhbmR3aWR0aF8xNjBtaHoYswMgASgLMhwuZ29vZ2xlLnByb3RvYnVm'
+    'LlVJbnQzMlZhbHVlUhxjbGllbnRzNWdoelJ4QmFuZHdpZHRoMTYwbWh6EkgKEGNsaWVudHNfcm'
     'VwZWF0ZXIYlAMgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUg9jbGllbnRzUmVw'
     'ZWF0ZXISUQoVY2xpZW50c19yZXBlYXRlcl8yZ2h6GJUDIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi'
     '5VSW50MzJWYWx1ZVITY2xpZW50c1JlcGVhdGVyMmdoehJRChVjbGllbnRzX3JlcGVhdGVyXzVn'
@@ -4241,136 +5214,233 @@ final $typed_data.Uint8List starlink_routers_hourly_metrics_v2Descriptor = $conv
     '1heBJYChpyZXBlYXRlcl9sYXRlbmN5X21zXzFoX2F2ZxirAyABKAsyGy5nb29nbGUucHJvdG9i'
     'dWYuRmxvYXRWYWx1ZVIWcmVwZWF0ZXJMYXRlbmN5TXMxaEF2ZxJfCh1tZXNoX3RvcG9sb2d5X2'
     'NoYW5nZV9jb3VudF8xZBisAyABKAsyHC5nb29nbGUucHJvdG9idWYuVUludDMyVmFsdWVSGW1l'
-    'c2hUb3BvbG9neUNoYW5nZUNvdW50MWQSZQohcGluZ19zZWNvbmRzX3NpbmNlX2xhc3RfMXNfb3'
-    'V0YWdlGNgEIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhxwaW5nU2Vjb25kc1Np'
-    'bmNlTGFzdDFzT3V0YWdlEmUKIXBpbmdfc2Vjb25kc19zaW5jZV9sYXN0XzJzX291dGFnZRjZBC'
-    'ABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIccGluZ1NlY29uZHNTaW5jZUxhc3Qy'
-    'c091dGFnZRJlCiFwaW5nX3NlY29uZHNfc2luY2VfbGFzdF81c19vdXRhZ2UY2gQgASgLMhsuZ2'
-    '9vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSHHBpbmdTZWNvbmRzU2luY2VMYXN0NXNPdXRhZ2US'
-    'ZwoicGluZ19zZWNvbmRzX3NpbmNlX2xhc3RfNjBzX291dGFnZRjbBCABKAsyGy5nb29nbGUucH'
-    'JvdG9idWYuRmxvYXRWYWx1ZVIdcGluZ1NlY29uZHNTaW5jZUxhc3Q2MHNPdXRhZ2USaQojcGlu'
-    'Z19zZWNvbmRzX3NpbmNlX2xhc3RfMzAwc19vdXRhZ2UY3AQgASgLMhsuZ29vZ2xlLnByb3RvYn'
-    'VmLkZsb2F0VmFsdWVSHnBpbmdTZWNvbmRzU2luY2VMYXN0MzAwc091dGFnZRJCCg5waW5nX2Ry'
-    'b3BfcmF0ZRjdBCABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIMcGluZ0Ryb3BSYX'
-    'RlElAKFnBpbmdfZHJvcF9yYXRlX2xhc3RfMWgY3gQgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZs'
-    'b2F0VmFsdWVSEnBpbmdEcm9wUmF0ZUxhc3QxaBI/CgxwaW5nX2xhdGVuY3kY3wQgASgLMhsuZ2'
-    '9vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSC3BpbmdMYXRlbmN5Ek0KFHBpbmdfbGF0ZW5jeV9s'
-    'YXN0XzFoGOoEIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhFwaW5nTGF0ZW5jeU'
-    'xhc3QxaBJuCiZwaW5nX2Rpc2hfc2Vjb25kc19zaW5jZV9sYXN0XzFzX291dGFnZRjiBCABKAsy'
-    'Gy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIgcGluZ0Rpc2hTZWNvbmRzU2luY2VMYXN0MX'
-    'NPdXRhZ2USbgomcGluZ19kaXNoX3NlY29uZHNfc2luY2VfbGFzdF8yc19vdXRhZ2UY4wQgASgL'
-    'MhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSIHBpbmdEaXNoU2Vjb25kc1NpbmNlTGFzdD'
-    'JzT3V0YWdlEm4KJnBpbmdfZGlzaF9zZWNvbmRzX3NpbmNlX2xhc3RfNXNfb3V0YWdlGOQEIAEo'
-    'CzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUiBwaW5nRGlzaFNlY29uZHNTaW5jZUxhc3'
-    'Q1c091dGFnZRJwCidwaW5nX2Rpc2hfc2Vjb25kc19zaW5jZV9sYXN0XzYwc19vdXRhZ2UY5QQg'
-    'ASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSIXBpbmdEaXNoU2Vjb25kc1NpbmNlTG'
-    'FzdDYwc091dGFnZRJyCihwaW5nX2Rpc2hfc2Vjb25kc19zaW5jZV9sYXN0XzMwMHNfb3V0YWdl'
-    'GOYEIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUiJwaW5nRGlzaFNlY29uZHNTaW'
-    '5jZUxhc3QzMDBzT3V0YWdlEksKE3BpbmdfZGlzaF9kcm9wX3JhdGUY5wQgASgLMhsuZ29vZ2xl'
-    'LnByb3RvYnVmLkZsb2F0VmFsdWVSEHBpbmdEaXNoRHJvcFJhdGUSWQobcGluZ19kaXNoX2Ryb3'
-    'BfcmF0ZV9sYXN0XzFoGOgEIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhZwaW5n'
-    'RGlzaERyb3BSYXRlTGFzdDFoEkgKEXBpbmdfZGlzaF9sYXRlbmN5GOkEIAEoCzIbLmdvb2dsZS'
-    '5wcm90b2J1Zi5GbG9hdFZhbHVlUg9waW5nRGlzaExhdGVuY3kSVgoZcGluZ19kaXNoX2xhdGVu'
-    'Y3lfbGFzdF8xaBjrBCABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIVcGluZ0Rpc2'
-    'hMYXRlbmN5TGFzdDFoEm4KJWNsaWVudF9zcGVlZHRlc3Rfcm91dGVyX2Rvd25sb2FkX21icHMY'
-    'vAUgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSIWNsaWVudFNwZWVkdGVzdFJvdX'
-    'RlckRvd25sb2FkTWJwcxJqCiNjbGllbnRfc3BlZWR0ZXN0X3JvdXRlcl91cGxvYWRfbWJwcxi9'
-    'BSABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIfY2xpZW50U3BlZWR0ZXN0Um91dG'
-    'VyVXBsb2FkTWJwcxJdChxjbGllbnRfc3BlZWR0ZXN0X3JvdXRlcl9yc3NpGL4FIAEoCzIbLmdv'
-    'b2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhljbGllbnRTcGVlZHRlc3RSb3V0ZXJSc3NpEmoKI2'
-    'NsaWVudF9zcGVlZHRlc3Rfd2lmaV9kb3dubG9hZF9tYnBzGL8FIAEoCzIbLmdvb2dsZS5wcm90'
-    'b2J1Zi5GbG9hdFZhbHVlUh9jbGllbnRTcGVlZHRlc3RXaWZpRG93bmxvYWRNYnBzEmYKIWNsaW'
-    'VudF9zcGVlZHRlc3Rfd2lmaV91cGxvYWRfbWJwcxjABSABKAsyGy5nb29nbGUucHJvdG9idWYu'
-    'RmxvYXRWYWx1ZVIdY2xpZW50U3BlZWR0ZXN0V2lmaVVwbG9hZE1icHMSbgolY2xpZW50X3NwZW'
-    'VkdGVzdF9jbGllbnRfZG93bmxvYWRfbWJwcxjBBSABKAsyGy5nb29nbGUucHJvdG9idWYuRmxv'
-    'YXRWYWx1ZVIhY2xpZW50U3BlZWR0ZXN0Q2xpZW50RG93bmxvYWRNYnBzEmoKI2NsaWVudF9zcG'
-    'VlZHRlc3RfY2xpZW50X3VwbG9hZF9tYnBzGMIFIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9h'
-    'dFZhbHVlUh9jbGllbnRTcGVlZHRlc3RDbGllbnRVcGxvYWRNYnBzEl0KHGNsaWVudF9zcGVlZH'
-    'Rlc3RfY2xpZW50X3Jzc2kYwwUgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSGWNs'
-    'aWVudFNwZWVkdGVzdENsaWVudFJzc2kSYAodY2xpZW50X3NwZWVkdGVzdF9jbGllbnRfaWZhY2'
-    'UYxAUgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUhpjbGllbnRTcGVlZHRlc3RD'
-    'bGllbnRJZmFjZRJcChtjbGllbnRfc3BlZWR0ZXN0X2NsaWVudF9vdWkYxQUgASgLMhwuZ29vZ2'
-    'xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlUhhjbGllbnRTcGVlZHRlc3RDbGllbnRPdWkSYwofY2xp'
-    'ZW50X3NwZWVkdGVzdF9jbGllbnRfdHhfcmF0ZRjGBSABKAsyHC5nb29nbGUucHJvdG9idWYuVU'
-    'ludDMyVmFsdWVSG2NsaWVudFNwZWVkdGVzdENsaWVudFR4UmF0ZRJjCh9jbGllbnRfc3BlZWR0'
-    'ZXN0X2NsaWVudF9yeF9yYXRlGMcFIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZV'
-    'IbY2xpZW50U3BlZWR0ZXN0Q2xpZW50UnhSYXRlEm8KJWNsaWVudF9zcGVlZHRlc3RfY2xpZW50'
-    'X3BsYXRmb3JtX3R5cGUYyAUgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUiFjbG'
-    'llbnRTcGVlZHRlc3RDbGllbnRQbGF0Zm9ybVR5cGUSZQohc3BlZWR0ZXN0X3RjcF84X2Rvd25s'
-    'b2FkX21icHNfYXZnGKAGIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhxzcGVlZH'
-    'Rlc3RUY3A4RG93bmxvYWRNYnBzQXZnEmUKIXNwZWVkdGVzdF90Y3BfOF9kb3dubG9hZF9tYnBz'
-    'X21heBihBiABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIcc3BlZWR0ZXN0VGNwOE'
-    'Rvd25sb2FkTWJwc01heBJhCh9zcGVlZHRlc3RfdGNwXzhfdXBsb2FkX21icHNfYXZnGKIGIAEo'
-    'CzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhpzcGVlZHRlc3RUY3A4VXBsb2FkTWJwc0'
-    'F2ZxJhCh9zcGVlZHRlc3RfdGNwXzhfdXBsb2FkX21icHNfbWF4GKMGIAEoCzIbLmdvb2dsZS5w'
-    'cm90b2J1Zi5GbG9hdFZhbHVlUhpzcGVlZHRlc3RUY3A4VXBsb2FkTWJwc01heBJnCiJzcGVlZH'
-    'Rlc3RfdGNwXzY0X2Rvd25sb2FkX21icHNfYXZnGKQGIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5G'
-    'bG9hdFZhbHVlUh1zcGVlZHRlc3RUY3A2NERvd25sb2FkTWJwc0F2ZxJnCiJzcGVlZHRlc3RfdG'
-    'NwXzY0X2Rvd25sb2FkX21icHNfbWF4GKUGIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZh'
-    'bHVlUh1zcGVlZHRlc3RUY3A2NERvd25sb2FkTWJwc01heBJjCiBzcGVlZHRlc3RfdGNwXzY0X3'
-    'VwbG9hZF9tYnBzX2F2ZximBiABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIbc3Bl'
-    'ZWR0ZXN0VGNwNjRVcGxvYWRNYnBzQXZnEmMKIHNwZWVkdGVzdF90Y3BfNjRfdXBsb2FkX21icH'
-    'NfbWF4GKcGIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhtzcGVlZHRlc3RUY3A2'
-    'NFVwbG9hZE1icHNNYXgSPwoMZGlzaF9jZWxsX2lkGIQHIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi'
-    '5VSW50MzJWYWx1ZVIKZGlzaENlbGxJZBJPChVjb25maWdfc2V0dXBfY29tcGxldGUY6AcgASgL'
-    'MhouZ29vZ2xlLnByb3RvYnVmLkJvb2xWYWx1ZVITY29uZmlnU2V0dXBDb21wbGV0ZRJJChJjb2'
-    '5maWdfYmFuZHNfc3BsaXQY6QcgASgLMhouZ29vZ2xlLnByb3RvYnVmLkJvb2xWYWx1ZVIQY29u'
-    'ZmlnQmFuZHNTcGxpdBJJChJjb25maWdfaXNfcmVwZWF0ZXIY6gcgASgLMhouZ29vZ2xlLnByb3'
-    'RvYnVmLkJvb2xWYWx1ZVIQY29uZmlnSXNSZXBlYXRlchJLChNjb25maWdfb3Blbl9uZXR3b3Jr'
-    'GOsHIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5Cb29sVmFsdWVSEWNvbmZpZ09wZW5OZXR3b3JrEk'
-    'kKEmNvbmZpZ19pc19hdmlhdGlvbhjsByABKAsyGi5nb29nbGUucHJvdG9idWYuQm9vbFZhbHVl'
-    'UhBjb25maWdJc0F2aWF0aW9uEkcKEWNvbmZpZ19zZWN1cmVfZG5zGO0HIAEoCzIaLmdvb2dsZS'
-    '5wcm90b2J1Zi5Cb29sVmFsdWVSD2NvbmZpZ1NlY3VyZURucxJACg1jb25maWdfbGVnYWN5GO4H'
-    'IAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5Cb29sVmFsdWVSDGNvbmZpZ0xlZ2FjeRJBCg5jb25maW'
-    'dfYXBfbW9kZRjvByABKAsyGi5nb29nbGUucHJvdG9idWYuQm9vbFZhbHVlUgxjb25maWdBcE1v'
-    'ZGUSSQoSY29uZmlnX2Rmc19lbmFibGVkGPAHIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5Cb29sVm'
-    'FsdWVSEGNvbmZpZ0Rmc0VuYWJsZWQSXwoeY29uZmlnX25ldHdvcmtfbmFtZV9pc19kZWZhdWx0'
-    'GPEHIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5Cb29sVmFsdWVSGmNvbmZpZ05ldHdvcmtOYW1lSX'
-    'NEZWZhdWx0ElYKGWNvbmZpZ19yZW1vdGVfc3NoX2VuYWJsZWQY8gcgASgLMhouZ29vZ2xlLnBy'
-    'b3RvYnVmLkJvb2xWYWx1ZVIWY29uZmlnUmVtb3RlU3NoRW5hYmxlZBJUChhjb25maWdfaXNfcm'
-    'VwZWF0ZXJfd2lyZWQY8wcgASgLMhouZ29vZ2xlLnByb3RvYnVmLkJvb2xWYWx1ZVIVY29uZmln'
-    'SXNSZXBlYXRlcldpcmVkEloKG2NvbmZpZ19pc19yZXBlYXRlcl93aXJlbGVzcxj0ByABKAsyGi'
-    '5nb29nbGUucHJvdG9idWYuQm9vbFZhbHVlUhhjb25maWdJc1JlcGVhdGVyV2lyZWxlc3MSWgoa'
-    'Y29uZmlnX2Jsb2NrX3NjaGVkdWxlc19zZXQY9QcgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbn'
-    'QzMlZhbHVlUhdjb25maWdCbG9ja1NjaGVkdWxlc1NldBJXChljb25maWdfY3VzdG9tX25hbWVz'
-    'ZXJ2ZXJzGPYHIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5Cb29sVmFsdWVSF2NvbmZpZ0N1c3RvbU'
-    '5hbWVzZXJ2ZXJzEmAKHmNvbmZpZ19kaXNhYmxlX21lc2hfb25ib2FyZGluZxj3ByABKAsyGi5n'
-    'b29nbGUucHJvdG9idWYuQm9vbFZhbHVlUhtjb25maWdEaXNhYmxlTWVzaE9uYm9hcmRpbmcSUg'
-    'oXY29uZmlnX3Bpbl9jb3VudHJ5X2NvZGUY+AcgASgLMhouZ29vZ2xlLnByb3RvYnVmLkJvb2xW'
-    'YWx1ZVIUY29uZmlnUGluQ291bnRyeUNvZGUSXAocY29uZmlnX2Rpc2FibGVfdXBkYXRlX3JlYm'
-    '9vdBj5ByABKAsyGi5nb29nbGUucHJvdG9idWYuQm9vbFZhbHVlUhljb25maWdEaXNhYmxlVXBk'
-    'YXRlUmVib290EksKE2NvbmZpZ19kaXNhYmxlXzJnaHoY+gcgASgLMhouZ29vZ2xlLnByb3RvYn'
-    'VmLkJvb2xWYWx1ZVIRY29uZmlnRGlzYWJsZTJnaHoSSwoTY29uZmlnX2Rpc2FibGVfNWdoehj7'
-    'ByABKAsyGi5nb29nbGUucHJvdG9idWYuQm9vbFZhbHVlUhFjb25maWdEaXNhYmxlNWdoehJUCh'
-    'hjb25maWdfZGlzYWJsZV81Z2h6X2hpZ2gYhQggASgLMhouZ29vZ2xlLnByb3RvYnVmLkJvb2xW'
-    'YWx1ZVIVY29uZmlnRGlzYWJsZTVnaHpIaWdoEk0KE2NvbmZpZ19jaGFubmVsXzJnaHoY/AcgAS'
-    'gLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUhFjb25maWdDaGFubmVsMmdoehJNChNj'
-    'b25maWdfY2hhbm5lbF81Z2h6GP0HIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZV'
-    'IRY29uZmlnQ2hhbm5lbDVnaHoSVgoYY29uZmlnX2NoYW5uZWxfNWdoel9oaWdoGP4HIAEoCzIc'
-    'Lmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVIVY29uZmlnQ2hhbm5lbDVnaHpIaWdoEkYKD2'
-    'NvbmZpZ19uZXR3b3Jrcxj/ByABKAsyHC5nb29nbGUucHJvdG9idWYuVUludDMyVmFsdWVSDmNv'
-    'bmZpZ05ldHdvcmtzElEKFWNvbmZpZ19uZXR3b3Jrc19ndWVzdBiACCABKAsyHC5nb29nbGUucH'
-    'JvdG9idWYuVUludDMyVmFsdWVSE2NvbmZpZ05ldHdvcmtzR3Vlc3QSUwoWY29uZmlnX25ldHdv'
-    'cmtzX2hpZGRlbhiBCCABKAsyHC5nb29nbGUucHJvdG9idWYuVUludDMyVmFsdWVSFGNvbmZpZ0'
-    '5ldHdvcmtzSGlkZGVuEmYKIGNvbmZpZ19uZXR3b3Jrc19jbGllbnRfaXNvbGF0aW9uGIIIIAEo'
-    'CzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVIdY29uZmlnTmV0d29ya3NDbGllbnRJc2'
-    '9sYXRpb24SXAobY29uZmlnX25ldHdvcmtzX2JhbmRzX3NwbGl0GIMIIAEoCzIcLmdvb2dsZS5w'
-    'cm90b2J1Zi5VSW50MzJWYWx1ZVIYY29uZmlnTmV0d29ya3NCYW5kc1NwbGl0EmAKHndhbl90cm'
-    'FmZmljX2NvbnRyb2xfY2FrZV9ieXRlcxjNCCABKAsyGy5nb29nbGUucHJvdG9idWYuSW50NjRW'
-    'YWx1ZVIad2FuVHJhZmZpY0NvbnRyb2xDYWtlQnl0ZXMSZAogd2FuX3RyYWZmaWNfY29udHJvbF'
-    '9jYWtlX3BhY2tldHMYzgggASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDY0VmFsdWVSHHdhblRy'
-    'YWZmaWNDb250cm9sQ2FrZVBhY2tldHMSYAoed2FuX3RyYWZmaWNfY29udHJvbF9jYWtlX2Ryb3'
-    'BzGM8IIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQ2NFZhbHVlUhp3YW5UcmFmZmljQ29udHJv'
-    'bENha2VEcm9wcxJnCiJ3YW5fdHJhZmZpY19jb250cm9sX2Nha2VfYWNrX2Ryb3BzGNAIIAEoCz'
-    'IbLmdvb2dsZS5wcm90b2J1Zi5JbnQ2NFZhbHVlUh13YW5UcmFmZmljQ29udHJvbENha2VBY2tE'
-    'cm9wcxJKChFjb25udHJhY2tfZW50cmllcxjMCCABKAsyHC5nb29nbGUucHJvdG9idWYuVUludD'
-    'MyVmFsdWVSEGNvbm50cmFja0VudHJpZXMSQgoOZGhjcF9zZWNzX2VxXzAY0QggASgLMhwuZ29v'
-    'Z2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUgtkaGNwU2Vjc0VxMBJCCg5kaGNwX3NlY3NfZ3RfMB'
-    'jSCCABKAsyHC5nb29nbGUucHJvdG9idWYuVUludDMyVmFsdWVSC2RoY3BTZWNzR3QwEkQKD2Ro'
-    'Y3Bfc2Vjc19ndF8xMBjTCCABKAsyHC5nb29nbGUucHJvdG9idWYuVUludDMyVmFsdWVSDGRoY3'
-    'BTZWNzR3QxMBJECg9kaGNwX3NlY3NfZ3RfMzAY1AggASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJ'
-    'bnQzMlZhbHVlUgxkaGNwU2Vjc0d0MzASRAoPZGhjcF9zZWNzX2d0XzYwGNUIIAEoCzIcLmdvb2'
-    'dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVIMZGhjcFNlY3NHdDYw');
+    'c2hUb3BvbG9neUNoYW5nZUNvdW50MWQSUwoWbWFjX2V4cG9ydHNfc3VjY2Vzc2Z1bBiwAyABKA'
+    'syHC5nb29nbGUucHJvdG9idWYuVUludDMyVmFsdWVSFG1hY0V4cG9ydHNTdWNjZXNzZnVsEmcK'
+    'IW1hY19leHBvcnRzX3NlcnZlcl9jb25uZWN0X2Vycm9ycxixAyABKAsyHC5nb29nbGUucHJvdG'
+    '9idWYuVUludDMyVmFsdWVSHW1hY0V4cG9ydHNTZXJ2ZXJDb25uZWN0RXJyb3JzEmEKHm1hY19l'
+    'eHBvcnRzX3NlcnZlcl9zZW5kX2Vycm9ycxiyAyABKAsyHC5nb29nbGUucHJvdG9idWYuVUludD'
+    'MyVmFsdWVSGm1hY0V4cG9ydHNTZXJ2ZXJTZW5kRXJyb3JzEmUKIXBpbmdfc2Vjb25kc19zaW5j'
+    'ZV9sYXN0XzFzX291dGFnZRjYBCABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIccG'
+    'luZ1NlY29uZHNTaW5jZUxhc3Qxc091dGFnZRJlCiFwaW5nX3NlY29uZHNfc2luY2VfbGFzdF8y'
+    'c19vdXRhZ2UY2QQgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSHHBpbmdTZWNvbm'
+    'RzU2luY2VMYXN0MnNPdXRhZ2USZQohcGluZ19zZWNvbmRzX3NpbmNlX2xhc3RfNXNfb3V0YWdl'
+    'GNoEIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhxwaW5nU2Vjb25kc1NpbmNlTG'
+    'FzdDVzT3V0YWdlEmcKInBpbmdfc2Vjb25kc19zaW5jZV9sYXN0XzYwc19vdXRhZ2UY2wQgASgL'
+    'MhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSHXBpbmdTZWNvbmRzU2luY2VMYXN0NjBzT3'
+    'V0YWdlEmkKI3Bpbmdfc2Vjb25kc19zaW5jZV9sYXN0XzMwMHNfb3V0YWdlGNwEIAEoCzIbLmdv'
+    'b2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUh5waW5nU2Vjb25kc1NpbmNlTGFzdDMwMHNPdXRhZ2'
+    'USQgoOcGluZ19kcm9wX3JhdGUY3QQgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVS'
+    'DHBpbmdEcm9wUmF0ZRJQChZwaW5nX2Ryb3BfcmF0ZV9sYXN0XzFoGN4EIAEoCzIbLmdvb2dsZS'
+    '5wcm90b2J1Zi5GbG9hdFZhbHVlUhJwaW5nRHJvcFJhdGVMYXN0MWgSPwoMcGluZ19sYXRlbmN5'
+    'GN8EIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUgtwaW5nTGF0ZW5jeRJNChRwaW'
+    '5nX2xhdGVuY3lfbGFzdF8xaBjqBCABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIR'
+    'cGluZ0xhdGVuY3lMYXN0MWgSbgomcGluZ19kaXNoX3NlY29uZHNfc2luY2VfbGFzdF8xc19vdX'
+    'RhZ2UY4gQgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSIHBpbmdEaXNoU2Vjb25k'
+    'c1NpbmNlTGFzdDFzT3V0YWdlEm4KJnBpbmdfZGlzaF9zZWNvbmRzX3NpbmNlX2xhc3RfMnNfb3'
+    'V0YWdlGOMEIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUiBwaW5nRGlzaFNlY29u'
+    'ZHNTaW5jZUxhc3Qyc091dGFnZRJuCiZwaW5nX2Rpc2hfc2Vjb25kc19zaW5jZV9sYXN0XzVzX2'
+    '91dGFnZRjkBCABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIgcGluZ0Rpc2hTZWNv'
+    'bmRzU2luY2VMYXN0NXNPdXRhZ2UScAoncGluZ19kaXNoX3NlY29uZHNfc2luY2VfbGFzdF82MH'
+    'Nfb3V0YWdlGOUEIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUiFwaW5nRGlzaFNl'
+    'Y29uZHNTaW5jZUxhc3Q2MHNPdXRhZ2UScgoocGluZ19kaXNoX3NlY29uZHNfc2luY2VfbGFzdF'
+    '8zMDBzX291dGFnZRjmBCABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIicGluZ0Rp'
+    'c2hTZWNvbmRzU2luY2VMYXN0MzAwc091dGFnZRJLChNwaW5nX2Rpc2hfZHJvcF9yYXRlGOcEIA'
+    'EoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhBwaW5nRGlzaERyb3BSYXRlElkKG3Bp'
+    'bmdfZGlzaF9kcm9wX3JhdGVfbGFzdF8xaBjoBCABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYX'
+    'RWYWx1ZVIWcGluZ0Rpc2hEcm9wUmF0ZUxhc3QxaBJIChFwaW5nX2Rpc2hfbGF0ZW5jeRjpBCAB'
+    'KAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIPcGluZ0Rpc2hMYXRlbmN5ElYKGXBpbm'
+    'dfZGlzaF9sYXRlbmN5X2xhc3RfMWgY6wQgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFs'
+    'dWVSFXBpbmdEaXNoTGF0ZW5jeUxhc3QxaBJgCh9waW5nX3BvcF9pcHY2X2Ryb3BfcmF0ZV9sYX'
+    'N0XzFoGO0EIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhlwaW5nUG9wSXB2NkRy'
+    'b3BSYXRlTGFzdDFoEl0KHXBpbmdfcG9wX2lwdjZfbGF0ZW5jeV9sYXN0XzFoGO8EIAEoCzIbLm'
+    'dvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhhwaW5nUG9wSXB2NkxhdGVuY3lMYXN0MWgSbgol'
+    'Y2xpZW50X3NwZWVkdGVzdF9yb3V0ZXJfZG93bmxvYWRfbWJwcxi8BSABKAsyGy5nb29nbGUucH'
+    'JvdG9idWYuRmxvYXRWYWx1ZVIhY2xpZW50U3BlZWR0ZXN0Um91dGVyRG93bmxvYWRNYnBzEpMB'
+    'CjhjbGllbnRfc3BlZWR0ZXN0X3JvdXRlcl9kb3dubG9hZF90b3RhbF9ieXRlc190cmFuc2Zlcn'
+    'JlZBjJBSABKAsyHC5nb29nbGUucHJvdG9idWYuVUludDY0VmFsdWVSMmNsaWVudFNwZWVkdGVz'
+    'dFJvdXRlckRvd25sb2FkVG90YWxCeXRlc1RyYW5zZmVycmVkEpwBCj1jbGllbnRfc3BlZWR0ZX'
+    'N0X3JvdXRlcl9kb3dubG9hZF9ieXRlc190cmFuc2ZlcnJlZF9kdXJhdGlvbl9zGMoFIAEoCzIc'
+    'Lmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVI2Y2xpZW50U3BlZWR0ZXN0Um91dGVyRG93bm'
+    'xvYWRCeXRlc1RyYW5zZmVycmVkRHVyYXRpb25TEoMBCjBjbGllbnRfc3BlZWR0ZXN0X3JvdXRl'
+    'cl9kb3dubG9hZF90YXJnZXRfaXB2Nl9sb3cYywUgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbn'
+    'Q2NFZhbHVlUipjbGllbnRTcGVlZHRlc3RSb3V0ZXJEb3dubG9hZFRhcmdldElwdjZMb3cShQEK'
+    'MWNsaWVudF9zcGVlZHRlc3Rfcm91dGVyX2Rvd25sb2FkX3RhcmdldF9pcHY2X2hpZ2gYzAUgAS'
+    'gLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQ2NFZhbHVlUitjbGllbnRTcGVlZHRlc3RSb3V0ZXJE'
+    'b3dubG9hZFRhcmdldElwdjZIaWdoEmoKI2NsaWVudF9zcGVlZHRlc3Rfcm91dGVyX3VwbG9hZF'
+    '9tYnBzGL0FIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUh9jbGllbnRTcGVlZHRl'
+    'c3RSb3V0ZXJVcGxvYWRNYnBzEo8BCjZjbGllbnRfc3BlZWR0ZXN0X3JvdXRlcl91cGxvYWRfdG'
+    '90YWxfYnl0ZXNfdHJhbnNmZXJyZWQYzQUgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQ2NFZh'
+    'bHVlUjBjbGllbnRTcGVlZHRlc3RSb3V0ZXJVcGxvYWRUb3RhbEJ5dGVzVHJhbnNmZXJyZWQSmA'
+    'EKO2NsaWVudF9zcGVlZHRlc3Rfcm91dGVyX3VwbG9hZF9ieXRlc190cmFuc2ZlcnJlZF9kdXJh'
+    'dGlvbl9zGM4FIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVI0Y2xpZW50U3BlZW'
+    'R0ZXN0Um91dGVyVXBsb2FkQnl0ZXNUcmFuc2ZlcnJlZER1cmF0aW9uUxJ/Ci5jbGllbnRfc3Bl'
+    'ZWR0ZXN0X3JvdXRlcl91cGxvYWRfdGFyZ2V0X2lwdjZfbG93GM8FIAEoCzIcLmdvb2dsZS5wcm'
+    '90b2J1Zi5VSW50NjRWYWx1ZVIoY2xpZW50U3BlZWR0ZXN0Um91dGVyVXBsb2FkVGFyZ2V0SXB2'
+    'NkxvdxKBAQovY2xpZW50X3NwZWVkdGVzdF9yb3V0ZXJfdXBsb2FkX3RhcmdldF9pcHY2X2hpZ2'
+    'gY0AUgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQ2NFZhbHVlUiljbGllbnRTcGVlZHRlc3RS'
+    'b3V0ZXJVcGxvYWRUYXJnZXRJcHY2SGlnaBJdChxjbGllbnRfc3BlZWR0ZXN0X3JvdXRlcl9yc3'
+    'NpGL4FIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhljbGllbnRTcGVlZHRlc3RS'
+    'b3V0ZXJSc3NpEmoKI2NsaWVudF9zcGVlZHRlc3Rfd2lmaV9kb3dubG9hZF9tYnBzGL8FIAEoCz'
+    'IbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUh9jbGllbnRTcGVlZHRlc3RXaWZpRG93bmxv'
+    'YWRNYnBzEmYKIWNsaWVudF9zcGVlZHRlc3Rfd2lmaV91cGxvYWRfbWJwcxjABSABKAsyGy5nb2'
+    '9nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIdY2xpZW50U3BlZWR0ZXN0V2lmaVVwbG9hZE1icHMS'
+    'bgolY2xpZW50X3NwZWVkdGVzdF9jbGllbnRfZG93bmxvYWRfbWJwcxjBBSABKAsyGy5nb29nbG'
+    'UucHJvdG9idWYuRmxvYXRWYWx1ZVIhY2xpZW50U3BlZWR0ZXN0Q2xpZW50RG93bmxvYWRNYnBz'
+    'EmoKI2NsaWVudF9zcGVlZHRlc3RfY2xpZW50X3VwbG9hZF9tYnBzGMIFIAEoCzIbLmdvb2dsZS'
+    '5wcm90b2J1Zi5GbG9hdFZhbHVlUh9jbGllbnRTcGVlZHRlc3RDbGllbnRVcGxvYWRNYnBzEl0K'
+    'HGNsaWVudF9zcGVlZHRlc3RfY2xpZW50X3Jzc2kYwwUgASgLMhsuZ29vZ2xlLnByb3RvYnVmLk'
+    'Zsb2F0VmFsdWVSGWNsaWVudFNwZWVkdGVzdENsaWVudFJzc2kSYAodY2xpZW50X3NwZWVkdGVz'
+    'dF9jbGllbnRfaWZhY2UYxAUgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUhpjbG'
+    'llbnRTcGVlZHRlc3RDbGllbnRJZmFjZRJcChtjbGllbnRfc3BlZWR0ZXN0X2NsaWVudF9vdWkY'
+    'xQUgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlUhhjbGllbnRTcGVlZHRlc3RDbG'
+    'llbnRPdWkSYwofY2xpZW50X3NwZWVkdGVzdF9jbGllbnRfdHhfcmF0ZRjGBSABKAsyHC5nb29n'
+    'bGUucHJvdG9idWYuVUludDMyVmFsdWVSG2NsaWVudFNwZWVkdGVzdENsaWVudFR4UmF0ZRJjCh'
+    '9jbGllbnRfc3BlZWR0ZXN0X2NsaWVudF9yeF9yYXRlGMcFIAEoCzIcLmdvb2dsZS5wcm90b2J1'
+    'Zi5VSW50MzJWYWx1ZVIbY2xpZW50U3BlZWR0ZXN0Q2xpZW50UnhSYXRlEm8KJWNsaWVudF9zcG'
+    'VlZHRlc3RfY2xpZW50X3BsYXRmb3JtX3R5cGUYyAUgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJ'
+    'bnQzMlZhbHVlUiFjbGllbnRTcGVlZHRlc3RDbGllbnRQbGF0Zm9ybVR5cGUSZQohc3BlZWR0ZX'
+    'N0X3RjcF84X2Rvd25sb2FkX21icHNfYXZnGKAGIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9h'
+    'dFZhbHVlUhxzcGVlZHRlc3RUY3A4RG93bmxvYWRNYnBzQXZnEmUKIXNwZWVkdGVzdF90Y3BfOF'
+    '9kb3dubG9hZF9tYnBzX21heBihBiABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIc'
+    'c3BlZWR0ZXN0VGNwOERvd25sb2FkTWJwc01heBJhCh9zcGVlZHRlc3RfdGNwXzhfdXBsb2FkX2'
+    '1icHNfYXZnGKIGIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhpzcGVlZHRlc3RU'
+    'Y3A4VXBsb2FkTWJwc0F2ZxJhCh9zcGVlZHRlc3RfdGNwXzhfdXBsb2FkX21icHNfbWF4GKMGIA'
+    'EoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhpzcGVlZHRlc3RUY3A4VXBsb2FkTWJw'
+    'c01heBJnCiJzcGVlZHRlc3RfdGNwXzY0X2Rvd25sb2FkX21icHNfYXZnGKQGIAEoCzIbLmdvb2'
+    'dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUh1zcGVlZHRlc3RUY3A2NERvd25sb2FkTWJwc0F2ZxJn'
+    'CiJzcGVlZHRlc3RfdGNwXzY0X2Rvd25sb2FkX21icHNfbWF4GKUGIAEoCzIbLmdvb2dsZS5wcm'
+    '90b2J1Zi5GbG9hdFZhbHVlUh1zcGVlZHRlc3RUY3A2NERvd25sb2FkTWJwc01heBJjCiBzcGVl'
+    'ZHRlc3RfdGNwXzY0X3VwbG9hZF9tYnBzX2F2ZximBiABKAsyGy5nb29nbGUucHJvdG9idWYuRm'
+    'xvYXRWYWx1ZVIbc3BlZWR0ZXN0VGNwNjRVcGxvYWRNYnBzQXZnEmMKIHNwZWVkdGVzdF90Y3Bf'
+    'NjRfdXBsb2FkX21icHNfbWF4GKcGIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUh'
+    'tzcGVlZHRlc3RUY3A2NFVwbG9hZE1icHNNYXgSZQohc3BlZWR0ZXN0X3RjcF8xX2Rvd25sb2Fk'
+    'X21icHNfYXZnGKgGIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhxzcGVlZHRlc3'
+    'RUY3AxRG93bmxvYWRNYnBzQXZnEmUKIXNwZWVkdGVzdF90Y3BfMV9kb3dubG9hZF9tYnBzX21h'
+    'eBipBiABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIcc3BlZWR0ZXN0VGNwMURvd2'
+    '5sb2FkTWJwc01heBJhCh9zcGVlZHRlc3RfdGNwXzFfdXBsb2FkX21icHNfYXZnGKoGIAEoCzIb'
+    'Lmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhpzcGVlZHRlc3RUY3AxVXBsb2FkTWJwc0F2Zx'
+    'JhCh9zcGVlZHRlc3RfdGNwXzFfdXBsb2FkX21icHNfbWF4GKsGIAEoCzIbLmdvb2dsZS5wcm90'
+    'b2J1Zi5GbG9hdFZhbHVlUhpzcGVlZHRlc3RUY3AxVXBsb2FkTWJwc01heBJ9Ci5zcGVlZHRlc3'
+    'RfdGNwXzhfZG93bmxvYWRfbWVhbl90Y3BfY29ubmVjdF90aW1lGKwGIAEoCzIbLmdvb2dsZS5w'
+    'cm90b2J1Zi5GbG9hdFZhbHVlUidzcGVlZHRlc3RUY3A4RG93bmxvYWRNZWFuVGNwQ29ubmVjdF'
+    'RpbWUSeQosc3BlZWR0ZXN0X3RjcF84X3VwbG9hZF9tZWFuX3RjcF9jb25uZWN0X3RpbWUYrQYg'
+    'ASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSJXNwZWVkdGVzdFRjcDhVcGxvYWRNZW'
+    'FuVGNwQ29ubmVjdFRpbWUSUwonc3BlZWR0ZXN0X3RjcF84X2Rvd25sb2FkX2NmX3JheV9oZWFk'
+    'ZXJzGK4GIAMoCVIhc3BlZWR0ZXN0VGNwOERvd25sb2FkQ2ZSYXlIZWFkZXJzEk8KJXNwZWVkdG'
+    'VzdF90Y3BfOF91cGxvYWRfY2ZfcmF5X2hlYWRlcnMYrwYgAygJUh9zcGVlZHRlc3RUY3A4VXBs'
+    'b2FkQ2ZSYXlIZWFkZXJzEn0KLnNwZWVkdGVzdF90Y3BfMV9kb3dubG9hZF9tZWFuX3RjcF9jb2'
+    '5uZWN0X3RpbWUYsAYgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSJ3NwZWVkdGVz'
+    'dFRjcDFEb3dubG9hZE1lYW5UY3BDb25uZWN0VGltZRJ5CixzcGVlZHRlc3RfdGNwXzFfdXBsb2'
+    'FkX21lYW5fdGNwX2Nvbm5lY3RfdGltZRixBiABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRW'
+    'YWx1ZVIlc3BlZWR0ZXN0VGNwMVVwbG9hZE1lYW5UY3BDb25uZWN0VGltZRJTCidzcGVlZHRlc3'
+    'RfdGNwXzFfZG93bmxvYWRfY2ZfcmF5X2hlYWRlcnMYsgYgAygJUiFzcGVlZHRlc3RUY3AxRG93'
+    'bmxvYWRDZlJheUhlYWRlcnMSTwolc3BlZWR0ZXN0X3RjcF8xX3VwbG9hZF9jZl9yYXlfaGVhZG'
+    'VycxizBiADKAlSH3NwZWVkdGVzdFRjcDFVcGxvYWRDZlJheUhlYWRlcnMSPwoMZGlzaF9jZWxs'
+    'X2lkGIQHIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVIKZGlzaENlbGxJZBJPCh'
+    'Vjb25maWdfc2V0dXBfY29tcGxldGUY6AcgASgLMhouZ29vZ2xlLnByb3RvYnVmLkJvb2xWYWx1'
+    'ZVITY29uZmlnU2V0dXBDb21wbGV0ZRJJChJjb25maWdfYmFuZHNfc3BsaXQY6QcgASgLMhouZ2'
+    '9vZ2xlLnByb3RvYnVmLkJvb2xWYWx1ZVIQY29uZmlnQmFuZHNTcGxpdBJJChJjb25maWdfaXNf'
+    'cmVwZWF0ZXIY6gcgASgLMhouZ29vZ2xlLnByb3RvYnVmLkJvb2xWYWx1ZVIQY29uZmlnSXNSZX'
+    'BlYXRlchJLChNjb25maWdfb3Blbl9uZXR3b3JrGOsHIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5C'
+    'b29sVmFsdWVSEWNvbmZpZ09wZW5OZXR3b3JrEkkKEmNvbmZpZ19pc19hdmlhdGlvbhjsByABKA'
+    'syGi5nb29nbGUucHJvdG9idWYuQm9vbFZhbHVlUhBjb25maWdJc0F2aWF0aW9uEkcKEWNvbmZp'
+    'Z19zZWN1cmVfZG5zGO0HIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5Cb29sVmFsdWVSD2NvbmZpZ1'
+    'NlY3VyZURucxJACg1jb25maWdfbGVnYWN5GO4HIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5Cb29s'
+    'VmFsdWVSDGNvbmZpZ0xlZ2FjeRJBCg5jb25maWdfYXBfbW9kZRjvByABKAsyGi5nb29nbGUucH'
+    'JvdG9idWYuQm9vbFZhbHVlUgxjb25maWdBcE1vZGUSSQoSY29uZmlnX2Rmc19lbmFibGVkGPAH'
+    'IAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5Cb29sVmFsdWVSEGNvbmZpZ0Rmc0VuYWJsZWQSXwoeY2'
+    '9uZmlnX25ldHdvcmtfbmFtZV9pc19kZWZhdWx0GPEHIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5C'
+    'b29sVmFsdWVSGmNvbmZpZ05ldHdvcmtOYW1lSXNEZWZhdWx0ElYKGWNvbmZpZ19yZW1vdGVfc3'
+    'NoX2VuYWJsZWQY8gcgASgLMhouZ29vZ2xlLnByb3RvYnVmLkJvb2xWYWx1ZVIWY29uZmlnUmVt'
+    'b3RlU3NoRW5hYmxlZBJUChhjb25maWdfaXNfcmVwZWF0ZXJfd2lyZWQY8wcgASgLMhouZ29vZ2'
+    'xlLnByb3RvYnVmLkJvb2xWYWx1ZVIVY29uZmlnSXNSZXBlYXRlcldpcmVkEloKG2NvbmZpZ19p'
+    'c19yZXBlYXRlcl93aXJlbGVzcxj0ByABKAsyGi5nb29nbGUucHJvdG9idWYuQm9vbFZhbHVlUh'
+    'hjb25maWdJc1JlcGVhdGVyV2lyZWxlc3MSWgoaY29uZmlnX2Jsb2NrX3NjaGVkdWxlc19zZXQY'
+    '9QcgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUhdjb25maWdCbG9ja1NjaGVkdW'
+    'xlc1NldBJXChljb25maWdfY3VzdG9tX25hbWVzZXJ2ZXJzGPYHIAEoCzIaLmdvb2dsZS5wcm90'
+    'b2J1Zi5Cb29sVmFsdWVSF2NvbmZpZ0N1c3RvbU5hbWVzZXJ2ZXJzEmAKHmNvbmZpZ19kaXNhYm'
+    'xlX21lc2hfb25ib2FyZGluZxj3ByABKAsyGi5nb29nbGUucHJvdG9idWYuQm9vbFZhbHVlUhtj'
+    'b25maWdEaXNhYmxlTWVzaE9uYm9hcmRpbmcSUgoXY29uZmlnX3Bpbl9jb3VudHJ5X2NvZGUY+A'
+    'cgASgLMhouZ29vZ2xlLnByb3RvYnVmLkJvb2xWYWx1ZVIUY29uZmlnUGluQ291bnRyeUNvZGUS'
+    'XAocY29uZmlnX2Rpc2FibGVfdXBkYXRlX3JlYm9vdBj5ByABKAsyGi5nb29nbGUucHJvdG9idW'
+    'YuQm9vbFZhbHVlUhljb25maWdEaXNhYmxlVXBkYXRlUmVib290EmsKJGNvbmZpZ19odHRwc19j'
+    'b250ZW50X2hvc3RpbmdfZW5hYmxlZBiHCCABKAsyGi5nb29nbGUucHJvdG9idWYuQm9vbFZhbH'
+    'VlUiBjb25maWdIdHRwc0NvbnRlbnRIb3N0aW5nRW5hYmxlZBJxCidjb25maWdfb25seV9vdmVy'
+    'ZmxpZ2h0X2Jsb2NraW5nX2VuYWJsZWQYiAggASgLMhouZ29vZ2xlLnByb3RvYnVmLkJvb2xWYW'
+    'x1ZVIjY29uZmlnT25seU92ZXJmbGlnaHRCbG9ja2luZ0VuYWJsZWQSeQorY29uZmlnX29mZmxp'
+    'bmVfbmV0d29ya3NfZGlzYWJsZW1lbnRfZW5hYmxlZBiJCCABKAsyGi5nb29nbGUucHJvdG9idW'
+    'YuQm9vbFZhbHVlUidjb25maWdPZmZsaW5lTmV0d29ya3NEaXNhYmxlbWVudEVuYWJsZWQSWAoa'
+    'Y29uZmlnX2N1c3RvbV9kbnNfZGlzYWJsZWQYigggASgLMhouZ29vZ2xlLnByb3RvYnVmLkJvb2'
+    'xWYWx1ZVIXY29uZmlnQ3VzdG9tRG5zRGlzYWJsZWQSVwoZY29uZmlnX2ZvcmVmbGlnaHRfZW5h'
+    'YmxlZBiMCCABKAsyGi5nb29nbGUucHJvdG9idWYuQm9vbFZhbHVlUhdjb25maWdGb3JlZmxpZ2'
+    'h0RW5hYmxlZBJLChNjb25maWdfb3V0ZG9vcl9tb2RlGI0IIAEoCzIaLmdvb2dsZS5wcm90b2J1'
+    'Zi5Cb29sVmFsdWVSEWNvbmZpZ091dGRvb3JNb2RlEksKE2NvbmZpZ19kaXNhYmxlXzJnaHoY+g'
+    'cgASgLMhouZ29vZ2xlLnByb3RvYnVmLkJvb2xWYWx1ZVIRY29uZmlnRGlzYWJsZTJnaHoSSwoT'
+    'Y29uZmlnX2Rpc2FibGVfNWdoehj7ByABKAsyGi5nb29nbGUucHJvdG9idWYuQm9vbFZhbHVlUh'
+    'Fjb25maWdEaXNhYmxlNWdoehJUChhjb25maWdfZGlzYWJsZV81Z2h6X2hpZ2gYhQggASgLMhou'
+    'Z29vZ2xlLnByb3RvYnVmLkJvb2xWYWx1ZVIVY29uZmlnRGlzYWJsZTVnaHpIaWdoEk0KE2Nvbm'
+    'ZpZ19jaGFubmVsXzJnaHoY/AcgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUhFj'
+    'b25maWdDaGFubmVsMmdoehJNChNjb25maWdfY2hhbm5lbF81Z2h6GP0HIAEoCzIcLmdvb2dsZS'
+    '5wcm90b2J1Zi5VSW50MzJWYWx1ZVIRY29uZmlnQ2hhbm5lbDVnaHoSVgoYY29uZmlnX2NoYW5u'
+    'ZWxfNWdoel9oaWdoGP4HIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVIVY29uZm'
+    'lnQ2hhbm5lbDVnaHpIaWdoEkYKD2NvbmZpZ19uZXR3b3Jrcxj/ByABKAsyHC5nb29nbGUucHJv'
+    'dG9idWYuVUludDMyVmFsdWVSDmNvbmZpZ05ldHdvcmtzElEKFWNvbmZpZ19uZXR3b3Jrc19ndW'
+    'VzdBiACCABKAsyHC5nb29nbGUucHJvdG9idWYuVUludDMyVmFsdWVSE2NvbmZpZ05ldHdvcmtz'
+    'R3Vlc3QSUwoWY29uZmlnX25ldHdvcmtzX2hpZGRlbhiBCCABKAsyHC5nb29nbGUucHJvdG9idW'
+    'YuVUludDMyVmFsdWVSFGNvbmZpZ05ldHdvcmtzSGlkZGVuEmYKIGNvbmZpZ19uZXR3b3Jrc19j'
+    'bGllbnRfaXNvbGF0aW9uGIIIIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVIdY2'
+    '9uZmlnTmV0d29ya3NDbGllbnRJc29sYXRpb24SXAobY29uZmlnX25ldHdvcmtzX2JhbmRzX3Nw'
+    'bGl0GIMIIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVIYY29uZmlnTmV0d29ya3'
+    'NCYW5kc1NwbGl0Ek8KFGNvbmZpZ19uZXR3b3Jrc191c2VyGIsIIAEoCzIcLmdvb2dsZS5wcm90'
+    'b2J1Zi5VSW50MzJWYWx1ZVISY29uZmlnTmV0d29ya3NVc2VyEkkKEXdpZmlfcmVsb2FkX2NvdW'
+    '50GJAIIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVIPd2lmaVJlbG9hZENvdW50'
+    'Ek0KE3JhZGl1c19yZWxvYWRfY291bnQYkQggASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMl'
+    'ZhbHVlUhFyYWRpdXNSZWxvYWRDb3VudBJPChRvcGVuc3NoX3JlbG9hZF9jb3VudBiSCCABKAsy'
+    'HC5nb29nbGUucHJvdG9idWYuVUludDMyVmFsdWVSEm9wZW5zc2hSZWxvYWRDb3VudBJRChVpcH'
+    'RhYmxlc19yZWxvYWRfY291bnQYkwggASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVl'
+    'UhNpcHRhYmxlc1JlbG9hZENvdW50ElEKFWVidGFibGVzX3JlbG9hZF9jb3VudBiUCCABKAsyHC'
+    '5nb29nbGUucHJvdG9idWYuVUludDMyVmFsdWVSE2VidGFibGVzUmVsb2FkQ291bnQSXgocdHJh'
+    'ZmZpY19jb250cm9sX3JlbG9hZF9jb3VudBiVCCABKAsyHC5nb29nbGUucHJvdG9idWYuVUludD'
+    'MyVmFsdWVSGXRyYWZmaWNDb250cm9sUmVsb2FkQ291bnQSSQoRZGhjcF9yZWxvYWRfY291bnQY'
+    'lgggASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUg9kaGNwUmVsb2FkQ291bnQSTQ'
+    'oTZGhjcHY2X3JlbG9hZF9jb3VudBiXCCABKAsyHC5nb29nbGUucHJvdG9idWYuVUludDMyVmFs'
+    'dWVSEWRoY3B2NlJlbG9hZENvdW50Ek0KE3N5c3RlbV9yZWxvYWRfY291bnQYmAggASgLMhwuZ2'
+    '9vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUhFzeXN0ZW1SZWxvYWRDb3VudBJHChBkbnNfcmVs'
+    'b2FkX2NvdW50GJkIIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVIOZG5zUmVsb2'
+    'FkQ291bnQSSwoSaHR0cHNfcmVsb2FkX2NvdW50GJoIIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5V'
+    'SW50MzJWYWx1ZVIQaHR0cHNSZWxvYWRDb3VudBJaChpiYW5kX3N0ZWVyaW5nX3JlbG9hZF9jb3'
+    'VudBibCCABKAsyHC5nb29nbGUucHJvdG9idWYuVUludDMyVmFsdWVSF2JhbmRTdGVlcmluZ1Jl'
+    'bG9hZENvdW50EkAKDGNvbW1pdF9jb3VudBicCCABKAsyHC5nb29nbGUucHJvdG9idWYuVUludD'
+    'MyVmFsdWVSC2NvbW1pdENvdW50Ek8KFG5ldHdvcmtfcmVsb2FkX2NvdW50GJ0IIAEoCzIcLmdv'
+    'b2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVISbmV0d29ya1JlbG9hZENvdW50ElUKF2ZvcmVmbG'
+    'lnaHRfcmVsb2FkX2NvdW50GJ4IIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVIV'
+    'Zm9yZWZsaWdodFJlbG9hZENvdW50EmAKHndhbl90cmFmZmljX2NvbnRyb2xfY2FrZV9ieXRlcx'
+    'jNCCABKAsyGy5nb29nbGUucHJvdG9idWYuSW50NjRWYWx1ZVIad2FuVHJhZmZpY0NvbnRyb2xD'
+    'YWtlQnl0ZXMSZAogd2FuX3RyYWZmaWNfY29udHJvbF9jYWtlX3BhY2tldHMYzgggASgLMhsuZ2'
+    '9vZ2xlLnByb3RvYnVmLkludDY0VmFsdWVSHHdhblRyYWZmaWNDb250cm9sQ2FrZVBhY2tldHMS'
+    'YAoed2FuX3RyYWZmaWNfY29udHJvbF9jYWtlX2Ryb3BzGM8IIAEoCzIbLmdvb2dsZS5wcm90b2'
+    'J1Zi5JbnQ2NFZhbHVlUhp3YW5UcmFmZmljQ29udHJvbENha2VEcm9wcxJnCiJ3YW5fdHJhZmZp'
+    'Y19jb250cm9sX2Nha2VfYWNrX2Ryb3BzGNAIIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQ2NF'
+    'ZhbHVlUh13YW5UcmFmZmljQ29udHJvbENha2VBY2tEcm9wcxJKChFjb25udHJhY2tfZW50cmll'
+    'cxjMCCABKAsyHC5nb29nbGUucHJvdG9idWYuVUludDMyVmFsdWVSEGNvbm50cmFja0VudHJpZX'
+    'MSQgoOZGhjcF9zZWNzX2VxXzAY0QggASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVl'
+    'UgtkaGNwU2Vjc0VxMBJCCg5kaGNwX3NlY3NfZ3RfMBjSCCABKAsyHC5nb29nbGUucHJvdG9idW'
+    'YuVUludDMyVmFsdWVSC2RoY3BTZWNzR3QwEkQKD2RoY3Bfc2Vjc19ndF8xMBjTCCABKAsyHC5n'
+    'b29nbGUucHJvdG9idWYuVUludDMyVmFsdWVSDGRoY3BTZWNzR3QxMBJECg9kaGNwX3NlY3NfZ3'
+    'RfMzAY1AggASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUgxkaGNwU2Vjc0d0MzAS'
+    'RAoPZGhjcF9zZWNzX2d0XzYwGNUIIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZV'
+    'IMZGhjcFNlY3NHdDYwEkAKDGRuc19mb3J3YXJkcxiwCSABKAsyHC5nb29nbGUucHJvdG9idWYu'
+    'VUludDMyVmFsdWVSC2Ruc0ZvcndhcmRzEk8KFGRuc19mb3J3YXJkc19zdWNjZXNzGLEJIAEoCz'
+    'IcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVISZG5zRm9yd2FyZHNTdWNjZXNzElwKG2Ru'
+    'c19mb3J3YXJkc19zZXJ2ZXJfZmFpbHVyZRiyCSABKAsyHC5nb29nbGUucHJvdG9idWYuVUludD'
+    'MyVmFsdWVSGGRuc0ZvcndhcmRzU2VydmVyRmFpbHVyZRJjCh9kbnNfZm9yd2FyZHNfbm9fc2Vy'
+    'dmVyX3Jlc3BvbnNlGLMJIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVIbZG5zRm'
+    '9yd2FyZHNOb1NlcnZlclJlc3BvbnNlEnAKJmRuc19mb3J3YXJkc19zdWNjZXNzX29uX2RlZmF1'
+    'bHRfYmFja3VwGLQJIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVIhZG5zRm9yd2'
+    'FyZHNTdWNjZXNzT25EZWZhdWx0QmFja3VwEk8KFGRuc19mb3J3YXJkc19kcm9wcGVkGLUJIAEo'
+    'CzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVISZG5zRm9yd2FyZHNEcm9wcGVkElYKGG'
+    'Ruc19mb3J3YXJkc193aXRoX2JhY2t1cBi2CSABKAsyHC5nb29nbGUucHJvdG9idWYuVUludDMy'
+    'VmFsdWVSFWRuc0ZvcndhcmRzV2l0aEJhY2t1cA==');
 
 @$core.Deprecated('Use starlink_router_alertsDescriptor instead')
 const starlink_router_alerts$json = {
@@ -4395,6 +5465,9 @@ const starlink_router_alerts$json = {
       '6': '.SpaceX.API.Telemetron.Public.Common.TimestampInfo',
       '10': 'end'
     },
+    {'1': 'hardware', '3': 6, '4': 1, '5': 9, '10': 'hardware'},
+    {'1': 'software', '3': 7, '4': 1, '5': 9, '10': 'software'},
+    {'1': 'details', '3': 8, '4': 1, '5': 9, '10': 'details'},
   ],
 };
 
@@ -4404,7 +5477,8 @@ final $typed_data.Uint8List starlink_router_alertsDescriptor = $convert.base64De
     'IgASgJUgZzb3VyY2USFgoGYWN0aXZlGAMgASgIUgZhY3RpdmUSSAoFc3RhcnQYBCABKAsyMi5T'
     'cGFjZVguQVBJLlRlbGVtZXRyb24uUHVibGljLkNvbW1vbi5UaW1lc3RhbXBJbmZvUgVzdGFydB'
     'JECgNlbmQYBSABKAsyMi5TcGFjZVguQVBJLlRlbGVtZXRyb24uUHVibGljLkNvbW1vbi5UaW1l'
-    'c3RhbXBJbmZvUgNlbmQ=');
+    'c3RhbXBJbmZvUgNlbmQSGgoIaGFyZHdhcmUYBiABKAlSCGhhcmR3YXJlEhoKCHNvZnR3YXJlGA'
+    'cgASgJUghzb2Z0d2FyZRIYCgdkZXRhaWxzGAggASgJUgdkZXRhaWxz');
 
 @$core.Deprecated('Use starlink_router_client_speedtestsDescriptor instead')
 const starlink_router_client_speedtests$json = {
@@ -4621,6 +5695,70 @@ const starlink_router_client_speedtests$json = {
       '10': 'routerTcpStreams'
     },
     {
+      '1': 'router_download_total_bytes_transferred',
+      '3': 40,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt64Value',
+      '10': 'routerDownloadTotalBytesTransferred'
+    },
+    {
+      '1': 'router_download_bytes_transferred_duration_s',
+      '3': 41,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'routerDownloadBytesTransferredDurationS'
+    },
+    {
+      '1': 'router_download_target_ipv6_low',
+      '3': 42,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt64Value',
+      '10': 'routerDownloadTargetIpv6Low'
+    },
+    {
+      '1': 'router_download_target_ipv6_high',
+      '3': 43,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt64Value',
+      '10': 'routerDownloadTargetIpv6High'
+    },
+    {
+      '1': 'router_upload_total_bytes_transferred',
+      '3': 44,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt64Value',
+      '10': 'routerUploadTotalBytesTransferred'
+    },
+    {
+      '1': 'router_upload_bytes_transferred_duration_s',
+      '3': 45,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'routerUploadBytesTransferredDurationS'
+    },
+    {
+      '1': 'router_upload_target_ipv6_low',
+      '3': 46,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt64Value',
+      '10': 'routerUploadTargetIpv6Low'
+    },
+    {
+      '1': 'router_upload_target_ipv6_high',
+      '3': 47,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt64Value',
+      '10': 'routerUploadTargetIpv6High'
+    },
+    {
       '1': 'wifi_download_start_time',
       '3': 23,
       '4': 1,
@@ -4700,14 +5838,30 @@ final $typed_data.Uint8List starlink_router_client_speedtestsDescriptor = $conve
     'gLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSE3JvdXRlclVwbG9hZE1icHNBdmcSQQoN'
     'cm91dGVyX3RhcmdldBgdIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZVIMcm91dG'
     'VyVGFyZ2V0EkoKEnJvdXRlcl90Y3Bfc3RyZWFtcxgWIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5V'
-    'SW50MzJWYWx1ZVIQcm91dGVyVGNwU3RyZWFtcxJrChh3aWZpX2Rvd25sb2FkX3N0YXJ0X3RpbW'
-    'UYFyABKAsyMi5TcGFjZVguQVBJLlRlbGVtZXRyb24uUHVibGljLkNvbW1vbi5UaW1lc3RhbXBJ'
-    'bmZvUhV3aWZpRG93bmxvYWRTdGFydFRpbWUSZwoWd2lmaV91cGxvYWRfc3RhcnRfdGltZRgYIA'
-    'EoCzIyLlNwYWNlWC5BUEkuVGVsZW1ldHJvbi5QdWJsaWMuQ29tbW9uLlRpbWVzdGFtcEluZm9S'
-    'E3dpZmlVcGxvYWRTdGFydFRpbWUSUAoWd2lmaV9kb3dubG9hZF9tYnBzX2F2ZxgZIAEoCzIbLm'
-    'dvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhN3aWZpRG93bmxvYWRNYnBzQXZnEkwKFHdpZmlf'
-    'dXBsb2FkX21icHNfYXZnGBogASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSEXdpZm'
-    'lVcGxvYWRNYnBzQXZnSgQIDhAPSgQIDxAQSgQIFRAW');
+    'SW50MzJWYWx1ZVIQcm91dGVyVGNwU3RyZWFtcxJyCidyb3V0ZXJfZG93bmxvYWRfdG90YWxfYn'
+    'l0ZXNfdHJhbnNmZXJyZWQYKCABKAsyHC5nb29nbGUucHJvdG9idWYuVUludDY0VmFsdWVSI3Jv'
+    'dXRlckRvd25sb2FkVG90YWxCeXRlc1RyYW5zZmVycmVkEnsKLHJvdXRlcl9kb3dubG9hZF9ieX'
+    'Rlc190cmFuc2ZlcnJlZF9kdXJhdGlvbl9zGCkgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQz'
+    'MlZhbHVlUidyb3V0ZXJEb3dubG9hZEJ5dGVzVHJhbnNmZXJyZWREdXJhdGlvblMSYgofcm91dG'
+    'VyX2Rvd25sb2FkX3RhcmdldF9pcHY2X2xvdxgqIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50'
+    'NjRWYWx1ZVIbcm91dGVyRG93bmxvYWRUYXJnZXRJcHY2TG93EmQKIHJvdXRlcl9kb3dubG9hZF'
+    '90YXJnZXRfaXB2Nl9oaWdoGCsgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQ2NFZhbHVlUhxy'
+    'b3V0ZXJEb3dubG9hZFRhcmdldElwdjZIaWdoEm4KJXJvdXRlcl91cGxvYWRfdG90YWxfYnl0ZX'
+    'NfdHJhbnNmZXJyZWQYLCABKAsyHC5nb29nbGUucHJvdG9idWYuVUludDY0VmFsdWVSIXJvdXRl'
+    'clVwbG9hZFRvdGFsQnl0ZXNUcmFuc2ZlcnJlZBJ3Cipyb3V0ZXJfdXBsb2FkX2J5dGVzX3RyYW'
+    '5zZmVycmVkX2R1cmF0aW9uX3MYLSABKAsyHC5nb29nbGUucHJvdG9idWYuVUludDMyVmFsdWVS'
+    'JXJvdXRlclVwbG9hZEJ5dGVzVHJhbnNmZXJyZWREdXJhdGlvblMSXgodcm91dGVyX3VwbG9hZF'
+    '90YXJnZXRfaXB2Nl9sb3cYLiABKAsyHC5nb29nbGUucHJvdG9idWYuVUludDY0VmFsdWVSGXJv'
+    'dXRlclVwbG9hZFRhcmdldElwdjZMb3cSYAoecm91dGVyX3VwbG9hZF90YXJnZXRfaXB2Nl9oaW'
+    'doGC8gASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQ2NFZhbHVlUhpyb3V0ZXJVcGxvYWRUYXJn'
+    'ZXRJcHY2SGlnaBJrChh3aWZpX2Rvd25sb2FkX3N0YXJ0X3RpbWUYFyABKAsyMi5TcGFjZVguQV'
+    'BJLlRlbGVtZXRyb24uUHVibGljLkNvbW1vbi5UaW1lc3RhbXBJbmZvUhV3aWZpRG93bmxvYWRT'
+    'dGFydFRpbWUSZwoWd2lmaV91cGxvYWRfc3RhcnRfdGltZRgYIAEoCzIyLlNwYWNlWC5BUEkuVG'
+    'VsZW1ldHJvbi5QdWJsaWMuQ29tbW9uLlRpbWVzdGFtcEluZm9SE3dpZmlVcGxvYWRTdGFydFRp'
+    'bWUSUAoWd2lmaV9kb3dubG9hZF9tYnBzX2F2ZxgZIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG'
+    '9hdFZhbHVlUhN3aWZpRG93bmxvYWRNYnBzQXZnEkwKFHdpZmlfdXBsb2FkX21icHNfYXZnGBog'
+    'ASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSEXdpZmlVcGxvYWRNYnBzQXZnSgQIDh'
+    'APSgQIDxAQSgQIFRAW');
 
 @$core.Deprecated('Use starlinkRouterClientsDescriptor instead')
 const StarlinkRouterClients$json = {
@@ -4731,6 +5885,14 @@ const StarlinkRouterClients$json = {
       '10': 'clientTelemIndex'
     },
     {
+      '1': 'using_mlo',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'usingMlo'
+    },
+    {
       '1': 'router_hw',
       '3': 119,
       '4': 1,
@@ -4745,6 +5907,14 @@ const StarlinkRouterClients$json = {
       '5': 11,
       '6': '.google.protobuf.StringValue',
       '10': 'routerSw'
+    },
+    {
+      '1': 'router_uptime_s',
+      '3': 137,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'routerUptimeS'
     },
     {
       '1': 'client_router_id',
@@ -4883,6 +6053,150 @@ const StarlinkRouterClients$json = {
       '10': 'rxPhyMode'
     },
     {
+      '1': 'link_2ghz_radio_channel',
+      '3': 160,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'link2ghzRadioChannel'
+    },
+    {
+      '1': 'link_2ghz_rssi',
+      '3': 161,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'link2ghzRssi'
+    },
+    {
+      '1': 'link_2ghz_rx_mcs',
+      '3': 162,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'link2ghzRxMcs'
+    },
+    {
+      '1': 'link_2ghz_tx_mcs',
+      '3': 163,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'link2ghzTxMcs'
+    },
+    {
+      '1': 'link_2ghz_rx_rate',
+      '3': 164,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'link2ghzRxRate'
+    },
+    {
+      '1': 'link_2ghz_tx_rate',
+      '3': 165,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'link2ghzTxRate'
+    },
+    {
+      '1': 'link_2ghz_rx_bandwidth',
+      '3': 166,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'link2ghzRxBandwidth'
+    },
+    {
+      '1': 'link_2ghz_rx_spatial_streams',
+      '3': 167,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'link2ghzRxSpatialStreams'
+    },
+    {
+      '1': 'link_2ghz_rx_phy_mode',
+      '3': 168,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'link2ghzRxPhyMode'
+    },
+    {
+      '1': 'link_5ghz_radio_channel',
+      '3': 170,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'link5ghzRadioChannel'
+    },
+    {
+      '1': 'link_5ghz_rssi',
+      '3': 171,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'link5ghzRssi'
+    },
+    {
+      '1': 'link_5ghz_rx_mcs',
+      '3': 172,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'link5ghzRxMcs'
+    },
+    {
+      '1': 'link_5ghz_tx_mcs',
+      '3': 173,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'link5ghzTxMcs'
+    },
+    {
+      '1': 'link_5ghz_rx_rate',
+      '3': 174,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'link5ghzRxRate'
+    },
+    {
+      '1': 'link_5ghz_tx_rate',
+      '3': 175,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'link5ghzTxRate'
+    },
+    {
+      '1': 'link_5ghz_rx_bandwidth',
+      '3': 176,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'link5ghzRxBandwidth'
+    },
+    {
+      '1': 'link_5ghz_rx_spatial_streams',
+      '3': 177,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'link5ghzRxSpatialStreams'
+    },
+    {
+      '1': 'link_5ghz_rx_phy_mode',
+      '3': 178,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'link5ghzRxPhyMode'
+    },
+    {
       '1': 'mesh_hops',
       '3': 118,
       '4': 1,
@@ -4962,7 +6276,163 @@ const StarlinkRouterClients$json = {
       '6': '.google.protobuf.BoolValue',
       '10': 'blocked'
     },
+    {
+      '1': 'throughput_limited_last_fired',
+      '3': 150,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Telemetron.Public.Common.TimestampInfo',
+      '10': 'throughputLimitedLastFired'
+    },
+    {
+      '1': 'has_dhcp_v4_lease',
+      '3': 130,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'hasDhcpV4Lease'
+    },
+    {
+      '1': 'ipv4_address',
+      '3': 131,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'ipv4Address'
+    },
+    {
+      '1': 'has_hostname',
+      '3': 132,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'hasHostname'
+    },
+    {
+      '1': 'dhcp_v4_lease_is_active',
+      '3': 133,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'dhcpV4LeaseIsActive'
+    },
+    {
+      '1': 'dhcp_v4_lease_was_renewed',
+      '3': 134,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'dhcpV4LeaseWasRenewed'
+    },
+    {
+      '1': 'seconds_until_dhcp_v4_lease_expires',
+      '3': 135,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'secondsUntilDhcpV4LeaseExpires'
+    },
+    {
+      '1': 'dissociations_under_10s',
+      '3': 138,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'dissociationsUnder10s'
+    },
+    {
+      '1': 'dissociations_under_30s',
+      '3': 139,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'dissociationsUnder30s'
+    },
+    {
+      '1': 'dissociations_under_60s',
+      '3': 140,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'dissociationsUnder60s'
+    },
+    {
+      '1': 'dissociations_under_120s',
+      '3': 141,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'dissociationsUnder120s'
+    },
+    {
+      '1': 'seconds_to_conn_tcp_ipv4',
+      '3': 142,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'secondsToConnTcpIpv4'
+    },
+    {
+      '1': 'seconds_to_conn_tcp_ipv6',
+      '3': 143,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'secondsToConnTcpIpv6'
+    },
+    {
+      '1': 'seconds_to_conn_udp_ipv4',
+      '3': 144,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'secondsToConnUdpIpv4'
+    },
+    {
+      '1': 'seconds_to_conn_udp_ipv6',
+      '3': 145,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'secondsToConnUdpIpv6'
+    },
+    {
+      '1': 'flows_tcp_ipv4',
+      '3': 146,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'flowsTcpIpv4'
+    },
+    {
+      '1': 'flows_tcp_ipv6',
+      '3': 147,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'flowsTcpIpv6'
+    },
+    {
+      '1': 'flows_udp_ipv4',
+      '3': 148,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'flowsUdpIpv4'
+    },
+    {
+      '1': 'flows_udp_ipv6',
+      '3': 149,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'flowsUdpIpv6'
+    },
   ],
+  '9': [
+    {'1': 136, '2': 137},
+  ],
+  '10': ['authorized'],
 };
 
 /// Descriptor for `StarlinkRouterClients`. Decode as a `google.protobuf.DescriptorProto`.
@@ -4970,41 +6440,343 @@ final $typed_data.Uint8List starlinkRouterClientsDescriptor = $convert.base64Dec
     'ChVTdGFybGlua1JvdXRlckNsaWVudHMSGwoJcm91dGVyX2lkGAEgASgJUghyb3V0ZXJJZBJQCg'
     'l0aW1lc3RhbXAYAiABKAsyMi5TcGFjZVguQVBJLlRlbGVtZXRyb24uUHVibGljLkNvbW1vbi5U'
     'aW1lc3RhbXBJbmZvUgl0aW1lc3RhbXASGwoJY2xpZW50X2lkGAMgASgNUghjbGllbnRJZBIsCh'
-    'JjbGllbnRfdGVsZW1faW5kZXgYBCABKAlSEGNsaWVudFRlbGVtSW5kZXgSOQoJcm91dGVyX2h3'
-    'GHcgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlUghyb3V0ZXJIdxI5Cglyb3V0ZX'
-    'Jfc3cYeCABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWVSCHJvdXRlclN3EkYKEGNs'
-    'aWVudF9yb3V0ZXJfaWQYeSABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWVSDmNsaW'
-    'VudFJvdXRlcklkEjkKCWNsaWVudF9odxh6IAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdW'
-    'YWx1ZVIIY2xpZW50SHcSOQoJY2xpZW50X3N3GHsgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cm'
-    'luZ1ZhbHVlUghjbGllbnRTdxIuCgNvdWkYZSABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5n'
-    'VmFsdWVSA291aRI9Cgt1cHN0cmVhbV9pZBhmIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbm'
-    'dWYWx1ZVIKdXBzdHJlYW1JZBI7Cgtpc19yZXBlYXRlchhnIAEoCzIaLmdvb2dsZS5wcm90b2J1'
-    'Zi5Cb29sVmFsdWVSCmlzUmVwZWF0ZXISPQoLY29ubmVjdGVkX3MYaCABKAsyHC5nb29nbGUucH'
-    'JvdG9idWYuVUludDMyVmFsdWVSCmNvbm5lY3RlZFMSOgoJaW50ZXJmYWNlGGkgASgLMhwuZ29v'
-    'Z2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlUglpbnRlcmZhY2USQQoNcmFkaW9fY2hhbm5lbBhqIA'
-    'EoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVIMcmFkaW9DaGFubmVsEi8KBHJzc2kY'
-    'ayABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIEcnNzaRIzCgZyeF9tY3MYbCABKA'
-    'syHC5nb29nbGUucHJvdG9idWYuVUludDMyVmFsdWVSBXJ4TWNzEjMKBnR4X21jcxhtIAEoCzIc'
-    'Lmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVIFdHhNY3MSNQoHcnhfcmF0ZRhuIAEoCzIcLm'
-    'dvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVIGcnhSYXRlEjUKB3R4X3JhdGUYbyABKAsyHC5n'
-    'b29nbGUucHJvdG9idWYuVUludDMyVmFsdWVSBnR4UmF0ZRI/CgxyeF9iYW5kd2lkdGgYcCABKA'
-    'syHC5nb29nbGUucHJvdG9idWYuVUludDMyVmFsdWVSC3J4QmFuZHdpZHRoEkoKEnJ4X3NwYXRp'
-    'YWxfc3RyZWFtcxhxIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVIQcnhTcGF0aW'
-    'FsU3RyZWFtcxI8CgtyeF9waHlfbW9kZRhyIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJW'
-    'YWx1ZVIJcnhQaHlNb2RlEjkKCW1lc2hfaG9wcxh2IAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW'
-    '50MzJWYWx1ZVIIbWVzaEhvcHMSTwoVc3BlZWR0ZXN0X3VwbG9hZF9tYnBzGHwgASgLMhsuZ29v'
-    'Z2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSE3NwZWVkdGVzdFVwbG9hZE1icHMSUwoXc3BlZWR0ZX'
-    'N0X2Rvd25sb2FkX21icHMYfSABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIVc3Bl'
-    'ZWR0ZXN0RG93bmxvYWRNYnBzEkUKEHNpdGVfc3VydmV5X3Jzc2kYfyABKAsyGy5nb29nbGUucH'
-    'JvdG9idWYuRmxvYXRWYWx1ZVIOc2l0ZVN1cnZleVJzc2kSUgoXc2l0ZV9zdXJ2ZXlfZXN0X3J4'
-    'X3JhdGUYgAEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSE3NpdGVTdXJ2ZXlFc3'
-    'RSeFJhdGUSYgoeZXN0X2NvbnRyb2xsZXJfdGhyb3VnaHB1dF9tYnBzGIEBIAEoCzIcLmdvb2ds'
-    'ZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVIbZXN0Q29udHJvbGxlclRocm91Z2hwdXRNYnBzEk8KFn'
-    'BpbmdfZHJvcF9yYXRlX2xhc3RfMWgYcyABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1'
-    'ZVIScGluZ0Ryb3BSYXRlTGFzdDFoEkwKFHBpbmdfbGF0ZW5jeV9sYXN0XzFoGHQgASgLMhsuZ2'
-    '9vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSEXBpbmdMYXRlbmN5TGFzdDFoEj0KC3N0ZWVyX3N0'
-    'YXRlGHUgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlUgpzdGVlclN0YXRlEjQKB2'
-    'Jsb2NrZWQYfiABKAsyGi5nb29nbGUucHJvdG9idWYuQm9vbFZhbHVlUgdibG9ja2Vk');
+    'JjbGllbnRfdGVsZW1faW5kZXgYBCABKAlSEGNsaWVudFRlbGVtSW5kZXgSNwoJdXNpbmdfbWxv'
+    'GAUgASgLMhouZ29vZ2xlLnByb3RvYnVmLkJvb2xWYWx1ZVIIdXNpbmdNbG8SOQoJcm91dGVyX2'
+    'h3GHcgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlUghyb3V0ZXJIdxI5Cglyb3V0'
+    'ZXJfc3cYeCABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWVSCHJvdXRlclN3EkUKD3'
+    'JvdXRlcl91cHRpbWVfcxiJASABKAsyHC5nb29nbGUucHJvdG9idWYuVUludDMyVmFsdWVSDXJv'
+    'dXRlclVwdGltZVMSRgoQY2xpZW50X3JvdXRlcl9pZBh5IAEoCzIcLmdvb2dsZS5wcm90b2J1Zi'
+    '5TdHJpbmdWYWx1ZVIOY2xpZW50Um91dGVySWQSOQoJY2xpZW50X2h3GHogASgLMhwuZ29vZ2xl'
+    'LnByb3RvYnVmLlN0cmluZ1ZhbHVlUghjbGllbnRIdxI5CgljbGllbnRfc3cYeyABKAsyHC5nb2'
+    '9nbGUucHJvdG9idWYuU3RyaW5nVmFsdWVSCGNsaWVudFN3Ei4KA291aRhlIAEoCzIcLmdvb2ds'
+    'ZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZVIDb3VpEj0KC3Vwc3RyZWFtX2lkGGYgASgLMhwuZ29vZ2'
+    'xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlUgp1cHN0cmVhbUlkEjsKC2lzX3JlcGVhdGVyGGcgASgL'
+    'MhouZ29vZ2xlLnByb3RvYnVmLkJvb2xWYWx1ZVIKaXNSZXBlYXRlchI9Cgtjb25uZWN0ZWRfcx'
+    'hoIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVIKY29ubmVjdGVkUxI6CglpbnRl'
+    'cmZhY2UYaSABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWVSCWludGVyZmFjZRJBCg'
+    '1yYWRpb19jaGFubmVsGGogASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUgxyYWRp'
+    'b0NoYW5uZWwSLwoEcnNzaRhrIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUgRyc3'
+    'NpEjMKBnJ4X21jcxhsIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVIFcnhNY3MS'
+    'MwoGdHhfbWNzGG0gASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUgV0eE1jcxI1Cg'
+    'dyeF9yYXRlGG4gASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUgZyeFJhdGUSNQoH'
+    'dHhfcmF0ZRhvIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVIGdHhSYXRlEj8KDH'
+    'J4X2JhbmR3aWR0aBhwIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVILcnhCYW5k'
+    'd2lkdGgSSgoScnhfc3BhdGlhbF9zdHJlYW1zGHEgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbn'
+    'QzMlZhbHVlUhByeFNwYXRpYWxTdHJlYW1zEjwKC3J4X3BoeV9tb2RlGHIgASgLMhwuZ29vZ2xl'
+    'LnByb3RvYnVmLlVJbnQzMlZhbHVlUglyeFBoeU1vZGUSVAoXbGlua18yZ2h6X3JhZGlvX2NoYW'
+    '5uZWwYoAEgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUhRsaW5rMmdoelJhZGlv'
+    'Q2hhbm5lbBJCCg5saW5rXzJnaHpfcnNzaRihASABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYX'
+    'RWYWx1ZVIMbGluazJnaHpSc3NpEkYKEGxpbmtfMmdoel9yeF9tY3MYogEgASgLMhwuZ29vZ2xl'
+    'LnByb3RvYnVmLlVJbnQzMlZhbHVlUg1saW5rMmdoelJ4TWNzEkYKEGxpbmtfMmdoel90eF9tY3'
+    'MYowEgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUg1saW5rMmdoelR4TWNzEkgK'
+    'EWxpbmtfMmdoel9yeF9yYXRlGKQBIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZV'
+    'IObGluazJnaHpSeFJhdGUSSAoRbGlua18yZ2h6X3R4X3JhdGUYpQEgASgLMhwuZ29vZ2xlLnBy'
+    'b3RvYnVmLlVJbnQzMlZhbHVlUg5saW5rMmdoelR4UmF0ZRJSChZsaW5rXzJnaHpfcnhfYmFuZH'
+    'dpZHRoGKYBIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVITbGluazJnaHpSeEJh'
+    'bmR3aWR0aBJdChxsaW5rXzJnaHpfcnhfc3BhdGlhbF9zdHJlYW1zGKcBIAEoCzIcLmdvb2dsZS'
+    '5wcm90b2J1Zi5VSW50MzJWYWx1ZVIYbGluazJnaHpSeFNwYXRpYWxTdHJlYW1zEk8KFWxpbmtf'
+    'Mmdoel9yeF9waHlfbW9kZRioASABKAsyHC5nb29nbGUucHJvdG9idWYuVUludDMyVmFsdWVSEW'
+    'xpbmsyZ2h6UnhQaHlNb2RlElQKF2xpbmtfNWdoel9yYWRpb19jaGFubmVsGKoBIAEoCzIcLmdv'
+    'b2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVIUbGluazVnaHpSYWRpb0NoYW5uZWwSQgoObGlua1'
+    '81Z2h6X3Jzc2kYqwEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSDGxpbms1Z2h6'
+    'UnNzaRJGChBsaW5rXzVnaHpfcnhfbWNzGKwBIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50Mz'
+    'JWYWx1ZVINbGluazVnaHpSeE1jcxJGChBsaW5rXzVnaHpfdHhfbWNzGK0BIAEoCzIcLmdvb2ds'
+    'ZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVINbGluazVnaHpUeE1jcxJIChFsaW5rXzVnaHpfcnhfcm'
+    'F0ZRiuASABKAsyHC5nb29nbGUucHJvdG9idWYuVUludDMyVmFsdWVSDmxpbms1Z2h6UnhSYXRl'
+    'EkgKEWxpbmtfNWdoel90eF9yYXRlGK8BIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYW'
+    'x1ZVIObGluazVnaHpUeFJhdGUSUgoWbGlua181Z2h6X3J4X2JhbmR3aWR0aBiwASABKAsyHC5n'
+    'b29nbGUucHJvdG9idWYuVUludDMyVmFsdWVSE2xpbms1Z2h6UnhCYW5kd2lkdGgSXQocbGlua1'
+    '81Z2h6X3J4X3NwYXRpYWxfc3RyZWFtcxixASABKAsyHC5nb29nbGUucHJvdG9idWYuVUludDMy'
+    'VmFsdWVSGGxpbms1Z2h6UnhTcGF0aWFsU3RyZWFtcxJPChVsaW5rXzVnaHpfcnhfcGh5X21vZG'
+    'UYsgEgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUhFsaW5rNWdoelJ4UGh5TW9k'
+    'ZRI5CgltZXNoX2hvcHMYdiABKAsyHC5nb29nbGUucHJvdG9idWYuVUludDMyVmFsdWVSCG1lc2'
+    'hIb3BzEk8KFXNwZWVkdGVzdF91cGxvYWRfbWJwcxh8IAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5G'
+    'bG9hdFZhbHVlUhNzcGVlZHRlc3RVcGxvYWRNYnBzElMKF3NwZWVkdGVzdF9kb3dubG9hZF9tYn'
+    'BzGH0gASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSFXNwZWVkdGVzdERvd25sb2Fk'
+    'TWJwcxJFChBzaXRlX3N1cnZleV9yc3NpGH8gASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0Vm'
+    'FsdWVSDnNpdGVTdXJ2ZXlSc3NpElIKF3NpdGVfc3VydmV5X2VzdF9yeF9yYXRlGIABIAEoCzIb'
+    'Lmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhNzaXRlU3VydmV5RXN0UnhSYXRlEmIKHmVzdF'
+    '9jb250cm9sbGVyX3Rocm91Z2hwdXRfbWJwcxiBASABKAsyHC5nb29nbGUucHJvdG9idWYuVUlu'
+    'dDMyVmFsdWVSG2VzdENvbnRyb2xsZXJUaHJvdWdocHV0TWJwcxJPChZwaW5nX2Ryb3BfcmF0ZV'
+    '9sYXN0XzFoGHMgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSEnBpbmdEcm9wUmF0'
+    'ZUxhc3QxaBJMChRwaW5nX2xhdGVuY3lfbGFzdF8xaBh0IAEoCzIbLmdvb2dsZS5wcm90b2J1Zi'
+    '5GbG9hdFZhbHVlUhFwaW5nTGF0ZW5jeUxhc3QxaBI9CgtzdGVlcl9zdGF0ZRh1IAEoCzIcLmdv'
+    'b2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZVIKc3RlZXJTdGF0ZRI0CgdibG9ja2VkGH4gASgLMh'
+    'ouZ29vZ2xlLnByb3RvYnVmLkJvb2xWYWx1ZVIHYmxvY2tlZBJ2Ch10aHJvdWdocHV0X2xpbWl0'
+    'ZWRfbGFzdF9maXJlZBiWASABKAsyMi5TcGFjZVguQVBJLlRlbGVtZXRyb24uUHVibGljLkNvbW'
+    '1vbi5UaW1lc3RhbXBJbmZvUhp0aHJvdWdocHV0TGltaXRlZExhc3RGaXJlZBJGChFoYXNfZGhj'
+    'cF92NF9sZWFzZRiCASABKAsyGi5nb29nbGUucHJvdG9idWYuQm9vbFZhbHVlUg5oYXNEaGNwVj'
+    'RMZWFzZRJACgxpcHY0X2FkZHJlc3MYgwEgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1Zh'
+    'bHVlUgtpcHY0QWRkcmVzcxI+CgxoYXNfaG9zdG5hbWUYhAEgASgLMhouZ29vZ2xlLnByb3RvYn'
+    'VmLkJvb2xWYWx1ZVILaGFzSG9zdG5hbWUSUQoXZGhjcF92NF9sZWFzZV9pc19hY3RpdmUYhQEg'
+    'ASgLMhouZ29vZ2xlLnByb3RvYnVmLkJvb2xWYWx1ZVITZGhjcFY0TGVhc2VJc0FjdGl2ZRJVCh'
+    'lkaGNwX3Y0X2xlYXNlX3dhc19yZW5ld2VkGIYBIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5Cb29s'
+    'VmFsdWVSFWRoY3BWNExlYXNlV2FzUmVuZXdlZBJpCiNzZWNvbmRzX3VudGlsX2RoY3BfdjRfbG'
+    'Vhc2VfZXhwaXJlcxiHASABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIec2Vjb25k'
+    'c1VudGlsRGhjcFY0TGVhc2VFeHBpcmVzElUKF2Rpc3NvY2lhdGlvbnNfdW5kZXJfMTBzGIoBIA'
+    'EoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVIVZGlzc29jaWF0aW9uc1VuZGVyMTBz'
+    'ElUKF2Rpc3NvY2lhdGlvbnNfdW5kZXJfMzBzGIsBIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW'
+    '50MzJWYWx1ZVIVZGlzc29jaWF0aW9uc1VuZGVyMzBzElUKF2Rpc3NvY2lhdGlvbnNfdW5kZXJf'
+    'NjBzGIwBIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVIVZGlzc29jaWF0aW9uc1'
+    'VuZGVyNjBzElcKGGRpc3NvY2lhdGlvbnNfdW5kZXJfMTIwcxiNASABKAsyHC5nb29nbGUucHJv'
+    'dG9idWYuVUludDMyVmFsdWVSFmRpc3NvY2lhdGlvbnNVbmRlcjEyMHMSVAoYc2Vjb25kc190b1'
+    '9jb25uX3RjcF9pcHY0GI4BIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhRzZWNv'
+    'bmRzVG9Db25uVGNwSXB2NBJUChhzZWNvbmRzX3RvX2Nvbm5fdGNwX2lwdjYYjwEgASgLMhsuZ2'
+    '9vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSFHNlY29uZHNUb0Nvbm5UY3BJcHY2ElQKGHNlY29u'
+    'ZHNfdG9fY29ubl91ZHBfaXB2NBiQASABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZV'
+    'IUc2Vjb25kc1RvQ29ublVkcElwdjQSVAoYc2Vjb25kc190b19jb25uX3VkcF9pcHY2GJEBIAEo'
+    'CzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhRzZWNvbmRzVG9Db25uVWRwSXB2NhJDCg'
+    '5mbG93c190Y3BfaXB2NBiSASABKAsyHC5nb29nbGUucHJvdG9idWYuVUludDMyVmFsdWVSDGZs'
+    'b3dzVGNwSXB2NBJDCg5mbG93c190Y3BfaXB2NhiTASABKAsyHC5nb29nbGUucHJvdG9idWYuVU'
+    'ludDMyVmFsdWVSDGZsb3dzVGNwSXB2NhJDCg5mbG93c191ZHBfaXB2NBiUASABKAsyHC5nb29n'
+    'bGUucHJvdG9idWYuVUludDMyVmFsdWVSDGZsb3dzVWRwSXB2NBJDCg5mbG93c191ZHBfaXB2Nh'
+    'iVASABKAsyHC5nb29nbGUucHJvdG9idWYuVUludDMyVmFsdWVSDGZsb3dzVWRwSXB2NkoGCIgB'
+    'EIkBUgphdXRob3JpemVk');
+
+@$core.Deprecated('Use starlinkRouterClientTesterRunDescriptor instead')
+const StarlinkRouterClientTesterRun$json = {
+  '1': 'StarlinkRouterClientTesterRun',
+  '2': [
+    {
+      '1': 'client_tester_router_id',
+      '3': 1,
+      '4': 1,
+      '5': 9,
+      '10': 'clientTesterRouterId'
+    },
+    {
+      '1': 'timestamp',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Telemetron.Public.Common.TimestampInfo',
+      '10': 'timestamp'
+    },
+    {
+      '1': 'client_iface_name',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'clientIfaceName'
+    },
+    {
+      '1': 'target_ssid',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'targetSsid'
+    },
+    {
+      '1': 'target_has_password',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.BoolValue',
+      '10': 'targetHasPassword'
+    },
+    {
+      '1': 'target_auth',
+      '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'targetAuth'
+    },
+    {
+      '1': 'target_encryption',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'targetEncryption'
+    },
+    {
+      '1': 'target_bssid',
+      '3': 8,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'targetBssid'
+    },
+    {
+      '1': 'target_irtt_server',
+      '3': 25,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'targetIrttServer'
+    },
+    {
+      '1': 'iteration',
+      '3': 9,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'iteration'
+    },
+    {
+      '1': 'error_code',
+      '3': 10,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'errorCode'
+    },
+    {
+      '1': 'seconds_to_associate',
+      '3': 11,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'secondsToAssociate'
+    },
+    {
+      '1': 'seconds_to_lease',
+      '3': 12,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'secondsToLease'
+    },
+    {
+      '1': 'seconds_to_resolve_router',
+      '3': 13,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'secondsToResolveRouter'
+    },
+    {
+      '1': 'seconds_to_resolve_internet',
+      '3': 14,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'secondsToResolveInternet'
+    },
+    {
+      '1': 'seconds_to_ping_dish',
+      '3': 15,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'secondsToPingDish'
+    },
+    {
+      '1': 'v4_irtt_test_duration_s',
+      '3': 16,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'v4IrttTestDurationS'
+    },
+    {
+      '1': 'v4_irtt_rtt_latency_min_ms',
+      '3': 17,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'v4IrttRttLatencyMinMs'
+    },
+    {
+      '1': 'v4_irtt_rtt_latency_mean_ms',
+      '3': 18,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'v4IrttRttLatencyMeanMs'
+    },
+    {
+      '1': 'v4_irtt_rtt_latency_median_ms',
+      '3': 19,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'v4IrttRttLatencyMedianMs'
+    },
+    {
+      '1': 'v4_irtt_rtt_latency_max_ms',
+      '3': 20,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'v4IrttRttLatencyMaxMs'
+    },
+    {
+      '1': 'v4_irtt_rtt_latency_std_dev_ms',
+      '3': 21,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'v4IrttRttLatencyStdDevMs'
+    },
+    {
+      '1': 'v4_irtt_pkts_sent',
+      '3': 22,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'v4IrttPktsSent'
+    },
+    {
+      '1': 'v4_irtt_pkts_recv',
+      '3': 23,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.UInt32Value',
+      '10': 'v4IrttPktsRecv'
+    },
+    {
+      '1': 'v4_irtt_loss_percent',
+      '3': 24,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.FloatValue',
+      '10': 'v4IrttLossPercent'
+    },
+  ],
+};
+
+/// Descriptor for `StarlinkRouterClientTesterRun`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List starlinkRouterClientTesterRunDescriptor = $convert.base64Decode(
+    'Ch1TdGFybGlua1JvdXRlckNsaWVudFRlc3RlclJ1bhI1ChdjbGllbnRfdGVzdGVyX3JvdXRlcl'
+    '9pZBgBIAEoCVIUY2xpZW50VGVzdGVyUm91dGVySWQSUAoJdGltZXN0YW1wGAIgASgLMjIuU3Bh'
+    'Y2VYLkFQSS5UZWxlbWV0cm9uLlB1YmxpYy5Db21tb24uVGltZXN0YW1wSW5mb1IJdGltZXN0YW'
+    '1wEkgKEWNsaWVudF9pZmFjZV9uYW1lGAMgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1Zh'
+    'bHVlUg9jbGllbnRJZmFjZU5hbWUSPQoLdGFyZ2V0X3NzaWQYBCABKAsyHC5nb29nbGUucHJvdG'
+    '9idWYuU3RyaW5nVmFsdWVSCnRhcmdldFNzaWQSSgoTdGFyZ2V0X2hhc19wYXNzd29yZBgFIAEo'
+    'CzIaLmdvb2dsZS5wcm90b2J1Zi5Cb29sVmFsdWVSEXRhcmdldEhhc1Bhc3N3b3JkEj0KC3Rhcm'
+    'dldF9hdXRoGAYgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlUgp0YXJnZXRBdXRo'
+    'EkkKEXRhcmdldF9lbmNyeXB0aW9uGAcgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbH'
+    'VlUhB0YXJnZXRFbmNyeXB0aW9uEj8KDHRhcmdldF9ic3NpZBgIIAEoCzIcLmdvb2dsZS5wcm90'
+    'b2J1Zi5TdHJpbmdWYWx1ZVILdGFyZ2V0QnNzaWQSSgoSdGFyZ2V0X2lydHRfc2VydmVyGBkgAS'
+    'gLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlUhB0YXJnZXRJcnR0U2VydmVyEjoKCWl0'
+    'ZXJhdGlvbhgJIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5VSW50MzJWYWx1ZVIJaXRlcmF0aW9uEj'
+    'sKCmVycm9yX2NvZGUYCiABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWVSCWVycm9y'
+    'Q29kZRJNChRzZWNvbmRzX3RvX2Fzc29jaWF0ZRgLIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG'
+    '9hdFZhbHVlUhJzZWNvbmRzVG9Bc3NvY2lhdGUSRQoQc2Vjb25kc190b19sZWFzZRgMIAEoCzIb'
+    'Lmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUg5zZWNvbmRzVG9MZWFzZRJWChlzZWNvbmRzX3'
+    'RvX3Jlc29sdmVfcm91dGVyGA0gASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSFnNl'
+    'Y29uZHNUb1Jlc29sdmVSb3V0ZXISWgobc2Vjb25kc190b19yZXNvbHZlX2ludGVybmV0GA4gAS'
+    'gLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWVSGHNlY29uZHNUb1Jlc29sdmVJbnRlcm5l'
+    'dBJMChRzZWNvbmRzX3RvX3BpbmdfZGlzaBgPIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdF'
+    'ZhbHVlUhFzZWNvbmRzVG9QaW5nRGlzaBJRChd2NF9pcnR0X3Rlc3RfZHVyYXRpb25fcxgQIAEo'
+    'CzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhN2NElydHRUZXN0RHVyYXRpb25TElYKGn'
+    'Y0X2lydHRfcnR0X2xhdGVuY3lfbWluX21zGBEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0'
+    'VmFsdWVSFXY0SXJ0dFJ0dExhdGVuY3lNaW5NcxJYCht2NF9pcnR0X3J0dF9sYXRlbmN5X21lYW'
+    '5fbXMYEiABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZVIWdjRJcnR0UnR0TGF0ZW5j'
+    'eU1lYW5NcxJcCh12NF9pcnR0X3J0dF9sYXRlbmN5X21lZGlhbl9tcxgTIAEoCzIbLmdvb2dsZS'
+    '5wcm90b2J1Zi5GbG9hdFZhbHVlUhh2NElydHRSdHRMYXRlbmN5TWVkaWFuTXMSVgoadjRfaXJ0'
+    'dF9ydHRfbGF0ZW5jeV9tYXhfbXMYFCABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZV'
+    'IVdjRJcnR0UnR0TGF0ZW5jeU1heE1zEl0KHnY0X2lydHRfcnR0X2xhdGVuY3lfc3RkX2Rldl9t'
+    'cxgVIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhh2NElydHRSdHRMYXRlbmN5U3'
+    'RkRGV2TXMSRwoRdjRfaXJ0dF9wa3RzX3NlbnQYFiABKAsyHC5nb29nbGUucHJvdG9idWYuVUlu'
+    'dDMyVmFsdWVSDnY0SXJ0dFBrdHNTZW50EkcKEXY0X2lydHRfcGt0c19yZWN2GBcgASgLMhwuZ2'
+    '9vZ2xlLnByb3RvYnVmLlVJbnQzMlZhbHVlUg52NElydHRQa3RzUmVjdhJMChR2NF9pcnR0X2xv'
+    'c3NfcGVyY2VudBgYIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlUhF2NElydHRMb3'
+    'NzUGVyY2VudA==');
 
 @$core.Deprecated('Use wifiSetClientGivenNameRequestDescriptor instead')
 const WifiSetClientGivenNameRequest$json = {
@@ -5143,14 +6915,14 @@ const WifiGetFirewallResponse$json = {
   '2': [
     {'1': 'iptables', '3': 1, '4': 1, '5': 9, '10': 'iptables'},
     {'1': 'iptables_6', '3': 2, '4': 1, '5': 9, '10': 'iptables6'},
+    {'1': 'ipset', '3': 3, '4': 1, '5': 9, '10': 'ipset'},
   ],
 };
 
 /// Descriptor for `WifiGetFirewallResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List wifiGetFirewallResponseDescriptor =
-    $convert.base64Decode(
-        'ChdXaWZpR2V0RmlyZXdhbGxSZXNwb25zZRIaCghpcHRhYmxlcxgBIAEoCVIIaXB0YWJsZXMSHQ'
-        'oKaXB0YWJsZXNfNhgCIAEoCVIJaXB0YWJsZXM2');
+final $typed_data.Uint8List wifiGetFirewallResponseDescriptor = $convert.base64Decode(
+    'ChdXaWZpR2V0RmlyZXdhbGxSZXNwb25zZRIaCghpcHRhYmxlcxgBIAEoCVIIaXB0YWJsZXMSHQ'
+    'oKaXB0YWJsZXNfNhgCIAEoCVIJaXB0YWJsZXM2EhQKBWlwc2V0GAMgASgJUgVpcHNldA==');
 
 @$core.Deprecated('Use wifiTogglePoeNegotiationRequestDescriptor instead')
 const WifiTogglePoeNegotiationRequest$json = {
@@ -6713,3 +8485,77 @@ final $typed_data.Uint8List wifiToggleUmbilicalModeRequestDescriptor =
     $convert.base64Decode(
         'Ch5XaWZpVG9nZ2xlVW1iaWxpY2FsTW9kZVJlcXVlc3QSFgoGZW5hYmxlGAEgASgIUgZlbmFibG'
         'U=');
+
+@$core.Deprecated('Use wifiUpdateResponseDescriptor instead')
+const WifiUpdateResponse$json = {
+  '1': 'WifiUpdateResponse',
+  '2': [
+    {
+      '1': 'stats',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.SpaceX.API.Device.WifiSoftwareUpdateStats',
+      '10': 'stats'
+    },
+  ],
+};
+
+/// Descriptor for `WifiUpdateResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List wifiUpdateResponseDescriptor = $convert.base64Decode(
+    'ChJXaWZpVXBkYXRlUmVzcG9uc2USQAoFc3RhdHMYASABKAsyKi5TcGFjZVguQVBJLkRldmljZS'
+    '5XaWZpU29mdHdhcmVVcGRhdGVTdGF0c1IFc3RhdHM=');
+
+@$core.Deprecated('Use wifiRunDebugNetsysRequestDescriptor instead')
+const WifiRunDebugNetsysRequest$json = {
+  '1': 'WifiRunDebugNetsysRequest',
+};
+
+/// Descriptor for `WifiRunDebugNetsysRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List wifiRunDebugNetsysRequestDescriptor =
+    $convert.base64Decode('ChlXaWZpUnVuRGVidWdOZXRzeXNSZXF1ZXN0');
+
+@$core.Deprecated('Use wifiRunDebugNetsysResponseDescriptor instead')
+const WifiRunDebugNetsysResponse$json = {
+  '1': 'WifiRunDebugNetsysResponse',
+};
+
+/// Descriptor for `WifiRunDebugNetsysResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List wifiRunDebugNetsysResponseDescriptor =
+    $convert.base64Decode('ChpXaWZpUnVuRGVidWdOZXRzeXNSZXNwb25zZQ==');
+
+@$core.Deprecated('Use wifiResetEthPhyRequestDescriptor instead')
+const WifiResetEthPhyRequest$json = {
+  '1': 'WifiResetEthPhyRequest',
+};
+
+/// Descriptor for `WifiResetEthPhyRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List wifiResetEthPhyRequestDescriptor =
+    $convert.base64Decode('ChZXaWZpUmVzZXRFdGhQaHlSZXF1ZXN0');
+
+@$core.Deprecated('Use wifiResetEthPhyResponseDescriptor instead')
+const WifiResetEthPhyResponse$json = {
+  '1': 'WifiResetEthPhyResponse',
+};
+
+/// Descriptor for `WifiResetEthPhyResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List wifiResetEthPhyResponseDescriptor =
+    $convert.base64Decode('ChdXaWZpUmVzZXRFdGhQaHlSZXNwb25zZQ==');
+
+@$core.Deprecated('Use wifiFlushHardwareNatRequestDescriptor instead')
+const WifiFlushHardwareNatRequest$json = {
+  '1': 'WifiFlushHardwareNatRequest',
+};
+
+/// Descriptor for `WifiFlushHardwareNatRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List wifiFlushHardwareNatRequestDescriptor =
+    $convert.base64Decode('ChtXaWZpRmx1c2hIYXJkd2FyZU5hdFJlcXVlc3Q=');
+
+@$core.Deprecated('Use wifiFlushHardwareNatResponseDescriptor instead')
+const WifiFlushHardwareNatResponse$json = {
+  '1': 'WifiFlushHardwareNatResponse',
+};
+
+/// Descriptor for `WifiFlushHardwareNatResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List wifiFlushHardwareNatResponseDescriptor =
+    $convert.base64Decode('ChxXaWZpRmx1c2hIYXJkd2FyZU5hdFJlc3BvbnNl');

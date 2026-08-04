@@ -29,6 +29,8 @@ class DishConfig extends $pb.GeneratedMessage {
     $core.int? powerSaveDurationMinutes,
     $core.bool? powerSaveMode,
     $core.bool? swupdateThreeDayDeferralEnabled,
+    $core.int? assetClass,
+    $core.int? swupdateRebootHour,
     $core.bool? applySnowMeltMode,
     $core.bool? applyLocationRequestMode,
     $core.bool? applyLevelDishMode,
@@ -36,6 +38,8 @@ class DishConfig extends $pb.GeneratedMessage {
     $core.bool? applyPowerSaveDurationMinutes,
     $core.bool? applyPowerSaveMode,
     $core.bool? applySwupdateThreeDayDeferralEnabled,
+    $core.bool? applyAssetClass,
+    $core.bool? applySwupdateRebootHour,
   }) {
     final result = create();
     if (snowMeltMode != null) result.snowMeltMode = snowMeltMode;
@@ -49,6 +53,9 @@ class DishConfig extends $pb.GeneratedMessage {
     if (powerSaveMode != null) result.powerSaveMode = powerSaveMode;
     if (swupdateThreeDayDeferralEnabled != null)
       result.swupdateThreeDayDeferralEnabled = swupdateThreeDayDeferralEnabled;
+    if (assetClass != null) result.assetClass = assetClass;
+    if (swupdateRebootHour != null)
+      result.swupdateRebootHour = swupdateRebootHour;
     if (applySnowMeltMode != null) result.applySnowMeltMode = applySnowMeltMode;
     if (applyLocationRequestMode != null)
       result.applyLocationRequestMode = applyLocationRequestMode;
@@ -63,6 +70,9 @@ class DishConfig extends $pb.GeneratedMessage {
     if (applySwupdateThreeDayDeferralEnabled != null)
       result.applySwupdateThreeDayDeferralEnabled =
           applySwupdateThreeDayDeferralEnabled;
+    if (applyAssetClass != null) result.applyAssetClass = applyAssetClass;
+    if (applySwupdateRebootHour != null)
+      result.applySwupdateRebootHour = applySwupdateRebootHour;
     return result;
   }
 
@@ -93,6 +103,9 @@ class DishConfig extends $pb.GeneratedMessage {
         fieldType: $pb.PbFieldType.OU3)
     ..aOB(6, _omitFieldNames ? '' : 'powerSaveMode')
     ..aOB(7, _omitFieldNames ? '' : 'swupdateThreeDayDeferralEnabled')
+    ..aI(8, _omitFieldNames ? '' : 'assetClass', fieldType: $pb.PbFieldType.OU3)
+    ..aI(9, _omitFieldNames ? '' : 'swupdateRebootHour',
+        fieldType: $pb.PbFieldType.OU3)
     ..aOB(1001, _omitFieldNames ? '' : 'applySnowMeltMode')
     ..aOB(2001, _omitFieldNames ? '' : 'applyLocationRequestMode')
     ..aOB(3001, _omitFieldNames ? '' : 'applyLevelDishMode')
@@ -100,6 +113,8 @@ class DishConfig extends $pb.GeneratedMessage {
     ..aOB(5001, _omitFieldNames ? '' : 'applyPowerSaveDurationMinutes')
     ..aOB(6001, _omitFieldNames ? '' : 'applyPowerSaveMode')
     ..aOB(7001, _omitFieldNames ? '' : 'applySwupdateThreeDayDeferralEnabled')
+    ..aOB(8001, _omitFieldNames ? '' : 'applyAssetClass')
+    ..aOB(9001, _omitFieldNames ? '' : 'applySwupdateRebootHour')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -184,69 +199,105 @@ class DishConfig extends $pb.GeneratedMessage {
   @$pb.TagNumber(7)
   void clearSwupdateThreeDayDeferralEnabled() => $_clearField(7);
 
+  @$pb.TagNumber(8)
+  $core.int get assetClass => $_getIZ(7);
+  @$pb.TagNumber(8)
+  set assetClass($core.int value) => $_setUnsignedInt32(7, value);
+  @$pb.TagNumber(8)
+  $core.bool hasAssetClass() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearAssetClass() => $_clearField(8);
+
+  @$pb.TagNumber(9)
+  $core.int get swupdateRebootHour => $_getIZ(8);
+  @$pb.TagNumber(9)
+  set swupdateRebootHour($core.int value) => $_setUnsignedInt32(8, value);
+  @$pb.TagNumber(9)
+  $core.bool hasSwupdateRebootHour() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearSwupdateRebootHour() => $_clearField(9);
+
   @$pb.TagNumber(1001)
-  $core.bool get applySnowMeltMode => $_getBF(7);
+  $core.bool get applySnowMeltMode => $_getBF(9);
   @$pb.TagNumber(1001)
-  set applySnowMeltMode($core.bool value) => $_setBool(7, value);
+  set applySnowMeltMode($core.bool value) => $_setBool(9, value);
   @$pb.TagNumber(1001)
-  $core.bool hasApplySnowMeltMode() => $_has(7);
+  $core.bool hasApplySnowMeltMode() => $_has(9);
   @$pb.TagNumber(1001)
   void clearApplySnowMeltMode() => $_clearField(1001);
 
   @$pb.TagNumber(2001)
-  $core.bool get applyLocationRequestMode => $_getBF(8);
+  $core.bool get applyLocationRequestMode => $_getBF(10);
   @$pb.TagNumber(2001)
-  set applyLocationRequestMode($core.bool value) => $_setBool(8, value);
+  set applyLocationRequestMode($core.bool value) => $_setBool(10, value);
   @$pb.TagNumber(2001)
-  $core.bool hasApplyLocationRequestMode() => $_has(8);
+  $core.bool hasApplyLocationRequestMode() => $_has(10);
   @$pb.TagNumber(2001)
   void clearApplyLocationRequestMode() => $_clearField(2001);
 
   @$pb.TagNumber(3001)
-  $core.bool get applyLevelDishMode => $_getBF(9);
+  $core.bool get applyLevelDishMode => $_getBF(11);
   @$pb.TagNumber(3001)
-  set applyLevelDishMode($core.bool value) => $_setBool(9, value);
+  set applyLevelDishMode($core.bool value) => $_setBool(11, value);
   @$pb.TagNumber(3001)
-  $core.bool hasApplyLevelDishMode() => $_has(9);
+  $core.bool hasApplyLevelDishMode() => $_has(11);
   @$pb.TagNumber(3001)
   void clearApplyLevelDishMode() => $_clearField(3001);
 
   @$pb.TagNumber(4001)
-  $core.bool get applyPowerSaveStartMinutes => $_getBF(10);
+  $core.bool get applyPowerSaveStartMinutes => $_getBF(12);
   @$pb.TagNumber(4001)
-  set applyPowerSaveStartMinutes($core.bool value) => $_setBool(10, value);
+  set applyPowerSaveStartMinutes($core.bool value) => $_setBool(12, value);
   @$pb.TagNumber(4001)
-  $core.bool hasApplyPowerSaveStartMinutes() => $_has(10);
+  $core.bool hasApplyPowerSaveStartMinutes() => $_has(12);
   @$pb.TagNumber(4001)
   void clearApplyPowerSaveStartMinutes() => $_clearField(4001);
 
   @$pb.TagNumber(5001)
-  $core.bool get applyPowerSaveDurationMinutes => $_getBF(11);
+  $core.bool get applyPowerSaveDurationMinutes => $_getBF(13);
   @$pb.TagNumber(5001)
-  set applyPowerSaveDurationMinutes($core.bool value) => $_setBool(11, value);
+  set applyPowerSaveDurationMinutes($core.bool value) => $_setBool(13, value);
   @$pb.TagNumber(5001)
-  $core.bool hasApplyPowerSaveDurationMinutes() => $_has(11);
+  $core.bool hasApplyPowerSaveDurationMinutes() => $_has(13);
   @$pb.TagNumber(5001)
   void clearApplyPowerSaveDurationMinutes() => $_clearField(5001);
 
   @$pb.TagNumber(6001)
-  $core.bool get applyPowerSaveMode => $_getBF(12);
+  $core.bool get applyPowerSaveMode => $_getBF(14);
   @$pb.TagNumber(6001)
-  set applyPowerSaveMode($core.bool value) => $_setBool(12, value);
+  set applyPowerSaveMode($core.bool value) => $_setBool(14, value);
   @$pb.TagNumber(6001)
-  $core.bool hasApplyPowerSaveMode() => $_has(12);
+  $core.bool hasApplyPowerSaveMode() => $_has(14);
   @$pb.TagNumber(6001)
   void clearApplyPowerSaveMode() => $_clearField(6001);
 
   @$pb.TagNumber(7001)
-  $core.bool get applySwupdateThreeDayDeferralEnabled => $_getBF(13);
+  $core.bool get applySwupdateThreeDayDeferralEnabled => $_getBF(15);
   @$pb.TagNumber(7001)
   set applySwupdateThreeDayDeferralEnabled($core.bool value) =>
-      $_setBool(13, value);
+      $_setBool(15, value);
   @$pb.TagNumber(7001)
-  $core.bool hasApplySwupdateThreeDayDeferralEnabled() => $_has(13);
+  $core.bool hasApplySwupdateThreeDayDeferralEnabled() => $_has(15);
   @$pb.TagNumber(7001)
   void clearApplySwupdateThreeDayDeferralEnabled() => $_clearField(7001);
+
+  @$pb.TagNumber(8001)
+  $core.bool get applyAssetClass => $_getBF(16);
+  @$pb.TagNumber(8001)
+  set applyAssetClass($core.bool value) => $_setBool(16, value);
+  @$pb.TagNumber(8001)
+  $core.bool hasApplyAssetClass() => $_has(16);
+  @$pb.TagNumber(8001)
+  void clearApplyAssetClass() => $_clearField(8001);
+
+  @$pb.TagNumber(9001)
+  $core.bool get applySwupdateRebootHour => $_getBF(17);
+  @$pb.TagNumber(9001)
+  set applySwupdateRebootHour($core.bool value) => $_setBool(17, value);
+  @$pb.TagNumber(9001)
+  $core.bool hasApplySwupdateRebootHour() => $_has(17);
+  @$pb.TagNumber(9001)
+  void clearApplySwupdateRebootHour() => $_clearField(9001);
 }
 
 const $core.bool _omitFieldNames =

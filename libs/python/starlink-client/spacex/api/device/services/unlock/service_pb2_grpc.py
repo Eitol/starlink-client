@@ -5,7 +5,7 @@ import grpc
 from spacex.api.device.services.unlock import service_pb2 as spacex_dot_api_dot_device_dot_services_dot_unlock_dot_service__pb2
 
 
-class UnlockServiceStub(object):
+class UnlockServiceStub:
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
@@ -26,7 +26,7 @@ class UnlockServiceStub(object):
                 _registered_method=True)
 
 
-class UnlockServiceServicer(object):
+class UnlockServiceServicer:
     """Missing associated documentation comment in .proto file."""
 
     def StartUnlock(self, request, context):
@@ -62,7 +62,7 @@ def add_UnlockServiceServicer_to_server(servicer, server):
 
 
  # This class is part of an EXPERIMENTAL API.
-class UnlockService(object):
+class UnlockService:
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod

@@ -8,7 +8,11 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -16,12 +20,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-enum SpaceX_API_Device_MeshAuth: SwiftProtobuf.Enum, Swift.CaseIterable {
+nonisolated enum SpaceX_API_Device_MeshAuth: SwiftProtobuf.Enum, Swift.CaseIterable {
   typealias RawValue = Int
   case unknown // = 0
   case new // = 1
@@ -63,7 +67,7 @@ enum SpaceX_API_Device_MeshAuth: SwiftProtobuf.Enum, Swift.CaseIterable {
 
 }
 
-enum SpaceX_API_Device_CakeAckFilter: SwiftProtobuf.Enum, Swift.CaseIterable {
+nonisolated enum SpaceX_API_Device_CakeAckFilter: SwiftProtobuf.Enum, Swift.CaseIterable {
   typealias RawValue = Int
   case noAckFilter // = 0
   case ackFilter // = 1
@@ -101,7 +105,7 @@ enum SpaceX_API_Device_CakeAckFilter: SwiftProtobuf.Enum, Swift.CaseIterable {
 
 }
 
-enum SpaceX_API_Device_CakePriorityQueueParameter: SwiftProtobuf.Enum, Swift.CaseIterable {
+nonisolated enum SpaceX_API_Device_CakePriorityQueueParameter: SwiftProtobuf.Enum, Swift.CaseIterable {
   typealias RawValue = Int
   case diffserv3 // = 0
   case diffserv4 // = 1
@@ -143,7 +147,7 @@ enum SpaceX_API_Device_CakePriorityQueueParameter: SwiftProtobuf.Enum, Swift.Cas
 
 }
 
-struct SpaceX_API_Device_MeshConfig: Sendable {
+nonisolated struct SpaceX_API_Device_MeshConfig: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -169,493 +173,579 @@ struct SpaceX_API_Device_MeshConfig: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_WifiConfig: @unchecked Sendable {
+nonisolated struct SpaceX_API_Device_TlsConfig: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var key: String = String()
+
+  var cert: String = String()
+
+  var clientCaCert: String = String()
+
+  /// NOTE: This field was marked as deprecated in the .proto file.
+  var serverCaCert: String = String()
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+nonisolated struct SpaceX_API_Device_HttpServer: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var domainName: String = String()
+
+  var tls: SpaceX_API_Device_TlsConfig {
+    get {_tls ?? SpaceX_API_Device_TlsConfig()}
+    set {_tls = newValue}
+  }
+  /// Returns true if `tls` has been explicitly set.
+  var hasTls: Bool {self._tls != nil}
+  /// Clears the value of `tls`. Subsequent reads from it will return its default value.
+  mutating func clearTls() {self._tls = nil}
+
+  var fileContentID: String = String()
+
+  var fileContentHash: String = String()
+
+  var accessControlAllowOrigins: [String] = []
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  fileprivate var _tls: SpaceX_API_Device_TlsConfig? = nil
+}
+
+nonisolated struct SpaceX_API_Device_CaptivePortal: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var url: String = String()
+
+  var displayInCaptiveBrowser: Bool = false
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+nonisolated struct SpaceX_API_Device_WifiConfig: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   var countryCode: String {
-    get {return _storage._countryCode}
+    get {_storage._countryCode}
     set {_uniqueStorage()._countryCode = newValue}
   }
 
   var applyCountryCode: Bool {
-    get {return _storage._applyCountryCode}
+    get {_storage._applyCountryCode}
     set {_uniqueStorage()._applyCountryCode = newValue}
   }
 
   var pinCountryCode: Bool {
-    get {return _storage._pinCountryCode}
+    get {_storage._pinCountryCode}
     set {_uniqueStorage()._pinCountryCode = newValue}
   }
 
   var applyPinCountryCode: Bool {
-    get {return _storage._applyPinCountryCode}
+    get {_storage._applyPinCountryCode}
     set {_uniqueStorage()._applyPinCountryCode = newValue}
   }
 
   var customPowerTable: Bool {
-    get {return _storage._customPowerTable}
+    get {_storage._customPowerTable}
     set {_uniqueStorage()._customPowerTable = newValue}
   }
 
   var applyCustomPowerTable: Bool {
-    get {return _storage._applyCustomPowerTable}
+    get {_storage._applyCustomPowerTable}
     set {_uniqueStorage()._applyCustomPowerTable = newValue}
   }
 
   var setupComplete: Bool {
-    get {return _storage._setupComplete}
+    get {_storage._setupComplete}
     set {_uniqueStorage()._setupComplete = newValue}
   }
 
   var applySetupComplete: Bool {
-    get {return _storage._applySetupComplete}
+    get {_storage._applySetupComplete}
     set {_uniqueStorage()._applySetupComplete = newValue}
   }
 
   var version: UInt32 {
-    get {return _storage._version}
+    get {_storage._version}
     set {_uniqueStorage()._version = newValue}
   }
 
   var macWan: String {
-    get {return _storage._macWan}
+    get {_storage._macWan}
     set {_uniqueStorage()._macWan = newValue}
   }
 
   var macLan: String {
-    get {return _storage._macLan}
+    get {_storage._macLan}
     set {_uniqueStorage()._macLan = newValue}
   }
 
   var channel2Ghz: UInt32 {
-    get {return _storage._channel2Ghz}
+    get {_storage._channel2Ghz}
     set {_uniqueStorage()._channel2Ghz = newValue}
   }
 
   var applyChannel2Ghz: Bool {
-    get {return _storage._applyChannel2Ghz}
+    get {_storage._applyChannel2Ghz}
     set {_uniqueStorage()._applyChannel2Ghz = newValue}
   }
 
   var channel5Ghz: UInt32 {
-    get {return _storage._channel5Ghz}
+    get {_storage._channel5Ghz}
     set {_uniqueStorage()._channel5Ghz = newValue}
   }
 
   var applyChannel5Ghz: Bool {
-    get {return _storage._applyChannel5Ghz}
+    get {_storage._applyChannel5Ghz}
     set {_uniqueStorage()._applyChannel5Ghz = newValue}
   }
 
   var channel5GhzHigh: UInt32 {
-    get {return _storage._channel5GhzHigh}
+    get {_storage._channel5GhzHigh}
     set {_uniqueStorage()._channel5GhzHigh = newValue}
   }
 
   var applyChannel5GhzHigh: Bool {
-    get {return _storage._applyChannel5GhzHigh}
+    get {_storage._applyChannel5GhzHigh}
     set {_uniqueStorage()._applyChannel5GhzHigh = newValue}
   }
 
   var meshConfigs: Dictionary<String,SpaceX_API_Device_MeshConfig> {
-    get {return _storage._meshConfigs}
+    get {_storage._meshConfigs}
     set {_uniqueStorage()._meshConfigs = newValue}
   }
 
   var meshConfigsUpdates: Dictionary<String,SpaceX_API_Device_MeshConfig> {
-    get {return _storage._meshConfigsUpdates}
+    get {_storage._meshConfigsUpdates}
     set {_uniqueStorage()._meshConfigsUpdates = newValue}
   }
 
   var applyMeshConfigs: Bool {
-    get {return _storage._applyMeshConfigs}
+    get {_storage._applyMeshConfigs}
     set {_uniqueStorage()._applyMeshConfigs = newValue}
   }
 
   var dynamicKeys: [SpaceX_API_Device_PublicKey] {
-    get {return _storage._dynamicKeys}
+    get {_storage._dynamicKeys}
     set {_uniqueStorage()._dynamicKeys = newValue}
   }
 
   var applyDynamicKeys: Bool {
-    get {return _storage._applyDynamicKeys}
+    get {_storage._applyDynamicKeys}
     set {_uniqueStorage()._applyDynamicKeys = newValue}
   }
 
   var isRepeater: Bool {
-    get {return _storage._isRepeater}
+    get {_storage._isRepeater}
     set {_uniqueStorage()._isRepeater = newValue}
   }
 
   var applyIsRepeater: Bool {
-    get {return _storage._applyIsRepeater}
+    get {_storage._applyIsRepeater}
     set {_uniqueStorage()._applyIsRepeater = newValue}
   }
 
   var apMode: Bool {
-    get {return _storage._apMode}
+    get {_storage._apMode}
     set {_uniqueStorage()._apMode = newValue}
   }
 
   var applyApMode: Bool {
-    get {return _storage._applyApMode}
+    get {_storage._applyApMode}
     set {_uniqueStorage()._applyApMode = newValue}
   }
 
   var isAviation: Bool {
-    get {return _storage._isAviation}
+    get {_storage._isAviation}
     set {_uniqueStorage()._isAviation = newValue}
   }
 
   var applyIsAviation: Bool {
-    get {return _storage._applyIsAviation}
+    get {_storage._applyIsAviation}
     set {_uniqueStorage()._applyIsAviation = newValue}
   }
 
   var bootCount: Int32 {
-    get {return _storage._bootCount}
+    get {_storage._bootCount}
     set {_uniqueStorage()._bootCount = newValue}
   }
 
   var boot: SpaceX_API_Device_BootInfo {
-    get {return _storage._boot ?? SpaceX_API_Device_BootInfo()}
+    get {_storage._boot ?? SpaceX_API_Device_BootInfo()}
     set {_uniqueStorage()._boot = newValue}
   }
   /// Returns true if `boot` has been explicitly set.
-  var hasBoot: Bool {return _storage._boot != nil}
+  var hasBoot: Bool {_storage._boot != nil}
   /// Clears the value of `boot`. Subsequent reads from it will return its default value.
   mutating func clearBoot() {_uniqueStorage()._boot = nil}
 
   var nameservers: [String] {
-    get {return _storage._nameservers}
+    get {_storage._nameservers}
     set {_uniqueStorage()._nameservers = newValue}
   }
 
   var applyNameservers: Bool {
-    get {return _storage._applyNameservers}
+    get {_storage._applyNameservers}
     set {_uniqueStorage()._applyNameservers = newValue}
   }
 
   var secureDns: Bool {
-    get {return _storage._secureDns}
+    get {_storage._secureDns}
     set {_uniqueStorage()._secureDns = newValue}
   }
 
   var applySecureDns: Bool {
-    get {return _storage._applySecureDns}
+    get {_storage._applySecureDns}
     set {_uniqueStorage()._applySecureDns = newValue}
   }
 
   var bypassMode: Bool {
-    get {return _storage._bypassMode}
+    get {_storage._bypassMode}
     set {_uniqueStorage()._bypassMode = newValue}
   }
 
   var applyBypassMode: Bool {
-    get {return _storage._applyBypassMode}
+    get {_storage._applyBypassMode}
     set {_uniqueStorage()._applyBypassMode = newValue}
   }
 
   var dfsEnabled: Bool {
-    get {return _storage._dfsEnabled}
+    get {_storage._dfsEnabled}
     set {_uniqueStorage()._dfsEnabled = newValue}
   }
 
   var applyDfsEnabled: Bool {
-    get {return _storage._applyDfsEnabled}
+    get {_storage._applyDfsEnabled}
     set {_uniqueStorage()._applyDfsEnabled = newValue}
   }
 
   var disableMeshOnboarding: Bool {
-    get {return _storage._disableMeshOnboarding}
+    get {_storage._disableMeshOnboarding}
     set {_uniqueStorage()._disableMeshOnboarding = newValue}
   }
 
   var applyDisableMeshOnboarding: Bool {
-    get {return _storage._applyDisableMeshOnboarding}
+    get {_storage._applyDisableMeshOnboarding}
     set {_uniqueStorage()._applyDisableMeshOnboarding = newValue}
   }
 
+  var disableWirelessMeshOnboarding: Bool {
+    get {_storage._disableWirelessMeshOnboarding}
+    set {_uniqueStorage()._disableWirelessMeshOnboarding = newValue}
+  }
+
+  var applyDisableWirelessMeshOnboarding: Bool {
+    get {_storage._applyDisableWirelessMeshOnboarding}
+    set {_uniqueStorage()._applyDisableWirelessMeshOnboarding = newValue}
+  }
+
+  var applyHTTPServer: Bool {
+    get {_storage._applyHTTPServer}
+    set {_uniqueStorage()._applyHTTPServer = newValue}
+  }
+
+  var httpServer: SpaceX_API_Device_HttpServer {
+    get {_storage._httpServer ?? SpaceX_API_Device_HttpServer()}
+    set {_uniqueStorage()._httpServer = newValue}
+  }
+  /// Returns true if `httpServer` has been explicitly set.
+  var hasHTTPServer: Bool {_storage._httpServer != nil}
+  /// Clears the value of `httpServer`. Subsequent reads from it will return its default value.
+  mutating func clearHTTPServer() {_uniqueStorage()._httpServer = nil}
+
   var networks: [SpaceX_API_Device_WifiConfig.Network] {
-    get {return _storage._networks}
+    get {_storage._networks}
     set {_uniqueStorage()._networks = newValue}
   }
 
   var applyNetworks: Bool {
-    get {return _storage._applyNetworks}
+    get {_storage._applyNetworks}
     set {_uniqueStorage()._applyNetworks = newValue}
   }
 
   var incarnation: UInt64 {
-    get {return _storage._incarnation}
+    get {_storage._incarnation}
     set {_uniqueStorage()._incarnation = newValue}
   }
 
   var wirelessMode2Ghz: SpaceX_API_Device_WifiConfig.WirelessMode {
-    get {return _storage._wirelessMode2Ghz}
+    get {_storage._wirelessMode2Ghz}
     set {_uniqueStorage()._wirelessMode2Ghz = newValue}
   }
 
   var applyWirelessMode2Ghz: Bool {
-    get {return _storage._applyWirelessMode2Ghz}
+    get {_storage._applyWirelessMode2Ghz}
     set {_uniqueStorage()._applyWirelessMode2Ghz = newValue}
   }
 
   var wirelessMode5Ghz: SpaceX_API_Device_WifiConfig.WirelessMode {
-    get {return _storage._wirelessMode5Ghz}
+    get {_storage._wirelessMode5Ghz}
     set {_uniqueStorage()._wirelessMode5Ghz = newValue}
   }
 
   var applyWirelessMode5Ghz: Bool {
-    get {return _storage._applyWirelessMode5Ghz}
+    get {_storage._applyWirelessMode5Ghz}
     set {_uniqueStorage()._applyWirelessMode5Ghz = newValue}
   }
 
   var wirelessMode5GhzHigh: SpaceX_API_Device_WifiConfig.WirelessMode {
-    get {return _storage._wirelessMode5GhzHigh}
+    get {_storage._wirelessMode5GhzHigh}
     set {_uniqueStorage()._wirelessMode5GhzHigh = newValue}
   }
 
   var applyWirelessMode5GhzHigh: Bool {
-    get {return _storage._applyWirelessMode5GhzHigh}
+    get {_storage._applyWirelessMode5GhzHigh}
     set {_uniqueStorage()._applyWirelessMode5GhzHigh = newValue}
   }
 
   var htBandwidth2Ghz: SpaceX_API_Device_WifiConfig.HTBandwidth {
-    get {return _storage._htBandwidth2Ghz}
+    get {_storage._htBandwidth2Ghz}
     set {_uniqueStorage()._htBandwidth2Ghz = newValue}
   }
 
   var applyHtBandwidth2Ghz: Bool {
-    get {return _storage._applyHtBandwidth2Ghz}
+    get {_storage._applyHtBandwidth2Ghz}
     set {_uniqueStorage()._applyHtBandwidth2Ghz = newValue}
   }
 
   var htBandwidth5Ghz: SpaceX_API_Device_WifiConfig.HTBandwidth {
-    get {return _storage._htBandwidth5Ghz}
+    get {_storage._htBandwidth5Ghz}
     set {_uniqueStorage()._htBandwidth5Ghz = newValue}
   }
 
   var applyHtBandwidth5Ghz: Bool {
-    get {return _storage._applyHtBandwidth5Ghz}
+    get {_storage._applyHtBandwidth5Ghz}
     set {_uniqueStorage()._applyHtBandwidth5Ghz = newValue}
   }
 
   var htBandwidth5GhzHigh: SpaceX_API_Device_WifiConfig.HTBandwidth {
-    get {return _storage._htBandwidth5GhzHigh}
+    get {_storage._htBandwidth5GhzHigh}
     set {_uniqueStorage()._htBandwidth5GhzHigh = newValue}
   }
 
   var applyHtBandwidth5GhzHigh: Bool {
-    get {return _storage._applyHtBandwidth5GhzHigh}
+    get {_storage._applyHtBandwidth5GhzHigh}
     set {_uniqueStorage()._applyHtBandwidth5GhzHigh = newValue}
   }
 
   var vhtBandwidth: SpaceX_API_Device_WifiConfig.VHTBandwidth {
-    get {return _storage._vhtBandwidth}
+    get {_storage._vhtBandwidth}
     set {_uniqueStorage()._vhtBandwidth = newValue}
   }
 
   var applyVhtBandwidth: Bool {
-    get {return _storage._applyVhtBandwidth}
+    get {_storage._applyVhtBandwidth}
     set {_uniqueStorage()._applyVhtBandwidth = newValue}
   }
 
   var vhtBandwidth5GhzHigh: SpaceX_API_Device_WifiConfig.VHTBandwidth {
-    get {return _storage._vhtBandwidth5GhzHigh}
+    get {_storage._vhtBandwidth5GhzHigh}
     set {_uniqueStorage()._vhtBandwidth5GhzHigh = newValue}
   }
 
   var applyVhtBandwidth5GhzHigh: Bool {
-    get {return _storage._applyVhtBandwidth5GhzHigh}
+    get {_storage._applyVhtBandwidth5GhzHigh}
     set {_uniqueStorage()._applyVhtBandwidth5GhzHigh = newValue}
   }
 
   var usePublicServices: Bool {
-    get {return _storage._usePublicServices}
+    get {_storage._usePublicServices}
     set {_uniqueStorage()._usePublicServices = newValue}
   }
 
   var applyUsePublicServices: Bool {
-    get {return _storage._applyUsePublicServices}
+    get {_storage._applyUsePublicServices}
     set {_uniqueStorage()._applyUsePublicServices = newValue}
   }
 
   var disableAutomatedSpeedtests: Bool {
-    get {return _storage._disableAutomatedSpeedtests}
+    get {_storage._disableAutomatedSpeedtests}
     set {_uniqueStorage()._disableAutomatedSpeedtests = newValue}
   }
 
   var applyDisableAutomatedSpeedtests: Bool {
-    get {return _storage._applyDisableAutomatedSpeedtests}
+    get {_storage._applyDisableAutomatedSpeedtests}
     set {_uniqueStorage()._applyDisableAutomatedSpeedtests = newValue}
   }
 
   var enableUmbilicalVlan: Bool {
-    get {return _storage._enableUmbilicalVlan}
+    get {_storage._enableUmbilicalVlan}
     set {_uniqueStorage()._enableUmbilicalVlan = newValue}
   }
 
   var applyEnableUmbilicalVlan: Bool {
-    get {return _storage._applyEnableUmbilicalVlan}
+    get {_storage._applyEnableUmbilicalVlan}
     set {_uniqueStorage()._applyEnableUmbilicalVlan = newValue}
   }
 
   /// NOTE: This field was marked as deprecated in the .proto file.
   var clientNames: [SpaceX_API_Device_ClientName] {
-    get {return _storage._clientNames}
+    get {_storage._clientNames}
     set {_uniqueStorage()._clientNames = newValue}
   }
 
   /// NOTE: This field was marked as deprecated in the .proto file.
   var applyClientNames: Bool {
-    get {return _storage._applyClientNames}
+    get {_storage._applyClientNames}
     set {_uniqueStorage()._applyClientNames = newValue}
   }
 
   var outdoorMode: Bool {
-    get {return _storage._outdoorMode}
+    get {_storage._outdoorMode}
     set {_uniqueStorage()._outdoorMode = newValue}
   }
 
   var applyOutdoorMode: Bool {
-    get {return _storage._applyOutdoorMode}
+    get {_storage._applyOutdoorMode}
     set {_uniqueStorage()._applyOutdoorMode = newValue}
   }
 
   var disable2Ghz: Bool {
-    get {return _storage._disable2Ghz}
+    get {_storage._disable2Ghz}
     set {_uniqueStorage()._disable2Ghz = newValue}
   }
 
   var applyDisable2Ghz: Bool {
-    get {return _storage._applyDisable2Ghz}
+    get {_storage._applyDisable2Ghz}
     set {_uniqueStorage()._applyDisable2Ghz = newValue}
   }
 
   var disable5Ghz: Bool {
-    get {return _storage._disable5Ghz}
+    get {_storage._disable5Ghz}
     set {_uniqueStorage()._disable5Ghz = newValue}
   }
 
   var applyDisable5Ghz: Bool {
-    get {return _storage._applyDisable5Ghz}
+    get {_storage._applyDisable5Ghz}
     set {_uniqueStorage()._applyDisable5Ghz = newValue}
   }
 
   var disable5GhzHigh: Bool {
-    get {return _storage._disable5GhzHigh}
+    get {_storage._disable5GhzHigh}
     set {_uniqueStorage()._disable5GhzHigh = newValue}
   }
 
   var applyDisable5GhzHigh: Bool {
-    get {return _storage._applyDisable5GhzHigh}
+    get {_storage._applyDisable5GhzHigh}
     set {_uniqueStorage()._applyDisable5GhzHigh = newValue}
   }
 
   var disableXMeshBackhaul: Bool {
-    get {return _storage._disableXMeshBackhaul}
+    get {_storage._disableXMeshBackhaul}
     set {_uniqueStorage()._disableXMeshBackhaul = newValue}
   }
 
   var applyDisableXMeshBackhaul: Bool {
-    get {return _storage._applyDisableXMeshBackhaul}
+    get {_storage._applyDisableXMeshBackhaul}
     set {_uniqueStorage()._applyDisableXMeshBackhaul = newValue}
   }
 
   /// NOTE: This field was marked as deprecated in the .proto file.
   var goldenBssid: String {
-    get {return _storage._goldenBssid}
+    get {_storage._goldenBssid}
     set {_uniqueStorage()._goldenBssid = newValue}
   }
 
   /// NOTE: This field was marked as deprecated in the .proto file.
   var applyGoldenBssid: Bool {
-    get {return _storage._applyGoldenBssid}
+    get {_storage._applyGoldenBssid}
     set {_uniqueStorage()._applyGoldenBssid = newValue}
   }
 
   /// NOTE: This field was marked as deprecated in the .proto file.
   var goldenIfaceType: SpaceX_API_Device_IfaceType {
-    get {return _storage._goldenIfaceType}
+    get {_storage._goldenIfaceType}
     set {_uniqueStorage()._goldenIfaceType = newValue}
   }
 
   /// NOTE: This field was marked as deprecated in the .proto file.
   var applyGoldenIfaceType: Bool {
-    get {return _storage._applyGoldenIfaceType}
+    get {_storage._applyGoldenIfaceType}
     set {_uniqueStorage()._applyGoldenIfaceType = newValue}
   }
 
   var txPowerLevel2Ghz: SpaceX_API_Device_TxPowerLevel {
-    get {return _storage._txPowerLevel2Ghz}
+    get {_storage._txPowerLevel2Ghz}
     set {_uniqueStorage()._txPowerLevel2Ghz = newValue}
   }
 
   var applyTxPowerLevel2Ghz: Bool {
-    get {return _storage._applyTxPowerLevel2Ghz}
+    get {_storage._applyTxPowerLevel2Ghz}
     set {_uniqueStorage()._applyTxPowerLevel2Ghz = newValue}
   }
 
   var txPowerLevel5Ghz: SpaceX_API_Device_TxPowerLevel {
-    get {return _storage._txPowerLevel5Ghz}
+    get {_storage._txPowerLevel5Ghz}
     set {_uniqueStorage()._txPowerLevel5Ghz = newValue}
   }
 
   var applyTxPowerLevel5Ghz: Bool {
-    get {return _storage._applyTxPowerLevel5Ghz}
+    get {_storage._applyTxPowerLevel5Ghz}
     set {_uniqueStorage()._applyTxPowerLevel5Ghz = newValue}
   }
 
   var txPowerLevel5GhzHigh: SpaceX_API_Device_TxPowerLevel {
-    get {return _storage._txPowerLevel5GhzHigh}
+    get {_storage._txPowerLevel5GhzHigh}
     set {_uniqueStorage()._txPowerLevel5GhzHigh = newValue}
   }
 
   var applyTxPowerLevel5GhzHigh: Bool {
-    get {return _storage._applyTxPowerLevel5GhzHigh}
+    get {_storage._applyTxPowerLevel5GhzHigh}
     set {_uniqueStorage()._applyTxPowerLevel5GhzHigh = newValue}
   }
 
   var disablePendingUpdateReboot: Bool {
-    get {return _storage._disablePendingUpdateReboot}
+    get {_storage._disablePendingUpdateReboot}
     set {_uniqueStorage()._disablePendingUpdateReboot = newValue}
   }
 
   var applyDisablePendingUpdateReboot: Bool {
-    get {return _storage._applyDisablePendingUpdateReboot}
+    get {_storage._applyDisablePendingUpdateReboot}
     set {_uniqueStorage()._applyDisablePendingUpdateReboot = newValue}
   }
 
   var clientConfigs: [SpaceX_API_Device_ClientConfig] {
-    get {return _storage._clientConfigs}
+    get {_storage._clientConfigs}
     set {_uniqueStorage()._clientConfigs = newValue}
   }
 
   var applyClientConfigs: Bool {
-    get {return _storage._applyClientConfigs}
+    get {_storage._applyClientConfigs}
     set {_uniqueStorage()._applyClientConfigs = newValue}
   }
 
   var disableSetWifiConfigFromController: Bool {
-    get {return _storage._disableSetWifiConfigFromController}
+    get {_storage._disableSetWifiConfigFromController}
     set {_uniqueStorage()._disableSetWifiConfigFromController = newValue}
   }
 
   var applyDisableSetWifiConfigFromController: Bool {
-    get {return _storage._applyDisableSetWifiConfigFromController}
+    get {_storage._applyDisableSetWifiConfigFromController}
     set {_uniqueStorage()._applyDisableSetWifiConfigFromController = newValue}
   }
 
   var clientKey: Data {
-    get {return _storage._clientKey}
+    get {_storage._clientKey}
     set {_uniqueStorage()._clientKey = newValue}
   }
 
   var applyClientKey: Bool {
-    get {return _storage._applyClientKey}
+    get {_storage._applyClientKey}
     set {_uniqueStorage()._applyClientKey = newValue}
   }
 
@@ -689,55 +779,141 @@ struct SpaceX_API_Device_WifiConfig: @unchecked Sendable {
   }
 
   var applyWanTrafficControl: Bool {
-    get {return _storage._applyWanTrafficControl}
+    get {_storage._applyWanTrafficControl}
     set {_uniqueStorage()._applyWanTrafficControl = newValue}
   }
 
   var wanHostDscpMark: Int32 {
-    get {return _storage._wanHostDscpMark}
+    get {_storage._wanHostDscpMark}
     set {_uniqueStorage()._wanHostDscpMark = newValue}
   }
 
   var applyWanHostDscpMark: Bool {
-    get {return _storage._applyWanHostDscpMark}
+    get {_storage._applyWanHostDscpMark}
     set {_uniqueStorage()._applyWanHostDscpMark = newValue}
   }
 
   var debugPopPings: Bool {
-    get {return _storage._debugPopPings}
+    get {_storage._debugPopPings}
     set {_uniqueStorage()._debugPopPings = newValue}
   }
 
   var applyDebugPopPings: Bool {
-    get {return _storage._applyDebugPopPings}
+    get {_storage._applyDebugPopPings}
     set {_uniqueStorage()._applyDebugPopPings = newValue}
   }
 
+  var debugPings: Bool {
+    get {_storage._debugPings}
+    set {_uniqueStorage()._debugPings = newValue}
+  }
+
+  var applyDebugPings: Bool {
+    get {_storage._applyDebugPings}
+    set {_uniqueStorage()._applyDebugPings = newValue}
+  }
+
   var clientTester: Bool {
-    get {return _storage._clientTester}
+    get {_storage._clientTester}
     set {_uniqueStorage()._clientTester = newValue}
   }
 
   var applyClientTester: Bool {
-    get {return _storage._applyClientTester}
+    get {_storage._applyClientTester}
     set {_uniqueStorage()._applyClientTester = newValue}
   }
 
+  var assetClass: UInt32 {
+    get {_storage._assetClass}
+    set {_uniqueStorage()._assetClass = newValue}
+  }
+
+  var applyAssetClass: Bool {
+    get {_storage._applyAssetClass}
+    set {_uniqueStorage()._applyAssetClass = newValue}
+  }
+
+  var disableBandSteering: Bool {
+    get {_storage._disableBandSteering}
+    set {_uniqueStorage()._disableBandSteering = newValue}
+  }
+
+  var applyDisableBandSteering: Bool {
+    get {_storage._applyDisableBandSteering}
+    set {_uniqueStorage()._applyDisableBandSteering = newValue}
+  }
+
+  var onlyOverflightCountries: [String] {
+    get {_storage._onlyOverflightCountries}
+    set {_uniqueStorage()._onlyOverflightCountries = newValue}
+  }
+
+  var applyOnlyOverflightCountries: Bool {
+    get {_storage._applyOnlyOverflightCountries}
+    set {_uniqueStorage()._applyOnlyOverflightCountries = newValue}
+  }
+
+  var onlyOverflightCountriesUsingDefault: Bool {
+    get {_storage._onlyOverflightCountriesUsingDefault}
+    set {_uniqueStorage()._onlyOverflightCountriesUsingDefault = newValue}
+  }
+
+  var unbridgedEthPorts: [SpaceX_API_Device_WifiConfig.UnbridgedEthPort] {
+    get {_storage._unbridgedEthPorts}
+    set {_uniqueStorage()._unbridgedEthPorts = newValue}
+  }
+
+  var applyUnbridgedEthPorts: Bool {
+    get {_storage._applyUnbridgedEthPorts}
+    set {_uniqueStorage()._applyUnbridgedEthPorts = newValue}
+  }
+
+  var disableSandboxFailOpen: Bool {
+    get {_storage._disableSandboxFailOpen}
+    set {_uniqueStorage()._disableSandboxFailOpen = newValue}
+  }
+
+  var applyDisableSandboxFailOpen: Bool {
+    get {_storage._applyDisableSandboxFailOpen}
+    set {_uniqueStorage()._applyDisableSandboxFailOpen = newValue}
+  }
+
   var tag: UInt32 {
-    get {return _storage._tag}
+    get {_storage._tag}
     set {_uniqueStorage()._tag = newValue}
+  }
+
+  var customDnsDisabled: Bool {
+    get {_storage._customDnsDisabled}
+    set {_uniqueStorage()._customDnsDisabled = newValue}
+  }
+
+  /// NOTE: This field was marked as deprecated in the .proto file.
+  var applyCustomDnsDisabled: Bool {
+    get {_storage._applyCustomDnsDisabled}
+    set {_uniqueStorage()._applyCustomDnsDisabled = newValue}
+  }
+
+  var foreflightEnabled: Bool {
+    get {_storage._foreflightEnabled}
+    set {_uniqueStorage()._foreflightEnabled = newValue}
+  }
+
+  var applyForeflightEnabled: Bool {
+    get {_storage._applyForeflightEnabled}
+    set {_uniqueStorage()._applyForeflightEnabled = newValue}
   }
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  enum OneOf_WanTrafficControl: Equatable, Sendable {
+  nonisolated enum OneOf_WanTrafficControl: Equatable, Sendable {
     case wanNoTrafficControl(SpaceX_API_Device_NoTrafficControl)
     case wanAckSuppression(SpaceX_API_Device_AckSuppression)
     case wanCakeRateLimit(SpaceX_API_Device_CakeRateLimit)
 
   }
 
-  enum Security: SwiftProtobuf.Enum, Swift.CaseIterable {
+  nonisolated enum Security: SwiftProtobuf.Enum, Swift.CaseIterable {
     typealias RawValue = Int
     case unknown // = 0
     case wpa2 // = 1
@@ -779,7 +955,7 @@ struct SpaceX_API_Device_WifiConfig: @unchecked Sendable {
 
   }
 
-  enum Band: SwiftProtobuf.Enum, Swift.CaseIterable {
+  nonisolated enum Band: SwiftProtobuf.Enum, Swift.CaseIterable {
     typealias RawValue = Int
     case rfUnknown // = 0
     case rf2Ghz // = 2
@@ -821,7 +997,7 @@ struct SpaceX_API_Device_WifiConfig: @unchecked Sendable {
 
   }
 
-  enum WirelessMode: SwiftProtobuf.Enum, Swift.CaseIterable {
+  nonisolated enum WirelessMode: SwiftProtobuf.Enum, Swift.CaseIterable {
     typealias RawValue = Int
     case `default` // = 0
     case aOnly // = 1
@@ -899,7 +1075,7 @@ struct SpaceX_API_Device_WifiConfig: @unchecked Sendable {
 
   }
 
-  enum HTBandwidth: SwiftProtobuf.Enum, Swift.CaseIterable {
+  nonisolated enum HTBandwidth: SwiftProtobuf.Enum, Swift.CaseIterable {
     typealias RawValue = Int
     case `default` // = 0
     case htBandwidth20Mhz // = 1
@@ -937,7 +1113,7 @@ struct SpaceX_API_Device_WifiConfig: @unchecked Sendable {
 
   }
 
-  enum VHTBandwidth: SwiftProtobuf.Enum, Swift.CaseIterable {
+  nonisolated enum VHTBandwidth: SwiftProtobuf.Enum, Swift.CaseIterable {
     typealias RawValue = Int
     case `default` // = 0
     case disabled // = 1
@@ -983,7 +1159,7 @@ struct SpaceX_API_Device_WifiConfig: @unchecked Sendable {
 
   }
 
-  struct BasicServiceSet: Sendable {
+  nonisolated struct BasicServiceSet: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -1034,6 +1210,22 @@ struct SpaceX_API_Device_WifiConfig: @unchecked Sendable {
       set {auth = .authRadius(newValue)}
     }
 
+    var authOpenEncrypted: SpaceX_API_Device_AuthOpenEncrypted {
+      get {
+        if case .authOpenEncrypted(let v)? = auth {return v}
+        return SpaceX_API_Device_AuthOpenEncrypted()
+      }
+      set {auth = .authOpenEncrypted(newValue)}
+    }
+
+    var authOnboardRadius: SpaceX_API_Device_AuthOnboardRadius {
+      get {
+        if case .authOnboardRadius(let v)? = auth {return v}
+        return SpaceX_API_Device_AuthOnboardRadius()
+      }
+      set {auth = .authOnboardRadius(newValue)}
+    }
+
     var band: SpaceX_API_Device_WifiConfig.Band = .rfUnknown
 
     var ifaceName: String = String()
@@ -1044,48 +1236,325 @@ struct SpaceX_API_Device_WifiConfig: @unchecked Sendable {
 
     var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    enum OneOf_Auth: Equatable, Sendable {
+    nonisolated enum OneOf_Auth: Equatable, Sendable {
       case authOpen(SpaceX_API_Device_AuthOpen)
       case authWpa2(SpaceX_API_Device_AuthWpa2)
       case authWpa3(SpaceX_API_Device_AuthWpa3)
       case authWpa2Wpa3(SpaceX_API_Device_AuthWpa2Wpa3)
       case authRadius(SpaceX_API_Device_AuthRadius)
+      case authOpenEncrypted(SpaceX_API_Device_AuthOpenEncrypted)
+      case authOnboardRadius(SpaceX_API_Device_AuthOnboardRadius)
 
     }
 
     init() {}
   }
 
-  struct Network: Sendable {
+  nonisolated struct DnsStaticEntry: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
 
-    var ipv4: String = String()
+    var domains: [String] = []
 
-    var dhcpv4Start: UInt32 = 0
-
-    var dhcpDisabled: Bool = false
-
-    var dhcpv4LeaseDurationS: UInt32 = 0
-
-    var domain: String = String()
-
-    var basicServiceSets: [SpaceX_API_Device_WifiConfig.BasicServiceSet] = []
-
-    var clientIsolation: Bool = false
-
-    var guest: Bool = false
-
-    var landing: String = String()
-
-    var landingPageV2: Bool = false
-
-    var `internal`: Bool = false
-
-    var vlan: UInt32 = 0
+    var addresses: [String] = []
 
     var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    init() {}
+  }
+
+  nonisolated struct DnsForwardRule: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    var domains: [String] = []
+
+    var serverAddresses: [String] = []
+
+    var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    init() {}
+  }
+
+  nonisolated struct StaticRoute: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    var subnet: String = String()
+
+    var gateway: String = String()
+
+    var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    init() {}
+  }
+
+  nonisolated struct Network: @unchecked Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    var ipv4: String {
+      get {_storage._ipv4}
+      set {_uniqueStorage()._ipv4 = newValue}
+    }
+
+    var dhcpv4Start: UInt32 {
+      get {_storage._dhcpv4Start}
+      set {_uniqueStorage()._dhcpv4Start = newValue}
+    }
+
+    var dhcpv4End: UInt32 {
+      get {_storage._dhcpv4End}
+      set {_uniqueStorage()._dhcpv4End = newValue}
+    }
+
+    var dhcpDisabled: Bool {
+      get {_storage._dhcpDisabled}
+      set {_uniqueStorage()._dhcpDisabled = newValue}
+    }
+
+    var dnsDisabled: Bool {
+      get {_storage._dnsDisabled}
+      set {_uniqueStorage()._dnsDisabled = newValue}
+    }
+
+    var dhcpv4LeaseDurationS: UInt32 {
+      get {_storage._dhcpv4LeaseDurationS}
+      set {_uniqueStorage()._dhcpv4LeaseDurationS = newValue}
+    }
+
+    var domain: String {
+      get {_storage._domain}
+      set {_uniqueStorage()._domain = newValue}
+    }
+
+    var basicServiceSets: [SpaceX_API_Device_WifiConfig.BasicServiceSet] {
+      get {_storage._basicServiceSets}
+      set {_uniqueStorage()._basicServiceSets = newValue}
+    }
+
+    var clientIsolation: Bool {
+      get {_storage._clientIsolation}
+      set {_uniqueStorage()._clientIsolation = newValue}
+    }
+
+    var guest: Bool {
+      get {_storage._guest}
+      set {_uniqueStorage()._guest = newValue}
+    }
+
+    var landing: String {
+      get {_storage._landing}
+      set {_uniqueStorage()._landing = newValue}
+    }
+
+    var landingPageV2: Bool {
+      get {_storage._landingPageV2}
+      set {_uniqueStorage()._landingPageV2 = newValue}
+    }
+
+    var sandboxEnabled: Bool {
+      get {_storage._sandboxEnabled}
+      set {_uniqueStorage()._sandboxEnabled = newValue}
+    }
+
+    var sandboxDomainAllowList: [String] {
+      get {_storage._sandboxDomainAllowList}
+      set {_uniqueStorage()._sandboxDomainAllowList = newValue}
+    }
+
+    var sandboxID: UInt32 {
+      get {_storage._sandboxID}
+      set {_uniqueStorage()._sandboxID = newValue}
+    }
+
+    var `internal`: Bool {
+      get {_storage._internal}
+      set {_uniqueStorage()._internal = newValue}
+    }
+
+    var vlan: UInt32 {
+      get {_storage._vlan}
+      set {_uniqueStorage()._vlan = newValue}
+    }
+
+    var captivePortal: SpaceX_API_Device_CaptivePortal {
+      get {_storage._captivePortal ?? SpaceX_API_Device_CaptivePortal()}
+      set {_uniqueStorage()._captivePortal = newValue}
+    }
+    /// Returns true if `captivePortal` has been explicitly set.
+    var hasCaptivePortal: Bool {_storage._captivePortal != nil}
+    /// Clears the value of `captivePortal`. Subsequent reads from it will return its default value.
+    mutating func clearCaptivePortal() {_uniqueStorage()._captivePortal = nil}
+
+    var networkGroups: UInt32 {
+      get {_storage._networkGroups}
+      set {_uniqueStorage()._networkGroups = newValue}
+    }
+
+    var dnsStaticEntries: [SpaceX_API_Device_WifiConfig.DnsStaticEntry] {
+      get {_storage._dnsStaticEntries}
+      set {_uniqueStorage()._dnsStaticEntries = newValue}
+    }
+
+    var dnsForwardRules: [SpaceX_API_Device_WifiConfig.DnsForwardRule] {
+      get {_storage._dnsForwardRules}
+      set {_uniqueStorage()._dnsForwardRules = newValue}
+    }
+
+    /// NOTE: This field was marked as deprecated in the .proto file.
+    var disableWhenOfflineOld: Bool {
+      get {_storage._disableWhenOfflineOld}
+      set {_uniqueStorage()._disableWhenOfflineOld = newValue}
+    }
+
+    var staticRoutes: [SpaceX_API_Device_WifiConfig.StaticRoute] {
+      get {_storage._staticRoutes}
+      set {_uniqueStorage()._staticRoutes = newValue}
+    }
+
+    var disableWhenOffline: Bool {
+      get {_storage._disableWhenOffline}
+      set {_uniqueStorage()._disableWhenOffline = newValue}
+    }
+
+    var geofenceAction: SpaceX_API_Device_WifiConfig.Network.GeofenceAction {
+      get {_storage._geofenceAction}
+      set {_uniqueStorage()._geofenceAction = newValue}
+    }
+
+    /// NOTE: This field was marked as deprecated in the .proto file.
+    var onboardRadiusTlsConfigOld: SpaceX_API_Device_TlsConfig {
+      get {_storage._onboardRadiusTlsConfigOld ?? SpaceX_API_Device_TlsConfig()}
+      set {_uniqueStorage()._onboardRadiusTlsConfigOld = newValue}
+    }
+    /// Returns true if `onboardRadiusTlsConfigOld` has been explicitly set.
+    var hasOnboardRadiusTlsConfigOld: Bool {_storage._onboardRadiusTlsConfigOld != nil}
+    /// Clears the value of `onboardRadiusTlsConfigOld`. Subsequent reads from it will return its default value.
+    mutating func clearOnboardRadiusTlsConfigOld() {_uniqueStorage()._onboardRadiusTlsConfigOld = nil}
+
+    var onboardRadiusTlsConfig: SpaceX_API_Device_TlsConfig {
+      get {_storage._onboardRadiusTlsConfig ?? SpaceX_API_Device_TlsConfig()}
+      set {_uniqueStorage()._onboardRadiusTlsConfig = newValue}
+    }
+    /// Returns true if `onboardRadiusTlsConfig` has been explicitly set.
+    var hasOnboardRadiusTlsConfig: Bool {_storage._onboardRadiusTlsConfig != nil}
+    /// Clears the value of `onboardRadiusTlsConfig`. Subsequent reads from it will return its default value.
+    mutating func clearOnboardRadiusTlsConfig() {_uniqueStorage()._onboardRadiusTlsConfig = nil}
+
+    var getLeaseDhcp: Bool {
+      get {_storage._getLeaseDhcp}
+      set {_uniqueStorage()._getLeaseDhcp = newValue}
+    }
+
+    var defaultRouteDisabled: Bool {
+      get {_storage._defaultRouteDisabled}
+      set {_uniqueStorage()._defaultRouteDisabled = newValue}
+    }
+
+    var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    nonisolated enum GeofenceAction: SwiftProtobuf.Enum, Swift.CaseIterable {
+      typealias RawValue = Int
+      case none // = 0
+      case disableRadiosAndBlockTraffic // = 1
+      case blockTraffic // = 2
+      case UNRECOGNIZED(Int)
+
+      init() {
+        self = .none
+      }
+
+      init?(rawValue: Int) {
+        switch rawValue {
+        case 0: self = .none
+        case 1: self = .disableRadiosAndBlockTraffic
+        case 2: self = .blockTraffic
+        default: self = .UNRECOGNIZED(rawValue)
+        }
+      }
+
+      var rawValue: Int {
+        switch self {
+        case .none: return 0
+        case .disableRadiosAndBlockTraffic: return 1
+        case .blockTraffic: return 2
+        case .UNRECOGNIZED(let i): return i
+        }
+      }
+
+      // The compiler won't synthesize support with the UNRECOGNIZED case.
+      static let allCases: [SpaceX_API_Device_WifiConfig.Network.GeofenceAction] = [
+        .none,
+        .disableRadiosAndBlockTraffic,
+        .blockTraffic,
+      ]
+
+    }
+
+    init() {}
+
+    fileprivate var _storage = _StorageClass.defaultInstance
+  }
+
+  nonisolated struct UnbridgedEthPort: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    var lanPortIndex: UInt32 = 0
+
+    var ip: String = String()
+
+    var gateway: String = String()
+
+    var staticRoutes: [SpaceX_API_Device_WifiConfig.UnbridgedEthPort.StaticRoute] = []
+
+    var wan: SpaceX_API_Device_WifiConfig.UnbridgedEthPort.OneOf_Wan? = nil
+
+    var wanNone: SpaceX_API_Device_WanNone {
+      get {
+        if case .wanNone(let v)? = wan {return v}
+        return SpaceX_API_Device_WanNone()
+      }
+      set {wan = .wanNone(newValue)}
+    }
+
+    var wanStarlinkRouterPair: SpaceX_API_Device_WanStarlinkRouterPair {
+      get {
+        if case .wanStarlinkRouterPair(let v)? = wan {return v}
+        return SpaceX_API_Device_WanStarlinkRouterPair()
+      }
+      set {wan = .wanStarlinkRouterPair(newValue)}
+    }
+
+    var bridgedNetworkGroupOverride: UInt32 = 0
+
+    var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    nonisolated enum OneOf_Wan: Equatable, Sendable {
+      case wanNone(SpaceX_API_Device_WanNone)
+      case wanStarlinkRouterPair(SpaceX_API_Device_WanStarlinkRouterPair)
+
+    }
+
+    nonisolated struct StaticRoute: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      var subnet: String = String()
+
+      var networkGroups: UInt32 = 0
+
+      var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      init() {}
+    }
 
     init() {}
   }
@@ -1095,7 +1564,29 @@ struct SpaceX_API_Device_WifiConfig: @unchecked Sendable {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-struct SpaceX_API_Device_WeeklyBlockSchedule: Sendable {
+nonisolated struct SpaceX_API_Device_WanNone: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+nonisolated struct SpaceX_API_Device_WanStarlinkRouterPair: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var clientVlanFirst: Bool = false
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+nonisolated struct SpaceX_API_Device_WeeklyBlockSchedule: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1106,7 +1597,7 @@ struct SpaceX_API_Device_WeeklyBlockSchedule: Sendable {
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  struct BlockRange: Sendable {
+  nonisolated struct BlockRange: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -1123,7 +1614,7 @@ struct SpaceX_API_Device_WeeklyBlockSchedule: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_ClientConfig: Sendable {
+nonisolated struct SpaceX_API_Device_ClientConfig: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1143,7 +1634,7 @@ struct SpaceX_API_Device_ClientConfig: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_ClientName: Sendable {
+nonisolated struct SpaceX_API_Device_ClientName: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1157,7 +1648,7 @@ struct SpaceX_API_Device_ClientName: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_AuthOpen: Sendable {
+nonisolated struct SpaceX_API_Device_AuthOpen: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1167,19 +1658,7 @@ struct SpaceX_API_Device_AuthOpen: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_AuthWpa2: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  var password: String = String()
-
-  var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  init() {}
-}
-
-struct SpaceX_API_Device_AuthWpa3: Sendable {
+nonisolated struct SpaceX_API_Device_AuthWpa2: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1191,7 +1670,7 @@ struct SpaceX_API_Device_AuthWpa3: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_AuthWpa2Wpa3: Sendable {
+nonisolated struct SpaceX_API_Device_AuthWpa3: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1203,7 +1682,29 @@ struct SpaceX_API_Device_AuthWpa2Wpa3: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_AuthRadius: Sendable {
+nonisolated struct SpaceX_API_Device_AuthWpa2Wpa3: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var password: String = String()
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+nonisolated struct SpaceX_API_Device_AuthOpenEncrypted: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+nonisolated struct SpaceX_API_Device_AuthRadius: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1224,7 +1725,7 @@ struct SpaceX_API_Device_AuthRadius: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_NoTrafficControl: Sendable {
+nonisolated struct SpaceX_API_Device_AuthOnboardRadius: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1234,11 +1735,22 @@ struct SpaceX_API_Device_NoTrafficControl: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_AckSuppression: Sendable {
+nonisolated struct SpaceX_API_Device_NoTrafficControl: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+nonisolated struct SpaceX_API_Device_AckSuppression: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// NOTE: This field was marked as deprecated in the .proto file.
   var ackMark: UInt32 = 0
 
   var htbAckQueueRate: Float = 0
@@ -1256,11 +1768,12 @@ struct SpaceX_API_Device_AckSuppression: Sendable {
   init() {}
 }
 
-struct SpaceX_API_Device_CakeRateLimit: Sendable {
+nonisolated struct SpaceX_API_Device_CakeRateLimit: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
+  /// NOTE: This field was marked as deprecated in the .proto file.
   var hostMark: UInt32 = 0
 
   var bandwidth: Float = 0
@@ -1278,46 +1791,23 @@ struct SpaceX_API_Device_CakeRateLimit: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "SpaceX.API.Device"
+fileprivate nonisolated let _protobuf_package = "SpaceX.API.Device"
 
-extension SpaceX_API_Device_MeshAuth: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "MESH_AUTH_UNKNOWN"),
-    1: .same(proto: "MESH_AUTH_NEW"),
-    2: .same(proto: "MESH_AUTH_TRUSTED"),
-    3: .same(proto: "MESH_AUTH_UNTRUSTED"),
-  ]
+nonisolated extension SpaceX_API_Device_MeshAuth: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0MESH_AUTH_UNKNOWN\0\u{1}MESH_AUTH_NEW\0\u{1}MESH_AUTH_TRUSTED\0\u{1}MESH_AUTH_UNTRUSTED\0")
 }
 
-extension SpaceX_API_Device_CakeAckFilter: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "NO_ACK_FILTER"),
-    1: .same(proto: "ACK_FILTER"),
-    2: .same(proto: "ACK_FILTER_AGGRESSIVE"),
-  ]
+nonisolated extension SpaceX_API_Device_CakeAckFilter: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0NO_ACK_FILTER\0\u{1}ACK_FILTER\0\u{1}ACK_FILTER_AGGRESSIVE\0")
 }
 
-extension SpaceX_API_Device_CakePriorityQueueParameter: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "DIFFSERV3"),
-    1: .same(proto: "DIFFSERV4"),
-    2: .same(proto: "PRECEDENCE"),
-    3: .same(proto: "BEST_EFFORT"),
-  ]
+nonisolated extension SpaceX_API_Device_CakePriorityQueueParameter: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0DIFFSERV3\0\u{1}DIFFSERV4\0\u{1}PRECEDENCE\0\u{1}BEST_EFFORT\0")
 }
 
-extension SpaceX_API_Device_MeshConfig: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_MeshConfig: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".MeshConfig"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "display_name"),
-    2: .standard(proto: "apply_display_name"),
-    3: .same(proto: "auth"),
-    4: .standard(proto: "apply_auth"),
-    5: .standard(proto: "last_connected"),
-    7: .same(proto: "incarnation"),
-    9: .standard(proto: "hardware_version"),
-    10: .standard(proto: "supports_5ghz_high"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}display_name\0\u{3}apply_display_name\0\u{1}auth\0\u{3}apply_auth\0\u{3}last_connected\0\u{2}\u{2}incarnation\0\u{4}\u{2}hardware_version\0\u{3}supports_5ghz_high\0\u{c}\u{6}\u{1}\u{c}\u{8}\u{1}")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -1380,116 +1870,143 @@ extension SpaceX_API_Device_MeshConfig: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension SpaceX_API_Device_WifiConfig: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_TlsConfig: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".TlsConfig"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}key\0\u{1}cert\0\u{3}client_ca_cert\0\u{3}server_ca_cert\0")
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.key) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.cert) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.clientCaCert) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self.serverCaCert) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.key.isEmpty {
+      try visitor.visitSingularStringField(value: self.key, fieldNumber: 1)
+    }
+    if !self.cert.isEmpty {
+      try visitor.visitSingularStringField(value: self.cert, fieldNumber: 2)
+    }
+    if !self.clientCaCert.isEmpty {
+      try visitor.visitSingularStringField(value: self.clientCaCert, fieldNumber: 3)
+    }
+    if !self.serverCaCert.isEmpty {
+      try visitor.visitSingularStringField(value: self.serverCaCert, fieldNumber: 4)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: SpaceX_API_Device_TlsConfig, rhs: SpaceX_API_Device_TlsConfig) -> Bool {
+    if lhs.key != rhs.key {return false}
+    if lhs.cert != rhs.cert {return false}
+    if lhs.clientCaCert != rhs.clientCaCert {return false}
+    if lhs.serverCaCert != rhs.serverCaCert {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension SpaceX_API_Device_HttpServer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".HttpServer"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}domain_name\0\u{1}tls\0\u{3}file_content_id\0\u{3}file_content_hash\0\u{3}access_control_allow_origins\0\u{b}pages_bundle_url\0\u{c}e\u{1}\u{1}")
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.domainName) }()
+      case 2: try { try decoder.decodeSingularMessageField(value: &self._tls) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.fileContentID) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self.fileContentHash) }()
+      case 5: try { try decoder.decodeRepeatedStringField(value: &self.accessControlAllowOrigins) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.domainName.isEmpty {
+      try visitor.visitSingularStringField(value: self.domainName, fieldNumber: 1)
+    }
+    try { if let v = self._tls {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    } }()
+    if !self.fileContentID.isEmpty {
+      try visitor.visitSingularStringField(value: self.fileContentID, fieldNumber: 3)
+    }
+    if !self.fileContentHash.isEmpty {
+      try visitor.visitSingularStringField(value: self.fileContentHash, fieldNumber: 4)
+    }
+    if !self.accessControlAllowOrigins.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.accessControlAllowOrigins, fieldNumber: 5)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: SpaceX_API_Device_HttpServer, rhs: SpaceX_API_Device_HttpServer) -> Bool {
+    if lhs.domainName != rhs.domainName {return false}
+    if lhs._tls != rhs._tls {return false}
+    if lhs.fileContentID != rhs.fileContentID {return false}
+    if lhs.fileContentHash != rhs.fileContentHash {return false}
+    if lhs.accessControlAllowOrigins != rhs.accessControlAllowOrigins {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension SpaceX_API_Device_CaptivePortal: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".CaptivePortal"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}url\0\u{3}display_in_captive_browser\0")
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.url) }()
+      case 2: try { try decoder.decodeSingularBoolField(value: &self.displayInCaptiveBrowser) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.url.isEmpty {
+      try visitor.visitSingularStringField(value: self.url, fieldNumber: 1)
+    }
+    if self.displayInCaptiveBrowser != false {
+      try visitor.visitSingularBoolField(value: self.displayInCaptiveBrowser, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: SpaceX_API_Device_CaptivePortal, rhs: SpaceX_API_Device_CaptivePortal) -> Bool {
+    if lhs.url != rhs.url {return false}
+    if lhs.displayInCaptiveBrowser != rhs.displayInCaptiveBrowser {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension SpaceX_API_Device_WifiConfig: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WifiConfig"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    3: .standard(proto: "country_code"),
-    1085: .standard(proto: "apply_country_code"),
-    53: .standard(proto: "pin_country_code"),
-    1086: .standard(proto: "apply_pin_country_code"),
-    54: .standard(proto: "custom_power_table"),
-    1087: .standard(proto: "apply_custom_power_table"),
-    7: .standard(proto: "setup_complete"),
-    1010: .standard(proto: "apply_setup_complete"),
-    9: .same(proto: "version"),
-    12: .standard(proto: "mac_wan"),
-    13: .standard(proto: "mac_lan"),
-    19: .standard(proto: "channel_2ghz"),
-    1013: .standard(proto: "apply_channel_2ghz"),
-    20: .standard(proto: "channel_5ghz"),
-    1014: .standard(proto: "apply_channel_5ghz"),
-    57: .standard(proto: "channel_5ghz_high"),
-    1016: .standard(proto: "apply_channel_5ghz_high"),
-    33: .standard(proto: "mesh_configs"),
-    3033: .standard(proto: "mesh_configs_updates"),
-    1033: .standard(proto: "apply_mesh_configs"),
-    22: .standard(proto: "dynamic_keys"),
-    39: .standard(proto: "apply_dynamic_keys"),
-    23: .standard(proto: "is_repeater"),
-    1031: .standard(proto: "apply_is_repeater"),
-    51: .standard(proto: "ap_mode"),
-    1066: .standard(proto: "apply_ap_mode"),
-    49: .standard(proto: "is_aviation"),
-    1064: .standard(proto: "apply_is_aviation"),
-    26: .standard(proto: "boot_count"),
-    3001: .same(proto: "boot"),
-    30: .same(proto: "nameservers"),
-    1054: .standard(proto: "apply_nameservers"),
-    50: .standard(proto: "secure_dns"),
-    1065: .standard(proto: "apply_secure_dns"),
-    31: .standard(proto: "bypass_mode"),
-    1055: .standard(proto: "apply_bypass_mode"),
-    42: .standard(proto: "dfs_enabled"),
-    1058: .standard(proto: "apply_dfs_enabled"),
-    52: .standard(proto: "disable_mesh_onboarding"),
-    1067: .standard(proto: "apply_disable_mesh_onboarding"),
-    1100: .same(proto: "networks"),
-    1101: .standard(proto: "apply_networks"),
-    43: .same(proto: "incarnation"),
-    44: .standard(proto: "wireless_mode_2ghz"),
-    1059: .standard(proto: "apply_wireless_mode_2ghz"),
-    45: .standard(proto: "wireless_mode_5ghz"),
-    1060: .standard(proto: "apply_wireless_mode_5ghz"),
-    58: .standard(proto: "wireless_mode_5ghz_high"),
-    1070: .standard(proto: "apply_wireless_mode_5ghz_high"),
-    46: .standard(proto: "ht_bandwidth_2ghz"),
-    1061: .standard(proto: "apply_ht_bandwidth_2ghz"),
-    47: .standard(proto: "ht_bandwidth_5ghz"),
-    1062: .standard(proto: "apply_ht_bandwidth_5ghz"),
-    59: .standard(proto: "ht_bandwidth_5ghz_high"),
-    1071: .standard(proto: "apply_ht_bandwidth_5ghz_high"),
-    48: .standard(proto: "vht_bandwidth"),
-    1063: .standard(proto: "apply_vht_bandwidth"),
-    60: .standard(proto: "vht_bandwidth_5ghz_high"),
-    1072: .standard(proto: "apply_vht_bandwidth_5ghz_high"),
-    55: .standard(proto: "use_public_services"),
-    1068: .standard(proto: "apply_use_public_services"),
-    56: .standard(proto: "disable_automated_speedtests"),
-    1069: .standard(proto: "apply_disable_automated_speedtests"),
-    61: .standard(proto: "enable_umbilical_vlan"),
-    1073: .standard(proto: "apply_enable_umbilical_vlan"),
-    62: .standard(proto: "client_names"),
-    1074: .standard(proto: "apply_client_names"),
-    63: .standard(proto: "outdoor_mode"),
-    1075: .standard(proto: "apply_outdoor_mode"),
-    64: .standard(proto: "disable_2ghz"),
-    1076: .standard(proto: "apply_disable_2ghz"),
-    65: .standard(proto: "disable_5ghz"),
-    1077: .standard(proto: "apply_disable_5ghz"),
-    66: .standard(proto: "disable_5ghz_high"),
-    1078: .standard(proto: "apply_disable_5ghz_high"),
-    67: .standard(proto: "disable_x_mesh_backhaul"),
-    1079: .standard(proto: "apply_disable_x_mesh_backhaul"),
-    68: .standard(proto: "golden_bssid"),
-    1080: .standard(proto: "apply_golden_bssid"),
-    69: .standard(proto: "golden_iface_type"),
-    1081: .standard(proto: "apply_golden_iface_type"),
-    70: .standard(proto: "tx_power_level_2ghz"),
-    1082: .standard(proto: "apply_tx_power_level_2ghz"),
-    71: .standard(proto: "tx_power_level_5ghz"),
-    1083: .standard(proto: "apply_tx_power_level_5ghz"),
-    72: .standard(proto: "tx_power_level_5ghz_high"),
-    1084: .standard(proto: "apply_tx_power_level_5ghz_high"),
-    73: .standard(proto: "disable_pending_update_reboot"),
-    1088: .standard(proto: "apply_disable_pending_update_reboot"),
-    74: .standard(proto: "client_configs"),
-    1089: .standard(proto: "apply_client_configs"),
-    75: .standard(proto: "disable_set_wifi_config_from_controller"),
-    1090: .standard(proto: "apply_disable_set_wifi_config_from_controller"),
-    76: .standard(proto: "client_key"),
-    1091: .standard(proto: "apply_client_key"),
-    4001: .standard(proto: "wan_no_traffic_control"),
-    4002: .standard(proto: "wan_ack_suppression"),
-    4003: .standard(proto: "wan_cake_rate_limit"),
-    1092: .standard(proto: "apply_wan_traffic_control"),
-    77: .standard(proto: "wan_host_dscp_mark"),
-    1093: .standard(proto: "apply_wan_host_dscp_mark"),
-    79: .standard(proto: "debug_pop_pings"),
-    1095: .standard(proto: "apply_debug_pop_pings"),
-    80: .standard(proto: "client_tester"),
-    1096: .standard(proto: "apply_client_tester"),
-    78: .same(proto: "tag"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{4}\u{3}country_code\0\u{4}\u{4}setup_complete\0\u{2}\u{2}version\0\u{4}\u{3}mac_wan\0\u{3}mac_lan\0\u{4}\u{6}channel_2ghz\0\u{3}channel_5ghz\0\u{4}\u{2}dynamic_keys\0\u{3}is_repeater\0\u{4}\u{3}boot_count\0\u{2}\u{4}nameservers\0\u{3}bypass_mode\0\u{4}\u{2}mesh_configs\0\u{4}\u{6}apply_dynamic_keys\0\u{4}\u{3}dfs_enabled\0\u{1}incarnation\0\u{3}wireless_mode_2ghz\0\u{3}wireless_mode_5ghz\0\u{3}ht_bandwidth_2ghz\0\u{3}ht_bandwidth_5ghz\0\u{3}vht_bandwidth\0\u{3}is_aviation\0\u{3}secure_dns\0\u{3}ap_mode\0\u{3}disable_mesh_onboarding\0\u{3}pin_country_code\0\u{3}custom_power_table\0\u{3}use_public_services\0\u{3}disable_automated_speedtests\0\u{3}channel_5ghz_high\0\u{3}wireless_mode_5ghz_high\0\u{3}ht_bandwidth_5ghz_high\0\u{3}vht_bandwidth_5ghz_high\0\u{3}enable_umbilical_vlan\0\u{3}client_names\0\u{3}outdoor_mode\0\u{3}disable_2ghz\0\u{3}disable_5ghz\0\u{3}disable_5ghz_high\0\u{3}disable_x_mesh_backhaul\0\u{3}golden_bssid\0\u{3}golden_iface_type\0\u{3}tx_power_level_2ghz\0\u{3}tx_power_level_5ghz\0\u{3}tx_power_level_5ghz_high\0\u{3}disable_pending_update_reboot\0\u{3}client_configs\0\u{3}disable_set_wifi_config_from_controller\0\u{3}client_key\0\u{3}wan_host_dscp_mark\0\u{1}tag\0\u{3}debug_pop_pings\0\u{3}client_tester\0\u{3}asset_class\0\u{4}\u{d}debug_pings\0\u{3}disable_band_steering\0\u{4}S\u{e}apply_setup_complete\0\u{4}\u{3}apply_channel_2ghz\0\u{3}apply_channel_5ghz\0\u{4}\u{2}apply_channel_5ghz_high\0\u{4}\u{f}apply_is_repeater\0\u{4}\u{2}apply_mesh_configs\0\u{4}\u{15}apply_nameservers\0\u{3}apply_bypass_mode\0\u{4}\u{3}apply_dfs_enabled\0\u{3}apply_wireless_mode_2ghz\0\u{3}apply_wireless_mode_5ghz\0\u{3}apply_ht_bandwidth_2ghz\0\u{3}apply_ht_bandwidth_5ghz\0\u{3}apply_vht_bandwidth\0\u{3}apply_is_aviation\0\u{3}apply_secure_dns\0\u{3}apply_ap_mode\0\u{3}apply_disable_mesh_onboarding\0\u{3}apply_use_public_services\0\u{3}apply_disable_automated_speedtests\0\u{3}apply_wireless_mode_5ghz_high\0\u{3}apply_ht_bandwidth_5ghz_high\0\u{3}apply_vht_bandwidth_5ghz_high\0\u{3}apply_enable_umbilical_vlan\0\u{3}apply_client_names\0\u{3}apply_outdoor_mode\0\u{3}apply_disable_2ghz\0\u{3}apply_disable_5ghz\0\u{3}apply_disable_5ghz_high\0\u{3}apply_disable_x_mesh_backhaul\0\u{3}apply_golden_bssid\0\u{3}apply_golden_iface_type\0\u{3}apply_tx_power_level_2ghz\0\u{3}apply_tx_power_level_5ghz\0\u{3}apply_tx_power_level_5ghz_high\0\u{3}apply_country_code\0\u{3}apply_pin_country_code\0\u{3}apply_custom_power_table\0\u{3}apply_disable_pending_update_reboot\0\u{3}apply_client_configs\0\u{3}apply_disable_set_wifi_config_from_controller\0\u{3}apply_client_key\0\u{3}apply_wan_traffic_control\0\u{3}apply_wan_host_dscp_mark\0\u{4}\u{2}apply_debug_pop_pings\0\u{3}apply_client_tester\0\u{3}disable_wireless_mesh_onboarding\0\u{3}apply_disable_wireless_mesh_onboarding\0\u{3}apply_asset_class\0\u{1}networks\0\u{3}apply_networks\0\u{4}\u{5}apply_debug_pings\0\u{3}apply_http_server\0\u{3}http_server\0\u{3}apply_disable_band_steering\0\u{3}only_overflight_countries\0\u{3}apply_only_overflight_countries\0\u{3}unbridged_eth_ports\0\u{3}apply_unbridged_eth_ports\0\u{3}only_overflight_countries_using_default\0\u{3}disable_sandbox_fail_open\0\u{3}apply_disable_sandbox_fail_open\0\u{3}custom_dns_disabled\0\u{3}apply_custom_dns_disabled\0\u{3}foreflight_enabled\0\u{3}apply_foreflight_enabled\0\u{2}Y\u{1d}boot\0\u{4} mesh_configs_updates\0\u{4}H\u{f}wan_no_traffic_control\0\u{3}wan_ack_suppression\0\u{3}wan_cake_rate_limit\0\u{b}apply_enable_remote_ssh\0\u{b}apply_lan_ipv4\0\u{b}apply_network_name\0\u{b}apply_network_name_5ghz\0\u{b}apply_network_password\0\u{b}apply_wifi_security\0\u{b}enable_remote_ssh\0\u{b}lan_ipv4\0\u{b}last_remote_ssh_access\0\u{b}network_name\0\u{b}network_name_5ghz\0\u{b}network_password\0\u{b}wifi_security\0\u{b}local_landing_domain\0\u{b}apply_local_landing_domain\0\u{b}local_landing\0\u{b}apply_local_landing\0\u{c}\u{1}\u{1}\u{c}\u{2}\u{1}\u{c}\u{4}\u{1}\u{c}\u{5}\u{1}\u{c}\u{6}\u{1}\u{c}\u{8}\u{1}\u{c}\u{a}\u{1}\u{c}\u{b}\u{1}\u{c}\u{e}\u{1}\u{c}\u{f}\u{1}\u{c}\u{10}\u{1}\u{c}\u{11}\u{1}\u{c}\u{12}\u{1}\u{c}\u{15}\u{1}\u{c}\u{18}\u{1}\u{c}\u{19}\u{1}\u{c}\u{1b}\u{1}\u{c}\u{1c}\u{1}\u{c}\u{1d}\u{1}\u{c} \u{1}\u{c}\"\u{1}\u{c}#\u{1}\u{c}$\u{1}\u{c}%\u{1}\u{c}&\u{1}\u{c}(\u{1}\u{c})\u{1}\u{c}i\u{f}\u{1}\u{c}j\u{f}\u{1}\u{c}k\u{f}\u{1}\u{c}l\u{f}\u{1}\u{c}m\u{f}\u{1}\u{c}n\u{f}\u{1}\u{c}o\u{f}\u{1}\u{c}p\u{f}\u{1}\u{c}q\u{f}\u{1}\u{c}s\u{f}\u{1}\u{c}t\u{f}\u{1}\u{c}w\u{f}\u{1}\u{c}}\u{f}\u{1}\u{c}Q\u{10}\u{1}\u{c}[\u{10}\u{1}\u{c}\\\u{10}\u{1}\u{c}]\u{10}\u{1}\u{c}`\u{10}\u{1}\u{c}a\u{10}\u{1}\u{c}N\u{11}\u{1}\u{c}O\u{11}\u{1}\u{c}P\u{11}\u{1}\u{c}Q\u{11}\u{1}\u{c}Q\u{1f}\u{1}\u{c}R\u{1f}\u{1}\u{c}S\u{1f}\u{1}\u{c}T\u{1f}\u{1}\u{c}U\u{1f}\u{1}\u{c}V\u{1f}\u{1}\u{c}W\u{1f}\u{1}\u{c}X\u{1f}\u{1}")
 
   fileprivate class _StorageClass {
     var _countryCode: String = String()
@@ -1532,6 +2049,10 @@ extension SpaceX_API_Device_WifiConfig: SwiftProtobuf.Message, SwiftProtobuf._Me
     var _applyDfsEnabled: Bool = false
     var _disableMeshOnboarding: Bool = false
     var _applyDisableMeshOnboarding: Bool = false
+    var _disableWirelessMeshOnboarding: Bool = false
+    var _applyDisableWirelessMeshOnboarding: Bool = false
+    var _applyHTTPServer: Bool = false
+    var _httpServer: SpaceX_API_Device_HttpServer? = nil
     var _networks: [SpaceX_API_Device_WifiConfig.Network] = []
     var _applyNetworks: Bool = false
     var _incarnation: UInt64 = 0
@@ -1593,19 +2114,32 @@ extension SpaceX_API_Device_WifiConfig: SwiftProtobuf.Message, SwiftProtobuf._Me
     var _applyWanHostDscpMark: Bool = false
     var _debugPopPings: Bool = false
     var _applyDebugPopPings: Bool = false
+    var _debugPings: Bool = false
+    var _applyDebugPings: Bool = false
     var _clientTester: Bool = false
     var _applyClientTester: Bool = false
+    var _assetClass: UInt32 = 0
+    var _applyAssetClass: Bool = false
+    var _disableBandSteering: Bool = false
+    var _applyDisableBandSteering: Bool = false
+    var _onlyOverflightCountries: [String] = []
+    var _applyOnlyOverflightCountries: Bool = false
+    var _onlyOverflightCountriesUsingDefault: Bool = false
+    var _unbridgedEthPorts: [SpaceX_API_Device_WifiConfig.UnbridgedEthPort] = []
+    var _applyUnbridgedEthPorts: Bool = false
+    var _disableSandboxFailOpen: Bool = false
+    var _applyDisableSandboxFailOpen: Bool = false
     var _tag: UInt32 = 0
+    var _customDnsDisabled: Bool = false
+    var _applyCustomDnsDisabled: Bool = false
+    var _foreflightEnabled: Bool = false
+    var _applyForeflightEnabled: Bool = false
 
-    #if swift(>=5.10)
       // This property is used as the initial default value for new instances of the type.
       // The type itself is protecting the reference to its storage via CoW semantics.
       // This will force a copy to be made of this reference when the first mutation occurs;
       // hence, it is safe to mark this as `nonisolated(unsafe)`.
       static nonisolated(unsafe) let defaultInstance = _StorageClass()
-    #else
-      static let defaultInstance = _StorageClass()
-    #endif
 
     private init() {}
 
@@ -1650,6 +2184,10 @@ extension SpaceX_API_Device_WifiConfig: SwiftProtobuf.Message, SwiftProtobuf._Me
       _applyDfsEnabled = source._applyDfsEnabled
       _disableMeshOnboarding = source._disableMeshOnboarding
       _applyDisableMeshOnboarding = source._applyDisableMeshOnboarding
+      _disableWirelessMeshOnboarding = source._disableWirelessMeshOnboarding
+      _applyDisableWirelessMeshOnboarding = source._applyDisableWirelessMeshOnboarding
+      _applyHTTPServer = source._applyHTTPServer
+      _httpServer = source._httpServer
       _networks = source._networks
       _applyNetworks = source._applyNetworks
       _incarnation = source._incarnation
@@ -1711,9 +2249,26 @@ extension SpaceX_API_Device_WifiConfig: SwiftProtobuf.Message, SwiftProtobuf._Me
       _applyWanHostDscpMark = source._applyWanHostDscpMark
       _debugPopPings = source._debugPopPings
       _applyDebugPopPings = source._applyDebugPopPings
+      _debugPings = source._debugPings
+      _applyDebugPings = source._applyDebugPings
       _clientTester = source._clientTester
       _applyClientTester = source._applyClientTester
+      _assetClass = source._assetClass
+      _applyAssetClass = source._applyAssetClass
+      _disableBandSteering = source._disableBandSteering
+      _applyDisableBandSteering = source._applyDisableBandSteering
+      _onlyOverflightCountries = source._onlyOverflightCountries
+      _applyOnlyOverflightCountries = source._applyOnlyOverflightCountries
+      _onlyOverflightCountriesUsingDefault = source._onlyOverflightCountriesUsingDefault
+      _unbridgedEthPorts = source._unbridgedEthPorts
+      _applyUnbridgedEthPorts = source._applyUnbridgedEthPorts
+      _disableSandboxFailOpen = source._disableSandboxFailOpen
+      _applyDisableSandboxFailOpen = source._applyDisableSandboxFailOpen
       _tag = source._tag
+      _customDnsDisabled = source._customDnsDisabled
+      _applyCustomDnsDisabled = source._applyCustomDnsDisabled
+      _foreflightEnabled = source._foreflightEnabled
+      _applyForeflightEnabled = source._applyForeflightEnabled
     }
   }
 
@@ -1785,6 +2340,9 @@ extension SpaceX_API_Device_WifiConfig: SwiftProtobuf.Message, SwiftProtobuf._Me
         case 78: try { try decoder.decodeSingularUInt32Field(value: &_storage._tag) }()
         case 79: try { try decoder.decodeSingularBoolField(value: &_storage._debugPopPings) }()
         case 80: try { try decoder.decodeSingularBoolField(value: &_storage._clientTester) }()
+        case 81: try { try decoder.decodeSingularUInt32Field(value: &_storage._assetClass) }()
+        case 94: try { try decoder.decodeSingularBoolField(value: &_storage._debugPings) }()
+        case 95: try { try decoder.decodeSingularBoolField(value: &_storage._disableBandSteering) }()
         case 1010: try { try decoder.decodeSingularBoolField(value: &_storage._applySetupComplete) }()
         case 1013: try { try decoder.decodeSingularBoolField(value: &_storage._applyChannel2Ghz) }()
         case 1014: try { try decoder.decodeSingularBoolField(value: &_storage._applyChannel5Ghz) }()
@@ -1831,8 +2389,26 @@ extension SpaceX_API_Device_WifiConfig: SwiftProtobuf.Message, SwiftProtobuf._Me
         case 1093: try { try decoder.decodeSingularBoolField(value: &_storage._applyWanHostDscpMark) }()
         case 1095: try { try decoder.decodeSingularBoolField(value: &_storage._applyDebugPopPings) }()
         case 1096: try { try decoder.decodeSingularBoolField(value: &_storage._applyClientTester) }()
+        case 1097: try { try decoder.decodeSingularBoolField(value: &_storage._disableWirelessMeshOnboarding) }()
+        case 1098: try { try decoder.decodeSingularBoolField(value: &_storage._applyDisableWirelessMeshOnboarding) }()
+        case 1099: try { try decoder.decodeSingularBoolField(value: &_storage._applyAssetClass) }()
         case 1100: try { try decoder.decodeRepeatedMessageField(value: &_storage._networks) }()
         case 1101: try { try decoder.decodeSingularBoolField(value: &_storage._applyNetworks) }()
+        case 1106: try { try decoder.decodeSingularBoolField(value: &_storage._applyDebugPings) }()
+        case 1107: try { try decoder.decodeSingularBoolField(value: &_storage._applyHTTPServer) }()
+        case 1108: try { try decoder.decodeSingularMessageField(value: &_storage._httpServer) }()
+        case 1109: try { try decoder.decodeSingularBoolField(value: &_storage._applyDisableBandSteering) }()
+        case 1110: try { try decoder.decodeRepeatedStringField(value: &_storage._onlyOverflightCountries) }()
+        case 1111: try { try decoder.decodeSingularBoolField(value: &_storage._applyOnlyOverflightCountries) }()
+        case 1112: try { try decoder.decodeRepeatedMessageField(value: &_storage._unbridgedEthPorts) }()
+        case 1113: try { try decoder.decodeSingularBoolField(value: &_storage._applyUnbridgedEthPorts) }()
+        case 1114: try { try decoder.decodeSingularBoolField(value: &_storage._onlyOverflightCountriesUsingDefault) }()
+        case 1115: try { try decoder.decodeSingularBoolField(value: &_storage._disableSandboxFailOpen) }()
+        case 1116: try { try decoder.decodeSingularBoolField(value: &_storage._applyDisableSandboxFailOpen) }()
+        case 1117: try { try decoder.decodeSingularBoolField(value: &_storage._customDnsDisabled) }()
+        case 1118: try { try decoder.decodeSingularBoolField(value: &_storage._applyCustomDnsDisabled) }()
+        case 1119: try { try decoder.decodeSingularBoolField(value: &_storage._foreflightEnabled) }()
+        case 1120: try { try decoder.decodeSingularBoolField(value: &_storage._applyForeflightEnabled) }()
         case 3001: try { try decoder.decodeSingularMessageField(value: &_storage._boot) }()
         case 3033: try { try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,SpaceX_API_Device_MeshConfig>.self, value: &_storage._meshConfigsUpdates) }()
         case 4001: try {
@@ -2045,6 +2621,15 @@ extension SpaceX_API_Device_WifiConfig: SwiftProtobuf.Message, SwiftProtobuf._Me
       if _storage._clientTester != false {
         try visitor.visitSingularBoolField(value: _storage._clientTester, fieldNumber: 80)
       }
+      if _storage._assetClass != 0 {
+        try visitor.visitSingularUInt32Field(value: _storage._assetClass, fieldNumber: 81)
+      }
+      if _storage._debugPings != false {
+        try visitor.visitSingularBoolField(value: _storage._debugPings, fieldNumber: 94)
+      }
+      if _storage._disableBandSteering != false {
+        try visitor.visitSingularBoolField(value: _storage._disableBandSteering, fieldNumber: 95)
+      }
       if _storage._applySetupComplete != false {
         try visitor.visitSingularBoolField(value: _storage._applySetupComplete, fieldNumber: 1010)
       }
@@ -2183,11 +2768,65 @@ extension SpaceX_API_Device_WifiConfig: SwiftProtobuf.Message, SwiftProtobuf._Me
       if _storage._applyClientTester != false {
         try visitor.visitSingularBoolField(value: _storage._applyClientTester, fieldNumber: 1096)
       }
+      if _storage._disableWirelessMeshOnboarding != false {
+        try visitor.visitSingularBoolField(value: _storage._disableWirelessMeshOnboarding, fieldNumber: 1097)
+      }
+      if _storage._applyDisableWirelessMeshOnboarding != false {
+        try visitor.visitSingularBoolField(value: _storage._applyDisableWirelessMeshOnboarding, fieldNumber: 1098)
+      }
+      if _storage._applyAssetClass != false {
+        try visitor.visitSingularBoolField(value: _storage._applyAssetClass, fieldNumber: 1099)
+      }
       if !_storage._networks.isEmpty {
         try visitor.visitRepeatedMessageField(value: _storage._networks, fieldNumber: 1100)
       }
       if _storage._applyNetworks != false {
         try visitor.visitSingularBoolField(value: _storage._applyNetworks, fieldNumber: 1101)
+      }
+      if _storage._applyDebugPings != false {
+        try visitor.visitSingularBoolField(value: _storage._applyDebugPings, fieldNumber: 1106)
+      }
+      if _storage._applyHTTPServer != false {
+        try visitor.visitSingularBoolField(value: _storage._applyHTTPServer, fieldNumber: 1107)
+      }
+      try { if let v = _storage._httpServer {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1108)
+      } }()
+      if _storage._applyDisableBandSteering != false {
+        try visitor.visitSingularBoolField(value: _storage._applyDisableBandSteering, fieldNumber: 1109)
+      }
+      if !_storage._onlyOverflightCountries.isEmpty {
+        try visitor.visitRepeatedStringField(value: _storage._onlyOverflightCountries, fieldNumber: 1110)
+      }
+      if _storage._applyOnlyOverflightCountries != false {
+        try visitor.visitSingularBoolField(value: _storage._applyOnlyOverflightCountries, fieldNumber: 1111)
+      }
+      if !_storage._unbridgedEthPorts.isEmpty {
+        try visitor.visitRepeatedMessageField(value: _storage._unbridgedEthPorts, fieldNumber: 1112)
+      }
+      if _storage._applyUnbridgedEthPorts != false {
+        try visitor.visitSingularBoolField(value: _storage._applyUnbridgedEthPorts, fieldNumber: 1113)
+      }
+      if _storage._onlyOverflightCountriesUsingDefault != false {
+        try visitor.visitSingularBoolField(value: _storage._onlyOverflightCountriesUsingDefault, fieldNumber: 1114)
+      }
+      if _storage._disableSandboxFailOpen != false {
+        try visitor.visitSingularBoolField(value: _storage._disableSandboxFailOpen, fieldNumber: 1115)
+      }
+      if _storage._applyDisableSandboxFailOpen != false {
+        try visitor.visitSingularBoolField(value: _storage._applyDisableSandboxFailOpen, fieldNumber: 1116)
+      }
+      if _storage._customDnsDisabled != false {
+        try visitor.visitSingularBoolField(value: _storage._customDnsDisabled, fieldNumber: 1117)
+      }
+      if _storage._applyCustomDnsDisabled != false {
+        try visitor.visitSingularBoolField(value: _storage._applyCustomDnsDisabled, fieldNumber: 1118)
+      }
+      if _storage._foreflightEnabled != false {
+        try visitor.visitSingularBoolField(value: _storage._foreflightEnabled, fieldNumber: 1119)
+      }
+      if _storage._applyForeflightEnabled != false {
+        try visitor.visitSingularBoolField(value: _storage._applyForeflightEnabled, fieldNumber: 1120)
       }
       try { if let v = _storage._boot {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 3001)
@@ -2259,6 +2898,10 @@ extension SpaceX_API_Device_WifiConfig: SwiftProtobuf.Message, SwiftProtobuf._Me
         if _storage._applyDfsEnabled != rhs_storage._applyDfsEnabled {return false}
         if _storage._disableMeshOnboarding != rhs_storage._disableMeshOnboarding {return false}
         if _storage._applyDisableMeshOnboarding != rhs_storage._applyDisableMeshOnboarding {return false}
+        if _storage._disableWirelessMeshOnboarding != rhs_storage._disableWirelessMeshOnboarding {return false}
+        if _storage._applyDisableWirelessMeshOnboarding != rhs_storage._applyDisableWirelessMeshOnboarding {return false}
+        if _storage._applyHTTPServer != rhs_storage._applyHTTPServer {return false}
+        if _storage._httpServer != rhs_storage._httpServer {return false}
         if _storage._networks != rhs_storage._networks {return false}
         if _storage._applyNetworks != rhs_storage._applyNetworks {return false}
         if _storage._incarnation != rhs_storage._incarnation {return false}
@@ -2320,9 +2963,26 @@ extension SpaceX_API_Device_WifiConfig: SwiftProtobuf.Message, SwiftProtobuf._Me
         if _storage._applyWanHostDscpMark != rhs_storage._applyWanHostDscpMark {return false}
         if _storage._debugPopPings != rhs_storage._debugPopPings {return false}
         if _storage._applyDebugPopPings != rhs_storage._applyDebugPopPings {return false}
+        if _storage._debugPings != rhs_storage._debugPings {return false}
+        if _storage._applyDebugPings != rhs_storage._applyDebugPings {return false}
         if _storage._clientTester != rhs_storage._clientTester {return false}
         if _storage._applyClientTester != rhs_storage._applyClientTester {return false}
+        if _storage._assetClass != rhs_storage._assetClass {return false}
+        if _storage._applyAssetClass != rhs_storage._applyAssetClass {return false}
+        if _storage._disableBandSteering != rhs_storage._disableBandSteering {return false}
+        if _storage._applyDisableBandSteering != rhs_storage._applyDisableBandSteering {return false}
+        if _storage._onlyOverflightCountries != rhs_storage._onlyOverflightCountries {return false}
+        if _storage._applyOnlyOverflightCountries != rhs_storage._applyOnlyOverflightCountries {return false}
+        if _storage._onlyOverflightCountriesUsingDefault != rhs_storage._onlyOverflightCountriesUsingDefault {return false}
+        if _storage._unbridgedEthPorts != rhs_storage._unbridgedEthPorts {return false}
+        if _storage._applyUnbridgedEthPorts != rhs_storage._applyUnbridgedEthPorts {return false}
+        if _storage._disableSandboxFailOpen != rhs_storage._disableSandboxFailOpen {return false}
+        if _storage._applyDisableSandboxFailOpen != rhs_storage._applyDisableSandboxFailOpen {return false}
         if _storage._tag != rhs_storage._tag {return false}
+        if _storage._customDnsDisabled != rhs_storage._customDnsDisabled {return false}
+        if _storage._applyCustomDnsDisabled != rhs_storage._applyCustomDnsDisabled {return false}
+        if _storage._foreflightEnabled != rhs_storage._foreflightEnabled {return false}
+        if _storage._applyForeflightEnabled != rhs_storage._applyForeflightEnabled {return false}
         return true
       }
       if !storagesAreEqual {return false}
@@ -2332,75 +2992,29 @@ extension SpaceX_API_Device_WifiConfig: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension SpaceX_API_Device_WifiConfig.Security: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "UNKNOWN"),
-    1: .same(proto: "WPA2"),
-    2: .same(proto: "WPA3"),
-    3: .same(proto: "WPA2WPA3"),
-  ]
+nonisolated extension SpaceX_API_Device_WifiConfig.Security: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0UNKNOWN\0\u{1}WPA2\0\u{1}WPA3\0\u{1}WPA2WPA3\0")
 }
 
-extension SpaceX_API_Device_WifiConfig.Band: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "RF_UNKNOWN"),
-    2: .same(proto: "RF_2GHZ"),
-    5: .same(proto: "RF_5GHZ"),
-    6: .same(proto: "RF_5GHZ_HIGH"),
-  ]
+nonisolated extension SpaceX_API_Device_WifiConfig.Band: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0RF_UNKNOWN\0\u{2}\u{2}RF_2GHZ\0\u{2}\u{3}RF_5GHZ\0\u{1}RF_5GHZ_HIGH\0")
 }
 
-extension SpaceX_API_Device_WifiConfig.WirelessMode: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "WIRELESS_MODE_DEFAULT"),
-    1: .same(proto: "A_ONLY"),
-    2: .same(proto: "B_ONLY"),
-    3: .same(proto: "G_ONLY"),
-    4: .same(proto: "N_ONLY"),
-    5: .same(proto: "B_G_MIXED"),
-    6: .same(proto: "A_N_MIXED"),
-    7: .same(proto: "G_N_MIXED"),
-    8: .same(proto: "B_G_N_MIXED"),
-    9: .same(proto: "A_AN_AC_MIXED"),
-    10: .same(proto: "AN_AC_MIXED"),
-    11: .same(proto: "B_G_N_AX_MIXED"),
-    12: .same(proto: "A_AN_AC_AX_MIXED"),
-  ]
+nonisolated extension SpaceX_API_Device_WifiConfig.WirelessMode: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0WIRELESS_MODE_DEFAULT\0\u{1}A_ONLY\0\u{1}B_ONLY\0\u{1}G_ONLY\0\u{1}N_ONLY\0\u{1}B_G_MIXED\0\u{1}A_N_MIXED\0\u{1}G_N_MIXED\0\u{1}B_G_N_MIXED\0\u{1}A_AN_AC_MIXED\0\u{1}AN_AC_MIXED\0\u{1}B_G_N_AX_MIXED\0\u{1}A_AN_AC_AX_MIXED\0")
 }
 
-extension SpaceX_API_Device_WifiConfig.HTBandwidth: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "HT_BANDWIDTH_DEFAULT"),
-    1: .same(proto: "HT_BANDWIDTH_20_MHZ"),
-    2: .same(proto: "HT_BANDWIDTH_20_OR_40_MHZ"),
-  ]
+nonisolated extension SpaceX_API_Device_WifiConfig.HTBandwidth: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0HT_BANDWIDTH_DEFAULT\0\u{1}HT_BANDWIDTH_20_MHZ\0\u{1}HT_BANDWIDTH_20_OR_40_MHZ\0")
 }
 
-extension SpaceX_API_Device_WifiConfig.VHTBandwidth: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "VHT_BANDWIDTH_DEFAULT"),
-    1: .same(proto: "VHT_BANDWIDTH_DISABLED"),
-    2: .same(proto: "VHT_BANDWIDTH_80_MHZ"),
-    3: .same(proto: "VHT_BANDWIDTH_160_MHZ"),
-    4: .same(proto: "VHT_BANDWIDTH_80_PLUS_80_MHZ"),
-  ]
+nonisolated extension SpaceX_API_Device_WifiConfig.VHTBandwidth: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0VHT_BANDWIDTH_DEFAULT\0\u{1}VHT_BANDWIDTH_DISABLED\0\u{1}VHT_BANDWIDTH_80_MHZ\0\u{1}VHT_BANDWIDTH_160_MHZ\0\u{1}VHT_BANDWIDTH_80_PLUS_80_MHZ\0")
 }
 
-extension SpaceX_API_Device_WifiConfig.BasicServiceSet: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiConfig.BasicServiceSet: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = SpaceX_API_Device_WifiConfig.protoMessageName + ".BasicServiceSet"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1003: .same(proto: "bssid"),
-    1005: .same(proto: "ssid"),
-    2001: .standard(proto: "auth_open"),
-    2002: .standard(proto: "auth_wpa2"),
-    2003: .standard(proto: "auth_wpa3"),
-    2004: .standard(proto: "auth_wpa2_wpa3"),
-    2005: .standard(proto: "auth_radius"),
-    1011: .same(proto: "band"),
-    1017: .standard(proto: "iface_name"),
-    1013: .same(proto: "disable"),
-    1015: .same(proto: "hidden"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}k\u{f}bssid\0\u{2}\u{2}ssid\0\u{2}\u{6}band\0\u{2}\u{2}disable\0\u{2}\u{2}hidden\0\u{4}\u{2}iface_name\0\u{4}X\u{f}auth_open\0\u{3}auth_wpa2\0\u{3}auth_wpa3\0\u{3}auth_wpa2_wpa3\0\u{3}auth_radius\0\u{3}auth_open_encrypted\0\u{3}auth_onboard_radius\0\u{c}h\u{f}\u{1}\u{c}i\u{f}\u{1}\u{c}j\u{f}\u{1}\u{c}l\u{f}\u{1}\u{c}n\u{f}\u{1}\u{c}P\u{1f}\u{1}\u{c}t\u{f}\u{1}\u{c}v\u{f}\u{1}\u{c}x\u{f}\u{1}")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -2479,6 +3093,32 @@ extension SpaceX_API_Device_WifiConfig.BasicServiceSet: SwiftProtobuf.Message, S
           self.auth = .authRadius(v)
         }
       }()
+      case 2006: try {
+        var v: SpaceX_API_Device_AuthOpenEncrypted?
+        var hadOneofValue = false
+        if let current = self.auth {
+          hadOneofValue = true
+          if case .authOpenEncrypted(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.auth = .authOpenEncrypted(v)
+        }
+      }()
+      case 2007: try {
+        var v: SpaceX_API_Device_AuthOnboardRadius?
+        var hadOneofValue = false
+        if let current = self.auth {
+          hadOneofValue = true
+          if case .authOnboardRadius(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.auth = .authOnboardRadius(v)
+        }
+      }()
       default: break
       }
     }
@@ -2528,6 +3168,14 @@ extension SpaceX_API_Device_WifiConfig.BasicServiceSet: SwiftProtobuf.Message, S
       guard case .authRadius(let v)? = self.auth else { preconditionFailure() }
       try visitor.visitSingularMessageField(value: v, fieldNumber: 2005)
     }()
+    case .authOpenEncrypted?: try {
+      guard case .authOpenEncrypted(let v)? = self.auth else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2006)
+    }()
+    case .authOnboardRadius?: try {
+      guard case .authOnboardRadius(let v)? = self.auth else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2007)
+    }()
     case nil: break
     }
     try unknownFields.traverse(visitor: &visitor)
@@ -2546,22 +3194,9 @@ extension SpaceX_API_Device_WifiConfig.BasicServiceSet: SwiftProtobuf.Message, S
   }
 }
 
-extension SpaceX_API_Device_WifiConfig.Network: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = SpaceX_API_Device_WifiConfig.protoMessageName + ".Network"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1003: .same(proto: "ipv4"),
-    1012: .standard(proto: "dhcpv4_start"),
-    1015: .standard(proto: "dhcp_disabled"),
-    1016: .standard(proto: "dhcpv4_lease_duration_s"),
-    1011: .same(proto: "domain"),
-    1007: .standard(proto: "basic_service_sets"),
-    1008: .standard(proto: "client_isolation"),
-    1009: .same(proto: "guest"),
-    1010: .same(proto: "landing"),
-    1017: .standard(proto: "landing_page_v2"),
-    1013: .same(proto: "internal"),
-    1014: .same(proto: "vlan"),
-  ]
+nonisolated extension SpaceX_API_Device_WifiConfig.DnsStaticEntry: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = SpaceX_API_Device_WifiConfig.protoMessageName + ".DnsStaticEntry"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}h\u{f}domains\0\u{1}addresses\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -2569,87 +3204,550 @@ extension SpaceX_API_Device_WifiConfig.Network: SwiftProtobuf.Message, SwiftProt
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
-      case 1003: try { try decoder.decodeSingularStringField(value: &self.ipv4) }()
-      case 1007: try { try decoder.decodeRepeatedMessageField(value: &self.basicServiceSets) }()
-      case 1008: try { try decoder.decodeSingularBoolField(value: &self.clientIsolation) }()
-      case 1009: try { try decoder.decodeSingularBoolField(value: &self.guest) }()
-      case 1010: try { try decoder.decodeSingularStringField(value: &self.landing) }()
-      case 1011: try { try decoder.decodeSingularStringField(value: &self.domain) }()
-      case 1012: try { try decoder.decodeSingularUInt32Field(value: &self.dhcpv4Start) }()
-      case 1013: try { try decoder.decodeSingularBoolField(value: &self.`internal`) }()
-      case 1014: try { try decoder.decodeSingularUInt32Field(value: &self.vlan) }()
-      case 1015: try { try decoder.decodeSingularBoolField(value: &self.dhcpDisabled) }()
-      case 1016: try { try decoder.decodeSingularUInt32Field(value: &self.dhcpv4LeaseDurationS) }()
-      case 1017: try { try decoder.decodeSingularBoolField(value: &self.landingPageV2) }()
+      case 1000: try { try decoder.decodeRepeatedStringField(value: &self.domains) }()
+      case 1001: try { try decoder.decodeRepeatedStringField(value: &self.addresses) }()
       default: break
       }
     }
   }
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if !self.ipv4.isEmpty {
-      try visitor.visitSingularStringField(value: self.ipv4, fieldNumber: 1003)
+    if !self.domains.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.domains, fieldNumber: 1000)
     }
-    if !self.basicServiceSets.isEmpty {
-      try visitor.visitRepeatedMessageField(value: self.basicServiceSets, fieldNumber: 1007)
-    }
-    if self.clientIsolation != false {
-      try visitor.visitSingularBoolField(value: self.clientIsolation, fieldNumber: 1008)
-    }
-    if self.guest != false {
-      try visitor.visitSingularBoolField(value: self.guest, fieldNumber: 1009)
-    }
-    if !self.landing.isEmpty {
-      try visitor.visitSingularStringField(value: self.landing, fieldNumber: 1010)
-    }
-    if !self.domain.isEmpty {
-      try visitor.visitSingularStringField(value: self.domain, fieldNumber: 1011)
-    }
-    if self.dhcpv4Start != 0 {
-      try visitor.visitSingularUInt32Field(value: self.dhcpv4Start, fieldNumber: 1012)
-    }
-    if self.`internal` != false {
-      try visitor.visitSingularBoolField(value: self.`internal`, fieldNumber: 1013)
-    }
-    if self.vlan != 0 {
-      try visitor.visitSingularUInt32Field(value: self.vlan, fieldNumber: 1014)
-    }
-    if self.dhcpDisabled != false {
-      try visitor.visitSingularBoolField(value: self.dhcpDisabled, fieldNumber: 1015)
-    }
-    if self.dhcpv4LeaseDurationS != 0 {
-      try visitor.visitSingularUInt32Field(value: self.dhcpv4LeaseDurationS, fieldNumber: 1016)
-    }
-    if self.landingPageV2 != false {
-      try visitor.visitSingularBoolField(value: self.landingPageV2, fieldNumber: 1017)
+    if !self.addresses.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.addresses, fieldNumber: 1001)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: SpaceX_API_Device_WifiConfig.Network, rhs: SpaceX_API_Device_WifiConfig.Network) -> Bool {
-    if lhs.ipv4 != rhs.ipv4 {return false}
-    if lhs.dhcpv4Start != rhs.dhcpv4Start {return false}
-    if lhs.dhcpDisabled != rhs.dhcpDisabled {return false}
-    if lhs.dhcpv4LeaseDurationS != rhs.dhcpv4LeaseDurationS {return false}
-    if lhs.domain != rhs.domain {return false}
-    if lhs.basicServiceSets != rhs.basicServiceSets {return false}
-    if lhs.clientIsolation != rhs.clientIsolation {return false}
-    if lhs.guest != rhs.guest {return false}
-    if lhs.landing != rhs.landing {return false}
-    if lhs.landingPageV2 != rhs.landingPageV2 {return false}
-    if lhs.`internal` != rhs.`internal` {return false}
-    if lhs.vlan != rhs.vlan {return false}
+  static func ==(lhs: SpaceX_API_Device_WifiConfig.DnsStaticEntry, rhs: SpaceX_API_Device_WifiConfig.DnsStaticEntry) -> Bool {
+    if lhs.domains != rhs.domains {return false}
+    if lhs.addresses != rhs.addresses {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension SpaceX_API_Device_WeeklyBlockSchedule: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WifiConfig.DnsForwardRule: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = SpaceX_API_Device_WifiConfig.protoMessageName + ".DnsForwardRule"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}h\u{f}domains\0\u{3}server_addresses\0")
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1000: try { try decoder.decodeRepeatedStringField(value: &self.domains) }()
+      case 1001: try { try decoder.decodeRepeatedStringField(value: &self.serverAddresses) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.domains.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.domains, fieldNumber: 1000)
+    }
+    if !self.serverAddresses.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.serverAddresses, fieldNumber: 1001)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: SpaceX_API_Device_WifiConfig.DnsForwardRule, rhs: SpaceX_API_Device_WifiConfig.DnsForwardRule) -> Bool {
+    if lhs.domains != rhs.domains {return false}
+    if lhs.serverAddresses != rhs.serverAddresses {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension SpaceX_API_Device_WifiConfig.StaticRoute: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = SpaceX_API_Device_WifiConfig.protoMessageName + ".StaticRoute"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}subnet\0\u{1}gateway\0")
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.subnet) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.gateway) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.subnet.isEmpty {
+      try visitor.visitSingularStringField(value: self.subnet, fieldNumber: 1)
+    }
+    if !self.gateway.isEmpty {
+      try visitor.visitSingularStringField(value: self.gateway, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: SpaceX_API_Device_WifiConfig.StaticRoute, rhs: SpaceX_API_Device_WifiConfig.StaticRoute) -> Bool {
+    if lhs.subnet != rhs.subnet {return false}
+    if lhs.gateway != rhs.gateway {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension SpaceX_API_Device_WifiConfig.Network: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = SpaceX_API_Device_WifiConfig.protoMessageName + ".Network"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}k\u{f}ipv4\0\u{4}\u{4}basic_service_sets\0\u{3}client_isolation\0\u{1}guest\0\u{1}landing\0\u{1}domain\0\u{3}dhcpv4_start\0\u{1}internal\0\u{1}vlan\0\u{3}dhcp_disabled\0\u{3}dhcpv4_lease_duration_s\0\u{3}landing_page_v2\0\u{4}\u{3}sandbox_enabled\0\u{4}\u{2}sandbox_domain_allow_list\0\u{3}sandbox_id\0\u{3}captive_portal\0\u{3}dhcpv4_end\0\u{3}network_groups\0\u{3}dns_static_entries\0\u{3}dns_forward_rules\0\u{3}disable_when_offline_old\0\u{3}static_routes\0\u{3}disable_when_offline\0\u{3}onboard_radius_tls_config_old\0\u{3}onboard_radius_tls_config\0\u{3}dns_disabled\0\u{3}get_lease_dhcp\0\u{3}default_route_disabled\0\u{4}\u{2}geofence_action\0\u{b}client_authorization_required\0\u{b}unauthorized_client_domain_allow_list\0\u{c}h\u{f}\u{1}\u{c}i\u{f}\u{1}\u{c}j\u{f}\u{1}\u{c}l\u{f}\u{1}\u{c}m\u{f}\u{1}\u{c}n\u{f}\u{1}\u{c}z\u{f}\u{1}\u{c}{\u{f}\u{1}")
+
+  fileprivate class _StorageClass {
+    var _ipv4: String = String()
+    var _dhcpv4Start: UInt32 = 0
+    var _dhcpv4End: UInt32 = 0
+    var _dhcpDisabled: Bool = false
+    var _dnsDisabled: Bool = false
+    var _dhcpv4LeaseDurationS: UInt32 = 0
+    var _domain: String = String()
+    var _basicServiceSets: [SpaceX_API_Device_WifiConfig.BasicServiceSet] = []
+    var _clientIsolation: Bool = false
+    var _guest: Bool = false
+    var _landing: String = String()
+    var _landingPageV2: Bool = false
+    var _sandboxEnabled: Bool = false
+    var _sandboxDomainAllowList: [String] = []
+    var _sandboxID: UInt32 = 0
+    var _internal: Bool = false
+    var _vlan: UInt32 = 0
+    var _captivePortal: SpaceX_API_Device_CaptivePortal? = nil
+    var _networkGroups: UInt32 = 0
+    var _dnsStaticEntries: [SpaceX_API_Device_WifiConfig.DnsStaticEntry] = []
+    var _dnsForwardRules: [SpaceX_API_Device_WifiConfig.DnsForwardRule] = []
+    var _disableWhenOfflineOld: Bool = false
+    var _staticRoutes: [SpaceX_API_Device_WifiConfig.StaticRoute] = []
+    var _disableWhenOffline: Bool = false
+    var _geofenceAction: SpaceX_API_Device_WifiConfig.Network.GeofenceAction = .none
+    var _onboardRadiusTlsConfigOld: SpaceX_API_Device_TlsConfig? = nil
+    var _onboardRadiusTlsConfig: SpaceX_API_Device_TlsConfig? = nil
+    var _getLeaseDhcp: Bool = false
+    var _defaultRouteDisabled: Bool = false
+
+      // This property is used as the initial default value for new instances of the type.
+      // The type itself is protecting the reference to its storage via CoW semantics.
+      // This will force a copy to be made of this reference when the first mutation occurs;
+      // hence, it is safe to mark this as `nonisolated(unsafe)`.
+      static nonisolated(unsafe) let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _ipv4 = source._ipv4
+      _dhcpv4Start = source._dhcpv4Start
+      _dhcpv4End = source._dhcpv4End
+      _dhcpDisabled = source._dhcpDisabled
+      _dnsDisabled = source._dnsDisabled
+      _dhcpv4LeaseDurationS = source._dhcpv4LeaseDurationS
+      _domain = source._domain
+      _basicServiceSets = source._basicServiceSets
+      _clientIsolation = source._clientIsolation
+      _guest = source._guest
+      _landing = source._landing
+      _landingPageV2 = source._landingPageV2
+      _sandboxEnabled = source._sandboxEnabled
+      _sandboxDomainAllowList = source._sandboxDomainAllowList
+      _sandboxID = source._sandboxID
+      _internal = source._internal
+      _vlan = source._vlan
+      _captivePortal = source._captivePortal
+      _networkGroups = source._networkGroups
+      _dnsStaticEntries = source._dnsStaticEntries
+      _dnsForwardRules = source._dnsForwardRules
+      _disableWhenOfflineOld = source._disableWhenOfflineOld
+      _staticRoutes = source._staticRoutes
+      _disableWhenOffline = source._disableWhenOffline
+      _geofenceAction = source._geofenceAction
+      _onboardRadiusTlsConfigOld = source._onboardRadiusTlsConfigOld
+      _onboardRadiusTlsConfig = source._onboardRadiusTlsConfig
+      _getLeaseDhcp = source._getLeaseDhcp
+      _defaultRouteDisabled = source._defaultRouteDisabled
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        // The use of inline closures is to circumvent an issue where the compiler
+        // allocates stack space for every case branch when no optimizations are
+        // enabled. https://github.com/apple/swift-protobuf/issues/1034
+        switch fieldNumber {
+        case 1003: try { try decoder.decodeSingularStringField(value: &_storage._ipv4) }()
+        case 1007: try { try decoder.decodeRepeatedMessageField(value: &_storage._basicServiceSets) }()
+        case 1008: try { try decoder.decodeSingularBoolField(value: &_storage._clientIsolation) }()
+        case 1009: try { try decoder.decodeSingularBoolField(value: &_storage._guest) }()
+        case 1010: try { try decoder.decodeSingularStringField(value: &_storage._landing) }()
+        case 1011: try { try decoder.decodeSingularStringField(value: &_storage._domain) }()
+        case 1012: try { try decoder.decodeSingularUInt32Field(value: &_storage._dhcpv4Start) }()
+        case 1013: try { try decoder.decodeSingularBoolField(value: &_storage._internal) }()
+        case 1014: try { try decoder.decodeSingularUInt32Field(value: &_storage._vlan) }()
+        case 1015: try { try decoder.decodeSingularBoolField(value: &_storage._dhcpDisabled) }()
+        case 1016: try { try decoder.decodeSingularUInt32Field(value: &_storage._dhcpv4LeaseDurationS) }()
+        case 1017: try { try decoder.decodeSingularBoolField(value: &_storage._landingPageV2) }()
+        case 1020: try { try decoder.decodeSingularBoolField(value: &_storage._sandboxEnabled) }()
+        case 1022: try { try decoder.decodeRepeatedStringField(value: &_storage._sandboxDomainAllowList) }()
+        case 1023: try { try decoder.decodeSingularUInt32Field(value: &_storage._sandboxID) }()
+        case 1024: try { try decoder.decodeSingularMessageField(value: &_storage._captivePortal) }()
+        case 1025: try { try decoder.decodeSingularUInt32Field(value: &_storage._dhcpv4End) }()
+        case 1026: try { try decoder.decodeSingularUInt32Field(value: &_storage._networkGroups) }()
+        case 1027: try { try decoder.decodeRepeatedMessageField(value: &_storage._dnsStaticEntries) }()
+        case 1028: try { try decoder.decodeRepeatedMessageField(value: &_storage._dnsForwardRules) }()
+        case 1029: try { try decoder.decodeSingularBoolField(value: &_storage._disableWhenOfflineOld) }()
+        case 1030: try { try decoder.decodeRepeatedMessageField(value: &_storage._staticRoutes) }()
+        case 1031: try { try decoder.decodeSingularBoolField(value: &_storage._disableWhenOffline) }()
+        case 1032: try { try decoder.decodeSingularMessageField(value: &_storage._onboardRadiusTlsConfigOld) }()
+        case 1033: try { try decoder.decodeSingularMessageField(value: &_storage._onboardRadiusTlsConfig) }()
+        case 1034: try { try decoder.decodeSingularBoolField(value: &_storage._dnsDisabled) }()
+        case 1035: try { try decoder.decodeSingularBoolField(value: &_storage._getLeaseDhcp) }()
+        case 1036: try { try decoder.decodeSingularBoolField(value: &_storage._defaultRouteDisabled) }()
+        case 1038: try { try decoder.decodeSingularEnumField(value: &_storage._geofenceAction) }()
+        default: break
+        }
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every if/case branch local when no optimizations
+      // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+      // https://github.com/apple/swift-protobuf/issues/1182
+      if !_storage._ipv4.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._ipv4, fieldNumber: 1003)
+      }
+      if !_storage._basicServiceSets.isEmpty {
+        try visitor.visitRepeatedMessageField(value: _storage._basicServiceSets, fieldNumber: 1007)
+      }
+      if _storage._clientIsolation != false {
+        try visitor.visitSingularBoolField(value: _storage._clientIsolation, fieldNumber: 1008)
+      }
+      if _storage._guest != false {
+        try visitor.visitSingularBoolField(value: _storage._guest, fieldNumber: 1009)
+      }
+      if !_storage._landing.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._landing, fieldNumber: 1010)
+      }
+      if !_storage._domain.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._domain, fieldNumber: 1011)
+      }
+      if _storage._dhcpv4Start != 0 {
+        try visitor.visitSingularUInt32Field(value: _storage._dhcpv4Start, fieldNumber: 1012)
+      }
+      if _storage._internal != false {
+        try visitor.visitSingularBoolField(value: _storage._internal, fieldNumber: 1013)
+      }
+      if _storage._vlan != 0 {
+        try visitor.visitSingularUInt32Field(value: _storage._vlan, fieldNumber: 1014)
+      }
+      if _storage._dhcpDisabled != false {
+        try visitor.visitSingularBoolField(value: _storage._dhcpDisabled, fieldNumber: 1015)
+      }
+      if _storage._dhcpv4LeaseDurationS != 0 {
+        try visitor.visitSingularUInt32Field(value: _storage._dhcpv4LeaseDurationS, fieldNumber: 1016)
+      }
+      if _storage._landingPageV2 != false {
+        try visitor.visitSingularBoolField(value: _storage._landingPageV2, fieldNumber: 1017)
+      }
+      if _storage._sandboxEnabled != false {
+        try visitor.visitSingularBoolField(value: _storage._sandboxEnabled, fieldNumber: 1020)
+      }
+      if !_storage._sandboxDomainAllowList.isEmpty {
+        try visitor.visitRepeatedStringField(value: _storage._sandboxDomainAllowList, fieldNumber: 1022)
+      }
+      if _storage._sandboxID != 0 {
+        try visitor.visitSingularUInt32Field(value: _storage._sandboxID, fieldNumber: 1023)
+      }
+      try { if let v = _storage._captivePortal {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1024)
+      } }()
+      if _storage._dhcpv4End != 0 {
+        try visitor.visitSingularUInt32Field(value: _storage._dhcpv4End, fieldNumber: 1025)
+      }
+      if _storage._networkGroups != 0 {
+        try visitor.visitSingularUInt32Field(value: _storage._networkGroups, fieldNumber: 1026)
+      }
+      if !_storage._dnsStaticEntries.isEmpty {
+        try visitor.visitRepeatedMessageField(value: _storage._dnsStaticEntries, fieldNumber: 1027)
+      }
+      if !_storage._dnsForwardRules.isEmpty {
+        try visitor.visitRepeatedMessageField(value: _storage._dnsForwardRules, fieldNumber: 1028)
+      }
+      if _storage._disableWhenOfflineOld != false {
+        try visitor.visitSingularBoolField(value: _storage._disableWhenOfflineOld, fieldNumber: 1029)
+      }
+      if !_storage._staticRoutes.isEmpty {
+        try visitor.visitRepeatedMessageField(value: _storage._staticRoutes, fieldNumber: 1030)
+      }
+      if _storage._disableWhenOffline != false {
+        try visitor.visitSingularBoolField(value: _storage._disableWhenOffline, fieldNumber: 1031)
+      }
+      try { if let v = _storage._onboardRadiusTlsConfigOld {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1032)
+      } }()
+      try { if let v = _storage._onboardRadiusTlsConfig {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1033)
+      } }()
+      if _storage._dnsDisabled != false {
+        try visitor.visitSingularBoolField(value: _storage._dnsDisabled, fieldNumber: 1034)
+      }
+      if _storage._getLeaseDhcp != false {
+        try visitor.visitSingularBoolField(value: _storage._getLeaseDhcp, fieldNumber: 1035)
+      }
+      if _storage._defaultRouteDisabled != false {
+        try visitor.visitSingularBoolField(value: _storage._defaultRouteDisabled, fieldNumber: 1036)
+      }
+      if _storage._geofenceAction != .none {
+        try visitor.visitSingularEnumField(value: _storage._geofenceAction, fieldNumber: 1038)
+      }
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: SpaceX_API_Device_WifiConfig.Network, rhs: SpaceX_API_Device_WifiConfig.Network) -> Bool {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._ipv4 != rhs_storage._ipv4 {return false}
+        if _storage._dhcpv4Start != rhs_storage._dhcpv4Start {return false}
+        if _storage._dhcpv4End != rhs_storage._dhcpv4End {return false}
+        if _storage._dhcpDisabled != rhs_storage._dhcpDisabled {return false}
+        if _storage._dnsDisabled != rhs_storage._dnsDisabled {return false}
+        if _storage._dhcpv4LeaseDurationS != rhs_storage._dhcpv4LeaseDurationS {return false}
+        if _storage._domain != rhs_storage._domain {return false}
+        if _storage._basicServiceSets != rhs_storage._basicServiceSets {return false}
+        if _storage._clientIsolation != rhs_storage._clientIsolation {return false}
+        if _storage._guest != rhs_storage._guest {return false}
+        if _storage._landing != rhs_storage._landing {return false}
+        if _storage._landingPageV2 != rhs_storage._landingPageV2 {return false}
+        if _storage._sandboxEnabled != rhs_storage._sandboxEnabled {return false}
+        if _storage._sandboxDomainAllowList != rhs_storage._sandboxDomainAllowList {return false}
+        if _storage._sandboxID != rhs_storage._sandboxID {return false}
+        if _storage._internal != rhs_storage._internal {return false}
+        if _storage._vlan != rhs_storage._vlan {return false}
+        if _storage._captivePortal != rhs_storage._captivePortal {return false}
+        if _storage._networkGroups != rhs_storage._networkGroups {return false}
+        if _storage._dnsStaticEntries != rhs_storage._dnsStaticEntries {return false}
+        if _storage._dnsForwardRules != rhs_storage._dnsForwardRules {return false}
+        if _storage._disableWhenOfflineOld != rhs_storage._disableWhenOfflineOld {return false}
+        if _storage._staticRoutes != rhs_storage._staticRoutes {return false}
+        if _storage._disableWhenOffline != rhs_storage._disableWhenOffline {return false}
+        if _storage._geofenceAction != rhs_storage._geofenceAction {return false}
+        if _storage._onboardRadiusTlsConfigOld != rhs_storage._onboardRadiusTlsConfigOld {return false}
+        if _storage._onboardRadiusTlsConfig != rhs_storage._onboardRadiusTlsConfig {return false}
+        if _storage._getLeaseDhcp != rhs_storage._getLeaseDhcp {return false}
+        if _storage._defaultRouteDisabled != rhs_storage._defaultRouteDisabled {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension SpaceX_API_Device_WifiConfig.Network.GeofenceAction: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0NONE\0\u{1}DISABLE_RADIOS_AND_BLOCK_TRAFFIC\0\u{1}BLOCK_TRAFFIC\0")
+}
+
+nonisolated extension SpaceX_API_Device_WifiConfig.UnbridgedEthPort: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = SpaceX_API_Device_WifiConfig.protoMessageName + ".UnbridgedEthPort"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}lan_port_index\0\u{1}ip\0\u{1}gateway\0\u{3}static_routes\0\u{3}wan_none\0\u{3}wan_starlink_router_pair\0\u{3}bridged_network_group_override\0")
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularUInt32Field(value: &self.lanPortIndex) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.ip) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.gateway) }()
+      case 4: try { try decoder.decodeRepeatedMessageField(value: &self.staticRoutes) }()
+      case 5: try {
+        var v: SpaceX_API_Device_WanNone?
+        var hadOneofValue = false
+        if let current = self.wan {
+          hadOneofValue = true
+          if case .wanNone(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.wan = .wanNone(v)
+        }
+      }()
+      case 6: try {
+        var v: SpaceX_API_Device_WanStarlinkRouterPair?
+        var hadOneofValue = false
+        if let current = self.wan {
+          hadOneofValue = true
+          if case .wanStarlinkRouterPair(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.wan = .wanStarlinkRouterPair(v)
+        }
+      }()
+      case 7: try { try decoder.decodeSingularUInt32Field(value: &self.bridgedNetworkGroupOverride) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if self.lanPortIndex != 0 {
+      try visitor.visitSingularUInt32Field(value: self.lanPortIndex, fieldNumber: 1)
+    }
+    if !self.ip.isEmpty {
+      try visitor.visitSingularStringField(value: self.ip, fieldNumber: 2)
+    }
+    if !self.gateway.isEmpty {
+      try visitor.visitSingularStringField(value: self.gateway, fieldNumber: 3)
+    }
+    if !self.staticRoutes.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.staticRoutes, fieldNumber: 4)
+    }
+    switch self.wan {
+    case .wanNone?: try {
+      guard case .wanNone(let v)? = self.wan else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
+    }()
+    case .wanStarlinkRouterPair?: try {
+      guard case .wanStarlinkRouterPair(let v)? = self.wan else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
+    }()
+    case nil: break
+    }
+    if self.bridgedNetworkGroupOverride != 0 {
+      try visitor.visitSingularUInt32Field(value: self.bridgedNetworkGroupOverride, fieldNumber: 7)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: SpaceX_API_Device_WifiConfig.UnbridgedEthPort, rhs: SpaceX_API_Device_WifiConfig.UnbridgedEthPort) -> Bool {
+    if lhs.lanPortIndex != rhs.lanPortIndex {return false}
+    if lhs.ip != rhs.ip {return false}
+    if lhs.gateway != rhs.gateway {return false}
+    if lhs.staticRoutes != rhs.staticRoutes {return false}
+    if lhs.wan != rhs.wan {return false}
+    if lhs.bridgedNetworkGroupOverride != rhs.bridgedNetworkGroupOverride {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension SpaceX_API_Device_WifiConfig.UnbridgedEthPort.StaticRoute: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = SpaceX_API_Device_WifiConfig.UnbridgedEthPort.protoMessageName + ".StaticRoute"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}subnet\0\u{3}network_groups\0")
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.subnet) }()
+      case 2: try { try decoder.decodeSingularUInt32Field(value: &self.networkGroups) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.subnet.isEmpty {
+      try visitor.visitSingularStringField(value: self.subnet, fieldNumber: 1)
+    }
+    if self.networkGroups != 0 {
+      try visitor.visitSingularUInt32Field(value: self.networkGroups, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: SpaceX_API_Device_WifiConfig.UnbridgedEthPort.StaticRoute, rhs: SpaceX_API_Device_WifiConfig.UnbridgedEthPort.StaticRoute) -> Bool {
+    if lhs.subnet != rhs.subnet {return false}
+    if lhs.networkGroups != rhs.networkGroups {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension SpaceX_API_Device_WanNone: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".WanNone"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: SpaceX_API_Device_WanNone, rhs: SpaceX_API_Device_WanNone) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension SpaceX_API_Device_WanStarlinkRouterPair: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".WanStarlinkRouterPair"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}client_vlan_first\0")
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularBoolField(value: &self.clientVlanFirst) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.clientVlanFirst != false {
+      try visitor.visitSingularBoolField(value: self.clientVlanFirst, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: SpaceX_API_Device_WanStarlinkRouterPair, rhs: SpaceX_API_Device_WanStarlinkRouterPair) -> Bool {
+    if lhs.clientVlanFirst != rhs.clientVlanFirst {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension SpaceX_API_Device_WeeklyBlockSchedule: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".WeeklyBlockSchedule"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "block_ranges"),
-    2: .standard(proto: "group_id"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}block_ranges\0\u{3}group_id\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -2682,12 +3780,9 @@ extension SpaceX_API_Device_WeeklyBlockSchedule: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension SpaceX_API_Device_WeeklyBlockSchedule.BlockRange: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_WeeklyBlockSchedule.BlockRange: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = SpaceX_API_Device_WeeklyBlockSchedule.protoMessageName + ".BlockRange"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "start_minutes"),
-    2: .standard(proto: "end_minutes"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}start_minutes\0\u{3}end_minutes\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -2720,15 +3815,9 @@ extension SpaceX_API_Device_WeeklyBlockSchedule.BlockRange: SwiftProtobuf.Messag
   }
 }
 
-extension SpaceX_API_Device_ClientConfig: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_ClientConfig: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".ClientConfig"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "client_id"),
-    2: .standard(proto: "mac_address"),
-    3: .standard(proto: "given_name"),
-    5: .standard(proto: "weekly_block_schedules"),
-    6: .standard(proto: "group_id"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}client_id\0\u{3}mac_address\0\u{3}given_name\0\u{4}\u{2}weekly_block_schedules\0\u{3}group_id\0\u{b}weekly_block_schedule\0\u{c}\u{4}\u{1}")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -2776,12 +3865,9 @@ extension SpaceX_API_Device_ClientConfig: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension SpaceX_API_Device_ClientName: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_ClientName: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".ClientName"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "mac_address"),
-    2: .standard(proto: "given_name"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}mac_address\0\u{3}given_name\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -2814,7 +3900,7 @@ extension SpaceX_API_Device_ClientName: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension SpaceX_API_Device_AuthOpen: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_AuthOpen: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".AuthOpen"
   static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -2833,11 +3919,9 @@ extension SpaceX_API_Device_AuthOpen: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension SpaceX_API_Device_AuthWpa2: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_AuthWpa2: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".AuthWpa2"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "password"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}password\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -2865,11 +3949,9 @@ extension SpaceX_API_Device_AuthWpa2: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension SpaceX_API_Device_AuthWpa3: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_AuthWpa3: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".AuthWpa3"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "password"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}password\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -2897,11 +3979,9 @@ extension SpaceX_API_Device_AuthWpa3: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension SpaceX_API_Device_AuthWpa2Wpa3: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_AuthWpa2Wpa3: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".AuthWpa2Wpa3"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "password"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}password\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -2929,15 +4009,28 @@ extension SpaceX_API_Device_AuthWpa2Wpa3: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension SpaceX_API_Device_AuthRadius: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_AuthOpenEncrypted: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".AuthOpenEncrypted"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: SpaceX_API_Device_AuthOpenEncrypted, rhs: SpaceX_API_Device_AuthOpenEncrypted) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension SpaceX_API_Device_AuthRadius: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".AuthRadius"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "server"),
-    3: .standard(proto: "server_ca"),
-    4: .standard(proto: "server_ca_base_64"),
-    2: .same(proto: "password"),
-    5: .same(proto: "transport"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}server\0\u{1}password\0\u{3}server_ca\0\u{3}server_ca_base_64\0\u{1}transport\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -2985,7 +4078,26 @@ extension SpaceX_API_Device_AuthRadius: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension SpaceX_API_Device_NoTrafficControl: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_AuthOnboardRadius: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".AuthOnboardRadius"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: SpaceX_API_Device_AuthOnboardRadius, rhs: SpaceX_API_Device_AuthOnboardRadius) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension SpaceX_API_Device_NoTrafficControl: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".NoTrafficControl"
   static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -3004,16 +4116,9 @@ extension SpaceX_API_Device_NoTrafficControl: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension SpaceX_API_Device_AckSuppression: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_AckSuppression: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".AckSuppression"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "ack_mark"),
-    2: .standard(proto: "htb_ack_queue_rate"),
-    3: .standard(proto: "htb_ack_queue_ceil"),
-    4: .standard(proto: "cake_queue_bandwidth"),
-    5: .standard(proto: "cake_ack_filter_aggressive"),
-    6: .standard(proto: "cake_manual_rtt"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}ack_mark\0\u{3}htb_ack_queue_rate\0\u{3}htb_ack_queue_ceil\0\u{3}cake_queue_bandwidth\0\u{3}cake_ack_filter_aggressive\0\u{3}cake_manual_rtt\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -3066,15 +4171,9 @@ extension SpaceX_API_Device_AckSuppression: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension SpaceX_API_Device_CakeRateLimit: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension SpaceX_API_Device_CakeRateLimit: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".CakeRateLimit"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "host_mark"),
-    2: .same(proto: "bandwidth"),
-    3: .standard(proto: "priority_queue_parameter"),
-    4: .standard(proto: "ack_filter"),
-    6: .standard(proto: "manual_rtt"),
-  ]
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}host_mark\0\u{1}bandwidth\0\u{3}priority_queue_parameter\0\u{3}ack_filter\0\u{4}\u{2}manual_rtt\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {

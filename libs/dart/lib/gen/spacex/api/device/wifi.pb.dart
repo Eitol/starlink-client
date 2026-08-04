@@ -17,11 +17,12 @@ import 'package:protobuf/protobuf.dart' as $pb;
 import 'package:protobuf/well_known_types/google/protobuf/wrappers.pb.dart'
     as $4;
 
+import '../satellites/network/ut_disablement_codes.pbenum.dart' as $6;
 import '../telemetron/public/common/time.pb.dart' as $5;
-import 'common.pb.dart' as $3;
+import 'common.pb.dart' as $1;
 import 'wifi.pbenum.dart';
-import 'wifi_config.pb.dart' as $2;
-import 'wifi_util.pb.dart' as $1;
+import 'wifi_config.pb.dart' as $3;
+import 'wifi_util.pb.dart' as $2;
 
 export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
 
@@ -86,6 +87,8 @@ class ToController extends $pb.GeneratedMessage {
     WifiMeshStatus? status,
     $core.int? apiVersion,
     MeshSpeedtest? speedtest,
+    $core.bool? readyForMultipleNetworks,
+    $core.int? apiVersionOtherSide,
   }) {
     final result = create();
     if (clients != null) result.clients = clients;
@@ -93,6 +96,10 @@ class ToController extends $pb.GeneratedMessage {
     if (status != null) result.status = status;
     if (apiVersion != null) result.apiVersion = apiVersion;
     if (speedtest != null) result.speedtest = speedtest;
+    if (readyForMultipleNetworks != null)
+      result.readyForMultipleNetworks = readyForMultipleNetworks;
+    if (apiVersionOtherSide != null)
+      result.apiVersionOtherSide = apiVersionOtherSide;
     return result;
   }
 
@@ -128,6 +135,8 @@ class ToController extends $pb.GeneratedMessage {
     ..aI(4, _omitFieldNames ? '' : 'apiVersion')
     ..aOM<MeshSpeedtest>(5, _omitFieldNames ? '' : 'speedtest',
         subBuilder: MeshSpeedtest.create)
+    ..aOB(6, _omitFieldNames ? '' : 'readyForMultipleNetworks')
+    ..aI(7, _omitFieldNames ? '' : 'apiVersionOtherSide')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -213,6 +222,24 @@ class ToController extends $pb.GeneratedMessage {
   void clearSpeedtest() => $_clearField(5);
   @$pb.TagNumber(5)
   MeshSpeedtest ensureSpeedtest() => $_ensure(4);
+
+  @$pb.TagNumber(6)
+  $core.bool get readyForMultipleNetworks => $_getBF(5);
+  @$pb.TagNumber(6)
+  set readyForMultipleNetworks($core.bool value) => $_setBool(5, value);
+  @$pb.TagNumber(6)
+  $core.bool hasReadyForMultipleNetworks() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearReadyForMultipleNetworks() => $_clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.int get apiVersionOtherSide => $_getIZ(6);
+  @$pb.TagNumber(7)
+  set apiVersionOtherSide($core.int value) => $_setSignedInt32(6, value);
+  @$pb.TagNumber(7)
+  $core.bool hasApiVersionOtherSide() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearApiVersionOtherSide() => $_clearField(7);
 }
 
 class WifiMeshJoin extends $pb.GeneratedMessage {
@@ -306,8 +333,9 @@ class WifiMeshJoin extends $pb.GeneratedMessage {
 
 class WifiMeshStatus extends $pb.GeneratedMessage {
   factory WifiMeshStatus({
+    $core.Iterable<$1.UXEvent>? events,
     $core.Iterable<WifiClient>? clients,
-    $core.Iterable<$1.InflatedBasicServiceSet>? bssList,
+    $core.Iterable<$2.InflatedBasicServiceSet>? bssList,
     $core.String? hardwareVersion,
     $core.String? softwareVersion,
     $core.String? macLan,
@@ -316,6 +344,7 @@ class WifiMeshStatus extends $pb.GeneratedMessage {
     $core.int? backhaulEstPreference,
   }) {
     final result = create();
+    if (events != null) result.events.addAll(events);
     if (clients != null) result.clients.addAll(clients);
     if (bssList != null) result.bssList.addAll(bssList);
     if (hardwareVersion != null) result.hardwareVersion = hardwareVersion;
@@ -343,10 +372,12 @@ class WifiMeshStatus extends $pb.GeneratedMessage {
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
       createEmptyInstance: create)
+    ..pPM<$1.UXEvent>(1, _omitFieldNames ? '' : 'events',
+        subBuilder: $1.UXEvent.create)
     ..pPM<WifiClient>(2, _omitFieldNames ? '' : 'clients',
         subBuilder: WifiClient.create)
-    ..pPM<$1.InflatedBasicServiceSet>(3, _omitFieldNames ? '' : 'bssList',
-        subBuilder: $1.InflatedBasicServiceSet.create)
+    ..pPM<$2.InflatedBasicServiceSet>(3, _omitFieldNames ? '' : 'bssList',
+        subBuilder: $2.InflatedBasicServiceSet.create)
     ..aOS(4, _omitFieldNames ? '' : 'hardwareVersion')
     ..aOS(5, _omitFieldNames ? '' : 'softwareVersion')
     ..aOS(6, _omitFieldNames ? '' : 'macLan')
@@ -375,57 +406,60 @@ class WifiMeshStatus extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<WifiMeshStatus>(create);
   static WifiMeshStatus? _defaultInstance;
 
+  @$pb.TagNumber(1)
+  $pb.PbList<$1.UXEvent> get events => $_getList(0);
+
   @$pb.TagNumber(2)
-  $pb.PbList<WifiClient> get clients => $_getList(0);
+  $pb.PbList<WifiClient> get clients => $_getList(1);
 
   @$pb.TagNumber(3)
-  $pb.PbList<$1.InflatedBasicServiceSet> get bssList => $_getList(1);
+  $pb.PbList<$2.InflatedBasicServiceSet> get bssList => $_getList(2);
 
   @$pb.TagNumber(4)
-  $core.String get hardwareVersion => $_getSZ(2);
+  $core.String get hardwareVersion => $_getSZ(3);
   @$pb.TagNumber(4)
-  set hardwareVersion($core.String value) => $_setString(2, value);
+  set hardwareVersion($core.String value) => $_setString(3, value);
   @$pb.TagNumber(4)
-  $core.bool hasHardwareVersion() => $_has(2);
+  $core.bool hasHardwareVersion() => $_has(3);
   @$pb.TagNumber(4)
   void clearHardwareVersion() => $_clearField(4);
 
   @$pb.TagNumber(5)
-  $core.String get softwareVersion => $_getSZ(3);
+  $core.String get softwareVersion => $_getSZ(4);
   @$pb.TagNumber(5)
-  set softwareVersion($core.String value) => $_setString(3, value);
+  set softwareVersion($core.String value) => $_setString(4, value);
   @$pb.TagNumber(5)
-  $core.bool hasSoftwareVersion() => $_has(3);
+  $core.bool hasSoftwareVersion() => $_has(4);
   @$pb.TagNumber(5)
   void clearSoftwareVersion() => $_clearField(5);
 
   @$pb.TagNumber(6)
-  $core.String get macLan => $_getSZ(4);
+  $core.String get macLan => $_getSZ(5);
   @$pb.TagNumber(6)
-  set macLan($core.String value) => $_setString(4, value);
+  set macLan($core.String value) => $_setString(5, value);
   @$pb.TagNumber(6)
-  $core.bool hasMacLan() => $_has(4);
+  $core.bool hasMacLan() => $_has(5);
   @$pb.TagNumber(6)
   void clearMacLan() => $_clearField(6);
 
   @$pb.TagNumber(7)
-  $pb.PbList<$core.String> get sourceMacAddresses => $_getList(5);
+  $pb.PbList<$core.String> get sourceMacAddresses => $_getList(6);
 
   @$pb.TagNumber(8)
-  $core.String get backhaulBssid => $_getSZ(6);
+  $core.String get backhaulBssid => $_getSZ(7);
   @$pb.TagNumber(8)
-  set backhaulBssid($core.String value) => $_setString(6, value);
+  set backhaulBssid($core.String value) => $_setString(7, value);
   @$pb.TagNumber(8)
-  $core.bool hasBackhaulBssid() => $_has(6);
+  $core.bool hasBackhaulBssid() => $_has(7);
   @$pb.TagNumber(8)
   void clearBackhaulBssid() => $_clearField(8);
 
   @$pb.TagNumber(9)
-  $core.int get backhaulEstPreference => $_getIZ(7);
+  $core.int get backhaulEstPreference => $_getIZ(8);
   @$pb.TagNumber(9)
-  set backhaulEstPreference($core.int value) => $_setUnsignedInt32(7, value);
+  set backhaulEstPreference($core.int value) => $_setUnsignedInt32(8, value);
   @$pb.TagNumber(9)
-  $core.bool hasBackhaulEstPreference() => $_has(7);
+  $core.bool hasBackhaulEstPreference() => $_has(8);
   @$pb.TagNumber(9)
   void clearBackhaulEstPreference() => $_clearField(9);
 }
@@ -566,9 +600,9 @@ class WifiSiteSurveyResult extends $pb.GeneratedMessage {
     $core.double? rssi,
     $core.int? channel,
     $core.String? ssid,
-    $1.WifiSecurity? security,
-    $1.WifiMode? wirelessMode,
-    $1.IfaceType? iface,
+    $2.WifiSecurity? security,
+    $2.WifiMode? wirelessMode,
+    $2.IfaceType? iface,
     $core.String? macAddress,
     $core.double? estRxRate,
   }) {
@@ -601,12 +635,12 @@ class WifiSiteSurveyResult extends $pb.GeneratedMessage {
     ..aD(1, _omitFieldNames ? '' : 'rssi', fieldType: $pb.PbFieldType.OF)
     ..aI(2, _omitFieldNames ? '' : 'channel', fieldType: $pb.PbFieldType.OU3)
     ..aOS(3, _omitFieldNames ? '' : 'ssid')
-    ..aE<$1.WifiSecurity>(4, _omitFieldNames ? '' : 'security',
-        enumValues: $1.WifiSecurity.values)
-    ..aE<$1.WifiMode>(5, _omitFieldNames ? '' : 'wirelessMode',
-        enumValues: $1.WifiMode.values)
-    ..aE<$1.IfaceType>(6, _omitFieldNames ? '' : 'iface',
-        enumValues: $1.IfaceType.values)
+    ..aE<$2.WifiSecurity>(4, _omitFieldNames ? '' : 'security',
+        enumValues: $2.WifiSecurity.values)
+    ..aE<$2.WifiMode>(5, _omitFieldNames ? '' : 'wirelessMode',
+        enumValues: $2.WifiMode.values)
+    ..aE<$2.IfaceType>(6, _omitFieldNames ? '' : 'iface',
+        enumValues: $2.IfaceType.values)
     ..aOS(7, _omitFieldNames ? '' : 'macAddress')
     ..aD(8, _omitFieldNames ? '' : 'estRxRate', fieldType: $pb.PbFieldType.OF)
     ..hasRequiredFields = false;
@@ -658,27 +692,27 @@ class WifiSiteSurveyResult extends $pb.GeneratedMessage {
   void clearSsid() => $_clearField(3);
 
   @$pb.TagNumber(4)
-  $1.WifiSecurity get security => $_getN(3);
+  $2.WifiSecurity get security => $_getN(3);
   @$pb.TagNumber(4)
-  set security($1.WifiSecurity value) => $_setField(4, value);
+  set security($2.WifiSecurity value) => $_setField(4, value);
   @$pb.TagNumber(4)
   $core.bool hasSecurity() => $_has(3);
   @$pb.TagNumber(4)
   void clearSecurity() => $_clearField(4);
 
   @$pb.TagNumber(5)
-  $1.WifiMode get wirelessMode => $_getN(4);
+  $2.WifiMode get wirelessMode => $_getN(4);
   @$pb.TagNumber(5)
-  set wirelessMode($1.WifiMode value) => $_setField(5, value);
+  set wirelessMode($2.WifiMode value) => $_setField(5, value);
   @$pb.TagNumber(5)
   $core.bool hasWirelessMode() => $_has(4);
   @$pb.TagNumber(5)
   void clearWirelessMode() => $_clearField(5);
 
   @$pb.TagNumber(6)
-  $1.IfaceType get iface => $_getN(5);
+  $2.IfaceType get iface => $_getN(5);
   @$pb.TagNumber(6)
-  set iface($1.IfaceType value) => $_setField(6, value);
+  set iface($2.IfaceType value) => $_setField(6, value);
   @$pb.TagNumber(6)
   $core.bool hasIface() => $_has(5);
   @$pb.TagNumber(6)
@@ -707,12 +741,15 @@ class WifiGlobalMeshStatus extends $pb.GeneratedMessage {
   factory WifiGlobalMeshStatus({
     $core.String? hardwareVersion,
     $core.String? softwareVersion,
-    $core.Iterable<$1.InflatedBasicServiceSet>? bssList,
+    $core.Iterable<$2.InflatedBasicServiceSet>? bssList,
+    $core.int? hopsFromController,
   }) {
     final result = create();
     if (hardwareVersion != null) result.hardwareVersion = hardwareVersion;
     if (softwareVersion != null) result.softwareVersion = softwareVersion;
     if (bssList != null) result.bssList.addAll(bssList);
+    if (hopsFromController != null)
+      result.hopsFromController = hopsFromController;
     return result;
   }
 
@@ -732,8 +769,10 @@ class WifiGlobalMeshStatus extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'hardwareVersion')
     ..aOS(2, _omitFieldNames ? '' : 'softwareVersion')
-    ..pPM<$1.InflatedBasicServiceSet>(3, _omitFieldNames ? '' : 'bssList',
-        subBuilder: $1.InflatedBasicServiceSet.create)
+    ..pPM<$2.InflatedBasicServiceSet>(3, _omitFieldNames ? '' : 'bssList',
+        subBuilder: $2.InflatedBasicServiceSet.create)
+    ..aI(4, _omitFieldNames ? '' : 'hopsFromController',
+        fieldType: $pb.PbFieldType.OU3)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -774,13 +813,22 @@ class WifiGlobalMeshStatus extends $pb.GeneratedMessage {
   void clearSoftwareVersion() => $_clearField(2);
 
   @$pb.TagNumber(3)
-  $pb.PbList<$1.InflatedBasicServiceSet> get bssList => $_getList(2);
+  $pb.PbList<$2.InflatedBasicServiceSet> get bssList => $_getList(2);
+
+  @$pb.TagNumber(4)
+  $core.int get hopsFromController => $_getIZ(3);
+  @$pb.TagNumber(4)
+  set hopsFromController($core.int value) => $_setUnsignedInt32(3, value);
+  @$pb.TagNumber(4)
+  $core.bool hasHopsFromController() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearHopsFromController() => $_clearField(4);
 }
 
 class BackhaulRequest extends $pb.GeneratedMessage {
   factory BackhaulRequest({
     $core.bool? retryBackhaul,
-    $2.WifiConfig? goldenBss,
+    $3.WifiConfig? goldenBss,
   }) {
     final result = create();
     if (retryBackhaul != null) result.retryBackhaul = retryBackhaul;
@@ -803,8 +851,8 @@ class BackhaulRequest extends $pb.GeneratedMessage {
           const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
       createEmptyInstance: create)
     ..aOB(1, _omitFieldNames ? '' : 'retryBackhaul')
-    ..aOM<$2.WifiConfig>(2, _omitFieldNames ? '' : 'goldenBss',
-        subBuilder: $2.WifiConfig.create)
+    ..aOM<$3.WifiConfig>(2, _omitFieldNames ? '' : 'goldenBss',
+        subBuilder: $3.WifiConfig.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -836,15 +884,15 @@ class BackhaulRequest extends $pb.GeneratedMessage {
   void clearRetryBackhaul() => $_clearField(1);
 
   @$pb.TagNumber(2)
-  $2.WifiConfig get goldenBss => $_getN(1);
+  $3.WifiConfig get goldenBss => $_getN(1);
   @$pb.TagNumber(2)
-  set goldenBss($2.WifiConfig value) => $_setField(2, value);
+  set goldenBss($3.WifiConfig value) => $_setField(2, value);
   @$pb.TagNumber(2)
   $core.bool hasGoldenBss() => $_has(1);
   @$pb.TagNumber(2)
   void clearGoldenBss() => $_clearField(2);
   @$pb.TagNumber(2)
-  $2.WifiConfig ensureGoldenBss() => $_ensure(1);
+  $3.WifiConfig ensureGoldenBss() => $_ensure(1);
 }
 
 enum FromController_Message {
@@ -859,7 +907,7 @@ enum FromController_Message {
 
 class FromController extends $pb.GeneratedMessage {
   factory FromController({
-    $2.WifiConfig? wifiConfig,
+    $3.WifiConfig? wifiConfig,
     @$core.Deprecated('This field is deprecated.')
     SteerClientRequest? steerClientRequest,
     $core.int? apiVersion,
@@ -905,8 +953,8 @@ class FromController extends $pb.GeneratedMessage {
           const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
       createEmptyInstance: create)
     ..oo(0, [1, 2, 4, 5, 6, 7])
-    ..aOM<$2.WifiConfig>(1, _omitFieldNames ? '' : 'wifiConfig',
-        subBuilder: $2.WifiConfig.create)
+    ..aOM<$3.WifiConfig>(1, _omitFieldNames ? '' : 'wifiConfig',
+        subBuilder: $3.WifiConfig.create)
     ..aOM<SteerClientRequest>(2, _omitFieldNames ? '' : 'steerClientRequest',
         subBuilder: SteerClientRequest.create)
     ..aI(3, _omitFieldNames ? '' : 'apiVersion')
@@ -956,15 +1004,15 @@ class FromController extends $pb.GeneratedMessage {
   void clearMessage() => $_clearField($_whichOneof(0));
 
   @$pb.TagNumber(1)
-  $2.WifiConfig get wifiConfig => $_getN(0);
+  $3.WifiConfig get wifiConfig => $_getN(0);
   @$pb.TagNumber(1)
-  set wifiConfig($2.WifiConfig value) => $_setField(1, value);
+  set wifiConfig($3.WifiConfig value) => $_setField(1, value);
   @$pb.TagNumber(1)
   $core.bool hasWifiConfig() => $_has(0);
   @$pb.TagNumber(1)
   void clearWifiConfig() => $_clearField(1);
   @$pb.TagNumber(1)
-  $2.WifiConfig ensureWifiConfig() => $_ensure(0);
+  $3.WifiConfig ensureWifiConfig() => $_ensure(0);
 
   @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(2)
@@ -1511,7 +1559,7 @@ class WifiSelfTest extends $pb.GeneratedMessage {
 
 class WifiSetConfigRequest extends $pb.GeneratedMessage {
   factory WifiSetConfigRequest({
-    $2.WifiConfig? wifiConfig,
+    $3.WifiConfig? wifiConfig,
   }) {
     final result = create();
     if (wifiConfig != null) result.wifiConfig = wifiConfig;
@@ -1532,8 +1580,8 @@ class WifiSetConfigRequest extends $pb.GeneratedMessage {
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
       createEmptyInstance: create)
-    ..aOM<$2.WifiConfig>(1, _omitFieldNames ? '' : 'wifiConfig',
-        subBuilder: $2.WifiConfig.create)
+    ..aOM<$3.WifiConfig>(1, _omitFieldNames ? '' : 'wifiConfig',
+        subBuilder: $3.WifiConfig.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -1556,20 +1604,20 @@ class WifiSetConfigRequest extends $pb.GeneratedMessage {
   static WifiSetConfigRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $2.WifiConfig get wifiConfig => $_getN(0);
+  $3.WifiConfig get wifiConfig => $_getN(0);
   @$pb.TagNumber(1)
-  set wifiConfig($2.WifiConfig value) => $_setField(1, value);
+  set wifiConfig($3.WifiConfig value) => $_setField(1, value);
   @$pb.TagNumber(1)
   $core.bool hasWifiConfig() => $_has(0);
   @$pb.TagNumber(1)
   void clearWifiConfig() => $_clearField(1);
   @$pb.TagNumber(1)
-  $2.WifiConfig ensureWifiConfig() => $_ensure(0);
+  $3.WifiConfig ensureWifiConfig() => $_ensure(0);
 }
 
 class WifiSetConfigResponse extends $pb.GeneratedMessage {
   factory WifiSetConfigResponse({
-    $2.WifiConfig? updatedWifiConfig,
+    $3.WifiConfig? updatedWifiConfig,
   }) {
     final result = create();
     if (updatedWifiConfig != null) result.updatedWifiConfig = updatedWifiConfig;
@@ -1590,8 +1638,8 @@ class WifiSetConfigResponse extends $pb.GeneratedMessage {
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
       createEmptyInstance: create)
-    ..aOM<$2.WifiConfig>(1, _omitFieldNames ? '' : 'updatedWifiConfig',
-        subBuilder: $2.WifiConfig.create)
+    ..aOM<$3.WifiConfig>(1, _omitFieldNames ? '' : 'updatedWifiConfig',
+        subBuilder: $3.WifiConfig.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -1615,15 +1663,15 @@ class WifiSetConfigResponse extends $pb.GeneratedMessage {
   static WifiSetConfigResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $2.WifiConfig get updatedWifiConfig => $_getN(0);
+  $3.WifiConfig get updatedWifiConfig => $_getN(0);
   @$pb.TagNumber(1)
-  set updatedWifiConfig($2.WifiConfig value) => $_setField(1, value);
+  set updatedWifiConfig($3.WifiConfig value) => $_setField(1, value);
   @$pb.TagNumber(1)
   $core.bool hasUpdatedWifiConfig() => $_has(0);
   @$pb.TagNumber(1)
   void clearUpdatedWifiConfig() => $_clearField(1);
   @$pb.TagNumber(1)
-  $2.WifiConfig ensureUpdatedWifiConfig() => $_ensure(0);
+  $3.WifiConfig ensureUpdatedWifiConfig() => $_ensure(0);
 }
 
 class WifiGetConfigRequest extends $pb.GeneratedMessage {
@@ -1667,7 +1715,7 @@ class WifiGetConfigRequest extends $pb.GeneratedMessage {
 
 class WifiGetConfigResponse extends $pb.GeneratedMessage {
   factory WifiGetConfigResponse({
-    $2.WifiConfig? wifiConfig,
+    $3.WifiConfig? wifiConfig,
   }) {
     final result = create();
     if (wifiConfig != null) result.wifiConfig = wifiConfig;
@@ -1688,8 +1736,8 @@ class WifiGetConfigResponse extends $pb.GeneratedMessage {
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
       createEmptyInstance: create)
-    ..aOM<$2.WifiConfig>(1, _omitFieldNames ? '' : 'wifiConfig',
-        subBuilder: $2.WifiConfig.create)
+    ..aOM<$3.WifiConfig>(1, _omitFieldNames ? '' : 'wifiConfig',
+        subBuilder: $3.WifiConfig.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -1713,21 +1761,21 @@ class WifiGetConfigResponse extends $pb.GeneratedMessage {
   static WifiGetConfigResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $2.WifiConfig get wifiConfig => $_getN(0);
+  $3.WifiConfig get wifiConfig => $_getN(0);
   @$pb.TagNumber(1)
-  set wifiConfig($2.WifiConfig value) => $_setField(1, value);
+  set wifiConfig($3.WifiConfig value) => $_setField(1, value);
   @$pb.TagNumber(1)
   $core.bool hasWifiConfig() => $_has(0);
   @$pb.TagNumber(1)
   void clearWifiConfig() => $_clearField(1);
   @$pb.TagNumber(1)
-  $2.WifiConfig ensureWifiConfig() => $_ensure(0);
+  $3.WifiConfig ensureWifiConfig() => $_ensure(0);
 }
 
 class WifiSetMeshDeviceTrustRequest extends $pb.GeneratedMessage {
   factory WifiSetMeshDeviceTrustRequest({
     $core.String? deviceId,
-    $2.MeshAuth? auth,
+    $3.MeshAuth? auth,
   }) {
     final result = create();
     if (deviceId != null) result.deviceId = deviceId;
@@ -1750,8 +1798,8 @@ class WifiSetMeshDeviceTrustRequest extends $pb.GeneratedMessage {
           const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
       createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'deviceId')
-    ..aE<$2.MeshAuth>(2, _omitFieldNames ? '' : 'auth',
-        enumValues: $2.MeshAuth.values)
+    ..aE<$3.MeshAuth>(2, _omitFieldNames ? '' : 'auth',
+        enumValues: $3.MeshAuth.values)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -1786,9 +1834,9 @@ class WifiSetMeshDeviceTrustRequest extends $pb.GeneratedMessage {
   void clearDeviceId() => $_clearField(1);
 
   @$pb.TagNumber(2)
-  $2.MeshAuth get auth => $_getN(1);
+  $3.MeshAuth get auth => $_getN(1);
   @$pb.TagNumber(2)
-  set auth($2.MeshAuth value) => $_setField(2, value);
+  set auth($3.MeshAuth value) => $_setField(2, value);
   @$pb.TagNumber(2)
   $core.bool hasAuth() => $_has(1);
   @$pb.TagNumber(2)
@@ -1839,7 +1887,7 @@ class WifiSetMeshDeviceTrustResponse extends $pb.GeneratedMessage {
 
 class WifiSetMeshConfigRequest extends $pb.GeneratedMessage {
   factory WifiSetMeshConfigRequest({
-    $2.MeshConfig? meshConfig,
+    $3.MeshConfig? meshConfig,
     $core.String? deviceId,
   }) {
     final result = create();
@@ -1862,8 +1910,8 @@ class WifiSetMeshConfigRequest extends $pb.GeneratedMessage {
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
       createEmptyInstance: create)
-    ..aOM<$2.MeshConfig>(1, _omitFieldNames ? '' : 'meshConfig',
-        subBuilder: $2.MeshConfig.create)
+    ..aOM<$3.MeshConfig>(1, _omitFieldNames ? '' : 'meshConfig',
+        subBuilder: $3.MeshConfig.create)
     ..aOS(2, _omitFieldNames ? '' : 'deviceId')
     ..hasRequiredFields = false;
 
@@ -1888,15 +1936,15 @@ class WifiSetMeshConfigRequest extends $pb.GeneratedMessage {
   static WifiSetMeshConfigRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $2.MeshConfig get meshConfig => $_getN(0);
+  $3.MeshConfig get meshConfig => $_getN(0);
   @$pb.TagNumber(1)
-  set meshConfig($2.MeshConfig value) => $_setField(1, value);
+  set meshConfig($3.MeshConfig value) => $_setField(1, value);
   @$pb.TagNumber(1)
   $core.bool hasMeshConfig() => $_has(0);
   @$pb.TagNumber(1)
   void clearMeshConfig() => $_clearField(1);
   @$pb.TagNumber(1)
-  $2.MeshConfig ensureMeshConfig() => $_ensure(0);
+  $3.MeshConfig ensureMeshConfig() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get deviceId => $_getSZ(1);
@@ -2289,16 +2337,104 @@ class WifiSetAviationConformedRequest extends $pb.GeneratedMessage {
   static WifiSetAviationConformedRequest? _defaultInstance;
 }
 
+class WifiGetHistoryResponse_DnsResolverHistory extends $pb.GeneratedMessage {
+  factory WifiGetHistoryResponse_DnsResolverHistory({
+    $core.Iterable<$core.double>? dropRateLast15s,
+  }) {
+    final result = create();
+    if (dropRateLast15s != null) result.dropRateLast15s.addAll(dropRateLast15s);
+    return result;
+  }
+
+  WifiGetHistoryResponse_DnsResolverHistory._();
+
+  factory WifiGetHistoryResponse_DnsResolverHistory.fromBuffer(
+          $core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory WifiGetHistoryResponse_DnsResolverHistory.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'WifiGetHistoryResponse.DnsResolverHistory',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
+      createEmptyInstance: create)
+    ..p<$core.double>(
+        2, _omitFieldNames ? '' : 'dropRateLast15s', $pb.PbFieldType.KF,
+        protoName: 'drop_rate_last_15s')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  WifiGetHistoryResponse_DnsResolverHistory clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  WifiGetHistoryResponse_DnsResolverHistory copyWith(
+          void Function(WifiGetHistoryResponse_DnsResolverHistory) updates) =>
+      super.copyWith((message) =>
+              updates(message as WifiGetHistoryResponse_DnsResolverHistory))
+          as WifiGetHistoryResponse_DnsResolverHistory;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static WifiGetHistoryResponse_DnsResolverHistory create() =>
+      WifiGetHistoryResponse_DnsResolverHistory._();
+  @$core.override
+  WifiGetHistoryResponse_DnsResolverHistory createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static WifiGetHistoryResponse_DnsResolverHistory getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<
+          WifiGetHistoryResponse_DnsResolverHistory>(create);
+  static WifiGetHistoryResponse_DnsResolverHistory? _defaultInstance;
+
+  @$pb.TagNumber(2)
+  $pb.PbList<$core.double> get dropRateLast15s => $_getList(0);
+}
+
 class WifiGetHistoryResponse extends $pb.GeneratedMessage {
   factory WifiGetHistoryResponse({
     $fixnum.Int64? current,
+    $fixnum.Int64? currentIndex15s,
     $core.Iterable<$core.double>? pingDropRate,
     $core.Iterable<$core.double>? pingLatencyMs,
+    $core.Iterable<$core.double>? popIpv4PingDropRateLast15s,
+    $core.Iterable<$core.double>? popIpv6PingDropRateLast15s,
+    $core.Iterable<$core.double>? googleIpv4PingDropRateLast15s,
+    $core.Iterable<$core.double>? googleIpv6PingDropRateLast15s,
+    $core.Iterable<$core.double>? cloudflareIpv4PingDropRateLast15s,
+    $core.Iterable<$core.double>? cloudflareIpv6PingDropRateLast15s,
+    $core.Iterable<
+            $core
+            .MapEntry<$core.String, WifiGetHistoryResponse_DnsResolverHistory>>?
+        dnsResolverDropRate,
+    $1.EventLog? eventLog,
   }) {
     final result = create();
     if (current != null) result.current = current;
+    if (currentIndex15s != null) result.currentIndex15s = currentIndex15s;
     if (pingDropRate != null) result.pingDropRate.addAll(pingDropRate);
     if (pingLatencyMs != null) result.pingLatencyMs.addAll(pingLatencyMs);
+    if (popIpv4PingDropRateLast15s != null)
+      result.popIpv4PingDropRateLast15s.addAll(popIpv4PingDropRateLast15s);
+    if (popIpv6PingDropRateLast15s != null)
+      result.popIpv6PingDropRateLast15s.addAll(popIpv6PingDropRateLast15s);
+    if (googleIpv4PingDropRateLast15s != null)
+      result.googleIpv4PingDropRateLast15s
+          .addAll(googleIpv4PingDropRateLast15s);
+    if (googleIpv6PingDropRateLast15s != null)
+      result.googleIpv6PingDropRateLast15s
+          .addAll(googleIpv6PingDropRateLast15s);
+    if (cloudflareIpv4PingDropRateLast15s != null)
+      result.cloudflareIpv4PingDropRateLast15s
+          .addAll(cloudflareIpv4PingDropRateLast15s);
+    if (cloudflareIpv6PingDropRateLast15s != null)
+      result.cloudflareIpv6PingDropRateLast15s
+          .addAll(cloudflareIpv6PingDropRateLast15s);
+    if (dnsResolverDropRate != null)
+      result.dnsResolverDropRate.addEntries(dnsResolverDropRate);
+    if (eventLog != null) result.eventLog = eventLog;
     return result;
   }
 
@@ -2318,10 +2454,50 @@ class WifiGetHistoryResponse extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..a<$fixnum.Int64>(1, _omitFieldNames ? '' : 'current', $pb.PbFieldType.OU6,
         defaultOrMaker: $fixnum.Int64.ZERO)
+    ..a<$fixnum.Int64>(
+        2, _omitFieldNames ? '' : 'currentIndex15s', $pb.PbFieldType.OU6,
+        protoName: 'current_index_15s', defaultOrMaker: $fixnum.Int64.ZERO)
     ..p<$core.double>(
         1001, _omitFieldNames ? '' : 'pingDropRate', $pb.PbFieldType.KF)
     ..p<$core.double>(
         1002, _omitFieldNames ? '' : 'pingLatencyMs', $pb.PbFieldType.KF)
+    ..p<$core.double>(1003, _omitFieldNames ? '' : 'popIpv4PingDropRateLast15s',
+        $pb.PbFieldType.KF,
+        protoName: 'pop_ipv4_ping_drop_rate_last_15s')
+    ..p<$core.double>(1004, _omitFieldNames ? '' : 'popIpv6PingDropRateLast15s',
+        $pb.PbFieldType.KF,
+        protoName: 'pop_ipv6_ping_drop_rate_last_15s')
+    ..p<$core.double>(
+        1005,
+        _omitFieldNames ? '' : 'googleIpv4PingDropRateLast15s',
+        $pb.PbFieldType.KF,
+        protoName: 'google_ipv4_ping_drop_rate_last_15s')
+    ..p<$core.double>(
+        1006,
+        _omitFieldNames ? '' : 'googleIpv6PingDropRateLast15s',
+        $pb.PbFieldType.KF,
+        protoName: 'google_ipv6_ping_drop_rate_last_15s')
+    ..p<$core.double>(
+        1007,
+        _omitFieldNames ? '' : 'cloudflareIpv4PingDropRateLast15s',
+        $pb.PbFieldType.KF,
+        protoName: 'cloudflare_ipv4_ping_drop_rate_last_15s')
+    ..p<$core.double>(
+        1008,
+        _omitFieldNames ? '' : 'cloudflareIpv6PingDropRateLast15s',
+        $pb.PbFieldType.KF,
+        protoName: 'cloudflare_ipv6_ping_drop_rate_last_15s')
+    ..m<$core.String, WifiGetHistoryResponse_DnsResolverHistory>(
+        1009, _omitFieldNames ? '' : 'dnsResolverDropRate',
+        entryClassName: 'WifiGetHistoryResponse.DnsResolverDropRateEntry',
+        keyFieldType: $pb.PbFieldType.OS,
+        valueFieldType: $pb.PbFieldType.OM,
+        valueCreator: WifiGetHistoryResponse_DnsResolverHistory.create,
+        valueDefaultOrMaker:
+            WifiGetHistoryResponse_DnsResolverHistory.getDefault,
+        packageName: const $pb.PackageName('SpaceX.API.Device'))
+    ..aOM<$1.EventLog>(1010, _omitFieldNames ? '' : 'eventLog',
+        subBuilder: $1.EventLog.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -2353,11 +2529,55 @@ class WifiGetHistoryResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearCurrent() => $_clearField(1);
 
+  @$pb.TagNumber(2)
+  $fixnum.Int64 get currentIndex15s => $_getI64(1);
+  @$pb.TagNumber(2)
+  set currentIndex15s($fixnum.Int64 value) => $_setInt64(1, value);
+  @$pb.TagNumber(2)
+  $core.bool hasCurrentIndex15s() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearCurrentIndex15s() => $_clearField(2);
+
   @$pb.TagNumber(1001)
-  $pb.PbList<$core.double> get pingDropRate => $_getList(1);
+  $pb.PbList<$core.double> get pingDropRate => $_getList(2);
 
   @$pb.TagNumber(1002)
-  $pb.PbList<$core.double> get pingLatencyMs => $_getList(2);
+  $pb.PbList<$core.double> get pingLatencyMs => $_getList(3);
+
+  @$pb.TagNumber(1003)
+  $pb.PbList<$core.double> get popIpv4PingDropRateLast15s => $_getList(4);
+
+  @$pb.TagNumber(1004)
+  $pb.PbList<$core.double> get popIpv6PingDropRateLast15s => $_getList(5);
+
+  @$pb.TagNumber(1005)
+  $pb.PbList<$core.double> get googleIpv4PingDropRateLast15s => $_getList(6);
+
+  @$pb.TagNumber(1006)
+  $pb.PbList<$core.double> get googleIpv6PingDropRateLast15s => $_getList(7);
+
+  @$pb.TagNumber(1007)
+  $pb.PbList<$core.double> get cloudflareIpv4PingDropRateLast15s =>
+      $_getList(8);
+
+  @$pb.TagNumber(1008)
+  $pb.PbList<$core.double> get cloudflareIpv6PingDropRateLast15s =>
+      $_getList(9);
+
+  @$pb.TagNumber(1009)
+  $pb.PbMap<$core.String, WifiGetHistoryResponse_DnsResolverHistory>
+      get dnsResolverDropRate => $_getMap(10);
+
+  @$pb.TagNumber(1010)
+  $1.EventLog get eventLog => $_getN(11);
+  @$pb.TagNumber(1010)
+  set eventLog($1.EventLog value) => $_setField(1010, value);
+  @$pb.TagNumber(1010)
+  $core.bool hasEventLog() => $_has(11);
+  @$pb.TagNumber(1010)
+  void clearEventLog() => $_clearField(1010);
+  @$pb.TagNumber(1010)
+  $1.EventLog ensureEventLog() => $_ensure(11);
 }
 
 class WifiNewClientConnectedEvent extends $pb.GeneratedMessage {
@@ -2437,6 +2657,9 @@ class WifiClient_RxStats extends $pb.GeneratedMessage {
     $core.int? phyMode,
     $core.double? rateMbpsLast30s,
     $core.double? rateMbpsLast15s,
+    $core.double? rateMbpsLast1mAvg,
+    $core.double? throughputMbpsLast1mAvg,
+    $core.double? throughputMbpsLast15sAvg,
   }) {
     final result = create();
     if (bytes != null) result.bytes = bytes;
@@ -2456,6 +2679,11 @@ class WifiClient_RxStats extends $pb.GeneratedMessage {
     if (phyMode != null) result.phyMode = phyMode;
     if (rateMbpsLast30s != null) result.rateMbpsLast30s = rateMbpsLast30s;
     if (rateMbpsLast15s != null) result.rateMbpsLast15s = rateMbpsLast15s;
+    if (rateMbpsLast1mAvg != null) result.rateMbpsLast1mAvg = rateMbpsLast1mAvg;
+    if (throughputMbpsLast1mAvg != null)
+      result.throughputMbpsLast1mAvg = throughputMbpsLast1mAvg;
+    if (throughputMbpsLast15sAvg != null)
+      result.throughputMbpsLast15sAvg = throughputMbpsLast15sAvg;
     return result;
   }
 
@@ -2496,6 +2724,13 @@ class WifiClient_RxStats extends $pb.GeneratedMessage {
         protoName: 'rate_mbps_last_30s', fieldType: $pb.PbFieldType.OF)
     ..aD(15, _omitFieldNames ? '' : 'rateMbpsLast15s',
         protoName: 'rate_mbps_last_15s', fieldType: $pb.PbFieldType.OF)
+    ..aD(16, _omitFieldNames ? '' : 'rateMbpsLast1mAvg',
+        protoName: 'rate_mbps_last_1m_avg', fieldType: $pb.PbFieldType.OF)
+    ..aD(17, _omitFieldNames ? '' : 'throughputMbpsLast1mAvg',
+        protoName: 'throughput_mbps_last_1m_avg', fieldType: $pb.PbFieldType.OF)
+    ..aD(18, _omitFieldNames ? '' : 'throughputMbpsLast15sAvg',
+        protoName: 'throughput_mbps_last_15s_avg',
+        fieldType: $pb.PbFieldType.OF)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -2642,6 +2877,33 @@ class WifiClient_RxStats extends $pb.GeneratedMessage {
   $core.bool hasRateMbpsLast15s() => $_has(13);
   @$pb.TagNumber(15)
   void clearRateMbpsLast15s() => $_clearField(15);
+
+  @$pb.TagNumber(16)
+  $core.double get rateMbpsLast1mAvg => $_getN(14);
+  @$pb.TagNumber(16)
+  set rateMbpsLast1mAvg($core.double value) => $_setFloat(14, value);
+  @$pb.TagNumber(16)
+  $core.bool hasRateMbpsLast1mAvg() => $_has(14);
+  @$pb.TagNumber(16)
+  void clearRateMbpsLast1mAvg() => $_clearField(16);
+
+  @$pb.TagNumber(17)
+  $core.double get throughputMbpsLast1mAvg => $_getN(15);
+  @$pb.TagNumber(17)
+  set throughputMbpsLast1mAvg($core.double value) => $_setFloat(15, value);
+  @$pb.TagNumber(17)
+  $core.bool hasThroughputMbpsLast1mAvg() => $_has(15);
+  @$pb.TagNumber(17)
+  void clearThroughputMbpsLast1mAvg() => $_clearField(17);
+
+  @$pb.TagNumber(18)
+  $core.double get throughputMbpsLast15sAvg => $_getN(16);
+  @$pb.TagNumber(18)
+  set throughputMbpsLast15sAvg($core.double value) => $_setFloat(16, value);
+  @$pb.TagNumber(18)
+  $core.bool hasThroughputMbpsLast15sAvg() => $_has(16);
+  @$pb.TagNumber(18)
+  void clearThroughputMbpsLast15sAvg() => $_clearField(18);
 }
 
 class WifiClient_TxStats extends $pb.GeneratedMessage {
@@ -2657,6 +2919,7 @@ class WifiClient_TxStats extends $pb.GeneratedMessage {
     $core.int? phyMode,
     $core.double? rateMbpsLast30s,
     $core.double? rateMbpsLast15s,
+    $core.double? throughputMbpsLast15sAvg,
   }) {
     final result = create();
     if (bytes != null) result.bytes = bytes;
@@ -2671,6 +2934,8 @@ class WifiClient_TxStats extends $pb.GeneratedMessage {
     if (phyMode != null) result.phyMode = phyMode;
     if (rateMbpsLast30s != null) result.rateMbpsLast30s = rateMbpsLast30s;
     if (rateMbpsLast15s != null) result.rateMbpsLast15s = rateMbpsLast15s;
+    if (throughputMbpsLast15sAvg != null)
+      result.throughputMbpsLast15sAvg = throughputMbpsLast15sAvg;
     return result;
   }
 
@@ -2705,6 +2970,9 @@ class WifiClient_TxStats extends $pb.GeneratedMessage {
         protoName: 'rate_mbps_last_30s', fieldType: $pb.PbFieldType.OF)
     ..aD(12, _omitFieldNames ? '' : 'rateMbpsLast15s',
         protoName: 'rate_mbps_last_15s', fieldType: $pb.PbFieldType.OF)
+    ..aD(13, _omitFieldNames ? '' : 'throughputMbpsLast15sAvg',
+        protoName: 'throughput_mbps_last_15s_avg',
+        fieldType: $pb.PbFieldType.OF)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -2824,6 +3092,126 @@ class WifiClient_TxStats extends $pb.GeneratedMessage {
   $core.bool hasRateMbpsLast15s() => $_has(10);
   @$pb.TagNumber(12)
   void clearRateMbpsLast15s() => $_clearField(12);
+
+  @$pb.TagNumber(13)
+  $core.double get throughputMbpsLast15sAvg => $_getN(11);
+  @$pb.TagNumber(13)
+  set throughputMbpsLast15sAvg($core.double value) => $_setFloat(11, value);
+  @$pb.TagNumber(13)
+  $core.bool hasThroughputMbpsLast15sAvg() => $_has(11);
+  @$pb.TagNumber(13)
+  void clearThroughputMbpsLast15sAvg() => $_clearField(13);
+}
+
+class WifiClient_Link extends $pb.GeneratedMessage {
+  factory WifiClient_Link({
+    $core.String? linkAddress,
+    WifiClient_Interface? band,
+    $core.double? signalStrength,
+    WifiClient_RxStats? rxStats,
+    WifiClient_TxStats? txStats,
+  }) {
+    final result = create();
+    if (linkAddress != null) result.linkAddress = linkAddress;
+    if (band != null) result.band = band;
+    if (signalStrength != null) result.signalStrength = signalStrength;
+    if (rxStats != null) result.rxStats = rxStats;
+    if (txStats != null) result.txStats = txStats;
+    return result;
+  }
+
+  WifiClient_Link._();
+
+  factory WifiClient_Link.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory WifiClient_Link.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'WifiClient.Link',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'linkAddress')
+    ..aE<WifiClient_Interface>(2, _omitFieldNames ? '' : 'band',
+        enumValues: WifiClient_Interface.values)
+    ..aD(3, _omitFieldNames ? '' : 'signalStrength',
+        fieldType: $pb.PbFieldType.OF)
+    ..aOM<WifiClient_RxStats>(4, _omitFieldNames ? '' : 'rxStats',
+        subBuilder: WifiClient_RxStats.create)
+    ..aOM<WifiClient_TxStats>(5, _omitFieldNames ? '' : 'txStats',
+        subBuilder: WifiClient_TxStats.create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  WifiClient_Link clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  WifiClient_Link copyWith(void Function(WifiClient_Link) updates) =>
+      super.copyWith((message) => updates(message as WifiClient_Link))
+          as WifiClient_Link;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static WifiClient_Link create() => WifiClient_Link._();
+  @$core.override
+  WifiClient_Link createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static WifiClient_Link getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<WifiClient_Link>(create);
+  static WifiClient_Link? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get linkAddress => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set linkAddress($core.String value) => $_setString(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasLinkAddress() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearLinkAddress() => $_clearField(1);
+
+  @$pb.TagNumber(2)
+  WifiClient_Interface get band => $_getN(1);
+  @$pb.TagNumber(2)
+  set band(WifiClient_Interface value) => $_setField(2, value);
+  @$pb.TagNumber(2)
+  $core.bool hasBand() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearBand() => $_clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.double get signalStrength => $_getN(2);
+  @$pb.TagNumber(3)
+  set signalStrength($core.double value) => $_setFloat(2, value);
+  @$pb.TagNumber(3)
+  $core.bool hasSignalStrength() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearSignalStrength() => $_clearField(3);
+
+  @$pb.TagNumber(4)
+  WifiClient_RxStats get rxStats => $_getN(3);
+  @$pb.TagNumber(4)
+  set rxStats(WifiClient_RxStats value) => $_setField(4, value);
+  @$pb.TagNumber(4)
+  $core.bool hasRxStats() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearRxStats() => $_clearField(4);
+  @$pb.TagNumber(4)
+  WifiClient_RxStats ensureRxStats() => $_ensure(3);
+
+  @$pb.TagNumber(5)
+  WifiClient_TxStats get txStats => $_getN(4);
+  @$pb.TagNumber(5)
+  set txStats(WifiClient_TxStats value) => $_setField(5, value);
+  @$pb.TagNumber(5)
+  $core.bool hasTxStats() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearTxStats() => $_clearField(5);
+  @$pb.TagNumber(5)
+  WifiClient_TxStats ensureTxStats() => $_ensure(4);
 }
 
 class WifiClient_PingMetrics extends $pb.GeneratedMessage {
@@ -3118,6 +3506,61 @@ class WifiClient_FqcodelInfo extends $pb.GeneratedMessage {
   void clearDeqsDropped() => $_clearField(11);
 }
 
+class WifiClient_Alerts extends $pb.GeneratedMessage {
+  factory WifiClient_Alerts({
+    $core.bool? throughputLimited,
+  }) {
+    final result = create();
+    if (throughputLimited != null) result.throughputLimited = throughputLimited;
+    return result;
+  }
+
+  WifiClient_Alerts._();
+
+  factory WifiClient_Alerts.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory WifiClient_Alerts.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'WifiClient.Alerts',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
+      createEmptyInstance: create)
+    ..aOB(1, _omitFieldNames ? '' : 'throughputLimited')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  WifiClient_Alerts clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  WifiClient_Alerts copyWith(void Function(WifiClient_Alerts) updates) =>
+      super.copyWith((message) => updates(message as WifiClient_Alerts))
+          as WifiClient_Alerts;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static WifiClient_Alerts create() => WifiClient_Alerts._();
+  @$core.override
+  WifiClient_Alerts createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static WifiClient_Alerts getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<WifiClient_Alerts>(create);
+  static WifiClient_Alerts? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.bool get throughputLimited => $_getBF(0);
+  @$pb.TagNumber(1)
+  set throughputLimited($core.bool value) => $_setBool(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasThroughputLimited() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearThroughputLimited() => $_clearField(1);
+}
+
 class WifiClient extends $pb.GeneratedMessage {
   factory WifiClient({
     $core.String? name,
@@ -3163,6 +3606,19 @@ class WifiClient extends $pb.GeneratedMessage {
     $core.int? noDataIdleS,
     $core.bool? dhcpLeaseActive,
     $core.bool? dhcpLeaseRenewed,
+    $core.double? secondsUntilDhcpLeaseExpires,
+    $core.bool? dhcpLeaseFound,
+    WifiClient_Alerts? alerts,
+    $core.String? captiveClientId,
+    $core.int? uploadMb,
+    $core.int? downloadMb,
+    WifiClient_CaptiveState? captiveState,
+    WifiClient_SandboxState? sandboxState,
+    $core.bool? active,
+    $core.bool? rxStatsValid,
+    $core.bool? txStatsValid,
+    $core.Iterable<WifiClient_Link>? links,
+    $core.bool? usingMlo,
   }) {
     final result = create();
     if (name != null) result.name = name;
@@ -3216,6 +3672,20 @@ class WifiClient extends $pb.GeneratedMessage {
     if (noDataIdleS != null) result.noDataIdleS = noDataIdleS;
     if (dhcpLeaseActive != null) result.dhcpLeaseActive = dhcpLeaseActive;
     if (dhcpLeaseRenewed != null) result.dhcpLeaseRenewed = dhcpLeaseRenewed;
+    if (secondsUntilDhcpLeaseExpires != null)
+      result.secondsUntilDhcpLeaseExpires = secondsUntilDhcpLeaseExpires;
+    if (dhcpLeaseFound != null) result.dhcpLeaseFound = dhcpLeaseFound;
+    if (alerts != null) result.alerts = alerts;
+    if (captiveClientId != null) result.captiveClientId = captiveClientId;
+    if (uploadMb != null) result.uploadMb = uploadMb;
+    if (downloadMb != null) result.downloadMb = downloadMb;
+    if (captiveState != null) result.captiveState = captiveState;
+    if (sandboxState != null) result.sandboxState = sandboxState;
+    if (active != null) result.active = active;
+    if (rxStatsValid != null) result.rxStatsValid = rxStatsValid;
+    if (txStatsValid != null) result.txStatsValid = txStatsValid;
+    if (links != null) result.links.addAll(links);
+    if (usingMlo != null) result.usingMlo = usingMlo;
     return result;
   }
 
@@ -3300,6 +3770,25 @@ class WifiClient extends $pb.GeneratedMessage {
         fieldType: $pb.PbFieldType.OU3)
     ..aOB(46, _omitFieldNames ? '' : 'dhcpLeaseActive')
     ..aOB(47, _omitFieldNames ? '' : 'dhcpLeaseRenewed')
+    ..aD(48, _omitFieldNames ? '' : 'secondsUntilDhcpLeaseExpires',
+        fieldType: $pb.PbFieldType.OF)
+    ..aOB(49, _omitFieldNames ? '' : 'dhcpLeaseFound')
+    ..aOM<WifiClient_Alerts>(52, _omitFieldNames ? '' : 'alerts',
+        subBuilder: WifiClient_Alerts.create)
+    ..aOS(53, _omitFieldNames ? '' : 'captiveClientId')
+    ..aI(54, _omitFieldNames ? '' : 'uploadMb', fieldType: $pb.PbFieldType.OU3)
+    ..aI(55, _omitFieldNames ? '' : 'downloadMb',
+        fieldType: $pb.PbFieldType.OU3)
+    ..aE<WifiClient_CaptiveState>(56, _omitFieldNames ? '' : 'captiveState',
+        enumValues: WifiClient_CaptiveState.values)
+    ..aE<WifiClient_SandboxState>(57, _omitFieldNames ? '' : 'sandboxState',
+        enumValues: WifiClient_SandboxState.values)
+    ..aOB(58, _omitFieldNames ? '' : 'active')
+    ..aOB(60, _omitFieldNames ? '' : 'rxStatsValid')
+    ..aOB(61, _omitFieldNames ? '' : 'txStatsValid')
+    ..pPM<WifiClient_Link>(70, _omitFieldNames ? '' : 'links',
+        subBuilder: WifiClient_Link.create)
+    ..aOB(71, _omitFieldNames ? '' : 'usingMlo')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -3709,6 +4198,119 @@ class WifiClient extends $pb.GeneratedMessage {
   $core.bool hasDhcpLeaseRenewed() => $_has(42);
   @$pb.TagNumber(47)
   void clearDhcpLeaseRenewed() => $_clearField(47);
+
+  @$pb.TagNumber(48)
+  $core.double get secondsUntilDhcpLeaseExpires => $_getN(43);
+  @$pb.TagNumber(48)
+  set secondsUntilDhcpLeaseExpires($core.double value) => $_setFloat(43, value);
+  @$pb.TagNumber(48)
+  $core.bool hasSecondsUntilDhcpLeaseExpires() => $_has(43);
+  @$pb.TagNumber(48)
+  void clearSecondsUntilDhcpLeaseExpires() => $_clearField(48);
+
+  @$pb.TagNumber(49)
+  $core.bool get dhcpLeaseFound => $_getBF(44);
+  @$pb.TagNumber(49)
+  set dhcpLeaseFound($core.bool value) => $_setBool(44, value);
+  @$pb.TagNumber(49)
+  $core.bool hasDhcpLeaseFound() => $_has(44);
+  @$pb.TagNumber(49)
+  void clearDhcpLeaseFound() => $_clearField(49);
+
+  @$pb.TagNumber(52)
+  WifiClient_Alerts get alerts => $_getN(45);
+  @$pb.TagNumber(52)
+  set alerts(WifiClient_Alerts value) => $_setField(52, value);
+  @$pb.TagNumber(52)
+  $core.bool hasAlerts() => $_has(45);
+  @$pb.TagNumber(52)
+  void clearAlerts() => $_clearField(52);
+  @$pb.TagNumber(52)
+  WifiClient_Alerts ensureAlerts() => $_ensure(45);
+
+  @$pb.TagNumber(53)
+  $core.String get captiveClientId => $_getSZ(46);
+  @$pb.TagNumber(53)
+  set captiveClientId($core.String value) => $_setString(46, value);
+  @$pb.TagNumber(53)
+  $core.bool hasCaptiveClientId() => $_has(46);
+  @$pb.TagNumber(53)
+  void clearCaptiveClientId() => $_clearField(53);
+
+  @$pb.TagNumber(54)
+  $core.int get uploadMb => $_getIZ(47);
+  @$pb.TagNumber(54)
+  set uploadMb($core.int value) => $_setUnsignedInt32(47, value);
+  @$pb.TagNumber(54)
+  $core.bool hasUploadMb() => $_has(47);
+  @$pb.TagNumber(54)
+  void clearUploadMb() => $_clearField(54);
+
+  @$pb.TagNumber(55)
+  $core.int get downloadMb => $_getIZ(48);
+  @$pb.TagNumber(55)
+  set downloadMb($core.int value) => $_setUnsignedInt32(48, value);
+  @$pb.TagNumber(55)
+  $core.bool hasDownloadMb() => $_has(48);
+  @$pb.TagNumber(55)
+  void clearDownloadMb() => $_clearField(55);
+
+  @$pb.TagNumber(56)
+  WifiClient_CaptiveState get captiveState => $_getN(49);
+  @$pb.TagNumber(56)
+  set captiveState(WifiClient_CaptiveState value) => $_setField(56, value);
+  @$pb.TagNumber(56)
+  $core.bool hasCaptiveState() => $_has(49);
+  @$pb.TagNumber(56)
+  void clearCaptiveState() => $_clearField(56);
+
+  @$pb.TagNumber(57)
+  WifiClient_SandboxState get sandboxState => $_getN(50);
+  @$pb.TagNumber(57)
+  set sandboxState(WifiClient_SandboxState value) => $_setField(57, value);
+  @$pb.TagNumber(57)
+  $core.bool hasSandboxState() => $_has(50);
+  @$pb.TagNumber(57)
+  void clearSandboxState() => $_clearField(57);
+
+  @$pb.TagNumber(58)
+  $core.bool get active => $_getBF(51);
+  @$pb.TagNumber(58)
+  set active($core.bool value) => $_setBool(51, value);
+  @$pb.TagNumber(58)
+  $core.bool hasActive() => $_has(51);
+  @$pb.TagNumber(58)
+  void clearActive() => $_clearField(58);
+
+  @$pb.TagNumber(60)
+  $core.bool get rxStatsValid => $_getBF(52);
+  @$pb.TagNumber(60)
+  set rxStatsValid($core.bool value) => $_setBool(52, value);
+  @$pb.TagNumber(60)
+  $core.bool hasRxStatsValid() => $_has(52);
+  @$pb.TagNumber(60)
+  void clearRxStatsValid() => $_clearField(60);
+
+  @$pb.TagNumber(61)
+  $core.bool get txStatsValid => $_getBF(53);
+  @$pb.TagNumber(61)
+  set txStatsValid($core.bool value) => $_setBool(53, value);
+  @$pb.TagNumber(61)
+  $core.bool hasTxStatsValid() => $_has(53);
+  @$pb.TagNumber(61)
+  void clearTxStatsValid() => $_clearField(61);
+
+  @$pb.TagNumber(70)
+  $pb.PbList<WifiClient_Link> get links => $_getList(54);
+
+  @$pb.TagNumber(71)
+  $core.bool get usingMlo => $_getBF(55);
+  @$pb.TagNumber(71)
+  set usingMlo($core.bool value) => $_setBool(55, value);
+  @$pb.TagNumber(71)
+  $core.bool hasUsingMlo() => $_has(55);
+  @$pb.TagNumber(71)
+  void clearUsingMlo() => $_clearField(71);
 }
 
 class WifiSetupRequest extends $pb.GeneratedMessage {
@@ -3970,6 +4572,11 @@ class WifiAlerts extends $pb.GeneratedMessage {
     $core.bool? poeOffCurrentNominal,
     $core.bool? poeVinOvervoltage,
     $core.bool? poeVinUndervoltage,
+    $core.bool? highCablePingDropRate,
+    $core.bool? sandboxDisabled,
+    $core.bool? onlyOverflightBlocked,
+    $core.bool? offlineNetworksDisabled,
+    $core.bool? wiredMeshNotUsingWanIface,
   }) {
     final result = create();
     if (thermalThrottle != null) result.thermalThrottle = thermalThrottle;
@@ -3996,6 +4603,15 @@ class WifiAlerts extends $pb.GeneratedMessage {
     if (poeVinOvervoltage != null) result.poeVinOvervoltage = poeVinOvervoltage;
     if (poeVinUndervoltage != null)
       result.poeVinUndervoltage = poeVinUndervoltage;
+    if (highCablePingDropRate != null)
+      result.highCablePingDropRate = highCablePingDropRate;
+    if (sandboxDisabled != null) result.sandboxDisabled = sandboxDisabled;
+    if (onlyOverflightBlocked != null)
+      result.onlyOverflightBlocked = onlyOverflightBlocked;
+    if (offlineNetworksDisabled != null)
+      result.offlineNetworksDisabled = offlineNetworksDisabled;
+    if (wiredMeshNotUsingWanIface != null)
+      result.wiredMeshNotUsingWanIface = wiredMeshNotUsingWanIface;
     return result;
   }
 
@@ -4031,6 +4647,11 @@ class WifiAlerts extends $pb.GeneratedMessage {
     ..aOB(18, _omitFieldNames ? '' : 'poeOffCurrentNominal')
     ..aOB(19, _omitFieldNames ? '' : 'poeVinOvervoltage')
     ..aOB(20, _omitFieldNames ? '' : 'poeVinUndervoltage')
+    ..aOB(21, _omitFieldNames ? '' : 'highCablePingDropRate')
+    ..aOB(22, _omitFieldNames ? '' : 'sandboxDisabled')
+    ..aOB(23, _omitFieldNames ? '' : 'onlyOverflightBlocked')
+    ..aOB(24, _omitFieldNames ? '' : 'offlineNetworksDisabled')
+    ..aOB(25, _omitFieldNames ? '' : 'wiredMeshNotUsingWanIface')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -4194,13 +4815,59 @@ class WifiAlerts extends $pb.GeneratedMessage {
   $core.bool hasPoeVinUndervoltage() => $_has(15);
   @$pb.TagNumber(20)
   void clearPoeVinUndervoltage() => $_clearField(20);
+
+  @$pb.TagNumber(21)
+  $core.bool get highCablePingDropRate => $_getBF(16);
+  @$pb.TagNumber(21)
+  set highCablePingDropRate($core.bool value) => $_setBool(16, value);
+  @$pb.TagNumber(21)
+  $core.bool hasHighCablePingDropRate() => $_has(16);
+  @$pb.TagNumber(21)
+  void clearHighCablePingDropRate() => $_clearField(21);
+
+  @$pb.TagNumber(22)
+  $core.bool get sandboxDisabled => $_getBF(17);
+  @$pb.TagNumber(22)
+  set sandboxDisabled($core.bool value) => $_setBool(17, value);
+  @$pb.TagNumber(22)
+  $core.bool hasSandboxDisabled() => $_has(17);
+  @$pb.TagNumber(22)
+  void clearSandboxDisabled() => $_clearField(22);
+
+  @$pb.TagNumber(23)
+  $core.bool get onlyOverflightBlocked => $_getBF(18);
+  @$pb.TagNumber(23)
+  set onlyOverflightBlocked($core.bool value) => $_setBool(18, value);
+  @$pb.TagNumber(23)
+  $core.bool hasOnlyOverflightBlocked() => $_has(18);
+  @$pb.TagNumber(23)
+  void clearOnlyOverflightBlocked() => $_clearField(23);
+
+  @$pb.TagNumber(24)
+  $core.bool get offlineNetworksDisabled => $_getBF(19);
+  @$pb.TagNumber(24)
+  set offlineNetworksDisabled($core.bool value) => $_setBool(19, value);
+  @$pb.TagNumber(24)
+  $core.bool hasOfflineNetworksDisabled() => $_has(19);
+  @$pb.TagNumber(24)
+  void clearOfflineNetworksDisabled() => $_clearField(24);
+
+  @$pb.TagNumber(25)
+  $core.bool get wiredMeshNotUsingWanIface => $_getBF(20);
+  @$pb.TagNumber(25)
+  set wiredMeshNotUsingWanIface($core.bool value) => $_setBool(20, value);
+  @$pb.TagNumber(25)
+  $core.bool hasWiredMeshNotUsingWanIface() => $_has(20);
+  @$pb.TagNumber(25)
+  void clearWiredMeshNotUsingWanIface() => $_clearField(25);
 }
 
 class WifiGetStatusResponse extends $pb.GeneratedMessage {
   factory WifiGetStatusResponse({
+    @$core.Deprecated('This field is deprecated.')
     $core.bool? captivePortalEnabled,
-    $3.DeviceInfo? deviceInfo,
-    $3.DeviceState? deviceState,
+    $1.DeviceInfo? deviceInfo,
+    $1.DeviceState? deviceState,
     $core.String? ipv4WanAddress,
     $core.double? pingDropRate,
     $core.double? pingLatencyMs,
@@ -4215,18 +4882,28 @@ class WifiGetStatusResponse extends $pb.GeneratedMessage {
     $core.bool? isAviationConformed,
     $core.Iterable<$core.String>? ipv6WanAddresses,
     $core.double? dishPingDropRate5m,
-    $core.Iterable<$1.DhcpServer>? dhcpServers,
+    $core.Iterable<$2.DhcpServer>? dhcpServers,
     $core.double? popPingDropRate5m,
     $core.double? pingDropRate5m,
-    $1.PoeStats? poeStats,
+    $2.PoeStats? poeStats,
     $core.String? dishId,
     $fixnum.Int64? utcNs,
-    $1.WifiSoftwareUpdateStats? softwareUpdateStats,
-    $2.WifiConfig? config,
+    $2.WifiSoftwareUpdateStats? softwareUpdateStats,
+    $2.WifiSetupRequirement? setupRequirement,
+    $core.double? popIpv6PingDropRate,
+    $core.double? popIpv6PingDropRate5m,
+    $core.double? popIpv6PingLatencyMs,
+    $core.double? secsSinceLastPublicIpv4Change,
+    $6.UtDisablementCode? dishDisablementCode,
+    $core.bool? usingIndividualizedCalibration,
+    $2.CalibrationPartitionsState? calibrationPartitionsState,
+    $core.int? hopsFromController,
+    $core.bool? noWanLink,
+    $3.WifiConfig? config,
     $core.Iterable<WifiClient>? clients,
     $core.bool? hasClientIndex,
     $core.int? clientIndex_3002,
-    $1.RadiusStatsMap? radiusStats,
+    $2.RadiusStatsMap? radiusStats,
   }) {
     final result = create();
     if (captivePortalEnabled != null)
@@ -4258,6 +4935,24 @@ class WifiGetStatusResponse extends $pb.GeneratedMessage {
     if (utcNs != null) result.utcNs = utcNs;
     if (softwareUpdateStats != null)
       result.softwareUpdateStats = softwareUpdateStats;
+    if (setupRequirement != null) result.setupRequirement = setupRequirement;
+    if (popIpv6PingDropRate != null)
+      result.popIpv6PingDropRate = popIpv6PingDropRate;
+    if (popIpv6PingDropRate5m != null)
+      result.popIpv6PingDropRate5m = popIpv6PingDropRate5m;
+    if (popIpv6PingLatencyMs != null)
+      result.popIpv6PingLatencyMs = popIpv6PingLatencyMs;
+    if (secsSinceLastPublicIpv4Change != null)
+      result.secsSinceLastPublicIpv4Change = secsSinceLastPublicIpv4Change;
+    if (dishDisablementCode != null)
+      result.dishDisablementCode = dishDisablementCode;
+    if (usingIndividualizedCalibration != null)
+      result.usingIndividualizedCalibration = usingIndividualizedCalibration;
+    if (calibrationPartitionsState != null)
+      result.calibrationPartitionsState = calibrationPartitionsState;
+    if (hopsFromController != null)
+      result.hopsFromController = hopsFromController;
+    if (noWanLink != null) result.noWanLink = noWanLink;
     if (config != null) result.config = config;
     if (clients != null) result.clients.addAll(clients);
     if (hasClientIndex != null) result.hasClientIndex = hasClientIndex;
@@ -4281,10 +4976,10 @@ class WifiGetStatusResponse extends $pb.GeneratedMessage {
           const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
       createEmptyInstance: create)
     ..aOB(1, _omitFieldNames ? '' : 'captivePortalEnabled')
-    ..aOM<$3.DeviceInfo>(3, _omitFieldNames ? '' : 'deviceInfo',
-        subBuilder: $3.DeviceInfo.create)
-    ..aOM<$3.DeviceState>(4, _omitFieldNames ? '' : 'deviceState',
-        subBuilder: $3.DeviceState.create)
+    ..aOM<$1.DeviceInfo>(3, _omitFieldNames ? '' : 'deviceInfo',
+        subBuilder: $1.DeviceInfo.create)
+    ..aOM<$1.DeviceState>(4, _omitFieldNames ? '' : 'deviceState',
+        subBuilder: $1.DeviceState.create)
     ..aOS(1003, _omitFieldNames ? '' : 'ipv4WanAddress')
     ..aD(1004, _omitFieldNames ? '' : 'pingDropRate',
         fieldType: $pb.PbFieldType.OF)
@@ -4309,27 +5004,48 @@ class WifiGetStatusResponse extends $pb.GeneratedMessage {
     ..pPS(1017, _omitFieldNames ? '' : 'ipv6WanAddresses')
     ..aD(1018, _omitFieldNames ? '' : 'dishPingDropRate5m',
         protoName: 'dish_ping_drop_rate_5m', fieldType: $pb.PbFieldType.OF)
-    ..pPM<$1.DhcpServer>(1019, _omitFieldNames ? '' : 'dhcpServers',
-        subBuilder: $1.DhcpServer.create)
+    ..pPM<$2.DhcpServer>(1019, _omitFieldNames ? '' : 'dhcpServers',
+        subBuilder: $2.DhcpServer.create)
     ..aD(1020, _omitFieldNames ? '' : 'popPingDropRate5m',
         protoName: 'pop_ping_drop_rate_5m', fieldType: $pb.PbFieldType.OF)
     ..aD(1021, _omitFieldNames ? '' : 'pingDropRate5m',
         protoName: 'ping_drop_rate_5m', fieldType: $pb.PbFieldType.OF)
-    ..aOM<$1.PoeStats>(1022, _omitFieldNames ? '' : 'poeStats',
-        subBuilder: $1.PoeStats.create)
+    ..aOM<$2.PoeStats>(1022, _omitFieldNames ? '' : 'poeStats',
+        subBuilder: $2.PoeStats.create)
     ..aOS(1023, _omitFieldNames ? '' : 'dishId')
     ..aInt64(1024, _omitFieldNames ? '' : 'utcNs')
-    ..aOM<$1.WifiSoftwareUpdateStats>(
+    ..aOM<$2.WifiSoftwareUpdateStats>(
         1025, _omitFieldNames ? '' : 'softwareUpdateStats',
-        subBuilder: $1.WifiSoftwareUpdateStats.create)
-    ..aOM<$2.WifiConfig>(2000, _omitFieldNames ? '' : 'config',
-        subBuilder: $2.WifiConfig.create)
+        subBuilder: $2.WifiSoftwareUpdateStats.create)
+    ..aOM<$2.WifiSetupRequirement>(
+        1026, _omitFieldNames ? '' : 'setupRequirement',
+        subBuilder: $2.WifiSetupRequirement.create)
+    ..aD(1027, _omitFieldNames ? '' : 'popIpv6PingDropRate',
+        fieldType: $pb.PbFieldType.OF)
+    ..aD(1028, _omitFieldNames ? '' : 'popIpv6PingDropRate5m',
+        protoName: 'pop_ipv6_ping_drop_rate_5m', fieldType: $pb.PbFieldType.OF)
+    ..aD(1029, _omitFieldNames ? '' : 'popIpv6PingLatencyMs',
+        fieldType: $pb.PbFieldType.OF)
+    ..aD(1030, _omitFieldNames ? '' : 'secsSinceLastPublicIpv4Change',
+        fieldType: $pb.PbFieldType.OF)
+    ..aE<$6.UtDisablementCode>(
+        1031, _omitFieldNames ? '' : 'dishDisablementCode',
+        enumValues: $6.UtDisablementCode.values)
+    ..aOB(1032, _omitFieldNames ? '' : 'usingIndividualizedCalibration')
+    ..aE<$2.CalibrationPartitionsState>(
+        1033, _omitFieldNames ? '' : 'calibrationPartitionsState',
+        enumValues: $2.CalibrationPartitionsState.values)
+    ..aI(1034, _omitFieldNames ? '' : 'hopsFromController',
+        fieldType: $pb.PbFieldType.OU3)
+    ..aOB(1035, _omitFieldNames ? '' : 'noWanLink')
+    ..aOM<$3.WifiConfig>(2000, _omitFieldNames ? '' : 'config',
+        subBuilder: $3.WifiConfig.create)
     ..pPM<WifiClient>(3000, _omitFieldNames ? '' : 'clients',
         subBuilder: WifiClient.create)
     ..aOB(3001, _omitFieldNames ? '' : 'hasClientIndex')
     ..aI(3002, _omitFieldNames ? '' : 'clientIndex')
-    ..aOM<$1.RadiusStatsMap>(3003, _omitFieldNames ? '' : 'radiusStats',
-        subBuilder: $1.RadiusStatsMap.create)
+    ..aOM<$2.RadiusStatsMap>(3003, _omitFieldNames ? '' : 'radiusStats',
+        subBuilder: $2.RadiusStatsMap.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -4352,36 +5068,40 @@ class WifiGetStatusResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<WifiGetStatusResponse>(create);
   static WifiGetStatusResponse? _defaultInstance;
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(1)
   $core.bool get captivePortalEnabled => $_getBF(0);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(1)
   set captivePortalEnabled($core.bool value) => $_setBool(0, value);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(1)
   $core.bool hasCaptivePortalEnabled() => $_has(0);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(1)
   void clearCaptivePortalEnabled() => $_clearField(1);
 
   @$pb.TagNumber(3)
-  $3.DeviceInfo get deviceInfo => $_getN(1);
+  $1.DeviceInfo get deviceInfo => $_getN(1);
   @$pb.TagNumber(3)
-  set deviceInfo($3.DeviceInfo value) => $_setField(3, value);
+  set deviceInfo($1.DeviceInfo value) => $_setField(3, value);
   @$pb.TagNumber(3)
   $core.bool hasDeviceInfo() => $_has(1);
   @$pb.TagNumber(3)
   void clearDeviceInfo() => $_clearField(3);
   @$pb.TagNumber(3)
-  $3.DeviceInfo ensureDeviceInfo() => $_ensure(1);
+  $1.DeviceInfo ensureDeviceInfo() => $_ensure(1);
 
   @$pb.TagNumber(4)
-  $3.DeviceState get deviceState => $_getN(2);
+  $1.DeviceState get deviceState => $_getN(2);
   @$pb.TagNumber(4)
-  set deviceState($3.DeviceState value) => $_setField(4, value);
+  set deviceState($1.DeviceState value) => $_setField(4, value);
   @$pb.TagNumber(4)
   $core.bool hasDeviceState() => $_has(2);
   @$pb.TagNumber(4)
   void clearDeviceState() => $_clearField(4);
   @$pb.TagNumber(4)
-  $3.DeviceState ensureDeviceState() => $_ensure(2);
+  $1.DeviceState ensureDeviceState() => $_ensure(2);
 
   @$pb.TagNumber(1003)
   $core.String get ipv4WanAddress => $_getSZ(3);
@@ -4520,7 +5240,7 @@ class WifiGetStatusResponse extends $pb.GeneratedMessage {
   void clearDishPingDropRate5m() => $_clearField(1018);
 
   @$pb.TagNumber(1019)
-  $pb.PbList<$1.DhcpServer> get dhcpServers => $_getList(17);
+  $pb.PbList<$2.DhcpServer> get dhcpServers => $_getList(17);
 
   @$pb.TagNumber(1020)
   $core.double get popPingDropRate5m => $_getN(18);
@@ -4541,15 +5261,15 @@ class WifiGetStatusResponse extends $pb.GeneratedMessage {
   void clearPingDropRate5m() => $_clearField(1021);
 
   @$pb.TagNumber(1022)
-  $1.PoeStats get poeStats => $_getN(20);
+  $2.PoeStats get poeStats => $_getN(20);
   @$pb.TagNumber(1022)
-  set poeStats($1.PoeStats value) => $_setField(1022, value);
+  set poeStats($2.PoeStats value) => $_setField(1022, value);
   @$pb.TagNumber(1022)
   $core.bool hasPoeStats() => $_has(20);
   @$pb.TagNumber(1022)
   void clearPoeStats() => $_clearField(1022);
   @$pb.TagNumber(1022)
-  $1.PoeStats ensurePoeStats() => $_ensure(20);
+  $2.PoeStats ensurePoeStats() => $_ensure(20);
 
   @$pb.TagNumber(1023)
   $core.String get dishId => $_getSZ(21);
@@ -4570,64 +5290,160 @@ class WifiGetStatusResponse extends $pb.GeneratedMessage {
   void clearUtcNs() => $_clearField(1024);
 
   @$pb.TagNumber(1025)
-  $1.WifiSoftwareUpdateStats get softwareUpdateStats => $_getN(23);
+  $2.WifiSoftwareUpdateStats get softwareUpdateStats => $_getN(23);
   @$pb.TagNumber(1025)
-  set softwareUpdateStats($1.WifiSoftwareUpdateStats value) =>
+  set softwareUpdateStats($2.WifiSoftwareUpdateStats value) =>
       $_setField(1025, value);
   @$pb.TagNumber(1025)
   $core.bool hasSoftwareUpdateStats() => $_has(23);
   @$pb.TagNumber(1025)
   void clearSoftwareUpdateStats() => $_clearField(1025);
   @$pb.TagNumber(1025)
-  $1.WifiSoftwareUpdateStats ensureSoftwareUpdateStats() => $_ensure(23);
+  $2.WifiSoftwareUpdateStats ensureSoftwareUpdateStats() => $_ensure(23);
+
+  @$pb.TagNumber(1026)
+  $2.WifiSetupRequirement get setupRequirement => $_getN(24);
+  @$pb.TagNumber(1026)
+  set setupRequirement($2.WifiSetupRequirement value) =>
+      $_setField(1026, value);
+  @$pb.TagNumber(1026)
+  $core.bool hasSetupRequirement() => $_has(24);
+  @$pb.TagNumber(1026)
+  void clearSetupRequirement() => $_clearField(1026);
+  @$pb.TagNumber(1026)
+  $2.WifiSetupRequirement ensureSetupRequirement() => $_ensure(24);
+
+  @$pb.TagNumber(1027)
+  $core.double get popIpv6PingDropRate => $_getN(25);
+  @$pb.TagNumber(1027)
+  set popIpv6PingDropRate($core.double value) => $_setFloat(25, value);
+  @$pb.TagNumber(1027)
+  $core.bool hasPopIpv6PingDropRate() => $_has(25);
+  @$pb.TagNumber(1027)
+  void clearPopIpv6PingDropRate() => $_clearField(1027);
+
+  @$pb.TagNumber(1028)
+  $core.double get popIpv6PingDropRate5m => $_getN(26);
+  @$pb.TagNumber(1028)
+  set popIpv6PingDropRate5m($core.double value) => $_setFloat(26, value);
+  @$pb.TagNumber(1028)
+  $core.bool hasPopIpv6PingDropRate5m() => $_has(26);
+  @$pb.TagNumber(1028)
+  void clearPopIpv6PingDropRate5m() => $_clearField(1028);
+
+  @$pb.TagNumber(1029)
+  $core.double get popIpv6PingLatencyMs => $_getN(27);
+  @$pb.TagNumber(1029)
+  set popIpv6PingLatencyMs($core.double value) => $_setFloat(27, value);
+  @$pb.TagNumber(1029)
+  $core.bool hasPopIpv6PingLatencyMs() => $_has(27);
+  @$pb.TagNumber(1029)
+  void clearPopIpv6PingLatencyMs() => $_clearField(1029);
+
+  @$pb.TagNumber(1030)
+  $core.double get secsSinceLastPublicIpv4Change => $_getN(28);
+  @$pb.TagNumber(1030)
+  set secsSinceLastPublicIpv4Change($core.double value) =>
+      $_setFloat(28, value);
+  @$pb.TagNumber(1030)
+  $core.bool hasSecsSinceLastPublicIpv4Change() => $_has(28);
+  @$pb.TagNumber(1030)
+  void clearSecsSinceLastPublicIpv4Change() => $_clearField(1030);
+
+  @$pb.TagNumber(1031)
+  $6.UtDisablementCode get dishDisablementCode => $_getN(29);
+  @$pb.TagNumber(1031)
+  set dishDisablementCode($6.UtDisablementCode value) =>
+      $_setField(1031, value);
+  @$pb.TagNumber(1031)
+  $core.bool hasDishDisablementCode() => $_has(29);
+  @$pb.TagNumber(1031)
+  void clearDishDisablementCode() => $_clearField(1031);
+
+  @$pb.TagNumber(1032)
+  $core.bool get usingIndividualizedCalibration => $_getBF(30);
+  @$pb.TagNumber(1032)
+  set usingIndividualizedCalibration($core.bool value) => $_setBool(30, value);
+  @$pb.TagNumber(1032)
+  $core.bool hasUsingIndividualizedCalibration() => $_has(30);
+  @$pb.TagNumber(1032)
+  void clearUsingIndividualizedCalibration() => $_clearField(1032);
+
+  @$pb.TagNumber(1033)
+  $2.CalibrationPartitionsState get calibrationPartitionsState => $_getN(31);
+  @$pb.TagNumber(1033)
+  set calibrationPartitionsState($2.CalibrationPartitionsState value) =>
+      $_setField(1033, value);
+  @$pb.TagNumber(1033)
+  $core.bool hasCalibrationPartitionsState() => $_has(31);
+  @$pb.TagNumber(1033)
+  void clearCalibrationPartitionsState() => $_clearField(1033);
+
+  @$pb.TagNumber(1034)
+  $core.int get hopsFromController => $_getIZ(32);
+  @$pb.TagNumber(1034)
+  set hopsFromController($core.int value) => $_setUnsignedInt32(32, value);
+  @$pb.TagNumber(1034)
+  $core.bool hasHopsFromController() => $_has(32);
+  @$pb.TagNumber(1034)
+  void clearHopsFromController() => $_clearField(1034);
+
+  @$pb.TagNumber(1035)
+  $core.bool get noWanLink => $_getBF(33);
+  @$pb.TagNumber(1035)
+  set noWanLink($core.bool value) => $_setBool(33, value);
+  @$pb.TagNumber(1035)
+  $core.bool hasNoWanLink() => $_has(33);
+  @$pb.TagNumber(1035)
+  void clearNoWanLink() => $_clearField(1035);
 
   @$pb.TagNumber(2000)
-  $2.WifiConfig get config => $_getN(24);
+  $3.WifiConfig get config => $_getN(34);
   @$pb.TagNumber(2000)
-  set config($2.WifiConfig value) => $_setField(2000, value);
+  set config($3.WifiConfig value) => $_setField(2000, value);
   @$pb.TagNumber(2000)
-  $core.bool hasConfig() => $_has(24);
+  $core.bool hasConfig() => $_has(34);
   @$pb.TagNumber(2000)
   void clearConfig() => $_clearField(2000);
   @$pb.TagNumber(2000)
-  $2.WifiConfig ensureConfig() => $_ensure(24);
+  $3.WifiConfig ensureConfig() => $_ensure(34);
 
   @$pb.TagNumber(3000)
-  $pb.PbList<WifiClient> get clients => $_getList(25);
+  $pb.PbList<WifiClient> get clients => $_getList(35);
 
   @$pb.TagNumber(3001)
-  $core.bool get hasClientIndex => $_getBF(26);
+  $core.bool get hasClientIndex => $_getBF(36);
   @$pb.TagNumber(3001)
-  set hasClientIndex($core.bool value) => $_setBool(26, value);
+  set hasClientIndex($core.bool value) => $_setBool(36, value);
   @$pb.TagNumber(3001)
-  $core.bool hasHasClientIndex() => $_has(26);
+  $core.bool hasHasClientIndex() => $_has(36);
   @$pb.TagNumber(3001)
   void clearHasClientIndex() => $_clearField(3001);
 
   @$pb.TagNumber(3002)
-  $core.int get clientIndex_3002 => $_getIZ(27);
+  $core.int get clientIndex_3002 => $_getIZ(37);
   @$pb.TagNumber(3002)
-  set clientIndex_3002($core.int value) => $_setSignedInt32(27, value);
+  set clientIndex_3002($core.int value) => $_setSignedInt32(37, value);
   @$pb.TagNumber(3002)
-  $core.bool hasClientIndex_3002() => $_has(27);
+  $core.bool hasClientIndex_3002() => $_has(37);
   @$pb.TagNumber(3002)
   void clearClientIndex_3002() => $_clearField(3002);
 
   @$pb.TagNumber(3003)
-  $1.RadiusStatsMap get radiusStats => $_getN(28);
+  $2.RadiusStatsMap get radiusStats => $_getN(38);
   @$pb.TagNumber(3003)
-  set radiusStats($1.RadiusStatsMap value) => $_setField(3003, value);
+  set radiusStats($2.RadiusStatsMap value) => $_setField(3003, value);
   @$pb.TagNumber(3003)
-  $core.bool hasRadiusStats() => $_has(28);
+  $core.bool hasRadiusStats() => $_has(38);
   @$pb.TagNumber(3003)
   void clearRadiusStats() => $_clearField(3003);
   @$pb.TagNumber(3003)
-  $1.RadiusStatsMap ensureRadiusStats() => $_ensure(28);
+  $2.RadiusStatsMap ensureRadiusStats() => $_ensure(38);
 }
 
 class WifiAuthenticateRequest extends $pb.GeneratedMessage {
   factory WifiAuthenticateRequest({
-    $3.SignedData? challenge,
+    $1.SignedData? challenge,
   }) {
     final result = create();
     if (challenge != null) result.challenge = challenge;
@@ -4648,8 +5464,8 @@ class WifiAuthenticateRequest extends $pb.GeneratedMessage {
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
       createEmptyInstance: create)
-    ..aOM<$3.SignedData>(1, _omitFieldNames ? '' : 'challenge',
-        subBuilder: $3.SignedData.create)
+    ..aOM<$1.SignedData>(1, _omitFieldNames ? '' : 'challenge',
+        subBuilder: $1.SignedData.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -4673,21 +5489,21 @@ class WifiAuthenticateRequest extends $pb.GeneratedMessage {
   static WifiAuthenticateRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.SignedData get challenge => $_getN(0);
+  $1.SignedData get challenge => $_getN(0);
   @$pb.TagNumber(1)
-  set challenge($3.SignedData value) => $_setField(1, value);
+  set challenge($1.SignedData value) => $_setField(1, value);
   @$pb.TagNumber(1)
   $core.bool hasChallenge() => $_has(0);
   @$pb.TagNumber(1)
   void clearChallenge() => $_clearField(1);
   @$pb.TagNumber(1)
-  $3.SignedData ensureChallenge() => $_ensure(0);
+  $1.SignedData ensureChallenge() => $_ensure(0);
 }
 
 class WifiAuthenticateResponse extends $pb.GeneratedMessage {
   factory WifiAuthenticateResponse({
-    $3.ChallengeResponse? wifi,
-    $3.ChallengeResponse? dish,
+    $1.ChallengeResponse? wifi,
+    $1.ChallengeResponse? dish,
   }) {
     final result = create();
     if (wifi != null) result.wifi = wifi;
@@ -4709,10 +5525,10 @@ class WifiAuthenticateResponse extends $pb.GeneratedMessage {
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
       createEmptyInstance: create)
-    ..aOM<$3.ChallengeResponse>(1, _omitFieldNames ? '' : 'wifi',
-        subBuilder: $3.ChallengeResponse.create)
-    ..aOM<$3.ChallengeResponse>(2, _omitFieldNames ? '' : 'dish',
-        subBuilder: $3.ChallengeResponse.create)
+    ..aOM<$1.ChallengeResponse>(1, _omitFieldNames ? '' : 'wifi',
+        subBuilder: $1.ChallengeResponse.create)
+    ..aOM<$1.ChallengeResponse>(2, _omitFieldNames ? '' : 'dish',
+        subBuilder: $1.ChallengeResponse.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -4736,26 +5552,26 @@ class WifiAuthenticateResponse extends $pb.GeneratedMessage {
   static WifiAuthenticateResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.ChallengeResponse get wifi => $_getN(0);
+  $1.ChallengeResponse get wifi => $_getN(0);
   @$pb.TagNumber(1)
-  set wifi($3.ChallengeResponse value) => $_setField(1, value);
+  set wifi($1.ChallengeResponse value) => $_setField(1, value);
   @$pb.TagNumber(1)
   $core.bool hasWifi() => $_has(0);
   @$pb.TagNumber(1)
   void clearWifi() => $_clearField(1);
   @$pb.TagNumber(1)
-  $3.ChallengeResponse ensureWifi() => $_ensure(0);
+  $1.ChallengeResponse ensureWifi() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $3.ChallengeResponse get dish => $_getN(1);
+  $1.ChallengeResponse get dish => $_getN(1);
   @$pb.TagNumber(2)
-  set dish($3.ChallengeResponse value) => $_setField(2, value);
+  set dish($1.ChallengeResponse value) => $_setField(2, value);
   @$pb.TagNumber(2)
   $core.bool hasDish() => $_has(1);
   @$pb.TagNumber(2)
   void clearDish() => $_clearField(2);
   @$pb.TagNumber(2)
-  $3.ChallengeResponse ensureDish() => $_ensure(1);
+  $1.ChallengeResponse ensureDish() => $_ensure(1);
 }
 
 class WifiAccountBondingEvent extends $pb.GeneratedMessage {
@@ -5860,9 +6676,9 @@ class RadioStats_AntennaStatus extends $pb.GeneratedMessage {
 
 class RadioStats extends $pb.GeneratedMessage {
   factory RadioStats({
-    $2.WifiConfig_Band? band,
-    $3.NetworkInterface_RxStats? rxStats,
-    $3.NetworkInterface_TxStats? txStats,
+    $3.WifiConfig_Band? band,
+    $1.NetworkInterface_RxStats? rxStats,
+    $1.NetworkInterface_TxStats? txStats,
     RadioStats_ThermalStatus? thermalStatus,
     RadioStats_AntennaStatus? antennaStatus,
   }) {
@@ -5889,12 +6705,12 @@ class RadioStats extends $pb.GeneratedMessage {
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
       createEmptyInstance: create)
-    ..aE<$2.WifiConfig_Band>(1, _omitFieldNames ? '' : 'band',
-        enumValues: $2.WifiConfig_Band.values)
-    ..aOM<$3.NetworkInterface_RxStats>(2, _omitFieldNames ? '' : 'rxStats',
-        subBuilder: $3.NetworkInterface_RxStats.create)
-    ..aOM<$3.NetworkInterface_TxStats>(3, _omitFieldNames ? '' : 'txStats',
-        subBuilder: $3.NetworkInterface_TxStats.create)
+    ..aE<$3.WifiConfig_Band>(1, _omitFieldNames ? '' : 'band',
+        enumValues: $3.WifiConfig_Band.values)
+    ..aOM<$1.NetworkInterface_RxStats>(2, _omitFieldNames ? '' : 'rxStats',
+        subBuilder: $1.NetworkInterface_RxStats.create)
+    ..aOM<$1.NetworkInterface_TxStats>(3, _omitFieldNames ? '' : 'txStats',
+        subBuilder: $1.NetworkInterface_TxStats.create)
     ..aOM<RadioStats_ThermalStatus>(4, _omitFieldNames ? '' : 'thermalStatus',
         subBuilder: RadioStats_ThermalStatus.create)
     ..aOM<RadioStats_AntennaStatus>(5, _omitFieldNames ? '' : 'antennaStatus',
@@ -5920,35 +6736,35 @@ class RadioStats extends $pb.GeneratedMessage {
   static RadioStats? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $2.WifiConfig_Band get band => $_getN(0);
+  $3.WifiConfig_Band get band => $_getN(0);
   @$pb.TagNumber(1)
-  set band($2.WifiConfig_Band value) => $_setField(1, value);
+  set band($3.WifiConfig_Band value) => $_setField(1, value);
   @$pb.TagNumber(1)
   $core.bool hasBand() => $_has(0);
   @$pb.TagNumber(1)
   void clearBand() => $_clearField(1);
 
   @$pb.TagNumber(2)
-  $3.NetworkInterface_RxStats get rxStats => $_getN(1);
+  $1.NetworkInterface_RxStats get rxStats => $_getN(1);
   @$pb.TagNumber(2)
-  set rxStats($3.NetworkInterface_RxStats value) => $_setField(2, value);
+  set rxStats($1.NetworkInterface_RxStats value) => $_setField(2, value);
   @$pb.TagNumber(2)
   $core.bool hasRxStats() => $_has(1);
   @$pb.TagNumber(2)
   void clearRxStats() => $_clearField(2);
   @$pb.TagNumber(2)
-  $3.NetworkInterface_RxStats ensureRxStats() => $_ensure(1);
+  $1.NetworkInterface_RxStats ensureRxStats() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $3.NetworkInterface_TxStats get txStats => $_getN(2);
+  $1.NetworkInterface_TxStats get txStats => $_getN(2);
   @$pb.TagNumber(3)
-  set txStats($3.NetworkInterface_TxStats value) => $_setField(3, value);
+  set txStats($1.NetworkInterface_TxStats value) => $_setField(3, value);
   @$pb.TagNumber(3)
   $core.bool hasTxStats() => $_has(2);
   @$pb.TagNumber(3)
   void clearTxStats() => $_clearField(3);
   @$pb.TagNumber(3)
-  $3.NetworkInterface_TxStats ensureTxStats() => $_ensure(2);
+  $1.NetworkInterface_TxStats ensureTxStats() => $_ensure(2);
 
   @$pb.TagNumber(4)
   RadioStats_ThermalStatus get thermalStatus => $_getN(3);
@@ -5994,6 +6810,9 @@ class starlink_routers_hourly_metrics_v2 extends $pb.GeneratedMessage {
     $4.UInt32Value? sysUbiMaxEc,
     $4.UInt32Value? sysUbiBadPeb,
     $4.UInt32Value? sysBoardRev,
+    $4.UInt32Value? sysCalibrationState,
+    $4.UInt32Value? sysCalibrationPartitionsState,
+    $4.UInt32Value? sysHwIndex,
     $4.UInt32Value? radios2ghzChannel,
     $4.FloatValue? radios2ghzAntenna1Rssi,
     $4.FloatValue? radios2ghzAntenna2Rssi,
@@ -6077,6 +6896,9 @@ class starlink_routers_hourly_metrics_v2 extends $pb.GeneratedMessage {
     $4.UInt32Value? radios5ghzHighThermalThrottledSeconds,
     $4.FloatValue? boardTemp,
     $4.FloatValue? poeMcuDieTemp,
+    $4.FloatValue? poePercentWaterDetectAvg,
+    $4.FloatValue? ambientTemp,
+    $4.FloatValue? cpuTemp,
     $4.Int64Value? ifacesLanEthRxBytes,
     $4.Int64Value? ifacesLanEthRxPackets,
     $4.Int64Value? ifacesLanEthRxErrors,
@@ -6098,6 +6920,7 @@ class starlink_routers_hourly_metrics_v2 extends $pb.GeneratedMessage {
     $4.Int64Value? ifacesLan1EthTxBytes,
     $4.Int64Value? ifacesLan1EthTxPackets,
     $4.Int64Value? ifacesLan1EthTxErrors,
+    $4.StringValue? ifacesWanPort,
     $4.UInt32Value? clients,
     $4.UInt32Value? clients2ghz,
     $4.UInt32Value? clients5ghz,
@@ -6129,6 +6952,12 @@ class starlink_routers_hourly_metrics_v2 extends $pb.GeneratedMessage {
     $4.UInt32Value? clients5ghzRxBandwidth20mhz,
     $4.UInt32Value? clients5ghzRxBandwidth40mhz,
     $4.UInt32Value? clients5ghzRxBandwidth80mhz,
+    $4.UInt32Value? macExportsSuccessful,
+    $4.UInt32Value? macExportsServerConnectErrors,
+    $4.UInt32Value? macExportsServerSendErrors,
+    $4.UInt32Value? clients5ghzRxBandwidth160mhz,
+    $4.UInt32Value? clientsWireless,
+    $4.UInt32Value? clientsMlo,
     $4.FloatValue? pingSecondsSinceLast1sOutage,
     $4.FloatValue? pingSecondsSinceLast2sOutage,
     $4.FloatValue? pingSecondsSinceLast5sOutage,
@@ -6147,6 +6976,8 @@ class starlink_routers_hourly_metrics_v2 extends $pb.GeneratedMessage {
     $4.FloatValue? pingDishLatency,
     $4.FloatValue? pingLatencyLast1h,
     $4.FloatValue? pingDishLatencyLast1h,
+    $4.FloatValue? pingPopIpv6DropRateLast1h,
+    $4.FloatValue? pingPopIpv6LatencyLast1h,
     $4.FloatValue? clientSpeedtestRouterDownloadMbps,
     $4.FloatValue? clientSpeedtestRouterUploadMbps,
     $4.FloatValue? clientSpeedtestRouterRssi,
@@ -6160,6 +6991,14 @@ class starlink_routers_hourly_metrics_v2 extends $pb.GeneratedMessage {
     $4.UInt32Value? clientSpeedtestClientTxRate,
     $4.UInt32Value? clientSpeedtestClientRxRate,
     $4.UInt32Value? clientSpeedtestClientPlatformType,
+    $4.UInt64Value? clientSpeedtestRouterDownloadTotalBytesTransferred,
+    $4.UInt32Value? clientSpeedtestRouterDownloadBytesTransferredDurationS,
+    $4.UInt64Value? clientSpeedtestRouterDownloadTargetIpv6Low,
+    $4.UInt64Value? clientSpeedtestRouterDownloadTargetIpv6High,
+    $4.UInt64Value? clientSpeedtestRouterUploadTotalBytesTransferred,
+    $4.UInt32Value? clientSpeedtestRouterUploadBytesTransferredDurationS,
+    $4.UInt64Value? clientSpeedtestRouterUploadTargetIpv6Low,
+    $4.UInt64Value? clientSpeedtestRouterUploadTargetIpv6High,
     $4.FloatValue? speedtestTcp8DownloadMbpsAvg,
     $4.FloatValue? speedtestTcp8DownloadMbpsMax,
     $4.FloatValue? speedtestTcp8UploadMbpsAvg,
@@ -6168,6 +7007,18 @@ class starlink_routers_hourly_metrics_v2 extends $pb.GeneratedMessage {
     $4.FloatValue? speedtestTcp64DownloadMbpsMax,
     $4.FloatValue? speedtestTcp64UploadMbpsAvg,
     $4.FloatValue? speedtestTcp64UploadMbpsMax,
+    $4.FloatValue? speedtestTcp1DownloadMbpsAvg,
+    $4.FloatValue? speedtestTcp1DownloadMbpsMax,
+    $4.FloatValue? speedtestTcp1UploadMbpsAvg,
+    $4.FloatValue? speedtestTcp1UploadMbpsMax,
+    $4.FloatValue? speedtestTcp8DownloadMeanTcpConnectTime,
+    $4.FloatValue? speedtestTcp8UploadMeanTcpConnectTime,
+    $core.Iterable<$core.String>? speedtestTcp8DownloadCfRayHeaders,
+    $core.Iterable<$core.String>? speedtestTcp8UploadCfRayHeaders,
+    $4.FloatValue? speedtestTcp1DownloadMeanTcpConnectTime,
+    $4.FloatValue? speedtestTcp1UploadMeanTcpConnectTime,
+    $core.Iterable<$core.String>? speedtestTcp1DownloadCfRayHeaders,
+    $core.Iterable<$core.String>? speedtestTcp1UploadCfRayHeaders,
     $4.UInt32Value? dishCellId,
     $4.BoolValue? configSetupComplete,
     $4.BoolValue? configBandsSplit,
@@ -6198,6 +7049,28 @@ class starlink_routers_hourly_metrics_v2 extends $pb.GeneratedMessage {
     $4.UInt32Value? configNetworksClientIsolation,
     $4.UInt32Value? configNetworksBandsSplit,
     $4.BoolValue? configDisable5ghzHigh,
+    $4.BoolValue? configHttpsContentHostingEnabled,
+    $4.BoolValue? configOnlyOverflightBlockingEnabled,
+    $4.BoolValue? configOfflineNetworksDisablementEnabled,
+    $4.BoolValue? configCustomDnsDisabled,
+    $4.UInt32Value? configNetworksUser,
+    $4.BoolValue? configForeflightEnabled,
+    $4.BoolValue? configOutdoorMode,
+    $4.UInt32Value? wifiReloadCount,
+    $4.UInt32Value? radiusReloadCount,
+    $4.UInt32Value? opensshReloadCount,
+    $4.UInt32Value? iptablesReloadCount,
+    $4.UInt32Value? ebtablesReloadCount,
+    $4.UInt32Value? trafficControlReloadCount,
+    $4.UInt32Value? dhcpReloadCount,
+    $4.UInt32Value? dhcpv6ReloadCount,
+    $4.UInt32Value? systemReloadCount,
+    $4.UInt32Value? dnsReloadCount,
+    $4.UInt32Value? httpsReloadCount,
+    $4.UInt32Value? bandSteeringReloadCount,
+    $4.UInt32Value? commitCount,
+    $4.UInt32Value? networkReloadCount,
+    $4.UInt32Value? foreflightReloadCount,
     $4.UInt32Value? conntrackEntries,
     $4.Int64Value? wanTrafficControlCakeBytes,
     $4.Int64Value? wanTrafficControlCakePackets,
@@ -6208,6 +7081,13 @@ class starlink_routers_hourly_metrics_v2 extends $pb.GeneratedMessage {
     $4.UInt32Value? dhcpSecsGt10,
     $4.UInt32Value? dhcpSecsGt30,
     $4.UInt32Value? dhcpSecsGt60,
+    $4.UInt32Value? dnsForwards,
+    $4.UInt32Value? dnsForwardsSuccess,
+    $4.UInt32Value? dnsForwardsServerFailure,
+    $4.UInt32Value? dnsForwardsNoServerResponse,
+    $4.UInt32Value? dnsForwardsSuccessOnDefaultBackup,
+    $4.UInt32Value? dnsForwardsDropped,
+    $4.UInt32Value? dnsForwardsWithBackup,
     $5.TimestampInfo? timestamp,
   }) {
     final result = create();
@@ -6233,6 +7113,11 @@ class starlink_routers_hourly_metrics_v2 extends $pb.GeneratedMessage {
     if (sysUbiMaxEc != null) result.sysUbiMaxEc = sysUbiMaxEc;
     if (sysUbiBadPeb != null) result.sysUbiBadPeb = sysUbiBadPeb;
     if (sysBoardRev != null) result.sysBoardRev = sysBoardRev;
+    if (sysCalibrationState != null)
+      result.sysCalibrationState = sysCalibrationState;
+    if (sysCalibrationPartitionsState != null)
+      result.sysCalibrationPartitionsState = sysCalibrationPartitionsState;
+    if (sysHwIndex != null) result.sysHwIndex = sysHwIndex;
     if (radios2ghzChannel != null) result.radios2ghzChannel = radios2ghzChannel;
     if (radios2ghzAntenna1Rssi != null)
       result.radios2ghzAntenna1Rssi = radios2ghzAntenna1Rssi;
@@ -6397,6 +7282,10 @@ class starlink_routers_hourly_metrics_v2 extends $pb.GeneratedMessage {
           radios5ghzHighThermalThrottledSeconds;
     if (boardTemp != null) result.boardTemp = boardTemp;
     if (poeMcuDieTemp != null) result.poeMcuDieTemp = poeMcuDieTemp;
+    if (poePercentWaterDetectAvg != null)
+      result.poePercentWaterDetectAvg = poePercentWaterDetectAvg;
+    if (ambientTemp != null) result.ambientTemp = ambientTemp;
+    if (cpuTemp != null) result.cpuTemp = cpuTemp;
     if (ifacesLanEthRxBytes != null)
       result.ifacesLanEthRxBytes = ifacesLanEthRxBytes;
     if (ifacesLanEthRxPackets != null)
@@ -6439,6 +7328,7 @@ class starlink_routers_hourly_metrics_v2 extends $pb.GeneratedMessage {
       result.ifacesLan1EthTxPackets = ifacesLan1EthTxPackets;
     if (ifacesLan1EthTxErrors != null)
       result.ifacesLan1EthTxErrors = ifacesLan1EthTxErrors;
+    if (ifacesWanPort != null) result.ifacesWanPort = ifacesWanPort;
     if (clients != null) result.clients = clients;
     if (clients2ghz != null) result.clients2ghz = clients2ghz;
     if (clients5ghz != null) result.clients5ghz = clients5ghz;
@@ -6494,6 +7384,16 @@ class starlink_routers_hourly_metrics_v2 extends $pb.GeneratedMessage {
       result.clients5ghzRxBandwidth40mhz = clients5ghzRxBandwidth40mhz;
     if (clients5ghzRxBandwidth80mhz != null)
       result.clients5ghzRxBandwidth80mhz = clients5ghzRxBandwidth80mhz;
+    if (macExportsSuccessful != null)
+      result.macExportsSuccessful = macExportsSuccessful;
+    if (macExportsServerConnectErrors != null)
+      result.macExportsServerConnectErrors = macExportsServerConnectErrors;
+    if (macExportsServerSendErrors != null)
+      result.macExportsServerSendErrors = macExportsServerSendErrors;
+    if (clients5ghzRxBandwidth160mhz != null)
+      result.clients5ghzRxBandwidth160mhz = clients5ghzRxBandwidth160mhz;
+    if (clientsWireless != null) result.clientsWireless = clientsWireless;
+    if (clientsMlo != null) result.clientsMlo = clientsMlo;
     if (pingSecondsSinceLast1sOutage != null)
       result.pingSecondsSinceLast1sOutage = pingSecondsSinceLast1sOutage;
     if (pingSecondsSinceLast2sOutage != null)
@@ -6530,6 +7430,10 @@ class starlink_routers_hourly_metrics_v2 extends $pb.GeneratedMessage {
     if (pingLatencyLast1h != null) result.pingLatencyLast1h = pingLatencyLast1h;
     if (pingDishLatencyLast1h != null)
       result.pingDishLatencyLast1h = pingDishLatencyLast1h;
+    if (pingPopIpv6DropRateLast1h != null)
+      result.pingPopIpv6DropRateLast1h = pingPopIpv6DropRateLast1h;
+    if (pingPopIpv6LatencyLast1h != null)
+      result.pingPopIpv6LatencyLast1h = pingPopIpv6LatencyLast1h;
     if (clientSpeedtestRouterDownloadMbps != null)
       result.clientSpeedtestRouterDownloadMbps =
           clientSpeedtestRouterDownloadMbps;
@@ -6559,6 +7463,30 @@ class starlink_routers_hourly_metrics_v2 extends $pb.GeneratedMessage {
     if (clientSpeedtestClientPlatformType != null)
       result.clientSpeedtestClientPlatformType =
           clientSpeedtestClientPlatformType;
+    if (clientSpeedtestRouterDownloadTotalBytesTransferred != null)
+      result.clientSpeedtestRouterDownloadTotalBytesTransferred =
+          clientSpeedtestRouterDownloadTotalBytesTransferred;
+    if (clientSpeedtestRouterDownloadBytesTransferredDurationS != null)
+      result.clientSpeedtestRouterDownloadBytesTransferredDurationS =
+          clientSpeedtestRouterDownloadBytesTransferredDurationS;
+    if (clientSpeedtestRouterDownloadTargetIpv6Low != null)
+      result.clientSpeedtestRouterDownloadTargetIpv6Low =
+          clientSpeedtestRouterDownloadTargetIpv6Low;
+    if (clientSpeedtestRouterDownloadTargetIpv6High != null)
+      result.clientSpeedtestRouterDownloadTargetIpv6High =
+          clientSpeedtestRouterDownloadTargetIpv6High;
+    if (clientSpeedtestRouterUploadTotalBytesTransferred != null)
+      result.clientSpeedtestRouterUploadTotalBytesTransferred =
+          clientSpeedtestRouterUploadTotalBytesTransferred;
+    if (clientSpeedtestRouterUploadBytesTransferredDurationS != null)
+      result.clientSpeedtestRouterUploadBytesTransferredDurationS =
+          clientSpeedtestRouterUploadBytesTransferredDurationS;
+    if (clientSpeedtestRouterUploadTargetIpv6Low != null)
+      result.clientSpeedtestRouterUploadTargetIpv6Low =
+          clientSpeedtestRouterUploadTargetIpv6Low;
+    if (clientSpeedtestRouterUploadTargetIpv6High != null)
+      result.clientSpeedtestRouterUploadTargetIpv6High =
+          clientSpeedtestRouterUploadTargetIpv6High;
     if (speedtestTcp8DownloadMbpsAvg != null)
       result.speedtestTcp8DownloadMbpsAvg = speedtestTcp8DownloadMbpsAvg;
     if (speedtestTcp8DownloadMbpsMax != null)
@@ -6575,6 +7503,38 @@ class starlink_routers_hourly_metrics_v2 extends $pb.GeneratedMessage {
       result.speedtestTcp64UploadMbpsAvg = speedtestTcp64UploadMbpsAvg;
     if (speedtestTcp64UploadMbpsMax != null)
       result.speedtestTcp64UploadMbpsMax = speedtestTcp64UploadMbpsMax;
+    if (speedtestTcp1DownloadMbpsAvg != null)
+      result.speedtestTcp1DownloadMbpsAvg = speedtestTcp1DownloadMbpsAvg;
+    if (speedtestTcp1DownloadMbpsMax != null)
+      result.speedtestTcp1DownloadMbpsMax = speedtestTcp1DownloadMbpsMax;
+    if (speedtestTcp1UploadMbpsAvg != null)
+      result.speedtestTcp1UploadMbpsAvg = speedtestTcp1UploadMbpsAvg;
+    if (speedtestTcp1UploadMbpsMax != null)
+      result.speedtestTcp1UploadMbpsMax = speedtestTcp1UploadMbpsMax;
+    if (speedtestTcp8DownloadMeanTcpConnectTime != null)
+      result.speedtestTcp8DownloadMeanTcpConnectTime =
+          speedtestTcp8DownloadMeanTcpConnectTime;
+    if (speedtestTcp8UploadMeanTcpConnectTime != null)
+      result.speedtestTcp8UploadMeanTcpConnectTime =
+          speedtestTcp8UploadMeanTcpConnectTime;
+    if (speedtestTcp8DownloadCfRayHeaders != null)
+      result.speedtestTcp8DownloadCfRayHeaders
+          .addAll(speedtestTcp8DownloadCfRayHeaders);
+    if (speedtestTcp8UploadCfRayHeaders != null)
+      result.speedtestTcp8UploadCfRayHeaders
+          .addAll(speedtestTcp8UploadCfRayHeaders);
+    if (speedtestTcp1DownloadMeanTcpConnectTime != null)
+      result.speedtestTcp1DownloadMeanTcpConnectTime =
+          speedtestTcp1DownloadMeanTcpConnectTime;
+    if (speedtestTcp1UploadMeanTcpConnectTime != null)
+      result.speedtestTcp1UploadMeanTcpConnectTime =
+          speedtestTcp1UploadMeanTcpConnectTime;
+    if (speedtestTcp1DownloadCfRayHeaders != null)
+      result.speedtestTcp1DownloadCfRayHeaders
+          .addAll(speedtestTcp1DownloadCfRayHeaders);
+    if (speedtestTcp1UploadCfRayHeaders != null)
+      result.speedtestTcp1UploadCfRayHeaders
+          .addAll(speedtestTcp1UploadCfRayHeaders);
     if (dishCellId != null) result.dishCellId = dishCellId;
     if (configSetupComplete != null)
       result.configSetupComplete = configSetupComplete;
@@ -6621,6 +7581,44 @@ class starlink_routers_hourly_metrics_v2 extends $pb.GeneratedMessage {
       result.configNetworksBandsSplit = configNetworksBandsSplit;
     if (configDisable5ghzHigh != null)
       result.configDisable5ghzHigh = configDisable5ghzHigh;
+    if (configHttpsContentHostingEnabled != null)
+      result.configHttpsContentHostingEnabled =
+          configHttpsContentHostingEnabled;
+    if (configOnlyOverflightBlockingEnabled != null)
+      result.configOnlyOverflightBlockingEnabled =
+          configOnlyOverflightBlockingEnabled;
+    if (configOfflineNetworksDisablementEnabled != null)
+      result.configOfflineNetworksDisablementEnabled =
+          configOfflineNetworksDisablementEnabled;
+    if (configCustomDnsDisabled != null)
+      result.configCustomDnsDisabled = configCustomDnsDisabled;
+    if (configNetworksUser != null)
+      result.configNetworksUser = configNetworksUser;
+    if (configForeflightEnabled != null)
+      result.configForeflightEnabled = configForeflightEnabled;
+    if (configOutdoorMode != null) result.configOutdoorMode = configOutdoorMode;
+    if (wifiReloadCount != null) result.wifiReloadCount = wifiReloadCount;
+    if (radiusReloadCount != null) result.radiusReloadCount = radiusReloadCount;
+    if (opensshReloadCount != null)
+      result.opensshReloadCount = opensshReloadCount;
+    if (iptablesReloadCount != null)
+      result.iptablesReloadCount = iptablesReloadCount;
+    if (ebtablesReloadCount != null)
+      result.ebtablesReloadCount = ebtablesReloadCount;
+    if (trafficControlReloadCount != null)
+      result.trafficControlReloadCount = trafficControlReloadCount;
+    if (dhcpReloadCount != null) result.dhcpReloadCount = dhcpReloadCount;
+    if (dhcpv6ReloadCount != null) result.dhcpv6ReloadCount = dhcpv6ReloadCount;
+    if (systemReloadCount != null) result.systemReloadCount = systemReloadCount;
+    if (dnsReloadCount != null) result.dnsReloadCount = dnsReloadCount;
+    if (httpsReloadCount != null) result.httpsReloadCount = httpsReloadCount;
+    if (bandSteeringReloadCount != null)
+      result.bandSteeringReloadCount = bandSteeringReloadCount;
+    if (commitCount != null) result.commitCount = commitCount;
+    if (networkReloadCount != null)
+      result.networkReloadCount = networkReloadCount;
+    if (foreflightReloadCount != null)
+      result.foreflightReloadCount = foreflightReloadCount;
     if (conntrackEntries != null) result.conntrackEntries = conntrackEntries;
     if (wanTrafficControlCakeBytes != null)
       result.wanTrafficControlCakeBytes = wanTrafficControlCakeBytes;
@@ -6635,6 +7633,20 @@ class starlink_routers_hourly_metrics_v2 extends $pb.GeneratedMessage {
     if (dhcpSecsGt10 != null) result.dhcpSecsGt10 = dhcpSecsGt10;
     if (dhcpSecsGt30 != null) result.dhcpSecsGt30 = dhcpSecsGt30;
     if (dhcpSecsGt60 != null) result.dhcpSecsGt60 = dhcpSecsGt60;
+    if (dnsForwards != null) result.dnsForwards = dnsForwards;
+    if (dnsForwardsSuccess != null)
+      result.dnsForwardsSuccess = dnsForwardsSuccess;
+    if (dnsForwardsServerFailure != null)
+      result.dnsForwardsServerFailure = dnsForwardsServerFailure;
+    if (dnsForwardsNoServerResponse != null)
+      result.dnsForwardsNoServerResponse = dnsForwardsNoServerResponse;
+    if (dnsForwardsSuccessOnDefaultBackup != null)
+      result.dnsForwardsSuccessOnDefaultBackup =
+          dnsForwardsSuccessOnDefaultBackup;
+    if (dnsForwardsDropped != null)
+      result.dnsForwardsDropped = dnsForwardsDropped;
+    if (dnsForwardsWithBackup != null)
+      result.dnsForwardsWithBackup = dnsForwardsWithBackup;
     if (timestamp != null) result.timestamp = timestamp;
     return result;
   }
@@ -6691,6 +7703,13 @@ class starlink_routers_hourly_metrics_v2 extends $pb.GeneratedMessage {
     ..aOM<$4.UInt32Value>(18, _omitFieldNames ? '' : 'sysUbiBadPeb',
         subBuilder: $4.UInt32Value.create)
     ..aOM<$4.UInt32Value>(19, _omitFieldNames ? '' : 'sysBoardRev',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(20, _omitFieldNames ? '' : 'sysCalibrationState',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(
+        21, _omitFieldNames ? '' : 'sysCalibrationPartitionsState',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(22, _omitFieldNames ? '' : 'sysHwIndex',
         subBuilder: $4.UInt32Value.create)
     ..aOM<$4.UInt32Value>(100, _omitFieldNames ? '' : 'radios2ghzChannel',
         protoName: 'radios_2ghz_channel', subBuilder: $4.UInt32Value.create)
@@ -6957,6 +7976,12 @@ class starlink_routers_hourly_metrics_v2 extends $pb.GeneratedMessage {
         subBuilder: $4.FloatValue.create)
     ..aOM<$4.FloatValue>(211, _omitFieldNames ? '' : 'poeMcuDieTemp',
         subBuilder: $4.FloatValue.create)
+    ..aOM<$4.FloatValue>(212, _omitFieldNames ? '' : 'poePercentWaterDetectAvg',
+        subBuilder: $4.FloatValue.create)
+    ..aOM<$4.FloatValue>(213, _omitFieldNames ? '' : 'ambientTemp',
+        subBuilder: $4.FloatValue.create)
+    ..aOM<$4.FloatValue>(214, _omitFieldNames ? '' : 'cpuTemp',
+        subBuilder: $4.FloatValue.create)
     ..aOM<$4.Int64Value>(300, _omitFieldNames ? '' : 'ifacesLanEthRxBytes',
         subBuilder: $4.Int64Value.create)
     ..aOM<$4.Int64Value>(301, _omitFieldNames ? '' : 'ifacesLanEthRxPackets',
@@ -7002,6 +8027,8 @@ class starlink_routers_hourly_metrics_v2 extends $pb.GeneratedMessage {
         subBuilder: $4.Int64Value.create)
     ..aOM<$4.Int64Value>(320, _omitFieldNames ? '' : 'ifacesLan1EthTxErrors',
         subBuilder: $4.Int64Value.create)
+    ..aOM<$4.StringValue>(321, _omitFieldNames ? '' : 'ifacesWanPort',
+        subBuilder: $4.StringValue.create)
     ..aOM<$4.UInt32Value>(400, _omitFieldNames ? '' : 'clients',
         subBuilder: $4.UInt32Value.create)
     ..aOM<$4.UInt32Value>(401, _omitFieldNames ? '' : 'clients2ghz',
@@ -7091,6 +8118,22 @@ class starlink_routers_hourly_metrics_v2 extends $pb.GeneratedMessage {
         431, _omitFieldNames ? '' : 'clients5ghzRxBandwidth80mhz',
         protoName: 'clients_5ghz_rx_bandwidth_80mhz',
         subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(432, _omitFieldNames ? '' : 'macExportsSuccessful',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(
+        433, _omitFieldNames ? '' : 'macExportsServerConnectErrors',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(
+        434, _omitFieldNames ? '' : 'macExportsServerSendErrors',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(
+        435, _omitFieldNames ? '' : 'clients5ghzRxBandwidth160mhz',
+        protoName: 'clients_5ghz_rx_bandwidth_160mhz',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(436, _omitFieldNames ? '' : 'clientsWireless',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(437, _omitFieldNames ? '' : 'clientsMlo',
+        subBuilder: $4.UInt32Value.create)
     ..aOM<$4.FloatValue>(
         600, _omitFieldNames ? '' : 'pingSecondsSinceLast1sOutage',
         protoName: 'ping_seconds_since_last_1s_outage',
@@ -7150,6 +8193,13 @@ class starlink_routers_hourly_metrics_v2 extends $pb.GeneratedMessage {
         protoName: 'ping_dish_latency_last_1h',
         subBuilder: $4.FloatValue.create)
     ..aOM<$4.FloatValue>(
+        621, _omitFieldNames ? '' : 'pingPopIpv6DropRateLast1h',
+        protoName: 'ping_pop_ipv6_drop_rate_last_1h',
+        subBuilder: $4.FloatValue.create)
+    ..aOM<$4.FloatValue>(623, _omitFieldNames ? '' : 'pingPopIpv6LatencyLast1h',
+        protoName: 'ping_pop_ipv6_latency_last_1h',
+        subBuilder: $4.FloatValue.create)
+    ..aOM<$4.FloatValue>(
         700, _omitFieldNames ? '' : 'clientSpeedtestRouterDownloadMbps',
         subBuilder: $4.FloatValue.create)
     ..aOM<$4.FloatValue>(
@@ -7188,6 +8238,42 @@ class starlink_routers_hourly_metrics_v2 extends $pb.GeneratedMessage {
     ..aOM<$4.UInt32Value>(
         712, _omitFieldNames ? '' : 'clientSpeedtestClientPlatformType',
         subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt64Value>(
+        713,
+        _omitFieldNames
+            ? ''
+            : 'clientSpeedtestRouterDownloadTotalBytesTransferred',
+        subBuilder: $4.UInt64Value.create)
+    ..aOM<$4.UInt32Value>(
+        714,
+        _omitFieldNames
+            ? ''
+            : 'clientSpeedtestRouterDownloadBytesTransferredDurationS',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt64Value>(715,
+        _omitFieldNames ? '' : 'clientSpeedtestRouterDownloadTargetIpv6Low',
+        subBuilder: $4.UInt64Value.create)
+    ..aOM<$4.UInt64Value>(716,
+        _omitFieldNames ? '' : 'clientSpeedtestRouterDownloadTargetIpv6High',
+        subBuilder: $4.UInt64Value.create)
+    ..aOM<$4.UInt64Value>(
+        717,
+        _omitFieldNames
+            ? ''
+            : 'clientSpeedtestRouterUploadTotalBytesTransferred',
+        subBuilder: $4.UInt64Value.create)
+    ..aOM<$4.UInt32Value>(
+        718,
+        _omitFieldNames
+            ? ''
+            : 'clientSpeedtestRouterUploadBytesTransferredDurationS',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt64Value>(
+        719, _omitFieldNames ? '' : 'clientSpeedtestRouterUploadTargetIpv6Low',
+        subBuilder: $4.UInt64Value.create)
+    ..aOM<$4.UInt64Value>(
+        720, _omitFieldNames ? '' : 'clientSpeedtestRouterUploadTargetIpv6High',
+        subBuilder: $4.UInt64Value.create)
     ..aOM<$4.FloatValue>(
         800, _omitFieldNames ? '' : 'speedtestTcp8DownloadMbpsAvg',
         protoName: 'speedtest_tcp_8_download_mbps_avg',
@@ -7220,6 +8306,46 @@ class starlink_routers_hourly_metrics_v2 extends $pb.GeneratedMessage {
         807, _omitFieldNames ? '' : 'speedtestTcp64UploadMbpsMax',
         protoName: 'speedtest_tcp_64_upload_mbps_max',
         subBuilder: $4.FloatValue.create)
+    ..aOM<$4.FloatValue>(
+        808, _omitFieldNames ? '' : 'speedtestTcp1DownloadMbpsAvg',
+        protoName: 'speedtest_tcp_1_download_mbps_avg',
+        subBuilder: $4.FloatValue.create)
+    ..aOM<$4.FloatValue>(
+        809, _omitFieldNames ? '' : 'speedtestTcp1DownloadMbpsMax',
+        protoName: 'speedtest_tcp_1_download_mbps_max',
+        subBuilder: $4.FloatValue.create)
+    ..aOM<$4.FloatValue>(
+        810, _omitFieldNames ? '' : 'speedtestTcp1UploadMbpsAvg',
+        protoName: 'speedtest_tcp_1_upload_mbps_avg',
+        subBuilder: $4.FloatValue.create)
+    ..aOM<$4.FloatValue>(
+        811, _omitFieldNames ? '' : 'speedtestTcp1UploadMbpsMax',
+        protoName: 'speedtest_tcp_1_upload_mbps_max',
+        subBuilder: $4.FloatValue.create)
+    ..aOM<$4.FloatValue>(
+        812, _omitFieldNames ? '' : 'speedtestTcp8DownloadMeanTcpConnectTime',
+        protoName: 'speedtest_tcp_8_download_mean_tcp_connect_time',
+        subBuilder: $4.FloatValue.create)
+    ..aOM<$4.FloatValue>(
+        813, _omitFieldNames ? '' : 'speedtestTcp8UploadMeanTcpConnectTime',
+        protoName: 'speedtest_tcp_8_upload_mean_tcp_connect_time',
+        subBuilder: $4.FloatValue.create)
+    ..pPS(814, _omitFieldNames ? '' : 'speedtestTcp8DownloadCfRayHeaders',
+        protoName: 'speedtest_tcp_8_download_cf_ray_headers')
+    ..pPS(815, _omitFieldNames ? '' : 'speedtestTcp8UploadCfRayHeaders',
+        protoName: 'speedtest_tcp_8_upload_cf_ray_headers')
+    ..aOM<$4.FloatValue>(
+        816, _omitFieldNames ? '' : 'speedtestTcp1DownloadMeanTcpConnectTime',
+        protoName: 'speedtest_tcp_1_download_mean_tcp_connect_time',
+        subBuilder: $4.FloatValue.create)
+    ..aOM<$4.FloatValue>(
+        817, _omitFieldNames ? '' : 'speedtestTcp1UploadMeanTcpConnectTime',
+        protoName: 'speedtest_tcp_1_upload_mean_tcp_connect_time',
+        subBuilder: $4.FloatValue.create)
+    ..pPS(818, _omitFieldNames ? '' : 'speedtestTcp1DownloadCfRayHeaders',
+        protoName: 'speedtest_tcp_1_download_cf_ray_headers')
+    ..pPS(819, _omitFieldNames ? '' : 'speedtestTcp1UploadCfRayHeaders',
+        protoName: 'speedtest_tcp_1_upload_cf_ray_headers')
     ..aOM<$4.UInt32Value>(900, _omitFieldNames ? '' : 'dishCellId',
         subBuilder: $4.UInt32Value.create)
     ..aOM<$4.BoolValue>(1000, _omitFieldNames ? '' : 'configSetupComplete',
@@ -7287,6 +8413,55 @@ class starlink_routers_hourly_metrics_v2 extends $pb.GeneratedMessage {
         subBuilder: $4.UInt32Value.create)
     ..aOM<$4.BoolValue>(1029, _omitFieldNames ? '' : 'configDisable5ghzHigh',
         protoName: 'config_disable_5ghz_high', subBuilder: $4.BoolValue.create)
+    ..aOM<$4.BoolValue>(
+        1031, _omitFieldNames ? '' : 'configHttpsContentHostingEnabled',
+        subBuilder: $4.BoolValue.create)
+    ..aOM<$4.BoolValue>(
+        1032, _omitFieldNames ? '' : 'configOnlyOverflightBlockingEnabled',
+        subBuilder: $4.BoolValue.create)
+    ..aOM<$4.BoolValue>(
+        1033, _omitFieldNames ? '' : 'configOfflineNetworksDisablementEnabled',
+        subBuilder: $4.BoolValue.create)
+    ..aOM<$4.BoolValue>(1034, _omitFieldNames ? '' : 'configCustomDnsDisabled',
+        subBuilder: $4.BoolValue.create)
+    ..aOM<$4.UInt32Value>(1035, _omitFieldNames ? '' : 'configNetworksUser',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.BoolValue>(1036, _omitFieldNames ? '' : 'configForeflightEnabled',
+        subBuilder: $4.BoolValue.create)
+    ..aOM<$4.BoolValue>(1037, _omitFieldNames ? '' : 'configOutdoorMode',
+        subBuilder: $4.BoolValue.create)
+    ..aOM<$4.UInt32Value>(1040, _omitFieldNames ? '' : 'wifiReloadCount',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(1041, _omitFieldNames ? '' : 'radiusReloadCount',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(1042, _omitFieldNames ? '' : 'opensshReloadCount',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(1043, _omitFieldNames ? '' : 'iptablesReloadCount',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(1044, _omitFieldNames ? '' : 'ebtablesReloadCount',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(
+        1045, _omitFieldNames ? '' : 'trafficControlReloadCount',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(1046, _omitFieldNames ? '' : 'dhcpReloadCount',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(1047, _omitFieldNames ? '' : 'dhcpv6ReloadCount',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(1048, _omitFieldNames ? '' : 'systemReloadCount',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(1049, _omitFieldNames ? '' : 'dnsReloadCount',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(1050, _omitFieldNames ? '' : 'httpsReloadCount',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(
+        1051, _omitFieldNames ? '' : 'bandSteeringReloadCount',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(1052, _omitFieldNames ? '' : 'commitCount',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(1053, _omitFieldNames ? '' : 'networkReloadCount',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(1054, _omitFieldNames ? '' : 'foreflightReloadCount',
+        subBuilder: $4.UInt32Value.create)
     ..aOM<$4.UInt32Value>(1100, _omitFieldNames ? '' : 'conntrackEntries',
         subBuilder: $4.UInt32Value.create)
     ..aOM<$4.Int64Value>(
@@ -7311,6 +8486,23 @@ class starlink_routers_hourly_metrics_v2 extends $pb.GeneratedMessage {
         protoName: 'dhcp_secs_gt_30', subBuilder: $4.UInt32Value.create)
     ..aOM<$4.UInt32Value>(1109, _omitFieldNames ? '' : 'dhcpSecsGt60',
         protoName: 'dhcp_secs_gt_60', subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(1200, _omitFieldNames ? '' : 'dnsForwards',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(1201, _omitFieldNames ? '' : 'dnsForwardsSuccess',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(
+        1202, _omitFieldNames ? '' : 'dnsForwardsServerFailure',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(
+        1203, _omitFieldNames ? '' : 'dnsForwardsNoServerResponse',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(
+        1204, _omitFieldNames ? '' : 'dnsForwardsSuccessOnDefaultBackup',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(1205, _omitFieldNames ? '' : 'dnsForwardsDropped',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(1206, _omitFieldNames ? '' : 'dnsForwardsWithBackup',
+        subBuilder: $4.UInt32Value.create)
     ..aOM<$5.TimestampInfo>(10000, _omitFieldNames ? '' : 'timestamp',
         subBuilder: $5.TimestampInfo.create)
     ..hasRequiredFields = false;
@@ -7547,2431 +8739,3157 @@ class starlink_routers_hourly_metrics_v2 extends $pb.GeneratedMessage {
   @$pb.TagNumber(19)
   $4.UInt32Value ensureSysBoardRev() => $_ensure(18);
 
+  @$pb.TagNumber(20)
+  $4.UInt32Value get sysCalibrationState => $_getN(19);
+  @$pb.TagNumber(20)
+  set sysCalibrationState($4.UInt32Value value) => $_setField(20, value);
+  @$pb.TagNumber(20)
+  $core.bool hasSysCalibrationState() => $_has(19);
+  @$pb.TagNumber(20)
+  void clearSysCalibrationState() => $_clearField(20);
+  @$pb.TagNumber(20)
+  $4.UInt32Value ensureSysCalibrationState() => $_ensure(19);
+
+  @$pb.TagNumber(21)
+  $4.UInt32Value get sysCalibrationPartitionsState => $_getN(20);
+  @$pb.TagNumber(21)
+  set sysCalibrationPartitionsState($4.UInt32Value value) =>
+      $_setField(21, value);
+  @$pb.TagNumber(21)
+  $core.bool hasSysCalibrationPartitionsState() => $_has(20);
+  @$pb.TagNumber(21)
+  void clearSysCalibrationPartitionsState() => $_clearField(21);
+  @$pb.TagNumber(21)
+  $4.UInt32Value ensureSysCalibrationPartitionsState() => $_ensure(20);
+
+  @$pb.TagNumber(22)
+  $4.UInt32Value get sysHwIndex => $_getN(21);
+  @$pb.TagNumber(22)
+  set sysHwIndex($4.UInt32Value value) => $_setField(22, value);
+  @$pb.TagNumber(22)
+  $core.bool hasSysHwIndex() => $_has(21);
+  @$pb.TagNumber(22)
+  void clearSysHwIndex() => $_clearField(22);
+  @$pb.TagNumber(22)
+  $4.UInt32Value ensureSysHwIndex() => $_ensure(21);
+
   @$pb.TagNumber(100)
-  $4.UInt32Value get radios2ghzChannel => $_getN(19);
+  $4.UInt32Value get radios2ghzChannel => $_getN(22);
   @$pb.TagNumber(100)
   set radios2ghzChannel($4.UInt32Value value) => $_setField(100, value);
   @$pb.TagNumber(100)
-  $core.bool hasRadios2ghzChannel() => $_has(19);
+  $core.bool hasRadios2ghzChannel() => $_has(22);
   @$pb.TagNumber(100)
   void clearRadios2ghzChannel() => $_clearField(100);
   @$pb.TagNumber(100)
-  $4.UInt32Value ensureRadios2ghzChannel() => $_ensure(19);
+  $4.UInt32Value ensureRadios2ghzChannel() => $_ensure(22);
 
   @$pb.TagNumber(101)
-  $4.FloatValue get radios2ghzAntenna1Rssi => $_getN(20);
+  $4.FloatValue get radios2ghzAntenna1Rssi => $_getN(23);
   @$pb.TagNumber(101)
   set radios2ghzAntenna1Rssi($4.FloatValue value) => $_setField(101, value);
   @$pb.TagNumber(101)
-  $core.bool hasRadios2ghzAntenna1Rssi() => $_has(20);
+  $core.bool hasRadios2ghzAntenna1Rssi() => $_has(23);
   @$pb.TagNumber(101)
   void clearRadios2ghzAntenna1Rssi() => $_clearField(101);
   @$pb.TagNumber(101)
-  $4.FloatValue ensureRadios2ghzAntenna1Rssi() => $_ensure(20);
+  $4.FloatValue ensureRadios2ghzAntenna1Rssi() => $_ensure(23);
 
   @$pb.TagNumber(102)
-  $4.FloatValue get radios2ghzAntenna2Rssi => $_getN(21);
+  $4.FloatValue get radios2ghzAntenna2Rssi => $_getN(24);
   @$pb.TagNumber(102)
   set radios2ghzAntenna2Rssi($4.FloatValue value) => $_setField(102, value);
   @$pb.TagNumber(102)
-  $core.bool hasRadios2ghzAntenna2Rssi() => $_has(21);
+  $core.bool hasRadios2ghzAntenna2Rssi() => $_has(24);
   @$pb.TagNumber(102)
   void clearRadios2ghzAntenna2Rssi() => $_clearField(102);
   @$pb.TagNumber(102)
-  $4.FloatValue ensureRadios2ghzAntenna2Rssi() => $_ensure(21);
+  $4.FloatValue ensureRadios2ghzAntenna2Rssi() => $_ensure(24);
 
   @$pb.TagNumber(103)
-  $4.FloatValue get radios2ghzAntenna3Rssi => $_getN(22);
+  $4.FloatValue get radios2ghzAntenna3Rssi => $_getN(25);
   @$pb.TagNumber(103)
   set radios2ghzAntenna3Rssi($4.FloatValue value) => $_setField(103, value);
   @$pb.TagNumber(103)
-  $core.bool hasRadios2ghzAntenna3Rssi() => $_has(22);
+  $core.bool hasRadios2ghzAntenna3Rssi() => $_has(25);
   @$pb.TagNumber(103)
   void clearRadios2ghzAntenna3Rssi() => $_clearField(103);
   @$pb.TagNumber(103)
-  $4.FloatValue ensureRadios2ghzAntenna3Rssi() => $_ensure(22);
+  $4.FloatValue ensureRadios2ghzAntenna3Rssi() => $_ensure(25);
 
   @$pb.TagNumber(104)
-  $4.UInt32Value get radios2ghzIfaceCount => $_getN(23);
+  $4.UInt32Value get radios2ghzIfaceCount => $_getN(26);
   @$pb.TagNumber(104)
   set radios2ghzIfaceCount($4.UInt32Value value) => $_setField(104, value);
   @$pb.TagNumber(104)
-  $core.bool hasRadios2ghzIfaceCount() => $_has(23);
+  $core.bool hasRadios2ghzIfaceCount() => $_has(26);
   @$pb.TagNumber(104)
   void clearRadios2ghzIfaceCount() => $_clearField(104);
   @$pb.TagNumber(104)
-  $4.UInt32Value ensureRadios2ghzIfaceCount() => $_ensure(23);
+  $4.UInt32Value ensureRadios2ghzIfaceCount() => $_ensure(26);
 
   @$pb.TagNumber(105)
-  $4.FloatValue get radios2ghzChanBusyFraction => $_getN(24);
+  $4.FloatValue get radios2ghzChanBusyFraction => $_getN(27);
   @$pb.TagNumber(105)
   set radios2ghzChanBusyFraction($4.FloatValue value) => $_setField(105, value);
   @$pb.TagNumber(105)
-  $core.bool hasRadios2ghzChanBusyFraction() => $_has(24);
+  $core.bool hasRadios2ghzChanBusyFraction() => $_has(27);
   @$pb.TagNumber(105)
   void clearRadios2ghzChanBusyFraction() => $_clearField(105);
   @$pb.TagNumber(105)
-  $4.FloatValue ensureRadios2ghzChanBusyFraction() => $_ensure(24);
+  $4.FloatValue ensureRadios2ghzChanBusyFraction() => $_ensure(27);
 
   @$pb.TagNumber(106)
-  $4.FloatValue get radios2ghzEdccaFraction => $_getN(25);
+  $4.FloatValue get radios2ghzEdccaFraction => $_getN(28);
   @$pb.TagNumber(106)
   set radios2ghzEdccaFraction($4.FloatValue value) => $_setField(106, value);
   @$pb.TagNumber(106)
-  $core.bool hasRadios2ghzEdccaFraction() => $_has(25);
+  $core.bool hasRadios2ghzEdccaFraction() => $_has(28);
   @$pb.TagNumber(106)
   void clearRadios2ghzEdccaFraction() => $_clearField(106);
   @$pb.TagNumber(106)
-  $4.FloatValue ensureRadios2ghzEdccaFraction() => $_ensure(25);
+  $4.FloatValue ensureRadios2ghzEdccaFraction() => $_ensure(28);
 
   @$pb.TagNumber(107)
-  $4.FloatValue get radios2ghzOverlappingBssFraction => $_getN(26);
+  $4.FloatValue get radios2ghzOverlappingBssFraction => $_getN(29);
   @$pb.TagNumber(107)
   set radios2ghzOverlappingBssFraction($4.FloatValue value) =>
       $_setField(107, value);
   @$pb.TagNumber(107)
-  $core.bool hasRadios2ghzOverlappingBssFraction() => $_has(26);
+  $core.bool hasRadios2ghzOverlappingBssFraction() => $_has(29);
   @$pb.TagNumber(107)
   void clearRadios2ghzOverlappingBssFraction() => $_clearField(107);
   @$pb.TagNumber(107)
-  $4.FloatValue ensureRadios2ghzOverlappingBssFraction() => $_ensure(26);
+  $4.FloatValue ensureRadios2ghzOverlappingBssFraction() => $_ensure(29);
 
   @$pb.TagNumber(108)
-  $4.Int64Value get radios2ghzRxBytes => $_getN(27);
+  $4.Int64Value get radios2ghzRxBytes => $_getN(30);
   @$pb.TagNumber(108)
   set radios2ghzRxBytes($4.Int64Value value) => $_setField(108, value);
   @$pb.TagNumber(108)
-  $core.bool hasRadios2ghzRxBytes() => $_has(27);
+  $core.bool hasRadios2ghzRxBytes() => $_has(30);
   @$pb.TagNumber(108)
   void clearRadios2ghzRxBytes() => $_clearField(108);
   @$pb.TagNumber(108)
-  $4.Int64Value ensureRadios2ghzRxBytes() => $_ensure(27);
+  $4.Int64Value ensureRadios2ghzRxBytes() => $_ensure(30);
 
   @$pb.TagNumber(109)
-  $4.Int64Value get radios2ghzRxPackets => $_getN(28);
+  $4.Int64Value get radios2ghzRxPackets => $_getN(31);
   @$pb.TagNumber(109)
   set radios2ghzRxPackets($4.Int64Value value) => $_setField(109, value);
   @$pb.TagNumber(109)
-  $core.bool hasRadios2ghzRxPackets() => $_has(28);
+  $core.bool hasRadios2ghzRxPackets() => $_has(31);
   @$pb.TagNumber(109)
   void clearRadios2ghzRxPackets() => $_clearField(109);
   @$pb.TagNumber(109)
-  $4.Int64Value ensureRadios2ghzRxPackets() => $_ensure(28);
+  $4.Int64Value ensureRadios2ghzRxPackets() => $_ensure(31);
 
   @$pb.TagNumber(110)
-  $4.Int64Value get radios2ghzRxErrors => $_getN(29);
+  $4.Int64Value get radios2ghzRxErrors => $_getN(32);
   @$pb.TagNumber(110)
   set radios2ghzRxErrors($4.Int64Value value) => $_setField(110, value);
   @$pb.TagNumber(110)
-  $core.bool hasRadios2ghzRxErrors() => $_has(29);
+  $core.bool hasRadios2ghzRxErrors() => $_has(32);
   @$pb.TagNumber(110)
   void clearRadios2ghzRxErrors() => $_clearField(110);
   @$pb.TagNumber(110)
-  $4.Int64Value ensureRadios2ghzRxErrors() => $_ensure(29);
+  $4.Int64Value ensureRadios2ghzRxErrors() => $_ensure(32);
 
   @$pb.TagNumber(111)
-  $4.Int64Value get radios2ghzRxFrameErrors => $_getN(30);
+  $4.Int64Value get radios2ghzRxFrameErrors => $_getN(33);
   @$pb.TagNumber(111)
   set radios2ghzRxFrameErrors($4.Int64Value value) => $_setField(111, value);
   @$pb.TagNumber(111)
-  $core.bool hasRadios2ghzRxFrameErrors() => $_has(30);
+  $core.bool hasRadios2ghzRxFrameErrors() => $_has(33);
   @$pb.TagNumber(111)
   void clearRadios2ghzRxFrameErrors() => $_clearField(111);
   @$pb.TagNumber(111)
-  $4.Int64Value ensureRadios2ghzRxFrameErrors() => $_ensure(30);
+  $4.Int64Value ensureRadios2ghzRxFrameErrors() => $_ensure(33);
 
   @$pb.TagNumber(112)
-  $4.FloatValue get radios2ghzRxPacketErrorRate => $_getN(31);
+  $4.FloatValue get radios2ghzRxPacketErrorRate => $_getN(34);
   @$pb.TagNumber(112)
   set radios2ghzRxPacketErrorRate($4.FloatValue value) =>
       $_setField(112, value);
   @$pb.TagNumber(112)
-  $core.bool hasRadios2ghzRxPacketErrorRate() => $_has(31);
+  $core.bool hasRadios2ghzRxPacketErrorRate() => $_has(34);
   @$pb.TagNumber(112)
   void clearRadios2ghzRxPacketErrorRate() => $_clearField(112);
   @$pb.TagNumber(112)
-  $4.FloatValue ensureRadios2ghzRxPacketErrorRate() => $_ensure(31);
+  $4.FloatValue ensureRadios2ghzRxPacketErrorRate() => $_ensure(34);
 
   @$pb.TagNumber(113)
-  $4.FloatValue get radios2ghzRxAirtimeFraction => $_getN(32);
+  $4.FloatValue get radios2ghzRxAirtimeFraction => $_getN(35);
   @$pb.TagNumber(113)
   set radios2ghzRxAirtimeFraction($4.FloatValue value) =>
       $_setField(113, value);
   @$pb.TagNumber(113)
-  $core.bool hasRadios2ghzRxAirtimeFraction() => $_has(32);
+  $core.bool hasRadios2ghzRxAirtimeFraction() => $_has(35);
   @$pb.TagNumber(113)
   void clearRadios2ghzRxAirtimeFraction() => $_clearField(113);
   @$pb.TagNumber(113)
-  $4.FloatValue ensureRadios2ghzRxAirtimeFraction() => $_ensure(32);
+  $4.FloatValue ensureRadios2ghzRxAirtimeFraction() => $_ensure(35);
 
   @$pb.TagNumber(114)
-  $4.Int64Value get radios2ghzTxBytes => $_getN(33);
+  $4.Int64Value get radios2ghzTxBytes => $_getN(36);
   @$pb.TagNumber(114)
   set radios2ghzTxBytes($4.Int64Value value) => $_setField(114, value);
   @$pb.TagNumber(114)
-  $core.bool hasRadios2ghzTxBytes() => $_has(33);
+  $core.bool hasRadios2ghzTxBytes() => $_has(36);
   @$pb.TagNumber(114)
   void clearRadios2ghzTxBytes() => $_clearField(114);
   @$pb.TagNumber(114)
-  $4.Int64Value ensureRadios2ghzTxBytes() => $_ensure(33);
+  $4.Int64Value ensureRadios2ghzTxBytes() => $_ensure(36);
 
   @$pb.TagNumber(115)
-  $4.Int64Value get radios2ghzTxPackets => $_getN(34);
+  $4.Int64Value get radios2ghzTxPackets => $_getN(37);
   @$pb.TagNumber(115)
   set radios2ghzTxPackets($4.Int64Value value) => $_setField(115, value);
   @$pb.TagNumber(115)
-  $core.bool hasRadios2ghzTxPackets() => $_has(34);
+  $core.bool hasRadios2ghzTxPackets() => $_has(37);
   @$pb.TagNumber(115)
   void clearRadios2ghzTxPackets() => $_clearField(115);
   @$pb.TagNumber(115)
-  $4.Int64Value ensureRadios2ghzTxPackets() => $_ensure(34);
+  $4.Int64Value ensureRadios2ghzTxPackets() => $_ensure(37);
 
   @$pb.TagNumber(116)
-  $4.Int64Value get radios2ghzTxErrors => $_getN(35);
+  $4.Int64Value get radios2ghzTxErrors => $_getN(38);
   @$pb.TagNumber(116)
   set radios2ghzTxErrors($4.Int64Value value) => $_setField(116, value);
   @$pb.TagNumber(116)
-  $core.bool hasRadios2ghzTxErrors() => $_has(35);
+  $core.bool hasRadios2ghzTxErrors() => $_has(38);
   @$pb.TagNumber(116)
   void clearRadios2ghzTxErrors() => $_clearField(116);
   @$pb.TagNumber(116)
-  $4.Int64Value ensureRadios2ghzTxErrors() => $_ensure(35);
+  $4.Int64Value ensureRadios2ghzTxErrors() => $_ensure(38);
 
   @$pb.TagNumber(117)
-  $4.FloatValue get radios2ghzTxPacketErrorRate => $_getN(36);
+  $4.FloatValue get radios2ghzTxPacketErrorRate => $_getN(39);
   @$pb.TagNumber(117)
   set radios2ghzTxPacketErrorRate($4.FloatValue value) =>
       $_setField(117, value);
   @$pb.TagNumber(117)
-  $core.bool hasRadios2ghzTxPacketErrorRate() => $_has(36);
+  $core.bool hasRadios2ghzTxPacketErrorRate() => $_has(39);
   @$pb.TagNumber(117)
   void clearRadios2ghzTxPacketErrorRate() => $_clearField(117);
   @$pb.TagNumber(117)
-  $4.FloatValue ensureRadios2ghzTxPacketErrorRate() => $_ensure(36);
+  $4.FloatValue ensureRadios2ghzTxPacketErrorRate() => $_ensure(39);
 
   @$pb.TagNumber(118)
-  $4.FloatValue get radios2ghzTxAirtimeFraction => $_getN(37);
+  $4.FloatValue get radios2ghzTxAirtimeFraction => $_getN(40);
   @$pb.TagNumber(118)
   set radios2ghzTxAirtimeFraction($4.FloatValue value) =>
       $_setField(118, value);
   @$pb.TagNumber(118)
-  $core.bool hasRadios2ghzTxAirtimeFraction() => $_has(37);
+  $core.bool hasRadios2ghzTxAirtimeFraction() => $_has(40);
   @$pb.TagNumber(118)
   void clearRadios2ghzTxAirtimeFraction() => $_clearField(118);
   @$pb.TagNumber(118)
-  $4.FloatValue ensureRadios2ghzTxAirtimeFraction() => $_ensure(37);
+  $4.FloatValue ensureRadios2ghzTxAirtimeFraction() => $_ensure(40);
 
   @$pb.TagNumber(119)
-  $4.UInt32Value get radios5ghzChannel => $_getN(38);
+  $4.UInt32Value get radios5ghzChannel => $_getN(41);
   @$pb.TagNumber(119)
   set radios5ghzChannel($4.UInt32Value value) => $_setField(119, value);
   @$pb.TagNumber(119)
-  $core.bool hasRadios5ghzChannel() => $_has(38);
+  $core.bool hasRadios5ghzChannel() => $_has(41);
   @$pb.TagNumber(119)
   void clearRadios5ghzChannel() => $_clearField(119);
   @$pb.TagNumber(119)
-  $4.UInt32Value ensureRadios5ghzChannel() => $_ensure(38);
+  $4.UInt32Value ensureRadios5ghzChannel() => $_ensure(41);
 
   @$pb.TagNumber(120)
-  $4.FloatValue get radios5ghzAntenna1Rssi => $_getN(39);
+  $4.FloatValue get radios5ghzAntenna1Rssi => $_getN(42);
   @$pb.TagNumber(120)
   set radios5ghzAntenna1Rssi($4.FloatValue value) => $_setField(120, value);
   @$pb.TagNumber(120)
-  $core.bool hasRadios5ghzAntenna1Rssi() => $_has(39);
+  $core.bool hasRadios5ghzAntenna1Rssi() => $_has(42);
   @$pb.TagNumber(120)
   void clearRadios5ghzAntenna1Rssi() => $_clearField(120);
   @$pb.TagNumber(120)
-  $4.FloatValue ensureRadios5ghzAntenna1Rssi() => $_ensure(39);
+  $4.FloatValue ensureRadios5ghzAntenna1Rssi() => $_ensure(42);
 
   @$pb.TagNumber(121)
-  $4.FloatValue get radios5ghzAntenna2Rssi => $_getN(40);
+  $4.FloatValue get radios5ghzAntenna2Rssi => $_getN(43);
   @$pb.TagNumber(121)
   set radios5ghzAntenna2Rssi($4.FloatValue value) => $_setField(121, value);
   @$pb.TagNumber(121)
-  $core.bool hasRadios5ghzAntenna2Rssi() => $_has(40);
+  $core.bool hasRadios5ghzAntenna2Rssi() => $_has(43);
   @$pb.TagNumber(121)
   void clearRadios5ghzAntenna2Rssi() => $_clearField(121);
   @$pb.TagNumber(121)
-  $4.FloatValue ensureRadios5ghzAntenna2Rssi() => $_ensure(40);
+  $4.FloatValue ensureRadios5ghzAntenna2Rssi() => $_ensure(43);
 
   @$pb.TagNumber(122)
-  $4.FloatValue get radios5ghzAntenna3Rssi => $_getN(41);
+  $4.FloatValue get radios5ghzAntenna3Rssi => $_getN(44);
   @$pb.TagNumber(122)
   set radios5ghzAntenna3Rssi($4.FloatValue value) => $_setField(122, value);
   @$pb.TagNumber(122)
-  $core.bool hasRadios5ghzAntenna3Rssi() => $_has(41);
+  $core.bool hasRadios5ghzAntenna3Rssi() => $_has(44);
   @$pb.TagNumber(122)
   void clearRadios5ghzAntenna3Rssi() => $_clearField(122);
   @$pb.TagNumber(122)
-  $4.FloatValue ensureRadios5ghzAntenna3Rssi() => $_ensure(41);
+  $4.FloatValue ensureRadios5ghzAntenna3Rssi() => $_ensure(44);
 
   @$pb.TagNumber(123)
-  $4.UInt32Value get radios5ghzIfaceCount => $_getN(42);
+  $4.UInt32Value get radios5ghzIfaceCount => $_getN(45);
   @$pb.TagNumber(123)
   set radios5ghzIfaceCount($4.UInt32Value value) => $_setField(123, value);
   @$pb.TagNumber(123)
-  $core.bool hasRadios5ghzIfaceCount() => $_has(42);
+  $core.bool hasRadios5ghzIfaceCount() => $_has(45);
   @$pb.TagNumber(123)
   void clearRadios5ghzIfaceCount() => $_clearField(123);
   @$pb.TagNumber(123)
-  $4.UInt32Value ensureRadios5ghzIfaceCount() => $_ensure(42);
+  $4.UInt32Value ensureRadios5ghzIfaceCount() => $_ensure(45);
 
   @$pb.TagNumber(124)
-  $4.FloatValue get radios5ghzChanBusyFraction => $_getN(43);
+  $4.FloatValue get radios5ghzChanBusyFraction => $_getN(46);
   @$pb.TagNumber(124)
   set radios5ghzChanBusyFraction($4.FloatValue value) => $_setField(124, value);
   @$pb.TagNumber(124)
-  $core.bool hasRadios5ghzChanBusyFraction() => $_has(43);
+  $core.bool hasRadios5ghzChanBusyFraction() => $_has(46);
   @$pb.TagNumber(124)
   void clearRadios5ghzChanBusyFraction() => $_clearField(124);
   @$pb.TagNumber(124)
-  $4.FloatValue ensureRadios5ghzChanBusyFraction() => $_ensure(43);
+  $4.FloatValue ensureRadios5ghzChanBusyFraction() => $_ensure(46);
 
   @$pb.TagNumber(125)
-  $4.FloatValue get radios5ghzEdccaFraction => $_getN(44);
+  $4.FloatValue get radios5ghzEdccaFraction => $_getN(47);
   @$pb.TagNumber(125)
   set radios5ghzEdccaFraction($4.FloatValue value) => $_setField(125, value);
   @$pb.TagNumber(125)
-  $core.bool hasRadios5ghzEdccaFraction() => $_has(44);
+  $core.bool hasRadios5ghzEdccaFraction() => $_has(47);
   @$pb.TagNumber(125)
   void clearRadios5ghzEdccaFraction() => $_clearField(125);
   @$pb.TagNumber(125)
-  $4.FloatValue ensureRadios5ghzEdccaFraction() => $_ensure(44);
+  $4.FloatValue ensureRadios5ghzEdccaFraction() => $_ensure(47);
 
   @$pb.TagNumber(126)
-  $4.FloatValue get radios5ghzOverlappingBssFraction => $_getN(45);
+  $4.FloatValue get radios5ghzOverlappingBssFraction => $_getN(48);
   @$pb.TagNumber(126)
   set radios5ghzOverlappingBssFraction($4.FloatValue value) =>
       $_setField(126, value);
   @$pb.TagNumber(126)
-  $core.bool hasRadios5ghzOverlappingBssFraction() => $_has(45);
+  $core.bool hasRadios5ghzOverlappingBssFraction() => $_has(48);
   @$pb.TagNumber(126)
   void clearRadios5ghzOverlappingBssFraction() => $_clearField(126);
   @$pb.TagNumber(126)
-  $4.FloatValue ensureRadios5ghzOverlappingBssFraction() => $_ensure(45);
+  $4.FloatValue ensureRadios5ghzOverlappingBssFraction() => $_ensure(48);
 
   @$pb.TagNumber(127)
-  $4.Int64Value get radios5ghzRxBytes => $_getN(46);
+  $4.Int64Value get radios5ghzRxBytes => $_getN(49);
   @$pb.TagNumber(127)
   set radios5ghzRxBytes($4.Int64Value value) => $_setField(127, value);
   @$pb.TagNumber(127)
-  $core.bool hasRadios5ghzRxBytes() => $_has(46);
+  $core.bool hasRadios5ghzRxBytes() => $_has(49);
   @$pb.TagNumber(127)
   void clearRadios5ghzRxBytes() => $_clearField(127);
   @$pb.TagNumber(127)
-  $4.Int64Value ensureRadios5ghzRxBytes() => $_ensure(46);
+  $4.Int64Value ensureRadios5ghzRxBytes() => $_ensure(49);
 
   @$pb.TagNumber(128)
-  $4.Int64Value get radios5ghzRxPackets => $_getN(47);
+  $4.Int64Value get radios5ghzRxPackets => $_getN(50);
   @$pb.TagNumber(128)
   set radios5ghzRxPackets($4.Int64Value value) => $_setField(128, value);
   @$pb.TagNumber(128)
-  $core.bool hasRadios5ghzRxPackets() => $_has(47);
+  $core.bool hasRadios5ghzRxPackets() => $_has(50);
   @$pb.TagNumber(128)
   void clearRadios5ghzRxPackets() => $_clearField(128);
   @$pb.TagNumber(128)
-  $4.Int64Value ensureRadios5ghzRxPackets() => $_ensure(47);
+  $4.Int64Value ensureRadios5ghzRxPackets() => $_ensure(50);
 
   @$pb.TagNumber(129)
-  $4.Int64Value get radios5ghzRxErrors => $_getN(48);
+  $4.Int64Value get radios5ghzRxErrors => $_getN(51);
   @$pb.TagNumber(129)
   set radios5ghzRxErrors($4.Int64Value value) => $_setField(129, value);
   @$pb.TagNumber(129)
-  $core.bool hasRadios5ghzRxErrors() => $_has(48);
+  $core.bool hasRadios5ghzRxErrors() => $_has(51);
   @$pb.TagNumber(129)
   void clearRadios5ghzRxErrors() => $_clearField(129);
   @$pb.TagNumber(129)
-  $4.Int64Value ensureRadios5ghzRxErrors() => $_ensure(48);
+  $4.Int64Value ensureRadios5ghzRxErrors() => $_ensure(51);
 
   @$pb.TagNumber(130)
-  $4.Int64Value get radios5ghzRxFrameErrors => $_getN(49);
+  $4.Int64Value get radios5ghzRxFrameErrors => $_getN(52);
   @$pb.TagNumber(130)
   set radios5ghzRxFrameErrors($4.Int64Value value) => $_setField(130, value);
   @$pb.TagNumber(130)
-  $core.bool hasRadios5ghzRxFrameErrors() => $_has(49);
+  $core.bool hasRadios5ghzRxFrameErrors() => $_has(52);
   @$pb.TagNumber(130)
   void clearRadios5ghzRxFrameErrors() => $_clearField(130);
   @$pb.TagNumber(130)
-  $4.Int64Value ensureRadios5ghzRxFrameErrors() => $_ensure(49);
+  $4.Int64Value ensureRadios5ghzRxFrameErrors() => $_ensure(52);
 
   @$pb.TagNumber(131)
-  $4.FloatValue get radios5ghzRxPacketErrorRate => $_getN(50);
+  $4.FloatValue get radios5ghzRxPacketErrorRate => $_getN(53);
   @$pb.TagNumber(131)
   set radios5ghzRxPacketErrorRate($4.FloatValue value) =>
       $_setField(131, value);
   @$pb.TagNumber(131)
-  $core.bool hasRadios5ghzRxPacketErrorRate() => $_has(50);
+  $core.bool hasRadios5ghzRxPacketErrorRate() => $_has(53);
   @$pb.TagNumber(131)
   void clearRadios5ghzRxPacketErrorRate() => $_clearField(131);
   @$pb.TagNumber(131)
-  $4.FloatValue ensureRadios5ghzRxPacketErrorRate() => $_ensure(50);
+  $4.FloatValue ensureRadios5ghzRxPacketErrorRate() => $_ensure(53);
 
   @$pb.TagNumber(132)
-  $4.FloatValue get radios5ghzRxAirtimeFraction => $_getN(51);
+  $4.FloatValue get radios5ghzRxAirtimeFraction => $_getN(54);
   @$pb.TagNumber(132)
   set radios5ghzRxAirtimeFraction($4.FloatValue value) =>
       $_setField(132, value);
   @$pb.TagNumber(132)
-  $core.bool hasRadios5ghzRxAirtimeFraction() => $_has(51);
+  $core.bool hasRadios5ghzRxAirtimeFraction() => $_has(54);
   @$pb.TagNumber(132)
   void clearRadios5ghzRxAirtimeFraction() => $_clearField(132);
   @$pb.TagNumber(132)
-  $4.FloatValue ensureRadios5ghzRxAirtimeFraction() => $_ensure(51);
+  $4.FloatValue ensureRadios5ghzRxAirtimeFraction() => $_ensure(54);
 
   @$pb.TagNumber(133)
-  $4.Int64Value get radios5ghzTxBytes => $_getN(52);
+  $4.Int64Value get radios5ghzTxBytes => $_getN(55);
   @$pb.TagNumber(133)
   set radios5ghzTxBytes($4.Int64Value value) => $_setField(133, value);
   @$pb.TagNumber(133)
-  $core.bool hasRadios5ghzTxBytes() => $_has(52);
+  $core.bool hasRadios5ghzTxBytes() => $_has(55);
   @$pb.TagNumber(133)
   void clearRadios5ghzTxBytes() => $_clearField(133);
   @$pb.TagNumber(133)
-  $4.Int64Value ensureRadios5ghzTxBytes() => $_ensure(52);
+  $4.Int64Value ensureRadios5ghzTxBytes() => $_ensure(55);
 
   @$pb.TagNumber(134)
-  $4.Int64Value get radios5ghzTxPackets => $_getN(53);
+  $4.Int64Value get radios5ghzTxPackets => $_getN(56);
   @$pb.TagNumber(134)
   set radios5ghzTxPackets($4.Int64Value value) => $_setField(134, value);
   @$pb.TagNumber(134)
-  $core.bool hasRadios5ghzTxPackets() => $_has(53);
+  $core.bool hasRadios5ghzTxPackets() => $_has(56);
   @$pb.TagNumber(134)
   void clearRadios5ghzTxPackets() => $_clearField(134);
   @$pb.TagNumber(134)
-  $4.Int64Value ensureRadios5ghzTxPackets() => $_ensure(53);
+  $4.Int64Value ensureRadios5ghzTxPackets() => $_ensure(56);
 
   @$pb.TagNumber(135)
-  $4.Int64Value get radios5ghzTxErrors => $_getN(54);
+  $4.Int64Value get radios5ghzTxErrors => $_getN(57);
   @$pb.TagNumber(135)
   set radios5ghzTxErrors($4.Int64Value value) => $_setField(135, value);
   @$pb.TagNumber(135)
-  $core.bool hasRadios5ghzTxErrors() => $_has(54);
+  $core.bool hasRadios5ghzTxErrors() => $_has(57);
   @$pb.TagNumber(135)
   void clearRadios5ghzTxErrors() => $_clearField(135);
   @$pb.TagNumber(135)
-  $4.Int64Value ensureRadios5ghzTxErrors() => $_ensure(54);
+  $4.Int64Value ensureRadios5ghzTxErrors() => $_ensure(57);
 
   @$pb.TagNumber(136)
-  $4.FloatValue get radios5ghzTxPacketErrorRate => $_getN(55);
+  $4.FloatValue get radios5ghzTxPacketErrorRate => $_getN(58);
   @$pb.TagNumber(136)
   set radios5ghzTxPacketErrorRate($4.FloatValue value) =>
       $_setField(136, value);
   @$pb.TagNumber(136)
-  $core.bool hasRadios5ghzTxPacketErrorRate() => $_has(55);
+  $core.bool hasRadios5ghzTxPacketErrorRate() => $_has(58);
   @$pb.TagNumber(136)
   void clearRadios5ghzTxPacketErrorRate() => $_clearField(136);
   @$pb.TagNumber(136)
-  $4.FloatValue ensureRadios5ghzTxPacketErrorRate() => $_ensure(55);
+  $4.FloatValue ensureRadios5ghzTxPacketErrorRate() => $_ensure(58);
 
   @$pb.TagNumber(137)
-  $4.FloatValue get radios5ghzTxAirtimeFraction => $_getN(56);
+  $4.FloatValue get radios5ghzTxAirtimeFraction => $_getN(59);
   @$pb.TagNumber(137)
   set radios5ghzTxAirtimeFraction($4.FloatValue value) =>
       $_setField(137, value);
   @$pb.TagNumber(137)
-  $core.bool hasRadios5ghzTxAirtimeFraction() => $_has(56);
+  $core.bool hasRadios5ghzTxAirtimeFraction() => $_has(59);
   @$pb.TagNumber(137)
   void clearRadios5ghzTxAirtimeFraction() => $_clearField(137);
   @$pb.TagNumber(137)
-  $4.FloatValue ensureRadios5ghzTxAirtimeFraction() => $_ensure(56);
+  $4.FloatValue ensureRadios5ghzTxAirtimeFraction() => $_ensure(59);
 
   @$pb.TagNumber(138)
-  $4.UInt32Value get radios5ghzHighChannel => $_getN(57);
+  $4.UInt32Value get radios5ghzHighChannel => $_getN(60);
   @$pb.TagNumber(138)
   set radios5ghzHighChannel($4.UInt32Value value) => $_setField(138, value);
   @$pb.TagNumber(138)
-  $core.bool hasRadios5ghzHighChannel() => $_has(57);
+  $core.bool hasRadios5ghzHighChannel() => $_has(60);
   @$pb.TagNumber(138)
   void clearRadios5ghzHighChannel() => $_clearField(138);
   @$pb.TagNumber(138)
-  $4.UInt32Value ensureRadios5ghzHighChannel() => $_ensure(57);
+  $4.UInt32Value ensureRadios5ghzHighChannel() => $_ensure(60);
 
   @$pb.TagNumber(139)
-  $4.FloatValue get radios5ghzHighAntenna1Rssi => $_getN(58);
+  $4.FloatValue get radios5ghzHighAntenna1Rssi => $_getN(61);
   @$pb.TagNumber(139)
   set radios5ghzHighAntenna1Rssi($4.FloatValue value) => $_setField(139, value);
   @$pb.TagNumber(139)
-  $core.bool hasRadios5ghzHighAntenna1Rssi() => $_has(58);
+  $core.bool hasRadios5ghzHighAntenna1Rssi() => $_has(61);
   @$pb.TagNumber(139)
   void clearRadios5ghzHighAntenna1Rssi() => $_clearField(139);
   @$pb.TagNumber(139)
-  $4.FloatValue ensureRadios5ghzHighAntenna1Rssi() => $_ensure(58);
+  $4.FloatValue ensureRadios5ghzHighAntenna1Rssi() => $_ensure(61);
 
   @$pb.TagNumber(140)
-  $4.FloatValue get radios5ghzHighAntenna2Rssi => $_getN(59);
+  $4.FloatValue get radios5ghzHighAntenna2Rssi => $_getN(62);
   @$pb.TagNumber(140)
   set radios5ghzHighAntenna2Rssi($4.FloatValue value) => $_setField(140, value);
   @$pb.TagNumber(140)
-  $core.bool hasRadios5ghzHighAntenna2Rssi() => $_has(59);
+  $core.bool hasRadios5ghzHighAntenna2Rssi() => $_has(62);
   @$pb.TagNumber(140)
   void clearRadios5ghzHighAntenna2Rssi() => $_clearField(140);
   @$pb.TagNumber(140)
-  $4.FloatValue ensureRadios5ghzHighAntenna2Rssi() => $_ensure(59);
+  $4.FloatValue ensureRadios5ghzHighAntenna2Rssi() => $_ensure(62);
 
   @$pb.TagNumber(141)
-  $4.FloatValue get radios5ghzHighAntenna3Rssi => $_getN(60);
+  $4.FloatValue get radios5ghzHighAntenna3Rssi => $_getN(63);
   @$pb.TagNumber(141)
   set radios5ghzHighAntenna3Rssi($4.FloatValue value) => $_setField(141, value);
   @$pb.TagNumber(141)
-  $core.bool hasRadios5ghzHighAntenna3Rssi() => $_has(60);
+  $core.bool hasRadios5ghzHighAntenna3Rssi() => $_has(63);
   @$pb.TagNumber(141)
   void clearRadios5ghzHighAntenna3Rssi() => $_clearField(141);
   @$pb.TagNumber(141)
-  $4.FloatValue ensureRadios5ghzHighAntenna3Rssi() => $_ensure(60);
+  $4.FloatValue ensureRadios5ghzHighAntenna3Rssi() => $_ensure(63);
 
   @$pb.TagNumber(142)
-  $4.UInt32Value get radios5ghzHighIfaceCount => $_getN(61);
+  $4.UInt32Value get radios5ghzHighIfaceCount => $_getN(64);
   @$pb.TagNumber(142)
   set radios5ghzHighIfaceCount($4.UInt32Value value) => $_setField(142, value);
   @$pb.TagNumber(142)
-  $core.bool hasRadios5ghzHighIfaceCount() => $_has(61);
+  $core.bool hasRadios5ghzHighIfaceCount() => $_has(64);
   @$pb.TagNumber(142)
   void clearRadios5ghzHighIfaceCount() => $_clearField(142);
   @$pb.TagNumber(142)
-  $4.UInt32Value ensureRadios5ghzHighIfaceCount() => $_ensure(61);
+  $4.UInt32Value ensureRadios5ghzHighIfaceCount() => $_ensure(64);
 
   @$pb.TagNumber(143)
-  $4.FloatValue get radios5ghzHighChanBusyFraction => $_getN(62);
+  $4.FloatValue get radios5ghzHighChanBusyFraction => $_getN(65);
   @$pb.TagNumber(143)
   set radios5ghzHighChanBusyFraction($4.FloatValue value) =>
       $_setField(143, value);
   @$pb.TagNumber(143)
-  $core.bool hasRadios5ghzHighChanBusyFraction() => $_has(62);
+  $core.bool hasRadios5ghzHighChanBusyFraction() => $_has(65);
   @$pb.TagNumber(143)
   void clearRadios5ghzHighChanBusyFraction() => $_clearField(143);
   @$pb.TagNumber(143)
-  $4.FloatValue ensureRadios5ghzHighChanBusyFraction() => $_ensure(62);
+  $4.FloatValue ensureRadios5ghzHighChanBusyFraction() => $_ensure(65);
 
   @$pb.TagNumber(144)
-  $4.FloatValue get radios5ghzHighEdccaFraction => $_getN(63);
+  $4.FloatValue get radios5ghzHighEdccaFraction => $_getN(66);
   @$pb.TagNumber(144)
   set radios5ghzHighEdccaFraction($4.FloatValue value) =>
       $_setField(144, value);
   @$pb.TagNumber(144)
-  $core.bool hasRadios5ghzHighEdccaFraction() => $_has(63);
+  $core.bool hasRadios5ghzHighEdccaFraction() => $_has(66);
   @$pb.TagNumber(144)
   void clearRadios5ghzHighEdccaFraction() => $_clearField(144);
   @$pb.TagNumber(144)
-  $4.FloatValue ensureRadios5ghzHighEdccaFraction() => $_ensure(63);
+  $4.FloatValue ensureRadios5ghzHighEdccaFraction() => $_ensure(66);
 
   @$pb.TagNumber(145)
-  $4.FloatValue get radios5ghzHighOverlappingBssFraction => $_getN(64);
+  $4.FloatValue get radios5ghzHighOverlappingBssFraction => $_getN(67);
   @$pb.TagNumber(145)
   set radios5ghzHighOverlappingBssFraction($4.FloatValue value) =>
       $_setField(145, value);
   @$pb.TagNumber(145)
-  $core.bool hasRadios5ghzHighOverlappingBssFraction() => $_has(64);
+  $core.bool hasRadios5ghzHighOverlappingBssFraction() => $_has(67);
   @$pb.TagNumber(145)
   void clearRadios5ghzHighOverlappingBssFraction() => $_clearField(145);
   @$pb.TagNumber(145)
-  $4.FloatValue ensureRadios5ghzHighOverlappingBssFraction() => $_ensure(64);
+  $4.FloatValue ensureRadios5ghzHighOverlappingBssFraction() => $_ensure(67);
 
   @$pb.TagNumber(146)
-  $4.Int64Value get radios5ghzHighRxBytes => $_getN(65);
+  $4.Int64Value get radios5ghzHighRxBytes => $_getN(68);
   @$pb.TagNumber(146)
   set radios5ghzHighRxBytes($4.Int64Value value) => $_setField(146, value);
   @$pb.TagNumber(146)
-  $core.bool hasRadios5ghzHighRxBytes() => $_has(65);
+  $core.bool hasRadios5ghzHighRxBytes() => $_has(68);
   @$pb.TagNumber(146)
   void clearRadios5ghzHighRxBytes() => $_clearField(146);
   @$pb.TagNumber(146)
-  $4.Int64Value ensureRadios5ghzHighRxBytes() => $_ensure(65);
+  $4.Int64Value ensureRadios5ghzHighRxBytes() => $_ensure(68);
 
   @$pb.TagNumber(147)
-  $4.Int64Value get radios5ghzHighRxPackets => $_getN(66);
+  $4.Int64Value get radios5ghzHighRxPackets => $_getN(69);
   @$pb.TagNumber(147)
   set radios5ghzHighRxPackets($4.Int64Value value) => $_setField(147, value);
   @$pb.TagNumber(147)
-  $core.bool hasRadios5ghzHighRxPackets() => $_has(66);
+  $core.bool hasRadios5ghzHighRxPackets() => $_has(69);
   @$pb.TagNumber(147)
   void clearRadios5ghzHighRxPackets() => $_clearField(147);
   @$pb.TagNumber(147)
-  $4.Int64Value ensureRadios5ghzHighRxPackets() => $_ensure(66);
+  $4.Int64Value ensureRadios5ghzHighRxPackets() => $_ensure(69);
 
   @$pb.TagNumber(148)
-  $4.Int64Value get radios5ghzHighRxErrors => $_getN(67);
+  $4.Int64Value get radios5ghzHighRxErrors => $_getN(70);
   @$pb.TagNumber(148)
   set radios5ghzHighRxErrors($4.Int64Value value) => $_setField(148, value);
   @$pb.TagNumber(148)
-  $core.bool hasRadios5ghzHighRxErrors() => $_has(67);
+  $core.bool hasRadios5ghzHighRxErrors() => $_has(70);
   @$pb.TagNumber(148)
   void clearRadios5ghzHighRxErrors() => $_clearField(148);
   @$pb.TagNumber(148)
-  $4.Int64Value ensureRadios5ghzHighRxErrors() => $_ensure(67);
+  $4.Int64Value ensureRadios5ghzHighRxErrors() => $_ensure(70);
 
   @$pb.TagNumber(149)
-  $4.Int64Value get radios5ghzHighRxFrameErrors => $_getN(68);
+  $4.Int64Value get radios5ghzHighRxFrameErrors => $_getN(71);
   @$pb.TagNumber(149)
   set radios5ghzHighRxFrameErrors($4.Int64Value value) =>
       $_setField(149, value);
   @$pb.TagNumber(149)
-  $core.bool hasRadios5ghzHighRxFrameErrors() => $_has(68);
+  $core.bool hasRadios5ghzHighRxFrameErrors() => $_has(71);
   @$pb.TagNumber(149)
   void clearRadios5ghzHighRxFrameErrors() => $_clearField(149);
   @$pb.TagNumber(149)
-  $4.Int64Value ensureRadios5ghzHighRxFrameErrors() => $_ensure(68);
+  $4.Int64Value ensureRadios5ghzHighRxFrameErrors() => $_ensure(71);
 
   @$pb.TagNumber(150)
-  $4.FloatValue get radios5ghzHighRxPacketErrorRate => $_getN(69);
+  $4.FloatValue get radios5ghzHighRxPacketErrorRate => $_getN(72);
   @$pb.TagNumber(150)
   set radios5ghzHighRxPacketErrorRate($4.FloatValue value) =>
       $_setField(150, value);
   @$pb.TagNumber(150)
-  $core.bool hasRadios5ghzHighRxPacketErrorRate() => $_has(69);
+  $core.bool hasRadios5ghzHighRxPacketErrorRate() => $_has(72);
   @$pb.TagNumber(150)
   void clearRadios5ghzHighRxPacketErrorRate() => $_clearField(150);
   @$pb.TagNumber(150)
-  $4.FloatValue ensureRadios5ghzHighRxPacketErrorRate() => $_ensure(69);
+  $4.FloatValue ensureRadios5ghzHighRxPacketErrorRate() => $_ensure(72);
 
   @$pb.TagNumber(151)
-  $4.FloatValue get radios5ghzHighRxAirtimeFraction => $_getN(70);
+  $4.FloatValue get radios5ghzHighRxAirtimeFraction => $_getN(73);
   @$pb.TagNumber(151)
   set radios5ghzHighRxAirtimeFraction($4.FloatValue value) =>
       $_setField(151, value);
   @$pb.TagNumber(151)
-  $core.bool hasRadios5ghzHighRxAirtimeFraction() => $_has(70);
+  $core.bool hasRadios5ghzHighRxAirtimeFraction() => $_has(73);
   @$pb.TagNumber(151)
   void clearRadios5ghzHighRxAirtimeFraction() => $_clearField(151);
   @$pb.TagNumber(151)
-  $4.FloatValue ensureRadios5ghzHighRxAirtimeFraction() => $_ensure(70);
+  $4.FloatValue ensureRadios5ghzHighRxAirtimeFraction() => $_ensure(73);
 
   @$pb.TagNumber(152)
-  $4.Int64Value get radios5ghzHighTxBytes => $_getN(71);
+  $4.Int64Value get radios5ghzHighTxBytes => $_getN(74);
   @$pb.TagNumber(152)
   set radios5ghzHighTxBytes($4.Int64Value value) => $_setField(152, value);
   @$pb.TagNumber(152)
-  $core.bool hasRadios5ghzHighTxBytes() => $_has(71);
+  $core.bool hasRadios5ghzHighTxBytes() => $_has(74);
   @$pb.TagNumber(152)
   void clearRadios5ghzHighTxBytes() => $_clearField(152);
   @$pb.TagNumber(152)
-  $4.Int64Value ensureRadios5ghzHighTxBytes() => $_ensure(71);
+  $4.Int64Value ensureRadios5ghzHighTxBytes() => $_ensure(74);
 
   @$pb.TagNumber(153)
-  $4.Int64Value get radios5ghzHighTxPackets => $_getN(72);
+  $4.Int64Value get radios5ghzHighTxPackets => $_getN(75);
   @$pb.TagNumber(153)
   set radios5ghzHighTxPackets($4.Int64Value value) => $_setField(153, value);
   @$pb.TagNumber(153)
-  $core.bool hasRadios5ghzHighTxPackets() => $_has(72);
+  $core.bool hasRadios5ghzHighTxPackets() => $_has(75);
   @$pb.TagNumber(153)
   void clearRadios5ghzHighTxPackets() => $_clearField(153);
   @$pb.TagNumber(153)
-  $4.Int64Value ensureRadios5ghzHighTxPackets() => $_ensure(72);
+  $4.Int64Value ensureRadios5ghzHighTxPackets() => $_ensure(75);
 
   @$pb.TagNumber(154)
-  $4.Int64Value get radios5ghzHighTxErrors => $_getN(73);
+  $4.Int64Value get radios5ghzHighTxErrors => $_getN(76);
   @$pb.TagNumber(154)
   set radios5ghzHighTxErrors($4.Int64Value value) => $_setField(154, value);
   @$pb.TagNumber(154)
-  $core.bool hasRadios5ghzHighTxErrors() => $_has(73);
+  $core.bool hasRadios5ghzHighTxErrors() => $_has(76);
   @$pb.TagNumber(154)
   void clearRadios5ghzHighTxErrors() => $_clearField(154);
   @$pb.TagNumber(154)
-  $4.Int64Value ensureRadios5ghzHighTxErrors() => $_ensure(73);
+  $4.Int64Value ensureRadios5ghzHighTxErrors() => $_ensure(76);
 
   @$pb.TagNumber(155)
-  $4.FloatValue get radios5ghzHighTxPacketErrorRate => $_getN(74);
+  $4.FloatValue get radios5ghzHighTxPacketErrorRate => $_getN(77);
   @$pb.TagNumber(155)
   set radios5ghzHighTxPacketErrorRate($4.FloatValue value) =>
       $_setField(155, value);
   @$pb.TagNumber(155)
-  $core.bool hasRadios5ghzHighTxPacketErrorRate() => $_has(74);
+  $core.bool hasRadios5ghzHighTxPacketErrorRate() => $_has(77);
   @$pb.TagNumber(155)
   void clearRadios5ghzHighTxPacketErrorRate() => $_clearField(155);
   @$pb.TagNumber(155)
-  $4.FloatValue ensureRadios5ghzHighTxPacketErrorRate() => $_ensure(74);
+  $4.FloatValue ensureRadios5ghzHighTxPacketErrorRate() => $_ensure(77);
 
   @$pb.TagNumber(156)
-  $4.FloatValue get radios5ghzHighTxAirtimeFraction => $_getN(75);
+  $4.FloatValue get radios5ghzHighTxAirtimeFraction => $_getN(78);
   @$pb.TagNumber(156)
   set radios5ghzHighTxAirtimeFraction($4.FloatValue value) =>
       $_setField(156, value);
   @$pb.TagNumber(156)
-  $core.bool hasRadios5ghzHighTxAirtimeFraction() => $_has(75);
+  $core.bool hasRadios5ghzHighTxAirtimeFraction() => $_has(78);
   @$pb.TagNumber(156)
   void clearRadios5ghzHighTxAirtimeFraction() => $_clearField(156);
   @$pb.TagNumber(156)
-  $4.FloatValue ensureRadios5ghzHighTxAirtimeFraction() => $_ensure(75);
+  $4.FloatValue ensureRadios5ghzHighTxAirtimeFraction() => $_ensure(78);
 
   @$pb.TagNumber(157)
-  $4.FloatValue get radios2ghzAntenna1Tssi => $_getN(76);
+  $4.FloatValue get radios2ghzAntenna1Tssi => $_getN(79);
   @$pb.TagNumber(157)
   set radios2ghzAntenna1Tssi($4.FloatValue value) => $_setField(157, value);
   @$pb.TagNumber(157)
-  $core.bool hasRadios2ghzAntenna1Tssi() => $_has(76);
+  $core.bool hasRadios2ghzAntenna1Tssi() => $_has(79);
   @$pb.TagNumber(157)
   void clearRadios2ghzAntenna1Tssi() => $_clearField(157);
   @$pb.TagNumber(157)
-  $4.FloatValue ensureRadios2ghzAntenna1Tssi() => $_ensure(76);
+  $4.FloatValue ensureRadios2ghzAntenna1Tssi() => $_ensure(79);
 
   @$pb.TagNumber(158)
-  $4.FloatValue get radios2ghzAntenna2Tssi => $_getN(77);
+  $4.FloatValue get radios2ghzAntenna2Tssi => $_getN(80);
   @$pb.TagNumber(158)
   set radios2ghzAntenna2Tssi($4.FloatValue value) => $_setField(158, value);
   @$pb.TagNumber(158)
-  $core.bool hasRadios2ghzAntenna2Tssi() => $_has(77);
+  $core.bool hasRadios2ghzAntenna2Tssi() => $_has(80);
   @$pb.TagNumber(158)
   void clearRadios2ghzAntenna2Tssi() => $_clearField(158);
   @$pb.TagNumber(158)
-  $4.FloatValue ensureRadios2ghzAntenna2Tssi() => $_ensure(77);
+  $4.FloatValue ensureRadios2ghzAntenna2Tssi() => $_ensure(80);
 
   @$pb.TagNumber(159)
-  $4.FloatValue get radios2ghzAntenna3Tssi => $_getN(78);
+  $4.FloatValue get radios2ghzAntenna3Tssi => $_getN(81);
   @$pb.TagNumber(159)
   set radios2ghzAntenna3Tssi($4.FloatValue value) => $_setField(159, value);
   @$pb.TagNumber(159)
-  $core.bool hasRadios2ghzAntenna3Tssi() => $_has(78);
+  $core.bool hasRadios2ghzAntenna3Tssi() => $_has(81);
   @$pb.TagNumber(159)
   void clearRadios2ghzAntenna3Tssi() => $_clearField(159);
   @$pb.TagNumber(159)
-  $4.FloatValue ensureRadios2ghzAntenna3Tssi() => $_ensure(78);
+  $4.FloatValue ensureRadios2ghzAntenna3Tssi() => $_ensure(81);
 
   @$pb.TagNumber(160)
-  $4.FloatValue get radios2ghzAntenna4Tssi => $_getN(79);
+  $4.FloatValue get radios2ghzAntenna4Tssi => $_getN(82);
   @$pb.TagNumber(160)
   set radios2ghzAntenna4Tssi($4.FloatValue value) => $_setField(160, value);
   @$pb.TagNumber(160)
-  $core.bool hasRadios2ghzAntenna4Tssi() => $_has(79);
+  $core.bool hasRadios2ghzAntenna4Tssi() => $_has(82);
   @$pb.TagNumber(160)
   void clearRadios2ghzAntenna4Tssi() => $_clearField(160);
   @$pb.TagNumber(160)
-  $4.FloatValue ensureRadios2ghzAntenna4Tssi() => $_ensure(79);
+  $4.FloatValue ensureRadios2ghzAntenna4Tssi() => $_ensure(82);
 
   @$pb.TagNumber(161)
-  $4.FloatValue get radios5ghzAntenna1Tssi => $_getN(80);
+  $4.FloatValue get radios5ghzAntenna1Tssi => $_getN(83);
   @$pb.TagNumber(161)
   set radios5ghzAntenna1Tssi($4.FloatValue value) => $_setField(161, value);
   @$pb.TagNumber(161)
-  $core.bool hasRadios5ghzAntenna1Tssi() => $_has(80);
+  $core.bool hasRadios5ghzAntenna1Tssi() => $_has(83);
   @$pb.TagNumber(161)
   void clearRadios5ghzAntenna1Tssi() => $_clearField(161);
   @$pb.TagNumber(161)
-  $4.FloatValue ensureRadios5ghzAntenna1Tssi() => $_ensure(80);
+  $4.FloatValue ensureRadios5ghzAntenna1Tssi() => $_ensure(83);
 
   @$pb.TagNumber(162)
-  $4.FloatValue get radios5ghzAntenna2Tssi => $_getN(81);
+  $4.FloatValue get radios5ghzAntenna2Tssi => $_getN(84);
   @$pb.TagNumber(162)
   set radios5ghzAntenna2Tssi($4.FloatValue value) => $_setField(162, value);
   @$pb.TagNumber(162)
-  $core.bool hasRadios5ghzAntenna2Tssi() => $_has(81);
+  $core.bool hasRadios5ghzAntenna2Tssi() => $_has(84);
   @$pb.TagNumber(162)
   void clearRadios5ghzAntenna2Tssi() => $_clearField(162);
   @$pb.TagNumber(162)
-  $4.FloatValue ensureRadios5ghzAntenna2Tssi() => $_ensure(81);
+  $4.FloatValue ensureRadios5ghzAntenna2Tssi() => $_ensure(84);
 
   @$pb.TagNumber(163)
-  $4.FloatValue get radios5ghzAntenna3Tssi => $_getN(82);
+  $4.FloatValue get radios5ghzAntenna3Tssi => $_getN(85);
   @$pb.TagNumber(163)
   set radios5ghzAntenna3Tssi($4.FloatValue value) => $_setField(163, value);
   @$pb.TagNumber(163)
-  $core.bool hasRadios5ghzAntenna3Tssi() => $_has(82);
+  $core.bool hasRadios5ghzAntenna3Tssi() => $_has(85);
   @$pb.TagNumber(163)
   void clearRadios5ghzAntenna3Tssi() => $_clearField(163);
   @$pb.TagNumber(163)
-  $4.FloatValue ensureRadios5ghzAntenna3Tssi() => $_ensure(82);
+  $4.FloatValue ensureRadios5ghzAntenna3Tssi() => $_ensure(85);
 
   @$pb.TagNumber(164)
-  $4.FloatValue get radios5ghzAntenna4Tssi => $_getN(83);
+  $4.FloatValue get radios5ghzAntenna4Tssi => $_getN(86);
   @$pb.TagNumber(164)
   set radios5ghzAntenna4Tssi($4.FloatValue value) => $_setField(164, value);
   @$pb.TagNumber(164)
-  $core.bool hasRadios5ghzAntenna4Tssi() => $_has(83);
+  $core.bool hasRadios5ghzAntenna4Tssi() => $_has(86);
   @$pb.TagNumber(164)
   void clearRadios5ghzAntenna4Tssi() => $_clearField(164);
   @$pb.TagNumber(164)
-  $4.FloatValue ensureRadios5ghzAntenna4Tssi() => $_ensure(83);
+  $4.FloatValue ensureRadios5ghzAntenna4Tssi() => $_ensure(86);
 
   @$pb.TagNumber(165)
-  $4.FloatValue get radios5ghzHighAntenna1Tssi => $_getN(84);
+  $4.FloatValue get radios5ghzHighAntenna1Tssi => $_getN(87);
   @$pb.TagNumber(165)
   set radios5ghzHighAntenna1Tssi($4.FloatValue value) => $_setField(165, value);
   @$pb.TagNumber(165)
-  $core.bool hasRadios5ghzHighAntenna1Tssi() => $_has(84);
+  $core.bool hasRadios5ghzHighAntenna1Tssi() => $_has(87);
   @$pb.TagNumber(165)
   void clearRadios5ghzHighAntenna1Tssi() => $_clearField(165);
   @$pb.TagNumber(165)
-  $4.FloatValue ensureRadios5ghzHighAntenna1Tssi() => $_ensure(84);
+  $4.FloatValue ensureRadios5ghzHighAntenna1Tssi() => $_ensure(87);
 
   @$pb.TagNumber(166)
-  $4.FloatValue get radios5ghzHighAntenna2Tssi => $_getN(85);
+  $4.FloatValue get radios5ghzHighAntenna2Tssi => $_getN(88);
   @$pb.TagNumber(166)
   set radios5ghzHighAntenna2Tssi($4.FloatValue value) => $_setField(166, value);
   @$pb.TagNumber(166)
-  $core.bool hasRadios5ghzHighAntenna2Tssi() => $_has(85);
+  $core.bool hasRadios5ghzHighAntenna2Tssi() => $_has(88);
   @$pb.TagNumber(166)
   void clearRadios5ghzHighAntenna2Tssi() => $_clearField(166);
   @$pb.TagNumber(166)
-  $4.FloatValue ensureRadios5ghzHighAntenna2Tssi() => $_ensure(85);
+  $4.FloatValue ensureRadios5ghzHighAntenna2Tssi() => $_ensure(88);
 
   @$pb.TagNumber(167)
-  $4.FloatValue get radios5ghzHighAntenna3Tssi => $_getN(86);
+  $4.FloatValue get radios5ghzHighAntenna3Tssi => $_getN(89);
   @$pb.TagNumber(167)
   set radios5ghzHighAntenna3Tssi($4.FloatValue value) => $_setField(167, value);
   @$pb.TagNumber(167)
-  $core.bool hasRadios5ghzHighAntenna3Tssi() => $_has(86);
+  $core.bool hasRadios5ghzHighAntenna3Tssi() => $_has(89);
   @$pb.TagNumber(167)
   void clearRadios5ghzHighAntenna3Tssi() => $_clearField(167);
   @$pb.TagNumber(167)
-  $4.FloatValue ensureRadios5ghzHighAntenna3Tssi() => $_ensure(86);
+  $4.FloatValue ensureRadios5ghzHighAntenna3Tssi() => $_ensure(89);
 
   @$pb.TagNumber(168)
-  $4.FloatValue get radios5ghzHighAntenna4Tssi => $_getN(87);
+  $4.FloatValue get radios5ghzHighAntenna4Tssi => $_getN(90);
   @$pb.TagNumber(168)
   set radios5ghzHighAntenna4Tssi($4.FloatValue value) => $_setField(168, value);
   @$pb.TagNumber(168)
-  $core.bool hasRadios5ghzHighAntenna4Tssi() => $_has(87);
+  $core.bool hasRadios5ghzHighAntenna4Tssi() => $_has(90);
   @$pb.TagNumber(168)
   void clearRadios5ghzHighAntenna4Tssi() => $_clearField(168);
   @$pb.TagNumber(168)
-  $4.FloatValue ensureRadios5ghzHighAntenna4Tssi() => $_ensure(87);
+  $4.FloatValue ensureRadios5ghzHighAntenna4Tssi() => $_ensure(90);
 
   @$pb.TagNumber(197)
-  $4.FloatValue get radios2ghzAntenna4Rssi => $_getN(88);
+  $4.FloatValue get radios2ghzAntenna4Rssi => $_getN(91);
   @$pb.TagNumber(197)
   set radios2ghzAntenna4Rssi($4.FloatValue value) => $_setField(197, value);
   @$pb.TagNumber(197)
-  $core.bool hasRadios2ghzAntenna4Rssi() => $_has(88);
+  $core.bool hasRadios2ghzAntenna4Rssi() => $_has(91);
   @$pb.TagNumber(197)
   void clearRadios2ghzAntenna4Rssi() => $_clearField(197);
   @$pb.TagNumber(197)
-  $4.FloatValue ensureRadios2ghzAntenna4Rssi() => $_ensure(88);
+  $4.FloatValue ensureRadios2ghzAntenna4Rssi() => $_ensure(91);
 
   @$pb.TagNumber(198)
-  $4.FloatValue get radios5ghzAntenna4Rssi => $_getN(89);
+  $4.FloatValue get radios5ghzAntenna4Rssi => $_getN(92);
   @$pb.TagNumber(198)
   set radios5ghzAntenna4Rssi($4.FloatValue value) => $_setField(198, value);
   @$pb.TagNumber(198)
-  $core.bool hasRadios5ghzAntenna4Rssi() => $_has(89);
+  $core.bool hasRadios5ghzAntenna4Rssi() => $_has(92);
   @$pb.TagNumber(198)
   void clearRadios5ghzAntenna4Rssi() => $_clearField(198);
   @$pb.TagNumber(198)
-  $4.FloatValue ensureRadios5ghzAntenna4Rssi() => $_ensure(89);
+  $4.FloatValue ensureRadios5ghzAntenna4Rssi() => $_ensure(92);
 
   @$pb.TagNumber(199)
-  $4.FloatValue get radios5ghzHighAntenna4Rssi => $_getN(90);
+  $4.FloatValue get radios5ghzHighAntenna4Rssi => $_getN(93);
   @$pb.TagNumber(199)
   set radios5ghzHighAntenna4Rssi($4.FloatValue value) => $_setField(199, value);
   @$pb.TagNumber(199)
-  $core.bool hasRadios5ghzHighAntenna4Rssi() => $_has(90);
+  $core.bool hasRadios5ghzHighAntenna4Rssi() => $_has(93);
   @$pb.TagNumber(199)
   void clearRadios5ghzHighAntenna4Rssi() => $_clearField(199);
   @$pb.TagNumber(199)
-  $4.FloatValue ensureRadios5ghzHighAntenna4Rssi() => $_ensure(90);
+  $4.FloatValue ensureRadios5ghzHighAntenna4Rssi() => $_ensure(93);
 
   @$pb.TagNumber(200)
-  $4.FloatValue get radios2ghzThermalTemp => $_getN(91);
+  $4.FloatValue get radios2ghzThermalTemp => $_getN(94);
   @$pb.TagNumber(200)
   set radios2ghzThermalTemp($4.FloatValue value) => $_setField(200, value);
   @$pb.TagNumber(200)
-  $core.bool hasRadios2ghzThermalTemp() => $_has(91);
+  $core.bool hasRadios2ghzThermalTemp() => $_has(94);
   @$pb.TagNumber(200)
   void clearRadios2ghzThermalTemp() => $_clearField(200);
   @$pb.TagNumber(200)
-  $4.FloatValue ensureRadios2ghzThermalTemp() => $_ensure(91);
+  $4.FloatValue ensureRadios2ghzThermalTemp() => $_ensure(94);
 
   @$pb.TagNumber(201)
-  $4.FloatValue get radios5ghzThermalTemp => $_getN(92);
+  $4.FloatValue get radios5ghzThermalTemp => $_getN(95);
   @$pb.TagNumber(201)
   set radios5ghzThermalTemp($4.FloatValue value) => $_setField(201, value);
   @$pb.TagNumber(201)
-  $core.bool hasRadios5ghzThermalTemp() => $_has(92);
+  $core.bool hasRadios5ghzThermalTemp() => $_has(95);
   @$pb.TagNumber(201)
   void clearRadios5ghzThermalTemp() => $_clearField(201);
   @$pb.TagNumber(201)
-  $4.FloatValue ensureRadios5ghzThermalTemp() => $_ensure(92);
+  $4.FloatValue ensureRadios5ghzThermalTemp() => $_ensure(95);
 
   @$pb.TagNumber(202)
-  $4.FloatValue get radios2ghzThermalDutyCycle => $_getN(93);
+  $4.FloatValue get radios2ghzThermalDutyCycle => $_getN(96);
   @$pb.TagNumber(202)
   set radios2ghzThermalDutyCycle($4.FloatValue value) => $_setField(202, value);
   @$pb.TagNumber(202)
-  $core.bool hasRadios2ghzThermalDutyCycle() => $_has(93);
+  $core.bool hasRadios2ghzThermalDutyCycle() => $_has(96);
   @$pb.TagNumber(202)
   void clearRadios2ghzThermalDutyCycle() => $_clearField(202);
   @$pb.TagNumber(202)
-  $4.FloatValue ensureRadios2ghzThermalDutyCycle() => $_ensure(93);
+  $4.FloatValue ensureRadios2ghzThermalDutyCycle() => $_ensure(96);
 
   @$pb.TagNumber(203)
-  $4.FloatValue get radios5ghzThermalDutyCycle => $_getN(94);
+  $4.FloatValue get radios5ghzThermalDutyCycle => $_getN(97);
   @$pb.TagNumber(203)
   set radios5ghzThermalDutyCycle($4.FloatValue value) => $_setField(203, value);
   @$pb.TagNumber(203)
-  $core.bool hasRadios5ghzThermalDutyCycle() => $_has(94);
+  $core.bool hasRadios5ghzThermalDutyCycle() => $_has(97);
   @$pb.TagNumber(203)
   void clearRadios5ghzThermalDutyCycle() => $_clearField(203);
   @$pb.TagNumber(203)
-  $4.FloatValue ensureRadios5ghzThermalDutyCycle() => $_ensure(94);
+  $4.FloatValue ensureRadios5ghzThermalDutyCycle() => $_ensure(97);
 
   @$pb.TagNumber(204)
-  $4.UInt32Value get radios2ghzThermalThrottledSeconds => $_getN(95);
+  $4.UInt32Value get radios2ghzThermalThrottledSeconds => $_getN(98);
   @$pb.TagNumber(204)
   set radios2ghzThermalThrottledSeconds($4.UInt32Value value) =>
       $_setField(204, value);
   @$pb.TagNumber(204)
-  $core.bool hasRadios2ghzThermalThrottledSeconds() => $_has(95);
+  $core.bool hasRadios2ghzThermalThrottledSeconds() => $_has(98);
   @$pb.TagNumber(204)
   void clearRadios2ghzThermalThrottledSeconds() => $_clearField(204);
   @$pb.TagNumber(204)
-  $4.UInt32Value ensureRadios2ghzThermalThrottledSeconds() => $_ensure(95);
+  $4.UInt32Value ensureRadios2ghzThermalThrottledSeconds() => $_ensure(98);
 
   @$pb.TagNumber(205)
-  $4.UInt32Value get radios5ghzThermalThrottledSeconds => $_getN(96);
+  $4.UInt32Value get radios5ghzThermalThrottledSeconds => $_getN(99);
   @$pb.TagNumber(205)
   set radios5ghzThermalThrottledSeconds($4.UInt32Value value) =>
       $_setField(205, value);
   @$pb.TagNumber(205)
-  $core.bool hasRadios5ghzThermalThrottledSeconds() => $_has(96);
+  $core.bool hasRadios5ghzThermalThrottledSeconds() => $_has(99);
   @$pb.TagNumber(205)
   void clearRadios5ghzThermalThrottledSeconds() => $_clearField(205);
   @$pb.TagNumber(205)
-  $4.UInt32Value ensureRadios5ghzThermalThrottledSeconds() => $_ensure(96);
+  $4.UInt32Value ensureRadios5ghzThermalThrottledSeconds() => $_ensure(99);
 
   @$pb.TagNumber(206)
-  $4.FloatValue get radios5ghzHighThermalTemp => $_getN(97);
+  $4.FloatValue get radios5ghzHighThermalTemp => $_getN(100);
   @$pb.TagNumber(206)
   set radios5ghzHighThermalTemp($4.FloatValue value) => $_setField(206, value);
   @$pb.TagNumber(206)
-  $core.bool hasRadios5ghzHighThermalTemp() => $_has(97);
+  $core.bool hasRadios5ghzHighThermalTemp() => $_has(100);
   @$pb.TagNumber(206)
   void clearRadios5ghzHighThermalTemp() => $_clearField(206);
   @$pb.TagNumber(206)
-  $4.FloatValue ensureRadios5ghzHighThermalTemp() => $_ensure(97);
+  $4.FloatValue ensureRadios5ghzHighThermalTemp() => $_ensure(100);
 
   @$pb.TagNumber(207)
-  $4.FloatValue get radios5ghzHighThermalDutyCycle => $_getN(98);
+  $4.FloatValue get radios5ghzHighThermalDutyCycle => $_getN(101);
   @$pb.TagNumber(207)
   set radios5ghzHighThermalDutyCycle($4.FloatValue value) =>
       $_setField(207, value);
   @$pb.TagNumber(207)
-  $core.bool hasRadios5ghzHighThermalDutyCycle() => $_has(98);
+  $core.bool hasRadios5ghzHighThermalDutyCycle() => $_has(101);
   @$pb.TagNumber(207)
   void clearRadios5ghzHighThermalDutyCycle() => $_clearField(207);
   @$pb.TagNumber(207)
-  $4.FloatValue ensureRadios5ghzHighThermalDutyCycle() => $_ensure(98);
+  $4.FloatValue ensureRadios5ghzHighThermalDutyCycle() => $_ensure(101);
 
   @$pb.TagNumber(208)
-  $4.UInt32Value get radios5ghzHighThermalThrottledSeconds => $_getN(99);
+  $4.UInt32Value get radios5ghzHighThermalThrottledSeconds => $_getN(102);
   @$pb.TagNumber(208)
   set radios5ghzHighThermalThrottledSeconds($4.UInt32Value value) =>
       $_setField(208, value);
   @$pb.TagNumber(208)
-  $core.bool hasRadios5ghzHighThermalThrottledSeconds() => $_has(99);
+  $core.bool hasRadios5ghzHighThermalThrottledSeconds() => $_has(102);
   @$pb.TagNumber(208)
   void clearRadios5ghzHighThermalThrottledSeconds() => $_clearField(208);
   @$pb.TagNumber(208)
-  $4.UInt32Value ensureRadios5ghzHighThermalThrottledSeconds() => $_ensure(99);
+  $4.UInt32Value ensureRadios5ghzHighThermalThrottledSeconds() => $_ensure(102);
 
   @$pb.TagNumber(210)
-  $4.FloatValue get boardTemp => $_getN(100);
+  $4.FloatValue get boardTemp => $_getN(103);
   @$pb.TagNumber(210)
   set boardTemp($4.FloatValue value) => $_setField(210, value);
   @$pb.TagNumber(210)
-  $core.bool hasBoardTemp() => $_has(100);
+  $core.bool hasBoardTemp() => $_has(103);
   @$pb.TagNumber(210)
   void clearBoardTemp() => $_clearField(210);
   @$pb.TagNumber(210)
-  $4.FloatValue ensureBoardTemp() => $_ensure(100);
+  $4.FloatValue ensureBoardTemp() => $_ensure(103);
 
   @$pb.TagNumber(211)
-  $4.FloatValue get poeMcuDieTemp => $_getN(101);
+  $4.FloatValue get poeMcuDieTemp => $_getN(104);
   @$pb.TagNumber(211)
   set poeMcuDieTemp($4.FloatValue value) => $_setField(211, value);
   @$pb.TagNumber(211)
-  $core.bool hasPoeMcuDieTemp() => $_has(101);
+  $core.bool hasPoeMcuDieTemp() => $_has(104);
   @$pb.TagNumber(211)
   void clearPoeMcuDieTemp() => $_clearField(211);
   @$pb.TagNumber(211)
-  $4.FloatValue ensurePoeMcuDieTemp() => $_ensure(101);
+  $4.FloatValue ensurePoeMcuDieTemp() => $_ensure(104);
+
+  @$pb.TagNumber(212)
+  $4.FloatValue get poePercentWaterDetectAvg => $_getN(105);
+  @$pb.TagNumber(212)
+  set poePercentWaterDetectAvg($4.FloatValue value) => $_setField(212, value);
+  @$pb.TagNumber(212)
+  $core.bool hasPoePercentWaterDetectAvg() => $_has(105);
+  @$pb.TagNumber(212)
+  void clearPoePercentWaterDetectAvg() => $_clearField(212);
+  @$pb.TagNumber(212)
+  $4.FloatValue ensurePoePercentWaterDetectAvg() => $_ensure(105);
+
+  @$pb.TagNumber(213)
+  $4.FloatValue get ambientTemp => $_getN(106);
+  @$pb.TagNumber(213)
+  set ambientTemp($4.FloatValue value) => $_setField(213, value);
+  @$pb.TagNumber(213)
+  $core.bool hasAmbientTemp() => $_has(106);
+  @$pb.TagNumber(213)
+  void clearAmbientTemp() => $_clearField(213);
+  @$pb.TagNumber(213)
+  $4.FloatValue ensureAmbientTemp() => $_ensure(106);
+
+  @$pb.TagNumber(214)
+  $4.FloatValue get cpuTemp => $_getN(107);
+  @$pb.TagNumber(214)
+  set cpuTemp($4.FloatValue value) => $_setField(214, value);
+  @$pb.TagNumber(214)
+  $core.bool hasCpuTemp() => $_has(107);
+  @$pb.TagNumber(214)
+  void clearCpuTemp() => $_clearField(214);
+  @$pb.TagNumber(214)
+  $4.FloatValue ensureCpuTemp() => $_ensure(107);
 
   @$pb.TagNumber(300)
-  $4.Int64Value get ifacesLanEthRxBytes => $_getN(102);
+  $4.Int64Value get ifacesLanEthRxBytes => $_getN(108);
   @$pb.TagNumber(300)
   set ifacesLanEthRxBytes($4.Int64Value value) => $_setField(300, value);
   @$pb.TagNumber(300)
-  $core.bool hasIfacesLanEthRxBytes() => $_has(102);
+  $core.bool hasIfacesLanEthRxBytes() => $_has(108);
   @$pb.TagNumber(300)
   void clearIfacesLanEthRxBytes() => $_clearField(300);
   @$pb.TagNumber(300)
-  $4.Int64Value ensureIfacesLanEthRxBytes() => $_ensure(102);
+  $4.Int64Value ensureIfacesLanEthRxBytes() => $_ensure(108);
 
   @$pb.TagNumber(301)
-  $4.Int64Value get ifacesLanEthRxPackets => $_getN(103);
+  $4.Int64Value get ifacesLanEthRxPackets => $_getN(109);
   @$pb.TagNumber(301)
   set ifacesLanEthRxPackets($4.Int64Value value) => $_setField(301, value);
   @$pb.TagNumber(301)
-  $core.bool hasIfacesLanEthRxPackets() => $_has(103);
+  $core.bool hasIfacesLanEthRxPackets() => $_has(109);
   @$pb.TagNumber(301)
   void clearIfacesLanEthRxPackets() => $_clearField(301);
   @$pb.TagNumber(301)
-  $4.Int64Value ensureIfacesLanEthRxPackets() => $_ensure(103);
+  $4.Int64Value ensureIfacesLanEthRxPackets() => $_ensure(109);
 
   @$pb.TagNumber(302)
-  $4.Int64Value get ifacesLanEthRxErrors => $_getN(104);
+  $4.Int64Value get ifacesLanEthRxErrors => $_getN(110);
   @$pb.TagNumber(302)
   set ifacesLanEthRxErrors($4.Int64Value value) => $_setField(302, value);
   @$pb.TagNumber(302)
-  $core.bool hasIfacesLanEthRxErrors() => $_has(104);
+  $core.bool hasIfacesLanEthRxErrors() => $_has(110);
   @$pb.TagNumber(302)
   void clearIfacesLanEthRxErrors() => $_clearField(302);
   @$pb.TagNumber(302)
-  $4.Int64Value ensureIfacesLanEthRxErrors() => $_ensure(104);
+  $4.Int64Value ensureIfacesLanEthRxErrors() => $_ensure(110);
 
   @$pb.TagNumber(303)
-  $4.Int64Value get ifacesLanEthRxFrameErrors => $_getN(105);
+  $4.Int64Value get ifacesLanEthRxFrameErrors => $_getN(111);
   @$pb.TagNumber(303)
   set ifacesLanEthRxFrameErrors($4.Int64Value value) => $_setField(303, value);
   @$pb.TagNumber(303)
-  $core.bool hasIfacesLanEthRxFrameErrors() => $_has(105);
+  $core.bool hasIfacesLanEthRxFrameErrors() => $_has(111);
   @$pb.TagNumber(303)
   void clearIfacesLanEthRxFrameErrors() => $_clearField(303);
   @$pb.TagNumber(303)
-  $4.Int64Value ensureIfacesLanEthRxFrameErrors() => $_ensure(105);
+  $4.Int64Value ensureIfacesLanEthRxFrameErrors() => $_ensure(111);
 
   @$pb.TagNumber(304)
-  $4.Int64Value get ifacesLanEthTxBytes => $_getN(106);
+  $4.Int64Value get ifacesLanEthTxBytes => $_getN(112);
   @$pb.TagNumber(304)
   set ifacesLanEthTxBytes($4.Int64Value value) => $_setField(304, value);
   @$pb.TagNumber(304)
-  $core.bool hasIfacesLanEthTxBytes() => $_has(106);
+  $core.bool hasIfacesLanEthTxBytes() => $_has(112);
   @$pb.TagNumber(304)
   void clearIfacesLanEthTxBytes() => $_clearField(304);
   @$pb.TagNumber(304)
-  $4.Int64Value ensureIfacesLanEthTxBytes() => $_ensure(106);
+  $4.Int64Value ensureIfacesLanEthTxBytes() => $_ensure(112);
 
   @$pb.TagNumber(305)
-  $4.Int64Value get ifacesLanEthTxPackets => $_getN(107);
+  $4.Int64Value get ifacesLanEthTxPackets => $_getN(113);
   @$pb.TagNumber(305)
   set ifacesLanEthTxPackets($4.Int64Value value) => $_setField(305, value);
   @$pb.TagNumber(305)
-  $core.bool hasIfacesLanEthTxPackets() => $_has(107);
+  $core.bool hasIfacesLanEthTxPackets() => $_has(113);
   @$pb.TagNumber(305)
   void clearIfacesLanEthTxPackets() => $_clearField(305);
   @$pb.TagNumber(305)
-  $4.Int64Value ensureIfacesLanEthTxPackets() => $_ensure(107);
+  $4.Int64Value ensureIfacesLanEthTxPackets() => $_ensure(113);
 
   @$pb.TagNumber(306)
-  $4.Int64Value get ifacesLanEthTxErrors => $_getN(108);
+  $4.Int64Value get ifacesLanEthTxErrors => $_getN(114);
   @$pb.TagNumber(306)
   set ifacesLanEthTxErrors($4.Int64Value value) => $_setField(306, value);
   @$pb.TagNumber(306)
-  $core.bool hasIfacesLanEthTxErrors() => $_has(108);
+  $core.bool hasIfacesLanEthTxErrors() => $_has(114);
   @$pb.TagNumber(306)
   void clearIfacesLanEthTxErrors() => $_clearField(306);
   @$pb.TagNumber(306)
-  $4.Int64Value ensureIfacesLanEthTxErrors() => $_ensure(108);
+  $4.Int64Value ensureIfacesLanEthTxErrors() => $_ensure(114);
 
   @$pb.TagNumber(307)
-  $4.Int64Value get ifacesWanEthRxBytes => $_getN(109);
+  $4.Int64Value get ifacesWanEthRxBytes => $_getN(115);
   @$pb.TagNumber(307)
   set ifacesWanEthRxBytes($4.Int64Value value) => $_setField(307, value);
   @$pb.TagNumber(307)
-  $core.bool hasIfacesWanEthRxBytes() => $_has(109);
+  $core.bool hasIfacesWanEthRxBytes() => $_has(115);
   @$pb.TagNumber(307)
   void clearIfacesWanEthRxBytes() => $_clearField(307);
   @$pb.TagNumber(307)
-  $4.Int64Value ensureIfacesWanEthRxBytes() => $_ensure(109);
+  $4.Int64Value ensureIfacesWanEthRxBytes() => $_ensure(115);
 
   @$pb.TagNumber(308)
-  $4.Int64Value get ifacesWanEthRxPackets => $_getN(110);
+  $4.Int64Value get ifacesWanEthRxPackets => $_getN(116);
   @$pb.TagNumber(308)
   set ifacesWanEthRxPackets($4.Int64Value value) => $_setField(308, value);
   @$pb.TagNumber(308)
-  $core.bool hasIfacesWanEthRxPackets() => $_has(110);
+  $core.bool hasIfacesWanEthRxPackets() => $_has(116);
   @$pb.TagNumber(308)
   void clearIfacesWanEthRxPackets() => $_clearField(308);
   @$pb.TagNumber(308)
-  $4.Int64Value ensureIfacesWanEthRxPackets() => $_ensure(110);
+  $4.Int64Value ensureIfacesWanEthRxPackets() => $_ensure(116);
 
   @$pb.TagNumber(309)
-  $4.Int64Value get ifacesWanEthRxErrors => $_getN(111);
+  $4.Int64Value get ifacesWanEthRxErrors => $_getN(117);
   @$pb.TagNumber(309)
   set ifacesWanEthRxErrors($4.Int64Value value) => $_setField(309, value);
   @$pb.TagNumber(309)
-  $core.bool hasIfacesWanEthRxErrors() => $_has(111);
+  $core.bool hasIfacesWanEthRxErrors() => $_has(117);
   @$pb.TagNumber(309)
   void clearIfacesWanEthRxErrors() => $_clearField(309);
   @$pb.TagNumber(309)
-  $4.Int64Value ensureIfacesWanEthRxErrors() => $_ensure(111);
+  $4.Int64Value ensureIfacesWanEthRxErrors() => $_ensure(117);
 
   @$pb.TagNumber(310)
-  $4.Int64Value get ifacesWanEthRxFrameErrors => $_getN(112);
+  $4.Int64Value get ifacesWanEthRxFrameErrors => $_getN(118);
   @$pb.TagNumber(310)
   set ifacesWanEthRxFrameErrors($4.Int64Value value) => $_setField(310, value);
   @$pb.TagNumber(310)
-  $core.bool hasIfacesWanEthRxFrameErrors() => $_has(112);
+  $core.bool hasIfacesWanEthRxFrameErrors() => $_has(118);
   @$pb.TagNumber(310)
   void clearIfacesWanEthRxFrameErrors() => $_clearField(310);
   @$pb.TagNumber(310)
-  $4.Int64Value ensureIfacesWanEthRxFrameErrors() => $_ensure(112);
+  $4.Int64Value ensureIfacesWanEthRxFrameErrors() => $_ensure(118);
 
   @$pb.TagNumber(311)
-  $4.Int64Value get ifacesWanEthTxBytes => $_getN(113);
+  $4.Int64Value get ifacesWanEthTxBytes => $_getN(119);
   @$pb.TagNumber(311)
   set ifacesWanEthTxBytes($4.Int64Value value) => $_setField(311, value);
   @$pb.TagNumber(311)
-  $core.bool hasIfacesWanEthTxBytes() => $_has(113);
+  $core.bool hasIfacesWanEthTxBytes() => $_has(119);
   @$pb.TagNumber(311)
   void clearIfacesWanEthTxBytes() => $_clearField(311);
   @$pb.TagNumber(311)
-  $4.Int64Value ensureIfacesWanEthTxBytes() => $_ensure(113);
+  $4.Int64Value ensureIfacesWanEthTxBytes() => $_ensure(119);
 
   @$pb.TagNumber(312)
-  $4.Int64Value get ifacesWanEthTxPackets => $_getN(114);
+  $4.Int64Value get ifacesWanEthTxPackets => $_getN(120);
   @$pb.TagNumber(312)
   set ifacesWanEthTxPackets($4.Int64Value value) => $_setField(312, value);
   @$pb.TagNumber(312)
-  $core.bool hasIfacesWanEthTxPackets() => $_has(114);
+  $core.bool hasIfacesWanEthTxPackets() => $_has(120);
   @$pb.TagNumber(312)
   void clearIfacesWanEthTxPackets() => $_clearField(312);
   @$pb.TagNumber(312)
-  $4.Int64Value ensureIfacesWanEthTxPackets() => $_ensure(114);
+  $4.Int64Value ensureIfacesWanEthTxPackets() => $_ensure(120);
 
   @$pb.TagNumber(313)
-  $4.Int64Value get ifacesWanEthTxErrors => $_getN(115);
+  $4.Int64Value get ifacesWanEthTxErrors => $_getN(121);
   @$pb.TagNumber(313)
   set ifacesWanEthTxErrors($4.Int64Value value) => $_setField(313, value);
   @$pb.TagNumber(313)
-  $core.bool hasIfacesWanEthTxErrors() => $_has(115);
+  $core.bool hasIfacesWanEthTxErrors() => $_has(121);
   @$pb.TagNumber(313)
   void clearIfacesWanEthTxErrors() => $_clearField(313);
   @$pb.TagNumber(313)
-  $4.Int64Value ensureIfacesWanEthTxErrors() => $_ensure(115);
+  $4.Int64Value ensureIfacesWanEthTxErrors() => $_ensure(121);
 
   @$pb.TagNumber(314)
-  $4.Int64Value get ifacesLan1EthRxBytes => $_getN(116);
+  $4.Int64Value get ifacesLan1EthRxBytes => $_getN(122);
   @$pb.TagNumber(314)
   set ifacesLan1EthRxBytes($4.Int64Value value) => $_setField(314, value);
   @$pb.TagNumber(314)
-  $core.bool hasIfacesLan1EthRxBytes() => $_has(116);
+  $core.bool hasIfacesLan1EthRxBytes() => $_has(122);
   @$pb.TagNumber(314)
   void clearIfacesLan1EthRxBytes() => $_clearField(314);
   @$pb.TagNumber(314)
-  $4.Int64Value ensureIfacesLan1EthRxBytes() => $_ensure(116);
+  $4.Int64Value ensureIfacesLan1EthRxBytes() => $_ensure(122);
 
   @$pb.TagNumber(315)
-  $4.Int64Value get ifacesLan1EthRxPackets => $_getN(117);
+  $4.Int64Value get ifacesLan1EthRxPackets => $_getN(123);
   @$pb.TagNumber(315)
   set ifacesLan1EthRxPackets($4.Int64Value value) => $_setField(315, value);
   @$pb.TagNumber(315)
-  $core.bool hasIfacesLan1EthRxPackets() => $_has(117);
+  $core.bool hasIfacesLan1EthRxPackets() => $_has(123);
   @$pb.TagNumber(315)
   void clearIfacesLan1EthRxPackets() => $_clearField(315);
   @$pb.TagNumber(315)
-  $4.Int64Value ensureIfacesLan1EthRxPackets() => $_ensure(117);
+  $4.Int64Value ensureIfacesLan1EthRxPackets() => $_ensure(123);
 
   @$pb.TagNumber(316)
-  $4.Int64Value get ifacesLan1EthRxErrors => $_getN(118);
+  $4.Int64Value get ifacesLan1EthRxErrors => $_getN(124);
   @$pb.TagNumber(316)
   set ifacesLan1EthRxErrors($4.Int64Value value) => $_setField(316, value);
   @$pb.TagNumber(316)
-  $core.bool hasIfacesLan1EthRxErrors() => $_has(118);
+  $core.bool hasIfacesLan1EthRxErrors() => $_has(124);
   @$pb.TagNumber(316)
   void clearIfacesLan1EthRxErrors() => $_clearField(316);
   @$pb.TagNumber(316)
-  $4.Int64Value ensureIfacesLan1EthRxErrors() => $_ensure(118);
+  $4.Int64Value ensureIfacesLan1EthRxErrors() => $_ensure(124);
 
   @$pb.TagNumber(317)
-  $4.Int64Value get ifacesLan1EthRxFrameErrors => $_getN(119);
+  $4.Int64Value get ifacesLan1EthRxFrameErrors => $_getN(125);
   @$pb.TagNumber(317)
   set ifacesLan1EthRxFrameErrors($4.Int64Value value) => $_setField(317, value);
   @$pb.TagNumber(317)
-  $core.bool hasIfacesLan1EthRxFrameErrors() => $_has(119);
+  $core.bool hasIfacesLan1EthRxFrameErrors() => $_has(125);
   @$pb.TagNumber(317)
   void clearIfacesLan1EthRxFrameErrors() => $_clearField(317);
   @$pb.TagNumber(317)
-  $4.Int64Value ensureIfacesLan1EthRxFrameErrors() => $_ensure(119);
+  $4.Int64Value ensureIfacesLan1EthRxFrameErrors() => $_ensure(125);
 
   @$pb.TagNumber(318)
-  $4.Int64Value get ifacesLan1EthTxBytes => $_getN(120);
+  $4.Int64Value get ifacesLan1EthTxBytes => $_getN(126);
   @$pb.TagNumber(318)
   set ifacesLan1EthTxBytes($4.Int64Value value) => $_setField(318, value);
   @$pb.TagNumber(318)
-  $core.bool hasIfacesLan1EthTxBytes() => $_has(120);
+  $core.bool hasIfacesLan1EthTxBytes() => $_has(126);
   @$pb.TagNumber(318)
   void clearIfacesLan1EthTxBytes() => $_clearField(318);
   @$pb.TagNumber(318)
-  $4.Int64Value ensureIfacesLan1EthTxBytes() => $_ensure(120);
+  $4.Int64Value ensureIfacesLan1EthTxBytes() => $_ensure(126);
 
   @$pb.TagNumber(319)
-  $4.Int64Value get ifacesLan1EthTxPackets => $_getN(121);
+  $4.Int64Value get ifacesLan1EthTxPackets => $_getN(127);
   @$pb.TagNumber(319)
   set ifacesLan1EthTxPackets($4.Int64Value value) => $_setField(319, value);
   @$pb.TagNumber(319)
-  $core.bool hasIfacesLan1EthTxPackets() => $_has(121);
+  $core.bool hasIfacesLan1EthTxPackets() => $_has(127);
   @$pb.TagNumber(319)
   void clearIfacesLan1EthTxPackets() => $_clearField(319);
   @$pb.TagNumber(319)
-  $4.Int64Value ensureIfacesLan1EthTxPackets() => $_ensure(121);
+  $4.Int64Value ensureIfacesLan1EthTxPackets() => $_ensure(127);
 
   @$pb.TagNumber(320)
-  $4.Int64Value get ifacesLan1EthTxErrors => $_getN(122);
+  $4.Int64Value get ifacesLan1EthTxErrors => $_getN(128);
   @$pb.TagNumber(320)
   set ifacesLan1EthTxErrors($4.Int64Value value) => $_setField(320, value);
   @$pb.TagNumber(320)
-  $core.bool hasIfacesLan1EthTxErrors() => $_has(122);
+  $core.bool hasIfacesLan1EthTxErrors() => $_has(128);
   @$pb.TagNumber(320)
   void clearIfacesLan1EthTxErrors() => $_clearField(320);
   @$pb.TagNumber(320)
-  $4.Int64Value ensureIfacesLan1EthTxErrors() => $_ensure(122);
+  $4.Int64Value ensureIfacesLan1EthTxErrors() => $_ensure(128);
+
+  @$pb.TagNumber(321)
+  $4.StringValue get ifacesWanPort => $_getN(129);
+  @$pb.TagNumber(321)
+  set ifacesWanPort($4.StringValue value) => $_setField(321, value);
+  @$pb.TagNumber(321)
+  $core.bool hasIfacesWanPort() => $_has(129);
+  @$pb.TagNumber(321)
+  void clearIfacesWanPort() => $_clearField(321);
+  @$pb.TagNumber(321)
+  $4.StringValue ensureIfacesWanPort() => $_ensure(129);
 
   @$pb.TagNumber(400)
-  $4.UInt32Value get clients => $_getN(123);
+  $4.UInt32Value get clients => $_getN(130);
   @$pb.TagNumber(400)
   set clients($4.UInt32Value value) => $_setField(400, value);
   @$pb.TagNumber(400)
-  $core.bool hasClients() => $_has(123);
+  $core.bool hasClients() => $_has(130);
   @$pb.TagNumber(400)
   void clearClients() => $_clearField(400);
   @$pb.TagNumber(400)
-  $4.UInt32Value ensureClients() => $_ensure(123);
+  $4.UInt32Value ensureClients() => $_ensure(130);
 
   @$pb.TagNumber(401)
-  $4.UInt32Value get clients2ghz => $_getN(124);
+  $4.UInt32Value get clients2ghz => $_getN(131);
   @$pb.TagNumber(401)
   set clients2ghz($4.UInt32Value value) => $_setField(401, value);
   @$pb.TagNumber(401)
-  $core.bool hasClients2ghz() => $_has(124);
+  $core.bool hasClients2ghz() => $_has(131);
   @$pb.TagNumber(401)
   void clearClients2ghz() => $_clearField(401);
   @$pb.TagNumber(401)
-  $4.UInt32Value ensureClients2ghz() => $_ensure(124);
+  $4.UInt32Value ensureClients2ghz() => $_ensure(131);
 
   @$pb.TagNumber(402)
-  $4.UInt32Value get clients5ghz => $_getN(125);
+  $4.UInt32Value get clients5ghz => $_getN(132);
   @$pb.TagNumber(402)
   set clients5ghz($4.UInt32Value value) => $_setField(402, value);
   @$pb.TagNumber(402)
-  $core.bool hasClients5ghz() => $_has(125);
+  $core.bool hasClients5ghz() => $_has(132);
   @$pb.TagNumber(402)
   void clearClients5ghz() => $_clearField(402);
   @$pb.TagNumber(402)
-  $4.UInt32Value ensureClients5ghz() => $_ensure(125);
+  $4.UInt32Value ensureClients5ghz() => $_ensure(132);
 
   @$pb.TagNumber(403)
-  $4.UInt32Value get clientsEth => $_getN(126);
+  $4.UInt32Value get clientsEth => $_getN(133);
   @$pb.TagNumber(403)
   set clientsEth($4.UInt32Value value) => $_setField(403, value);
   @$pb.TagNumber(403)
-  $core.bool hasClientsEth() => $_has(126);
+  $core.bool hasClientsEth() => $_has(133);
   @$pb.TagNumber(403)
   void clearClientsEth() => $_clearField(403);
   @$pb.TagNumber(403)
-  $4.UInt32Value ensureClientsEth() => $_ensure(126);
+  $4.UInt32Value ensureClientsEth() => $_ensure(133);
 
   @$pb.TagNumber(404)
-  $4.UInt32Value get clientsRepeater => $_getN(127);
+  $4.UInt32Value get clientsRepeater => $_getN(134);
   @$pb.TagNumber(404)
   set clientsRepeater($4.UInt32Value value) => $_setField(404, value);
   @$pb.TagNumber(404)
-  $core.bool hasClientsRepeater() => $_has(127);
+  $core.bool hasClientsRepeater() => $_has(134);
   @$pb.TagNumber(404)
   void clearClientsRepeater() => $_clearField(404);
   @$pb.TagNumber(404)
-  $4.UInt32Value ensureClientsRepeater() => $_ensure(127);
+  $4.UInt32Value ensureClientsRepeater() => $_ensure(134);
 
   @$pb.TagNumber(405)
-  $4.UInt32Value get clientsRepeater2ghz => $_getN(128);
+  $4.UInt32Value get clientsRepeater2ghz => $_getN(135);
   @$pb.TagNumber(405)
   set clientsRepeater2ghz($4.UInt32Value value) => $_setField(405, value);
   @$pb.TagNumber(405)
-  $core.bool hasClientsRepeater2ghz() => $_has(128);
+  $core.bool hasClientsRepeater2ghz() => $_has(135);
   @$pb.TagNumber(405)
   void clearClientsRepeater2ghz() => $_clearField(405);
   @$pb.TagNumber(405)
-  $4.UInt32Value ensureClientsRepeater2ghz() => $_ensure(128);
+  $4.UInt32Value ensureClientsRepeater2ghz() => $_ensure(135);
 
   @$pb.TagNumber(406)
-  $4.UInt32Value get clientsRepeater5ghz => $_getN(129);
+  $4.UInt32Value get clientsRepeater5ghz => $_getN(136);
   @$pb.TagNumber(406)
   set clientsRepeater5ghz($4.UInt32Value value) => $_setField(406, value);
   @$pb.TagNumber(406)
-  $core.bool hasClientsRepeater5ghz() => $_has(129);
+  $core.bool hasClientsRepeater5ghz() => $_has(136);
   @$pb.TagNumber(406)
   void clearClientsRepeater5ghz() => $_clearField(406);
   @$pb.TagNumber(406)
-  $4.UInt32Value ensureClientsRepeater5ghz() => $_ensure(129);
+  $4.UInt32Value ensureClientsRepeater5ghz() => $_ensure(136);
 
   @$pb.TagNumber(407)
-  $4.UInt32Value get clientsRepeaterEth => $_getN(130);
+  $4.UInt32Value get clientsRepeaterEth => $_getN(137);
   @$pb.TagNumber(407)
   set clientsRepeaterEth($4.UInt32Value value) => $_setField(407, value);
   @$pb.TagNumber(407)
-  $core.bool hasClientsRepeaterEth() => $_has(130);
+  $core.bool hasClientsRepeaterEth() => $_has(137);
   @$pb.TagNumber(407)
   void clearClientsRepeaterEth() => $_clearField(407);
   @$pb.TagNumber(407)
-  $4.UInt32Value ensureClientsRepeaterEth() => $_ensure(130);
+  $4.UInt32Value ensureClientsRepeaterEth() => $_ensure(137);
 
   @$pb.TagNumber(408)
-  $4.UInt32Value get meshHops => $_getN(131);
+  $4.UInt32Value get meshHops => $_getN(138);
   @$pb.TagNumber(408)
   set meshHops($4.UInt32Value value) => $_setField(408, value);
   @$pb.TagNumber(408)
-  $core.bool hasMeshHops() => $_has(131);
+  $core.bool hasMeshHops() => $_has(138);
   @$pb.TagNumber(408)
   void clearMeshHops() => $_clearField(408);
   @$pb.TagNumber(408)
-  $4.UInt32Value ensureMeshHops() => $_ensure(131);
+  $4.UInt32Value ensureMeshHops() => $_ensure(138);
 
   @$pb.TagNumber(409)
-  $4.FloatValue get meshOneHopRssiAvg2ghz => $_getN(132);
+  $4.FloatValue get meshOneHopRssiAvg2ghz => $_getN(139);
   @$pb.TagNumber(409)
   set meshOneHopRssiAvg2ghz($4.FloatValue value) => $_setField(409, value);
   @$pb.TagNumber(409)
-  $core.bool hasMeshOneHopRssiAvg2ghz() => $_has(132);
+  $core.bool hasMeshOneHopRssiAvg2ghz() => $_has(139);
   @$pb.TagNumber(409)
   void clearMeshOneHopRssiAvg2ghz() => $_clearField(409);
   @$pb.TagNumber(409)
-  $4.FloatValue ensureMeshOneHopRssiAvg2ghz() => $_ensure(132);
+  $4.FloatValue ensureMeshOneHopRssiAvg2ghz() => $_ensure(139);
 
   @$pb.TagNumber(410)
-  $4.FloatValue get meshOneHopRssiAvg5ghz => $_getN(133);
+  $4.FloatValue get meshOneHopRssiAvg5ghz => $_getN(140);
   @$pb.TagNumber(410)
   set meshOneHopRssiAvg5ghz($4.FloatValue value) => $_setField(410, value);
   @$pb.TagNumber(410)
-  $core.bool hasMeshOneHopRssiAvg5ghz() => $_has(133);
+  $core.bool hasMeshOneHopRssiAvg5ghz() => $_has(140);
   @$pb.TagNumber(410)
   void clearMeshOneHopRssiAvg5ghz() => $_clearField(410);
   @$pb.TagNumber(410)
-  $4.FloatValue ensureMeshOneHopRssiAvg5ghz() => $_ensure(133);
+  $4.FloatValue ensureMeshOneHopRssiAvg5ghz() => $_ensure(140);
 
   @$pb.TagNumber(411)
-  $4.FloatValue get meshTwoHopRssiAvg2ghz => $_getN(134);
+  $4.FloatValue get meshTwoHopRssiAvg2ghz => $_getN(141);
   @$pb.TagNumber(411)
   set meshTwoHopRssiAvg2ghz($4.FloatValue value) => $_setField(411, value);
   @$pb.TagNumber(411)
-  $core.bool hasMeshTwoHopRssiAvg2ghz() => $_has(134);
+  $core.bool hasMeshTwoHopRssiAvg2ghz() => $_has(141);
   @$pb.TagNumber(411)
   void clearMeshTwoHopRssiAvg2ghz() => $_clearField(411);
   @$pb.TagNumber(411)
-  $4.FloatValue ensureMeshTwoHopRssiAvg2ghz() => $_ensure(134);
+  $4.FloatValue ensureMeshTwoHopRssiAvg2ghz() => $_ensure(141);
 
   @$pb.TagNumber(412)
-  $4.FloatValue get meshTwoHopRssiAvg5ghz => $_getN(135);
+  $4.FloatValue get meshTwoHopRssiAvg5ghz => $_getN(142);
   @$pb.TagNumber(412)
   set meshTwoHopRssiAvg5ghz($4.FloatValue value) => $_setField(412, value);
   @$pb.TagNumber(412)
-  $core.bool hasMeshTwoHopRssiAvg5ghz() => $_has(135);
+  $core.bool hasMeshTwoHopRssiAvg5ghz() => $_has(142);
   @$pb.TagNumber(412)
   void clearMeshTwoHopRssiAvg5ghz() => $_clearField(412);
   @$pb.TagNumber(412)
-  $4.FloatValue ensureMeshTwoHopRssiAvg5ghz() => $_ensure(135);
+  $4.FloatValue ensureMeshTwoHopRssiAvg5ghz() => $_ensure(142);
 
   @$pb.TagNumber(413)
-  $4.UInt32Value get clients5ghzHigh => $_getN(136);
+  $4.UInt32Value get clients5ghzHigh => $_getN(143);
   @$pb.TagNumber(413)
   set clients5ghzHigh($4.UInt32Value value) => $_setField(413, value);
   @$pb.TagNumber(413)
-  $core.bool hasClients5ghzHigh() => $_has(136);
+  $core.bool hasClients5ghzHigh() => $_has(143);
   @$pb.TagNumber(413)
   void clearClients5ghzHigh() => $_clearField(413);
   @$pb.TagNumber(413)
-  $4.UInt32Value ensureClients5ghzHigh() => $_ensure(136);
+  $4.UInt32Value ensureClients5ghzHigh() => $_ensure(143);
 
   @$pb.TagNumber(414)
-  $4.FloatValue get meshOneHopRssiAvg5ghzHigh => $_getN(137);
+  $4.FloatValue get meshOneHopRssiAvg5ghzHigh => $_getN(144);
   @$pb.TagNumber(414)
   set meshOneHopRssiAvg5ghzHigh($4.FloatValue value) => $_setField(414, value);
   @$pb.TagNumber(414)
-  $core.bool hasMeshOneHopRssiAvg5ghzHigh() => $_has(137);
+  $core.bool hasMeshOneHopRssiAvg5ghzHigh() => $_has(144);
   @$pb.TagNumber(414)
   void clearMeshOneHopRssiAvg5ghzHigh() => $_clearField(414);
   @$pb.TagNumber(414)
-  $4.FloatValue ensureMeshOneHopRssiAvg5ghzHigh() => $_ensure(137);
+  $4.FloatValue ensureMeshOneHopRssiAvg5ghzHigh() => $_ensure(144);
 
   @$pb.TagNumber(415)
-  $4.FloatValue get meshTwoHopRssiAvg5ghzHigh => $_getN(138);
+  $4.FloatValue get meshTwoHopRssiAvg5ghzHigh => $_getN(145);
   @$pb.TagNumber(415)
   set meshTwoHopRssiAvg5ghzHigh($4.FloatValue value) => $_setField(415, value);
   @$pb.TagNumber(415)
-  $core.bool hasMeshTwoHopRssiAvg5ghzHigh() => $_has(138);
+  $core.bool hasMeshTwoHopRssiAvg5ghzHigh() => $_has(145);
   @$pb.TagNumber(415)
   void clearMeshTwoHopRssiAvg5ghzHigh() => $_clearField(415);
   @$pb.TagNumber(415)
-  $4.FloatValue ensureMeshTwoHopRssiAvg5ghzHigh() => $_ensure(138);
+  $4.FloatValue ensureMeshTwoHopRssiAvg5ghzHigh() => $_ensure(145);
 
   @$pb.TagNumber(416)
-  $4.UInt32Value get clientsRepeater5ghzHigh => $_getN(139);
+  $4.UInt32Value get clientsRepeater5ghzHigh => $_getN(146);
   @$pb.TagNumber(416)
   set clientsRepeater5ghzHigh($4.UInt32Value value) => $_setField(416, value);
   @$pb.TagNumber(416)
-  $core.bool hasClientsRepeater5ghzHigh() => $_has(139);
+  $core.bool hasClientsRepeater5ghzHigh() => $_has(146);
   @$pb.TagNumber(416)
   void clearClientsRepeater5ghzHigh() => $_clearField(416);
   @$pb.TagNumber(416)
-  $4.UInt32Value ensureClientsRepeater5ghzHigh() => $_ensure(139);
+  $4.UInt32Value ensureClientsRepeater5ghzHigh() => $_ensure(146);
 
   @$pb.TagNumber(418)
-  $4.FloatValue get repeaterTxRateMbpsMin => $_getN(140);
+  $4.FloatValue get repeaterTxRateMbpsMin => $_getN(147);
   @$pb.TagNumber(418)
   set repeaterTxRateMbpsMin($4.FloatValue value) => $_setField(418, value);
   @$pb.TagNumber(418)
-  $core.bool hasRepeaterTxRateMbpsMin() => $_has(140);
+  $core.bool hasRepeaterTxRateMbpsMin() => $_has(147);
   @$pb.TagNumber(418)
   void clearRepeaterTxRateMbpsMin() => $_clearField(418);
   @$pb.TagNumber(418)
-  $4.FloatValue ensureRepeaterTxRateMbpsMin() => $_ensure(140);
+  $4.FloatValue ensureRepeaterTxRateMbpsMin() => $_ensure(147);
 
   @$pb.TagNumber(419)
-  $4.FloatValue get repeaterRxRateMbpsMin => $_getN(141);
+  $4.FloatValue get repeaterRxRateMbpsMin => $_getN(148);
   @$pb.TagNumber(419)
   set repeaterRxRateMbpsMin($4.FloatValue value) => $_setField(419, value);
   @$pb.TagNumber(419)
-  $core.bool hasRepeaterRxRateMbpsMin() => $_has(141);
+  $core.bool hasRepeaterRxRateMbpsMin() => $_has(148);
   @$pb.TagNumber(419)
   void clearRepeaterRxRateMbpsMin() => $_clearField(419);
   @$pb.TagNumber(419)
-  $4.FloatValue ensureRepeaterRxRateMbpsMin() => $_ensure(141);
+  $4.FloatValue ensureRepeaterRxRateMbpsMin() => $_ensure(148);
 
   @$pb.TagNumber(420)
-  $4.FloatValue get repeaterTxRateMbpsAvg => $_getN(142);
+  $4.FloatValue get repeaterTxRateMbpsAvg => $_getN(149);
   @$pb.TagNumber(420)
   set repeaterTxRateMbpsAvg($4.FloatValue value) => $_setField(420, value);
   @$pb.TagNumber(420)
-  $core.bool hasRepeaterTxRateMbpsAvg() => $_has(142);
+  $core.bool hasRepeaterTxRateMbpsAvg() => $_has(149);
   @$pb.TagNumber(420)
   void clearRepeaterTxRateMbpsAvg() => $_clearField(420);
   @$pb.TagNumber(420)
-  $4.FloatValue ensureRepeaterTxRateMbpsAvg() => $_ensure(142);
+  $4.FloatValue ensureRepeaterTxRateMbpsAvg() => $_ensure(149);
 
   @$pb.TagNumber(421)
-  $4.FloatValue get repeaterRxRateMbpsAvg => $_getN(143);
+  $4.FloatValue get repeaterRxRateMbpsAvg => $_getN(150);
   @$pb.TagNumber(421)
   set repeaterRxRateMbpsAvg($4.FloatValue value) => $_setField(421, value);
   @$pb.TagNumber(421)
-  $core.bool hasRepeaterRxRateMbpsAvg() => $_has(143);
+  $core.bool hasRepeaterRxRateMbpsAvg() => $_has(150);
   @$pb.TagNumber(421)
   void clearRepeaterRxRateMbpsAvg() => $_clearField(421);
   @$pb.TagNumber(421)
-  $4.FloatValue ensureRepeaterRxRateMbpsAvg() => $_ensure(143);
+  $4.FloatValue ensureRepeaterRxRateMbpsAvg() => $_ensure(150);
 
   @$pb.TagNumber(422)
-  $4.FloatValue get repeaterSecondsSince2sOutageMin => $_getN(144);
+  $4.FloatValue get repeaterSecondsSince2sOutageMin => $_getN(151);
   @$pb.TagNumber(422)
   set repeaterSecondsSince2sOutageMin($4.FloatValue value) =>
       $_setField(422, value);
   @$pb.TagNumber(422)
-  $core.bool hasRepeaterSecondsSince2sOutageMin() => $_has(144);
+  $core.bool hasRepeaterSecondsSince2sOutageMin() => $_has(151);
   @$pb.TagNumber(422)
   void clearRepeaterSecondsSince2sOutageMin() => $_clearField(422);
   @$pb.TagNumber(422)
-  $4.FloatValue ensureRepeaterSecondsSince2sOutageMin() => $_ensure(144);
+  $4.FloatValue ensureRepeaterSecondsSince2sOutageMin() => $_ensure(151);
 
   @$pb.TagNumber(423)
-  $4.FloatValue get repeaterSecondsSince2sOutageAvg => $_getN(145);
+  $4.FloatValue get repeaterSecondsSince2sOutageAvg => $_getN(152);
   @$pb.TagNumber(423)
   set repeaterSecondsSince2sOutageAvg($4.FloatValue value) =>
       $_setField(423, value);
   @$pb.TagNumber(423)
-  $core.bool hasRepeaterSecondsSince2sOutageAvg() => $_has(145);
+  $core.bool hasRepeaterSecondsSince2sOutageAvg() => $_has(152);
   @$pb.TagNumber(423)
   void clearRepeaterSecondsSince2sOutageAvg() => $_clearField(423);
   @$pb.TagNumber(423)
-  $4.FloatValue ensureRepeaterSecondsSince2sOutageAvg() => $_ensure(145);
+  $4.FloatValue ensureRepeaterSecondsSince2sOutageAvg() => $_ensure(152);
 
   @$pb.TagNumber(424)
-  $4.FloatValue get repeaterSecondsSince5sOutageMin => $_getN(146);
+  $4.FloatValue get repeaterSecondsSince5sOutageMin => $_getN(153);
   @$pb.TagNumber(424)
   set repeaterSecondsSince5sOutageMin($4.FloatValue value) =>
       $_setField(424, value);
   @$pb.TagNumber(424)
-  $core.bool hasRepeaterSecondsSince5sOutageMin() => $_has(146);
+  $core.bool hasRepeaterSecondsSince5sOutageMin() => $_has(153);
   @$pb.TagNumber(424)
   void clearRepeaterSecondsSince5sOutageMin() => $_clearField(424);
   @$pb.TagNumber(424)
-  $4.FloatValue ensureRepeaterSecondsSince5sOutageMin() => $_ensure(146);
+  $4.FloatValue ensureRepeaterSecondsSince5sOutageMin() => $_ensure(153);
 
   @$pb.TagNumber(425)
-  $4.FloatValue get repeaterSecondsSince5sOutageAvg => $_getN(147);
+  $4.FloatValue get repeaterSecondsSince5sOutageAvg => $_getN(154);
   @$pb.TagNumber(425)
   set repeaterSecondsSince5sOutageAvg($4.FloatValue value) =>
       $_setField(425, value);
   @$pb.TagNumber(425)
-  $core.bool hasRepeaterSecondsSince5sOutageAvg() => $_has(147);
+  $core.bool hasRepeaterSecondsSince5sOutageAvg() => $_has(154);
   @$pb.TagNumber(425)
   void clearRepeaterSecondsSince5sOutageAvg() => $_clearField(425);
   @$pb.TagNumber(425)
-  $4.FloatValue ensureRepeaterSecondsSince5sOutageAvg() => $_ensure(147);
+  $4.FloatValue ensureRepeaterSecondsSince5sOutageAvg() => $_ensure(154);
 
   @$pb.TagNumber(426)
-  $4.FloatValue get repeaterLatencyMs1hMax => $_getN(148);
+  $4.FloatValue get repeaterLatencyMs1hMax => $_getN(155);
   @$pb.TagNumber(426)
   set repeaterLatencyMs1hMax($4.FloatValue value) => $_setField(426, value);
   @$pb.TagNumber(426)
-  $core.bool hasRepeaterLatencyMs1hMax() => $_has(148);
+  $core.bool hasRepeaterLatencyMs1hMax() => $_has(155);
   @$pb.TagNumber(426)
   void clearRepeaterLatencyMs1hMax() => $_clearField(426);
   @$pb.TagNumber(426)
-  $4.FloatValue ensureRepeaterLatencyMs1hMax() => $_ensure(148);
+  $4.FloatValue ensureRepeaterLatencyMs1hMax() => $_ensure(155);
 
   @$pb.TagNumber(427)
-  $4.FloatValue get repeaterLatencyMs1hAvg => $_getN(149);
+  $4.FloatValue get repeaterLatencyMs1hAvg => $_getN(156);
   @$pb.TagNumber(427)
   set repeaterLatencyMs1hAvg($4.FloatValue value) => $_setField(427, value);
   @$pb.TagNumber(427)
-  $core.bool hasRepeaterLatencyMs1hAvg() => $_has(149);
+  $core.bool hasRepeaterLatencyMs1hAvg() => $_has(156);
   @$pb.TagNumber(427)
   void clearRepeaterLatencyMs1hAvg() => $_clearField(427);
   @$pb.TagNumber(427)
-  $4.FloatValue ensureRepeaterLatencyMs1hAvg() => $_ensure(149);
+  $4.FloatValue ensureRepeaterLatencyMs1hAvg() => $_ensure(156);
 
   @$pb.TagNumber(428)
-  $4.UInt32Value get meshTopologyChangeCount1d => $_getN(150);
+  $4.UInt32Value get meshTopologyChangeCount1d => $_getN(157);
   @$pb.TagNumber(428)
   set meshTopologyChangeCount1d($4.UInt32Value value) => $_setField(428, value);
   @$pb.TagNumber(428)
-  $core.bool hasMeshTopologyChangeCount1d() => $_has(150);
+  $core.bool hasMeshTopologyChangeCount1d() => $_has(157);
   @$pb.TagNumber(428)
   void clearMeshTopologyChangeCount1d() => $_clearField(428);
   @$pb.TagNumber(428)
-  $4.UInt32Value ensureMeshTopologyChangeCount1d() => $_ensure(150);
+  $4.UInt32Value ensureMeshTopologyChangeCount1d() => $_ensure(157);
 
   @$pb.TagNumber(429)
-  $4.UInt32Value get clients5ghzRxBandwidth20mhz => $_getN(151);
+  $4.UInt32Value get clients5ghzRxBandwidth20mhz => $_getN(158);
   @$pb.TagNumber(429)
   set clients5ghzRxBandwidth20mhz($4.UInt32Value value) =>
       $_setField(429, value);
   @$pb.TagNumber(429)
-  $core.bool hasClients5ghzRxBandwidth20mhz() => $_has(151);
+  $core.bool hasClients5ghzRxBandwidth20mhz() => $_has(158);
   @$pb.TagNumber(429)
   void clearClients5ghzRxBandwidth20mhz() => $_clearField(429);
   @$pb.TagNumber(429)
-  $4.UInt32Value ensureClients5ghzRxBandwidth20mhz() => $_ensure(151);
+  $4.UInt32Value ensureClients5ghzRxBandwidth20mhz() => $_ensure(158);
 
   @$pb.TagNumber(430)
-  $4.UInt32Value get clients5ghzRxBandwidth40mhz => $_getN(152);
+  $4.UInt32Value get clients5ghzRxBandwidth40mhz => $_getN(159);
   @$pb.TagNumber(430)
   set clients5ghzRxBandwidth40mhz($4.UInt32Value value) =>
       $_setField(430, value);
   @$pb.TagNumber(430)
-  $core.bool hasClients5ghzRxBandwidth40mhz() => $_has(152);
+  $core.bool hasClients5ghzRxBandwidth40mhz() => $_has(159);
   @$pb.TagNumber(430)
   void clearClients5ghzRxBandwidth40mhz() => $_clearField(430);
   @$pb.TagNumber(430)
-  $4.UInt32Value ensureClients5ghzRxBandwidth40mhz() => $_ensure(152);
+  $4.UInt32Value ensureClients5ghzRxBandwidth40mhz() => $_ensure(159);
 
   @$pb.TagNumber(431)
-  $4.UInt32Value get clients5ghzRxBandwidth80mhz => $_getN(153);
+  $4.UInt32Value get clients5ghzRxBandwidth80mhz => $_getN(160);
   @$pb.TagNumber(431)
   set clients5ghzRxBandwidth80mhz($4.UInt32Value value) =>
       $_setField(431, value);
   @$pb.TagNumber(431)
-  $core.bool hasClients5ghzRxBandwidth80mhz() => $_has(153);
+  $core.bool hasClients5ghzRxBandwidth80mhz() => $_has(160);
   @$pb.TagNumber(431)
   void clearClients5ghzRxBandwidth80mhz() => $_clearField(431);
   @$pb.TagNumber(431)
-  $4.UInt32Value ensureClients5ghzRxBandwidth80mhz() => $_ensure(153);
+  $4.UInt32Value ensureClients5ghzRxBandwidth80mhz() => $_ensure(160);
+
+  @$pb.TagNumber(432)
+  $4.UInt32Value get macExportsSuccessful => $_getN(161);
+  @$pb.TagNumber(432)
+  set macExportsSuccessful($4.UInt32Value value) => $_setField(432, value);
+  @$pb.TagNumber(432)
+  $core.bool hasMacExportsSuccessful() => $_has(161);
+  @$pb.TagNumber(432)
+  void clearMacExportsSuccessful() => $_clearField(432);
+  @$pb.TagNumber(432)
+  $4.UInt32Value ensureMacExportsSuccessful() => $_ensure(161);
+
+  @$pb.TagNumber(433)
+  $4.UInt32Value get macExportsServerConnectErrors => $_getN(162);
+  @$pb.TagNumber(433)
+  set macExportsServerConnectErrors($4.UInt32Value value) =>
+      $_setField(433, value);
+  @$pb.TagNumber(433)
+  $core.bool hasMacExportsServerConnectErrors() => $_has(162);
+  @$pb.TagNumber(433)
+  void clearMacExportsServerConnectErrors() => $_clearField(433);
+  @$pb.TagNumber(433)
+  $4.UInt32Value ensureMacExportsServerConnectErrors() => $_ensure(162);
+
+  @$pb.TagNumber(434)
+  $4.UInt32Value get macExportsServerSendErrors => $_getN(163);
+  @$pb.TagNumber(434)
+  set macExportsServerSendErrors($4.UInt32Value value) =>
+      $_setField(434, value);
+  @$pb.TagNumber(434)
+  $core.bool hasMacExportsServerSendErrors() => $_has(163);
+  @$pb.TagNumber(434)
+  void clearMacExportsServerSendErrors() => $_clearField(434);
+  @$pb.TagNumber(434)
+  $4.UInt32Value ensureMacExportsServerSendErrors() => $_ensure(163);
+
+  @$pb.TagNumber(435)
+  $4.UInt32Value get clients5ghzRxBandwidth160mhz => $_getN(164);
+  @$pb.TagNumber(435)
+  set clients5ghzRxBandwidth160mhz($4.UInt32Value value) =>
+      $_setField(435, value);
+  @$pb.TagNumber(435)
+  $core.bool hasClients5ghzRxBandwidth160mhz() => $_has(164);
+  @$pb.TagNumber(435)
+  void clearClients5ghzRxBandwidth160mhz() => $_clearField(435);
+  @$pb.TagNumber(435)
+  $4.UInt32Value ensureClients5ghzRxBandwidth160mhz() => $_ensure(164);
+
+  @$pb.TagNumber(436)
+  $4.UInt32Value get clientsWireless => $_getN(165);
+  @$pb.TagNumber(436)
+  set clientsWireless($4.UInt32Value value) => $_setField(436, value);
+  @$pb.TagNumber(436)
+  $core.bool hasClientsWireless() => $_has(165);
+  @$pb.TagNumber(436)
+  void clearClientsWireless() => $_clearField(436);
+  @$pb.TagNumber(436)
+  $4.UInt32Value ensureClientsWireless() => $_ensure(165);
+
+  @$pb.TagNumber(437)
+  $4.UInt32Value get clientsMlo => $_getN(166);
+  @$pb.TagNumber(437)
+  set clientsMlo($4.UInt32Value value) => $_setField(437, value);
+  @$pb.TagNumber(437)
+  $core.bool hasClientsMlo() => $_has(166);
+  @$pb.TagNumber(437)
+  void clearClientsMlo() => $_clearField(437);
+  @$pb.TagNumber(437)
+  $4.UInt32Value ensureClientsMlo() => $_ensure(166);
 
   @$pb.TagNumber(600)
-  $4.FloatValue get pingSecondsSinceLast1sOutage => $_getN(154);
+  $4.FloatValue get pingSecondsSinceLast1sOutage => $_getN(167);
   @$pb.TagNumber(600)
   set pingSecondsSinceLast1sOutage($4.FloatValue value) =>
       $_setField(600, value);
   @$pb.TagNumber(600)
-  $core.bool hasPingSecondsSinceLast1sOutage() => $_has(154);
+  $core.bool hasPingSecondsSinceLast1sOutage() => $_has(167);
   @$pb.TagNumber(600)
   void clearPingSecondsSinceLast1sOutage() => $_clearField(600);
   @$pb.TagNumber(600)
-  $4.FloatValue ensurePingSecondsSinceLast1sOutage() => $_ensure(154);
+  $4.FloatValue ensurePingSecondsSinceLast1sOutage() => $_ensure(167);
 
   @$pb.TagNumber(601)
-  $4.FloatValue get pingSecondsSinceLast2sOutage => $_getN(155);
+  $4.FloatValue get pingSecondsSinceLast2sOutage => $_getN(168);
   @$pb.TagNumber(601)
   set pingSecondsSinceLast2sOutage($4.FloatValue value) =>
       $_setField(601, value);
   @$pb.TagNumber(601)
-  $core.bool hasPingSecondsSinceLast2sOutage() => $_has(155);
+  $core.bool hasPingSecondsSinceLast2sOutage() => $_has(168);
   @$pb.TagNumber(601)
   void clearPingSecondsSinceLast2sOutage() => $_clearField(601);
   @$pb.TagNumber(601)
-  $4.FloatValue ensurePingSecondsSinceLast2sOutage() => $_ensure(155);
+  $4.FloatValue ensurePingSecondsSinceLast2sOutage() => $_ensure(168);
 
   @$pb.TagNumber(602)
-  $4.FloatValue get pingSecondsSinceLast5sOutage => $_getN(156);
+  $4.FloatValue get pingSecondsSinceLast5sOutage => $_getN(169);
   @$pb.TagNumber(602)
   set pingSecondsSinceLast5sOutage($4.FloatValue value) =>
       $_setField(602, value);
   @$pb.TagNumber(602)
-  $core.bool hasPingSecondsSinceLast5sOutage() => $_has(156);
+  $core.bool hasPingSecondsSinceLast5sOutage() => $_has(169);
   @$pb.TagNumber(602)
   void clearPingSecondsSinceLast5sOutage() => $_clearField(602);
   @$pb.TagNumber(602)
-  $4.FloatValue ensurePingSecondsSinceLast5sOutage() => $_ensure(156);
+  $4.FloatValue ensurePingSecondsSinceLast5sOutage() => $_ensure(169);
 
   @$pb.TagNumber(603)
-  $4.FloatValue get pingSecondsSinceLast60sOutage => $_getN(157);
+  $4.FloatValue get pingSecondsSinceLast60sOutage => $_getN(170);
   @$pb.TagNumber(603)
   set pingSecondsSinceLast60sOutage($4.FloatValue value) =>
       $_setField(603, value);
   @$pb.TagNumber(603)
-  $core.bool hasPingSecondsSinceLast60sOutage() => $_has(157);
+  $core.bool hasPingSecondsSinceLast60sOutage() => $_has(170);
   @$pb.TagNumber(603)
   void clearPingSecondsSinceLast60sOutage() => $_clearField(603);
   @$pb.TagNumber(603)
-  $4.FloatValue ensurePingSecondsSinceLast60sOutage() => $_ensure(157);
+  $4.FloatValue ensurePingSecondsSinceLast60sOutage() => $_ensure(170);
 
   @$pb.TagNumber(604)
-  $4.FloatValue get pingSecondsSinceLast300sOutage => $_getN(158);
+  $4.FloatValue get pingSecondsSinceLast300sOutage => $_getN(171);
   @$pb.TagNumber(604)
   set pingSecondsSinceLast300sOutage($4.FloatValue value) =>
       $_setField(604, value);
   @$pb.TagNumber(604)
-  $core.bool hasPingSecondsSinceLast300sOutage() => $_has(158);
+  $core.bool hasPingSecondsSinceLast300sOutage() => $_has(171);
   @$pb.TagNumber(604)
   void clearPingSecondsSinceLast300sOutage() => $_clearField(604);
   @$pb.TagNumber(604)
-  $4.FloatValue ensurePingSecondsSinceLast300sOutage() => $_ensure(158);
+  $4.FloatValue ensurePingSecondsSinceLast300sOutage() => $_ensure(171);
 
   @$pb.TagNumber(605)
-  $4.FloatValue get pingDropRate => $_getN(159);
+  $4.FloatValue get pingDropRate => $_getN(172);
   @$pb.TagNumber(605)
   set pingDropRate($4.FloatValue value) => $_setField(605, value);
   @$pb.TagNumber(605)
-  $core.bool hasPingDropRate() => $_has(159);
+  $core.bool hasPingDropRate() => $_has(172);
   @$pb.TagNumber(605)
   void clearPingDropRate() => $_clearField(605);
   @$pb.TagNumber(605)
-  $4.FloatValue ensurePingDropRate() => $_ensure(159);
+  $4.FloatValue ensurePingDropRate() => $_ensure(172);
 
   @$pb.TagNumber(606)
-  $4.FloatValue get pingDropRateLast1h => $_getN(160);
+  $4.FloatValue get pingDropRateLast1h => $_getN(173);
   @$pb.TagNumber(606)
   set pingDropRateLast1h($4.FloatValue value) => $_setField(606, value);
   @$pb.TagNumber(606)
-  $core.bool hasPingDropRateLast1h() => $_has(160);
+  $core.bool hasPingDropRateLast1h() => $_has(173);
   @$pb.TagNumber(606)
   void clearPingDropRateLast1h() => $_clearField(606);
   @$pb.TagNumber(606)
-  $4.FloatValue ensurePingDropRateLast1h() => $_ensure(160);
+  $4.FloatValue ensurePingDropRateLast1h() => $_ensure(173);
 
   @$pb.TagNumber(607)
-  $4.FloatValue get pingLatency => $_getN(161);
+  $4.FloatValue get pingLatency => $_getN(174);
   @$pb.TagNumber(607)
   set pingLatency($4.FloatValue value) => $_setField(607, value);
   @$pb.TagNumber(607)
-  $core.bool hasPingLatency() => $_has(161);
+  $core.bool hasPingLatency() => $_has(174);
   @$pb.TagNumber(607)
   void clearPingLatency() => $_clearField(607);
   @$pb.TagNumber(607)
-  $4.FloatValue ensurePingLatency() => $_ensure(161);
+  $4.FloatValue ensurePingLatency() => $_ensure(174);
 
   @$pb.TagNumber(610)
-  $4.FloatValue get pingDishSecondsSinceLast1sOutage => $_getN(162);
+  $4.FloatValue get pingDishSecondsSinceLast1sOutage => $_getN(175);
   @$pb.TagNumber(610)
   set pingDishSecondsSinceLast1sOutage($4.FloatValue value) =>
       $_setField(610, value);
   @$pb.TagNumber(610)
-  $core.bool hasPingDishSecondsSinceLast1sOutage() => $_has(162);
+  $core.bool hasPingDishSecondsSinceLast1sOutage() => $_has(175);
   @$pb.TagNumber(610)
   void clearPingDishSecondsSinceLast1sOutage() => $_clearField(610);
   @$pb.TagNumber(610)
-  $4.FloatValue ensurePingDishSecondsSinceLast1sOutage() => $_ensure(162);
+  $4.FloatValue ensurePingDishSecondsSinceLast1sOutage() => $_ensure(175);
 
   @$pb.TagNumber(611)
-  $4.FloatValue get pingDishSecondsSinceLast2sOutage => $_getN(163);
+  $4.FloatValue get pingDishSecondsSinceLast2sOutage => $_getN(176);
   @$pb.TagNumber(611)
   set pingDishSecondsSinceLast2sOutage($4.FloatValue value) =>
       $_setField(611, value);
   @$pb.TagNumber(611)
-  $core.bool hasPingDishSecondsSinceLast2sOutage() => $_has(163);
+  $core.bool hasPingDishSecondsSinceLast2sOutage() => $_has(176);
   @$pb.TagNumber(611)
   void clearPingDishSecondsSinceLast2sOutage() => $_clearField(611);
   @$pb.TagNumber(611)
-  $4.FloatValue ensurePingDishSecondsSinceLast2sOutage() => $_ensure(163);
+  $4.FloatValue ensurePingDishSecondsSinceLast2sOutage() => $_ensure(176);
 
   @$pb.TagNumber(612)
-  $4.FloatValue get pingDishSecondsSinceLast5sOutage => $_getN(164);
+  $4.FloatValue get pingDishSecondsSinceLast5sOutage => $_getN(177);
   @$pb.TagNumber(612)
   set pingDishSecondsSinceLast5sOutage($4.FloatValue value) =>
       $_setField(612, value);
   @$pb.TagNumber(612)
-  $core.bool hasPingDishSecondsSinceLast5sOutage() => $_has(164);
+  $core.bool hasPingDishSecondsSinceLast5sOutage() => $_has(177);
   @$pb.TagNumber(612)
   void clearPingDishSecondsSinceLast5sOutage() => $_clearField(612);
   @$pb.TagNumber(612)
-  $4.FloatValue ensurePingDishSecondsSinceLast5sOutage() => $_ensure(164);
+  $4.FloatValue ensurePingDishSecondsSinceLast5sOutage() => $_ensure(177);
 
   @$pb.TagNumber(613)
-  $4.FloatValue get pingDishSecondsSinceLast60sOutage => $_getN(165);
+  $4.FloatValue get pingDishSecondsSinceLast60sOutage => $_getN(178);
   @$pb.TagNumber(613)
   set pingDishSecondsSinceLast60sOutage($4.FloatValue value) =>
       $_setField(613, value);
   @$pb.TagNumber(613)
-  $core.bool hasPingDishSecondsSinceLast60sOutage() => $_has(165);
+  $core.bool hasPingDishSecondsSinceLast60sOutage() => $_has(178);
   @$pb.TagNumber(613)
   void clearPingDishSecondsSinceLast60sOutage() => $_clearField(613);
   @$pb.TagNumber(613)
-  $4.FloatValue ensurePingDishSecondsSinceLast60sOutage() => $_ensure(165);
+  $4.FloatValue ensurePingDishSecondsSinceLast60sOutage() => $_ensure(178);
 
   @$pb.TagNumber(614)
-  $4.FloatValue get pingDishSecondsSinceLast300sOutage => $_getN(166);
+  $4.FloatValue get pingDishSecondsSinceLast300sOutage => $_getN(179);
   @$pb.TagNumber(614)
   set pingDishSecondsSinceLast300sOutage($4.FloatValue value) =>
       $_setField(614, value);
   @$pb.TagNumber(614)
-  $core.bool hasPingDishSecondsSinceLast300sOutage() => $_has(166);
+  $core.bool hasPingDishSecondsSinceLast300sOutage() => $_has(179);
   @$pb.TagNumber(614)
   void clearPingDishSecondsSinceLast300sOutage() => $_clearField(614);
   @$pb.TagNumber(614)
-  $4.FloatValue ensurePingDishSecondsSinceLast300sOutage() => $_ensure(166);
+  $4.FloatValue ensurePingDishSecondsSinceLast300sOutage() => $_ensure(179);
 
   @$pb.TagNumber(615)
-  $4.FloatValue get pingDishDropRate => $_getN(167);
+  $4.FloatValue get pingDishDropRate => $_getN(180);
   @$pb.TagNumber(615)
   set pingDishDropRate($4.FloatValue value) => $_setField(615, value);
   @$pb.TagNumber(615)
-  $core.bool hasPingDishDropRate() => $_has(167);
+  $core.bool hasPingDishDropRate() => $_has(180);
   @$pb.TagNumber(615)
   void clearPingDishDropRate() => $_clearField(615);
   @$pb.TagNumber(615)
-  $4.FloatValue ensurePingDishDropRate() => $_ensure(167);
+  $4.FloatValue ensurePingDishDropRate() => $_ensure(180);
 
   @$pb.TagNumber(616)
-  $4.FloatValue get pingDishDropRateLast1h => $_getN(168);
+  $4.FloatValue get pingDishDropRateLast1h => $_getN(181);
   @$pb.TagNumber(616)
   set pingDishDropRateLast1h($4.FloatValue value) => $_setField(616, value);
   @$pb.TagNumber(616)
-  $core.bool hasPingDishDropRateLast1h() => $_has(168);
+  $core.bool hasPingDishDropRateLast1h() => $_has(181);
   @$pb.TagNumber(616)
   void clearPingDishDropRateLast1h() => $_clearField(616);
   @$pb.TagNumber(616)
-  $4.FloatValue ensurePingDishDropRateLast1h() => $_ensure(168);
+  $4.FloatValue ensurePingDishDropRateLast1h() => $_ensure(181);
 
   @$pb.TagNumber(617)
-  $4.FloatValue get pingDishLatency => $_getN(169);
+  $4.FloatValue get pingDishLatency => $_getN(182);
   @$pb.TagNumber(617)
   set pingDishLatency($4.FloatValue value) => $_setField(617, value);
   @$pb.TagNumber(617)
-  $core.bool hasPingDishLatency() => $_has(169);
+  $core.bool hasPingDishLatency() => $_has(182);
   @$pb.TagNumber(617)
   void clearPingDishLatency() => $_clearField(617);
   @$pb.TagNumber(617)
-  $4.FloatValue ensurePingDishLatency() => $_ensure(169);
+  $4.FloatValue ensurePingDishLatency() => $_ensure(182);
 
   @$pb.TagNumber(618)
-  $4.FloatValue get pingLatencyLast1h => $_getN(170);
+  $4.FloatValue get pingLatencyLast1h => $_getN(183);
   @$pb.TagNumber(618)
   set pingLatencyLast1h($4.FloatValue value) => $_setField(618, value);
   @$pb.TagNumber(618)
-  $core.bool hasPingLatencyLast1h() => $_has(170);
+  $core.bool hasPingLatencyLast1h() => $_has(183);
   @$pb.TagNumber(618)
   void clearPingLatencyLast1h() => $_clearField(618);
   @$pb.TagNumber(618)
-  $4.FloatValue ensurePingLatencyLast1h() => $_ensure(170);
+  $4.FloatValue ensurePingLatencyLast1h() => $_ensure(183);
 
   @$pb.TagNumber(619)
-  $4.FloatValue get pingDishLatencyLast1h => $_getN(171);
+  $4.FloatValue get pingDishLatencyLast1h => $_getN(184);
   @$pb.TagNumber(619)
   set pingDishLatencyLast1h($4.FloatValue value) => $_setField(619, value);
   @$pb.TagNumber(619)
-  $core.bool hasPingDishLatencyLast1h() => $_has(171);
+  $core.bool hasPingDishLatencyLast1h() => $_has(184);
   @$pb.TagNumber(619)
   void clearPingDishLatencyLast1h() => $_clearField(619);
   @$pb.TagNumber(619)
-  $4.FloatValue ensurePingDishLatencyLast1h() => $_ensure(171);
+  $4.FloatValue ensurePingDishLatencyLast1h() => $_ensure(184);
+
+  @$pb.TagNumber(621)
+  $4.FloatValue get pingPopIpv6DropRateLast1h => $_getN(185);
+  @$pb.TagNumber(621)
+  set pingPopIpv6DropRateLast1h($4.FloatValue value) => $_setField(621, value);
+  @$pb.TagNumber(621)
+  $core.bool hasPingPopIpv6DropRateLast1h() => $_has(185);
+  @$pb.TagNumber(621)
+  void clearPingPopIpv6DropRateLast1h() => $_clearField(621);
+  @$pb.TagNumber(621)
+  $4.FloatValue ensurePingPopIpv6DropRateLast1h() => $_ensure(185);
+
+  @$pb.TagNumber(623)
+  $4.FloatValue get pingPopIpv6LatencyLast1h => $_getN(186);
+  @$pb.TagNumber(623)
+  set pingPopIpv6LatencyLast1h($4.FloatValue value) => $_setField(623, value);
+  @$pb.TagNumber(623)
+  $core.bool hasPingPopIpv6LatencyLast1h() => $_has(186);
+  @$pb.TagNumber(623)
+  void clearPingPopIpv6LatencyLast1h() => $_clearField(623);
+  @$pb.TagNumber(623)
+  $4.FloatValue ensurePingPopIpv6LatencyLast1h() => $_ensure(186);
 
   @$pb.TagNumber(700)
-  $4.FloatValue get clientSpeedtestRouterDownloadMbps => $_getN(172);
+  $4.FloatValue get clientSpeedtestRouterDownloadMbps => $_getN(187);
   @$pb.TagNumber(700)
   set clientSpeedtestRouterDownloadMbps($4.FloatValue value) =>
       $_setField(700, value);
   @$pb.TagNumber(700)
-  $core.bool hasClientSpeedtestRouterDownloadMbps() => $_has(172);
+  $core.bool hasClientSpeedtestRouterDownloadMbps() => $_has(187);
   @$pb.TagNumber(700)
   void clearClientSpeedtestRouterDownloadMbps() => $_clearField(700);
   @$pb.TagNumber(700)
-  $4.FloatValue ensureClientSpeedtestRouterDownloadMbps() => $_ensure(172);
+  $4.FloatValue ensureClientSpeedtestRouterDownloadMbps() => $_ensure(187);
 
   @$pb.TagNumber(701)
-  $4.FloatValue get clientSpeedtestRouterUploadMbps => $_getN(173);
+  $4.FloatValue get clientSpeedtestRouterUploadMbps => $_getN(188);
   @$pb.TagNumber(701)
   set clientSpeedtestRouterUploadMbps($4.FloatValue value) =>
       $_setField(701, value);
   @$pb.TagNumber(701)
-  $core.bool hasClientSpeedtestRouterUploadMbps() => $_has(173);
+  $core.bool hasClientSpeedtestRouterUploadMbps() => $_has(188);
   @$pb.TagNumber(701)
   void clearClientSpeedtestRouterUploadMbps() => $_clearField(701);
   @$pb.TagNumber(701)
-  $4.FloatValue ensureClientSpeedtestRouterUploadMbps() => $_ensure(173);
+  $4.FloatValue ensureClientSpeedtestRouterUploadMbps() => $_ensure(188);
 
   @$pb.TagNumber(702)
-  $4.FloatValue get clientSpeedtestRouterRssi => $_getN(174);
+  $4.FloatValue get clientSpeedtestRouterRssi => $_getN(189);
   @$pb.TagNumber(702)
   set clientSpeedtestRouterRssi($4.FloatValue value) => $_setField(702, value);
   @$pb.TagNumber(702)
-  $core.bool hasClientSpeedtestRouterRssi() => $_has(174);
+  $core.bool hasClientSpeedtestRouterRssi() => $_has(189);
   @$pb.TagNumber(702)
   void clearClientSpeedtestRouterRssi() => $_clearField(702);
   @$pb.TagNumber(702)
-  $4.FloatValue ensureClientSpeedtestRouterRssi() => $_ensure(174);
+  $4.FloatValue ensureClientSpeedtestRouterRssi() => $_ensure(189);
 
   @$pb.TagNumber(703)
-  $4.FloatValue get clientSpeedtestWifiDownloadMbps => $_getN(175);
+  $4.FloatValue get clientSpeedtestWifiDownloadMbps => $_getN(190);
   @$pb.TagNumber(703)
   set clientSpeedtestWifiDownloadMbps($4.FloatValue value) =>
       $_setField(703, value);
   @$pb.TagNumber(703)
-  $core.bool hasClientSpeedtestWifiDownloadMbps() => $_has(175);
+  $core.bool hasClientSpeedtestWifiDownloadMbps() => $_has(190);
   @$pb.TagNumber(703)
   void clearClientSpeedtestWifiDownloadMbps() => $_clearField(703);
   @$pb.TagNumber(703)
-  $4.FloatValue ensureClientSpeedtestWifiDownloadMbps() => $_ensure(175);
+  $4.FloatValue ensureClientSpeedtestWifiDownloadMbps() => $_ensure(190);
 
   @$pb.TagNumber(704)
-  $4.FloatValue get clientSpeedtestWifiUploadMbps => $_getN(176);
+  $4.FloatValue get clientSpeedtestWifiUploadMbps => $_getN(191);
   @$pb.TagNumber(704)
   set clientSpeedtestWifiUploadMbps($4.FloatValue value) =>
       $_setField(704, value);
   @$pb.TagNumber(704)
-  $core.bool hasClientSpeedtestWifiUploadMbps() => $_has(176);
+  $core.bool hasClientSpeedtestWifiUploadMbps() => $_has(191);
   @$pb.TagNumber(704)
   void clearClientSpeedtestWifiUploadMbps() => $_clearField(704);
   @$pb.TagNumber(704)
-  $4.FloatValue ensureClientSpeedtestWifiUploadMbps() => $_ensure(176);
+  $4.FloatValue ensureClientSpeedtestWifiUploadMbps() => $_ensure(191);
 
   @$pb.TagNumber(705)
-  $4.FloatValue get clientSpeedtestClientDownloadMbps => $_getN(177);
+  $4.FloatValue get clientSpeedtestClientDownloadMbps => $_getN(192);
   @$pb.TagNumber(705)
   set clientSpeedtestClientDownloadMbps($4.FloatValue value) =>
       $_setField(705, value);
   @$pb.TagNumber(705)
-  $core.bool hasClientSpeedtestClientDownloadMbps() => $_has(177);
+  $core.bool hasClientSpeedtestClientDownloadMbps() => $_has(192);
   @$pb.TagNumber(705)
   void clearClientSpeedtestClientDownloadMbps() => $_clearField(705);
   @$pb.TagNumber(705)
-  $4.FloatValue ensureClientSpeedtestClientDownloadMbps() => $_ensure(177);
+  $4.FloatValue ensureClientSpeedtestClientDownloadMbps() => $_ensure(192);
 
   @$pb.TagNumber(706)
-  $4.FloatValue get clientSpeedtestClientUploadMbps => $_getN(178);
+  $4.FloatValue get clientSpeedtestClientUploadMbps => $_getN(193);
   @$pb.TagNumber(706)
   set clientSpeedtestClientUploadMbps($4.FloatValue value) =>
       $_setField(706, value);
   @$pb.TagNumber(706)
-  $core.bool hasClientSpeedtestClientUploadMbps() => $_has(178);
+  $core.bool hasClientSpeedtestClientUploadMbps() => $_has(193);
   @$pb.TagNumber(706)
   void clearClientSpeedtestClientUploadMbps() => $_clearField(706);
   @$pb.TagNumber(706)
-  $4.FloatValue ensureClientSpeedtestClientUploadMbps() => $_ensure(178);
+  $4.FloatValue ensureClientSpeedtestClientUploadMbps() => $_ensure(193);
 
   @$pb.TagNumber(707)
-  $4.FloatValue get clientSpeedtestClientRssi => $_getN(179);
+  $4.FloatValue get clientSpeedtestClientRssi => $_getN(194);
   @$pb.TagNumber(707)
   set clientSpeedtestClientRssi($4.FloatValue value) => $_setField(707, value);
   @$pb.TagNumber(707)
-  $core.bool hasClientSpeedtestClientRssi() => $_has(179);
+  $core.bool hasClientSpeedtestClientRssi() => $_has(194);
   @$pb.TagNumber(707)
   void clearClientSpeedtestClientRssi() => $_clearField(707);
   @$pb.TagNumber(707)
-  $4.FloatValue ensureClientSpeedtestClientRssi() => $_ensure(179);
+  $4.FloatValue ensureClientSpeedtestClientRssi() => $_ensure(194);
 
   @$pb.TagNumber(708)
-  $4.UInt32Value get clientSpeedtestClientIface => $_getN(180);
+  $4.UInt32Value get clientSpeedtestClientIface => $_getN(195);
   @$pb.TagNumber(708)
   set clientSpeedtestClientIface($4.UInt32Value value) =>
       $_setField(708, value);
   @$pb.TagNumber(708)
-  $core.bool hasClientSpeedtestClientIface() => $_has(180);
+  $core.bool hasClientSpeedtestClientIface() => $_has(195);
   @$pb.TagNumber(708)
   void clearClientSpeedtestClientIface() => $_clearField(708);
   @$pb.TagNumber(708)
-  $4.UInt32Value ensureClientSpeedtestClientIface() => $_ensure(180);
+  $4.UInt32Value ensureClientSpeedtestClientIface() => $_ensure(195);
 
   @$pb.TagNumber(709)
-  $4.StringValue get clientSpeedtestClientOui => $_getN(181);
+  $4.StringValue get clientSpeedtestClientOui => $_getN(196);
   @$pb.TagNumber(709)
   set clientSpeedtestClientOui($4.StringValue value) => $_setField(709, value);
   @$pb.TagNumber(709)
-  $core.bool hasClientSpeedtestClientOui() => $_has(181);
+  $core.bool hasClientSpeedtestClientOui() => $_has(196);
   @$pb.TagNumber(709)
   void clearClientSpeedtestClientOui() => $_clearField(709);
   @$pb.TagNumber(709)
-  $4.StringValue ensureClientSpeedtestClientOui() => $_ensure(181);
+  $4.StringValue ensureClientSpeedtestClientOui() => $_ensure(196);
 
   @$pb.TagNumber(710)
-  $4.UInt32Value get clientSpeedtestClientTxRate => $_getN(182);
+  $4.UInt32Value get clientSpeedtestClientTxRate => $_getN(197);
   @$pb.TagNumber(710)
   set clientSpeedtestClientTxRate($4.UInt32Value value) =>
       $_setField(710, value);
   @$pb.TagNumber(710)
-  $core.bool hasClientSpeedtestClientTxRate() => $_has(182);
+  $core.bool hasClientSpeedtestClientTxRate() => $_has(197);
   @$pb.TagNumber(710)
   void clearClientSpeedtestClientTxRate() => $_clearField(710);
   @$pb.TagNumber(710)
-  $4.UInt32Value ensureClientSpeedtestClientTxRate() => $_ensure(182);
+  $4.UInt32Value ensureClientSpeedtestClientTxRate() => $_ensure(197);
 
   @$pb.TagNumber(711)
-  $4.UInt32Value get clientSpeedtestClientRxRate => $_getN(183);
+  $4.UInt32Value get clientSpeedtestClientRxRate => $_getN(198);
   @$pb.TagNumber(711)
   set clientSpeedtestClientRxRate($4.UInt32Value value) =>
       $_setField(711, value);
   @$pb.TagNumber(711)
-  $core.bool hasClientSpeedtestClientRxRate() => $_has(183);
+  $core.bool hasClientSpeedtestClientRxRate() => $_has(198);
   @$pb.TagNumber(711)
   void clearClientSpeedtestClientRxRate() => $_clearField(711);
   @$pb.TagNumber(711)
-  $4.UInt32Value ensureClientSpeedtestClientRxRate() => $_ensure(183);
+  $4.UInt32Value ensureClientSpeedtestClientRxRate() => $_ensure(198);
 
   @$pb.TagNumber(712)
-  $4.UInt32Value get clientSpeedtestClientPlatformType => $_getN(184);
+  $4.UInt32Value get clientSpeedtestClientPlatformType => $_getN(199);
   @$pb.TagNumber(712)
   set clientSpeedtestClientPlatformType($4.UInt32Value value) =>
       $_setField(712, value);
   @$pb.TagNumber(712)
-  $core.bool hasClientSpeedtestClientPlatformType() => $_has(184);
+  $core.bool hasClientSpeedtestClientPlatformType() => $_has(199);
   @$pb.TagNumber(712)
   void clearClientSpeedtestClientPlatformType() => $_clearField(712);
   @$pb.TagNumber(712)
-  $4.UInt32Value ensureClientSpeedtestClientPlatformType() => $_ensure(184);
+  $4.UInt32Value ensureClientSpeedtestClientPlatformType() => $_ensure(199);
+
+  @$pb.TagNumber(713)
+  $4.UInt64Value get clientSpeedtestRouterDownloadTotalBytesTransferred =>
+      $_getN(200);
+  @$pb.TagNumber(713)
+  set clientSpeedtestRouterDownloadTotalBytesTransferred(
+          $4.UInt64Value value) =>
+      $_setField(713, value);
+  @$pb.TagNumber(713)
+  $core.bool hasClientSpeedtestRouterDownloadTotalBytesTransferred() =>
+      $_has(200);
+  @$pb.TagNumber(713)
+  void clearClientSpeedtestRouterDownloadTotalBytesTransferred() =>
+      $_clearField(713);
+  @$pb.TagNumber(713)
+  $4.UInt64Value ensureClientSpeedtestRouterDownloadTotalBytesTransferred() =>
+      $_ensure(200);
+
+  @$pb.TagNumber(714)
+  $4.UInt32Value get clientSpeedtestRouterDownloadBytesTransferredDurationS =>
+      $_getN(201);
+  @$pb.TagNumber(714)
+  set clientSpeedtestRouterDownloadBytesTransferredDurationS(
+          $4.UInt32Value value) =>
+      $_setField(714, value);
+  @$pb.TagNumber(714)
+  $core.bool hasClientSpeedtestRouterDownloadBytesTransferredDurationS() =>
+      $_has(201);
+  @$pb.TagNumber(714)
+  void clearClientSpeedtestRouterDownloadBytesTransferredDurationS() =>
+      $_clearField(714);
+  @$pb.TagNumber(714)
+  $4.UInt32Value
+      ensureClientSpeedtestRouterDownloadBytesTransferredDurationS() =>
+          $_ensure(201);
+
+  @$pb.TagNumber(715)
+  $4.UInt64Value get clientSpeedtestRouterDownloadTargetIpv6Low => $_getN(202);
+  @$pb.TagNumber(715)
+  set clientSpeedtestRouterDownloadTargetIpv6Low($4.UInt64Value value) =>
+      $_setField(715, value);
+  @$pb.TagNumber(715)
+  $core.bool hasClientSpeedtestRouterDownloadTargetIpv6Low() => $_has(202);
+  @$pb.TagNumber(715)
+  void clearClientSpeedtestRouterDownloadTargetIpv6Low() => $_clearField(715);
+  @$pb.TagNumber(715)
+  $4.UInt64Value ensureClientSpeedtestRouterDownloadTargetIpv6Low() =>
+      $_ensure(202);
+
+  @$pb.TagNumber(716)
+  $4.UInt64Value get clientSpeedtestRouterDownloadTargetIpv6High => $_getN(203);
+  @$pb.TagNumber(716)
+  set clientSpeedtestRouterDownloadTargetIpv6High($4.UInt64Value value) =>
+      $_setField(716, value);
+  @$pb.TagNumber(716)
+  $core.bool hasClientSpeedtestRouterDownloadTargetIpv6High() => $_has(203);
+  @$pb.TagNumber(716)
+  void clearClientSpeedtestRouterDownloadTargetIpv6High() => $_clearField(716);
+  @$pb.TagNumber(716)
+  $4.UInt64Value ensureClientSpeedtestRouterDownloadTargetIpv6High() =>
+      $_ensure(203);
+
+  @$pb.TagNumber(717)
+  $4.UInt64Value get clientSpeedtestRouterUploadTotalBytesTransferred =>
+      $_getN(204);
+  @$pb.TagNumber(717)
+  set clientSpeedtestRouterUploadTotalBytesTransferred($4.UInt64Value value) =>
+      $_setField(717, value);
+  @$pb.TagNumber(717)
+  $core.bool hasClientSpeedtestRouterUploadTotalBytesTransferred() =>
+      $_has(204);
+  @$pb.TagNumber(717)
+  void clearClientSpeedtestRouterUploadTotalBytesTransferred() =>
+      $_clearField(717);
+  @$pb.TagNumber(717)
+  $4.UInt64Value ensureClientSpeedtestRouterUploadTotalBytesTransferred() =>
+      $_ensure(204);
+
+  @$pb.TagNumber(718)
+  $4.UInt32Value get clientSpeedtestRouterUploadBytesTransferredDurationS =>
+      $_getN(205);
+  @$pb.TagNumber(718)
+  set clientSpeedtestRouterUploadBytesTransferredDurationS(
+          $4.UInt32Value value) =>
+      $_setField(718, value);
+  @$pb.TagNumber(718)
+  $core.bool hasClientSpeedtestRouterUploadBytesTransferredDurationS() =>
+      $_has(205);
+  @$pb.TagNumber(718)
+  void clearClientSpeedtestRouterUploadBytesTransferredDurationS() =>
+      $_clearField(718);
+  @$pb.TagNumber(718)
+  $4.UInt32Value ensureClientSpeedtestRouterUploadBytesTransferredDurationS() =>
+      $_ensure(205);
+
+  @$pb.TagNumber(719)
+  $4.UInt64Value get clientSpeedtestRouterUploadTargetIpv6Low => $_getN(206);
+  @$pb.TagNumber(719)
+  set clientSpeedtestRouterUploadTargetIpv6Low($4.UInt64Value value) =>
+      $_setField(719, value);
+  @$pb.TagNumber(719)
+  $core.bool hasClientSpeedtestRouterUploadTargetIpv6Low() => $_has(206);
+  @$pb.TagNumber(719)
+  void clearClientSpeedtestRouterUploadTargetIpv6Low() => $_clearField(719);
+  @$pb.TagNumber(719)
+  $4.UInt64Value ensureClientSpeedtestRouterUploadTargetIpv6Low() =>
+      $_ensure(206);
+
+  @$pb.TagNumber(720)
+  $4.UInt64Value get clientSpeedtestRouterUploadTargetIpv6High => $_getN(207);
+  @$pb.TagNumber(720)
+  set clientSpeedtestRouterUploadTargetIpv6High($4.UInt64Value value) =>
+      $_setField(720, value);
+  @$pb.TagNumber(720)
+  $core.bool hasClientSpeedtestRouterUploadTargetIpv6High() => $_has(207);
+  @$pb.TagNumber(720)
+  void clearClientSpeedtestRouterUploadTargetIpv6High() => $_clearField(720);
+  @$pb.TagNumber(720)
+  $4.UInt64Value ensureClientSpeedtestRouterUploadTargetIpv6High() =>
+      $_ensure(207);
 
   @$pb.TagNumber(800)
-  $4.FloatValue get speedtestTcp8DownloadMbpsAvg => $_getN(185);
+  $4.FloatValue get speedtestTcp8DownloadMbpsAvg => $_getN(208);
   @$pb.TagNumber(800)
   set speedtestTcp8DownloadMbpsAvg($4.FloatValue value) =>
       $_setField(800, value);
   @$pb.TagNumber(800)
-  $core.bool hasSpeedtestTcp8DownloadMbpsAvg() => $_has(185);
+  $core.bool hasSpeedtestTcp8DownloadMbpsAvg() => $_has(208);
   @$pb.TagNumber(800)
   void clearSpeedtestTcp8DownloadMbpsAvg() => $_clearField(800);
   @$pb.TagNumber(800)
-  $4.FloatValue ensureSpeedtestTcp8DownloadMbpsAvg() => $_ensure(185);
+  $4.FloatValue ensureSpeedtestTcp8DownloadMbpsAvg() => $_ensure(208);
 
   @$pb.TagNumber(801)
-  $4.FloatValue get speedtestTcp8DownloadMbpsMax => $_getN(186);
+  $4.FloatValue get speedtestTcp8DownloadMbpsMax => $_getN(209);
   @$pb.TagNumber(801)
   set speedtestTcp8DownloadMbpsMax($4.FloatValue value) =>
       $_setField(801, value);
   @$pb.TagNumber(801)
-  $core.bool hasSpeedtestTcp8DownloadMbpsMax() => $_has(186);
+  $core.bool hasSpeedtestTcp8DownloadMbpsMax() => $_has(209);
   @$pb.TagNumber(801)
   void clearSpeedtestTcp8DownloadMbpsMax() => $_clearField(801);
   @$pb.TagNumber(801)
-  $4.FloatValue ensureSpeedtestTcp8DownloadMbpsMax() => $_ensure(186);
+  $4.FloatValue ensureSpeedtestTcp8DownloadMbpsMax() => $_ensure(209);
 
   @$pb.TagNumber(802)
-  $4.FloatValue get speedtestTcp8UploadMbpsAvg => $_getN(187);
+  $4.FloatValue get speedtestTcp8UploadMbpsAvg => $_getN(210);
   @$pb.TagNumber(802)
   set speedtestTcp8UploadMbpsAvg($4.FloatValue value) => $_setField(802, value);
   @$pb.TagNumber(802)
-  $core.bool hasSpeedtestTcp8UploadMbpsAvg() => $_has(187);
+  $core.bool hasSpeedtestTcp8UploadMbpsAvg() => $_has(210);
   @$pb.TagNumber(802)
   void clearSpeedtestTcp8UploadMbpsAvg() => $_clearField(802);
   @$pb.TagNumber(802)
-  $4.FloatValue ensureSpeedtestTcp8UploadMbpsAvg() => $_ensure(187);
+  $4.FloatValue ensureSpeedtestTcp8UploadMbpsAvg() => $_ensure(210);
 
   @$pb.TagNumber(803)
-  $4.FloatValue get speedtestTcp8UploadMbpsMax => $_getN(188);
+  $4.FloatValue get speedtestTcp8UploadMbpsMax => $_getN(211);
   @$pb.TagNumber(803)
   set speedtestTcp8UploadMbpsMax($4.FloatValue value) => $_setField(803, value);
   @$pb.TagNumber(803)
-  $core.bool hasSpeedtestTcp8UploadMbpsMax() => $_has(188);
+  $core.bool hasSpeedtestTcp8UploadMbpsMax() => $_has(211);
   @$pb.TagNumber(803)
   void clearSpeedtestTcp8UploadMbpsMax() => $_clearField(803);
   @$pb.TagNumber(803)
-  $4.FloatValue ensureSpeedtestTcp8UploadMbpsMax() => $_ensure(188);
+  $4.FloatValue ensureSpeedtestTcp8UploadMbpsMax() => $_ensure(211);
 
   @$pb.TagNumber(804)
-  $4.FloatValue get speedtestTcp64DownloadMbpsAvg => $_getN(189);
+  $4.FloatValue get speedtestTcp64DownloadMbpsAvg => $_getN(212);
   @$pb.TagNumber(804)
   set speedtestTcp64DownloadMbpsAvg($4.FloatValue value) =>
       $_setField(804, value);
   @$pb.TagNumber(804)
-  $core.bool hasSpeedtestTcp64DownloadMbpsAvg() => $_has(189);
+  $core.bool hasSpeedtestTcp64DownloadMbpsAvg() => $_has(212);
   @$pb.TagNumber(804)
   void clearSpeedtestTcp64DownloadMbpsAvg() => $_clearField(804);
   @$pb.TagNumber(804)
-  $4.FloatValue ensureSpeedtestTcp64DownloadMbpsAvg() => $_ensure(189);
+  $4.FloatValue ensureSpeedtestTcp64DownloadMbpsAvg() => $_ensure(212);
 
   @$pb.TagNumber(805)
-  $4.FloatValue get speedtestTcp64DownloadMbpsMax => $_getN(190);
+  $4.FloatValue get speedtestTcp64DownloadMbpsMax => $_getN(213);
   @$pb.TagNumber(805)
   set speedtestTcp64DownloadMbpsMax($4.FloatValue value) =>
       $_setField(805, value);
   @$pb.TagNumber(805)
-  $core.bool hasSpeedtestTcp64DownloadMbpsMax() => $_has(190);
+  $core.bool hasSpeedtestTcp64DownloadMbpsMax() => $_has(213);
   @$pb.TagNumber(805)
   void clearSpeedtestTcp64DownloadMbpsMax() => $_clearField(805);
   @$pb.TagNumber(805)
-  $4.FloatValue ensureSpeedtestTcp64DownloadMbpsMax() => $_ensure(190);
+  $4.FloatValue ensureSpeedtestTcp64DownloadMbpsMax() => $_ensure(213);
 
   @$pb.TagNumber(806)
-  $4.FloatValue get speedtestTcp64UploadMbpsAvg => $_getN(191);
+  $4.FloatValue get speedtestTcp64UploadMbpsAvg => $_getN(214);
   @$pb.TagNumber(806)
   set speedtestTcp64UploadMbpsAvg($4.FloatValue value) =>
       $_setField(806, value);
   @$pb.TagNumber(806)
-  $core.bool hasSpeedtestTcp64UploadMbpsAvg() => $_has(191);
+  $core.bool hasSpeedtestTcp64UploadMbpsAvg() => $_has(214);
   @$pb.TagNumber(806)
   void clearSpeedtestTcp64UploadMbpsAvg() => $_clearField(806);
   @$pb.TagNumber(806)
-  $4.FloatValue ensureSpeedtestTcp64UploadMbpsAvg() => $_ensure(191);
+  $4.FloatValue ensureSpeedtestTcp64UploadMbpsAvg() => $_ensure(214);
 
   @$pb.TagNumber(807)
-  $4.FloatValue get speedtestTcp64UploadMbpsMax => $_getN(192);
+  $4.FloatValue get speedtestTcp64UploadMbpsMax => $_getN(215);
   @$pb.TagNumber(807)
   set speedtestTcp64UploadMbpsMax($4.FloatValue value) =>
       $_setField(807, value);
   @$pb.TagNumber(807)
-  $core.bool hasSpeedtestTcp64UploadMbpsMax() => $_has(192);
+  $core.bool hasSpeedtestTcp64UploadMbpsMax() => $_has(215);
   @$pb.TagNumber(807)
   void clearSpeedtestTcp64UploadMbpsMax() => $_clearField(807);
   @$pb.TagNumber(807)
-  $4.FloatValue ensureSpeedtestTcp64UploadMbpsMax() => $_ensure(192);
+  $4.FloatValue ensureSpeedtestTcp64UploadMbpsMax() => $_ensure(215);
+
+  @$pb.TagNumber(808)
+  $4.FloatValue get speedtestTcp1DownloadMbpsAvg => $_getN(216);
+  @$pb.TagNumber(808)
+  set speedtestTcp1DownloadMbpsAvg($4.FloatValue value) =>
+      $_setField(808, value);
+  @$pb.TagNumber(808)
+  $core.bool hasSpeedtestTcp1DownloadMbpsAvg() => $_has(216);
+  @$pb.TagNumber(808)
+  void clearSpeedtestTcp1DownloadMbpsAvg() => $_clearField(808);
+  @$pb.TagNumber(808)
+  $4.FloatValue ensureSpeedtestTcp1DownloadMbpsAvg() => $_ensure(216);
+
+  @$pb.TagNumber(809)
+  $4.FloatValue get speedtestTcp1DownloadMbpsMax => $_getN(217);
+  @$pb.TagNumber(809)
+  set speedtestTcp1DownloadMbpsMax($4.FloatValue value) =>
+      $_setField(809, value);
+  @$pb.TagNumber(809)
+  $core.bool hasSpeedtestTcp1DownloadMbpsMax() => $_has(217);
+  @$pb.TagNumber(809)
+  void clearSpeedtestTcp1DownloadMbpsMax() => $_clearField(809);
+  @$pb.TagNumber(809)
+  $4.FloatValue ensureSpeedtestTcp1DownloadMbpsMax() => $_ensure(217);
+
+  @$pb.TagNumber(810)
+  $4.FloatValue get speedtestTcp1UploadMbpsAvg => $_getN(218);
+  @$pb.TagNumber(810)
+  set speedtestTcp1UploadMbpsAvg($4.FloatValue value) => $_setField(810, value);
+  @$pb.TagNumber(810)
+  $core.bool hasSpeedtestTcp1UploadMbpsAvg() => $_has(218);
+  @$pb.TagNumber(810)
+  void clearSpeedtestTcp1UploadMbpsAvg() => $_clearField(810);
+  @$pb.TagNumber(810)
+  $4.FloatValue ensureSpeedtestTcp1UploadMbpsAvg() => $_ensure(218);
+
+  @$pb.TagNumber(811)
+  $4.FloatValue get speedtestTcp1UploadMbpsMax => $_getN(219);
+  @$pb.TagNumber(811)
+  set speedtestTcp1UploadMbpsMax($4.FloatValue value) => $_setField(811, value);
+  @$pb.TagNumber(811)
+  $core.bool hasSpeedtestTcp1UploadMbpsMax() => $_has(219);
+  @$pb.TagNumber(811)
+  void clearSpeedtestTcp1UploadMbpsMax() => $_clearField(811);
+  @$pb.TagNumber(811)
+  $4.FloatValue ensureSpeedtestTcp1UploadMbpsMax() => $_ensure(219);
+
+  @$pb.TagNumber(812)
+  $4.FloatValue get speedtestTcp8DownloadMeanTcpConnectTime => $_getN(220);
+  @$pb.TagNumber(812)
+  set speedtestTcp8DownloadMeanTcpConnectTime($4.FloatValue value) =>
+      $_setField(812, value);
+  @$pb.TagNumber(812)
+  $core.bool hasSpeedtestTcp8DownloadMeanTcpConnectTime() => $_has(220);
+  @$pb.TagNumber(812)
+  void clearSpeedtestTcp8DownloadMeanTcpConnectTime() => $_clearField(812);
+  @$pb.TagNumber(812)
+  $4.FloatValue ensureSpeedtestTcp8DownloadMeanTcpConnectTime() =>
+      $_ensure(220);
+
+  @$pb.TagNumber(813)
+  $4.FloatValue get speedtestTcp8UploadMeanTcpConnectTime => $_getN(221);
+  @$pb.TagNumber(813)
+  set speedtestTcp8UploadMeanTcpConnectTime($4.FloatValue value) =>
+      $_setField(813, value);
+  @$pb.TagNumber(813)
+  $core.bool hasSpeedtestTcp8UploadMeanTcpConnectTime() => $_has(221);
+  @$pb.TagNumber(813)
+  void clearSpeedtestTcp8UploadMeanTcpConnectTime() => $_clearField(813);
+  @$pb.TagNumber(813)
+  $4.FloatValue ensureSpeedtestTcp8UploadMeanTcpConnectTime() => $_ensure(221);
+
+  @$pb.TagNumber(814)
+  $pb.PbList<$core.String> get speedtestTcp8DownloadCfRayHeaders =>
+      $_getList(222);
+
+  @$pb.TagNumber(815)
+  $pb.PbList<$core.String> get speedtestTcp8UploadCfRayHeaders =>
+      $_getList(223);
+
+  @$pb.TagNumber(816)
+  $4.FloatValue get speedtestTcp1DownloadMeanTcpConnectTime => $_getN(224);
+  @$pb.TagNumber(816)
+  set speedtestTcp1DownloadMeanTcpConnectTime($4.FloatValue value) =>
+      $_setField(816, value);
+  @$pb.TagNumber(816)
+  $core.bool hasSpeedtestTcp1DownloadMeanTcpConnectTime() => $_has(224);
+  @$pb.TagNumber(816)
+  void clearSpeedtestTcp1DownloadMeanTcpConnectTime() => $_clearField(816);
+  @$pb.TagNumber(816)
+  $4.FloatValue ensureSpeedtestTcp1DownloadMeanTcpConnectTime() =>
+      $_ensure(224);
+
+  @$pb.TagNumber(817)
+  $4.FloatValue get speedtestTcp1UploadMeanTcpConnectTime => $_getN(225);
+  @$pb.TagNumber(817)
+  set speedtestTcp1UploadMeanTcpConnectTime($4.FloatValue value) =>
+      $_setField(817, value);
+  @$pb.TagNumber(817)
+  $core.bool hasSpeedtestTcp1UploadMeanTcpConnectTime() => $_has(225);
+  @$pb.TagNumber(817)
+  void clearSpeedtestTcp1UploadMeanTcpConnectTime() => $_clearField(817);
+  @$pb.TagNumber(817)
+  $4.FloatValue ensureSpeedtestTcp1UploadMeanTcpConnectTime() => $_ensure(225);
+
+  @$pb.TagNumber(818)
+  $pb.PbList<$core.String> get speedtestTcp1DownloadCfRayHeaders =>
+      $_getList(226);
+
+  @$pb.TagNumber(819)
+  $pb.PbList<$core.String> get speedtestTcp1UploadCfRayHeaders =>
+      $_getList(227);
 
   @$pb.TagNumber(900)
-  $4.UInt32Value get dishCellId => $_getN(193);
+  $4.UInt32Value get dishCellId => $_getN(228);
   @$pb.TagNumber(900)
   set dishCellId($4.UInt32Value value) => $_setField(900, value);
   @$pb.TagNumber(900)
-  $core.bool hasDishCellId() => $_has(193);
+  $core.bool hasDishCellId() => $_has(228);
   @$pb.TagNumber(900)
   void clearDishCellId() => $_clearField(900);
   @$pb.TagNumber(900)
-  $4.UInt32Value ensureDishCellId() => $_ensure(193);
+  $4.UInt32Value ensureDishCellId() => $_ensure(228);
 
   @$pb.TagNumber(1000)
-  $4.BoolValue get configSetupComplete => $_getN(194);
+  $4.BoolValue get configSetupComplete => $_getN(229);
   @$pb.TagNumber(1000)
   set configSetupComplete($4.BoolValue value) => $_setField(1000, value);
   @$pb.TagNumber(1000)
-  $core.bool hasConfigSetupComplete() => $_has(194);
+  $core.bool hasConfigSetupComplete() => $_has(229);
   @$pb.TagNumber(1000)
   void clearConfigSetupComplete() => $_clearField(1000);
   @$pb.TagNumber(1000)
-  $4.BoolValue ensureConfigSetupComplete() => $_ensure(194);
+  $4.BoolValue ensureConfigSetupComplete() => $_ensure(229);
 
   @$pb.TagNumber(1001)
-  $4.BoolValue get configBandsSplit => $_getN(195);
+  $4.BoolValue get configBandsSplit => $_getN(230);
   @$pb.TagNumber(1001)
   set configBandsSplit($4.BoolValue value) => $_setField(1001, value);
   @$pb.TagNumber(1001)
-  $core.bool hasConfigBandsSplit() => $_has(195);
+  $core.bool hasConfigBandsSplit() => $_has(230);
   @$pb.TagNumber(1001)
   void clearConfigBandsSplit() => $_clearField(1001);
   @$pb.TagNumber(1001)
-  $4.BoolValue ensureConfigBandsSplit() => $_ensure(195);
+  $4.BoolValue ensureConfigBandsSplit() => $_ensure(230);
 
   @$pb.TagNumber(1002)
-  $4.BoolValue get configIsRepeater => $_getN(196);
+  $4.BoolValue get configIsRepeater => $_getN(231);
   @$pb.TagNumber(1002)
   set configIsRepeater($4.BoolValue value) => $_setField(1002, value);
   @$pb.TagNumber(1002)
-  $core.bool hasConfigIsRepeater() => $_has(196);
+  $core.bool hasConfigIsRepeater() => $_has(231);
   @$pb.TagNumber(1002)
   void clearConfigIsRepeater() => $_clearField(1002);
   @$pb.TagNumber(1002)
-  $4.BoolValue ensureConfigIsRepeater() => $_ensure(196);
+  $4.BoolValue ensureConfigIsRepeater() => $_ensure(231);
 
   @$pb.TagNumber(1003)
-  $4.BoolValue get configOpenNetwork => $_getN(197);
+  $4.BoolValue get configOpenNetwork => $_getN(232);
   @$pb.TagNumber(1003)
   set configOpenNetwork($4.BoolValue value) => $_setField(1003, value);
   @$pb.TagNumber(1003)
-  $core.bool hasConfigOpenNetwork() => $_has(197);
+  $core.bool hasConfigOpenNetwork() => $_has(232);
   @$pb.TagNumber(1003)
   void clearConfigOpenNetwork() => $_clearField(1003);
   @$pb.TagNumber(1003)
-  $4.BoolValue ensureConfigOpenNetwork() => $_ensure(197);
+  $4.BoolValue ensureConfigOpenNetwork() => $_ensure(232);
 
   @$pb.TagNumber(1004)
-  $4.BoolValue get configIsAviation => $_getN(198);
+  $4.BoolValue get configIsAviation => $_getN(233);
   @$pb.TagNumber(1004)
   set configIsAviation($4.BoolValue value) => $_setField(1004, value);
   @$pb.TagNumber(1004)
-  $core.bool hasConfigIsAviation() => $_has(198);
+  $core.bool hasConfigIsAviation() => $_has(233);
   @$pb.TagNumber(1004)
   void clearConfigIsAviation() => $_clearField(1004);
   @$pb.TagNumber(1004)
-  $4.BoolValue ensureConfigIsAviation() => $_ensure(198);
+  $4.BoolValue ensureConfigIsAviation() => $_ensure(233);
 
   @$pb.TagNumber(1005)
-  $4.BoolValue get configSecureDns => $_getN(199);
+  $4.BoolValue get configSecureDns => $_getN(234);
   @$pb.TagNumber(1005)
   set configSecureDns($4.BoolValue value) => $_setField(1005, value);
   @$pb.TagNumber(1005)
-  $core.bool hasConfigSecureDns() => $_has(199);
+  $core.bool hasConfigSecureDns() => $_has(234);
   @$pb.TagNumber(1005)
   void clearConfigSecureDns() => $_clearField(1005);
   @$pb.TagNumber(1005)
-  $4.BoolValue ensureConfigSecureDns() => $_ensure(199);
+  $4.BoolValue ensureConfigSecureDns() => $_ensure(234);
 
   @$pb.TagNumber(1006)
-  $4.BoolValue get configLegacy => $_getN(200);
+  $4.BoolValue get configLegacy => $_getN(235);
   @$pb.TagNumber(1006)
   set configLegacy($4.BoolValue value) => $_setField(1006, value);
   @$pb.TagNumber(1006)
-  $core.bool hasConfigLegacy() => $_has(200);
+  $core.bool hasConfigLegacy() => $_has(235);
   @$pb.TagNumber(1006)
   void clearConfigLegacy() => $_clearField(1006);
   @$pb.TagNumber(1006)
-  $4.BoolValue ensureConfigLegacy() => $_ensure(200);
+  $4.BoolValue ensureConfigLegacy() => $_ensure(235);
 
   @$pb.TagNumber(1007)
-  $4.BoolValue get configApMode => $_getN(201);
+  $4.BoolValue get configApMode => $_getN(236);
   @$pb.TagNumber(1007)
   set configApMode($4.BoolValue value) => $_setField(1007, value);
   @$pb.TagNumber(1007)
-  $core.bool hasConfigApMode() => $_has(201);
+  $core.bool hasConfigApMode() => $_has(236);
   @$pb.TagNumber(1007)
   void clearConfigApMode() => $_clearField(1007);
   @$pb.TagNumber(1007)
-  $4.BoolValue ensureConfigApMode() => $_ensure(201);
+  $4.BoolValue ensureConfigApMode() => $_ensure(236);
 
   @$pb.TagNumber(1008)
-  $4.BoolValue get configDfsEnabled => $_getN(202);
+  $4.BoolValue get configDfsEnabled => $_getN(237);
   @$pb.TagNumber(1008)
   set configDfsEnabled($4.BoolValue value) => $_setField(1008, value);
   @$pb.TagNumber(1008)
-  $core.bool hasConfigDfsEnabled() => $_has(202);
+  $core.bool hasConfigDfsEnabled() => $_has(237);
   @$pb.TagNumber(1008)
   void clearConfigDfsEnabled() => $_clearField(1008);
   @$pb.TagNumber(1008)
-  $4.BoolValue ensureConfigDfsEnabled() => $_ensure(202);
+  $4.BoolValue ensureConfigDfsEnabled() => $_ensure(237);
 
   @$pb.TagNumber(1009)
-  $4.BoolValue get configNetworkNameIsDefault => $_getN(203);
+  $4.BoolValue get configNetworkNameIsDefault => $_getN(238);
   @$pb.TagNumber(1009)
   set configNetworkNameIsDefault($4.BoolValue value) => $_setField(1009, value);
   @$pb.TagNumber(1009)
-  $core.bool hasConfigNetworkNameIsDefault() => $_has(203);
+  $core.bool hasConfigNetworkNameIsDefault() => $_has(238);
   @$pb.TagNumber(1009)
   void clearConfigNetworkNameIsDefault() => $_clearField(1009);
   @$pb.TagNumber(1009)
-  $4.BoolValue ensureConfigNetworkNameIsDefault() => $_ensure(203);
+  $4.BoolValue ensureConfigNetworkNameIsDefault() => $_ensure(238);
 
   @$pb.TagNumber(1010)
-  $4.BoolValue get configRemoteSshEnabled => $_getN(204);
+  $4.BoolValue get configRemoteSshEnabled => $_getN(239);
   @$pb.TagNumber(1010)
   set configRemoteSshEnabled($4.BoolValue value) => $_setField(1010, value);
   @$pb.TagNumber(1010)
-  $core.bool hasConfigRemoteSshEnabled() => $_has(204);
+  $core.bool hasConfigRemoteSshEnabled() => $_has(239);
   @$pb.TagNumber(1010)
   void clearConfigRemoteSshEnabled() => $_clearField(1010);
   @$pb.TagNumber(1010)
-  $4.BoolValue ensureConfigRemoteSshEnabled() => $_ensure(204);
+  $4.BoolValue ensureConfigRemoteSshEnabled() => $_ensure(239);
 
   @$pb.TagNumber(1011)
-  $4.BoolValue get configIsRepeaterWired => $_getN(205);
+  $4.BoolValue get configIsRepeaterWired => $_getN(240);
   @$pb.TagNumber(1011)
   set configIsRepeaterWired($4.BoolValue value) => $_setField(1011, value);
   @$pb.TagNumber(1011)
-  $core.bool hasConfigIsRepeaterWired() => $_has(205);
+  $core.bool hasConfigIsRepeaterWired() => $_has(240);
   @$pb.TagNumber(1011)
   void clearConfigIsRepeaterWired() => $_clearField(1011);
   @$pb.TagNumber(1011)
-  $4.BoolValue ensureConfigIsRepeaterWired() => $_ensure(205);
+  $4.BoolValue ensureConfigIsRepeaterWired() => $_ensure(240);
 
   @$pb.TagNumber(1012)
-  $4.BoolValue get configIsRepeaterWireless => $_getN(206);
+  $4.BoolValue get configIsRepeaterWireless => $_getN(241);
   @$pb.TagNumber(1012)
   set configIsRepeaterWireless($4.BoolValue value) => $_setField(1012, value);
   @$pb.TagNumber(1012)
-  $core.bool hasConfigIsRepeaterWireless() => $_has(206);
+  $core.bool hasConfigIsRepeaterWireless() => $_has(241);
   @$pb.TagNumber(1012)
   void clearConfigIsRepeaterWireless() => $_clearField(1012);
   @$pb.TagNumber(1012)
-  $4.BoolValue ensureConfigIsRepeaterWireless() => $_ensure(206);
+  $4.BoolValue ensureConfigIsRepeaterWireless() => $_ensure(241);
 
   @$pb.TagNumber(1013)
-  $4.UInt32Value get configBlockSchedulesSet => $_getN(207);
+  $4.UInt32Value get configBlockSchedulesSet => $_getN(242);
   @$pb.TagNumber(1013)
   set configBlockSchedulesSet($4.UInt32Value value) => $_setField(1013, value);
   @$pb.TagNumber(1013)
-  $core.bool hasConfigBlockSchedulesSet() => $_has(207);
+  $core.bool hasConfigBlockSchedulesSet() => $_has(242);
   @$pb.TagNumber(1013)
   void clearConfigBlockSchedulesSet() => $_clearField(1013);
   @$pb.TagNumber(1013)
-  $4.UInt32Value ensureConfigBlockSchedulesSet() => $_ensure(207);
+  $4.UInt32Value ensureConfigBlockSchedulesSet() => $_ensure(242);
 
   @$pb.TagNumber(1014)
-  $4.BoolValue get configCustomNameservers => $_getN(208);
+  $4.BoolValue get configCustomNameservers => $_getN(243);
   @$pb.TagNumber(1014)
   set configCustomNameservers($4.BoolValue value) => $_setField(1014, value);
   @$pb.TagNumber(1014)
-  $core.bool hasConfigCustomNameservers() => $_has(208);
+  $core.bool hasConfigCustomNameservers() => $_has(243);
   @$pb.TagNumber(1014)
   void clearConfigCustomNameservers() => $_clearField(1014);
   @$pb.TagNumber(1014)
-  $4.BoolValue ensureConfigCustomNameservers() => $_ensure(208);
+  $4.BoolValue ensureConfigCustomNameservers() => $_ensure(243);
 
   @$pb.TagNumber(1015)
-  $4.BoolValue get configDisableMeshOnboarding => $_getN(209);
+  $4.BoolValue get configDisableMeshOnboarding => $_getN(244);
   @$pb.TagNumber(1015)
   set configDisableMeshOnboarding($4.BoolValue value) =>
       $_setField(1015, value);
   @$pb.TagNumber(1015)
-  $core.bool hasConfigDisableMeshOnboarding() => $_has(209);
+  $core.bool hasConfigDisableMeshOnboarding() => $_has(244);
   @$pb.TagNumber(1015)
   void clearConfigDisableMeshOnboarding() => $_clearField(1015);
   @$pb.TagNumber(1015)
-  $4.BoolValue ensureConfigDisableMeshOnboarding() => $_ensure(209);
+  $4.BoolValue ensureConfigDisableMeshOnboarding() => $_ensure(244);
 
   @$pb.TagNumber(1016)
-  $4.BoolValue get configPinCountryCode => $_getN(210);
+  $4.BoolValue get configPinCountryCode => $_getN(245);
   @$pb.TagNumber(1016)
   set configPinCountryCode($4.BoolValue value) => $_setField(1016, value);
   @$pb.TagNumber(1016)
-  $core.bool hasConfigPinCountryCode() => $_has(210);
+  $core.bool hasConfigPinCountryCode() => $_has(245);
   @$pb.TagNumber(1016)
   void clearConfigPinCountryCode() => $_clearField(1016);
   @$pb.TagNumber(1016)
-  $4.BoolValue ensureConfigPinCountryCode() => $_ensure(210);
+  $4.BoolValue ensureConfigPinCountryCode() => $_ensure(245);
 
   @$pb.TagNumber(1017)
-  $4.BoolValue get configDisableUpdateReboot => $_getN(211);
+  $4.BoolValue get configDisableUpdateReboot => $_getN(246);
   @$pb.TagNumber(1017)
   set configDisableUpdateReboot($4.BoolValue value) => $_setField(1017, value);
   @$pb.TagNumber(1017)
-  $core.bool hasConfigDisableUpdateReboot() => $_has(211);
+  $core.bool hasConfigDisableUpdateReboot() => $_has(246);
   @$pb.TagNumber(1017)
   void clearConfigDisableUpdateReboot() => $_clearField(1017);
   @$pb.TagNumber(1017)
-  $4.BoolValue ensureConfigDisableUpdateReboot() => $_ensure(211);
+  $4.BoolValue ensureConfigDisableUpdateReboot() => $_ensure(246);
 
   @$pb.TagNumber(1018)
-  $4.BoolValue get configDisable2ghz => $_getN(212);
+  $4.BoolValue get configDisable2ghz => $_getN(247);
   @$pb.TagNumber(1018)
   set configDisable2ghz($4.BoolValue value) => $_setField(1018, value);
   @$pb.TagNumber(1018)
-  $core.bool hasConfigDisable2ghz() => $_has(212);
+  $core.bool hasConfigDisable2ghz() => $_has(247);
   @$pb.TagNumber(1018)
   void clearConfigDisable2ghz() => $_clearField(1018);
   @$pb.TagNumber(1018)
-  $4.BoolValue ensureConfigDisable2ghz() => $_ensure(212);
+  $4.BoolValue ensureConfigDisable2ghz() => $_ensure(247);
 
   @$pb.TagNumber(1019)
-  $4.BoolValue get configDisable5ghz => $_getN(213);
+  $4.BoolValue get configDisable5ghz => $_getN(248);
   @$pb.TagNumber(1019)
   set configDisable5ghz($4.BoolValue value) => $_setField(1019, value);
   @$pb.TagNumber(1019)
-  $core.bool hasConfigDisable5ghz() => $_has(213);
+  $core.bool hasConfigDisable5ghz() => $_has(248);
   @$pb.TagNumber(1019)
   void clearConfigDisable5ghz() => $_clearField(1019);
   @$pb.TagNumber(1019)
-  $4.BoolValue ensureConfigDisable5ghz() => $_ensure(213);
+  $4.BoolValue ensureConfigDisable5ghz() => $_ensure(248);
 
   @$pb.TagNumber(1020)
-  $4.UInt32Value get configChannel2ghz => $_getN(214);
+  $4.UInt32Value get configChannel2ghz => $_getN(249);
   @$pb.TagNumber(1020)
   set configChannel2ghz($4.UInt32Value value) => $_setField(1020, value);
   @$pb.TagNumber(1020)
-  $core.bool hasConfigChannel2ghz() => $_has(214);
+  $core.bool hasConfigChannel2ghz() => $_has(249);
   @$pb.TagNumber(1020)
   void clearConfigChannel2ghz() => $_clearField(1020);
   @$pb.TagNumber(1020)
-  $4.UInt32Value ensureConfigChannel2ghz() => $_ensure(214);
+  $4.UInt32Value ensureConfigChannel2ghz() => $_ensure(249);
 
   @$pb.TagNumber(1021)
-  $4.UInt32Value get configChannel5ghz => $_getN(215);
+  $4.UInt32Value get configChannel5ghz => $_getN(250);
   @$pb.TagNumber(1021)
   set configChannel5ghz($4.UInt32Value value) => $_setField(1021, value);
   @$pb.TagNumber(1021)
-  $core.bool hasConfigChannel5ghz() => $_has(215);
+  $core.bool hasConfigChannel5ghz() => $_has(250);
   @$pb.TagNumber(1021)
   void clearConfigChannel5ghz() => $_clearField(1021);
   @$pb.TagNumber(1021)
-  $4.UInt32Value ensureConfigChannel5ghz() => $_ensure(215);
+  $4.UInt32Value ensureConfigChannel5ghz() => $_ensure(250);
 
   @$pb.TagNumber(1022)
-  $4.UInt32Value get configChannel5ghzHigh => $_getN(216);
+  $4.UInt32Value get configChannel5ghzHigh => $_getN(251);
   @$pb.TagNumber(1022)
   set configChannel5ghzHigh($4.UInt32Value value) => $_setField(1022, value);
   @$pb.TagNumber(1022)
-  $core.bool hasConfigChannel5ghzHigh() => $_has(216);
+  $core.bool hasConfigChannel5ghzHigh() => $_has(251);
   @$pb.TagNumber(1022)
   void clearConfigChannel5ghzHigh() => $_clearField(1022);
   @$pb.TagNumber(1022)
-  $4.UInt32Value ensureConfigChannel5ghzHigh() => $_ensure(216);
+  $4.UInt32Value ensureConfigChannel5ghzHigh() => $_ensure(251);
 
   @$pb.TagNumber(1023)
-  $4.UInt32Value get configNetworks => $_getN(217);
+  $4.UInt32Value get configNetworks => $_getN(252);
   @$pb.TagNumber(1023)
   set configNetworks($4.UInt32Value value) => $_setField(1023, value);
   @$pb.TagNumber(1023)
-  $core.bool hasConfigNetworks() => $_has(217);
+  $core.bool hasConfigNetworks() => $_has(252);
   @$pb.TagNumber(1023)
   void clearConfigNetworks() => $_clearField(1023);
   @$pb.TagNumber(1023)
-  $4.UInt32Value ensureConfigNetworks() => $_ensure(217);
+  $4.UInt32Value ensureConfigNetworks() => $_ensure(252);
 
   @$pb.TagNumber(1024)
-  $4.UInt32Value get configNetworksGuest => $_getN(218);
+  $4.UInt32Value get configNetworksGuest => $_getN(253);
   @$pb.TagNumber(1024)
   set configNetworksGuest($4.UInt32Value value) => $_setField(1024, value);
   @$pb.TagNumber(1024)
-  $core.bool hasConfigNetworksGuest() => $_has(218);
+  $core.bool hasConfigNetworksGuest() => $_has(253);
   @$pb.TagNumber(1024)
   void clearConfigNetworksGuest() => $_clearField(1024);
   @$pb.TagNumber(1024)
-  $4.UInt32Value ensureConfigNetworksGuest() => $_ensure(218);
+  $4.UInt32Value ensureConfigNetworksGuest() => $_ensure(253);
 
   @$pb.TagNumber(1025)
-  $4.UInt32Value get configNetworksHidden => $_getN(219);
+  $4.UInt32Value get configNetworksHidden => $_getN(254);
   @$pb.TagNumber(1025)
   set configNetworksHidden($4.UInt32Value value) => $_setField(1025, value);
   @$pb.TagNumber(1025)
-  $core.bool hasConfigNetworksHidden() => $_has(219);
+  $core.bool hasConfigNetworksHidden() => $_has(254);
   @$pb.TagNumber(1025)
   void clearConfigNetworksHidden() => $_clearField(1025);
   @$pb.TagNumber(1025)
-  $4.UInt32Value ensureConfigNetworksHidden() => $_ensure(219);
+  $4.UInt32Value ensureConfigNetworksHidden() => $_ensure(254);
 
   @$pb.TagNumber(1026)
-  $4.UInt32Value get configNetworksClientIsolation => $_getN(220);
+  $4.UInt32Value get configNetworksClientIsolation => $_getN(255);
   @$pb.TagNumber(1026)
   set configNetworksClientIsolation($4.UInt32Value value) =>
       $_setField(1026, value);
   @$pb.TagNumber(1026)
-  $core.bool hasConfigNetworksClientIsolation() => $_has(220);
+  $core.bool hasConfigNetworksClientIsolation() => $_has(255);
   @$pb.TagNumber(1026)
   void clearConfigNetworksClientIsolation() => $_clearField(1026);
   @$pb.TagNumber(1026)
-  $4.UInt32Value ensureConfigNetworksClientIsolation() => $_ensure(220);
+  $4.UInt32Value ensureConfigNetworksClientIsolation() => $_ensure(255);
 
   @$pb.TagNumber(1027)
-  $4.UInt32Value get configNetworksBandsSplit => $_getN(221);
+  $4.UInt32Value get configNetworksBandsSplit => $_getN(256);
   @$pb.TagNumber(1027)
   set configNetworksBandsSplit($4.UInt32Value value) => $_setField(1027, value);
   @$pb.TagNumber(1027)
-  $core.bool hasConfigNetworksBandsSplit() => $_has(221);
+  $core.bool hasConfigNetworksBandsSplit() => $_has(256);
   @$pb.TagNumber(1027)
   void clearConfigNetworksBandsSplit() => $_clearField(1027);
   @$pb.TagNumber(1027)
-  $4.UInt32Value ensureConfigNetworksBandsSplit() => $_ensure(221);
+  $4.UInt32Value ensureConfigNetworksBandsSplit() => $_ensure(256);
 
   @$pb.TagNumber(1029)
-  $4.BoolValue get configDisable5ghzHigh => $_getN(222);
+  $4.BoolValue get configDisable5ghzHigh => $_getN(257);
   @$pb.TagNumber(1029)
   set configDisable5ghzHigh($4.BoolValue value) => $_setField(1029, value);
   @$pb.TagNumber(1029)
-  $core.bool hasConfigDisable5ghzHigh() => $_has(222);
+  $core.bool hasConfigDisable5ghzHigh() => $_has(257);
   @$pb.TagNumber(1029)
   void clearConfigDisable5ghzHigh() => $_clearField(1029);
   @$pb.TagNumber(1029)
-  $4.BoolValue ensureConfigDisable5ghzHigh() => $_ensure(222);
+  $4.BoolValue ensureConfigDisable5ghzHigh() => $_ensure(257);
+
+  @$pb.TagNumber(1031)
+  $4.BoolValue get configHttpsContentHostingEnabled => $_getN(258);
+  @$pb.TagNumber(1031)
+  set configHttpsContentHostingEnabled($4.BoolValue value) =>
+      $_setField(1031, value);
+  @$pb.TagNumber(1031)
+  $core.bool hasConfigHttpsContentHostingEnabled() => $_has(258);
+  @$pb.TagNumber(1031)
+  void clearConfigHttpsContentHostingEnabled() => $_clearField(1031);
+  @$pb.TagNumber(1031)
+  $4.BoolValue ensureConfigHttpsContentHostingEnabled() => $_ensure(258);
+
+  @$pb.TagNumber(1032)
+  $4.BoolValue get configOnlyOverflightBlockingEnabled => $_getN(259);
+  @$pb.TagNumber(1032)
+  set configOnlyOverflightBlockingEnabled($4.BoolValue value) =>
+      $_setField(1032, value);
+  @$pb.TagNumber(1032)
+  $core.bool hasConfigOnlyOverflightBlockingEnabled() => $_has(259);
+  @$pb.TagNumber(1032)
+  void clearConfigOnlyOverflightBlockingEnabled() => $_clearField(1032);
+  @$pb.TagNumber(1032)
+  $4.BoolValue ensureConfigOnlyOverflightBlockingEnabled() => $_ensure(259);
+
+  @$pb.TagNumber(1033)
+  $4.BoolValue get configOfflineNetworksDisablementEnabled => $_getN(260);
+  @$pb.TagNumber(1033)
+  set configOfflineNetworksDisablementEnabled($4.BoolValue value) =>
+      $_setField(1033, value);
+  @$pb.TagNumber(1033)
+  $core.bool hasConfigOfflineNetworksDisablementEnabled() => $_has(260);
+  @$pb.TagNumber(1033)
+  void clearConfigOfflineNetworksDisablementEnabled() => $_clearField(1033);
+  @$pb.TagNumber(1033)
+  $4.BoolValue ensureConfigOfflineNetworksDisablementEnabled() => $_ensure(260);
+
+  @$pb.TagNumber(1034)
+  $4.BoolValue get configCustomDnsDisabled => $_getN(261);
+  @$pb.TagNumber(1034)
+  set configCustomDnsDisabled($4.BoolValue value) => $_setField(1034, value);
+  @$pb.TagNumber(1034)
+  $core.bool hasConfigCustomDnsDisabled() => $_has(261);
+  @$pb.TagNumber(1034)
+  void clearConfigCustomDnsDisabled() => $_clearField(1034);
+  @$pb.TagNumber(1034)
+  $4.BoolValue ensureConfigCustomDnsDisabled() => $_ensure(261);
+
+  @$pb.TagNumber(1035)
+  $4.UInt32Value get configNetworksUser => $_getN(262);
+  @$pb.TagNumber(1035)
+  set configNetworksUser($4.UInt32Value value) => $_setField(1035, value);
+  @$pb.TagNumber(1035)
+  $core.bool hasConfigNetworksUser() => $_has(262);
+  @$pb.TagNumber(1035)
+  void clearConfigNetworksUser() => $_clearField(1035);
+  @$pb.TagNumber(1035)
+  $4.UInt32Value ensureConfigNetworksUser() => $_ensure(262);
+
+  @$pb.TagNumber(1036)
+  $4.BoolValue get configForeflightEnabled => $_getN(263);
+  @$pb.TagNumber(1036)
+  set configForeflightEnabled($4.BoolValue value) => $_setField(1036, value);
+  @$pb.TagNumber(1036)
+  $core.bool hasConfigForeflightEnabled() => $_has(263);
+  @$pb.TagNumber(1036)
+  void clearConfigForeflightEnabled() => $_clearField(1036);
+  @$pb.TagNumber(1036)
+  $4.BoolValue ensureConfigForeflightEnabled() => $_ensure(263);
+
+  @$pb.TagNumber(1037)
+  $4.BoolValue get configOutdoorMode => $_getN(264);
+  @$pb.TagNumber(1037)
+  set configOutdoorMode($4.BoolValue value) => $_setField(1037, value);
+  @$pb.TagNumber(1037)
+  $core.bool hasConfigOutdoorMode() => $_has(264);
+  @$pb.TagNumber(1037)
+  void clearConfigOutdoorMode() => $_clearField(1037);
+  @$pb.TagNumber(1037)
+  $4.BoolValue ensureConfigOutdoorMode() => $_ensure(264);
+
+  @$pb.TagNumber(1040)
+  $4.UInt32Value get wifiReloadCount => $_getN(265);
+  @$pb.TagNumber(1040)
+  set wifiReloadCount($4.UInt32Value value) => $_setField(1040, value);
+  @$pb.TagNumber(1040)
+  $core.bool hasWifiReloadCount() => $_has(265);
+  @$pb.TagNumber(1040)
+  void clearWifiReloadCount() => $_clearField(1040);
+  @$pb.TagNumber(1040)
+  $4.UInt32Value ensureWifiReloadCount() => $_ensure(265);
+
+  @$pb.TagNumber(1041)
+  $4.UInt32Value get radiusReloadCount => $_getN(266);
+  @$pb.TagNumber(1041)
+  set radiusReloadCount($4.UInt32Value value) => $_setField(1041, value);
+  @$pb.TagNumber(1041)
+  $core.bool hasRadiusReloadCount() => $_has(266);
+  @$pb.TagNumber(1041)
+  void clearRadiusReloadCount() => $_clearField(1041);
+  @$pb.TagNumber(1041)
+  $4.UInt32Value ensureRadiusReloadCount() => $_ensure(266);
+
+  @$pb.TagNumber(1042)
+  $4.UInt32Value get opensshReloadCount => $_getN(267);
+  @$pb.TagNumber(1042)
+  set opensshReloadCount($4.UInt32Value value) => $_setField(1042, value);
+  @$pb.TagNumber(1042)
+  $core.bool hasOpensshReloadCount() => $_has(267);
+  @$pb.TagNumber(1042)
+  void clearOpensshReloadCount() => $_clearField(1042);
+  @$pb.TagNumber(1042)
+  $4.UInt32Value ensureOpensshReloadCount() => $_ensure(267);
+
+  @$pb.TagNumber(1043)
+  $4.UInt32Value get iptablesReloadCount => $_getN(268);
+  @$pb.TagNumber(1043)
+  set iptablesReloadCount($4.UInt32Value value) => $_setField(1043, value);
+  @$pb.TagNumber(1043)
+  $core.bool hasIptablesReloadCount() => $_has(268);
+  @$pb.TagNumber(1043)
+  void clearIptablesReloadCount() => $_clearField(1043);
+  @$pb.TagNumber(1043)
+  $4.UInt32Value ensureIptablesReloadCount() => $_ensure(268);
+
+  @$pb.TagNumber(1044)
+  $4.UInt32Value get ebtablesReloadCount => $_getN(269);
+  @$pb.TagNumber(1044)
+  set ebtablesReloadCount($4.UInt32Value value) => $_setField(1044, value);
+  @$pb.TagNumber(1044)
+  $core.bool hasEbtablesReloadCount() => $_has(269);
+  @$pb.TagNumber(1044)
+  void clearEbtablesReloadCount() => $_clearField(1044);
+  @$pb.TagNumber(1044)
+  $4.UInt32Value ensureEbtablesReloadCount() => $_ensure(269);
+
+  @$pb.TagNumber(1045)
+  $4.UInt32Value get trafficControlReloadCount => $_getN(270);
+  @$pb.TagNumber(1045)
+  set trafficControlReloadCount($4.UInt32Value value) =>
+      $_setField(1045, value);
+  @$pb.TagNumber(1045)
+  $core.bool hasTrafficControlReloadCount() => $_has(270);
+  @$pb.TagNumber(1045)
+  void clearTrafficControlReloadCount() => $_clearField(1045);
+  @$pb.TagNumber(1045)
+  $4.UInt32Value ensureTrafficControlReloadCount() => $_ensure(270);
+
+  @$pb.TagNumber(1046)
+  $4.UInt32Value get dhcpReloadCount => $_getN(271);
+  @$pb.TagNumber(1046)
+  set dhcpReloadCount($4.UInt32Value value) => $_setField(1046, value);
+  @$pb.TagNumber(1046)
+  $core.bool hasDhcpReloadCount() => $_has(271);
+  @$pb.TagNumber(1046)
+  void clearDhcpReloadCount() => $_clearField(1046);
+  @$pb.TagNumber(1046)
+  $4.UInt32Value ensureDhcpReloadCount() => $_ensure(271);
+
+  @$pb.TagNumber(1047)
+  $4.UInt32Value get dhcpv6ReloadCount => $_getN(272);
+  @$pb.TagNumber(1047)
+  set dhcpv6ReloadCount($4.UInt32Value value) => $_setField(1047, value);
+  @$pb.TagNumber(1047)
+  $core.bool hasDhcpv6ReloadCount() => $_has(272);
+  @$pb.TagNumber(1047)
+  void clearDhcpv6ReloadCount() => $_clearField(1047);
+  @$pb.TagNumber(1047)
+  $4.UInt32Value ensureDhcpv6ReloadCount() => $_ensure(272);
+
+  @$pb.TagNumber(1048)
+  $4.UInt32Value get systemReloadCount => $_getN(273);
+  @$pb.TagNumber(1048)
+  set systemReloadCount($4.UInt32Value value) => $_setField(1048, value);
+  @$pb.TagNumber(1048)
+  $core.bool hasSystemReloadCount() => $_has(273);
+  @$pb.TagNumber(1048)
+  void clearSystemReloadCount() => $_clearField(1048);
+  @$pb.TagNumber(1048)
+  $4.UInt32Value ensureSystemReloadCount() => $_ensure(273);
+
+  @$pb.TagNumber(1049)
+  $4.UInt32Value get dnsReloadCount => $_getN(274);
+  @$pb.TagNumber(1049)
+  set dnsReloadCount($4.UInt32Value value) => $_setField(1049, value);
+  @$pb.TagNumber(1049)
+  $core.bool hasDnsReloadCount() => $_has(274);
+  @$pb.TagNumber(1049)
+  void clearDnsReloadCount() => $_clearField(1049);
+  @$pb.TagNumber(1049)
+  $4.UInt32Value ensureDnsReloadCount() => $_ensure(274);
+
+  @$pb.TagNumber(1050)
+  $4.UInt32Value get httpsReloadCount => $_getN(275);
+  @$pb.TagNumber(1050)
+  set httpsReloadCount($4.UInt32Value value) => $_setField(1050, value);
+  @$pb.TagNumber(1050)
+  $core.bool hasHttpsReloadCount() => $_has(275);
+  @$pb.TagNumber(1050)
+  void clearHttpsReloadCount() => $_clearField(1050);
+  @$pb.TagNumber(1050)
+  $4.UInt32Value ensureHttpsReloadCount() => $_ensure(275);
+
+  @$pb.TagNumber(1051)
+  $4.UInt32Value get bandSteeringReloadCount => $_getN(276);
+  @$pb.TagNumber(1051)
+  set bandSteeringReloadCount($4.UInt32Value value) => $_setField(1051, value);
+  @$pb.TagNumber(1051)
+  $core.bool hasBandSteeringReloadCount() => $_has(276);
+  @$pb.TagNumber(1051)
+  void clearBandSteeringReloadCount() => $_clearField(1051);
+  @$pb.TagNumber(1051)
+  $4.UInt32Value ensureBandSteeringReloadCount() => $_ensure(276);
+
+  @$pb.TagNumber(1052)
+  $4.UInt32Value get commitCount => $_getN(277);
+  @$pb.TagNumber(1052)
+  set commitCount($4.UInt32Value value) => $_setField(1052, value);
+  @$pb.TagNumber(1052)
+  $core.bool hasCommitCount() => $_has(277);
+  @$pb.TagNumber(1052)
+  void clearCommitCount() => $_clearField(1052);
+  @$pb.TagNumber(1052)
+  $4.UInt32Value ensureCommitCount() => $_ensure(277);
+
+  @$pb.TagNumber(1053)
+  $4.UInt32Value get networkReloadCount => $_getN(278);
+  @$pb.TagNumber(1053)
+  set networkReloadCount($4.UInt32Value value) => $_setField(1053, value);
+  @$pb.TagNumber(1053)
+  $core.bool hasNetworkReloadCount() => $_has(278);
+  @$pb.TagNumber(1053)
+  void clearNetworkReloadCount() => $_clearField(1053);
+  @$pb.TagNumber(1053)
+  $4.UInt32Value ensureNetworkReloadCount() => $_ensure(278);
+
+  @$pb.TagNumber(1054)
+  $4.UInt32Value get foreflightReloadCount => $_getN(279);
+  @$pb.TagNumber(1054)
+  set foreflightReloadCount($4.UInt32Value value) => $_setField(1054, value);
+  @$pb.TagNumber(1054)
+  $core.bool hasForeflightReloadCount() => $_has(279);
+  @$pb.TagNumber(1054)
+  void clearForeflightReloadCount() => $_clearField(1054);
+  @$pb.TagNumber(1054)
+  $4.UInt32Value ensureForeflightReloadCount() => $_ensure(279);
 
   @$pb.TagNumber(1100)
-  $4.UInt32Value get conntrackEntries => $_getN(223);
+  $4.UInt32Value get conntrackEntries => $_getN(280);
   @$pb.TagNumber(1100)
   set conntrackEntries($4.UInt32Value value) => $_setField(1100, value);
   @$pb.TagNumber(1100)
-  $core.bool hasConntrackEntries() => $_has(223);
+  $core.bool hasConntrackEntries() => $_has(280);
   @$pb.TagNumber(1100)
   void clearConntrackEntries() => $_clearField(1100);
   @$pb.TagNumber(1100)
-  $4.UInt32Value ensureConntrackEntries() => $_ensure(223);
+  $4.UInt32Value ensureConntrackEntries() => $_ensure(280);
 
   @$pb.TagNumber(1101)
-  $4.Int64Value get wanTrafficControlCakeBytes => $_getN(224);
+  $4.Int64Value get wanTrafficControlCakeBytes => $_getN(281);
   @$pb.TagNumber(1101)
   set wanTrafficControlCakeBytes($4.Int64Value value) =>
       $_setField(1101, value);
   @$pb.TagNumber(1101)
-  $core.bool hasWanTrafficControlCakeBytes() => $_has(224);
+  $core.bool hasWanTrafficControlCakeBytes() => $_has(281);
   @$pb.TagNumber(1101)
   void clearWanTrafficControlCakeBytes() => $_clearField(1101);
   @$pb.TagNumber(1101)
-  $4.Int64Value ensureWanTrafficControlCakeBytes() => $_ensure(224);
+  $4.Int64Value ensureWanTrafficControlCakeBytes() => $_ensure(281);
 
   @$pb.TagNumber(1102)
-  $4.Int64Value get wanTrafficControlCakePackets => $_getN(225);
+  $4.Int64Value get wanTrafficControlCakePackets => $_getN(282);
   @$pb.TagNumber(1102)
   set wanTrafficControlCakePackets($4.Int64Value value) =>
       $_setField(1102, value);
   @$pb.TagNumber(1102)
-  $core.bool hasWanTrafficControlCakePackets() => $_has(225);
+  $core.bool hasWanTrafficControlCakePackets() => $_has(282);
   @$pb.TagNumber(1102)
   void clearWanTrafficControlCakePackets() => $_clearField(1102);
   @$pb.TagNumber(1102)
-  $4.Int64Value ensureWanTrafficControlCakePackets() => $_ensure(225);
+  $4.Int64Value ensureWanTrafficControlCakePackets() => $_ensure(282);
 
   @$pb.TagNumber(1103)
-  $4.Int64Value get wanTrafficControlCakeDrops => $_getN(226);
+  $4.Int64Value get wanTrafficControlCakeDrops => $_getN(283);
   @$pb.TagNumber(1103)
   set wanTrafficControlCakeDrops($4.Int64Value value) =>
       $_setField(1103, value);
   @$pb.TagNumber(1103)
-  $core.bool hasWanTrafficControlCakeDrops() => $_has(226);
+  $core.bool hasWanTrafficControlCakeDrops() => $_has(283);
   @$pb.TagNumber(1103)
   void clearWanTrafficControlCakeDrops() => $_clearField(1103);
   @$pb.TagNumber(1103)
-  $4.Int64Value ensureWanTrafficControlCakeDrops() => $_ensure(226);
+  $4.Int64Value ensureWanTrafficControlCakeDrops() => $_ensure(283);
 
   @$pb.TagNumber(1104)
-  $4.Int64Value get wanTrafficControlCakeAckDrops => $_getN(227);
+  $4.Int64Value get wanTrafficControlCakeAckDrops => $_getN(284);
   @$pb.TagNumber(1104)
   set wanTrafficControlCakeAckDrops($4.Int64Value value) =>
       $_setField(1104, value);
   @$pb.TagNumber(1104)
-  $core.bool hasWanTrafficControlCakeAckDrops() => $_has(227);
+  $core.bool hasWanTrafficControlCakeAckDrops() => $_has(284);
   @$pb.TagNumber(1104)
   void clearWanTrafficControlCakeAckDrops() => $_clearField(1104);
   @$pb.TagNumber(1104)
-  $4.Int64Value ensureWanTrafficControlCakeAckDrops() => $_ensure(227);
+  $4.Int64Value ensureWanTrafficControlCakeAckDrops() => $_ensure(284);
 
   @$pb.TagNumber(1105)
-  $4.UInt32Value get dhcpSecsEq0 => $_getN(228);
+  $4.UInt32Value get dhcpSecsEq0 => $_getN(285);
   @$pb.TagNumber(1105)
   set dhcpSecsEq0($4.UInt32Value value) => $_setField(1105, value);
   @$pb.TagNumber(1105)
-  $core.bool hasDhcpSecsEq0() => $_has(228);
+  $core.bool hasDhcpSecsEq0() => $_has(285);
   @$pb.TagNumber(1105)
   void clearDhcpSecsEq0() => $_clearField(1105);
   @$pb.TagNumber(1105)
-  $4.UInt32Value ensureDhcpSecsEq0() => $_ensure(228);
+  $4.UInt32Value ensureDhcpSecsEq0() => $_ensure(285);
 
   @$pb.TagNumber(1106)
-  $4.UInt32Value get dhcpSecsGt0 => $_getN(229);
+  $4.UInt32Value get dhcpSecsGt0 => $_getN(286);
   @$pb.TagNumber(1106)
   set dhcpSecsGt0($4.UInt32Value value) => $_setField(1106, value);
   @$pb.TagNumber(1106)
-  $core.bool hasDhcpSecsGt0() => $_has(229);
+  $core.bool hasDhcpSecsGt0() => $_has(286);
   @$pb.TagNumber(1106)
   void clearDhcpSecsGt0() => $_clearField(1106);
   @$pb.TagNumber(1106)
-  $4.UInt32Value ensureDhcpSecsGt0() => $_ensure(229);
+  $4.UInt32Value ensureDhcpSecsGt0() => $_ensure(286);
 
   @$pb.TagNumber(1107)
-  $4.UInt32Value get dhcpSecsGt10 => $_getN(230);
+  $4.UInt32Value get dhcpSecsGt10 => $_getN(287);
   @$pb.TagNumber(1107)
   set dhcpSecsGt10($4.UInt32Value value) => $_setField(1107, value);
   @$pb.TagNumber(1107)
-  $core.bool hasDhcpSecsGt10() => $_has(230);
+  $core.bool hasDhcpSecsGt10() => $_has(287);
   @$pb.TagNumber(1107)
   void clearDhcpSecsGt10() => $_clearField(1107);
   @$pb.TagNumber(1107)
-  $4.UInt32Value ensureDhcpSecsGt10() => $_ensure(230);
+  $4.UInt32Value ensureDhcpSecsGt10() => $_ensure(287);
 
   @$pb.TagNumber(1108)
-  $4.UInt32Value get dhcpSecsGt30 => $_getN(231);
+  $4.UInt32Value get dhcpSecsGt30 => $_getN(288);
   @$pb.TagNumber(1108)
   set dhcpSecsGt30($4.UInt32Value value) => $_setField(1108, value);
   @$pb.TagNumber(1108)
-  $core.bool hasDhcpSecsGt30() => $_has(231);
+  $core.bool hasDhcpSecsGt30() => $_has(288);
   @$pb.TagNumber(1108)
   void clearDhcpSecsGt30() => $_clearField(1108);
   @$pb.TagNumber(1108)
-  $4.UInt32Value ensureDhcpSecsGt30() => $_ensure(231);
+  $4.UInt32Value ensureDhcpSecsGt30() => $_ensure(288);
 
   @$pb.TagNumber(1109)
-  $4.UInt32Value get dhcpSecsGt60 => $_getN(232);
+  $4.UInt32Value get dhcpSecsGt60 => $_getN(289);
   @$pb.TagNumber(1109)
   set dhcpSecsGt60($4.UInt32Value value) => $_setField(1109, value);
   @$pb.TagNumber(1109)
-  $core.bool hasDhcpSecsGt60() => $_has(232);
+  $core.bool hasDhcpSecsGt60() => $_has(289);
   @$pb.TagNumber(1109)
   void clearDhcpSecsGt60() => $_clearField(1109);
   @$pb.TagNumber(1109)
-  $4.UInt32Value ensureDhcpSecsGt60() => $_ensure(232);
+  $4.UInt32Value ensureDhcpSecsGt60() => $_ensure(289);
+
+  @$pb.TagNumber(1200)
+  $4.UInt32Value get dnsForwards => $_getN(290);
+  @$pb.TagNumber(1200)
+  set dnsForwards($4.UInt32Value value) => $_setField(1200, value);
+  @$pb.TagNumber(1200)
+  $core.bool hasDnsForwards() => $_has(290);
+  @$pb.TagNumber(1200)
+  void clearDnsForwards() => $_clearField(1200);
+  @$pb.TagNumber(1200)
+  $4.UInt32Value ensureDnsForwards() => $_ensure(290);
+
+  @$pb.TagNumber(1201)
+  $4.UInt32Value get dnsForwardsSuccess => $_getN(291);
+  @$pb.TagNumber(1201)
+  set dnsForwardsSuccess($4.UInt32Value value) => $_setField(1201, value);
+  @$pb.TagNumber(1201)
+  $core.bool hasDnsForwardsSuccess() => $_has(291);
+  @$pb.TagNumber(1201)
+  void clearDnsForwardsSuccess() => $_clearField(1201);
+  @$pb.TagNumber(1201)
+  $4.UInt32Value ensureDnsForwardsSuccess() => $_ensure(291);
+
+  @$pb.TagNumber(1202)
+  $4.UInt32Value get dnsForwardsServerFailure => $_getN(292);
+  @$pb.TagNumber(1202)
+  set dnsForwardsServerFailure($4.UInt32Value value) => $_setField(1202, value);
+  @$pb.TagNumber(1202)
+  $core.bool hasDnsForwardsServerFailure() => $_has(292);
+  @$pb.TagNumber(1202)
+  void clearDnsForwardsServerFailure() => $_clearField(1202);
+  @$pb.TagNumber(1202)
+  $4.UInt32Value ensureDnsForwardsServerFailure() => $_ensure(292);
+
+  @$pb.TagNumber(1203)
+  $4.UInt32Value get dnsForwardsNoServerResponse => $_getN(293);
+  @$pb.TagNumber(1203)
+  set dnsForwardsNoServerResponse($4.UInt32Value value) =>
+      $_setField(1203, value);
+  @$pb.TagNumber(1203)
+  $core.bool hasDnsForwardsNoServerResponse() => $_has(293);
+  @$pb.TagNumber(1203)
+  void clearDnsForwardsNoServerResponse() => $_clearField(1203);
+  @$pb.TagNumber(1203)
+  $4.UInt32Value ensureDnsForwardsNoServerResponse() => $_ensure(293);
+
+  @$pb.TagNumber(1204)
+  $4.UInt32Value get dnsForwardsSuccessOnDefaultBackup => $_getN(294);
+  @$pb.TagNumber(1204)
+  set dnsForwardsSuccessOnDefaultBackup($4.UInt32Value value) =>
+      $_setField(1204, value);
+  @$pb.TagNumber(1204)
+  $core.bool hasDnsForwardsSuccessOnDefaultBackup() => $_has(294);
+  @$pb.TagNumber(1204)
+  void clearDnsForwardsSuccessOnDefaultBackup() => $_clearField(1204);
+  @$pb.TagNumber(1204)
+  $4.UInt32Value ensureDnsForwardsSuccessOnDefaultBackup() => $_ensure(294);
+
+  @$pb.TagNumber(1205)
+  $4.UInt32Value get dnsForwardsDropped => $_getN(295);
+  @$pb.TagNumber(1205)
+  set dnsForwardsDropped($4.UInt32Value value) => $_setField(1205, value);
+  @$pb.TagNumber(1205)
+  $core.bool hasDnsForwardsDropped() => $_has(295);
+  @$pb.TagNumber(1205)
+  void clearDnsForwardsDropped() => $_clearField(1205);
+  @$pb.TagNumber(1205)
+  $4.UInt32Value ensureDnsForwardsDropped() => $_ensure(295);
+
+  @$pb.TagNumber(1206)
+  $4.UInt32Value get dnsForwardsWithBackup => $_getN(296);
+  @$pb.TagNumber(1206)
+  set dnsForwardsWithBackup($4.UInt32Value value) => $_setField(1206, value);
+  @$pb.TagNumber(1206)
+  $core.bool hasDnsForwardsWithBackup() => $_has(296);
+  @$pb.TagNumber(1206)
+  void clearDnsForwardsWithBackup() => $_clearField(1206);
+  @$pb.TagNumber(1206)
+  $4.UInt32Value ensureDnsForwardsWithBackup() => $_ensure(296);
 
   @$pb.TagNumber(10000)
-  $5.TimestampInfo get timestamp => $_getN(233);
+  $5.TimestampInfo get timestamp => $_getN(297);
   @$pb.TagNumber(10000)
   set timestamp($5.TimestampInfo value) => $_setField(10000, value);
   @$pb.TagNumber(10000)
-  $core.bool hasTimestamp() => $_has(233);
+  $core.bool hasTimestamp() => $_has(297);
   @$pb.TagNumber(10000)
   void clearTimestamp() => $_clearField(10000);
   @$pb.TagNumber(10000)
-  $5.TimestampInfo ensureTimestamp() => $_ensure(233);
+  $5.TimestampInfo ensureTimestamp() => $_ensure(297);
 }
 
 class starlink_router_alerts extends $pb.GeneratedMessage {
@@ -9981,6 +11899,9 @@ class starlink_router_alerts extends $pb.GeneratedMessage {
     $core.bool? active,
     $5.TimestampInfo? start,
     $5.TimestampInfo? end,
+    $core.String? hardware,
+    $core.String? software,
+    $core.String? details,
   }) {
     final result = create();
     if (name != null) result.name = name;
@@ -9988,6 +11909,9 @@ class starlink_router_alerts extends $pb.GeneratedMessage {
     if (active != null) result.active = active;
     if (start != null) result.start = start;
     if (end != null) result.end = end;
+    if (hardware != null) result.hardware = hardware;
+    if (software != null) result.software = software;
+    if (details != null) result.details = details;
     return result;
   }
 
@@ -10012,6 +11936,9 @@ class starlink_router_alerts extends $pb.GeneratedMessage {
         subBuilder: $5.TimestampInfo.create)
     ..aOM<$5.TimestampInfo>(5, _omitFieldNames ? '' : 'end',
         subBuilder: $5.TimestampInfo.create)
+    ..aOS(6, _omitFieldNames ? '' : 'hardware')
+    ..aOS(7, _omitFieldNames ? '' : 'software')
+    ..aOS(8, _omitFieldNames ? '' : 'details')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -10082,6 +12009,33 @@ class starlink_router_alerts extends $pb.GeneratedMessage {
   void clearEnd() => $_clearField(5);
   @$pb.TagNumber(5)
   $5.TimestampInfo ensureEnd() => $_ensure(4);
+
+  @$pb.TagNumber(6)
+  $core.String get hardware => $_getSZ(5);
+  @$pb.TagNumber(6)
+  set hardware($core.String value) => $_setString(5, value);
+  @$pb.TagNumber(6)
+  $core.bool hasHardware() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearHardware() => $_clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.String get software => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set software($core.String value) => $_setString(6, value);
+  @$pb.TagNumber(7)
+  $core.bool hasSoftware() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearSoftware() => $_clearField(7);
+
+  @$pb.TagNumber(8)
+  $core.String get details => $_getSZ(7);
+  @$pb.TagNumber(8)
+  set details($core.String value) => $_setString(7, value);
+  @$pb.TagNumber(8)
+  $core.bool hasDetails() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearDetails() => $_clearField(8);
 }
 
 class starlink_router_client_speedtests extends $pb.GeneratedMessage {
@@ -10118,6 +12072,14 @@ class starlink_router_client_speedtests extends $pb.GeneratedMessage {
     $4.UInt32Value? clientRxMcs,
     $4.StringValue? clientAppVersion,
     $4.UInt32Value? clientAppBuild,
+    $4.UInt64Value? routerDownloadTotalBytesTransferred,
+    $4.UInt32Value? routerDownloadBytesTransferredDurationS,
+    $4.UInt64Value? routerDownloadTargetIpv6Low,
+    $4.UInt64Value? routerDownloadTargetIpv6High,
+    $4.UInt64Value? routerUploadTotalBytesTransferred,
+    $4.UInt32Value? routerUploadBytesTransferredDurationS,
+    $4.UInt64Value? routerUploadTargetIpv6Low,
+    $4.UInt64Value? routerUploadTargetIpv6High,
   }) {
     final result = create();
     if (id != null) result.id = id;
@@ -10165,6 +12127,26 @@ class starlink_router_client_speedtests extends $pb.GeneratedMessage {
     if (clientRxMcs != null) result.clientRxMcs = clientRxMcs;
     if (clientAppVersion != null) result.clientAppVersion = clientAppVersion;
     if (clientAppBuild != null) result.clientAppBuild = clientAppBuild;
+    if (routerDownloadTotalBytesTransferred != null)
+      result.routerDownloadTotalBytesTransferred =
+          routerDownloadTotalBytesTransferred;
+    if (routerDownloadBytesTransferredDurationS != null)
+      result.routerDownloadBytesTransferredDurationS =
+          routerDownloadBytesTransferredDurationS;
+    if (routerDownloadTargetIpv6Low != null)
+      result.routerDownloadTargetIpv6Low = routerDownloadTargetIpv6Low;
+    if (routerDownloadTargetIpv6High != null)
+      result.routerDownloadTargetIpv6High = routerDownloadTargetIpv6High;
+    if (routerUploadTotalBytesTransferred != null)
+      result.routerUploadTotalBytesTransferred =
+          routerUploadTotalBytesTransferred;
+    if (routerUploadBytesTransferredDurationS != null)
+      result.routerUploadBytesTransferredDurationS =
+          routerUploadBytesTransferredDurationS;
+    if (routerUploadTargetIpv6Low != null)
+      result.routerUploadTargetIpv6Low = routerUploadTargetIpv6Low;
+    if (routerUploadTargetIpv6High != null)
+      result.routerUploadTargetIpv6High = routerUploadTargetIpv6High;
     return result;
   }
 
@@ -10246,6 +12228,30 @@ class starlink_router_client_speedtests extends $pb.GeneratedMessage {
         subBuilder: $4.StringValue.create)
     ..aOM<$4.UInt32Value>(35, _omitFieldNames ? '' : 'clientAppBuild',
         subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt64Value>(
+        40, _omitFieldNames ? '' : 'routerDownloadTotalBytesTransferred',
+        subBuilder: $4.UInt64Value.create)
+    ..aOM<$4.UInt32Value>(
+        41, _omitFieldNames ? '' : 'routerDownloadBytesTransferredDurationS',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt64Value>(
+        42, _omitFieldNames ? '' : 'routerDownloadTargetIpv6Low',
+        subBuilder: $4.UInt64Value.create)
+    ..aOM<$4.UInt64Value>(
+        43, _omitFieldNames ? '' : 'routerDownloadTargetIpv6High',
+        subBuilder: $4.UInt64Value.create)
+    ..aOM<$4.UInt64Value>(
+        44, _omitFieldNames ? '' : 'routerUploadTotalBytesTransferred',
+        subBuilder: $4.UInt64Value.create)
+    ..aOM<$4.UInt32Value>(
+        45, _omitFieldNames ? '' : 'routerUploadBytesTransferredDurationS',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt64Value>(
+        46, _omitFieldNames ? '' : 'routerUploadTargetIpv6Low',
+        subBuilder: $4.UInt64Value.create)
+    ..aOM<$4.UInt64Value>(
+        47, _omitFieldNames ? '' : 'routerUploadTargetIpv6High',
+        subBuilder: $4.UInt64Value.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -10618,6 +12624,101 @@ class starlink_router_client_speedtests extends $pb.GeneratedMessage {
   void clearClientAppBuild() => $_clearField(35);
   @$pb.TagNumber(35)
   $4.UInt32Value ensureClientAppBuild() => $_ensure(31);
+
+  @$pb.TagNumber(40)
+  $4.UInt64Value get routerDownloadTotalBytesTransferred => $_getN(32);
+  @$pb.TagNumber(40)
+  set routerDownloadTotalBytesTransferred($4.UInt64Value value) =>
+      $_setField(40, value);
+  @$pb.TagNumber(40)
+  $core.bool hasRouterDownloadTotalBytesTransferred() => $_has(32);
+  @$pb.TagNumber(40)
+  void clearRouterDownloadTotalBytesTransferred() => $_clearField(40);
+  @$pb.TagNumber(40)
+  $4.UInt64Value ensureRouterDownloadTotalBytesTransferred() => $_ensure(32);
+
+  @$pb.TagNumber(41)
+  $4.UInt32Value get routerDownloadBytesTransferredDurationS => $_getN(33);
+  @$pb.TagNumber(41)
+  set routerDownloadBytesTransferredDurationS($4.UInt32Value value) =>
+      $_setField(41, value);
+  @$pb.TagNumber(41)
+  $core.bool hasRouterDownloadBytesTransferredDurationS() => $_has(33);
+  @$pb.TagNumber(41)
+  void clearRouterDownloadBytesTransferredDurationS() => $_clearField(41);
+  @$pb.TagNumber(41)
+  $4.UInt32Value ensureRouterDownloadBytesTransferredDurationS() =>
+      $_ensure(33);
+
+  @$pb.TagNumber(42)
+  $4.UInt64Value get routerDownloadTargetIpv6Low => $_getN(34);
+  @$pb.TagNumber(42)
+  set routerDownloadTargetIpv6Low($4.UInt64Value value) =>
+      $_setField(42, value);
+  @$pb.TagNumber(42)
+  $core.bool hasRouterDownloadTargetIpv6Low() => $_has(34);
+  @$pb.TagNumber(42)
+  void clearRouterDownloadTargetIpv6Low() => $_clearField(42);
+  @$pb.TagNumber(42)
+  $4.UInt64Value ensureRouterDownloadTargetIpv6Low() => $_ensure(34);
+
+  @$pb.TagNumber(43)
+  $4.UInt64Value get routerDownloadTargetIpv6High => $_getN(35);
+  @$pb.TagNumber(43)
+  set routerDownloadTargetIpv6High($4.UInt64Value value) =>
+      $_setField(43, value);
+  @$pb.TagNumber(43)
+  $core.bool hasRouterDownloadTargetIpv6High() => $_has(35);
+  @$pb.TagNumber(43)
+  void clearRouterDownloadTargetIpv6High() => $_clearField(43);
+  @$pb.TagNumber(43)
+  $4.UInt64Value ensureRouterDownloadTargetIpv6High() => $_ensure(35);
+
+  @$pb.TagNumber(44)
+  $4.UInt64Value get routerUploadTotalBytesTransferred => $_getN(36);
+  @$pb.TagNumber(44)
+  set routerUploadTotalBytesTransferred($4.UInt64Value value) =>
+      $_setField(44, value);
+  @$pb.TagNumber(44)
+  $core.bool hasRouterUploadTotalBytesTransferred() => $_has(36);
+  @$pb.TagNumber(44)
+  void clearRouterUploadTotalBytesTransferred() => $_clearField(44);
+  @$pb.TagNumber(44)
+  $4.UInt64Value ensureRouterUploadTotalBytesTransferred() => $_ensure(36);
+
+  @$pb.TagNumber(45)
+  $4.UInt32Value get routerUploadBytesTransferredDurationS => $_getN(37);
+  @$pb.TagNumber(45)
+  set routerUploadBytesTransferredDurationS($4.UInt32Value value) =>
+      $_setField(45, value);
+  @$pb.TagNumber(45)
+  $core.bool hasRouterUploadBytesTransferredDurationS() => $_has(37);
+  @$pb.TagNumber(45)
+  void clearRouterUploadBytesTransferredDurationS() => $_clearField(45);
+  @$pb.TagNumber(45)
+  $4.UInt32Value ensureRouterUploadBytesTransferredDurationS() => $_ensure(37);
+
+  @$pb.TagNumber(46)
+  $4.UInt64Value get routerUploadTargetIpv6Low => $_getN(38);
+  @$pb.TagNumber(46)
+  set routerUploadTargetIpv6Low($4.UInt64Value value) => $_setField(46, value);
+  @$pb.TagNumber(46)
+  $core.bool hasRouterUploadTargetIpv6Low() => $_has(38);
+  @$pb.TagNumber(46)
+  void clearRouterUploadTargetIpv6Low() => $_clearField(46);
+  @$pb.TagNumber(46)
+  $4.UInt64Value ensureRouterUploadTargetIpv6Low() => $_ensure(38);
+
+  @$pb.TagNumber(47)
+  $4.UInt64Value get routerUploadTargetIpv6High => $_getN(39);
+  @$pb.TagNumber(47)
+  set routerUploadTargetIpv6High($4.UInt64Value value) => $_setField(47, value);
+  @$pb.TagNumber(47)
+  $core.bool hasRouterUploadTargetIpv6High() => $_has(39);
+  @$pb.TagNumber(47)
+  void clearRouterUploadTargetIpv6High() => $_clearField(47);
+  @$pb.TagNumber(47)
+  $4.UInt64Value ensureRouterUploadTargetIpv6High() => $_ensure(39);
 }
 
 class StarlinkRouterClients extends $pb.GeneratedMessage {
@@ -10626,6 +12727,7 @@ class StarlinkRouterClients extends $pb.GeneratedMessage {
     $5.TimestampInfo? timestamp,
     $core.int? clientId,
     $core.String? clientTelemIndex,
+    $4.BoolValue? usingMlo,
     $4.StringValue? oui,
     $4.StringValue? upstreamId,
     $4.BoolValue? isRepeater,
@@ -10655,12 +12757,51 @@ class StarlinkRouterClients extends $pb.GeneratedMessage {
     $4.FloatValue? siteSurveyRssi,
     $4.FloatValue? siteSurveyEstRxRate,
     $4.UInt32Value? estControllerThroughputMbps,
+    $4.BoolValue? hasDhcpV4Lease,
+    $4.StringValue? ipv4Address,
+    $4.BoolValue? hasHostname,
+    $4.BoolValue? dhcpV4LeaseIsActive,
+    $4.BoolValue? dhcpV4LeaseWasRenewed,
+    $4.FloatValue? secondsUntilDhcpV4LeaseExpires,
+    $4.UInt32Value? routerUptimeS,
+    $4.UInt32Value? dissociationsUnder10s,
+    $4.UInt32Value? dissociationsUnder30s,
+    $4.UInt32Value? dissociationsUnder60s,
+    $4.UInt32Value? dissociationsUnder120s,
+    $4.FloatValue? secondsToConnTcpIpv4,
+    $4.FloatValue? secondsToConnTcpIpv6,
+    $4.FloatValue? secondsToConnUdpIpv4,
+    $4.FloatValue? secondsToConnUdpIpv6,
+    $4.UInt32Value? flowsTcpIpv4,
+    $4.UInt32Value? flowsTcpIpv6,
+    $4.UInt32Value? flowsUdpIpv4,
+    $4.UInt32Value? flowsUdpIpv6,
+    $5.TimestampInfo? throughputLimitedLastFired,
+    $4.UInt32Value? link2ghzRadioChannel,
+    $4.FloatValue? link2ghzRssi,
+    $4.UInt32Value? link2ghzRxMcs,
+    $4.UInt32Value? link2ghzTxMcs,
+    $4.UInt32Value? link2ghzRxRate,
+    $4.UInt32Value? link2ghzTxRate,
+    $4.UInt32Value? link2ghzRxBandwidth,
+    $4.UInt32Value? link2ghzRxSpatialStreams,
+    $4.UInt32Value? link2ghzRxPhyMode,
+    $4.UInt32Value? link5ghzRadioChannel,
+    $4.FloatValue? link5ghzRssi,
+    $4.UInt32Value? link5ghzRxMcs,
+    $4.UInt32Value? link5ghzTxMcs,
+    $4.UInt32Value? link5ghzRxRate,
+    $4.UInt32Value? link5ghzTxRate,
+    $4.UInt32Value? link5ghzRxBandwidth,
+    $4.UInt32Value? link5ghzRxSpatialStreams,
+    $4.UInt32Value? link5ghzRxPhyMode,
   }) {
     final result = create();
     if (routerId != null) result.routerId = routerId;
     if (timestamp != null) result.timestamp = timestamp;
     if (clientId != null) result.clientId = clientId;
     if (clientTelemIndex != null) result.clientTelemIndex = clientTelemIndex;
+    if (usingMlo != null) result.usingMlo = usingMlo;
     if (oui != null) result.oui = oui;
     if (upstreamId != null) result.upstreamId = upstreamId;
     if (isRepeater != null) result.isRepeater = isRepeater;
@@ -10695,6 +12836,62 @@ class StarlinkRouterClients extends $pb.GeneratedMessage {
       result.siteSurveyEstRxRate = siteSurveyEstRxRate;
     if (estControllerThroughputMbps != null)
       result.estControllerThroughputMbps = estControllerThroughputMbps;
+    if (hasDhcpV4Lease != null) result.hasDhcpV4Lease = hasDhcpV4Lease;
+    if (ipv4Address != null) result.ipv4Address = ipv4Address;
+    if (hasHostname != null) result.hasHostname = hasHostname;
+    if (dhcpV4LeaseIsActive != null)
+      result.dhcpV4LeaseIsActive = dhcpV4LeaseIsActive;
+    if (dhcpV4LeaseWasRenewed != null)
+      result.dhcpV4LeaseWasRenewed = dhcpV4LeaseWasRenewed;
+    if (secondsUntilDhcpV4LeaseExpires != null)
+      result.secondsUntilDhcpV4LeaseExpires = secondsUntilDhcpV4LeaseExpires;
+    if (routerUptimeS != null) result.routerUptimeS = routerUptimeS;
+    if (dissociationsUnder10s != null)
+      result.dissociationsUnder10s = dissociationsUnder10s;
+    if (dissociationsUnder30s != null)
+      result.dissociationsUnder30s = dissociationsUnder30s;
+    if (dissociationsUnder60s != null)
+      result.dissociationsUnder60s = dissociationsUnder60s;
+    if (dissociationsUnder120s != null)
+      result.dissociationsUnder120s = dissociationsUnder120s;
+    if (secondsToConnTcpIpv4 != null)
+      result.secondsToConnTcpIpv4 = secondsToConnTcpIpv4;
+    if (secondsToConnTcpIpv6 != null)
+      result.secondsToConnTcpIpv6 = secondsToConnTcpIpv6;
+    if (secondsToConnUdpIpv4 != null)
+      result.secondsToConnUdpIpv4 = secondsToConnUdpIpv4;
+    if (secondsToConnUdpIpv6 != null)
+      result.secondsToConnUdpIpv6 = secondsToConnUdpIpv6;
+    if (flowsTcpIpv4 != null) result.flowsTcpIpv4 = flowsTcpIpv4;
+    if (flowsTcpIpv6 != null) result.flowsTcpIpv6 = flowsTcpIpv6;
+    if (flowsUdpIpv4 != null) result.flowsUdpIpv4 = flowsUdpIpv4;
+    if (flowsUdpIpv6 != null) result.flowsUdpIpv6 = flowsUdpIpv6;
+    if (throughputLimitedLastFired != null)
+      result.throughputLimitedLastFired = throughputLimitedLastFired;
+    if (link2ghzRadioChannel != null)
+      result.link2ghzRadioChannel = link2ghzRadioChannel;
+    if (link2ghzRssi != null) result.link2ghzRssi = link2ghzRssi;
+    if (link2ghzRxMcs != null) result.link2ghzRxMcs = link2ghzRxMcs;
+    if (link2ghzTxMcs != null) result.link2ghzTxMcs = link2ghzTxMcs;
+    if (link2ghzRxRate != null) result.link2ghzRxRate = link2ghzRxRate;
+    if (link2ghzTxRate != null) result.link2ghzTxRate = link2ghzTxRate;
+    if (link2ghzRxBandwidth != null)
+      result.link2ghzRxBandwidth = link2ghzRxBandwidth;
+    if (link2ghzRxSpatialStreams != null)
+      result.link2ghzRxSpatialStreams = link2ghzRxSpatialStreams;
+    if (link2ghzRxPhyMode != null) result.link2ghzRxPhyMode = link2ghzRxPhyMode;
+    if (link5ghzRadioChannel != null)
+      result.link5ghzRadioChannel = link5ghzRadioChannel;
+    if (link5ghzRssi != null) result.link5ghzRssi = link5ghzRssi;
+    if (link5ghzRxMcs != null) result.link5ghzRxMcs = link5ghzRxMcs;
+    if (link5ghzTxMcs != null) result.link5ghzTxMcs = link5ghzTxMcs;
+    if (link5ghzRxRate != null) result.link5ghzRxRate = link5ghzRxRate;
+    if (link5ghzTxRate != null) result.link5ghzTxRate = link5ghzTxRate;
+    if (link5ghzRxBandwidth != null)
+      result.link5ghzRxBandwidth = link5ghzRxBandwidth;
+    if (link5ghzRxSpatialStreams != null)
+      result.link5ghzRxSpatialStreams = link5ghzRxSpatialStreams;
+    if (link5ghzRxPhyMode != null) result.link5ghzRxPhyMode = link5ghzRxPhyMode;
     return result;
   }
 
@@ -10717,6 +12914,8 @@ class StarlinkRouterClients extends $pb.GeneratedMessage {
         subBuilder: $5.TimestampInfo.create)
     ..aI(3, _omitFieldNames ? '' : 'clientId', fieldType: $pb.PbFieldType.OU3)
     ..aOS(4, _omitFieldNames ? '' : 'clientTelemIndex')
+    ..aOM<$4.BoolValue>(5, _omitFieldNames ? '' : 'usingMlo',
+        subBuilder: $4.BoolValue.create)
     ..aOM<$4.StringValue>(101, _omitFieldNames ? '' : 'oui',
         subBuilder: $4.StringValue.create)
     ..aOM<$4.StringValue>(102, _omitFieldNames ? '' : 'upstreamId',
@@ -10776,6 +12975,89 @@ class StarlinkRouterClients extends $pb.GeneratedMessage {
     ..aOM<$4.UInt32Value>(
         129, _omitFieldNames ? '' : 'estControllerThroughputMbps',
         subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.BoolValue>(130, _omitFieldNames ? '' : 'hasDhcpV4Lease',
+        subBuilder: $4.BoolValue.create)
+    ..aOM<$4.StringValue>(131, _omitFieldNames ? '' : 'ipv4Address',
+        subBuilder: $4.StringValue.create)
+    ..aOM<$4.BoolValue>(132, _omitFieldNames ? '' : 'hasHostname',
+        subBuilder: $4.BoolValue.create)
+    ..aOM<$4.BoolValue>(133, _omitFieldNames ? '' : 'dhcpV4LeaseIsActive',
+        subBuilder: $4.BoolValue.create)
+    ..aOM<$4.BoolValue>(134, _omitFieldNames ? '' : 'dhcpV4LeaseWasRenewed',
+        subBuilder: $4.BoolValue.create)
+    ..aOM<$4.FloatValue>(
+        135, _omitFieldNames ? '' : 'secondsUntilDhcpV4LeaseExpires',
+        subBuilder: $4.FloatValue.create)
+    ..aOM<$4.UInt32Value>(137, _omitFieldNames ? '' : 'routerUptimeS',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(138, _omitFieldNames ? '' : 'dissociationsUnder10s',
+        protoName: 'dissociations_under_10s', subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(139, _omitFieldNames ? '' : 'dissociationsUnder30s',
+        protoName: 'dissociations_under_30s', subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(140, _omitFieldNames ? '' : 'dissociationsUnder60s',
+        protoName: 'dissociations_under_60s', subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(141, _omitFieldNames ? '' : 'dissociationsUnder120s',
+        protoName: 'dissociations_under_120s',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.FloatValue>(142, _omitFieldNames ? '' : 'secondsToConnTcpIpv4',
+        subBuilder: $4.FloatValue.create)
+    ..aOM<$4.FloatValue>(143, _omitFieldNames ? '' : 'secondsToConnTcpIpv6',
+        subBuilder: $4.FloatValue.create)
+    ..aOM<$4.FloatValue>(144, _omitFieldNames ? '' : 'secondsToConnUdpIpv4',
+        subBuilder: $4.FloatValue.create)
+    ..aOM<$4.FloatValue>(145, _omitFieldNames ? '' : 'secondsToConnUdpIpv6',
+        subBuilder: $4.FloatValue.create)
+    ..aOM<$4.UInt32Value>(146, _omitFieldNames ? '' : 'flowsTcpIpv4',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(147, _omitFieldNames ? '' : 'flowsTcpIpv6',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(148, _omitFieldNames ? '' : 'flowsUdpIpv4',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(149, _omitFieldNames ? '' : 'flowsUdpIpv6',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$5.TimestampInfo>(
+        150, _omitFieldNames ? '' : 'throughputLimitedLastFired',
+        subBuilder: $5.TimestampInfo.create)
+    ..aOM<$4.UInt32Value>(160, _omitFieldNames ? '' : 'link2ghzRadioChannel',
+        protoName: 'link_2ghz_radio_channel', subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.FloatValue>(161, _omitFieldNames ? '' : 'link2ghzRssi',
+        protoName: 'link_2ghz_rssi', subBuilder: $4.FloatValue.create)
+    ..aOM<$4.UInt32Value>(162, _omitFieldNames ? '' : 'link2ghzRxMcs',
+        protoName: 'link_2ghz_rx_mcs', subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(163, _omitFieldNames ? '' : 'link2ghzTxMcs',
+        protoName: 'link_2ghz_tx_mcs', subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(164, _omitFieldNames ? '' : 'link2ghzRxRate',
+        protoName: 'link_2ghz_rx_rate', subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(165, _omitFieldNames ? '' : 'link2ghzTxRate',
+        protoName: 'link_2ghz_tx_rate', subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(166, _omitFieldNames ? '' : 'link2ghzRxBandwidth',
+        protoName: 'link_2ghz_rx_bandwidth', subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(
+        167, _omitFieldNames ? '' : 'link2ghzRxSpatialStreams',
+        protoName: 'link_2ghz_rx_spatial_streams',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(168, _omitFieldNames ? '' : 'link2ghzRxPhyMode',
+        protoName: 'link_2ghz_rx_phy_mode', subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(170, _omitFieldNames ? '' : 'link5ghzRadioChannel',
+        protoName: 'link_5ghz_radio_channel', subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.FloatValue>(171, _omitFieldNames ? '' : 'link5ghzRssi',
+        protoName: 'link_5ghz_rssi', subBuilder: $4.FloatValue.create)
+    ..aOM<$4.UInt32Value>(172, _omitFieldNames ? '' : 'link5ghzRxMcs',
+        protoName: 'link_5ghz_rx_mcs', subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(173, _omitFieldNames ? '' : 'link5ghzTxMcs',
+        protoName: 'link_5ghz_tx_mcs', subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(174, _omitFieldNames ? '' : 'link5ghzRxRate',
+        protoName: 'link_5ghz_rx_rate', subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(175, _omitFieldNames ? '' : 'link5ghzTxRate',
+        protoName: 'link_5ghz_tx_rate', subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(176, _omitFieldNames ? '' : 'link5ghzRxBandwidth',
+        protoName: 'link_5ghz_rx_bandwidth', subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(
+        177, _omitFieldNames ? '' : 'link5ghzRxSpatialStreams',
+        protoName: 'link_5ghz_rx_spatial_streams',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(178, _omitFieldNames ? '' : 'link5ghzRxPhyMode',
+        protoName: 'link_5ghz_rx_phy_mode', subBuilder: $4.UInt32Value.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -10836,331 +13118,1190 @@ class StarlinkRouterClients extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearClientTelemIndex() => $_clearField(4);
 
+  @$pb.TagNumber(5)
+  $4.BoolValue get usingMlo => $_getN(4);
+  @$pb.TagNumber(5)
+  set usingMlo($4.BoolValue value) => $_setField(5, value);
+  @$pb.TagNumber(5)
+  $core.bool hasUsingMlo() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearUsingMlo() => $_clearField(5);
+  @$pb.TagNumber(5)
+  $4.BoolValue ensureUsingMlo() => $_ensure(4);
+
   @$pb.TagNumber(101)
-  $4.StringValue get oui => $_getN(4);
+  $4.StringValue get oui => $_getN(5);
   @$pb.TagNumber(101)
   set oui($4.StringValue value) => $_setField(101, value);
   @$pb.TagNumber(101)
-  $core.bool hasOui() => $_has(4);
+  $core.bool hasOui() => $_has(5);
   @$pb.TagNumber(101)
   void clearOui() => $_clearField(101);
   @$pb.TagNumber(101)
-  $4.StringValue ensureOui() => $_ensure(4);
+  $4.StringValue ensureOui() => $_ensure(5);
 
   @$pb.TagNumber(102)
-  $4.StringValue get upstreamId => $_getN(5);
+  $4.StringValue get upstreamId => $_getN(6);
   @$pb.TagNumber(102)
   set upstreamId($4.StringValue value) => $_setField(102, value);
   @$pb.TagNumber(102)
-  $core.bool hasUpstreamId() => $_has(5);
+  $core.bool hasUpstreamId() => $_has(6);
   @$pb.TagNumber(102)
   void clearUpstreamId() => $_clearField(102);
   @$pb.TagNumber(102)
-  $4.StringValue ensureUpstreamId() => $_ensure(5);
+  $4.StringValue ensureUpstreamId() => $_ensure(6);
 
   @$pb.TagNumber(103)
-  $4.BoolValue get isRepeater => $_getN(6);
+  $4.BoolValue get isRepeater => $_getN(7);
   @$pb.TagNumber(103)
   set isRepeater($4.BoolValue value) => $_setField(103, value);
   @$pb.TagNumber(103)
-  $core.bool hasIsRepeater() => $_has(6);
+  $core.bool hasIsRepeater() => $_has(7);
   @$pb.TagNumber(103)
   void clearIsRepeater() => $_clearField(103);
   @$pb.TagNumber(103)
-  $4.BoolValue ensureIsRepeater() => $_ensure(6);
+  $4.BoolValue ensureIsRepeater() => $_ensure(7);
 
   @$pb.TagNumber(104)
-  $4.UInt32Value get connectedS => $_getN(7);
+  $4.UInt32Value get connectedS => $_getN(8);
   @$pb.TagNumber(104)
   set connectedS($4.UInt32Value value) => $_setField(104, value);
   @$pb.TagNumber(104)
-  $core.bool hasConnectedS() => $_has(7);
+  $core.bool hasConnectedS() => $_has(8);
   @$pb.TagNumber(104)
   void clearConnectedS() => $_clearField(104);
   @$pb.TagNumber(104)
-  $4.UInt32Value ensureConnectedS() => $_ensure(7);
+  $4.UInt32Value ensureConnectedS() => $_ensure(8);
 
   @$pb.TagNumber(105)
-  $4.StringValue get interface => $_getN(8);
+  $4.StringValue get interface => $_getN(9);
   @$pb.TagNumber(105)
   set interface($4.StringValue value) => $_setField(105, value);
   @$pb.TagNumber(105)
-  $core.bool hasInterface() => $_has(8);
+  $core.bool hasInterface() => $_has(9);
   @$pb.TagNumber(105)
   void clearInterface() => $_clearField(105);
   @$pb.TagNumber(105)
-  $4.StringValue ensureInterface() => $_ensure(8);
+  $4.StringValue ensureInterface() => $_ensure(9);
 
   @$pb.TagNumber(106)
-  $4.UInt32Value get radioChannel => $_getN(9);
+  $4.UInt32Value get radioChannel => $_getN(10);
   @$pb.TagNumber(106)
   set radioChannel($4.UInt32Value value) => $_setField(106, value);
   @$pb.TagNumber(106)
-  $core.bool hasRadioChannel() => $_has(9);
+  $core.bool hasRadioChannel() => $_has(10);
   @$pb.TagNumber(106)
   void clearRadioChannel() => $_clearField(106);
   @$pb.TagNumber(106)
-  $4.UInt32Value ensureRadioChannel() => $_ensure(9);
+  $4.UInt32Value ensureRadioChannel() => $_ensure(10);
 
   @$pb.TagNumber(107)
-  $4.FloatValue get rssi => $_getN(10);
+  $4.FloatValue get rssi => $_getN(11);
   @$pb.TagNumber(107)
   set rssi($4.FloatValue value) => $_setField(107, value);
   @$pb.TagNumber(107)
-  $core.bool hasRssi() => $_has(10);
+  $core.bool hasRssi() => $_has(11);
   @$pb.TagNumber(107)
   void clearRssi() => $_clearField(107);
   @$pb.TagNumber(107)
-  $4.FloatValue ensureRssi() => $_ensure(10);
+  $4.FloatValue ensureRssi() => $_ensure(11);
 
   @$pb.TagNumber(108)
-  $4.UInt32Value get rxMcs => $_getN(11);
+  $4.UInt32Value get rxMcs => $_getN(12);
   @$pb.TagNumber(108)
   set rxMcs($4.UInt32Value value) => $_setField(108, value);
   @$pb.TagNumber(108)
-  $core.bool hasRxMcs() => $_has(11);
+  $core.bool hasRxMcs() => $_has(12);
   @$pb.TagNumber(108)
   void clearRxMcs() => $_clearField(108);
   @$pb.TagNumber(108)
-  $4.UInt32Value ensureRxMcs() => $_ensure(11);
+  $4.UInt32Value ensureRxMcs() => $_ensure(12);
 
   @$pb.TagNumber(109)
-  $4.UInt32Value get txMcs => $_getN(12);
+  $4.UInt32Value get txMcs => $_getN(13);
   @$pb.TagNumber(109)
   set txMcs($4.UInt32Value value) => $_setField(109, value);
   @$pb.TagNumber(109)
-  $core.bool hasTxMcs() => $_has(12);
+  $core.bool hasTxMcs() => $_has(13);
   @$pb.TagNumber(109)
   void clearTxMcs() => $_clearField(109);
   @$pb.TagNumber(109)
-  $4.UInt32Value ensureTxMcs() => $_ensure(12);
+  $4.UInt32Value ensureTxMcs() => $_ensure(13);
 
   @$pb.TagNumber(110)
-  $4.UInt32Value get rxRate => $_getN(13);
+  $4.UInt32Value get rxRate => $_getN(14);
   @$pb.TagNumber(110)
   set rxRate($4.UInt32Value value) => $_setField(110, value);
   @$pb.TagNumber(110)
-  $core.bool hasRxRate() => $_has(13);
+  $core.bool hasRxRate() => $_has(14);
   @$pb.TagNumber(110)
   void clearRxRate() => $_clearField(110);
   @$pb.TagNumber(110)
-  $4.UInt32Value ensureRxRate() => $_ensure(13);
+  $4.UInt32Value ensureRxRate() => $_ensure(14);
 
   @$pb.TagNumber(111)
-  $4.UInt32Value get txRate => $_getN(14);
+  $4.UInt32Value get txRate => $_getN(15);
   @$pb.TagNumber(111)
   set txRate($4.UInt32Value value) => $_setField(111, value);
   @$pb.TagNumber(111)
-  $core.bool hasTxRate() => $_has(14);
+  $core.bool hasTxRate() => $_has(15);
   @$pb.TagNumber(111)
   void clearTxRate() => $_clearField(111);
   @$pb.TagNumber(111)
-  $4.UInt32Value ensureTxRate() => $_ensure(14);
+  $4.UInt32Value ensureTxRate() => $_ensure(15);
 
   @$pb.TagNumber(112)
-  $4.UInt32Value get rxBandwidth => $_getN(15);
+  $4.UInt32Value get rxBandwidth => $_getN(16);
   @$pb.TagNumber(112)
   set rxBandwidth($4.UInt32Value value) => $_setField(112, value);
   @$pb.TagNumber(112)
-  $core.bool hasRxBandwidth() => $_has(15);
+  $core.bool hasRxBandwidth() => $_has(16);
   @$pb.TagNumber(112)
   void clearRxBandwidth() => $_clearField(112);
   @$pb.TagNumber(112)
-  $4.UInt32Value ensureRxBandwidth() => $_ensure(15);
+  $4.UInt32Value ensureRxBandwidth() => $_ensure(16);
 
   @$pb.TagNumber(113)
-  $4.UInt32Value get rxSpatialStreams => $_getN(16);
+  $4.UInt32Value get rxSpatialStreams => $_getN(17);
   @$pb.TagNumber(113)
   set rxSpatialStreams($4.UInt32Value value) => $_setField(113, value);
   @$pb.TagNumber(113)
-  $core.bool hasRxSpatialStreams() => $_has(16);
+  $core.bool hasRxSpatialStreams() => $_has(17);
   @$pb.TagNumber(113)
   void clearRxSpatialStreams() => $_clearField(113);
   @$pb.TagNumber(113)
-  $4.UInt32Value ensureRxSpatialStreams() => $_ensure(16);
+  $4.UInt32Value ensureRxSpatialStreams() => $_ensure(17);
 
   @$pb.TagNumber(114)
-  $4.UInt32Value get rxPhyMode => $_getN(17);
+  $4.UInt32Value get rxPhyMode => $_getN(18);
   @$pb.TagNumber(114)
   set rxPhyMode($4.UInt32Value value) => $_setField(114, value);
   @$pb.TagNumber(114)
-  $core.bool hasRxPhyMode() => $_has(17);
+  $core.bool hasRxPhyMode() => $_has(18);
   @$pb.TagNumber(114)
   void clearRxPhyMode() => $_clearField(114);
   @$pb.TagNumber(114)
-  $4.UInt32Value ensureRxPhyMode() => $_ensure(17);
+  $4.UInt32Value ensureRxPhyMode() => $_ensure(18);
 
   @$pb.TagNumber(115)
-  $4.FloatValue get pingDropRateLast1h => $_getN(18);
+  $4.FloatValue get pingDropRateLast1h => $_getN(19);
   @$pb.TagNumber(115)
   set pingDropRateLast1h($4.FloatValue value) => $_setField(115, value);
   @$pb.TagNumber(115)
-  $core.bool hasPingDropRateLast1h() => $_has(18);
+  $core.bool hasPingDropRateLast1h() => $_has(19);
   @$pb.TagNumber(115)
   void clearPingDropRateLast1h() => $_clearField(115);
   @$pb.TagNumber(115)
-  $4.FloatValue ensurePingDropRateLast1h() => $_ensure(18);
+  $4.FloatValue ensurePingDropRateLast1h() => $_ensure(19);
 
   @$pb.TagNumber(116)
-  $4.FloatValue get pingLatencyLast1h => $_getN(19);
+  $4.FloatValue get pingLatencyLast1h => $_getN(20);
   @$pb.TagNumber(116)
   set pingLatencyLast1h($4.FloatValue value) => $_setField(116, value);
   @$pb.TagNumber(116)
-  $core.bool hasPingLatencyLast1h() => $_has(19);
+  $core.bool hasPingLatencyLast1h() => $_has(20);
   @$pb.TagNumber(116)
   void clearPingLatencyLast1h() => $_clearField(116);
   @$pb.TagNumber(116)
-  $4.FloatValue ensurePingLatencyLast1h() => $_ensure(19);
+  $4.FloatValue ensurePingLatencyLast1h() => $_ensure(20);
 
   @$pb.TagNumber(117)
-  $4.StringValue get steerState => $_getN(20);
+  $4.StringValue get steerState => $_getN(21);
   @$pb.TagNumber(117)
   set steerState($4.StringValue value) => $_setField(117, value);
   @$pb.TagNumber(117)
-  $core.bool hasSteerState() => $_has(20);
+  $core.bool hasSteerState() => $_has(21);
   @$pb.TagNumber(117)
   void clearSteerState() => $_clearField(117);
   @$pb.TagNumber(117)
-  $4.StringValue ensureSteerState() => $_ensure(20);
+  $4.StringValue ensureSteerState() => $_ensure(21);
 
   @$pb.TagNumber(118)
-  $4.UInt32Value get meshHops => $_getN(21);
+  $4.UInt32Value get meshHops => $_getN(22);
   @$pb.TagNumber(118)
   set meshHops($4.UInt32Value value) => $_setField(118, value);
   @$pb.TagNumber(118)
-  $core.bool hasMeshHops() => $_has(21);
+  $core.bool hasMeshHops() => $_has(22);
   @$pb.TagNumber(118)
   void clearMeshHops() => $_clearField(118);
   @$pb.TagNumber(118)
-  $4.UInt32Value ensureMeshHops() => $_ensure(21);
+  $4.UInt32Value ensureMeshHops() => $_ensure(22);
 
   @$pb.TagNumber(119)
-  $4.StringValue get routerHw => $_getN(22);
+  $4.StringValue get routerHw => $_getN(23);
   @$pb.TagNumber(119)
   set routerHw($4.StringValue value) => $_setField(119, value);
   @$pb.TagNumber(119)
-  $core.bool hasRouterHw() => $_has(22);
+  $core.bool hasRouterHw() => $_has(23);
   @$pb.TagNumber(119)
   void clearRouterHw() => $_clearField(119);
   @$pb.TagNumber(119)
-  $4.StringValue ensureRouterHw() => $_ensure(22);
+  $4.StringValue ensureRouterHw() => $_ensure(23);
 
   @$pb.TagNumber(120)
-  $4.StringValue get routerSw => $_getN(23);
+  $4.StringValue get routerSw => $_getN(24);
   @$pb.TagNumber(120)
   set routerSw($4.StringValue value) => $_setField(120, value);
   @$pb.TagNumber(120)
-  $core.bool hasRouterSw() => $_has(23);
+  $core.bool hasRouterSw() => $_has(24);
   @$pb.TagNumber(120)
   void clearRouterSw() => $_clearField(120);
   @$pb.TagNumber(120)
-  $4.StringValue ensureRouterSw() => $_ensure(23);
+  $4.StringValue ensureRouterSw() => $_ensure(24);
 
   @$pb.TagNumber(121)
-  $4.StringValue get clientRouterId => $_getN(24);
+  $4.StringValue get clientRouterId => $_getN(25);
   @$pb.TagNumber(121)
   set clientRouterId($4.StringValue value) => $_setField(121, value);
   @$pb.TagNumber(121)
-  $core.bool hasClientRouterId() => $_has(24);
+  $core.bool hasClientRouterId() => $_has(25);
   @$pb.TagNumber(121)
   void clearClientRouterId() => $_clearField(121);
   @$pb.TagNumber(121)
-  $4.StringValue ensureClientRouterId() => $_ensure(24);
+  $4.StringValue ensureClientRouterId() => $_ensure(25);
 
   @$pb.TagNumber(122)
-  $4.StringValue get clientHw => $_getN(25);
+  $4.StringValue get clientHw => $_getN(26);
   @$pb.TagNumber(122)
   set clientHw($4.StringValue value) => $_setField(122, value);
   @$pb.TagNumber(122)
-  $core.bool hasClientHw() => $_has(25);
+  $core.bool hasClientHw() => $_has(26);
   @$pb.TagNumber(122)
   void clearClientHw() => $_clearField(122);
   @$pb.TagNumber(122)
-  $4.StringValue ensureClientHw() => $_ensure(25);
+  $4.StringValue ensureClientHw() => $_ensure(26);
 
   @$pb.TagNumber(123)
-  $4.StringValue get clientSw => $_getN(26);
+  $4.StringValue get clientSw => $_getN(27);
   @$pb.TagNumber(123)
   set clientSw($4.StringValue value) => $_setField(123, value);
   @$pb.TagNumber(123)
-  $core.bool hasClientSw() => $_has(26);
+  $core.bool hasClientSw() => $_has(27);
   @$pb.TagNumber(123)
   void clearClientSw() => $_clearField(123);
   @$pb.TagNumber(123)
-  $4.StringValue ensureClientSw() => $_ensure(26);
+  $4.StringValue ensureClientSw() => $_ensure(27);
 
   @$pb.TagNumber(124)
-  $4.FloatValue get speedtestUploadMbps => $_getN(27);
+  $4.FloatValue get speedtestUploadMbps => $_getN(28);
   @$pb.TagNumber(124)
   set speedtestUploadMbps($4.FloatValue value) => $_setField(124, value);
   @$pb.TagNumber(124)
-  $core.bool hasSpeedtestUploadMbps() => $_has(27);
+  $core.bool hasSpeedtestUploadMbps() => $_has(28);
   @$pb.TagNumber(124)
   void clearSpeedtestUploadMbps() => $_clearField(124);
   @$pb.TagNumber(124)
-  $4.FloatValue ensureSpeedtestUploadMbps() => $_ensure(27);
+  $4.FloatValue ensureSpeedtestUploadMbps() => $_ensure(28);
 
   @$pb.TagNumber(125)
-  $4.FloatValue get speedtestDownloadMbps => $_getN(28);
+  $4.FloatValue get speedtestDownloadMbps => $_getN(29);
   @$pb.TagNumber(125)
   set speedtestDownloadMbps($4.FloatValue value) => $_setField(125, value);
   @$pb.TagNumber(125)
-  $core.bool hasSpeedtestDownloadMbps() => $_has(28);
+  $core.bool hasSpeedtestDownloadMbps() => $_has(29);
   @$pb.TagNumber(125)
   void clearSpeedtestDownloadMbps() => $_clearField(125);
   @$pb.TagNumber(125)
-  $4.FloatValue ensureSpeedtestDownloadMbps() => $_ensure(28);
+  $4.FloatValue ensureSpeedtestDownloadMbps() => $_ensure(29);
 
   @$pb.TagNumber(126)
-  $4.BoolValue get blocked => $_getN(29);
+  $4.BoolValue get blocked => $_getN(30);
   @$pb.TagNumber(126)
   set blocked($4.BoolValue value) => $_setField(126, value);
   @$pb.TagNumber(126)
-  $core.bool hasBlocked() => $_has(29);
+  $core.bool hasBlocked() => $_has(30);
   @$pb.TagNumber(126)
   void clearBlocked() => $_clearField(126);
   @$pb.TagNumber(126)
-  $4.BoolValue ensureBlocked() => $_ensure(29);
+  $4.BoolValue ensureBlocked() => $_ensure(30);
 
   @$pb.TagNumber(127)
-  $4.FloatValue get siteSurveyRssi => $_getN(30);
+  $4.FloatValue get siteSurveyRssi => $_getN(31);
   @$pb.TagNumber(127)
   set siteSurveyRssi($4.FloatValue value) => $_setField(127, value);
   @$pb.TagNumber(127)
-  $core.bool hasSiteSurveyRssi() => $_has(30);
+  $core.bool hasSiteSurveyRssi() => $_has(31);
   @$pb.TagNumber(127)
   void clearSiteSurveyRssi() => $_clearField(127);
   @$pb.TagNumber(127)
-  $4.FloatValue ensureSiteSurveyRssi() => $_ensure(30);
+  $4.FloatValue ensureSiteSurveyRssi() => $_ensure(31);
 
   @$pb.TagNumber(128)
-  $4.FloatValue get siteSurveyEstRxRate => $_getN(31);
+  $4.FloatValue get siteSurveyEstRxRate => $_getN(32);
   @$pb.TagNumber(128)
   set siteSurveyEstRxRate($4.FloatValue value) => $_setField(128, value);
   @$pb.TagNumber(128)
-  $core.bool hasSiteSurveyEstRxRate() => $_has(31);
+  $core.bool hasSiteSurveyEstRxRate() => $_has(32);
   @$pb.TagNumber(128)
   void clearSiteSurveyEstRxRate() => $_clearField(128);
   @$pb.TagNumber(128)
-  $4.FloatValue ensureSiteSurveyEstRxRate() => $_ensure(31);
+  $4.FloatValue ensureSiteSurveyEstRxRate() => $_ensure(32);
 
   @$pb.TagNumber(129)
-  $4.UInt32Value get estControllerThroughputMbps => $_getN(32);
+  $4.UInt32Value get estControllerThroughputMbps => $_getN(33);
   @$pb.TagNumber(129)
   set estControllerThroughputMbps($4.UInt32Value value) =>
       $_setField(129, value);
   @$pb.TagNumber(129)
-  $core.bool hasEstControllerThroughputMbps() => $_has(32);
+  $core.bool hasEstControllerThroughputMbps() => $_has(33);
   @$pb.TagNumber(129)
   void clearEstControllerThroughputMbps() => $_clearField(129);
   @$pb.TagNumber(129)
-  $4.UInt32Value ensureEstControllerThroughputMbps() => $_ensure(32);
+  $4.UInt32Value ensureEstControllerThroughputMbps() => $_ensure(33);
+
+  @$pb.TagNumber(130)
+  $4.BoolValue get hasDhcpV4Lease => $_getN(34);
+  @$pb.TagNumber(130)
+  set hasDhcpV4Lease($4.BoolValue value) => $_setField(130, value);
+  @$pb.TagNumber(130)
+  $core.bool hasHasDhcpV4Lease() => $_has(34);
+  @$pb.TagNumber(130)
+  void clearHasDhcpV4Lease() => $_clearField(130);
+  @$pb.TagNumber(130)
+  $4.BoolValue ensureHasDhcpV4Lease() => $_ensure(34);
+
+  @$pb.TagNumber(131)
+  $4.StringValue get ipv4Address => $_getN(35);
+  @$pb.TagNumber(131)
+  set ipv4Address($4.StringValue value) => $_setField(131, value);
+  @$pb.TagNumber(131)
+  $core.bool hasIpv4Address() => $_has(35);
+  @$pb.TagNumber(131)
+  void clearIpv4Address() => $_clearField(131);
+  @$pb.TagNumber(131)
+  $4.StringValue ensureIpv4Address() => $_ensure(35);
+
+  @$pb.TagNumber(132)
+  $4.BoolValue get hasHostname => $_getN(36);
+  @$pb.TagNumber(132)
+  set hasHostname($4.BoolValue value) => $_setField(132, value);
+  @$pb.TagNumber(132)
+  $core.bool hasHasHostname() => $_has(36);
+  @$pb.TagNumber(132)
+  void clearHasHostname() => $_clearField(132);
+  @$pb.TagNumber(132)
+  $4.BoolValue ensureHasHostname() => $_ensure(36);
+
+  @$pb.TagNumber(133)
+  $4.BoolValue get dhcpV4LeaseIsActive => $_getN(37);
+  @$pb.TagNumber(133)
+  set dhcpV4LeaseIsActive($4.BoolValue value) => $_setField(133, value);
+  @$pb.TagNumber(133)
+  $core.bool hasDhcpV4LeaseIsActive() => $_has(37);
+  @$pb.TagNumber(133)
+  void clearDhcpV4LeaseIsActive() => $_clearField(133);
+  @$pb.TagNumber(133)
+  $4.BoolValue ensureDhcpV4LeaseIsActive() => $_ensure(37);
+
+  @$pb.TagNumber(134)
+  $4.BoolValue get dhcpV4LeaseWasRenewed => $_getN(38);
+  @$pb.TagNumber(134)
+  set dhcpV4LeaseWasRenewed($4.BoolValue value) => $_setField(134, value);
+  @$pb.TagNumber(134)
+  $core.bool hasDhcpV4LeaseWasRenewed() => $_has(38);
+  @$pb.TagNumber(134)
+  void clearDhcpV4LeaseWasRenewed() => $_clearField(134);
+  @$pb.TagNumber(134)
+  $4.BoolValue ensureDhcpV4LeaseWasRenewed() => $_ensure(38);
+
+  @$pb.TagNumber(135)
+  $4.FloatValue get secondsUntilDhcpV4LeaseExpires => $_getN(39);
+  @$pb.TagNumber(135)
+  set secondsUntilDhcpV4LeaseExpires($4.FloatValue value) =>
+      $_setField(135, value);
+  @$pb.TagNumber(135)
+  $core.bool hasSecondsUntilDhcpV4LeaseExpires() => $_has(39);
+  @$pb.TagNumber(135)
+  void clearSecondsUntilDhcpV4LeaseExpires() => $_clearField(135);
+  @$pb.TagNumber(135)
+  $4.FloatValue ensureSecondsUntilDhcpV4LeaseExpires() => $_ensure(39);
+
+  @$pb.TagNumber(137)
+  $4.UInt32Value get routerUptimeS => $_getN(40);
+  @$pb.TagNumber(137)
+  set routerUptimeS($4.UInt32Value value) => $_setField(137, value);
+  @$pb.TagNumber(137)
+  $core.bool hasRouterUptimeS() => $_has(40);
+  @$pb.TagNumber(137)
+  void clearRouterUptimeS() => $_clearField(137);
+  @$pb.TagNumber(137)
+  $4.UInt32Value ensureRouterUptimeS() => $_ensure(40);
+
+  @$pb.TagNumber(138)
+  $4.UInt32Value get dissociationsUnder10s => $_getN(41);
+  @$pb.TagNumber(138)
+  set dissociationsUnder10s($4.UInt32Value value) => $_setField(138, value);
+  @$pb.TagNumber(138)
+  $core.bool hasDissociationsUnder10s() => $_has(41);
+  @$pb.TagNumber(138)
+  void clearDissociationsUnder10s() => $_clearField(138);
+  @$pb.TagNumber(138)
+  $4.UInt32Value ensureDissociationsUnder10s() => $_ensure(41);
+
+  @$pb.TagNumber(139)
+  $4.UInt32Value get dissociationsUnder30s => $_getN(42);
+  @$pb.TagNumber(139)
+  set dissociationsUnder30s($4.UInt32Value value) => $_setField(139, value);
+  @$pb.TagNumber(139)
+  $core.bool hasDissociationsUnder30s() => $_has(42);
+  @$pb.TagNumber(139)
+  void clearDissociationsUnder30s() => $_clearField(139);
+  @$pb.TagNumber(139)
+  $4.UInt32Value ensureDissociationsUnder30s() => $_ensure(42);
+
+  @$pb.TagNumber(140)
+  $4.UInt32Value get dissociationsUnder60s => $_getN(43);
+  @$pb.TagNumber(140)
+  set dissociationsUnder60s($4.UInt32Value value) => $_setField(140, value);
+  @$pb.TagNumber(140)
+  $core.bool hasDissociationsUnder60s() => $_has(43);
+  @$pb.TagNumber(140)
+  void clearDissociationsUnder60s() => $_clearField(140);
+  @$pb.TagNumber(140)
+  $4.UInt32Value ensureDissociationsUnder60s() => $_ensure(43);
+
+  @$pb.TagNumber(141)
+  $4.UInt32Value get dissociationsUnder120s => $_getN(44);
+  @$pb.TagNumber(141)
+  set dissociationsUnder120s($4.UInt32Value value) => $_setField(141, value);
+  @$pb.TagNumber(141)
+  $core.bool hasDissociationsUnder120s() => $_has(44);
+  @$pb.TagNumber(141)
+  void clearDissociationsUnder120s() => $_clearField(141);
+  @$pb.TagNumber(141)
+  $4.UInt32Value ensureDissociationsUnder120s() => $_ensure(44);
+
+  @$pb.TagNumber(142)
+  $4.FloatValue get secondsToConnTcpIpv4 => $_getN(45);
+  @$pb.TagNumber(142)
+  set secondsToConnTcpIpv4($4.FloatValue value) => $_setField(142, value);
+  @$pb.TagNumber(142)
+  $core.bool hasSecondsToConnTcpIpv4() => $_has(45);
+  @$pb.TagNumber(142)
+  void clearSecondsToConnTcpIpv4() => $_clearField(142);
+  @$pb.TagNumber(142)
+  $4.FloatValue ensureSecondsToConnTcpIpv4() => $_ensure(45);
+
+  @$pb.TagNumber(143)
+  $4.FloatValue get secondsToConnTcpIpv6 => $_getN(46);
+  @$pb.TagNumber(143)
+  set secondsToConnTcpIpv6($4.FloatValue value) => $_setField(143, value);
+  @$pb.TagNumber(143)
+  $core.bool hasSecondsToConnTcpIpv6() => $_has(46);
+  @$pb.TagNumber(143)
+  void clearSecondsToConnTcpIpv6() => $_clearField(143);
+  @$pb.TagNumber(143)
+  $4.FloatValue ensureSecondsToConnTcpIpv6() => $_ensure(46);
+
+  @$pb.TagNumber(144)
+  $4.FloatValue get secondsToConnUdpIpv4 => $_getN(47);
+  @$pb.TagNumber(144)
+  set secondsToConnUdpIpv4($4.FloatValue value) => $_setField(144, value);
+  @$pb.TagNumber(144)
+  $core.bool hasSecondsToConnUdpIpv4() => $_has(47);
+  @$pb.TagNumber(144)
+  void clearSecondsToConnUdpIpv4() => $_clearField(144);
+  @$pb.TagNumber(144)
+  $4.FloatValue ensureSecondsToConnUdpIpv4() => $_ensure(47);
+
+  @$pb.TagNumber(145)
+  $4.FloatValue get secondsToConnUdpIpv6 => $_getN(48);
+  @$pb.TagNumber(145)
+  set secondsToConnUdpIpv6($4.FloatValue value) => $_setField(145, value);
+  @$pb.TagNumber(145)
+  $core.bool hasSecondsToConnUdpIpv6() => $_has(48);
+  @$pb.TagNumber(145)
+  void clearSecondsToConnUdpIpv6() => $_clearField(145);
+  @$pb.TagNumber(145)
+  $4.FloatValue ensureSecondsToConnUdpIpv6() => $_ensure(48);
+
+  @$pb.TagNumber(146)
+  $4.UInt32Value get flowsTcpIpv4 => $_getN(49);
+  @$pb.TagNumber(146)
+  set flowsTcpIpv4($4.UInt32Value value) => $_setField(146, value);
+  @$pb.TagNumber(146)
+  $core.bool hasFlowsTcpIpv4() => $_has(49);
+  @$pb.TagNumber(146)
+  void clearFlowsTcpIpv4() => $_clearField(146);
+  @$pb.TagNumber(146)
+  $4.UInt32Value ensureFlowsTcpIpv4() => $_ensure(49);
+
+  @$pb.TagNumber(147)
+  $4.UInt32Value get flowsTcpIpv6 => $_getN(50);
+  @$pb.TagNumber(147)
+  set flowsTcpIpv6($4.UInt32Value value) => $_setField(147, value);
+  @$pb.TagNumber(147)
+  $core.bool hasFlowsTcpIpv6() => $_has(50);
+  @$pb.TagNumber(147)
+  void clearFlowsTcpIpv6() => $_clearField(147);
+  @$pb.TagNumber(147)
+  $4.UInt32Value ensureFlowsTcpIpv6() => $_ensure(50);
+
+  @$pb.TagNumber(148)
+  $4.UInt32Value get flowsUdpIpv4 => $_getN(51);
+  @$pb.TagNumber(148)
+  set flowsUdpIpv4($4.UInt32Value value) => $_setField(148, value);
+  @$pb.TagNumber(148)
+  $core.bool hasFlowsUdpIpv4() => $_has(51);
+  @$pb.TagNumber(148)
+  void clearFlowsUdpIpv4() => $_clearField(148);
+  @$pb.TagNumber(148)
+  $4.UInt32Value ensureFlowsUdpIpv4() => $_ensure(51);
+
+  @$pb.TagNumber(149)
+  $4.UInt32Value get flowsUdpIpv6 => $_getN(52);
+  @$pb.TagNumber(149)
+  set flowsUdpIpv6($4.UInt32Value value) => $_setField(149, value);
+  @$pb.TagNumber(149)
+  $core.bool hasFlowsUdpIpv6() => $_has(52);
+  @$pb.TagNumber(149)
+  void clearFlowsUdpIpv6() => $_clearField(149);
+  @$pb.TagNumber(149)
+  $4.UInt32Value ensureFlowsUdpIpv6() => $_ensure(52);
+
+  @$pb.TagNumber(150)
+  $5.TimestampInfo get throughputLimitedLastFired => $_getN(53);
+  @$pb.TagNumber(150)
+  set throughputLimitedLastFired($5.TimestampInfo value) =>
+      $_setField(150, value);
+  @$pb.TagNumber(150)
+  $core.bool hasThroughputLimitedLastFired() => $_has(53);
+  @$pb.TagNumber(150)
+  void clearThroughputLimitedLastFired() => $_clearField(150);
+  @$pb.TagNumber(150)
+  $5.TimestampInfo ensureThroughputLimitedLastFired() => $_ensure(53);
+
+  @$pb.TagNumber(160)
+  $4.UInt32Value get link2ghzRadioChannel => $_getN(54);
+  @$pb.TagNumber(160)
+  set link2ghzRadioChannel($4.UInt32Value value) => $_setField(160, value);
+  @$pb.TagNumber(160)
+  $core.bool hasLink2ghzRadioChannel() => $_has(54);
+  @$pb.TagNumber(160)
+  void clearLink2ghzRadioChannel() => $_clearField(160);
+  @$pb.TagNumber(160)
+  $4.UInt32Value ensureLink2ghzRadioChannel() => $_ensure(54);
+
+  @$pb.TagNumber(161)
+  $4.FloatValue get link2ghzRssi => $_getN(55);
+  @$pb.TagNumber(161)
+  set link2ghzRssi($4.FloatValue value) => $_setField(161, value);
+  @$pb.TagNumber(161)
+  $core.bool hasLink2ghzRssi() => $_has(55);
+  @$pb.TagNumber(161)
+  void clearLink2ghzRssi() => $_clearField(161);
+  @$pb.TagNumber(161)
+  $4.FloatValue ensureLink2ghzRssi() => $_ensure(55);
+
+  @$pb.TagNumber(162)
+  $4.UInt32Value get link2ghzRxMcs => $_getN(56);
+  @$pb.TagNumber(162)
+  set link2ghzRxMcs($4.UInt32Value value) => $_setField(162, value);
+  @$pb.TagNumber(162)
+  $core.bool hasLink2ghzRxMcs() => $_has(56);
+  @$pb.TagNumber(162)
+  void clearLink2ghzRxMcs() => $_clearField(162);
+  @$pb.TagNumber(162)
+  $4.UInt32Value ensureLink2ghzRxMcs() => $_ensure(56);
+
+  @$pb.TagNumber(163)
+  $4.UInt32Value get link2ghzTxMcs => $_getN(57);
+  @$pb.TagNumber(163)
+  set link2ghzTxMcs($4.UInt32Value value) => $_setField(163, value);
+  @$pb.TagNumber(163)
+  $core.bool hasLink2ghzTxMcs() => $_has(57);
+  @$pb.TagNumber(163)
+  void clearLink2ghzTxMcs() => $_clearField(163);
+  @$pb.TagNumber(163)
+  $4.UInt32Value ensureLink2ghzTxMcs() => $_ensure(57);
+
+  @$pb.TagNumber(164)
+  $4.UInt32Value get link2ghzRxRate => $_getN(58);
+  @$pb.TagNumber(164)
+  set link2ghzRxRate($4.UInt32Value value) => $_setField(164, value);
+  @$pb.TagNumber(164)
+  $core.bool hasLink2ghzRxRate() => $_has(58);
+  @$pb.TagNumber(164)
+  void clearLink2ghzRxRate() => $_clearField(164);
+  @$pb.TagNumber(164)
+  $4.UInt32Value ensureLink2ghzRxRate() => $_ensure(58);
+
+  @$pb.TagNumber(165)
+  $4.UInt32Value get link2ghzTxRate => $_getN(59);
+  @$pb.TagNumber(165)
+  set link2ghzTxRate($4.UInt32Value value) => $_setField(165, value);
+  @$pb.TagNumber(165)
+  $core.bool hasLink2ghzTxRate() => $_has(59);
+  @$pb.TagNumber(165)
+  void clearLink2ghzTxRate() => $_clearField(165);
+  @$pb.TagNumber(165)
+  $4.UInt32Value ensureLink2ghzTxRate() => $_ensure(59);
+
+  @$pb.TagNumber(166)
+  $4.UInt32Value get link2ghzRxBandwidth => $_getN(60);
+  @$pb.TagNumber(166)
+  set link2ghzRxBandwidth($4.UInt32Value value) => $_setField(166, value);
+  @$pb.TagNumber(166)
+  $core.bool hasLink2ghzRxBandwidth() => $_has(60);
+  @$pb.TagNumber(166)
+  void clearLink2ghzRxBandwidth() => $_clearField(166);
+  @$pb.TagNumber(166)
+  $4.UInt32Value ensureLink2ghzRxBandwidth() => $_ensure(60);
+
+  @$pb.TagNumber(167)
+  $4.UInt32Value get link2ghzRxSpatialStreams => $_getN(61);
+  @$pb.TagNumber(167)
+  set link2ghzRxSpatialStreams($4.UInt32Value value) => $_setField(167, value);
+  @$pb.TagNumber(167)
+  $core.bool hasLink2ghzRxSpatialStreams() => $_has(61);
+  @$pb.TagNumber(167)
+  void clearLink2ghzRxSpatialStreams() => $_clearField(167);
+  @$pb.TagNumber(167)
+  $4.UInt32Value ensureLink2ghzRxSpatialStreams() => $_ensure(61);
+
+  @$pb.TagNumber(168)
+  $4.UInt32Value get link2ghzRxPhyMode => $_getN(62);
+  @$pb.TagNumber(168)
+  set link2ghzRxPhyMode($4.UInt32Value value) => $_setField(168, value);
+  @$pb.TagNumber(168)
+  $core.bool hasLink2ghzRxPhyMode() => $_has(62);
+  @$pb.TagNumber(168)
+  void clearLink2ghzRxPhyMode() => $_clearField(168);
+  @$pb.TagNumber(168)
+  $4.UInt32Value ensureLink2ghzRxPhyMode() => $_ensure(62);
+
+  @$pb.TagNumber(170)
+  $4.UInt32Value get link5ghzRadioChannel => $_getN(63);
+  @$pb.TagNumber(170)
+  set link5ghzRadioChannel($4.UInt32Value value) => $_setField(170, value);
+  @$pb.TagNumber(170)
+  $core.bool hasLink5ghzRadioChannel() => $_has(63);
+  @$pb.TagNumber(170)
+  void clearLink5ghzRadioChannel() => $_clearField(170);
+  @$pb.TagNumber(170)
+  $4.UInt32Value ensureLink5ghzRadioChannel() => $_ensure(63);
+
+  @$pb.TagNumber(171)
+  $4.FloatValue get link5ghzRssi => $_getN(64);
+  @$pb.TagNumber(171)
+  set link5ghzRssi($4.FloatValue value) => $_setField(171, value);
+  @$pb.TagNumber(171)
+  $core.bool hasLink5ghzRssi() => $_has(64);
+  @$pb.TagNumber(171)
+  void clearLink5ghzRssi() => $_clearField(171);
+  @$pb.TagNumber(171)
+  $4.FloatValue ensureLink5ghzRssi() => $_ensure(64);
+
+  @$pb.TagNumber(172)
+  $4.UInt32Value get link5ghzRxMcs => $_getN(65);
+  @$pb.TagNumber(172)
+  set link5ghzRxMcs($4.UInt32Value value) => $_setField(172, value);
+  @$pb.TagNumber(172)
+  $core.bool hasLink5ghzRxMcs() => $_has(65);
+  @$pb.TagNumber(172)
+  void clearLink5ghzRxMcs() => $_clearField(172);
+  @$pb.TagNumber(172)
+  $4.UInt32Value ensureLink5ghzRxMcs() => $_ensure(65);
+
+  @$pb.TagNumber(173)
+  $4.UInt32Value get link5ghzTxMcs => $_getN(66);
+  @$pb.TagNumber(173)
+  set link5ghzTxMcs($4.UInt32Value value) => $_setField(173, value);
+  @$pb.TagNumber(173)
+  $core.bool hasLink5ghzTxMcs() => $_has(66);
+  @$pb.TagNumber(173)
+  void clearLink5ghzTxMcs() => $_clearField(173);
+  @$pb.TagNumber(173)
+  $4.UInt32Value ensureLink5ghzTxMcs() => $_ensure(66);
+
+  @$pb.TagNumber(174)
+  $4.UInt32Value get link5ghzRxRate => $_getN(67);
+  @$pb.TagNumber(174)
+  set link5ghzRxRate($4.UInt32Value value) => $_setField(174, value);
+  @$pb.TagNumber(174)
+  $core.bool hasLink5ghzRxRate() => $_has(67);
+  @$pb.TagNumber(174)
+  void clearLink5ghzRxRate() => $_clearField(174);
+  @$pb.TagNumber(174)
+  $4.UInt32Value ensureLink5ghzRxRate() => $_ensure(67);
+
+  @$pb.TagNumber(175)
+  $4.UInt32Value get link5ghzTxRate => $_getN(68);
+  @$pb.TagNumber(175)
+  set link5ghzTxRate($4.UInt32Value value) => $_setField(175, value);
+  @$pb.TagNumber(175)
+  $core.bool hasLink5ghzTxRate() => $_has(68);
+  @$pb.TagNumber(175)
+  void clearLink5ghzTxRate() => $_clearField(175);
+  @$pb.TagNumber(175)
+  $4.UInt32Value ensureLink5ghzTxRate() => $_ensure(68);
+
+  @$pb.TagNumber(176)
+  $4.UInt32Value get link5ghzRxBandwidth => $_getN(69);
+  @$pb.TagNumber(176)
+  set link5ghzRxBandwidth($4.UInt32Value value) => $_setField(176, value);
+  @$pb.TagNumber(176)
+  $core.bool hasLink5ghzRxBandwidth() => $_has(69);
+  @$pb.TagNumber(176)
+  void clearLink5ghzRxBandwidth() => $_clearField(176);
+  @$pb.TagNumber(176)
+  $4.UInt32Value ensureLink5ghzRxBandwidth() => $_ensure(69);
+
+  @$pb.TagNumber(177)
+  $4.UInt32Value get link5ghzRxSpatialStreams => $_getN(70);
+  @$pb.TagNumber(177)
+  set link5ghzRxSpatialStreams($4.UInt32Value value) => $_setField(177, value);
+  @$pb.TagNumber(177)
+  $core.bool hasLink5ghzRxSpatialStreams() => $_has(70);
+  @$pb.TagNumber(177)
+  void clearLink5ghzRxSpatialStreams() => $_clearField(177);
+  @$pb.TagNumber(177)
+  $4.UInt32Value ensureLink5ghzRxSpatialStreams() => $_ensure(70);
+
+  @$pb.TagNumber(178)
+  $4.UInt32Value get link5ghzRxPhyMode => $_getN(71);
+  @$pb.TagNumber(178)
+  set link5ghzRxPhyMode($4.UInt32Value value) => $_setField(178, value);
+  @$pb.TagNumber(178)
+  $core.bool hasLink5ghzRxPhyMode() => $_has(71);
+  @$pb.TagNumber(178)
+  void clearLink5ghzRxPhyMode() => $_clearField(178);
+  @$pb.TagNumber(178)
+  $4.UInt32Value ensureLink5ghzRxPhyMode() => $_ensure(71);
+}
+
+class StarlinkRouterClientTesterRun extends $pb.GeneratedMessage {
+  factory StarlinkRouterClientTesterRun({
+    $core.String? clientTesterRouterId,
+    $5.TimestampInfo? timestamp,
+    $4.StringValue? clientIfaceName,
+    $4.StringValue? targetSsid,
+    $4.BoolValue? targetHasPassword,
+    $4.StringValue? targetAuth,
+    $4.StringValue? targetEncryption,
+    $4.StringValue? targetBssid,
+    $4.UInt32Value? iteration,
+    $4.StringValue? errorCode,
+    $4.FloatValue? secondsToAssociate,
+    $4.FloatValue? secondsToLease,
+    $4.FloatValue? secondsToResolveRouter,
+    $4.FloatValue? secondsToResolveInternet,
+    $4.FloatValue? secondsToPingDish,
+    $4.FloatValue? v4IrttTestDurationS,
+    $4.FloatValue? v4IrttRttLatencyMinMs,
+    $4.FloatValue? v4IrttRttLatencyMeanMs,
+    $4.FloatValue? v4IrttRttLatencyMedianMs,
+    $4.FloatValue? v4IrttRttLatencyMaxMs,
+    $4.FloatValue? v4IrttRttLatencyStdDevMs,
+    $4.UInt32Value? v4IrttPktsSent,
+    $4.UInt32Value? v4IrttPktsRecv,
+    $4.FloatValue? v4IrttLossPercent,
+    $4.StringValue? targetIrttServer,
+  }) {
+    final result = create();
+    if (clientTesterRouterId != null)
+      result.clientTesterRouterId = clientTesterRouterId;
+    if (timestamp != null) result.timestamp = timestamp;
+    if (clientIfaceName != null) result.clientIfaceName = clientIfaceName;
+    if (targetSsid != null) result.targetSsid = targetSsid;
+    if (targetHasPassword != null) result.targetHasPassword = targetHasPassword;
+    if (targetAuth != null) result.targetAuth = targetAuth;
+    if (targetEncryption != null) result.targetEncryption = targetEncryption;
+    if (targetBssid != null) result.targetBssid = targetBssid;
+    if (iteration != null) result.iteration = iteration;
+    if (errorCode != null) result.errorCode = errorCode;
+    if (secondsToAssociate != null)
+      result.secondsToAssociate = secondsToAssociate;
+    if (secondsToLease != null) result.secondsToLease = secondsToLease;
+    if (secondsToResolveRouter != null)
+      result.secondsToResolveRouter = secondsToResolveRouter;
+    if (secondsToResolveInternet != null)
+      result.secondsToResolveInternet = secondsToResolveInternet;
+    if (secondsToPingDish != null) result.secondsToPingDish = secondsToPingDish;
+    if (v4IrttTestDurationS != null)
+      result.v4IrttTestDurationS = v4IrttTestDurationS;
+    if (v4IrttRttLatencyMinMs != null)
+      result.v4IrttRttLatencyMinMs = v4IrttRttLatencyMinMs;
+    if (v4IrttRttLatencyMeanMs != null)
+      result.v4IrttRttLatencyMeanMs = v4IrttRttLatencyMeanMs;
+    if (v4IrttRttLatencyMedianMs != null)
+      result.v4IrttRttLatencyMedianMs = v4IrttRttLatencyMedianMs;
+    if (v4IrttRttLatencyMaxMs != null)
+      result.v4IrttRttLatencyMaxMs = v4IrttRttLatencyMaxMs;
+    if (v4IrttRttLatencyStdDevMs != null)
+      result.v4IrttRttLatencyStdDevMs = v4IrttRttLatencyStdDevMs;
+    if (v4IrttPktsSent != null) result.v4IrttPktsSent = v4IrttPktsSent;
+    if (v4IrttPktsRecv != null) result.v4IrttPktsRecv = v4IrttPktsRecv;
+    if (v4IrttLossPercent != null) result.v4IrttLossPercent = v4IrttLossPercent;
+    if (targetIrttServer != null) result.targetIrttServer = targetIrttServer;
+    return result;
+  }
+
+  StarlinkRouterClientTesterRun._();
+
+  factory StarlinkRouterClientTesterRun.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory StarlinkRouterClientTesterRun.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'StarlinkRouterClientTesterRun',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'clientTesterRouterId')
+    ..aOM<$5.TimestampInfo>(2, _omitFieldNames ? '' : 'timestamp',
+        subBuilder: $5.TimestampInfo.create)
+    ..aOM<$4.StringValue>(3, _omitFieldNames ? '' : 'clientIfaceName',
+        subBuilder: $4.StringValue.create)
+    ..aOM<$4.StringValue>(4, _omitFieldNames ? '' : 'targetSsid',
+        subBuilder: $4.StringValue.create)
+    ..aOM<$4.BoolValue>(5, _omitFieldNames ? '' : 'targetHasPassword',
+        subBuilder: $4.BoolValue.create)
+    ..aOM<$4.StringValue>(6, _omitFieldNames ? '' : 'targetAuth',
+        subBuilder: $4.StringValue.create)
+    ..aOM<$4.StringValue>(7, _omitFieldNames ? '' : 'targetEncryption',
+        subBuilder: $4.StringValue.create)
+    ..aOM<$4.StringValue>(8, _omitFieldNames ? '' : 'targetBssid',
+        subBuilder: $4.StringValue.create)
+    ..aOM<$4.UInt32Value>(9, _omitFieldNames ? '' : 'iteration',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.StringValue>(10, _omitFieldNames ? '' : 'errorCode',
+        subBuilder: $4.StringValue.create)
+    ..aOM<$4.FloatValue>(11, _omitFieldNames ? '' : 'secondsToAssociate',
+        subBuilder: $4.FloatValue.create)
+    ..aOM<$4.FloatValue>(12, _omitFieldNames ? '' : 'secondsToLease',
+        subBuilder: $4.FloatValue.create)
+    ..aOM<$4.FloatValue>(13, _omitFieldNames ? '' : 'secondsToResolveRouter',
+        subBuilder: $4.FloatValue.create)
+    ..aOM<$4.FloatValue>(14, _omitFieldNames ? '' : 'secondsToResolveInternet',
+        subBuilder: $4.FloatValue.create)
+    ..aOM<$4.FloatValue>(15, _omitFieldNames ? '' : 'secondsToPingDish',
+        subBuilder: $4.FloatValue.create)
+    ..aOM<$4.FloatValue>(16, _omitFieldNames ? '' : 'v4IrttTestDurationS',
+        subBuilder: $4.FloatValue.create)
+    ..aOM<$4.FloatValue>(17, _omitFieldNames ? '' : 'v4IrttRttLatencyMinMs',
+        subBuilder: $4.FloatValue.create)
+    ..aOM<$4.FloatValue>(18, _omitFieldNames ? '' : 'v4IrttRttLatencyMeanMs',
+        subBuilder: $4.FloatValue.create)
+    ..aOM<$4.FloatValue>(19, _omitFieldNames ? '' : 'v4IrttRttLatencyMedianMs',
+        subBuilder: $4.FloatValue.create)
+    ..aOM<$4.FloatValue>(20, _omitFieldNames ? '' : 'v4IrttRttLatencyMaxMs',
+        subBuilder: $4.FloatValue.create)
+    ..aOM<$4.FloatValue>(21, _omitFieldNames ? '' : 'v4IrttRttLatencyStdDevMs',
+        subBuilder: $4.FloatValue.create)
+    ..aOM<$4.UInt32Value>(22, _omitFieldNames ? '' : 'v4IrttPktsSent',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.UInt32Value>(23, _omitFieldNames ? '' : 'v4IrttPktsRecv',
+        subBuilder: $4.UInt32Value.create)
+    ..aOM<$4.FloatValue>(24, _omitFieldNames ? '' : 'v4IrttLossPercent',
+        subBuilder: $4.FloatValue.create)
+    ..aOM<$4.StringValue>(25, _omitFieldNames ? '' : 'targetIrttServer',
+        subBuilder: $4.StringValue.create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  StarlinkRouterClientTesterRun clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  StarlinkRouterClientTesterRun copyWith(
+          void Function(StarlinkRouterClientTesterRun) updates) =>
+      super.copyWith(
+              (message) => updates(message as StarlinkRouterClientTesterRun))
+          as StarlinkRouterClientTesterRun;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static StarlinkRouterClientTesterRun create() =>
+      StarlinkRouterClientTesterRun._();
+  @$core.override
+  StarlinkRouterClientTesterRun createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static StarlinkRouterClientTesterRun getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<StarlinkRouterClientTesterRun>(create);
+  static StarlinkRouterClientTesterRun? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get clientTesterRouterId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set clientTesterRouterId($core.String value) => $_setString(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasClientTesterRouterId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearClientTesterRouterId() => $_clearField(1);
+
+  @$pb.TagNumber(2)
+  $5.TimestampInfo get timestamp => $_getN(1);
+  @$pb.TagNumber(2)
+  set timestamp($5.TimestampInfo value) => $_setField(2, value);
+  @$pb.TagNumber(2)
+  $core.bool hasTimestamp() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearTimestamp() => $_clearField(2);
+  @$pb.TagNumber(2)
+  $5.TimestampInfo ensureTimestamp() => $_ensure(1);
+
+  @$pb.TagNumber(3)
+  $4.StringValue get clientIfaceName => $_getN(2);
+  @$pb.TagNumber(3)
+  set clientIfaceName($4.StringValue value) => $_setField(3, value);
+  @$pb.TagNumber(3)
+  $core.bool hasClientIfaceName() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearClientIfaceName() => $_clearField(3);
+  @$pb.TagNumber(3)
+  $4.StringValue ensureClientIfaceName() => $_ensure(2);
+
+  @$pb.TagNumber(4)
+  $4.StringValue get targetSsid => $_getN(3);
+  @$pb.TagNumber(4)
+  set targetSsid($4.StringValue value) => $_setField(4, value);
+  @$pb.TagNumber(4)
+  $core.bool hasTargetSsid() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearTargetSsid() => $_clearField(4);
+  @$pb.TagNumber(4)
+  $4.StringValue ensureTargetSsid() => $_ensure(3);
+
+  @$pb.TagNumber(5)
+  $4.BoolValue get targetHasPassword => $_getN(4);
+  @$pb.TagNumber(5)
+  set targetHasPassword($4.BoolValue value) => $_setField(5, value);
+  @$pb.TagNumber(5)
+  $core.bool hasTargetHasPassword() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearTargetHasPassword() => $_clearField(5);
+  @$pb.TagNumber(5)
+  $4.BoolValue ensureTargetHasPassword() => $_ensure(4);
+
+  @$pb.TagNumber(6)
+  $4.StringValue get targetAuth => $_getN(5);
+  @$pb.TagNumber(6)
+  set targetAuth($4.StringValue value) => $_setField(6, value);
+  @$pb.TagNumber(6)
+  $core.bool hasTargetAuth() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearTargetAuth() => $_clearField(6);
+  @$pb.TagNumber(6)
+  $4.StringValue ensureTargetAuth() => $_ensure(5);
+
+  @$pb.TagNumber(7)
+  $4.StringValue get targetEncryption => $_getN(6);
+  @$pb.TagNumber(7)
+  set targetEncryption($4.StringValue value) => $_setField(7, value);
+  @$pb.TagNumber(7)
+  $core.bool hasTargetEncryption() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearTargetEncryption() => $_clearField(7);
+  @$pb.TagNumber(7)
+  $4.StringValue ensureTargetEncryption() => $_ensure(6);
+
+  @$pb.TagNumber(8)
+  $4.StringValue get targetBssid => $_getN(7);
+  @$pb.TagNumber(8)
+  set targetBssid($4.StringValue value) => $_setField(8, value);
+  @$pb.TagNumber(8)
+  $core.bool hasTargetBssid() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearTargetBssid() => $_clearField(8);
+  @$pb.TagNumber(8)
+  $4.StringValue ensureTargetBssid() => $_ensure(7);
+
+  @$pb.TagNumber(9)
+  $4.UInt32Value get iteration => $_getN(8);
+  @$pb.TagNumber(9)
+  set iteration($4.UInt32Value value) => $_setField(9, value);
+  @$pb.TagNumber(9)
+  $core.bool hasIteration() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearIteration() => $_clearField(9);
+  @$pb.TagNumber(9)
+  $4.UInt32Value ensureIteration() => $_ensure(8);
+
+  @$pb.TagNumber(10)
+  $4.StringValue get errorCode => $_getN(9);
+  @$pb.TagNumber(10)
+  set errorCode($4.StringValue value) => $_setField(10, value);
+  @$pb.TagNumber(10)
+  $core.bool hasErrorCode() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearErrorCode() => $_clearField(10);
+  @$pb.TagNumber(10)
+  $4.StringValue ensureErrorCode() => $_ensure(9);
+
+  @$pb.TagNumber(11)
+  $4.FloatValue get secondsToAssociate => $_getN(10);
+  @$pb.TagNumber(11)
+  set secondsToAssociate($4.FloatValue value) => $_setField(11, value);
+  @$pb.TagNumber(11)
+  $core.bool hasSecondsToAssociate() => $_has(10);
+  @$pb.TagNumber(11)
+  void clearSecondsToAssociate() => $_clearField(11);
+  @$pb.TagNumber(11)
+  $4.FloatValue ensureSecondsToAssociate() => $_ensure(10);
+
+  @$pb.TagNumber(12)
+  $4.FloatValue get secondsToLease => $_getN(11);
+  @$pb.TagNumber(12)
+  set secondsToLease($4.FloatValue value) => $_setField(12, value);
+  @$pb.TagNumber(12)
+  $core.bool hasSecondsToLease() => $_has(11);
+  @$pb.TagNumber(12)
+  void clearSecondsToLease() => $_clearField(12);
+  @$pb.TagNumber(12)
+  $4.FloatValue ensureSecondsToLease() => $_ensure(11);
+
+  @$pb.TagNumber(13)
+  $4.FloatValue get secondsToResolveRouter => $_getN(12);
+  @$pb.TagNumber(13)
+  set secondsToResolveRouter($4.FloatValue value) => $_setField(13, value);
+  @$pb.TagNumber(13)
+  $core.bool hasSecondsToResolveRouter() => $_has(12);
+  @$pb.TagNumber(13)
+  void clearSecondsToResolveRouter() => $_clearField(13);
+  @$pb.TagNumber(13)
+  $4.FloatValue ensureSecondsToResolveRouter() => $_ensure(12);
+
+  @$pb.TagNumber(14)
+  $4.FloatValue get secondsToResolveInternet => $_getN(13);
+  @$pb.TagNumber(14)
+  set secondsToResolveInternet($4.FloatValue value) => $_setField(14, value);
+  @$pb.TagNumber(14)
+  $core.bool hasSecondsToResolveInternet() => $_has(13);
+  @$pb.TagNumber(14)
+  void clearSecondsToResolveInternet() => $_clearField(14);
+  @$pb.TagNumber(14)
+  $4.FloatValue ensureSecondsToResolveInternet() => $_ensure(13);
+
+  @$pb.TagNumber(15)
+  $4.FloatValue get secondsToPingDish => $_getN(14);
+  @$pb.TagNumber(15)
+  set secondsToPingDish($4.FloatValue value) => $_setField(15, value);
+  @$pb.TagNumber(15)
+  $core.bool hasSecondsToPingDish() => $_has(14);
+  @$pb.TagNumber(15)
+  void clearSecondsToPingDish() => $_clearField(15);
+  @$pb.TagNumber(15)
+  $4.FloatValue ensureSecondsToPingDish() => $_ensure(14);
+
+  @$pb.TagNumber(16)
+  $4.FloatValue get v4IrttTestDurationS => $_getN(15);
+  @$pb.TagNumber(16)
+  set v4IrttTestDurationS($4.FloatValue value) => $_setField(16, value);
+  @$pb.TagNumber(16)
+  $core.bool hasV4IrttTestDurationS() => $_has(15);
+  @$pb.TagNumber(16)
+  void clearV4IrttTestDurationS() => $_clearField(16);
+  @$pb.TagNumber(16)
+  $4.FloatValue ensureV4IrttTestDurationS() => $_ensure(15);
+
+  @$pb.TagNumber(17)
+  $4.FloatValue get v4IrttRttLatencyMinMs => $_getN(16);
+  @$pb.TagNumber(17)
+  set v4IrttRttLatencyMinMs($4.FloatValue value) => $_setField(17, value);
+  @$pb.TagNumber(17)
+  $core.bool hasV4IrttRttLatencyMinMs() => $_has(16);
+  @$pb.TagNumber(17)
+  void clearV4IrttRttLatencyMinMs() => $_clearField(17);
+  @$pb.TagNumber(17)
+  $4.FloatValue ensureV4IrttRttLatencyMinMs() => $_ensure(16);
+
+  @$pb.TagNumber(18)
+  $4.FloatValue get v4IrttRttLatencyMeanMs => $_getN(17);
+  @$pb.TagNumber(18)
+  set v4IrttRttLatencyMeanMs($4.FloatValue value) => $_setField(18, value);
+  @$pb.TagNumber(18)
+  $core.bool hasV4IrttRttLatencyMeanMs() => $_has(17);
+  @$pb.TagNumber(18)
+  void clearV4IrttRttLatencyMeanMs() => $_clearField(18);
+  @$pb.TagNumber(18)
+  $4.FloatValue ensureV4IrttRttLatencyMeanMs() => $_ensure(17);
+
+  @$pb.TagNumber(19)
+  $4.FloatValue get v4IrttRttLatencyMedianMs => $_getN(18);
+  @$pb.TagNumber(19)
+  set v4IrttRttLatencyMedianMs($4.FloatValue value) => $_setField(19, value);
+  @$pb.TagNumber(19)
+  $core.bool hasV4IrttRttLatencyMedianMs() => $_has(18);
+  @$pb.TagNumber(19)
+  void clearV4IrttRttLatencyMedianMs() => $_clearField(19);
+  @$pb.TagNumber(19)
+  $4.FloatValue ensureV4IrttRttLatencyMedianMs() => $_ensure(18);
+
+  @$pb.TagNumber(20)
+  $4.FloatValue get v4IrttRttLatencyMaxMs => $_getN(19);
+  @$pb.TagNumber(20)
+  set v4IrttRttLatencyMaxMs($4.FloatValue value) => $_setField(20, value);
+  @$pb.TagNumber(20)
+  $core.bool hasV4IrttRttLatencyMaxMs() => $_has(19);
+  @$pb.TagNumber(20)
+  void clearV4IrttRttLatencyMaxMs() => $_clearField(20);
+  @$pb.TagNumber(20)
+  $4.FloatValue ensureV4IrttRttLatencyMaxMs() => $_ensure(19);
+
+  @$pb.TagNumber(21)
+  $4.FloatValue get v4IrttRttLatencyStdDevMs => $_getN(20);
+  @$pb.TagNumber(21)
+  set v4IrttRttLatencyStdDevMs($4.FloatValue value) => $_setField(21, value);
+  @$pb.TagNumber(21)
+  $core.bool hasV4IrttRttLatencyStdDevMs() => $_has(20);
+  @$pb.TagNumber(21)
+  void clearV4IrttRttLatencyStdDevMs() => $_clearField(21);
+  @$pb.TagNumber(21)
+  $4.FloatValue ensureV4IrttRttLatencyStdDevMs() => $_ensure(20);
+
+  @$pb.TagNumber(22)
+  $4.UInt32Value get v4IrttPktsSent => $_getN(21);
+  @$pb.TagNumber(22)
+  set v4IrttPktsSent($4.UInt32Value value) => $_setField(22, value);
+  @$pb.TagNumber(22)
+  $core.bool hasV4IrttPktsSent() => $_has(21);
+  @$pb.TagNumber(22)
+  void clearV4IrttPktsSent() => $_clearField(22);
+  @$pb.TagNumber(22)
+  $4.UInt32Value ensureV4IrttPktsSent() => $_ensure(21);
+
+  @$pb.TagNumber(23)
+  $4.UInt32Value get v4IrttPktsRecv => $_getN(22);
+  @$pb.TagNumber(23)
+  set v4IrttPktsRecv($4.UInt32Value value) => $_setField(23, value);
+  @$pb.TagNumber(23)
+  $core.bool hasV4IrttPktsRecv() => $_has(22);
+  @$pb.TagNumber(23)
+  void clearV4IrttPktsRecv() => $_clearField(23);
+  @$pb.TagNumber(23)
+  $4.UInt32Value ensureV4IrttPktsRecv() => $_ensure(22);
+
+  @$pb.TagNumber(24)
+  $4.FloatValue get v4IrttLossPercent => $_getN(23);
+  @$pb.TagNumber(24)
+  set v4IrttLossPercent($4.FloatValue value) => $_setField(24, value);
+  @$pb.TagNumber(24)
+  $core.bool hasV4IrttLossPercent() => $_has(23);
+  @$pb.TagNumber(24)
+  void clearV4IrttLossPercent() => $_clearField(24);
+  @$pb.TagNumber(24)
+  $4.FloatValue ensureV4IrttLossPercent() => $_ensure(23);
+
+  @$pb.TagNumber(25)
+  $4.StringValue get targetIrttServer => $_getN(24);
+  @$pb.TagNumber(25)
+  set targetIrttServer($4.StringValue value) => $_setField(25, value);
+  @$pb.TagNumber(25)
+  $core.bool hasTargetIrttServer() => $_has(24);
+  @$pb.TagNumber(25)
+  void clearTargetIrttServer() => $_clearField(25);
+  @$pb.TagNumber(25)
+  $4.StringValue ensureTargetIrttServer() => $_ensure(24);
 }
 
 class WifiSetClientGivenNameRequest extends $pb.GeneratedMessage {
   factory WifiSetClientGivenNameRequest({
-    @$core.Deprecated('This field is deprecated.') $2.ClientName? clientName,
-    $2.ClientConfig? clientConfig,
+    @$core.Deprecated('This field is deprecated.') $3.ClientName? clientName,
+    $3.ClientConfig? clientConfig,
   }) {
     final result = create();
     if (clientName != null) result.clientName = clientName;
@@ -11182,10 +14323,10 @@ class WifiSetClientGivenNameRequest extends $pb.GeneratedMessage {
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
       createEmptyInstance: create)
-    ..aOM<$2.ClientName>(1, _omitFieldNames ? '' : 'clientName',
-        subBuilder: $2.ClientName.create)
-    ..aOM<$2.ClientConfig>(2, _omitFieldNames ? '' : 'clientConfig',
-        subBuilder: $2.ClientConfig.create)
+    ..aOM<$3.ClientName>(1, _omitFieldNames ? '' : 'clientName',
+        subBuilder: $3.ClientName.create)
+    ..aOM<$3.ClientConfig>(2, _omitFieldNames ? '' : 'clientConfig',
+        subBuilder: $3.ClientConfig.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -11212,10 +14353,10 @@ class WifiSetClientGivenNameRequest extends $pb.GeneratedMessage {
 
   @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(1)
-  $2.ClientName get clientName => $_getN(0);
+  $3.ClientName get clientName => $_getN(0);
   @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(1)
-  set clientName($2.ClientName value) => $_setField(1, value);
+  set clientName($3.ClientName value) => $_setField(1, value);
   @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(1)
   $core.bool hasClientName() => $_has(0);
@@ -11224,18 +14365,18 @@ class WifiSetClientGivenNameRequest extends $pb.GeneratedMessage {
   void clearClientName() => $_clearField(1);
   @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(1)
-  $2.ClientName ensureClientName() => $_ensure(0);
+  $3.ClientName ensureClientName() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $2.ClientConfig get clientConfig => $_getN(1);
+  $3.ClientConfig get clientConfig => $_getN(1);
   @$pb.TagNumber(2)
-  set clientConfig($2.ClientConfig value) => $_setField(2, value);
+  set clientConfig($3.ClientConfig value) => $_setField(2, value);
   @$pb.TagNumber(2)
   $core.bool hasClientConfig() => $_has(1);
   @$pb.TagNumber(2)
   void clearClientConfig() => $_clearField(2);
   @$pb.TagNumber(2)
-  $2.ClientConfig ensureClientConfig() => $_ensure(1);
+  $3.ClientConfig ensureClientConfig() => $_ensure(1);
 }
 
 class WifiSelfTestRequest extends $pb.GeneratedMessage {
@@ -11659,10 +14800,12 @@ class WifiGetFirewallResponse extends $pb.GeneratedMessage {
   factory WifiGetFirewallResponse({
     $core.String? iptables,
     $core.String? iptables6,
+    $core.String? ipset,
   }) {
     final result = create();
     if (iptables != null) result.iptables = iptables;
     if (iptables6 != null) result.iptables6 = iptables6;
+    if (ipset != null) result.ipset = ipset;
     return result;
   }
 
@@ -11682,6 +14825,7 @@ class WifiGetFirewallResponse extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'iptables')
     ..aOS(2, _omitFieldNames ? '' : 'iptables6', protoName: 'iptables_6')
+    ..aOS(3, _omitFieldNames ? '' : 'ipset')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -11721,6 +14865,15 @@ class WifiGetFirewallResponse extends $pb.GeneratedMessage {
   $core.bool hasIptables6() => $_has(1);
   @$pb.TagNumber(2)
   void clearIptables6() => $_clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get ipset => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set ipset($core.String value) => $_setString(2, value);
+  @$pb.TagNumber(3)
+  $core.bool hasIpset() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearIpset() => $_clearField(3);
 }
 
 class WifiTogglePoeNegotiationRequest extends $pb.GeneratedMessage {
@@ -14782,7 +17935,7 @@ class WifiBackhaulStatsResponse extends $pb.GeneratedMessage {
   factory WifiBackhaulStatsResponse({
     $core.bool? success,
     $core.String? bssid,
-    $1.IfaceType? iface,
+    $2.IfaceType? iface,
     $core.int? preference,
     $core.Iterable<WifiSiteSurveyResult>? siteSurveyScan,
   }) {
@@ -14811,8 +17964,8 @@ class WifiBackhaulStatsResponse extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..aOB(1, _omitFieldNames ? '' : 'success')
     ..aOS(2, _omitFieldNames ? '' : 'bssid')
-    ..aE<$1.IfaceType>(3, _omitFieldNames ? '' : 'iface',
-        enumValues: $1.IfaceType.values)
+    ..aE<$2.IfaceType>(3, _omitFieldNames ? '' : 'iface',
+        enumValues: $2.IfaceType.values)
     ..aI(4, _omitFieldNames ? '' : 'preference', fieldType: $pb.PbFieldType.OU3)
     ..pPM<WifiSiteSurveyResult>(5, _omitFieldNames ? '' : 'siteSurveyScan',
         protoName: 'siteSurveyScan', subBuilder: WifiSiteSurveyResult.create)
@@ -14857,9 +18010,9 @@ class WifiBackhaulStatsResponse extends $pb.GeneratedMessage {
   void clearBssid() => $_clearField(2);
 
   @$pb.TagNumber(3)
-  $1.IfaceType get iface => $_getN(2);
+  $2.IfaceType get iface => $_getN(2);
   @$pb.TagNumber(3)
-  set iface($1.IfaceType value) => $_setField(3, value);
+  set iface($2.IfaceType value) => $_setField(3, value);
   @$pb.TagNumber(3)
   $core.bool hasIface() => $_has(2);
   @$pb.TagNumber(3)
@@ -14934,6 +18087,309 @@ class WifiToggleUmbilicalModeRequest extends $pb.GeneratedMessage {
   $core.bool hasEnable() => $_has(0);
   @$pb.TagNumber(1)
   void clearEnable() => $_clearField(1);
+}
+
+class WifiUpdateResponse extends $pb.GeneratedMessage {
+  factory WifiUpdateResponse({
+    $2.WifiSoftwareUpdateStats? stats,
+  }) {
+    final result = create();
+    if (stats != null) result.stats = stats;
+    return result;
+  }
+
+  WifiUpdateResponse._();
+
+  factory WifiUpdateResponse.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory WifiUpdateResponse.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'WifiUpdateResponse',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
+      createEmptyInstance: create)
+    ..aOM<$2.WifiSoftwareUpdateStats>(1, _omitFieldNames ? '' : 'stats',
+        subBuilder: $2.WifiSoftwareUpdateStats.create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  WifiUpdateResponse clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  WifiUpdateResponse copyWith(void Function(WifiUpdateResponse) updates) =>
+      super.copyWith((message) => updates(message as WifiUpdateResponse))
+          as WifiUpdateResponse;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static WifiUpdateResponse create() => WifiUpdateResponse._();
+  @$core.override
+  WifiUpdateResponse createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static WifiUpdateResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<WifiUpdateResponse>(create);
+  static WifiUpdateResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $2.WifiSoftwareUpdateStats get stats => $_getN(0);
+  @$pb.TagNumber(1)
+  set stats($2.WifiSoftwareUpdateStats value) => $_setField(1, value);
+  @$pb.TagNumber(1)
+  $core.bool hasStats() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearStats() => $_clearField(1);
+  @$pb.TagNumber(1)
+  $2.WifiSoftwareUpdateStats ensureStats() => $_ensure(0);
+}
+
+class WifiRunDebugNetsysRequest extends $pb.GeneratedMessage {
+  factory WifiRunDebugNetsysRequest() => create();
+
+  WifiRunDebugNetsysRequest._();
+
+  factory WifiRunDebugNetsysRequest.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory WifiRunDebugNetsysRequest.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'WifiRunDebugNetsysRequest',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  WifiRunDebugNetsysRequest clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  WifiRunDebugNetsysRequest copyWith(
+          void Function(WifiRunDebugNetsysRequest) updates) =>
+      super.copyWith((message) => updates(message as WifiRunDebugNetsysRequest))
+          as WifiRunDebugNetsysRequest;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static WifiRunDebugNetsysRequest create() => WifiRunDebugNetsysRequest._();
+  @$core.override
+  WifiRunDebugNetsysRequest createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static WifiRunDebugNetsysRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<WifiRunDebugNetsysRequest>(create);
+  static WifiRunDebugNetsysRequest? _defaultInstance;
+}
+
+class WifiRunDebugNetsysResponse extends $pb.GeneratedMessage {
+  factory WifiRunDebugNetsysResponse() => create();
+
+  WifiRunDebugNetsysResponse._();
+
+  factory WifiRunDebugNetsysResponse.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory WifiRunDebugNetsysResponse.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'WifiRunDebugNetsysResponse',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  WifiRunDebugNetsysResponse clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  WifiRunDebugNetsysResponse copyWith(
+          void Function(WifiRunDebugNetsysResponse) updates) =>
+      super.copyWith(
+              (message) => updates(message as WifiRunDebugNetsysResponse))
+          as WifiRunDebugNetsysResponse;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static WifiRunDebugNetsysResponse create() => WifiRunDebugNetsysResponse._();
+  @$core.override
+  WifiRunDebugNetsysResponse createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static WifiRunDebugNetsysResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<WifiRunDebugNetsysResponse>(create);
+  static WifiRunDebugNetsysResponse? _defaultInstance;
+}
+
+class WifiResetEthPhyRequest extends $pb.GeneratedMessage {
+  factory WifiResetEthPhyRequest() => create();
+
+  WifiResetEthPhyRequest._();
+
+  factory WifiResetEthPhyRequest.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory WifiResetEthPhyRequest.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'WifiResetEthPhyRequest',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  WifiResetEthPhyRequest clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  WifiResetEthPhyRequest copyWith(
+          void Function(WifiResetEthPhyRequest) updates) =>
+      super.copyWith((message) => updates(message as WifiResetEthPhyRequest))
+          as WifiResetEthPhyRequest;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static WifiResetEthPhyRequest create() => WifiResetEthPhyRequest._();
+  @$core.override
+  WifiResetEthPhyRequest createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static WifiResetEthPhyRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<WifiResetEthPhyRequest>(create);
+  static WifiResetEthPhyRequest? _defaultInstance;
+}
+
+class WifiResetEthPhyResponse extends $pb.GeneratedMessage {
+  factory WifiResetEthPhyResponse() => create();
+
+  WifiResetEthPhyResponse._();
+
+  factory WifiResetEthPhyResponse.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory WifiResetEthPhyResponse.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'WifiResetEthPhyResponse',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  WifiResetEthPhyResponse clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  WifiResetEthPhyResponse copyWith(
+          void Function(WifiResetEthPhyResponse) updates) =>
+      super.copyWith((message) => updates(message as WifiResetEthPhyResponse))
+          as WifiResetEthPhyResponse;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static WifiResetEthPhyResponse create() => WifiResetEthPhyResponse._();
+  @$core.override
+  WifiResetEthPhyResponse createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static WifiResetEthPhyResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<WifiResetEthPhyResponse>(create);
+  static WifiResetEthPhyResponse? _defaultInstance;
+}
+
+class WifiFlushHardwareNatRequest extends $pb.GeneratedMessage {
+  factory WifiFlushHardwareNatRequest() => create();
+
+  WifiFlushHardwareNatRequest._();
+
+  factory WifiFlushHardwareNatRequest.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory WifiFlushHardwareNatRequest.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'WifiFlushHardwareNatRequest',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  WifiFlushHardwareNatRequest clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  WifiFlushHardwareNatRequest copyWith(
+          void Function(WifiFlushHardwareNatRequest) updates) =>
+      super.copyWith(
+              (message) => updates(message as WifiFlushHardwareNatRequest))
+          as WifiFlushHardwareNatRequest;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static WifiFlushHardwareNatRequest create() =>
+      WifiFlushHardwareNatRequest._();
+  @$core.override
+  WifiFlushHardwareNatRequest createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static WifiFlushHardwareNatRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<WifiFlushHardwareNatRequest>(create);
+  static WifiFlushHardwareNatRequest? _defaultInstance;
+}
+
+class WifiFlushHardwareNatResponse extends $pb.GeneratedMessage {
+  factory WifiFlushHardwareNatResponse() => create();
+
+  WifiFlushHardwareNatResponse._();
+
+  factory WifiFlushHardwareNatResponse.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory WifiFlushHardwareNatResponse.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'WifiFlushHardwareNatResponse',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'SpaceX.API.Device'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  WifiFlushHardwareNatResponse clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  WifiFlushHardwareNatResponse copyWith(
+          void Function(WifiFlushHardwareNatResponse) updates) =>
+      super.copyWith(
+              (message) => updates(message as WifiFlushHardwareNatResponse))
+          as WifiFlushHardwareNatResponse;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static WifiFlushHardwareNatResponse create() =>
+      WifiFlushHardwareNatResponse._();
+  @$core.override
+  WifiFlushHardwareNatResponse createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static WifiFlushHardwareNatResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<WifiFlushHardwareNatResponse>(create);
+  static WifiFlushHardwareNatResponse? _defaultInstance;
 }
 
 const $core.bool _omitFieldNames =

@@ -1,0 +1,89 @@
+syntax = "proto3";
+
+package SpaceX.API.Device.Gnss;
+
+option go_package = "spacex.com/api/device";
+
+message Measurement {
+  int64 time_of_validity_ns = 1;
+
+  SatelliteSystem satellite_system = 2;
+
+  int32 prn = 3;
+
+  Pseudorange pseudorange = 4;
+
+  Ephemeris ephemeris = 5;
+}
+
+message Pseudorange {
+  double pseudorange_m = 1;
+
+  float pseudorange_variance_m2 = 2;
+}
+
+message Ephemeris {
+  SatnavTime sv_data_time = 1;
+
+  CoordinateFrame coordinate_frame = 2;
+
+  Vector3 sv_pos_m = 3;
+
+  Vector3 sv_vel_m = 4;
+}
+
+message SatnavTime {
+  uint32 week_number = 1;
+
+  double seconds_of_week = 2;
+
+  TimeReference time_reference = 3;
+}
+
+message Vector3 {
+  double x = 1;
+
+  double y = 2;
+
+  double z = 3;
+}
+
+enum TimeReference {
+  TIME_GPS = 0;
+
+  TIME_GALILEO = 1;
+
+  TIME_BEIDOU = 2;
+
+  TIME_GLONASS = 3;
+}
+
+enum SatelliteSystem {
+  SYS_GPS = 0;
+
+  SYS_GALILEO = 1;
+
+  SYS_GLONASS = 2;
+
+  SYS_BEIDOU = 3;
+
+  SYS_SBAS = 4;
+
+  SYS_QZSS = 5;
+
+  SYS_IRNSS = 6;
+
+  SYS_STARLINK = 7;
+
+  SYS_STARSHIELD = 8;
+}
+
+enum CoordinateFrame {
+  ITRF = 0;
+
+  ECEF = 1;
+
+  GTRF = 2;
+
+  PZ90 = 3;
+}
