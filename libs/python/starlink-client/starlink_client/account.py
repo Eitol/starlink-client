@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 from pydantic import BaseModel, EmailStr
 
@@ -21,7 +21,7 @@ class Account(BaseModel):
     isSupportAgent: bool
     isSpacexEmployee: bool
     enabled: bool
-    canManageClients: bool
+    canManageClients: Optional[bool] = None
     roles: List[int]
     employeeAccountPermissions: List[str]
     permissions: List[Permission]
